@@ -21,14 +21,16 @@ export default async function ExplorePage({
   const query = await searchParams;
   const user = await optionalUser();
   const data = await getAtlasData(user);
+  const developer = data.developers.find((item) => item.id === query.developer);
   return (
     <Explore
-      data={data}
+      data={{ projects: data.projects, pois: data.pois }}
       locale={locale}
       initialTheme={query.theme === 'light' ? 'light' : 'dark'}
       initialQuery={(query.q || '').slice(0, 1500)}
       initialStory={query.story || ''}
       developerId={query.developer || ''}
+      developerName={developer && { nameEn: developer.nameEn, nameAr: developer.nameAr }}
       signedIn={Boolean(user)}
       forceFallback={query.fallback === '1'}
     />

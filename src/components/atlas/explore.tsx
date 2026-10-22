@@ -62,15 +62,17 @@ export function Explore({
   initialQuery = '',
   initialStory = '',
   developerId = '',
+  developerName,
   signedIn = false,
   forceFallback = false,
 }: {
-  data: AtlasData;
+  data: Pick<AtlasData, 'projects' | 'pois'>;
   locale: AtlasLocale;
   initialTheme?: AtlasTheme;
   initialQuery?: string;
   initialStory?: string;
   developerId?: string;
+  developerName?: { nameEn: string; nameAr: string };
   signedIn?: boolean;
   forceFallback?: boolean;
 }) {
@@ -776,7 +778,7 @@ export function Explore({
                     {t.filtered}:{' '}
                     <bdi>
                       {name(
-                        data.developers.find((d) => d.id === developerId) || {
+                        developerName || {
                           nameEn: developerId,
                           nameAr: developerId,
                         },

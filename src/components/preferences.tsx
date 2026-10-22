@@ -10,7 +10,7 @@ import {
 } from 'react';
 import { useTranslations } from 'next-intl';
 import { FX, FX_DATE } from '@/src/lib/catalog';
-import { displayPreferencesSchema } from '@/src/lib/preferences';
+import { decodeDisplayPreferences } from '@/src/lib/display-preferences-client';
 
 type DisplayState = { currency: string; unit: string; arabicIndicDigits: boolean };
 type Preferences = DisplayState & {
@@ -51,13 +51,13 @@ function readLocal() {
 }
 function localPreferences(raw: string | null): Partial<DisplayState> {
   try {
-    const value = displayPreferencesSchema.safeParse(JSON.parse(raw ?? '{}'));
-    if (!value.success) return {};
+    const value = decodeDisplayPreferences(JSON.parse(raw ?? '{}'));
+    if (!value) return {};
     return {
-      ...(value.data.currency ? { currency: value.data.currency } : {}),
-      ...(value.data.areaUnit ? { unit: value.data.areaUnit } : {}),
-      ...(value.data.arabicIndicDigits !== undefined
-        ? { arabicIndicDigits: value.data.arabicIndicDigits }
+      ...(value.currency ? { currency: value.currency } : {}),
+      ...(value.areaUnit ? { unit: value.areaUnit } : {}),
+      ...(value.arabicIndicDigits !== undefined
+        ? { arabicIndicDigits: value.arabicIndicDigits }
         : {}),
     };
   } catch {

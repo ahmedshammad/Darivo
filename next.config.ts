@@ -2,6 +2,9 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./src/lib/i18n.ts');
 export default withNextIntl({
   devIndicators: false,
+  // Ship first-paint styles with the document instead of waiting for CSS round trips.
+  // Keep the production performance check to validate the larger HTML trade-off.
+  experimental: { inlineCss: true },
   serverExternalPackages: ['pg', 'playwright', 'playwright-core'],
   async headers() {
     return [

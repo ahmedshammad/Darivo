@@ -2,8 +2,34 @@ import { describe, expect, it } from 'vitest';
 import { formatAmount, formatNumber } from '../src/lib/format';
 import { money } from '../src/lib/catalog';
 import { displayPreferencesSchema, profileSchema } from '../src/lib/preferences';
+import { decodeDisplayPreferences } from '../src/lib/display-preferences-client';
 
 describe('display preferences preserve financial meaning', () => {
+  it('keeps the small storage decoder equivalent to the API schema for every valid combination', () => {
+    for (const currency of [undefined, 'AED', 'EGP', 'USD', 'EUR', 'SAR', 'GBP'])
+      for (const areaUnit of [undefined, 'sqm', 'sqft'])
+        for (const arabicIndicDigits of [undefined, false, true]) {
+          const value = JSON.parse(JSON.stringify({ currency, areaUnit, arabicIndicDigits }));
+          const expected = displayPreferencesSchema.safeParse(value);
+          expect(decodeDisplayPreferences(value)).toEqual(expected.success ? expected.data : null);
+        }
+  });
+  it('rejects malformed stored preferences and privileged extra fields exactly as the API does', () => {
+    const invalidValues: unknown[] = [null, [], '', false, 0, {}, ['AED']];
+    for (const field of ['currency', 'areaUnit', 'arabicIndicDigits'])
+      for (const invalid of [null, [], {}, 0, 1, 'true', 'aed', 'JPY', 'acre'])
+        invalidValues.push({ currency: 'AED', areaUnit: 'sqm', [field]: invalid });
+    for (const key of ['role', 'verification', 'consentAt', 'userId', '__proto__'])
+      invalidValues.push(JSON.parse(`{"arabicIndicDigits":true,"${key}":"ADMIN"}`));
+    for (const value of invalidValues) {
+      expect(displayPreferencesSchema.safeParse(value).success).toBe(false);
+      expect(decodeDisplayPreferences(value)).toBeNull();
+    }
+    const stored = Object.freeze({ currency: 'AED', arabicIndicDigits: false });
+    const decoded = decodeDisplayPreferences(stored);
+    expect(decoded).toEqual(stored);
+    expect(decoded).not.toBe(stored);
+  });
   it('changes only glyphs while preserving the original AED and EGP amounts', () => {
     const source = { amount: 91200000, currency: 'EGP' };
     const latin = formatAmount(source.amount, source.currency, 'ar', false);
