@@ -75,30 +75,24 @@ test('known project sources and reported dates remain visible in the map evidenc
   await expect(panel).toContainText(/on request|advisor/i);
 });
 
-test('map handoff preserves project and request through sign-in without sending', async ({
+test('map handoff preserves project and request through public Concierge sign-in without sending', async ({
   page,
 }) => {
   const posts: string[] = [];
   page.on('request', (request) => {
-    if (request.method() === 'POST' && request.url().includes('/api/v1/consultant'))
+    if (request.method() === 'POST' && request.url().includes('/api/v1/concierge'))
       posts.push(request.url());
   });
   await page.goto('/en/explore?developer=omniyat&fallback=1&q=Orla');
   await page.locator('.atlas-project-select').first().click();
-  const handoff = page.locator('.atlas-evidence a[href*="/consultant?"]').first();
+  const handoff = page.locator('.atlas-evidence a[href*="/concierge?"]').first();
   await handoff.click();
-  await expect(page.getByTestId('atlas-handoff-context')).toContainText('Orla');
-  await expect(page.getByTestId('atlas-handoff-context')).toContainText('Nothing has been sent');
-  await page.locator('a[href*="/login?returnTo="]').click();
+  await expect(page.locator('#concierge-prompt')).toHaveValue(/Orla/i);
+  await expect(page.getByTestId('concierge-turn')).toHaveCount(0);
+  await page.locator('.cq-privacy-line a[href*="/login?returnTo="]').click();
   await page.getByRole('button', { name: 'Private client', exact: true }).click();
-  await expect(page).toHaveURL(/\/en\/consultant\?project=/);
-  await expect(page.locator('#message')).toHaveValue(/Orla/);
-  await expect(
-    page
-      .getByTestId('atlas-handoff-context')
-      .getByRole('link', { name: /Original source/ })
-      .first(),
-  ).toHaveAttribute('href', /^https:\/\//);
+  await expect(page).toHaveURL(/\/en\/concierge\?/);
+  await expect(page.locator('#concierge-prompt')).toHaveValue(/Orla/i);
   expect(posts).toEqual([]);
 });
 

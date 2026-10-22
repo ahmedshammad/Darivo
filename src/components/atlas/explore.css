@@ -1176,3 +1176,28 @@
     max-height: 16svh;
   }
 }
+
+.atlas-concierge-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-block: 0;
+}
+.atlas-concierge-entry a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-size: 12px;
+  color: var(--atlas-accent);
+}
+.atlas-concierge-entry a svg {
+  width: 14px;
+  height: 14px;
+}
+@media (max-width: 760px) {
+  .atlas-explore[data-sheet='expanded'] .atlas-concierge-entry {
+    padding-block: 0;
+  }
+}

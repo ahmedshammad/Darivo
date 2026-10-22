@@ -382,7 +382,13 @@ export function Arrival({
               </button>
             </form>
             <div className="arrival-composer-caption">
-              <span>{t.conversation}</span>
+              <Link
+                className="arrival-concierge-link"
+                href={`/${locale}/concierge?${query({ q: value })}`}
+              >
+                {t.continueConcierge}
+                <ArrowUpRight aria-hidden="true" />
+              </Link>
               <span>{t.preview}</span>
             </div>
             <p className="arrival-feedback" role="status">

@@ -1549,6 +1549,27 @@ function FallbackMap(props: LivingMapProps & { fallbackDetail: string }) {
     occupied.push({ x, y, width });
     return true;
   });
+  const visiblePois = (props.pois ?? [])
+    .filter((poi) => props.layers?.some((layer) => layer === poi.kind))
+    .map((poi) => {
+      const [x, y] = project(poi.center);
+      const label = `${props.locale === 'ar' ? poi.nameAr : poi.nameEn} · ${props.locale === 'ar' ? 'تجريبي' : 'Demo'}`;
+      const width = label.length * 8 + 16;
+      const labelY = [y + 18, y - 14].find(
+        (candidate) =>
+          x - width / 2 > Math.max(12, padding.left ?? 0) &&
+          x + width / 2 < size.width - Math.max(12, padding.right ?? 0) &&
+          candidate > Math.max(40, padding.top ?? 0) &&
+          candidate < size.height - Math.max(40, padding.bottom ?? 0) &&
+          !occupied.some(
+            (other) =>
+              Math.abs(other.x - x) < (other.width + width) / 2 &&
+              Math.abs(other.y - candidate) < 30,
+          ),
+      );
+      if (labelY !== undefined) occupied.push({ x, y: labelY, width });
+      return { poi, x, y, label, labelY };
+    });
   return (
     <div
       ref={ref}
@@ -1606,20 +1627,24 @@ function FallbackMap(props: LivingMapProps & { fallbackDetail: string }) {
                 className="atlas-fallback-ring"
               />
             ))}
-        {(props.pois ?? [])
-          .filter((p) => props.layers?.some((layer) => layer === p.kind))
-          .map((p) => {
-            const [x, y] = project(p.center);
-            return (
-              <g key={p.id}>
-                <circle cx={x} cy={y} r="5" fill="#B08D57" />
-                <text x={x} y={y + 18} textAnchor="middle" fill="currentColor" fontSize="12">
-                  {props.locale === 'ar' ? p.nameAr : p.nameEn} ·{' '}
-                  {props.locale === 'ar' ? 'تجريبي' : 'Demo'}
-                </text>
-              </g>
-            );
-          })}
+        {visiblePois.map(({ poi, x, y, label, labelY }) => (
+          <g key={poi.id}>
+            <title>{label}</title>
+            <circle cx={x} cy={y} r="5" fill="#B08D57" />
+            {labelY !== undefined && (
+              <text
+                data-poi-label={poi.id}
+                x={x}
+                y={labelY}
+                textAnchor="middle"
+                fill="currentColor"
+                fontSize="12"
+              >
+                {label}
+              </text>
+            )}
+          </g>
+        ))}
         {props.isochrone && (
           <path
             d={polygonPath([

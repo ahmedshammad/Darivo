@@ -5,14 +5,14 @@ export default async function Page({
   searchParams: Promise<{ returnTo?: string }>;
 }) {
   const requested = (await searchParams).returnTo;
-  // Only this explicit, local continuation route is accepted; never an arbitrary redirect.
+  // Only explicit local conversation routes are accepted; never an arbitrary redirect.
   let returnTo: string | undefined;
   if (typeof requested === 'string' && requested.length <= 6000) {
     try {
       const target = new URL(requested, 'https://darivo.invalid');
       if (
         target.origin === 'https://darivo.invalid' &&
-        /^\/(en|ar)\/consultant$/.test(target.pathname)
+        /^\/(en|ar)\/(consultant|concierge)$/.test(target.pathname)
       )
         returnTo = target.pathname + target.search;
     } catch {

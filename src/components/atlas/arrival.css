@@ -933,3 +933,19 @@
     animation-duration: 0ms !important;
   }
 }
+
+.arrival-composer-caption {
+  align-items: center;
+}
+.arrival-concierge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  color: var(--arrival-accent);
+  font-size: 12px;
+}
+.arrival-concierge-link svg {
+  width: 14px;
+  height: 14px;
+}

@@ -1,0 +1,521 @@
+'use client';
+
+import { ArrowUpRight, MapPin, Plus, Minus } from 'lucide-react';
+import type {
+  ConciergeComponent,
+  GroundedCard,
+  GroundedFact,
+  GroundedSource,
+} from '@/src/lib/concierge';
+import { ConciergeMiniMap } from './mini-map';
+import type { AtlasProject } from '@/src/lib/atlas';
+import type { AtlasCamera } from '@/src/lib/atlas';
+import { conciergeCopy, type ConciergeLocale } from '@/messages/concierge';
+import { usePreferences } from '@/src/components/preferences';
+
+export function useConciergeNumbers(locale: ConciergeLocale) {
+  const { arabicIndicDigits } = usePreferences();
+  const format = (value: number, currency?: string, precision?: number) =>
+    new Intl.NumberFormat(locale === 'ar' ? 'ar-AE' : 'en-AE', {
+      numberingSystem: arabicIndicDigits ? 'arab' : 'latn',
+      maximumFractionDigits: precision ?? (currency ? 0 : 2),
+      ...(currency ? { style: 'currency' as const, currency } : {}),
+    }).format(value);
+  const digits = (value: string) =>
+    value.replace(/[0-9]/g, (digit) => (arabicIndicDigits ? '٠١٢٣٤٥٦٧٨٩'[Number(digit)] : digit));
+  return { format, digits };
+}
+
+function factLabel(fact: GroundedFact, locale: ConciergeLocale) {
+  return fact.label[locale];
+}
+
+export function SourceEvidence({
+  sources,
+  locale,
+}: {
+  sources: GroundedSource[];
+  locale: ConciergeLocale;
+}) {
+  const t = conciergeCopy[locale];
+  const { digits } = useConciergeNumbers(locale);
+  return (
+    <div className="cq-sources">
+      {sources.length ? (
+        sources.map((source) => (
+          <div key={source.id}>
+            {source.kind === 'published' ? (
+              <a href={source.url} target="_blank" rel="noopener noreferrer">
+                <bdi>{source.publisher}</bdi>
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+            ) : (
+              <span>{t.basis[source.basis]}</span>
+            )}
+            <span>
+              {source.kind === 'published' && `${t.basis[source.basis]} · `}
+              {t.asOf} <bdi>{source.asOf.value ? digits(source.asOf.value) : t.unknown}</bdi>
+            </span>
+          </div>
+        ))
+      ) : (
+        <p>{t.unknown}</p>
+      )}
+    </div>
+  );
+}
+
+export function FactValue({ fact, locale }: { fact?: GroundedFact; locale: ConciergeLocale }) {
+  const t = conciergeCopy[locale];
+  const { format, digits } = useConciergeNumbers(locale);
+  if (!fact || fact.value === null) return <span>{t.unknown}</span>;
+  const value =
+    typeof fact.value === 'number'
+      ? format(fact.value, fact.currency ?? undefined)
+      : typeof fact.value === 'boolean'
+        ? fact.value
+          ? t.yes
+          : t.no
+        : digits(fact.displayValue?.[locale] ?? fact.value);
+  return (
+    <>
+      <bdi>
+        {value}
+        {fact.unit && !fact.currency ? ` ${fact.unit}` : ''}
+      </bdi>
+      {fact.qualifier && <small>{fact.qualifier[locale]}</small>}
+      {typeof fact.value === 'string' &&
+        fact.displayValue?.[locale] &&
+        fact.displayValue[locale] !== (fact.originalText ?? fact.value) && (
+          <small>
+            {t.originalWording}: <bdi>{fact.originalText ?? fact.value}</bdi>
+          </small>
+        )}
+    </>
+  );
+}
+
+export function CardPrice({ card, locale }: { card: GroundedCard; locale: ConciergeLocale }) {
+  const t = conciergeCopy[locale];
+  const { format, digits } = useConciergeNumbers(locale);
+  return (
+    <div className="cq-card-price">
+      {card.price ? (
+        <>
+          <strong>
+            <bdi>{format(card.price.native.amount, card.price.native.currency)}</bdi>
+          </strong>
+          <small>
+            {t.original}
+            {card.price.qualifier && ` · ${card.price.qualifier[locale]}`}
+          </small>
+          {card.price.converted.map((conversion) => (
+            <small key={conversion.money.currency}>
+              <bdi>{format(conversion.money.amount, conversion.money.currency)}</bdi> · {t.fx} ·{' '}
+              {conversion.asOf.value ? digits(conversion.asOf.value) : t.unknown} ·{' '}
+              <bdi>
+                {format(1)} {card.price!.native.currency} = {format(conversion.rate, undefined, 8)}{' '}
+                {conversion.money.currency}
+              </bdi>
+            </small>
+          ))}
+        </>
+      ) : (
+        <strong>{t.onRequest}</strong>
+      )}
+    </div>
+  );
+}
+
+export function ConciergeCard({
+  card,
+  locale,
+  selected,
+  onSelect,
+  onCompare,
+}: {
+  card: GroundedCard;
+  locale: ConciergeLocale;
+  selected: boolean;
+  onSelect: () => void;
+  onCompare: () => void;
+}) {
+  const t = conciergeCopy[locale];
+  return (
+    <article
+      className="cq-project"
+      data-testid="concierge-project"
+      data-project-id={card.projectId}
+    >
+      <div className="cq-card-kicker">
+        <span className="cq-badge">{card.kind === 'reference-project' ? t.reference : t.demo}</span>
+        <button
+          className="cq-icon"
+          onClick={onCompare}
+          aria-label={`${selected ? t.removeCompare : t.compare}: ${card.name[locale]}`}
+          aria-pressed={selected}
+        >
+          {selected ? <Minus /> : <Plus />}
+        </button>
+      </div>
+      <h3>
+        <button onClick={onSelect}>
+          {card.name[locale]}
+          <ArrowUpRight aria-hidden="true" />
+        </button>
+      </h3>
+      <CardPrice card={card} locale={locale} />
+      <p className="cq-fine">{card.kind === 'reference-project' ? t.noAvailability : t.demoOnly}</p>
+      <SourceEvidence sources={card.sources.slice(0, 1)} locale={locale} />
+      <div className="cq-reasons">
+        <h4>{t.why}</h4>
+        <ul>
+          {card.reasons.map((reason, index) => (
+            <li key={index} data-support={reason.status}>
+              {reason.text[locale]}
+            </li>
+          ))}
+        </ul>
+        <h4>{t.tradeoff}</h4>
+        <p>{card.tradeoff.text[locale]}</p>
+      </div>
+      <details className="cq-evidence">
+        <summary>{t.sources}</summary>
+        <dl>
+          {card.facts.map((fact) => (
+            <div key={fact.id}>
+              <dt>{factLabel(fact, locale)}</dt>
+              <dd>
+                <FactValue fact={fact} locale={locale} />
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <SourceEvidence sources={card.sources} locale={locale} />
+      </details>
+      {card.center && (
+        <button className="cq-text-button" onClick={onSelect}>
+          <MapPin aria-hidden="true" />
+          {t.showMap}
+          {card.coordinatesApproximate && <span> · {t.approximate}</span>}
+        </button>
+      )}
+    </article>
+  );
+}
+
+type ResponseProps = {
+  component: ConciergeComponent;
+  projects: AtlasProject[];
+  locale: ConciergeLocale;
+  comparison: string[];
+  onSelect: (card: GroundedCard) => void;
+  onToggleCompare: (card: GroundedCard) => void;
+  onCompare: (cards: GroundedCard[]) => void;
+  onMap: (camera: AtlasCamera, ids: string[]) => void;
+};
+export function ResponseComponent({
+  component,
+  projects,
+  locale,
+  comparison,
+  onSelect,
+  onToggleCompare,
+  onCompare,
+  onMap,
+}: ResponseProps) {
+  const t = conciergeCopy[locale];
+  const { format, digits } = useConciergeNumbers(locale);
+  switch (component.kind) {
+    case 'project-cards':
+      return (
+        <div className="cq-projects" data-component-kind={component.kind}>
+          {component.cards.map((card) => (
+            <ConciergeCard
+              key={card.id}
+              card={card}
+              locale={locale}
+              selected={comparison.includes(card.projectId)}
+              onSelect={() => onSelect(card)}
+              onCompare={() => onToggleCompare(card)}
+            />
+          ))}
+        </div>
+      );
+    case 'comparison':
+      return (
+        <section className="cq-generated" data-component-kind={component.kind}>
+          <h3>{t.compare}</h3>
+          <div className="cq-table-scroll" tabIndex={0} role="region" aria-label={t.compare}>
+            <table>
+              <caption>{t.scrollHint}</caption>
+              <thead>
+                <tr>
+                  <th scope="col">{t.facts}</th>
+                  {component.cards.map((card) => (
+                    <th key={card.id} scope="col">
+                      {card.name[locale]}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">{t.price}</th>
+                  {component.cards.map((card) => (
+                    <td key={card.id}>
+                      <CardPrice card={card} locale={locale} />
+                    </td>
+                  ))}
+                </tr>
+                {component.rows.map((row) => (
+                  <tr key={row.factKey}>
+                    <th scope="row">{row.label[locale]}</th>
+                    {component.cards.map((card) => (
+                      <td key={card.id}>
+                        <FactValue
+                          fact={card.facts.find((fact) => fact.key === row.factKey)}
+                          locale={locale}
+                        />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+                <tr>
+                  <th scope="row">{t.tradeoff}</th>
+                  {component.cards.map((card) => (
+                    <td key={card.id}>{card.tradeoff.text[locale]}</td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button className="cq-action" onClick={() => onCompare(component.cards)}>
+            {t.compareMap}
+            <ArrowUpRight aria-hidden="true" />
+          </button>
+          <details>
+            <summary>{t.sources}</summary>
+            {component.cards.map((card) => (
+              <div key={card.id}>
+                <h4>{card.name[locale]}</h4>
+                <SourceEvidence sources={card.sources} locale={locale} />
+              </div>
+            ))}
+          </details>
+        </section>
+      );
+    case 'mini-map':
+      return (
+        <ConciergeMiniMap component={component} projects={projects} locale={locale} onMap={onMap} />
+      );
+    case 'payment-timeline':
+      return (
+        <section className="cq-generated" data-component-kind={component.kind}>
+          <div className="cq-card-kicker">
+            <h3>{t.payment}</h3>
+            <span className="cq-badge">
+              {component.mode === 'DEMO_ESTIMATE'
+                ? t.demo
+                : component.mode === 'USER_ASSUMPTION'
+                  ? t.assumption
+                  : t.reference}
+            </span>
+          </div>
+          <ol className="cq-payment">
+            {component.schedule.map((step) => (
+              <li key={step.id}>
+                <strong>
+                  <bdi>{format(step.percent)}%</bdi>
+                </strong>
+                <h4>{step.label[locale]}</h4>
+                <p>
+                  <bdi>{digits(step.timing)}</bdi>
+                </p>
+                <p>
+                  <bdi>
+                    {format(
+                      (component.price.native.amount * step.percent) / 100,
+                      component.price.native.currency,
+                    )}
+                  </bdi>
+                </p>
+              </li>
+            ))}
+          </ol>
+          <p>
+            {t.total}:{' '}
+            <bdi>{format(component.price.native.amount, component.price.native.currency)}</bdi> ·{' '}
+            {t.original}
+          </p>
+          <SourceEvidence sources={component.sources} locale={locale} />
+        </section>
+      );
+    case 'price-area-chart': {
+      const points = component.points.map((point) => {
+        const card = component.cards.find(
+          (item) =>
+            item.projectId === point.entity.id ||
+            (item.kind === 'demo-unit' && item.unitId === point.entity.id),
+        );
+        return {
+          point,
+          card,
+          price: card?.facts.find((fact) => fact.id === point.priceFactId),
+          area: card?.facts.find((fact) => fact.id === point.areaFactId),
+        };
+      });
+      const groups = [
+        ...new Set(
+          points.flatMap((point) =>
+            point.price?.currency && point.area?.unit
+              ? [`${point.price.currency}|${point.area.unit}`]
+              : [],
+          ),
+        ),
+      ];
+      return (
+        <section className="cq-generated" data-component-kind={component.kind}>
+          <h3>{t.chart}</h3>
+          <p className="cq-fine">{t.chartNote}</p>
+          {groups.map((group) => {
+            const [currency, unit] = group.split('|');
+            const valid = points.filter(
+              (p) =>
+                p.price?.currency === currency &&
+                p.area?.unit === unit &&
+                typeof p.price.value === 'number' &&
+                typeof p.area?.value === 'number' &&
+                p.area.value > 0,
+            );
+            const max = Math.max(1, ...valid.map((p) => p.price!.value as number));
+            const maxArea = Math.max(1, ...valid.map((p) => p.area!.value as number));
+            return (
+              <figure className="cq-scatter" key={group}>
+                <figcaption>
+                  {t.price} · <bdi>{currency}</bdi> / {t.area} · <bdi>{unit}</bdi>
+                </figcaption>
+                <svg
+                  viewBox="0 0 340 195"
+                  role="img"
+                  aria-label={`${t.chart} · ${currency} · ${unit}`}
+                >
+                  <path d="M44 12 V152 H320" fill="none" stroke="currentColor" opacity=".45" />
+                  <path
+                    d="M44 82 H320 M182 12 V152"
+                    fill="none"
+                    stroke="currentColor"
+                    opacity=".15"
+                    strokeDasharray="3 5"
+                  />
+                  <text x="44" y="174" textAnchor="middle">
+                    {format(0)}
+                  </text>
+                  <text x="312" y="174" textAnchor="end">
+                    {format(maxArea)} {unit}
+                  </text>
+                  <text x="44" y="10">
+                    {format(max, currency)}
+                  </text>
+                  {valid.map((point, index) => (
+                    <g key={point.point.entity.id}>
+                      <circle
+                        cx={44 + ((point.area!.value as number) / maxArea) * 268}
+                        cy={152 - ((point.price!.value as number) / max) * 126}
+                        r="5"
+                      />
+                      <text
+                        x={44 + ((point.area!.value as number) / maxArea) * 268}
+                        y={142 - ((point.price!.value as number) / max) * 126}
+                        textAnchor="middle"
+                      >
+                        {format(index + 1)}
+                      </text>
+                    </g>
+                  ))}
+                </svg>
+                <ol>
+                  {valid.map((point) => (
+                    <li key={point.point.entity.id}>{point.card?.name[locale]}</li>
+                  ))}
+                </ol>
+              </figure>
+            );
+          })}
+          <div className="cq-table-scroll" tabIndex={0} role="region" aria-label={t.chart}>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">{t.place}</th>
+                  <th scope="col">{t.price}</th>
+                  <th scope="col">{t.area}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {points.map((p) => (
+                  <tr key={p.point.entity.id}>
+                    <th scope="row">{p.card?.name[locale] ?? t.unknown}</th>
+                    <td>
+                      <FactValue fact={p.price} locale={locale} />
+                    </td>
+                    <td>
+                      <FactValue fact={p.area} locale={locale} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <details>
+            <summary>{t.sources}</summary>
+            {component.cards.map((card) => (
+              <SourceEvidence key={card.id} sources={card.sources} locale={locale} />
+            ))}
+          </details>
+        </section>
+      );
+    }
+    case 'itinerary':
+      return (
+        <section className="cq-generated" data-component-kind={component.kind}>
+          <h3>{t.itinerary}</h3>
+          {component.mode === 'DEMO_ILLUSTRATION' && <p className="cq-fine">{t.illustrative}</p>}
+          <ol className="cq-itinerary">
+            {component.steps.map((step) => (
+              <li key={step.id}>
+                <bdi>{digits(step.time)}</bdi>
+                <span>{step.title[locale]}</span>
+              </li>
+            ))}
+          </ol>
+          <SourceEvidence sources={component.sources} locale={locale} />
+        </section>
+      );
+    case 'developer-card':
+      return (
+        <section className="cq-generated" data-component-kind={component.kind}>
+          <p className="cq-eyebrow">{t.developer}</p>
+          <h3>{component.name[locale]}</h3>
+          {!component.facts.length && <p>{t.noFacts}</p>}
+          <dl>
+            {component.facts.map((fact) => (
+              <div key={fact.id}>
+                <dt>{factLabel(fact, locale)}</dt>
+                <dd>
+                  <FactValue fact={fact} locale={locale} />
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <SourceEvidence sources={component.sources} locale={locale} />
+        </section>
+      );
+    case 'notice':
+      return (
+        <aside className="cq-notice" data-component-kind={component.kind}>
+          <h3>{t.notice}</h3>
+          <p>{component.text[locale]}</p>
+        </aside>
+      );
+  }
+}

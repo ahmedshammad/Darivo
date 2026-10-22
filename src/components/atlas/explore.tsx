@@ -639,7 +639,15 @@ export function Explore({
               <ArrowUp />
             </button>
           </form>
-          <p className="atlas-local">{t.local}</p>
+          <div className="atlas-local atlas-concierge-entry">
+            <span>{t.local}</span>
+            <a
+              href={`/${locale}/concierge?${new URLSearchParams({ q: query || brief, theme, ...(selected ? { project: selected.id } : {}) })}`}
+            >
+              {t.continueConcierge}
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+          </div>
           {mobile && expanded && inlineMapEvidence}
           <div id="atlas-sheet-content" className="atlas-sheet-content" ref={sheetContent}>
             {comparison.length > 0 && !selected && comparisonPanel}
@@ -755,7 +763,7 @@ export function Explore({
                 </p>
                 <a
                   className="atlas-action atlas-action-primary"
-                  href={`/${locale}/consultant?${new URLSearchParams({ project: selected.id, brief: brief || query })}`}
+                  href={`/${locale}/concierge?${new URLSearchParams({ project: selected.id, q: query || brief, theme })}`}
                 >
                   {t.contextualRequest}
                   <ArrowUpRight />
