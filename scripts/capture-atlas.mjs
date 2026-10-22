@@ -154,9 +154,18 @@ try {
       await page.locator('.living-map[data-map-ready="true"]').waitFor({ timeout: 30000 });
       await page.locator('.atlas-sheet-handle').click();
       await page.locator('.atlas-project-select').first().waitFor();
-      await page.locator('.atlas-compare-add').nth(0).click();
-      await page.locator('.atlas-compare-add').nth(1).click();
+      if (locale === 'en') {
+        for (const id of ['june-sodic', 'orla-palm-jumeirah'])
+          await page.locator(`[data-project="${id}"] .atlas-compare-add`).click();
+      } else {
+        await page.locator('.atlas-compare-add').nth(0).click();
+        await page.locator('.atlas-compare-add').nth(1).click();
+      }
       await page.screenshot({ path: `${root}/signature-${locale}-comparison.png` });
+      await page.locator('.atlas-comparison .atlas-action').click();
+      await waitForMap(page);
+      await page.screenshot({ path: `${root}/signature-${locale}-comparison-map.png` });
+      await page.locator('.atlas-sheet-handle').click();
       await page.locator('.atlas-project-select').first().click();
       await page.locator('.atlas-evidence').waitFor();
       await page.screenshot({ path: `${root}/signature-${locale}-evidence.png` });

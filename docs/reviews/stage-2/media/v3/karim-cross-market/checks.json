@@ -1,0 +1,92 @@
+[
+  {
+    "width": 1440,
+    "errors": [],
+    "brief": "YOUR WORDS\n\nNorth Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.\n\nThe map now reflects the places and layers recognised below. Other requirements remain in your brief; they are not verified filters.",
+    "selected": [
+      {
+        "id": "june-sodic",
+        "text": "9\nReference\nJune\nRas El Hekma · North Coast\n\n22,400,000 EGP\n\nStandalone villa (222 sqm) recently listed at\n\nRecent listing · 2026-07 · invest-gate.me\n\nWhy here\nA project in Ras El Hekma, in the North Coast area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation."
+      },
+      {
+        "id": "orla-palm-jumeirah",
+        "text": "11\nReference\nOrla, Dorchester Collection\nPalm Jumeirah (Crescent) · Dubai\n\n57,300,000 AED\n\n4-bedroom residences from\n\nAgent listing · 2026-06 · nestseekers.com\n\nWhy here\nA project in Palm Jumeirah (Crescent), in the Dubai area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation."
+      }
+    ],
+    "comparison": "Between these places\nClear\n\nChoose 2–4 projects. Lines show straight-line distances. Nearby places in one country use an illustrative 40 km/h estimate, without roads or traffic. Cross-border and long distances are not driving routes.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 km · Distance only · not a driving route",
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.-1792681453393",
+      "mapPhase": "evening",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[28.248081081081068,28.217426690226773]",
+      "zoom": "3.256",
+      "pitch": "0.0",
+      "moving": "false",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "hasMinuteEstimate": false,
+    "distanceOnly": true,
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "errors": [],
+    "brief": "YOUR WORDS\n\nNorth Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.\n\nThe map now reflects the places and layers recognised below. Other requirements remain in your brief; they are not verified filters.",
+    "selected": [
+      {
+        "id": "june-sodic",
+        "text": "9\nReference\nJune\nRas El Hekma · North Coast\n\n22,400,000 EGP\n\nStandalone villa (222 sqm) recently listed at\n\nRecent listing · 2026-07 · invest-gate.me\n\nWhy here\nA project in Ras El Hekma, in the North Coast area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation."
+      },
+      {
+        "id": "orla-palm-jumeirah",
+        "text": "11\nReference\nOrla, Dorchester Collection\nPalm Jumeirah (Crescent) · Dubai\n\n57,300,000 AED\n\n4-bedroom residences from\n\nAgent listing · 2026-06 · nestseekers.com\n\nWhy here\nA project in Palm Jumeirah (Crescent), in the Dubai area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation."
+      }
+    ],
+    "comparison": "Between these places\nClear\n\nChoose 2–4 projects. Lines show straight-line distances. Nearby places in one country use an illustrative 40 km/h estimate, without roads or traffic. Cross-border and long distances are not driving routes.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 km · Distance only · not a driving route\nShow connections on the map",
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.-1792681459546",
+      "mapPhase": "evening",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[28.019999999999982,31.099999999999994]",
+      "zoom": "9.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "hasMinuteEstimate": false,
+    "distanceOnly": true,
+    "collapsedMap": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.-1792681459546",
+      "mapPhase": "evening",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[28.019999999999982,31.099999999999994]",
+      "zoom": "9.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "sheet": "collapsed",
+    "overflow": false
+  }
+]

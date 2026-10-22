@@ -1,0 +1,266 @@
+[
+  {
+    "key": "en-1440-webgl",
+    "errors": [],
+    "brief": "YOUR WORDS\n\nNorth Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.\n\nThe map now reflects the places and layers recognised below. Other requirements remain in your brief; they are not verified filters.",
+    "comparison": "Between these places\nClear\n\nChoose 2–4 projects. Lines show straight-line distances. Nearby places in one country use an illustrative 40 km/h estimate, without roads or traffic. Cross-border and long distances are not driving routes.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 km · Distance only · not a driving route",
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.-1792682145714",
+      "mapPhase": "evening",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.499000000000024,28.217426690226773]",
+      "zoom": "4.489",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":464.99999999999875,\"y\":389.55015421091457},{\"id\":\"orla-palm-jumeirah\",\"x\":1334.9999999999989,\"y\":610.4498457890867}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "mapBounds": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 1000
+    },
+    "sheetBounds": {
+      "x": 32,
+      "y": 112,
+      "width": 364,
+      "height": 858
+    },
+    "minuteEstimate": false,
+    "overflow": false,
+    "sheet": "expanded",
+    "endpointsWithinViewportAndAboveSheet": true,
+    "visualInspection": {
+      "bothEndpointCentersFramed": true,
+      "fallbackNoticeCoversJune": false,
+      "note": "Viewport/padding assertions do not test overlay occlusion. English mobile fallback notice covers June center around (59,269). Other screenshots show the two endpoint locations; Arabic WebGL navigation closely adjoins June."
+    }
+  },
+  {
+    "key": "ar-1440-webgl",
+    "errors": [],
+    "brief": "طلبك بكلماتك\n\nبيت صيفي في الساحل الشمالي قبل 2028، ومقارنة باستثمار في دبي. الميزانية بالجنيه الإسترليني والدفع بالجنيه المصري.\n\nحدّثنا الخريطة بحسب الأماكن والطبقات التي تعرّفنا عليها. بقية متطلباتك محفوظة في طلبك، ولم نتحقّق من مطابقتها.",
+    "comparison": "بين هذه الأماكن\nمسح\n\nاختر من مشروعين إلى أربعة. المسافات بخط مستقيم. للأماكن القريبة في البلد نفسه تقدير توضيحي بسرعة 40 كم/س دون طرق أو حركة مرور. المسافات البعيدة والعابرة للحدود ليست مسارات قيادة.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 كم · مسافة فقط · ليست مسار قيادة",
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "بيت صيفي في الساحل الشمالي قبل 2028، ومقارنة باستثمار في دبي. الميزانية بالجنيه الإسترليني والدفع بالجنيه المصري.-1792682149262",
+      "mapPhase": "evening",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.499000000000024,28.217426690226773]",
+      "zoom": "4.489",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":104.99999999999876,\"y\":389.55015421091457},{\"id\":\"orla-palm-jumeirah\",\"x\":974.9999999999987,\"y\":610.4498457890867}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "mapBounds": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 1000
+    },
+    "sheetBounds": {
+      "x": 1044,
+      "y": 112,
+      "width": 364,
+      "height": 858
+    },
+    "minuteEstimate": false,
+    "overflow": false,
+    "sheet": "expanded",
+    "endpointsWithinViewportAndAboveSheet": true,
+    "visualInspection": {
+      "bothEndpointCentersFramed": true,
+      "fallbackNoticeCoversJune": false,
+      "note": "Viewport/padding assertions do not test overlay occlusion. English mobile fallback notice covers June center around (59,269). Other screenshots show the two endpoint locations; Arabic WebGL navigation closely adjoins June."
+    }
+  },
+  {
+    "key": "en-390-webgl",
+    "errors": [],
+    "brief": "YOUR WORDS\n\nNorth Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.\n\nThe map now reflects the places and layers recognised below. Other requirements remain in your brief; they are not verified filters.",
+    "comparison": "Between these places\nClear\n\nChoose 2–4 projects. Lines show straight-line distances. Nearby places in one country use an illustrative 40 km/h estimate, without roads or traffic. Cross-border and long distances are not driving routes.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 km · Distance only · not a driving route\nShow connections on the map",
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.-1792682153561",
+      "mapPhase": "evening",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.499000000000024,28.217426690226773]",
+      "zoom": "2.812",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":58.99999999999963,\"y\":268.96855396019384},{\"id\":\"orla-palm-jumeirah\",\"x\":330.99999999999966,\"y\":338.03144603980616}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "mapBounds": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844
+    },
+    "sheetBounds": {
+      "x": 0,
+      "y": 557.046875,
+      "width": 390,
+      "height": 286.953125
+    },
+    "minuteEstimate": false,
+    "overflow": false,
+    "sheet": "collapsed",
+    "endpointsWithinViewportAndAboveSheet": true,
+    "visualInspection": {
+      "bothEndpointCentersFramed": true,
+      "fallbackNoticeCoversJune": false,
+      "note": "Viewport/padding assertions do not test overlay occlusion. English mobile fallback notice covers June center around (59,269). Other screenshots show the two endpoint locations; Arabic WebGL navigation closely adjoins June."
+    }
+  },
+  {
+    "key": "ar-390-webgl",
+    "errors": [],
+    "brief": "طلبك بكلماتك\n\nبيت صيفي في الساحل الشمالي قبل 2028، ومقارنة باستثمار في دبي. الميزانية بالجنيه الإسترليني والدفع بالجنيه المصري.\n\nحدّثنا الخريطة بحسب الأماكن والطبقات التي تعرّفنا عليها. بقية متطلباتك محفوظة في طلبك، ولم نتحقّق من مطابقتها.",
+    "comparison": "بين هذه الأماكن\nمسح\n\nاختر من مشروعين إلى أربعة. المسافات بخط مستقيم. للأماكن القريبة في البلد نفسه تقدير توضيحي بسرعة 40 كم/س دون طرق أو حركة مرور. المسافات البعيدة والعابرة للحدود ليست مسارات قيادة.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 كم · مسافة فقط · ليست مسار قيادة\nاعرض المسافات على الخريطة",
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "بيت صيفي في الساحل الشمالي قبل 2028، ومقارنة باستثمار في دبي. الميزانية بالجنيه الإسترليني والدفع بالجنيه المصري.-1792682157057",
+      "mapPhase": "evening",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.499000000000024,28.217426690226773]",
+      "zoom": "2.812",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":58.99999999999963,\"y\":268.96855396019384},{\"id\":\"orla-palm-jumeirah\",\"x\":330.99999999999966,\"y\":338.03144603980616}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "mapBounds": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844
+    },
+    "sheetBounds": {
+      "x": 0,
+      "y": 557.046875,
+      "width": 390,
+      "height": 286.953125
+    },
+    "minuteEstimate": false,
+    "overflow": false,
+    "sheet": "collapsed",
+    "endpointsWithinViewportAndAboveSheet": true,
+    "visualInspection": {
+      "bothEndpointCentersFramed": true,
+      "fallbackNoticeCoversJune": false,
+      "note": "Viewport/padding assertions do not test overlay occlusion. English mobile fallback notice covers June center around (59,269). Other screenshots show the two endpoint locations; Arabic WebGL navigation closely adjoins June."
+    }
+  },
+  {
+    "key": "en-390-fallback",
+    "errors": [],
+    "brief": "YOUR WORDS\n\nNorth Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.\n\nThe map now reflects the places and layers recognised below. Other requirements remain in your brief; they are not verified filters.",
+    "comparison": "Between these places\nClear\n\nChoose 2–4 projects. Lines show straight-line distances. Nearby places in one country use an illustrative 40 km/h estimate, without roads or traffic. Cross-border and long distances are not driving routes.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 km · Distance only · not a driving route\nShow connections on the map",
+    "map": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.-1792682159730",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[41.498999999999995,28.217426690226784]",
+      "zoom": "3.812",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":58.999999999999545,\"y\":268.96855396019373},{\"id\":\"orla-palm-jumeirah\",\"x\":330.99999999999955,\"y\":338.03144603980627}]"
+    },
+    "mapBounds": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844
+    },
+    "sheetBounds": {
+      "x": 0,
+      "y": 557.046875,
+      "width": 390,
+      "height": 286.953125
+    },
+    "minuteEstimate": false,
+    "overflow": false,
+    "sheet": "collapsed",
+    "endpointsWithinViewportAndAboveSheet": true,
+    "visualInspection": {
+      "bothEndpointCentersFramed": true,
+      "fallbackNoticeCoversJune": true,
+      "note": "Viewport/padding assertions do not test overlay occlusion. English mobile fallback notice covers June center around (59,269). Other screenshots show the two endpoint locations; Arabic WebGL navigation closely adjoins June."
+    }
+  },
+  {
+    "key": "ar-390-fallback",
+    "errors": [],
+    "brief": "طلبك بكلماتك\n\nبيت صيفي في الساحل الشمالي قبل 2028، ومقارنة باستثمار في دبي. الميزانية بالجنيه الإسترليني والدفع بالجنيه المصري.\n\nحدّثنا الخريطة بحسب الأماكن والطبقات التي تعرّفنا عليها. بقية متطلباتك محفوظة في طلبك، ولم نتحقّق من مطابقتها.",
+    "comparison": "بين هذه الأماكن\nمسح\n\nاختر من مشروعين إلى أربعة. المسافات بخط مستقيم. للأماكن القريبة في البلد نفسه تقدير توضيحي بسرعة 40 كم/س دون طرق أو حركة مرور. المسافات البعيدة والعابرة للحدود ليست مسارات قيادة.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 كم · مسافة فقط · ليست مسار قيادة\nاعرض المسافات على الخريطة",
+    "map": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "بيت صيفي في الساحل الشمالي قبل 2028، ومقارنة باستثمار في دبي. الميزانية بالجنيه الإسترليني والدفع بالجنيه المصري.-1792682161635",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[41.498999999999995,28.217426690226784]",
+      "zoom": "3.812",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":58.999999999999545,\"y\":268.96855396019373},{\"id\":\"orla-palm-jumeirah\",\"x\":330.99999999999955,\"y\":338.03144603980627}]"
+    },
+    "mapBounds": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844
+    },
+    "sheetBounds": {
+      "x": 0,
+      "y": 557.046875,
+      "width": 390,
+      "height": 286.953125
+    },
+    "minuteEstimate": false,
+    "overflow": false,
+    "sheet": "collapsed",
+    "endpointsWithinViewportAndAboveSheet": true,
+    "visualInspection": {
+      "bothEndpointCentersFramed": true,
+      "fallbackNoticeCoversJune": false,
+      "note": "Viewport/padding assertions do not test overlay occlusion. English mobile fallback notice covers June center around (59,269). Other screenshots show the two endpoint locations; Arabic WebGL navigation closely adjoins June."
+    }
+  }
+]
