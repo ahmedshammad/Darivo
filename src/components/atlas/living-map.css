@@ -323,3 +323,29 @@
   opacity: 0.35;
   cursor: default;
 }
+
+/* World clusters remain geographic Marker elements, with native keyboard activation. */
+.living-map .atlas-world-cluster {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border: 1px solid #b08d57;
+  border-radius: 50%;
+  background: var(--atlas-ink);
+  color: var(--atlas-paper);
+  font: 500 13px/1 var(--sans, DarivoUI, sans-serif);
+  box-shadow: 0 0 0 5px #b08d571a;
+  cursor: pointer;
+}
+.living-map .atlas-world-cluster:focus-visible {
+  outline: 2px solid var(--atlas-ink);
+  outline-offset: 6px;
+}
+.living-map .atlas-world-cluster.maplibregl-marker-covered {
+  visibility: hidden;
+  pointer-events: none;
+}
+.atlas-fallback:focus-visible {
+  outline: 2px solid #b08d57;
+  outline-offset: -5px;
+}

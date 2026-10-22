@@ -86,16 +86,9 @@ export function atlasOverviewStyle(
         id: 'overview-land',
         type: 'fill',
         source: 'atlas-world-land',
-        paint: { 'fill-color': dark ? '#292b2e' : '#e9e2d6' },
-      },
-      {
-        id: 'overview-coastline',
-        type: 'line',
-        source: 'atlas-world-land',
         paint: {
-          'line-color': dark ? '#777267' : '#aba594',
-          'line-width': 0.7,
-          'line-opacity': 0.55,
+          'fill-color': dark ? '#292b2e' : '#e9e2d6',
+          'fill-outline-color': dark ? '#777267' : '#aba594',
         },
       },
     ],

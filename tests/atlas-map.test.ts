@@ -95,7 +95,14 @@ describe('progressive world geography', () => {
       if (source.type === 'geojson')
         expect(source.data).toBe('/map-styles/natural-earth-land.geojson');
       expect(style.terrain).toBeUndefined();
-      expect(style.layers.some((layer) => layer.id === 'overview-coastline')).toBe(true);
+      expect(style.layers).toHaveLength(2);
+      expect(
+        style.layers.some(
+          (layer) => layer.type === 'line' || layer.type === 'symbol' || layer.type === 'circle',
+        ),
+      ).toBe(false);
+      const land = style.layers.find((layer) => layer.id === 'overview-land');
+      expect(land?.type === 'fill' && land.paint?.['fill-outline-color']).toBeTruthy();
     }
   });
 });

@@ -2,7 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Compass, Minus, Plus } from 'lucide-react';
-import type { Map as LibreMap, GeoJSONSource, Popup as LibrePopup } from 'maplibre-gl';
+import type {
+  Map as LibreMap,
+  GeoJSONSource,
+  Popup as LibrePopup,
+  Marker as LibreMarker,
+} from 'maplibre-gl';
 import type { MapLibreOverlay } from '@deck.gl/maplibre';
 import type { Color, Layer } from '@deck.gl/core';
 import type { FeatureCollection, Geometry, Position } from 'geojson';
@@ -32,6 +37,7 @@ const copy = {
     north: 'Face north',
     sources: 'Map sources & reading the map',
     legend: 'Height: relative price · glow: brief match',
+    clusterAction: 'Explore this group of project references and demos',
     clusters:
       'Numbered circles group nearby project references and demos. Select a circle to explore its places.',
     reference: 'Reference · approximate location',
@@ -66,6 +72,7 @@ const copy = {
     north: 'الاتجاه نحو الشمال',
     sources: 'مصادر الخريطة وطريقة قراءتها',
     legend: 'الارتفاع: السعر النسبي · التوهّج: توافق الطلب',
+    clusterAction: 'استكشف هذه المجموعة من المشاريع المرجعية والتجريبية',
     clusters:
       'الدوائر المرقّمة تجمع المشاريع المرجعية والتجريبية القريبة. اختر دائرة لاستكشاف أماكنها.',
     reference: 'مرجع · موقع تقريبي',
@@ -465,6 +472,7 @@ export function LivingMap(props: LivingMapProps) {
     let timeout: ReturnType<typeof setTimeout> | undefined;
     let arrivalTimer: ReturnType<typeof setTimeout> | undefined;
     let detachMeasurement: (() => void) | undefined;
+    let clearWorldMarkers: (() => void) | undefined;
     const fallback = () => {
       if (disposed || failed) return;
       failed = true;
@@ -475,6 +483,7 @@ export function LivingMap(props: LivingMapProps) {
       queueMicrotask(() => {
         if (disposed) return;
         detachMeasurement?.();
+        clearWorldMarkers?.();
         observer?.disconnect();
         runtime.current?.overlay?.finalize();
         runtime.current?.popup?.remove();
@@ -501,7 +510,7 @@ export function LivingMap(props: LivingMapProps) {
         const arrival = mode === 'arrival';
         const startOverview = arrival && (latest.current.camera?.zoom ?? 2.3) < 5;
         setOverview(startOverview);
-        const [{ Map, NavigationControl, Popup, setWorkerUrl }, style] = await Promise.all([
+        const [{ Map, NavigationControl, Popup, Marker, setWorkerUrl }, style] = await Promise.all([
           import('maplibre-gl'),
           startOverview
             ? Promise.resolve(atlasOverviewStyle(theme))
@@ -604,6 +613,12 @@ export function LivingMap(props: LivingMapProps) {
         activeMap.on('moveend', recordCamera);
         recordCamera();
         activeMap.getCanvas().setAttribute('aria-label', text.map);
+        activeMap.getCanvas().addEventListener('keydown', (event) => {
+          if (event.target !== activeMap.getCanvas() || event.key !== 'Enter') return;
+          event.preventDefault();
+          const point = activeMap.getCenter();
+          latest.current.onPoint?.([point.lng, point.lat]);
+        });
         activeMap.getCanvas().addEventListener('webglcontextlost', fallback);
         if (arrival) activeMap.scrollZoom.disable();
         activeMap.addControl(
@@ -643,6 +658,7 @@ export function LivingMap(props: LivingMapProps) {
           });
           activeMap.addLayer({
             id: 'atlas-clusters',
+            minzoom: startOverview ? 5 : 0,
             type: 'circle',
             source: 'atlas-projects',
             filter: ['has', 'point_count'],
@@ -655,6 +671,7 @@ export function LivingMap(props: LivingMapProps) {
           });
           activeMap.addLayer({
             id: 'atlas-cluster-counts',
+            minzoom: startOverview ? 5 : 0,
             type: 'symbol',
             source: 'atlas-projects',
             filter: ['has', 'point_count'],
@@ -667,6 +684,7 @@ export function LivingMap(props: LivingMapProps) {
           });
           activeMap.addLayer({
             id: 'atlas-markers',
+            minzoom: startOverview ? 5 : 0,
             type: 'circle',
             source: 'atlas-projects',
             filter: ['!', ['has', 'point_count']],
@@ -677,6 +695,108 @@ export function LivingMap(props: LivingMapProps) {
               'circle-stroke-width': 1,
             },
           });
+          // Retain MapLibre's real cluster index without invoking world circle/text shaders.
+          // drawCircles returns before shader creation when fill/stroke opacity are zero.
+          if (startOverview)
+            activeMap.addLayer({
+              id: 'atlas-world-cluster-index',
+              type: 'circle',
+              source: 'atlas-projects',
+              maxzoom: 5,
+              paint: { 'circle-opacity': 0, 'circle-stroke-width': 0, 'circle-stroke-opacity': 0 },
+            });
+          const worldMarkers: LibreMarker[] = [];
+          let worldMarkerSignature = '';
+          clearWorldMarkers = () => {
+            for (const marker of worldMarkers) marker.remove();
+            worldMarkers.length = 0;
+            worldMarkerSignature = '';
+          };
+          const updateWorldMarkers = () => {
+            if (!startOverview || disposed || failed) return;
+            if (activeMap.getZoom() >= 5) {
+              clearWorldMarkers?.();
+              return;
+            }
+            const unique = new globalThis.Map<
+              string,
+              ReturnType<LibreMap['querySourceFeatures']>[number]
+            >();
+            for (const feature of activeMap.querySourceFeatures('atlas-projects')) {
+              if (feature.geometry.type !== 'Point') continue;
+              const key = String(feature.properties.cluster_id ?? feature.properties.id);
+              unique.set(key, feature);
+            }
+            const features = [...unique.values()];
+            const current = latest.current;
+            const signature = JSON.stringify([
+              current.arabicIndicDigits,
+              features.map((f) => [
+                f.properties.cluster_id,
+                f.properties.id,
+                f.properties.point_count,
+                f.geometry,
+              ]),
+            ]);
+            if (signature === worldMarkerSignature) return;
+            clearWorldMarkers?.();
+            worldMarkerSignature = signature;
+            const number = new Intl.NumberFormat(locale, {
+              numberingSystem: current.arabicIndicDigits ? 'arab' : 'latn',
+            });
+            for (const feature of features) {
+              if (feature.geometry.type !== 'Point') continue;
+              const center = feature.geometry.coordinates as AtlasPoint;
+              const clusterId = feature.properties.cluster_id as number | undefined;
+              const project = current.projects.find((p) => p.id === feature.properties.id);
+              const button = document.createElement('button');
+              button.type = 'button';
+              button.className = 'atlas-world-cluster';
+              button.textContent = number.format(Number(feature.properties.point_count ?? 1));
+              button.setAttribute(
+                'aria-label',
+                clusterId !== undefined
+                  ? `${text.clusterAction} · ${button.textContent}`
+                  : project
+                    ? `${nameOf(project, locale)} · ${project.kind === 'DEMO' ? text.demo : text.reference}`
+                    : text.clusterAction,
+              );
+              button.addEventListener('click', (event) => {
+                event.stopPropagation();
+                if (clusterId !== undefined) {
+                  void (activeMap.getSource('atlas-projects') as GeoJSONSource)
+                    .getClusterExpansionZoom(clusterId)
+                    .then((zoom) => {
+                      if (!disposed && !failed) {
+                        activeMap.getCanvas().focus({ preventScroll: true });
+                        activeMap.setProjection({ type: 'mercator' });
+                        activeMap.flyTo({
+                          center,
+                          zoom: Math.max(5, zoom),
+                          duration: flightDuration(),
+                        });
+                      }
+                    })
+                    .catch(() => {});
+                } else if (project) latest.current.onSelect?.(project.id);
+              });
+              const marker = new Marker({
+                element: button,
+                opacityWhenCovered: 0,
+                subpixelPositioning: true,
+              })
+                .setLngLat(center)
+                .addTo(activeMap);
+              worldMarkers.push(marker);
+            }
+          };
+          if (startOverview) {
+            activeMap.on('idle', updateWorldMarkers);
+            activeMap.on('moveend', updateWorldMarkers);
+            activeMap.on('zoomstart', () => {
+              if ((latest.current.camera?.zoom ?? 0) >= 5) clearWorldMarkers?.();
+            });
+          }
           activeMap.addSource('atlas-overlay-labels', {
             type: 'geojson',
             data: { type: 'FeatureCollection', features: [] },
@@ -710,6 +830,7 @@ export function LivingMap(props: LivingMapProps) {
             projects: latest.current.projects,
             update: () => {
               enhanceVisibleScene();
+              updateWorldMarkers();
               renderLayers(entry, latest.current);
             },
           };
@@ -727,7 +848,7 @@ export function LivingMap(props: LivingMapProps) {
                     if (!activeMap.getSource(id)) activeMap.addSource(id, source);
                   for (const layer of detailStyle.layers)
                     activeMap.addLayer(layer, 'atlas-clusters');
-                  for (const id of ['overview-water', 'overview-land', 'overview-coastline'])
+                  for (const id of ['overview-water', 'overview-land'])
                     activeMap.setLayoutProperty(id, 'visibility', 'none');
                   detailReady = true;
                   setOverview(false);
@@ -801,12 +922,14 @@ export function LivingMap(props: LivingMapProps) {
               void (activeMap.getSource('atlas-projects') as GeoJSONSource)
                 .getClusterExpansionZoom(feature.properties.cluster_id)
                 .then((zoom) => {
-                  if (!disposed)
+                  if (!disposed) {
+                    activeMap.setProjection({ type: 'mercator' });
                     activeMap.flyTo({
                       center: coordinates,
                       zoom: Math.max(zoom, 9),
                       duration: flightDuration(),
                     });
+                  }
                 })
                 .catch(() => {});
             } else if (feature?.properties.id) {
@@ -854,6 +977,7 @@ export function LivingMap(props: LivingMapProps) {
       clearTimeout(timeout);
       clearTimeout(arrivalTimer);
       detachMeasurement?.();
+      clearWorldMarkers?.();
       observer?.disconnect();
       runtime.current?.overlay?.finalize();
       runtime.current?.popup?.remove();
@@ -861,7 +985,19 @@ export function LivingMap(props: LivingMapProps) {
       map?.remove();
     };
     // Locale/theme recreate only the map; current data and callbacks are read from latest.
-  }, [theme, locale, mode, forceFallback, text.map, text.north, text.zoomIn, text.zoomOut]);
+  }, [
+    theme,
+    locale,
+    mode,
+    forceFallback,
+    text.map,
+    text.north,
+    text.zoomIn,
+    text.zoomOut,
+    text.clusterAction,
+    text.demo,
+    text.reference,
+  ]);
 
   const comparisonKey = (props.compareIds ?? []).join('|');
   const paddingKey = JSON.stringify(props.camera?.padding);
@@ -981,6 +1117,7 @@ function FallbackMap(props: LivingMapProps) {
   const [size, setSize] = useState({ width: 1024, height: 720 });
   const [land, setLand] = useState<FeatureCollection<Geometry> | null>(null);
   const [offset, setOffset] = useState(0);
+  const [pan, setPan] = useState<AtlasPoint>([0, 0]);
   const text = copy[props.locale];
   const padding = props.camera?.padding ?? { top: 80, bottom: 80, left: 30, right: 30 };
   const compared = (props.compareIds ?? [])
@@ -1000,11 +1137,13 @@ function FallbackMap(props: LivingMapProps) {
           },
         )
       : null;
-  const center = fitted?.center ?? props.camera?.center ?? initialCenter;
+  const baseCenter = fitted?.center ?? props.camera?.center ?? initialCenter;
   const maxZoom = compared.length > 1 ? 12 : 7;
   const baseZoom = Math.max(1, Math.min(maxZoom, fitted?.zoom ?? props.camera?.zoom ?? 3));
   const zoom = Math.max(1, Math.min(maxZoom, baseZoom + offset));
-  const origin = atlasProjectPoint(center, zoom);
+  const baseOrigin = atlasProjectPoint(baseCenter, zoom);
+  const origin: AtlasPoint = [baseOrigin[0] + pan[0], baseOrigin[1] + pan[1]];
+  const center = atlasUnprojectPoint(origin, zoom);
   const centerX = (size.width + (padding?.left ?? 0) - (padding?.right ?? 0)) / 2;
   const centerY = (size.height + (padding?.top ?? 0) - (padding?.bottom ?? 0)) / 2;
   const project = (point: AtlasPoint) => {
@@ -1074,7 +1213,32 @@ function FallbackMap(props: LivingMapProps) {
     return true;
   });
   return (
-    <div ref={ref} className="atlas-fallback" data-testid="atlas-fallback">
+    <div
+      ref={ref}
+      className="atlas-fallback"
+      data-testid="atlas-fallback"
+      tabIndex={0}
+      role="region"
+      aria-label={text.fallback}
+      onKeyDown={(event) => {
+        if (event.target !== event.currentTarget) return;
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          props.onPoint?.(center);
+          return;
+        }
+        const direction: Record<string, AtlasPoint> = {
+          ArrowLeft: [-80, 0],
+          ArrowRight: [80, 0],
+          ArrowUp: [0, -80],
+          ArrowDown: [0, 80],
+        };
+        const step = direction[event.key];
+        if (!step) return;
+        event.preventDefault();
+        setPan(([x, y]) => [x + step[0], y + step[1]]);
+      }}
+    >
       <svg
         viewBox={`0 0 ${size.width} ${size.height}`}
         role="img"
