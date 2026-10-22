@@ -1,3 +1,5 @@
+import { getClientPrivacy, restrictClientPrivacy } from '@/src/server/office/privacy';
+import { HttpError } from '@/src/server/errors';
 import { randomUUID } from 'node:crypto';
 import { createUIMessageStream, createUIMessageStreamResponse } from 'ai';
 import { conciergeRequestSchema, type ConciergeUIMessage } from '@/src/lib/concierge-transport';
@@ -35,20 +37,39 @@ export async function POST(request: Request) {
     const viewer = await optionalUser();
     rateLimit(`concierge:${viewer?.id ?? 'public'}`, viewer ? 30 : 60);
     const input = conciergeRequestSchema.parse(await readJson(request, 65536));
+    const restrictions = extractConciergePrivacy(input.message);
+    // Persist restrictive policy before leases, cancellation, or external processing.
+    // Never re-import stale snapshot flags after the owner explicitly clears settings.
+    let policy = viewer ? await restrictClientPrivacy(viewer.id, restrictions) : null;
+    if (viewer && input.patch) {
+      const restrictive: Record<string, boolean> = {};
+      for (const operation of input.patch.operations) {
+        if (operation.op === 'privacy.restrict')
+          for (const key of operation.flags) if (key !== 'discreet') restrictive[key] = true;
+        if (operation.op === 'privacy.replace') {
+          for (const key of ['doNotSave', 'doNotShare', 'doNotBook'] as const) {
+            if (policy?.[key] && !operation.value[key])
+              throw new HttpError(409, 'privacy_settings_required');
+            if (operation.value[key]) restrictive[key] = true;
+          }
+        }
+      }
+      policy = await restrictClientPrivacy(viewer.id, restrictive);
+    }
     const lease = viewer
       ? await reserveConciergeTurn(viewer.id, input.conversationId, input.requestId, input.brief)
       : null;
     const previous = lease?.snapshot ?? emptyReplay(input.conversationId);
     // A supplied Brief is preference data, never evidence of memory consent.
     let brief = { ...input.brief, tasteMemory: previous.brief.tasteMemory };
-    brief.privacy = {
-      ...brief.privacy,
-      doNotSave: brief.privacy.doNotSave || previous.brief.privacy.doNotSave,
-      doNotShare: brief.privacy.doNotShare || previous.brief.privacy.doNotShare,
-      doNotBook: brief.privacy.doNotBook || previous.brief.privacy.doNotBook,
-    };
+    if (policy)
+      brief.privacy = {
+        ...brief.privacy,
+        doNotSave: policy.doNotSave,
+        doNotShare: policy.doNotShare,
+        doNotBook: policy.doNotBook,
+      };
     if (input.patch) brief = applyConciergeBriefPatch(brief, input.patch, 'user');
-    const restrictions = extractConciergePrivacy(input.message);
     if (restrictions.restrictMemory)
       brief.tasteMemory = {
         consent: ['granted', 'revoked'].includes(brief.tasteMemory.consent)
@@ -226,6 +247,13 @@ export async function GET() {
   try {
     const viewer = await requireUser();
     const { snapshot } = await loadConciergeSession(viewer.id);
+    const policy = await getClientPrivacy(viewer.id);
+    snapshot.brief.privacy = {
+      ...snapshot.brief.privacy,
+      doNotSave: policy.doNotSave,
+      doNotShare: policy.doNotShare,
+      doNotBook: policy.doNotBook,
+    };
     const turns = [];
     for (const turn of snapshot.turns) {
       const components = await rehydrateConciergeComponents(
@@ -247,6 +275,13 @@ export async function DELETE(request: Request) {
     const viewer = await requireUser();
     await deleteConciergeHistory(viewer.id);
     const { snapshot } = await loadConciergeSession(viewer.id);
+    const policy = await getClientPrivacy(viewer.id);
+    snapshot.brief.privacy = {
+      ...snapshot.brief.privacy,
+      doNotSave: policy.doNotSave,
+      doNotShare: policy.doNotShare,
+      doNotBook: policy.doNotBook,
+    };
     return json(snapshot);
   } catch (error) {
     return failure(error);

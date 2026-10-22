@@ -1,0 +1,10 @@
+# Stage 4 backend validation
+
+This is local synthetic-data engineering evidence, not a human design review or a production certification. The local PostgreSQL 16 fixture was verified before use (`postgres`, port 55433, task-owned `/tmp/darivo-nativepg/data`). The demo database on port 55432 was not changed by these test commands.
+
+- `migration-stage4.json` and `migration-logs/`: fresh six-migration installation, 250 fictional units / 13 sourced projects, idempotent seed with two advisor assignments/threads; upgrade from the preceding four migrations preserves an existing unit portfolio and viewing. Valid privacy values survive; a malformed string becomes conservatively restricted. Missing/null legacy values stop at the earlier immutable NOT NULL migration and require manual review; they are not silently cleared or reported as successful upgrades. Temporary databases were deleted after verification.
+- `native-tests-final.log`: full native regression, including source projections, mixed reference/unit saves, stale versions, one-effect idempotency, scoped threads, revoked private access, neutral dossier review, direct API denial, DST gaps/folds and durable privacy across cancelled/unsaved/deleted history. The expected external planner is not called under no-share; no-save blocks legacy chat persistence and direct write bypasses.
+- `eval-final.log`: 36 legacy cases, 105 parser cases, and 444 executed cases / 632 turns pass with all 13 safety counters at zero. External-provider evaluation is explicitly skipped.
+- `eval-before-slug-fix.log`: retained failed run. New canonical Story paths rejected underscores in two legitimate authorization fixtures, producing execution failures without leaking data. The shared grammar was repaired and the original access expectations retained. A new real API fixture proves an underscore private slug is denied, allowed after a grant, and denied again after revocation.
+
+No backend test establishes the recorded under-three-minute client journey, visual craft, native Arabic quality, physical-device performance, or real-provider behavior. Those require the separate interface, capture and review work.

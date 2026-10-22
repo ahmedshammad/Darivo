@@ -1,0 +1,61 @@
+{
+  "server": {
+    "db": "postgres",
+    "data": "/tmp/darivo-nativepg/data",
+    "port": "55433"
+  },
+  "startedAt": "2026-10-22T23:16:22.130Z",
+  "fresh": {
+    "pass": true,
+    "units": "250",
+    "refs": "13",
+    "assignments": "2",
+    "reseed": {
+      "assignments": "2",
+      "threads": "2"
+    }
+  },
+  "upgrade": {
+    "pass": true,
+    "preserved": {
+      "name": "Preserved board",
+      "propertyId": "property-001",
+      "timezone": "Asia/Dubai"
+    },
+    "policy": {
+      "doNotSave": true,
+      "doNotShare": false,
+      "doNotBook": true
+    }
+  },
+  "malformed": {
+    "pass": true,
+    "policy": {
+      "doNotSave": true,
+      "doNotShare": true,
+      "doNotBook": true
+    }
+  },
+  "missing": {
+    "pass": true,
+    "behavior": "Prior immutable migration rejects missing/null policy with NOT NULL violation; deployment stops before follow-up. Manual policy review required; no flags are relaxed."
+  },
+  "nullFlag": {
+    "pass": true,
+    "behavior": "Prior immutable migration rejects missing/null policy with NOT NULL violation; deployment stops before follow-up. Manual policy review required; no flags are relaxed."
+  },
+  "logs": [
+    "docs/reviews/stage-4/validation/migration-logs/fresh-migrate.log",
+    "docs/reviews/stage-4/validation/migration-logs/fresh-seed.log",
+    "docs/reviews/stage-4/validation/migration-logs/fresh-reseed.log",
+    "docs/reviews/stage-4/validation/migration-logs/upgrade-prior.log",
+    "docs/reviews/stage-4/validation/migration-logs/legacy-seed.log",
+    "docs/reviews/stage-4/validation/migration-logs/upgrade-office.log",
+    "docs/reviews/stage-4/validation/migration-logs/missing-prior.log",
+    "docs/reviews/stage-4/validation/migration-logs/missing-closed.log",
+    "docs/reviews/stage-4/validation/migration-logs/nullFlag-prior.log",
+    "docs/reviews/stage-4/validation/migration-logs/nullFlag-closed.log"
+  ],
+  "errors": [],
+  "completedAt": "2026-10-22T23:16:32.078Z"
+}

@@ -1,6 +1,7 @@
+import { authorizeOfficeRefs, officeClient } from '@/src/server/db/office';
+import { assertOfficePrivacy } from '@/src/server/office/privacy';
 import { Prisma } from '@prisma/client';
 import { db } from '@/src/server/db/client';
-import { visibilityWhere } from '@/src/server/db/properties';
 import { HttpError } from '@/src/server/errors';
 import {
   conciergeReplaySchema,
@@ -40,8 +41,19 @@ export async function confirmConciergeProposal(userId: string, value: unknown) {
         (privacy.doNotBook && proposal.kind === 'request_viewing')
       )
         throw new HttpError(409, 'privacy_restricted');
-      const viewer = await tx.user.findUnique({ where: { id: userId } });
-      if (!viewer) throw new HttpError(401, 'unauthorized');
+      const viewer = await officeClient(
+        { id: userId, role: 'CLIENT', verification: 'UNVERIFIED' },
+        tx,
+      );
+      await assertOfficePrivacy(
+        userId,
+        proposal.kind === 'save_to_portfolio'
+          ? 'save'
+          : proposal.kind === 'request_viewing'
+            ? 'viewing'
+            : 'enquiry',
+        tx,
+      );
       let result: Prisma.InputJsonObject;
       if (proposal.kind === 'handoff_to_advisor') {
         const handoff = await tx.handoff.create({
@@ -50,19 +62,27 @@ export async function confirmConciergeProposal(userId: string, value: unknown) {
         result = { handoffId: handoff.id };
       } else {
         const entities = proposal.details.entities;
-        if (!entities.length || entities.some((entity) => entity.kind !== 'unit'))
+        if (
+          !entities.length ||
+          entities.some((entity) => !['unit', 'project'].includes(entity.kind)) ||
+          (proposal.kind === 'request_viewing' && entities.some((entity) => entity.kind !== 'unit'))
+        )
           throw new HttpError(400, 'unit_required');
         const ids = [...new Set(entities.map((entity) => entity.id))];
         if (
-          JSON.stringify([...proposal.entities.map((entity) => entity.id)].sort()) !==
-          JSON.stringify([...ids].sort())
+          JSON.stringify(
+            [...proposal.entities.map((entity) => `${entity.kind}:${entity.id}`)].sort(),
+          ) !== JSON.stringify([...entities.map((entity) => `${entity.kind}:${entity.id}`)].sort())
         )
           throw new HttpError(400, 'proposal_mismatch');
-        const properties = await tx.property.findMany({
-          where: { AND: [{ id: { in: ids } }, visibilityWhere(viewer)] },
-          select: { id: true },
-        });
-        if (properties.length !== ids.length) throw new HttpError(404, 'not_found');
+        await authorizeOfficeRefs(
+          entities.map((entity) => ({
+            kind: entity.kind === 'unit' ? 'demo-unit' : 'reference-project',
+            id: entity.id,
+          })),
+          viewer,
+          tx,
+        );
         if (proposal.kind === 'save_to_portfolio') {
           const shortlist = await tx.shortlist.upsert({
             where: { userId_name: { userId, name: proposal.details.name } },
@@ -70,7 +90,15 @@ export async function confirmConciergeProposal(userId: string, value: unknown) {
             create: { userId, name: proposal.details.name },
           });
           await tx.shortlistItem.createMany({
-            data: ids.map((propertyId) => ({ propertyId, shortlistId: shortlist.id })),
+            data: entities
+              .filter((entity) => entity.kind === 'unit')
+              .map((entity) => ({ propertyId: entity.id, shortlistId: shortlist.id })),
+            skipDuplicates: true,
+          });
+          await tx.shortlistProjectItem.createMany({
+            data: entities
+              .filter((entity) => entity.kind === 'project')
+              .map((entity) => ({ projectId: entity.id, shortlistId: shortlist.id })),
             skipDuplicates: true,
           });
           result = { shortlistId: shortlist.id };

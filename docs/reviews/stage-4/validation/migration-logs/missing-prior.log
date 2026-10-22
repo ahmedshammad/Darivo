@@ -1,0 +1,23 @@
+Prisma schema loaded from ../../../../tmp/darivo-stage4-migration-1792710982115/prior/prisma/schema.prisma
+Datasource "db": PostgreSQL database "darivo_stage4_missing_1792710982115", schema "public" at "127.0.0.1:55433"
+
+4 migrations found in prisma/migrations
+
+Applying migration `202610220001_foundation`
+Applying migration `202610220002_embedding_source`
+Applying migration `202610230001_reference_foundation`
+Applying migration `202610230002_concierge_sessions`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 202610220001_foundation/
+    └─ migration.sql
+  └─ 202610220002_embedding_source/
+    └─ migration.sql
+  └─ 202610230001_reference_foundation/
+    └─ migration.sql
+  └─ 202610230002_concierge_sessions/
+    └─ migration.sql
+
+All migrations have been successfully applied.

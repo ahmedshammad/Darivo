@@ -28,26 +28,31 @@ enum Verification {
 }
 
 model User {
-  id            String                   @id @default(cuid())
-  name          String?
-  email         String                   @unique
-  emailVerified DateTime?
-  image         String?
-  role          Role                     @default(CLIENT)
-  verification  Verification             @default(UNVERIFIED)
-  createdAt     DateTime                 @default(now())
-  accounts      Account[]
-  sessions      Session[]
-  profile       ClientProfile?
-  advisor       Advisor?
-  shortlists    Shortlist[]
-  viewings      ViewingRequest[]
-  brief         ClientBrief?
-  conversations ConsultantConversation[]
-  concierge     ConciergeSession?
-  grants        OffMarketGrant[]
-  handoffs      Handoff[]
-  notes         AdvisorNote[]            @relation("ClientNotes")
+  privacyState       ClientPrivacyState?
+  workflowMutations  WorkflowMutation[]
+  advisorAssignments AdvisorAssignment[]
+  advisorMessages    AdvisorMessage[]
+  projectEnquiries   ProjectEnquiry[]
+  id                 String                   @id @default(cuid())
+  name               String?
+  email              String                   @unique
+  emailVerified      DateTime?
+  image              String?
+  role               Role                     @default(CLIENT)
+  verification       Verification             @default(UNVERIFIED)
+  createdAt          DateTime                 @default(now())
+  accounts           Account[]
+  sessions           Session[]
+  profile            ClientProfile?
+  advisor            Advisor?
+  shortlists         Shortlist[]
+  viewings           ViewingRequest[]
+  brief              ClientBrief?
+  conversations      ConsultantConversation[]
+  concierge          ConciergeSession?
+  grants             OffMarketGrant[]
+  handoffs           Handoff[]
+  notes              AdvisorNote[]            @relation("ClientNotes")
 }
 
 model Account {
@@ -98,9 +103,15 @@ model ClientProfile {
 }
 
 model Advisor {
-  id     String @id @default(cuid())
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  displayNameEn         String              @default("Demo advisor")
+  displayNameAr         String              @default("مستشار تجريبي")
+  profileKind           String              @default("DEMO")
+  availability          String              @default("UNKNOWN")
+  availabilityUpdatedAt DateTime?
+  assignments           AdvisorAssignment[]
+  id                    String              @id @default(cuid())
+  userId                String              @unique
+  user                  User                @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Country {
@@ -269,12 +280,15 @@ model AreaInsight {
 }
 
 model Shortlist {
-  id        String          @id @default(cuid())
-  userId    String
-  name      String
-  createdAt DateTime        @default(now())
-  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  items     ShortlistItem[]
+  version      Int                    @default(0)
+  updatedAt    DateTime               @default(now()) @updatedAt
+  projectItems ShortlistProjectItem[]
+  id           String                 @id @default(cuid())
+  userId       String
+  name         String
+  createdAt    DateTime               @default(now())
+  user         User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items        ShortlistItem[]
 
   @@unique([userId, name])
 }
@@ -290,16 +304,19 @@ model ShortlistItem {
 }
 
 model ViewingRequest {
-  id         String     @id @default(cuid())
-  userId     String
-  propertyId String
-  slots      DateTime[]
-  timezone   String
-  mode       String
-  status     String     @default("REQUESTED")
-  createdAt  DateTime   @default(now())
-  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  property   Property   @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  confirmedSlot DateTime?
+  updatedAt     DateTime   @default(now()) @updatedAt
+  version       Int        @default(0)
+  id            String     @id @default(cuid())
+  userId        String
+  propertyId    String
+  slots         DateTime[]
+  timezone      String
+  mode          String
+  status        String     @default("REQUESTED")
+  createdAt     DateTime   @default(now())
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  property      Property   @relation(fields: [propertyId], references: [id], onDelete: Cascade)
 }
 
 model ClientBrief {
@@ -403,8 +420,10 @@ model AnalyticsEvent {
 }
 
 model Project {
-  id                     String           @id
-  slug                   String           @unique
+  shortlistItems         ShortlistProjectItem[]
+  enquiries              ProjectEnquiry[]
+  id                     String                 @id
+  slug                   String                 @unique
   kind                   ProjectKind
   developerId            String
   nameEn                 String
@@ -415,22 +434,22 @@ model Project {
   communityId            String?
   lat                    Float
   lng                    Float
-  coordinatesApproximate Boolean          @default(true)
-  types                  String[]         @default([])
+  coordinatesApproximate Boolean                @default(true)
+  types                  String[]               @default([])
   status                 String?
   completion             String?
-  priceFromAmount        Decimal?         @db.Decimal(20, 2)
+  priceFromAmount        Decimal?               @db.Decimal(20, 2)
   priceFromCurrency      String?
   priceFromLabel         String?
-  priceBasis             SourceBasis      @default(UNKNOWN)
+  priceBasis             SourceBasis            @default(UNKNOWN)
   priceNote              String?
   paymentPlanText        String?
   asOf                   String?
-  asOfPrecision          DatePrecision    @default(UNKNOWN)
-  confidence             SourceConfidence @default(UNASSESSED)
+  asOfPrecision          DatePrecision          @default(UNKNOWN)
+  confidence             SourceConfidence       @default(UNASSESSED)
   rawReference           Json?
   demoPriceBasis         Json?
-  developer              Developer        @relation(fields: [developerId], references: [id])
+  developer              Developer              @relation(fields: [developerId], references: [id])
   units                  Property[]
   facts                  ReferenceFact[]
 
@@ -500,4 +519,88 @@ model DemoPOI {
   community   Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
 
   @@index([communityId, kind])
+}
+
+model ShortlistProjectItem {
+  id          String    @id @default(cuid())
+  shortlistId String
+  projectId   String
+  createdAt   DateTime  @default(now())
+  shortlist   Shortlist @relation(fields: [shortlistId], references: [id], onDelete: Cascade)
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Restrict)
+
+  @@unique([shortlistId, projectId])
+}
+
+model ClientPrivacyState {
+  userId     String   @id
+  doNotSave  Boolean  @default(false)
+  doNotShare Boolean  @default(false)
+  doNotBook  Boolean  @default(false)
+  version    Int      @default(0)
+  updatedAt  DateTime @default(now()) @updatedAt
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model WorkflowMutation {
+  id              String   @id @default(cuid())
+  userId          String
+  kind            String
+  clientRequestId String
+  requestHash     String
+  result          Json
+  createdAt       DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, kind, clientRequestId])
+}
+
+model AdvisorAssignment {
+  id         String         @id @default(cuid())
+  clientId   String
+  advisorId  String
+  assignedAt DateTime       @default(now())
+  endedAt    DateTime?
+  client     User           @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  advisor    Advisor        @relation(fields: [advisorId], references: [id], onDelete: Restrict)
+  thread     AdvisorThread?
+
+  @@index([clientId, endedAt])
+}
+
+model AdvisorThread {
+  id           String            @id @default(cuid())
+  assignmentId String            @unique
+  assignment   AdvisorAssignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  messages     AdvisorMessage[]
+  enquiries    ProjectEnquiry[]
+}
+
+model AdvisorMessage {
+  id              String        @id @default(cuid())
+  threadId        String
+  authorId        String
+  body            String
+  attachmentRefs  Json
+  clientRequestId String
+  createdAt       DateTime      @default(now())
+  thread          AdvisorThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  author          User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@unique([authorId, clientRequestId])
+  @@index([threadId, createdAt, id])
+}
+
+model ProjectEnquiry {
+  id        String        @id @default(cuid())
+  userId    String
+  projectId String
+  threadId  String
+  message   String
+  status    String        @default("REQUESTED")
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @default(now()) @updatedAt
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project   Project       @relation(fields: [projectId], references: [id], onDelete: Restrict)
+  thread    AdvisorThread @relation(fields: [threadId], references: [id], onDelete: Restrict)
 }

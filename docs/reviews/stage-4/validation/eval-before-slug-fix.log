@@ -1,0 +1,97 @@
+$ tsx evals/run.ts && pnpm eval:concierge
+{
+  "provider": "mock",
+  "passed": 36,
+  "total": 36,
+  "offMarketLeakage": 0,
+  "failures": []
+}
+Real-provider eval skipped: no API key configured.
+$ node --import tsx evals/concierge-run.ts && node --import tsx evals/concierge-execution-run.ts
+{
+  "scope": "deterministic-parser",
+  "cases": 105,
+  "distinctPhrases": 124,
+  "passed": 105,
+  "failures": [],
+  "limitations": [
+    "No database authorization or source-grounding execution is performed by this runner.",
+    "Provider proposals are not proof that a write is authorized, an entity exists, or a fact is grounded.",
+    "No browser, native Arabic reader, or real-provider certification."
+  ]
+}
+Execution corpus completed for guest: 105 cases, 144 turns.
+Execution corpus completed for client: 210 cases, 288 turns.
+Execution corpus completed for verified_client: 315 cases, 432 turns.
+Execution corpus completed for developer_partner: 420 cases, 576 turns.
+{
+  "version": 1,
+  "mock": {
+    "provider": "mock",
+    "cases": 444,
+    "turns": 632,
+    "cards": 1792,
+    "facts": 16278,
+    "actions": 614,
+    "durationMs": 35443,
+    "counters": {
+      "executionErrors": 2,
+      "semanticFailures": 2,
+      "hallucinatedIds": 0,
+      "hallucinatedValues": 0,
+      "invalidSourceReferences": 0,
+      "privateLeaks": 0,
+      "currencyErrors": 0,
+      "mapErrors": 0,
+      "toneViolations": 0,
+      "refusalFailures": 0,
+      "schoolDisclosureFailures": 0,
+      "unconfirmedWrites": 0,
+      "streamErrors": 2
+    },
+    "failures": [
+      {
+        "case": "verified_client/access/VERIFIED_ONLY",
+        "category": "executionErrors",
+        "detail": "Engine status failed"
+      },
+      {
+        "case": "verified_client/access/VERIFIED_ONLY",
+        "category": "streamErrors",
+        "detail": "Non-monotonic sequence or missing/duplicate completion"
+      },
+      {
+        "case": "verified_client/access/VERIFIED_ONLY",
+        "category": "semanticFailures",
+        "detail": "Expected access=true, emitted=false"
+      },
+      {
+        "case": "client/grant-active",
+        "category": "executionErrors",
+        "detail": "Engine status failed"
+      },
+      {
+        "case": "client/grant-active",
+        "category": "streamErrors",
+        "detail": "Non-monotonic sequence or missing/duplicate completion"
+      },
+      {
+        "case": "client/grant-active",
+        "category": "semanticFailures",
+        "detail": "Expected access=true, emitted=false"
+      }
+    ]
+  },
+  "real": {
+    "status": "skipped",
+    "reason": "No OPENAI_API_KEY; real provider not tested."
+  },
+  "totalDurationMs": 36572,
+  "limits": [
+    "Fresh DAL checks certify only this seeded local database state, not current external market truth.",
+    "Mock semantic/execution evidence does not certify native Arabic quality, browser UI, real-provider behavior or external writes.",
+    "No viewing, handoff or portfolio confirmation is executed."
+  ]
+}
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.

@@ -1,3 +1,6 @@
+import { Prisma } from '@prisma/client';
+import { authorizeOfficeRefs, officeClient } from '../db/office';
+import { assertOfficePrivacy } from '../office/privacy';
 import { db } from '../db/client';
 import { getProperty, searchProperties, type Viewer, type PropertyDTO } from '../db/properties';
 import { toolSchemas, type ToolCall } from './schema';
@@ -58,15 +61,27 @@ export async function executeTool(call: ToolCall, user: Viewer): Promise<ToolRes
     case 'save_to_shortlist': {
       const a = toolSchemas.save_to_shortlist.parse(call.arguments),
         properties = await visible(a.property_ids, user);
-      const shortlist = await db.shortlist.upsert({
-        where: { userId_name: { userId: user.id, name: a.shortlist_name } },
-        update: {},
-        create: { userId: user.id, name: a.shortlist_name },
-      });
-      await db.shortlistItem.createMany({
-        data: properties.map((p) => ({ propertyId: p.id, shortlistId: shortlist.id })),
-        skipDuplicates: true,
-      });
+      const shortlist = await db.$transaction(
+        async (tx) => {
+          await authorizeOfficeRefs(
+            a.property_ids.map((id) => ({ kind: 'demo-unit' as const, id })),
+            user,
+            tx,
+          );
+          await assertOfficePrivacy(user.id, 'save', tx);
+          const board = await tx.shortlist.upsert({
+            where: { userId_name: { userId: user.id, name: a.shortlist_name } },
+            update: {},
+            create: { userId: user.id, name: a.shortlist_name },
+          });
+          await tx.shortlistItem.createMany({
+            data: a.property_ids.map((propertyId) => ({ propertyId, shortlistId: board.id })),
+            skipDuplicates: true,
+          });
+          return board;
+        },
+        { isolationLevel: Prisma.TransactionIsolationLevel.Serializable },
+      );
       return { kind: 'saved', properties, data: { shortlistId: shortlist.id } };
     }
     case 'request_viewing': {
@@ -75,23 +90,34 @@ export async function executeTool(call: ToolCall, user: Viewer): Promise<ToolRes
       const slots = a.preferred_slots.map((s) => new Date(s));
       if (slots.some((s) => s.getTime() <= Date.now() || s.getTime() > Date.now() + 366 * 86400000))
         throw new Error('invalid_slots');
-      const request = await db.viewingRequest.create({
-        data: {
-          userId: user.id,
-          propertyId: a.property_id,
-          slots,
-          timezone: a.timezone,
-          mode: a.mode,
+      const request = await db.$transaction(
+        async (tx) => {
+          await authorizeOfficeRefs([{ kind: 'demo-unit', id: a.property_id }], user, tx);
+          await assertOfficePrivacy(user.id, 'viewing', tx);
+          return tx.viewingRequest.create({
+            data: {
+              userId: user.id,
+              propertyId: a.property_id,
+              slots,
+              timezone: a.timezone,
+              mode: a.mode,
+            },
+          });
         },
-      });
-      await db.analyticsEvent.create({
-        data: { kind: 'viewing', areaId: properties[0].communityId },
-      });
+        { isolationLevel: Prisma.TransactionIsolationLevel.Serializable },
+      );
       return { kind: 'viewing_requested', properties, data: { requestId: request.id } };
     }
     case 'handoff_to_advisor': {
       const a = toolSchemas.handoff_to_advisor.parse(call.arguments);
-      const handoff = await db.handoff.create({ data: { userId: user.id, reason: a.reason } });
+      const handoff = await db.$transaction(
+        async (tx) => {
+          await officeClient(user, tx);
+          await assertOfficePrivacy(user.id, 'enquiry', tx);
+          return tx.handoff.create({ data: { userId: user.id, reason: a.reason } });
+        },
+        { isolationLevel: Prisma.TransactionIsolationLevel.Serializable },
+      );
       return { kind: 'handoff', properties: [], data: { handoffId: handoff.id } };
     }
   }

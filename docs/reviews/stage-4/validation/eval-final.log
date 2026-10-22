@@ -1,0 +1,64 @@
+$ tsx evals/run.ts && pnpm eval:concierge
+{
+  "provider": "mock",
+  "passed": 36,
+  "total": 36,
+  "offMarketLeakage": 0,
+  "failures": []
+}
+Real-provider eval skipped: no API key configured.
+$ node --import tsx evals/concierge-run.ts && node --import tsx evals/concierge-execution-run.ts
+{
+  "scope": "deterministic-parser",
+  "cases": 105,
+  "distinctPhrases": 124,
+  "passed": 105,
+  "failures": [],
+  "limitations": [
+    "No database authorization or source-grounding execution is performed by this runner.",
+    "Provider proposals are not proof that a write is authorized, an entity exists, or a fact is grounded.",
+    "No browser, native Arabic reader, or real-provider certification."
+  ]
+}
+Execution corpus completed for guest: 105 cases, 144 turns.
+Execution corpus completed for client: 210 cases, 288 turns.
+Execution corpus completed for verified_client: 315 cases, 432 turns.
+Execution corpus completed for developer_partner: 420 cases, 576 turns.
+{
+  "version": 1,
+  "mock": {
+    "provider": "mock",
+    "cases": 444,
+    "turns": 632,
+    "cards": 1796,
+    "facts": 16318,
+    "actions": 618,
+    "durationMs": 42290,
+    "counters": {
+      "executionErrors": 0,
+      "semanticFailures": 0,
+      "hallucinatedIds": 0,
+      "hallucinatedValues": 0,
+      "invalidSourceReferences": 0,
+      "privateLeaks": 0,
+      "currencyErrors": 0,
+      "mapErrors": 0,
+      "toneViolations": 0,
+      "refusalFailures": 0,
+      "schoolDisclosureFailures": 0,
+      "unconfirmedWrites": 0,
+      "streamErrors": 0
+    },
+    "failures": []
+  },
+  "real": {
+    "status": "skipped",
+    "reason": "No OPENAI_API_KEY; real provider not tested."
+  },
+  "totalDurationMs": 44363,
+  "limits": [
+    "Fresh DAL checks certify only this seeded local database state, not current external market truth.",
+    "Mock semantic/execution evidence does not certify native Arabic quality, browser UI, real-provider behavior or external writes.",
+    "No viewing, handoff or portfolio confirmation is executed."
+  ]
+}

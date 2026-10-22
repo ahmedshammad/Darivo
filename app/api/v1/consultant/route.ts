@@ -1,3 +1,5 @@
+import { restrictClientPrivacy } from '@/src/server/office/privacy';
+import { extractConciergePrivacy } from '@/src/server/concierge/mock-parser';
 import { observed } from '@/src/server/observability';
 import { z } from 'zod';
 import { db } from '@/src/server/db/client';
@@ -14,6 +16,7 @@ export async function POST(req: Request) {
       .object({ message: z.string().trim().min(1).max(4000), locale: z.enum(['en', 'ar']) })
       .strict()
       .parse(await readJson(req));
+    await restrictClientPrivacy(user.id, extractConciergePrivacy(input.message));
     const existing = await db.clientBrief.findUnique({ where: { userId: user.id } });
     const parsed = briefSchema.safeParse(existing?.data);
     const previous = parsed.success ? parsed.data : { filters: {} };

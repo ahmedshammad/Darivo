@@ -861,11 +861,17 @@ export async function executeConciergeTool(
         break;
       }
       const entities = 'entities' in call.arguments ? call.arguments.entities : [];
-      if (entities.length && !(await resolveAll(entities))) {
+      const writeCards = entities.length ? await resolveAll(entities) : [];
+      if (entities.length && !writeCards) {
         cardsComponent([]);
         break;
       }
-      if (call.name !== 'handoff_to_advisor' && entities.some((entity) => entity.kind !== 'unit')) {
+      if (
+        (call.name === 'request_viewing' && entities.some((entity) => entity.kind !== 'unit')) ||
+        (call.name === 'save_to_portfolio' &&
+          (entities.some((entity) => !['unit', 'project'].includes(entity.kind)) ||
+            writeCards?.some((card) => card.kind === 'demo-project')))
+      ) {
         result.components.push(
           notice(
             context,
@@ -879,8 +885,8 @@ export async function executeConciergeTool(
       const summary =
         call.name === 'save_to_portfolio'
           ? bilingual(
-              'Review saving these demo units to your portfolio.',
-              'راجع حفظ هذه الوحدات التجريبية في قائمتك.',
+              'Review saving these sourced project interests or demo units to your portfolio. A project interest does not reserve stock.',
+              'راجع حفظ مراجع المشاريع أو الوحدات التجريبية في قائمتك. حفظ مرجع مشروع لا يحجز مخزوناً.',
             )
           : call.name === 'request_viewing'
             ? bilingual(

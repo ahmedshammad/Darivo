@@ -1,3 +1,5 @@
+import { Prisma } from '@prisma/client';
+import { getClientPrivacy } from '../office/privacy';
 import { db } from '../db/client';
 import { type Viewer, type PropertyDTO } from '../db/properties';
 import { briefSchema, type Brief } from './schema';
@@ -32,7 +34,8 @@ export async function consult(
       ? 'en'
       : locale;
   const dictionary = language === 'ar' ? ar : en;
-  const plan = await (isAdvice(message) ? new MockProvider() : ai).plan(
+  const privacy = await getClientPrivacy(user.id);
+  const plan = await (isAdvice(message) || privacy.doNotShare ? new MockProvider() : ai).plan(
     message,
     previous,
     language,
@@ -93,38 +96,46 @@ export async function consult(
   return { text, properties, brief: briefSchema.parse(plan.brief), kind, results };
 }
 export async function saveTurn(userId: string, message: string, reply: ConsultantReply) {
-  let conversation = await db.consultantConversation.findFirst({
-    where: { userId },
-    orderBy: { createdAt: 'desc' },
-  });
-  if (!conversation) conversation = await db.consultantConversation.create({ data: { userId } });
-  await db.clientBrief.upsert({
-    where: { userId },
-    update: { data: JSON.parse(JSON.stringify(reply.brief)) },
-    create: { userId, data: JSON.parse(JSON.stringify(reply.brief)) },
-  });
-  await db.consultantMessage.createMany({
-    data: [
-      { conversationId: conversation.id, role: 'user', content: { text: message } },
-      {
-        conversationId: conversation.id,
-        role: 'assistant',
-        content: {
-          text: reply.text,
-          propertyIds: reply.properties.map((p) => p.id),
-          kind: reply.kind,
-          results: JSON.parse(
-            JSON.stringify(
-              reply.results
-                .filter((r) => ['insights', 'investment'].includes(r.kind))
-                .map((r) => ({ kind: r.kind, data: r.data ?? {} })),
-            ),
-          ),
-        },
-      },
-    ],
-  });
-  await db.analyticsEvent.create({
-    data: { kind: 'consultant', areaId: reply.brief.filters.community },
-  });
+  return db.$transaction(
+    async (tx) => {
+      if ((await getClientPrivacy(userId, tx)).doNotSave) return false;
+      let conversation = await tx.consultantConversation.findFirst({
+        where: { userId },
+        orderBy: { createdAt: 'desc' },
+      });
+      if (!conversation)
+        conversation = await tx.consultantConversation.create({ data: { userId } });
+      await tx.clientBrief.upsert({
+        where: { userId },
+        update: { data: JSON.parse(JSON.stringify(reply.brief)) },
+        create: { userId, data: JSON.parse(JSON.stringify(reply.brief)) },
+      });
+      await tx.consultantMessage.createMany({
+        data: [
+          { conversationId: conversation.id, role: 'user', content: { text: message } },
+          {
+            conversationId: conversation.id,
+            role: 'assistant',
+            content: {
+              text: reply.text,
+              propertyIds: reply.properties.map((p) => p.id),
+              kind: reply.kind,
+              results: JSON.parse(
+                JSON.stringify(
+                  reply.results
+                    .filter((r) => ['insights', 'investment'].includes(r.kind))
+                    .map((r) => ({ kind: r.kind, data: r.data ?? {} })),
+                ),
+              ),
+            },
+          },
+        ],
+      });
+      await tx.analyticsEvent.create({
+        data: { kind: 'consultant', areaId: reply.brief.filters.community },
+      });
+      return true;
+    },
+    { isolationLevel: Prisma.TransactionIsolationLevel.Serializable },
+  );
 }

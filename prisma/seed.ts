@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { PrismaClient, type Role } from '@prisma/client';
 import { seedReference } from './seed-reference';
+import { seedOffice } from './seed-office';
 import { DEMO_UNIT_COUNT, demoPrice, demoProjectId, demoVisibility } from './demo-data';
 import type { ReferenceDataset } from '../src/lib/reference-data';
 import { AREAS, TYPES, typeAr, FX, FX_DATE } from '../src/lib/catalog';
@@ -32,6 +33,7 @@ async function seed() {
   const dataset = await seedReference(db);
   await seedInventory(dataset);
   await reindex();
+  await seedOffice(db);
   console.info(
     'Reference data: 9 organisations, 1 aggregate, 13 projects, 3 market stats; 250 fictional units ready.',
   );

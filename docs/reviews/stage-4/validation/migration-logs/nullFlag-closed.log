@@ -1,0 +1,23 @@
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": PostgreSQL database "darivo_stage4_nullflag_1792710982115", schema "public" at "127.0.0.1:55433"
+
+6 migrations found in prisma/migrations
+
+Applying migration `20261023020000_private_office`
+warn The configuration property `package.json#prisma` is deprecated and will be removed in Prisma 7. Please migrate to a Prisma config file (e.g., `prisma.config.ts`).
+For more information, see: https://pris.ly/prisma-config
+
+Environment variables loaded from .env
+Error: P3018
+
+A migration failed to apply. New migrations cannot be applied before the error is recovered from. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve
+
+Migration name: 20261023020000_private_office
+
+Database error code: 23502
+
+Database error:
+ERROR: null value in column "doNotSave" of relation "ClientPrivacyState" violates not-null constraint
+DETAIL: Failing row contains (legacy-nullFlag, null, f, f, 0, 2026-10-23 02:16:31.794).
+
+DbError { severity: "ERROR", parsed_severity: Some(Error), code: SqlState(E23502), message: "null value in column \"doNotSave\" of relation \"ClientPrivacyState\" violates not-null constraint", detail: Some("Failing row contains (legacy-nullFlag, null, f, f, 0, 2026-10-23 02:16:31.794)."), hint: None, position: None, where_: None, schema: Some("public"), table: Some("ClientPrivacyState"), column: Some("doNotSave"), datatype: None, constraint: None, file: Some("execMain.c"), line: Some(2009), routine: Some("ExecConstraints") }

@@ -1,0 +1,17 @@
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": PostgreSQL database "darivo_stage4_upgrade_1792710982115", schema "public" at "127.0.0.1:55433"
+
+6 migrations found in prisma/migrations
+
+Applying migration `20261023020000_private_office`
+Applying migration `20261023020100_office_privacy_backfill_guard`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20261023020000_private_office/
+    └─ migration.sql
+  └─ 20261023020100_office_privacy_backfill_guard/
+    └─ migration.sql
+
+All migrations have been successfully applied.
