@@ -64,3 +64,7 @@ Constraint row IDs are identities, not semantics. Filtering and card explanation
 ### Timeline subject identity
 
 Payment timelines carry optional `subjectName: {en, ar}` for compatibility with older persisted components. New tool output always copies the name from the same freshly authorized card that supplies `entity`, price and schedule. Providers cannot supply this field in tool arguments. History replay reauthorizes the entity and regenerates the name from current data; a missing or revoked entity drops the entire timeline, including its saved name. Clients may show the existing entity ID only as an older-payload fallback, without inventing a name.
+
+### Repeated deadline context
+
+Deadline-year-boundary clarification notices retain their exact full bilingual text on every SSE/history turn. Optional strict server-generated `context` records the market, country, year, `by` boundary, end-of-year interpretation and purpose/place/market-mode scope. Providers cannot supply this metadata. The client-safe, type-only-import `concierge-context.ts` helper derives the same contexts for the Brief and compares only adjacent completed turns. First, changed, legacy, missing, streaming, failed, cancelled or removed/re-added assumptions remain prominent; `UNKNOWN_FACT` never compacts. An unchanged repeat may use a named native disclosure containing the full original text. This is presentation only, not acknowledgement, consent, a Brief edit, or permission to drop a guardrail.

@@ -299,6 +299,7 @@ type ResponseProps = {
   onCompare: (cards: GroundedCard[]) => void;
   onMap: (camera: AtlasCamera, ids: string[]) => void;
   onReviewRequirements: () => void;
+  repeatedDeadlineAssumption?: boolean;
 };
 export function ResponseComponent({
   component,
@@ -310,6 +311,7 @@ export function ResponseComponent({
   onCompare,
   onMap,
   onReviewRequirements,
+  repeatedDeadlineAssumption = false,
 }: ResponseProps) {
   const t = conciergeCopy[locale];
   const { format, digits } = useConciergeNumbers(locale);
@@ -649,8 +651,36 @@ export function ResponseComponent({
         </section>
       );
     case 'notice':
+      if (
+        repeatedDeadlineAssumption &&
+        component.code === 'NEEDS_CLARIFICATION' &&
+        component.context?.kind === 'deadline-year-boundary'
+      ) {
+        const country = component.context.country === 'UAE' ? t.countryUae : t.countryEgypt;
+        return (
+          <details
+            className="cq-notice cq-repeated-deadline"
+            data-component-kind={component.kind}
+            data-testid="concierge-repeated-deadline"
+            data-market-id={component.context.marketId}
+          >
+            <summary>
+              {t.repeatedDeadlineSummary
+                .replace('{country}', country)
+                .replace('{year}', digits(String(component.context.year)))}
+            </summary>
+            <p>{component.text[locale]}</p>
+          </details>
+        );
+      }
       return (
-        <aside className="cq-notice" aria-label={t.notice} data-component-kind={component.kind}>
+        <aside
+          className="cq-notice"
+          aria-label={t.notice}
+          data-component-kind={component.kind}
+          data-testid="concierge-notice"
+          data-notice-code={component.code}
+        >
           <p>{component.text[locale]}</p>
           {component.code === 'NO_MATCHES' && (
             <button className="cq-action" type="button" onClick={onReviewRequirements}>

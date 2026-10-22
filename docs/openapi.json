@@ -1366,37 +1366,37 @@
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema8"
               },
               "unassignedBudget": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
-              },
-              "unassignedDeadline": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema20"
-              },
-              "displayCurrencies": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema21"
               },
-              "paymentCurrency": {
+              "unassignedDeadline": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema22"
               },
-              "household": {
+              "displayCurrencies": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema23"
               },
-              "mustHaves": {
+              "paymentCurrency": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema24"
               },
-              "exclusions": {
+              "household": {
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema25"
+              },
+              "mustHaves": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema26"
               },
-              "uncertainties": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema27"
-              },
-              "provenance": {
+              "exclusions": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema28"
               },
-              "privacy": {
+              "uncertainties": {
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema29"
+              },
+              "provenance": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema30"
               },
+              "privacy": {
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema32"
+              },
               "tasteMemory": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema31"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema33"
               }
             },
             "required": [
@@ -1425,7 +1425,7 @@
             "maxItems": 100,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema36"
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema38"
             }
           },
           "cursor": {
@@ -1504,8 +1504,7 @@
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
               },
               "country": {
-                "type": "string",
-                "enum": ["UAE", "Egypt"]
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema10"
               },
               "placeIds": {
                 "maxItems": 12,
@@ -1515,8 +1514,7 @@
                 }
               },
               "placeMatch": {
-                "type": "string",
-                "enum": ["any", "all"]
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema11"
               },
               "purpose": {
                 "anyOf": [
@@ -1531,7 +1529,7 @@
               "budget": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema10"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema12"
                   },
                   {
                     "type": "null"
@@ -1541,7 +1539,7 @@
               "deadline": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema16"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema18"
                   },
                   {
                     "type": "null"
@@ -1556,7 +1554,7 @@
                 "maxItems": 6,
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema18"
+                  "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema20"
                 }
               },
               "bedrooms": {
@@ -1592,64 +1590,72 @@
             "additionalProperties": false
           },
           "__schema10": {
+            "type": "string",
+            "enum": ["UAE", "Egypt"]
+          },
+          "__schema11": {
+            "type": "string",
+            "enum": ["any", "all"]
+          },
+          "__schema12": {
             "type": "object",
             "properties": {
               "min": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema11"
-              },
-              "max": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema12"
-              },
-              "currency": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema13"
               },
-              "association": {
+              "max": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema14"
               },
-              "rawText": {
+              "currency": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema15"
+              },
+              "association": {
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema16"
+              },
+              "rawText": {
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
               }
             },
             "required": ["min", "max", "currency", "association", "rawText"],
             "additionalProperties": false
           },
-          "__schema11": {
-            "anyOf": [
-              {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1000000000000
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "__schema12": {
-            "anyOf": [
-              {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1000000000000
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "__schema13": {
-            "type": "string",
-            "enum": ["AED", "EGP", "USD", "EUR", "SAR", "GBP"]
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1000000000000
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "__schema14": {
-            "type": "string",
-            "enum": ["explicit", "needs_clarification"]
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1000000000000
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "__schema15": {
             "type": "string",
-            "maxLength": 500
+            "enum": ["AED", "EGP", "USD", "EUR", "SAR", "GBP"]
           },
           "__schema16": {
+            "type": "string",
+            "enum": ["explicit", "needs_clarification"]
+          },
+          "__schema17": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "__schema18": {
             "oneOf": [
               {
                 "type": "object",
@@ -1668,7 +1674,7 @@
                     "enum": ["before", "by"]
                   },
                   "rawText": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
                   }
                 },
                 "required": ["kind", "year", "boundary", "rawText"],
@@ -1691,7 +1697,7 @@
                     "enum": ["before", "by"]
                   },
                   "rawText": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
                   }
                 },
                 "required": ["kind", "date", "boundary", "rawText"],
@@ -1715,7 +1721,7 @@
                     "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
                   },
                   "rawText": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
                   }
                 },
                 "required": ["kind", "months", "relativeTo", "rawText"],
@@ -1729,7 +1735,7 @@
                     "const": "flexible"
                   },
                   "rawText": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
                   }
                 },
                 "required": ["kind", "rawText"],
@@ -1737,47 +1743,29 @@
               }
             ]
           },
-          "__schema17": {
+          "__schema19": {
             "type": "string",
             "minLength": 1,
             "maxLength": 500
           },
-          "__schema18": {
+          "__schema20": {
             "type": "string",
             "enum": ["apartment", "villa", "penthouse", "townhouse", "mansion", "plot"]
           },
-          "__schema19": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema10"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "__schema20": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema16"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "__schema21": {
-            "minItems": 1,
-            "maxItems": 6,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema13"
-            }
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema12"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "__schema22": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema13"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema18"
               },
               {
                 "type": "null"
@@ -1785,6 +1773,24 @@
             ]
           },
           "__schema23": {
+            "minItems": 1,
+            "maxItems": 6,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema15"
+            }
+          },
+          "__schema24": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema15"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "__schema25": {
             "type": "object",
             "properties": {
               "adults": {
@@ -1831,21 +1837,21 @@
             "required": ["adults", "children", "curriculum", "schoolRequirement"],
             "additionalProperties": false
           },
-          "__schema24": {
+          "__schema26": {
             "maxItems": 30,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema25"
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema27"
             }
           },
-          "__schema25": {
+          "__schema27": {
             "type": "object",
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
               },
               "text": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
               },
               "marketIds": {
                 "maxItems": 8,
@@ -1865,32 +1871,32 @@
             "required": ["id", "text", "marketIds", "category", "verificationRequired"],
             "additionalProperties": false
           },
-          "__schema26": {
+          "__schema28": {
             "maxItems": 30,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema25"
-            }
-          },
-          "__schema27": {
-            "maxItems": 20,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
-            }
-          },
-          "__schema28": {
-            "maxItems": 100,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema29"
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema27"
             }
           },
           "__schema29": {
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
+            }
+          },
+          "__schema30": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema31"
+            }
+          },
+          "__schema31": {
             "type": "object",
             "properties": {
               "fieldId": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
               },
               "rawText": {
                 "type": "string",
@@ -1904,7 +1910,7 @@
             "required": ["fieldId", "rawText", "origin"],
             "additionalProperties": false
           },
-          "__schema30": {
+          "__schema32": {
             "type": "object",
             "properties": {
               "mode": {
@@ -1928,27 +1934,27 @@
             "required": ["mode", "doNotSave", "doNotShare", "doNotBook", "writePolicy"],
             "additionalProperties": false
           },
-          "__schema31": {
+          "__schema33": {
             "type": "object",
             "properties": {
               "consent": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema32"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema34"
               },
               "consentedAt": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema33"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema35"
               },
               "items": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema34"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema36"
               }
             },
             "required": ["consent", "consentedAt", "items"],
             "additionalProperties": false
           },
-          "__schema32": {
+          "__schema34": {
             "type": "string",
             "enum": ["not_asked", "granted", "declined", "revoked"]
           },
-          "__schema33": {
+          "__schema35": {
             "anyOf": [
               {
                 "type": "string",
@@ -1960,21 +1966,21 @@
               }
             ]
           },
-          "__schema34": {
+          "__schema36": {
             "maxItems": 30,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema35"
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema37"
             }
           },
-          "__schema35": {
+          "__schema37": {
             "type": "object",
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
               },
               "text": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
               },
               "recordedAt": {
                 "type": "string",
@@ -1985,7 +1991,7 @@
             "required": ["id", "text", "recordedAt"],
             "additionalProperties": false
           },
-          "__schema36": {
+          "__schema38": {
             "type": "object",
             "properties": {
               "id": {
@@ -2014,7 +2020,7 @@
                 "maxItems": 12,
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema37"
+                  "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
                 }
               },
               "briefRevision": {
@@ -2041,7 +2047,7 @@
             ],
             "additionalProperties": false
           },
-          "__schema37": {
+          "__schema39": {
             "oneOf": [
               {
                 "type": "object",
@@ -2061,7 +2067,7 @@
                     "maxItems": 12,
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema38"
+                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema40"
                     }
                   }
                 },
@@ -2086,14 +2092,14 @@
                     "maxItems": 4,
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema38"
+                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema40"
                     }
                   },
                   "rows": {
                     "maxItems": 12,
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema61"
+                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema63"
                     }
                   }
                 },
@@ -2118,7 +2124,7 @@
                     "maxItems": 12,
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema51"
+                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema53"
                     }
                   },
                   "camera": {
@@ -2205,30 +2211,30 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "facts": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema62"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema64"
                   },
                   "sources": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema63"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema65"
                   },
                   "kind": {
                     "type": "string",
                     "const": "payment-timeline"
                   },
                   "entity": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema51"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema53"
                   },
                   "subjectName": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
                   },
                   "price": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema43"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema45"
                   },
                   "schedule": {
                     "minItems": 1,
                     "maxItems": 24,
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema64"
+                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema66"
                     }
                   },
                   "mode": {
@@ -2267,7 +2273,7 @@
                     "maxItems": 12,
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema38"
+                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema40"
                     }
                   },
                   "points": {
@@ -2275,7 +2281,7 @@
                     "maxItems": 12,
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema65"
+                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema67"
                     }
                   }
                 },
@@ -2292,10 +2298,10 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "facts": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema62"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema64"
                   },
                   "sources": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema63"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema65"
                   },
                   "kind": {
                     "type": "string",
@@ -2310,7 +2316,7 @@
                     "maxItems": 8,
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema66"
+                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema68"
                     }
                   }
                 },
@@ -2327,10 +2333,10 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "facts": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema62"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema64"
                   },
                   "sources": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema63"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema65"
                   },
                   "kind": {
                     "type": "string",
@@ -2340,7 +2346,7 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "name": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
                   },
                   "projectIds": {
                     "maxItems": 24,
@@ -2372,21 +2378,16 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "kind": {
-                    "type": "string",
-                    "const": "notice"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema69"
                   },
                   "code": {
-                    "type": "string",
-                    "enum": [
-                      "NO_MATCHES",
-                      "UNKNOWN_FACT",
-                      "NEEDS_CLARIFICATION",
-                      "ADVICE_HANDOFF",
-                      "DEMO_LIMITATION"
-                    ]
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema70"
                   },
                   "text": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
+                  },
+                  "context": {
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema71"
                   }
                 },
                 "required": ["id", "turnId", "kind", "code", "text"],
@@ -2394,7 +2395,7 @@
               }
             ]
           },
-          "__schema38": {
+          "__schema40": {
             "oneOf": [
               {
                 "type": "object",
@@ -2403,28 +2404,28 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "name": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
-                  },
-                  "center": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema40"
-                  },
-                  "coordinatesApproximate": {
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
                   },
-                  "price": {
+                  "center": {
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema42"
                   },
+                  "coordinatesApproximate": {
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema43"
+                  },
+                  "price": {
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema44"
+                  },
                   "facts": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema49"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema51"
                   },
                   "sources": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema52"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema54"
                   },
                   "reasons": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema56"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema58"
                   },
                   "tradeoff": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema57"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema59"
                   },
                   "kind": {
                     "type": "string",
@@ -2465,28 +2466,28 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "name": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
-                  },
-                  "center": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema40"
-                  },
-                  "coordinatesApproximate": {
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
                   },
-                  "price": {
+                  "center": {
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema42"
                   },
+                  "coordinatesApproximate": {
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema43"
+                  },
+                  "price": {
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema44"
+                  },
                   "facts": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema49"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema51"
                   },
                   "sources": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema52"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema54"
                   },
                   "reasons": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema56"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema58"
                   },
                   "tradeoff": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema57"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema59"
                   },
                   "kind": {
                     "type": "string",
@@ -2527,28 +2528,28 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "name": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
-                  },
-                  "center": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema40"
-                  },
-                  "coordinatesApproximate": {
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
                   },
-                  "price": {
+                  "center": {
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema42"
                   },
+                  "coordinatesApproximate": {
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema43"
+                  },
+                  "price": {
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema44"
+                  },
                   "facts": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema49"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema51"
                   },
                   "sources": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema52"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema54"
                   },
                   "reasons": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema56"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema58"
                   },
                   "tradeoff": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema57"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema59"
                   },
                   "kind": {
                     "type": "string",
@@ -2584,20 +2585,20 @@
               }
             ]
           },
-          "__schema39": {
+          "__schema41": {
             "type": "object",
             "properties": {
               "en": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
               },
               "ar": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
               }
             },
             "required": ["en", "ar"],
             "additionalProperties": false
           },
-          "__schema40": {
+          "__schema42": {
             "anyOf": [
               {
                 "type": "array",
@@ -2622,29 +2623,29 @@
               }
             ]
           },
-          "__schema41": {
+          "__schema43": {
             "type": "boolean"
           },
-          "__schema42": {
+          "__schema44": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema43"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema45"
               },
               {
                 "type": "null"
               }
             ]
           },
-          "__schema43": {
+          "__schema45": {
             "type": "object",
             "properties": {
               "native": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema44"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
               },
               "qualifier": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
                   },
                   {
                     "type": "null"
@@ -2658,13 +2659,13 @@
                 "maxItems": 6,
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema45"
+                  "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema47"
                 }
               },
               "paymentCurrency": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema13"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema15"
                   },
                   {
                     "type": "null"
@@ -2675,7 +2676,7 @@
             "required": ["native", "qualifier", "factId", "converted", "paymentCurrency"],
             "additionalProperties": false
           },
-          "__schema44": {
+          "__schema46": {
             "type": "object",
             "properties": {
               "amount": {
@@ -2684,24 +2685,24 @@
                 "maximum": 1000000000000
               },
               "currency": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema13"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema15"
               }
             },
             "required": ["amount", "currency"],
             "additionalProperties": false
           },
-          "__schema45": {
+          "__schema47": {
             "type": "object",
             "properties": {
               "money": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema44"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
               },
               "rate": {
                 "type": "number",
                 "exclusiveMinimum": 0
               },
               "asOf": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema48"
               },
               "method": {
                 "type": "string",
@@ -2711,20 +2712,20 @@
             "required": ["money", "rate", "asOf", "method"],
             "additionalProperties": false
           },
-          "__schema46": {
+          "__schema48": {
             "type": "object",
             "properties": {
               "value": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema47"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema49"
               },
               "precision": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema48"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema50"
               }
             },
             "required": ["value", "precision"],
             "additionalProperties": false
           },
-          "__schema47": {
+          "__schema49": {
             "anyOf": [
               {
                 "type": "string",
@@ -2735,31 +2736,31 @@
               }
             ]
           },
-          "__schema48": {
+          "__schema50": {
             "type": "string",
             "enum": ["UNKNOWN", "YEAR", "MONTH", "DAY"]
           },
-          "__schema49": {
+          "__schema51": {
             "maxItems": 80,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema50"
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema52"
             }
           },
-          "__schema50": {
+          "__schema52": {
             "type": "object",
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
               },
               "entity": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema51"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema53"
               },
               "key": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
               },
               "label": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
               },
               "value": {
                 "anyOf": [
@@ -2792,7 +2793,7 @@
               "currency": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema13"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema15"
                   },
                   {
                     "type": "null"
@@ -2807,7 +2808,7 @@
                 }
               },
               "asOf": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema48"
               },
               "provenance": {
                 "type": "string",
@@ -2816,7 +2817,7 @@
               "qualifier": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
                   },
                   {
                     "type": "null"
@@ -2835,7 +2836,7 @@
                 ]
               },
               "displayValue": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
               }
             },
             "required": [
@@ -2854,7 +2855,7 @@
             ],
             "additionalProperties": false
           },
-          "__schema51": {
+          "__schema53": {
             "type": "object",
             "properties": {
               "kind": {
@@ -2868,14 +2869,14 @@
             "required": ["kind", "id"],
             "additionalProperties": false
           },
-          "__schema52": {
+          "__schema54": {
             "maxItems": 40,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema53"
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema55"
             }
           },
-          "__schema53": {
+          "__schema55": {
             "oneOf": [
               {
                 "type": "object",
@@ -2884,16 +2885,16 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "title": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema54"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema56"
                   },
                   "asOf": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema48"
                   },
                   "retrieved": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema48"
                   },
                   "confidence": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema55"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema57"
                   },
                   "kind": {
                     "type": "string",
@@ -2904,7 +2905,7 @@
                     "format": "uri"
                   },
                   "publisher": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
                   },
                   "basis": {
                     "type": "string",
@@ -2941,16 +2942,16 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "title": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema54"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema56"
                   },
                   "asOf": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema48"
                   },
                   "retrieved": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema48"
                   },
                   "confidence": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema55"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema57"
                   },
                   "kind": {
                     "type": "string",
@@ -2987,16 +2988,16 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "title": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema54"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema56"
                   },
                   "asOf": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema48"
                   },
                   "retrieved": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema48"
                   },
                   "confidence": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema55"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema57"
                   },
                   "kind": {
                     "type": "string",
@@ -3033,16 +3034,16 @@
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
                   },
                   "title": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema54"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema56"
                   },
                   "asOf": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema48"
                   },
                   "retrieved": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema46"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema48"
                   },
                   "confidence": {
-                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema55"
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema57"
                   },
                   "kind": {
                     "type": "string",
@@ -3074,7 +3075,7 @@
               }
             ]
           },
-          "__schema54": {
+          "__schema56": {
             "anyOf": [
               {
                 "type": "string",
@@ -3085,61 +3086,61 @@
               }
             ]
           },
-          "__schema55": {
+          "__schema57": {
             "type": "string",
             "enum": ["UNASSESSED", "LOW", "MEDIUM", "HIGH"]
           },
-          "__schema56": {
+          "__schema58": {
             "minItems": 2,
             "maxItems": 3,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema57"
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema59"
             }
           },
-          "__schema57": {
+          "__schema59": {
             "type": "object",
             "properties": {
               "text": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
               },
               "briefFieldIds": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema58"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema60"
               },
               "factIds": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema59"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema61"
               },
               "status": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema60"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema62"
               }
             },
             "required": ["text", "briefFieldIds", "factIds", "status"],
             "additionalProperties": false
           },
-          "__schema58": {
+          "__schema60": {
             "minItems": 1,
             "maxItems": 8,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
             }
           },
-          "__schema59": {
+          "__schema61": {
             "maxItems": 12,
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
             }
           },
-          "__schema60": {
+          "__schema62": {
             "type": "string",
             "enum": ["supported", "unknown", "conflict"]
           },
-          "__schema61": {
+          "__schema63": {
             "type": "object",
             "properties": {
               "label": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
               },
               "factKey": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
@@ -3148,28 +3149,28 @@
             "required": ["label", "factKey"],
             "additionalProperties": false
           },
-          "__schema62": {
+          "__schema64": {
             "maxItems": 80,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema50"
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema52"
             }
           },
-          "__schema63": {
+          "__schema65": {
             "maxItems": 40,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema53"
+              "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema55"
             }
           },
-          "__schema64": {
+          "__schema66": {
             "type": "object",
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
               },
               "label": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
               },
               "percent": {
                 "type": "number",
@@ -3177,7 +3178,7 @@
                 "maximum": 100
               },
               "timing": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema17"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema19"
               },
               "factIds": {
                 "minItems": 1,
@@ -3191,11 +3192,11 @@
             "required": ["id", "label", "percent", "timing", "factIds"],
             "additionalProperties": false
           },
-          "__schema65": {
+          "__schema67": {
             "type": "object",
             "properties": {
               "entity": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema51"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema53"
               },
               "priceFactId": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
@@ -3207,14 +3208,14 @@
             "required": ["entity", "priceFactId", "areaFactId"],
             "additionalProperties": false
           },
-          "__schema66": {
+          "__schema68": {
             "type": "object",
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
               },
               "title": {
-                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema41"
               },
               "placeId": {
                 "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
@@ -3232,6 +3233,89 @@
               }
             },
             "required": ["id", "title", "placeId", "time", "factIds"],
+            "additionalProperties": false
+          },
+          "__schema69": {
+            "type": "string",
+            "const": "notice"
+          },
+          "__schema70": {
+            "type": "string",
+            "enum": [
+              "NO_MATCHES",
+              "UNKNOWN_FACT",
+              "NEEDS_CLARIFICATION",
+              "ADVICE_HANDOFF",
+              "DEMO_LIMITATION"
+            ]
+          },
+          "__schema71": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "deadline-year-boundary"
+              },
+              "marketId": {
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
+              },
+              "country": {
+                "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema10"
+              },
+              "year": {
+                "type": "integer",
+                "minimum": 1900,
+                "maximum": 2200
+              },
+              "boundary": {
+                "type": "string",
+                "const": "by"
+              },
+              "interpretation": {
+                "type": "string",
+                "const": "END_OF_YEAR"
+              },
+              "scope": {
+                "type": "object",
+                "properties": {
+                  "purpose": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema6"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "placeIds": {
+                    "maxItems": 12,
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema0"
+                    }
+                  },
+                  "placeMatch": {
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema11"
+                  },
+                  "marketMode": {
+                    "type": "string",
+                    "enum": ["independent", "alternatives"]
+                  }
+                },
+                "required": ["purpose", "placeIds", "placeMatch", "marketMode"],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "marketId",
+              "country",
+              "year",
+              "boundary",
+              "interpretation",
+              "scope"
+            ],
             "additionalProperties": false
           }
         }
@@ -3555,7 +3639,7 @@
                         "maxItems": 12,
                         "type": "array",
                         "items": {
-                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema40"
+                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema42"
                         }
                       }
                     },
@@ -3580,14 +3664,14 @@
                         "maxItems": 4,
                         "type": "array",
                         "items": {
-                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema40"
+                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema42"
                         }
                       },
                       "rows": {
                         "maxItems": 12,
                         "type": "array",
                         "items": {
-                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema63"
+                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema65"
                         }
                       }
                     },
@@ -3612,11 +3696,11 @@
                         "maxItems": 12,
                         "type": "array",
                         "items": {
-                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
+                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema55"
                         }
                       },
                       "camera": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema64"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema66"
                       },
                       "renderMode": {
                         "type": "string",
@@ -3636,30 +3720,30 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "facts": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema66"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema68"
                       },
                       "sources": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema67"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema69"
                       },
                       "kind": {
                         "type": "string",
                         "const": "payment-timeline"
                       },
                       "entity": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema55"
                       },
                       "subjectName": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
                       },
                       "price": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema45"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema47"
                       },
                       "schedule": {
                         "minItems": 1,
                         "maxItems": 24,
                         "type": "array",
                         "items": {
-                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema68"
+                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema70"
                         }
                       },
                       "mode": {
@@ -3698,7 +3782,7 @@
                         "maxItems": 12,
                         "type": "array",
                         "items": {
-                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema40"
+                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema42"
                         }
                       },
                       "points": {
@@ -3706,7 +3790,7 @@
                         "maxItems": 12,
                         "type": "array",
                         "items": {
-                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema69"
+                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema71"
                         }
                       }
                     },
@@ -3723,10 +3807,10 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "facts": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema66"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema68"
                       },
                       "sources": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema67"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema69"
                       },
                       "kind": {
                         "type": "string",
@@ -3741,7 +3825,7 @@
                         "maxItems": 8,
                         "type": "array",
                         "items": {
-                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema70"
+                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema72"
                         }
                       }
                     },
@@ -3758,10 +3842,10 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "facts": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema66"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema68"
                       },
                       "sources": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema67"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema69"
                       },
                       "kind": {
                         "type": "string",
@@ -3771,7 +3855,7 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "name": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
                       },
                       "projectIds": {
                         "maxItems": 24,
@@ -3803,21 +3887,16 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "kind": {
-                        "type": "string",
-                        "const": "notice"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema73"
                       },
                       "code": {
-                        "type": "string",
-                        "enum": [
-                          "NO_MATCHES",
-                          "UNKNOWN_FACT",
-                          "NEEDS_CLARIFICATION",
-                          "ADVICE_HANDOFF",
-                          "DEMO_LIMITATION"
-                        ]
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema74"
                       },
                       "text": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
+                      },
+                      "context": {
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema75"
                       }
                     },
                     "required": ["id", "turnId", "kind", "code", "text"],
@@ -3882,17 +3961,17 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "briefRevision": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema71"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema76"
                       },
                       "type": {
                         "type": "string",
                         "const": "map.flyTo"
                       },
                       "camera": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema64"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema66"
                       },
                       "anchor": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema55"
                       }
                     },
                     "required": [
@@ -3919,7 +3998,7 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "briefRevision": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema71"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema76"
                       },
                       "type": {
                         "type": "string",
@@ -3929,7 +4008,7 @@
                         "maxItems": 12,
                         "type": "array",
                         "items": {
-                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
+                          "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema55"
                         }
                       }
                     },
@@ -3949,7 +4028,7 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "briefRevision": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema71"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema76"
                       },
                       "type": {
                         "type": "string",
@@ -3987,17 +4066,17 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "briefRevision": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema71"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema76"
                       },
                       "type": {
                         "type": "string",
                         "const": "map.drawIsochrone"
                       },
                       "center": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema65"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema67"
                       },
                       "origin": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema55"
                       },
                       "minutes": {
                         "anyOf": [
@@ -4051,7 +4130,7 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "briefRevision": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema71"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema76"
                       },
                       "type": {
                         "type": "string",
@@ -4090,7 +4169,7 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "briefRevision": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema71"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema76"
                       },
                       "type": {
                         "type": "string",
@@ -4123,7 +4202,7 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "briefRevision": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema71"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema76"
                       },
                       "type": {
                         "type": "string",
@@ -4156,7 +4235,7 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "briefRevision": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema71"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema76"
                       },
                       "type": {
                         "type": "string",
@@ -4225,13 +4304,13 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "summary": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
                       },
                       "entities": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema72"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema77"
                       },
                       "expiresAt": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema73"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema78"
                       },
                       "kind": {
                         "type": "string",
@@ -4241,13 +4320,13 @@
                         "type": "object",
                         "properties": {
                           "entities": {
-                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema74"
+                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema79"
                           },
                           "mode": {
-                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema75"
+                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema80"
                           },
                           "name": {
-                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
                           }
                         },
                         "required": ["entities", "mode", "name"],
@@ -4275,13 +4354,13 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "summary": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
                       },
                       "entities": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema72"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema77"
                       },
                       "expiresAt": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema73"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema78"
                       },
                       "kind": {
                         "type": "string",
@@ -4291,16 +4370,16 @@
                         "type": "object",
                         "properties": {
                           "entities": {
-                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema74"
+                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema79"
                           },
                           "mode": {
-                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema75"
+                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema80"
                           },
                           "preferredSlots": {
                             "maxItems": 3,
                             "type": "array",
                             "items": {
-                              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema76"
+                              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema81"
                             }
                           },
                           "modeOfViewing": {
@@ -4343,13 +4422,13 @@
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                       },
                       "summary": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
                       },
                       "entities": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema72"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema77"
                       },
                       "expiresAt": {
-                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema73"
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema78"
                       },
                       "kind": {
                         "type": "string",
@@ -4359,7 +4438,7 @@
                         "type": "object",
                         "properties": {
                           "reason": {
-                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                            "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
                           },
                           "mode": {
                             "type": "string",
@@ -4598,37 +4677,37 @@
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema12"
               },
               "unassignedBudget": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
-              },
-              "unassignedDeadline": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema24"
-              },
-              "displayCurrencies": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema25"
               },
-              "paymentCurrency": {
+              "unassignedDeadline": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema26"
               },
-              "household": {
+              "displayCurrencies": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema27"
               },
-              "mustHaves": {
+              "paymentCurrency": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema28"
               },
-              "exclusions": {
+              "household": {
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema29"
+              },
+              "mustHaves": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema30"
               },
-              "uncertainties": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema31"
-              },
-              "provenance": {
+              "exclusions": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema32"
               },
-              "privacy": {
+              "uncertainties": {
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema33"
+              },
+              "provenance": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema34"
               },
+              "privacy": {
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema36"
+              },
               "tasteMemory": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema35"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema37"
               }
             },
             "required": [
@@ -4702,8 +4781,7 @@
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
               },
               "country": {
-                "type": "string",
-                "enum": ["UAE", "Egypt"]
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema14"
               },
               "placeIds": {
                 "maxItems": 12,
@@ -4713,8 +4791,7 @@
                 }
               },
               "placeMatch": {
-                "type": "string",
-                "enum": ["any", "all"]
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema15"
               },
               "purpose": {
                 "anyOf": [
@@ -4729,7 +4806,7 @@
               "budget": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema14"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema16"
                   },
                   {
                     "type": "null"
@@ -4739,7 +4816,7 @@
               "deadline": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema20"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema22"
                   },
                   {
                     "type": "null"
@@ -4754,7 +4831,7 @@
                 "maxItems": 6,
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema22"
+                  "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema24"
                 }
               },
               "bedrooms": {
@@ -4790,64 +4867,72 @@
             "additionalProperties": false
           },
           "__schema14": {
+            "type": "string",
+            "enum": ["UAE", "Egypt"]
+          },
+          "__schema15": {
+            "type": "string",
+            "enum": ["any", "all"]
+          },
+          "__schema16": {
             "type": "object",
             "properties": {
               "min": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema15"
-              },
-              "max": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema16"
-              },
-              "currency": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema17"
               },
-              "association": {
+              "max": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema18"
               },
-              "rawText": {
+              "currency": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema19"
+              },
+              "association": {
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema20"
+              },
+              "rawText": {
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
               }
             },
             "required": ["min", "max", "currency", "association", "rawText"],
             "additionalProperties": false
           },
-          "__schema15": {
-            "anyOf": [
-              {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1000000000000
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "__schema16": {
-            "anyOf": [
-              {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1000000000000
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "__schema17": {
-            "type": "string",
-            "enum": ["AED", "EGP", "USD", "EUR", "SAR", "GBP"]
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1000000000000
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "__schema18": {
-            "type": "string",
-            "enum": ["explicit", "needs_clarification"]
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1000000000000
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "__schema19": {
             "type": "string",
-            "maxLength": 500
+            "enum": ["AED", "EGP", "USD", "EUR", "SAR", "GBP"]
           },
           "__schema20": {
+            "type": "string",
+            "enum": ["explicit", "needs_clarification"]
+          },
+          "__schema21": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "__schema22": {
             "oneOf": [
               {
                 "type": "object",
@@ -4866,7 +4951,7 @@
                     "enum": ["before", "by"]
                   },
                   "rawText": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
                   }
                 },
                 "required": ["kind", "year", "boundary", "rawText"],
@@ -4889,7 +4974,7 @@
                     "enum": ["before", "by"]
                   },
                   "rawText": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
                   }
                 },
                 "required": ["kind", "date", "boundary", "rawText"],
@@ -4913,7 +4998,7 @@
                     "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
                   },
                   "rawText": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
                   }
                 },
                 "required": ["kind", "months", "relativeTo", "rawText"],
@@ -4927,7 +5012,7 @@
                     "const": "flexible"
                   },
                   "rawText": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
                   }
                 },
                 "required": ["kind", "rawText"],
@@ -4935,47 +5020,29 @@
               }
             ]
           },
-          "__schema21": {
+          "__schema23": {
             "type": "string",
             "minLength": 1,
             "maxLength": 500
           },
-          "__schema22": {
+          "__schema24": {
             "type": "string",
             "enum": ["apartment", "villa", "penthouse", "townhouse", "mansion", "plot"]
           },
-          "__schema23": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema14"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "__schema24": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema20"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "__schema25": {
-            "minItems": 1,
-            "maxItems": 6,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema17"
-            }
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema16"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "__schema26": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema17"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema22"
               },
               {
                 "type": "null"
@@ -4983,6 +5050,24 @@
             ]
           },
           "__schema27": {
+            "minItems": 1,
+            "maxItems": 6,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema19"
+            }
+          },
+          "__schema28": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema19"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "__schema29": {
             "type": "object",
             "properties": {
               "adults": {
@@ -5029,21 +5114,21 @@
             "required": ["adults", "children", "curriculum", "schoolRequirement"],
             "additionalProperties": false
           },
-          "__schema28": {
+          "__schema30": {
             "maxItems": 30,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema29"
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema31"
             }
           },
-          "__schema29": {
+          "__schema31": {
             "type": "object",
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
               },
               "text": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
               },
               "marketIds": {
                 "maxItems": 8,
@@ -5063,32 +5148,32 @@
             "required": ["id", "text", "marketIds", "category", "verificationRequired"],
             "additionalProperties": false
           },
-          "__schema30": {
+          "__schema32": {
             "maxItems": 30,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema29"
-            }
-          },
-          "__schema31": {
-            "maxItems": 20,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
-            }
-          },
-          "__schema32": {
-            "maxItems": 100,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema33"
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema31"
             }
           },
           "__schema33": {
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
+            }
+          },
+          "__schema34": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema35"
+            }
+          },
+          "__schema35": {
             "type": "object",
             "properties": {
               "fieldId": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
               },
               "rawText": {
                 "type": "string",
@@ -5102,7 +5187,7 @@
             "required": ["fieldId", "rawText", "origin"],
             "additionalProperties": false
           },
-          "__schema34": {
+          "__schema36": {
             "type": "object",
             "properties": {
               "mode": {
@@ -5126,27 +5211,27 @@
             "required": ["mode", "doNotSave", "doNotShare", "doNotBook", "writePolicy"],
             "additionalProperties": false
           },
-          "__schema35": {
+          "__schema37": {
             "type": "object",
             "properties": {
               "consent": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema36"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema38"
               },
               "consentedAt": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema37"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema39"
               },
               "items": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema38"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema40"
               }
             },
             "required": ["consent", "consentedAt", "items"],
             "additionalProperties": false
           },
-          "__schema36": {
+          "__schema38": {
             "type": "string",
             "enum": ["not_asked", "granted", "declined", "revoked"]
           },
-          "__schema37": {
+          "__schema39": {
             "anyOf": [
               {
                 "type": "string",
@@ -5158,21 +5243,21 @@
               }
             ]
           },
-          "__schema38": {
+          "__schema40": {
             "maxItems": 30,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema39"
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
             }
           },
-          "__schema39": {
+          "__schema41": {
             "type": "object",
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
               },
               "text": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
               },
               "recordedAt": {
                 "type": "string",
@@ -5183,7 +5268,7 @@
             "required": ["id", "text", "recordedAt"],
             "additionalProperties": false
           },
-          "__schema40": {
+          "__schema42": {
             "oneOf": [
               {
                 "type": "object",
@@ -5192,28 +5277,28 @@
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                   },
                   "name": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
-                  },
-                  "center": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema42"
-                  },
-                  "coordinatesApproximate": {
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
                   },
-                  "price": {
+                  "center": {
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema44"
                   },
+                  "coordinatesApproximate": {
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema45"
+                  },
+                  "price": {
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema46"
+                  },
                   "facts": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema51"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
                   },
                   "sources": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema54"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema56"
                   },
                   "reasons": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema58"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema60"
                   },
                   "tradeoff": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema59"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema61"
                   },
                   "kind": {
                     "type": "string",
@@ -5254,28 +5339,28 @@
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                   },
                   "name": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
-                  },
-                  "center": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema42"
-                  },
-                  "coordinatesApproximate": {
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
                   },
-                  "price": {
+                  "center": {
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema44"
                   },
+                  "coordinatesApproximate": {
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema45"
+                  },
+                  "price": {
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema46"
+                  },
                   "facts": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema51"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
                   },
                   "sources": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema54"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema56"
                   },
                   "reasons": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema58"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema60"
                   },
                   "tradeoff": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema59"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema61"
                   },
                   "kind": {
                     "type": "string",
@@ -5316,28 +5401,28 @@
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                   },
                   "name": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
-                  },
-                  "center": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema42"
-                  },
-                  "coordinatesApproximate": {
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
                   },
-                  "price": {
+                  "center": {
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema44"
                   },
+                  "coordinatesApproximate": {
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema45"
+                  },
+                  "price": {
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema46"
+                  },
                   "facts": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema51"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
                   },
                   "sources": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema54"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema56"
                   },
                   "reasons": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema58"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema60"
                   },
                   "tradeoff": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema59"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema61"
                   },
                   "kind": {
                     "type": "string",
@@ -5373,20 +5458,20 @@
               }
             ]
           },
-          "__schema41": {
+          "__schema43": {
             "type": "object",
             "properties": {
               "en": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
               },
               "ar": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
               }
             },
             "required": ["en", "ar"],
             "additionalProperties": false
           },
-          "__schema42": {
+          "__schema44": {
             "anyOf": [
               {
                 "type": "array",
@@ -5411,29 +5496,29 @@
               }
             ]
           },
-          "__schema43": {
+          "__schema45": {
             "type": "boolean"
           },
-          "__schema44": {
+          "__schema46": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema45"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema47"
               },
               {
                 "type": "null"
               }
             ]
           },
-          "__schema45": {
+          "__schema47": {
             "type": "object",
             "properties": {
               "native": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema46"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
               },
               "qualifier": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
                   },
                   {
                     "type": "null"
@@ -5447,13 +5532,13 @@
                 "maxItems": 6,
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema47"
+                  "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema49"
                 }
               },
               "paymentCurrency": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema17"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema19"
                   },
                   {
                     "type": "null"
@@ -5464,7 +5549,7 @@
             "required": ["native", "qualifier", "factId", "converted", "paymentCurrency"],
             "additionalProperties": false
           },
-          "__schema46": {
+          "__schema48": {
             "type": "object",
             "properties": {
               "amount": {
@@ -5473,24 +5558,24 @@
                 "maximum": 1000000000000
               },
               "currency": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema17"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema19"
               }
             },
             "required": ["amount", "currency"],
             "additionalProperties": false
           },
-          "__schema47": {
+          "__schema49": {
             "type": "object",
             "properties": {
               "money": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema46"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
               },
               "rate": {
                 "type": "number",
                 "exclusiveMinimum": 0
               },
               "asOf": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema50"
               },
               "method": {
                 "type": "string",
@@ -5500,20 +5585,20 @@
             "required": ["money", "rate", "asOf", "method"],
             "additionalProperties": false
           },
-          "__schema48": {
+          "__schema50": {
             "type": "object",
             "properties": {
               "value": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema49"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema51"
               },
               "precision": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema50"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema52"
               }
             },
             "required": ["value", "precision"],
             "additionalProperties": false
           },
-          "__schema49": {
+          "__schema51": {
             "anyOf": [
               {
                 "type": "string",
@@ -5524,31 +5609,31 @@
               }
             ]
           },
-          "__schema50": {
+          "__schema52": {
             "type": "string",
             "enum": ["UNKNOWN", "YEAR", "MONTH", "DAY"]
           },
-          "__schema51": {
+          "__schema53": {
             "maxItems": 80,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema52"
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema54"
             }
           },
-          "__schema52": {
+          "__schema54": {
             "type": "object",
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
               },
               "entity": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema55"
               },
               "key": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
               },
               "label": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
               },
               "value": {
                 "anyOf": [
@@ -5581,7 +5666,7 @@
               "currency": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema17"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema19"
                   },
                   {
                     "type": "null"
@@ -5596,7 +5681,7 @@
                 }
               },
               "asOf": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema50"
               },
               "provenance": {
                 "type": "string",
@@ -5605,7 +5690,7 @@
               "qualifier": {
                 "anyOf": [
                   {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
                   },
                   {
                     "type": "null"
@@ -5624,7 +5709,7 @@
                 ]
               },
               "displayValue": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
               }
             },
             "required": [
@@ -5643,7 +5728,7 @@
             ],
             "additionalProperties": false
           },
-          "__schema53": {
+          "__schema55": {
             "type": "object",
             "properties": {
               "kind": {
@@ -5657,14 +5742,14 @@
             "required": ["kind", "id"],
             "additionalProperties": false
           },
-          "__schema54": {
+          "__schema56": {
             "maxItems": 40,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema55"
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema57"
             }
           },
-          "__schema55": {
+          "__schema57": {
             "oneOf": [
               {
                 "type": "object",
@@ -5673,16 +5758,16 @@
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                   },
                   "title": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema56"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema58"
                   },
                   "asOf": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema50"
                   },
                   "retrieved": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema50"
                   },
                   "confidence": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema57"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema59"
                   },
                   "kind": {
                     "type": "string",
@@ -5693,7 +5778,7 @@
                     "format": "uri"
                   },
                   "publisher": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
                   },
                   "basis": {
                     "type": "string",
@@ -5730,16 +5815,16 @@
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                   },
                   "title": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema56"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema58"
                   },
                   "asOf": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema50"
                   },
                   "retrieved": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema50"
                   },
                   "confidence": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema57"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema59"
                   },
                   "kind": {
                     "type": "string",
@@ -5776,16 +5861,16 @@
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                   },
                   "title": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema56"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema58"
                   },
                   "asOf": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema50"
                   },
                   "retrieved": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema50"
                   },
                   "confidence": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema57"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema59"
                   },
                   "kind": {
                     "type": "string",
@@ -5822,16 +5907,16 @@
                     "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
                   },
                   "title": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema56"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema58"
                   },
                   "asOf": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema50"
                   },
                   "retrieved": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema48"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema50"
                   },
                   "confidence": {
-                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema57"
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema59"
                   },
                   "kind": {
                     "type": "string",
@@ -5863,7 +5948,7 @@
               }
             ]
           },
-          "__schema56": {
+          "__schema58": {
             "anyOf": [
               {
                 "type": "string",
@@ -5874,61 +5959,61 @@
               }
             ]
           },
-          "__schema57": {
+          "__schema59": {
             "type": "string",
             "enum": ["UNASSESSED", "LOW", "MEDIUM", "HIGH"]
           },
-          "__schema58": {
+          "__schema60": {
             "minItems": 2,
             "maxItems": 3,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema59"
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema61"
             }
           },
-          "__schema59": {
+          "__schema61": {
             "type": "object",
             "properties": {
               "text": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
               },
               "briefFieldIds": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema60"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema62"
               },
               "factIds": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema61"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema63"
               },
               "status": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema62"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema64"
               }
             },
             "required": ["text", "briefFieldIds", "factIds", "status"],
             "additionalProperties": false
           },
-          "__schema60": {
+          "__schema62": {
             "minItems": 1,
             "maxItems": 8,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
             }
           },
-          "__schema61": {
+          "__schema63": {
             "maxItems": 12,
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
             }
           },
-          "__schema62": {
+          "__schema64": {
             "type": "string",
             "enum": ["supported", "unknown", "conflict"]
           },
-          "__schema63": {
+          "__schema65": {
             "type": "object",
             "properties": {
               "label": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
               },
               "factKey": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
@@ -5937,11 +6022,11 @@
             "required": ["label", "factKey"],
             "additionalProperties": false
           },
-          "__schema64": {
+          "__schema66": {
             "type": "object",
             "properties": {
               "center": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema65"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema67"
               },
               "zoom": {
                 "type": "number",
@@ -5988,7 +6073,7 @@
             "required": ["center", "zoom", "key"],
             "additionalProperties": false
           },
-          "__schema65": {
+          "__schema67": {
             "type": "array",
             "prefixItems": [
               {
@@ -6006,28 +6091,28 @@
             "minItems": 2,
             "maxItems": 2
           },
-          "__schema66": {
+          "__schema68": {
             "maxItems": 80,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema52"
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema54"
             }
           },
-          "__schema67": {
+          "__schema69": {
             "maxItems": 40,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema55"
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema57"
             }
           },
-          "__schema68": {
+          "__schema70": {
             "type": "object",
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
               },
               "label": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
               },
               "percent": {
                 "type": "number",
@@ -6035,7 +6120,7 @@
                 "maximum": 100
               },
               "timing": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema21"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema23"
               },
               "factIds": {
                 "minItems": 1,
@@ -6049,11 +6134,11 @@
             "required": ["id", "label", "percent", "timing", "factIds"],
             "additionalProperties": false
           },
-          "__schema69": {
+          "__schema71": {
             "type": "object",
             "properties": {
               "entity": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema55"
               },
               "priceFactId": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
@@ -6065,14 +6150,14 @@
             "required": ["entity", "priceFactId", "areaFactId"],
             "additionalProperties": false
           },
-          "__schema70": {
+          "__schema72": {
             "type": "object",
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
               },
               "title": {
-                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema43"
               },
               "placeId": {
                 "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
@@ -6092,36 +6177,119 @@
             "required": ["id", "title", "placeId", "time", "factIds"],
             "additionalProperties": false
           },
-          "__schema71": {
+          "__schema73": {
+            "type": "string",
+            "const": "notice"
+          },
+          "__schema74": {
+            "type": "string",
+            "enum": [
+              "NO_MATCHES",
+              "UNKNOWN_FACT",
+              "NEEDS_CLARIFICATION",
+              "ADVICE_HANDOFF",
+              "DEMO_LIMITATION"
+            ]
+          },
+          "__schema75": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "deadline-year-boundary"
+              },
+              "marketId": {
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
+              },
+              "country": {
+                "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema14"
+              },
+              "year": {
+                "type": "integer",
+                "minimum": 1900,
+                "maximum": 2200
+              },
+              "boundary": {
+                "type": "string",
+                "const": "by"
+              },
+              "interpretation": {
+                "type": "string",
+                "const": "END_OF_YEAR"
+              },
+              "scope": {
+                "type": "object",
+                "properties": {
+                  "purpose": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema10"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "placeIds": {
+                    "maxItems": 12,
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema1"
+                    }
+                  },
+                  "placeMatch": {
+                    "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema15"
+                  },
+                  "marketMode": {
+                    "type": "string",
+                    "enum": ["independent", "alternatives"]
+                  }
+                },
+                "required": ["purpose", "placeIds", "placeMatch", "marketMode"],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "marketId",
+              "country",
+              "year",
+              "boundary",
+              "interpretation",
+              "scope"
+            ],
+            "additionalProperties": false
+          },
+          "__schema76": {
             "type": "integer",
             "minimum": 0,
             "maximum": 9007199254740991
           },
-          "__schema72": {
+          "__schema77": {
             "maxItems": 24,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema55"
             }
           },
-          "__schema73": {
+          "__schema78": {
             "type": "string",
             "format": "date-time",
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
           },
-          "__schema74": {
+          "__schema79": {
             "minItems": 1,
             "maxItems": 24,
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
+              "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema55"
             }
           },
-          "__schema75": {
+          "__schema80": {
             "type": "string",
             "const": "propose"
           },
-          "__schema76": {
+          "__schema81": {
             "type": "string",
             "format": "date-time",
             "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"

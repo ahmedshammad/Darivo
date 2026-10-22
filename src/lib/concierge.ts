@@ -554,6 +554,27 @@ const paymentScheduleSchema = z
     if (Math.abs(rows.reduce((sum, row) => sum + row.percent, 0) - 100) > 0.001)
       ctx.addIssue({ code: 'custom', message: 'A full payment schedule must sum to 100 percent.' });
   });
+/** Server-generated presentation context; never accepted from provider plans or tool arguments. */
+export const deadlineAssumptionContextSchema = z
+  .object({
+    kind: z.literal('deadline-year-boundary'),
+    marketId: id,
+    country: marketBriefSchema.shape.country,
+    year: z.number().int().min(1900).max(2200),
+    boundary: z.literal('by'),
+    interpretation: z.literal('END_OF_YEAR'),
+    scope: z
+      .object({
+        purpose: purposeSchema.nullable(),
+        placeIds: z.array(id).max(12),
+        placeMatch: marketBriefSchema.shape.placeMatch,
+        marketMode: z.enum(['independent', 'alternatives']),
+      })
+      .strict(),
+  })
+  .strict();
+export type DeadlineAssumptionContext = z.infer<typeof deadlineAssumptionContextSchema>;
+
 export const conciergeComponentSchema = z.discriminatedUnion('kind', [
   z
     .object({
@@ -647,8 +668,17 @@ export const conciergeComponentSchema = z.discriminatedUnion('kind', [
         'DEMO_LIMITATION',
       ]),
       text: localizedTextSchema,
+      context: deadlineAssumptionContextSchema.optional(),
     })
-    .strict(),
+    .strict()
+    .superRefine((notice, ctx) => {
+      if (notice.context && notice.code !== 'NEEDS_CLARIFICATION')
+        ctx.addIssue({
+          code: 'custom',
+          path: ['context'],
+          message: 'Deadline context belongs only to its clarification notice.',
+        });
+    }),
 ]);
 export type ConciergeComponent = z.infer<typeof conciergeComponentSchema>;
 

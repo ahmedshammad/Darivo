@@ -27,6 +27,7 @@ import type {
   AtlasTheme,
 } from '@/src/lib/atlas';
 import type { ConciergeAction, GroundedCard } from '@/src/lib/concierge';
+import { isRepeatedDeadlineAssumption } from '@/src/lib/concierge-context';
 import { ATLAS_PLACES, ATLAS_STORIES, projectInPlace } from '@/src/lib/atlas-intent';
 import { openTileProvider } from '@/src/lib/tiles';
 import { usePreferences } from '@/src/components/preferences';
@@ -620,7 +621,7 @@ export function ConciergeClient({
               </div>
             )}
             <div className="cq-turns" role="log" aria-live="off" aria-label={t.conversation}>
-              {concierge.turns.map((turn) => (
+              {concierge.turns.map((turn, turnIndex) => (
                 <article
                   className="cq-turn"
                   key={turn.id}
@@ -650,6 +651,11 @@ export function ConciergeClient({
                       <div id={`component-${component.id}`} key={component.id}>
                         <ResponseComponent
                           component={component}
+                          repeatedDeadlineAssumption={isRepeatedDeadlineAssumption(
+                            component,
+                            concierge.turns,
+                            turnIndex,
+                          )}
                           projects={data.projects}
                           locale={locale}
                           comparison={effectiveComparison}

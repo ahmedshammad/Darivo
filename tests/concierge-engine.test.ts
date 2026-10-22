@@ -82,6 +82,70 @@ describe('Concierge authorized engine and grounded replay', () => {
       expect(result.text).not.toContain('budget.currency');
     }
   });
+  it('preserves exact full scoped deadline notices in every SSE result and history replay', async () => {
+    const brief = emptyConciergeBrief();
+    brief.uncertainties = ['deadline_year_boundary'];
+    brief.markets = [
+      {
+        id: 'market-egypt',
+        country: 'Egypt',
+        purpose: 'holiday',
+        placeIds: ['north-coast'],
+        placeMatch: 'any',
+        budget: null,
+        deadline: { kind: 'year', year: 2028, boundary: 'by', rawText: 'by 2028' },
+        readiness: 'unspecified',
+        propertyTypes: [],
+        bedrooms: null,
+        rawText: 'North Coast holiday home by 2028',
+      },
+    ];
+    const original = structuredClone(brief);
+    const expectedText = {
+      en: 'For your Egypt Brief, I am treating “by 2028” as the end of 2028. Edit this if you mean an earlier date.',
+      ar: 'في طلبك الخاص بـمصر، أفسّر «بحلول 2028» على أنه نهاية 2028. عدّل هذا إذا كنت تقصد موعداً أبكر.',
+    };
+    for (const responseLanguage of ['en', 'ar'] as const) {
+      for (let repeated = 0; repeated < 2; repeated++) {
+        const events: ConciergeStreamEvent[] = [];
+        const result = await runConciergeTurn(
+          { ...input(providerFor([], { responseLanguage })), brief },
+          (event) => {
+            events.push(event);
+          },
+        );
+        const notice = result.components.find(
+          (component) =>
+            component.kind === 'notice' && component.context?.kind === 'deadline-year-boundary',
+        );
+        expect(notice?.kind).toBe('notice');
+        if (notice?.kind !== 'notice') throw new Error('Missing deadline notice');
+        expect(notice.text).toEqual(expectedText);
+        expect(notice.context).toEqual({
+          kind: 'deadline-year-boundary',
+          marketId: 'market-egypt',
+          country: 'Egypt',
+          year: 2028,
+          boundary: 'by',
+          interpretation: 'END_OF_YEAR',
+          scope: {
+            purpose: 'holiday',
+            placeIds: ['north-coast'],
+            placeMatch: 'any',
+            marketMode: 'independent',
+          },
+        });
+        expect(
+          events.find(
+            (event) => event.type === 'component.upsert' && event.component.id === notice.id,
+          ),
+        ).toMatchObject({ type: 'component.upsert', component: notice });
+        expect(await rehydrateConciergeComponents([notice], null, result.brief)).toEqual([notice]);
+        expect(result.brief.markets).toEqual(original.markets);
+        expect(brief).toEqual(original);
+      }
+    }
+  });
   it('discloses retained school uncertainty even when a provider calls no tools', async () => {
     const brief = emptyConciergeBrief();
     brief.household.curriculum = 'British';

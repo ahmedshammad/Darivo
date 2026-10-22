@@ -101,6 +101,9 @@ export const conciergeCopy = {
     currency: 'Budget currency',
     timeline: 'Ready by year',
     deadlineNote: 'A calendar deadline, not a claim of current readiness.',
+    repeatedDeadlineSummary: 'Unchanged assumption · {country}: end of {year}',
+    scopedDeadlineAssumption:
+      'For {country}, “by {year}” means the end of {year}. Edit this deadline if you mean earlier.',
     children: 'Children',
     curriculum: 'School curriculum',
     must: 'Must-haves',
@@ -346,6 +349,9 @@ export const conciergeCopy = {
     currency: 'عملة الميزانية',
     timeline: 'جاهز بحلول سنة',
     deadlineNote: 'موعد زمني مطلوب، وليس تأكيدًا للجاهزية الحالية.',
+    repeatedDeadlineSummary: 'افتراض لم يتغيّر · {country}: نهاية {year}',
+    scopedDeadlineAssumption:
+      'بالنسبة إلى {country}، تعني «بحلول {year}» نهاية {year}. عدّل هذا الموعد إذا كنت تقصد تاريخًا أبكر.',
     children: 'عدد الأطفال',
     curriculum: 'المنهج المدرسي',
     must: 'المتطلبات الأساسية',

@@ -13,6 +13,7 @@ import {
   type ConciergeStreamEvent,
   type WriteProposal,
 } from '@/src/lib/concierge';
+import { getDeadlineAssumptionContexts } from '@/src/lib/concierge-context';
 import { applyConciergeBriefPatch, StaleBriefError } from './brief';
 import { cardEntity } from './grounding';
 import { extractConciergePrivacy } from './mock-parser';
@@ -371,29 +372,23 @@ export async function runConciergeTurn(
       if (!plan.continue || components.length >= CONCIERGE_LIMITS.componentsPerTurn) break;
     }
     await ensureSchoolDisclosure();
-    if (brief.uncertainties.includes('deadline_year_boundary')) {
-      for (const market of brief.markets) {
-        if (
-          market.deadline?.kind !== 'year' ||
-          market.deadline.boundary !== 'by' ||
-          components.length >= CONCIERGE_LIMITS.componentsPerTurn
-        )
-          continue;
-        const year = market.deadline.year;
-        const component: ConciergeComponent = {
-          id: randomUUID(),
-          turnId: input.turnId,
-          kind: 'notice',
-          code: 'NEEDS_CLARIFICATION',
-          text: {
-            en: `For your ${market.country === 'UAE' ? 'UAE' : 'Egypt'} Brief, I am treating “by ${year}” as the end of ${year}. Edit this if you mean an earlier date.`,
-            ar: `في طلبك الخاص بـ${market.country === 'UAE' ? 'الإمارات' : 'مصر'}، أفسّر «بحلول ${year}» على أنه نهاية ${year}. عدّل هذا إذا كنت تقصد موعداً أبكر.`,
-          },
-        };
-        components.push(component);
-        signal.throwIfAborted();
-        await send({ type: 'component.upsert', component });
-      }
+    for (const context of getDeadlineAssumptionContexts(brief)) {
+      if (components.length >= CONCIERGE_LIMITS.componentsPerTurn) break;
+      const year = context.year;
+      const component: ConciergeComponent = {
+        id: randomUUID(),
+        turnId: input.turnId,
+        kind: 'notice',
+        code: 'NEEDS_CLARIFICATION',
+        context,
+        text: {
+          en: `For your ${context.country === 'UAE' ? 'UAE' : 'Egypt'} Brief, I am treating “by ${year}” as the end of ${year}. Edit this if you mean an earlier date.`,
+          ar: `في طلبك الخاص بـ${context.country === 'UAE' ? 'الإمارات' : 'مصر'}، أفسّر «بحلول ${year}» على أنه نهاية ${year}. عدّل هذا إذا كنت تقصد موعداً أبكر.`,
+        },
+      };
+      components.push(component);
+      signal.throwIfAborted();
+      await send({ type: 'component.upsert', component });
     }
     await send({ type: 'status', phase: 'composing' });
     const paymentUnavailable = components.some(

@@ -6,6 +6,8 @@ import { conciergeCopy, type ConciergeLocale } from '@/messages/concierge';
 import type { BriefPatch, ConciergeBrief, MarketBrief } from '@/src/lib/concierge';
 import { ATLAS_PLACES } from '@/src/lib/atlas-intent';
 import { BudgetFields, DeadlineFields } from './brief-fields';
+import { getDeadlineAssumptionContexts } from '@/src/lib/concierge-context';
+import { usePreferences } from '@/src/components/preferences';
 
 const currencies = ['AED', 'EGP', 'USD', 'EUR', 'SAR', 'GBP'] as const;
 const purposes = ['residence', 'investment', 'holiday', 'relocation', 'golden_visa'] as const;
@@ -26,10 +28,12 @@ export function BriefEditor({
   onApply: (patch: BriefPatch) => Promise<void>;
 }) {
   const t = conciergeCopy[locale];
+  const { arabicIndicDigits } = usePreferences();
   const [draft, setDraft] = useState<Draft | null>(null);
   const [saving, setSaving] = useState(false);
   const [feedback, setFeedback] = useState('');
   const current = draft?.value ?? brief;
+  const deadlineAssumptions = getDeadlineAssumptionContexts(current);
   const change = (value: ConciergeBrief) => {
     setDraft({ baseRevision: draft?.baseRevision ?? brief.revision, value });
     setFeedback('');
@@ -240,6 +244,26 @@ export function BriefEditor({
             value={market.deadline}
             onChange={(deadline) => marketChange({ ...market, deadline })}
           />
+          {deadlineAssumptions
+            .filter((context) => context.marketId === market.id)
+            .map((context) => (
+              <p
+                className="cq-deadline-assumption"
+                data-testid="concierge-deadline-assumption"
+                data-market-id={market.id}
+                key={market.id}
+              >
+                {t.scopedDeadlineAssumption
+                  .replace('{country}', market.country === 'UAE' ? t.countryUae : t.countryEgypt)
+                  .replaceAll(
+                    '{year}',
+                    new Intl.NumberFormat(locale, {
+                      useGrouping: false,
+                      numberingSystem: arabicIndicDigits ? 'arab' : 'latn',
+                    }).format(context.year),
+                  )}
+              </p>
+            ))}
           <label>
             {t.readiness}
             <select
