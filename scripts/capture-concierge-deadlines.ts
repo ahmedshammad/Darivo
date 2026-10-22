@@ -1,4 +1,4 @@
-import { chromium } from '@playwright/test';
+import { chromium, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
@@ -57,20 +57,28 @@ async function main() {
               origin: process.env.TEST_BASE_URL ?? 'http://localhost:3001',
               checkpoint: async (evidence) => {
                 const screenshot = `${locale}-${theme}-${width}-${evidence.name}.png`;
+                const axe = (await new AxeBuilder({ page }).analyze()).violations.map((v) => v.id);
                 let mapWaitError: string | null = null;
                 try {
-                  await page.waitForFunction(
-                    () => {
-                      const map = document.querySelector<HTMLElement>('.living-map');
-                      return (
-                        map?.dataset.mapReady === 'true' &&
-                        (map.dataset.mapStatus === 'fallback' ||
-                          (map.dataset.tilesReady === 'true' && map.dataset.moving === 'false'))
-                      );
-                    },
-                    null,
-                    { timeout: 45000 },
-                  );
+                  let stableSince = 0;
+                  await expect
+                    .poll(
+                      async () => {
+                        const settled = await page.evaluate(() => {
+                          const map = document.querySelector<HTMLElement>('.living-map');
+                          return (
+                            map?.dataset.mapReady === 'true' &&
+                            (map.dataset.mapStatus === 'fallback' ||
+                              (map.dataset.tilesReady === 'true' && map.dataset.moving === 'false'))
+                          );
+                        });
+                        if (!settled) stableSince = 0;
+                        else if (!stableSince) stableSince = Date.now();
+                        return Boolean(stableSince && Date.now() - stableSince >= 600);
+                      },
+                      { timeout: 45000, intervals: [100] },
+                    )
+                    .toBe(true);
                 } catch (error) {
                   mapWaitError = String(error);
                 }
@@ -90,7 +98,6 @@ async function main() {
                           element.dataset.moving === 'false')),
                   };
                 });
-                const axe = (await new AxeBuilder({ page }).analyze()).violations.map((v) => v.id);
                 const overflow = await page.evaluate(
                   () => document.documentElement.scrollWidth > innerWidth || scrollY !== 0,
                 );

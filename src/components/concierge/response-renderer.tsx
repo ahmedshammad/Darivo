@@ -242,10 +242,10 @@ export function ConciergeCard({
       <CardPrice card={card} locale={locale} />
       <p className="cq-fine">{card.kind === 'reference-project' ? t.noAvailability : t.demoOnly}</p>
       {card.tradeoff.status !== 'supported' && (
-        <aside className="cq-decision-caveat" data-testid="concierge-decision-caveat">
+        <div role="note" className="cq-decision-caveat" data-testid="concierge-decision-caveat">
           <h4>{t.tradeoff}</h4>
           <p>{card.tradeoff.text[locale]}</p>
-        </aside>
+        </div>
       )}
       <SourceEvidence sources={card.sources.slice(0, 1)} locale={locale} />
       <div className="cq-reasons">
@@ -335,7 +335,7 @@ export function ResponseComponent({
       return (
         <section className="cq-generated" data-component-kind={component.kind}>
           <h3>{t.compare}</h3>
-          <div className="cq-table-scroll" tabIndex={0} role="region" aria-label={t.compare}>
+          <div className="cq-table-scroll" tabIndex={0} role="group" aria-label={t.compare}>
             <table>
               <caption>{t.scrollHint}</caption>
               <thead>
@@ -582,7 +582,7 @@ export function ResponseComponent({
               </figure>
             );
           })}
-          <div className="cq-table-scroll" tabIndex={0} role="region" aria-label={t.chart}>
+          <div className="cq-table-scroll" tabIndex={0} role="group" aria-label={t.chart}>
             <table>
               <thead>
                 <tr>
@@ -674,8 +674,9 @@ export function ResponseComponent({
         );
       }
       return (
-        <aside
+        <div
           className="cq-notice"
+          role="note"
           aria-label={t.notice}
           data-component-kind={component.kind}
           data-testid="concierge-notice"
@@ -688,7 +689,7 @@ export function ResponseComponent({
               <ArrowUpRight aria-hidden="true" />
             </button>
           )}
-        </aside>
+        </div>
       );
   }
 }

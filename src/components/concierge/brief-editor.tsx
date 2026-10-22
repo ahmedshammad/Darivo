@@ -742,7 +742,7 @@ export function BriefEditor({
         )}
       </details>
       {current.uncertainties.length > 0 && (
-        <aside className="cq-notice">
+        <div role="note" className="cq-notice">
           <ul>
             {current.uncertainties.map((uncertainty) => (
               <li key={uncertainty}>
@@ -752,7 +752,7 @@ export function BriefEditor({
               </li>
             ))}
           </ul>
-        </aside>
+        </div>
       )}
       {draft && draft.baseRevision !== brief.revision && <p role="alert">{t.draftWarning}</p>}
       <div className="cq-brief-actions">
