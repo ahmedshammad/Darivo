@@ -1,80 +1,29 @@
-import { getLocale, getTranslations } from 'next-intl/server';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowUpRight, MoveUpRight } from 'lucide-react';
-import { searchProperties } from '@/src/server/db/properties';
-import { PropertyCard } from '@/src/components/property-card';
-export default async function Home() {
-  const t = await getTranslations(),
-    locale = await getLocale();
-  const { properties } = await searchProperties({ limit: 3 }, null);
+import { notFound } from 'next/navigation';
+import { Arrival } from '@/src/components/atlas/arrival';
+import { getAtlasData } from '@/src/server/db/atlas';
+import { optionalUser } from '@/src/server/security';
+
+export default async function Home({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ theme?: string }>;
+}) {
+  const [{ locale }, { theme }, viewer, data] = await Promise.all([
+    params,
+    searchParams,
+    optionalUser(),
+    getAtlasData(null),
+  ]);
+  if (locale !== 'en' && locale !== 'ar') notFound();
   return (
-    <>
-      <section className="shell hero">
-        <div className="hero-copy">
-          <p className="eyebrow">{t('heroEyebrow')}</p>
-          <h1>{t('heroTitle')}</h1>
-          <p>{t('heroBody')}</p>
-          <div className="hero-actions">
-            <Link className="button button-primary" href={`/${locale}/search`}>
-              {t('heroCta')}
-              <ArrowUpRight size={17} />
-            </Link>
-            <Link className="button button-ghost" href={`/${locale}/consultant`}>
-              {t('heroSecondary')}
-              <ArrowUpRight size={15} />
-            </Link>
-          </div>
-        </div>
-        <div className="hero-art">
-          <Image
-            src="/art/property-0.svg"
-            alt={t('illustration')}
-            fill
-            preload
-            fetchPriority="high"
-            unoptimized
-            sizes="(max-width:650px) 88vw, 45vw"
-          />
-          <div className="hero-caption">
-            <div>
-              <p className="eyebrow">{t('heroCaption')}</p>
-              <span>{t('heroLocation')}</span>
-            </div>
-            <MoveUpRight size={20} />
-          </div>
-        </div>
-      </section>
-      <section className="promise-strip">
-        <div className="shell promises">
-          {[1, 2, 3].map((n) => (
-            <div key={n}>
-              <span className="promise-number">0{n}</span>
-              <h2>{t(`promise${n}`)}</h2>
-              <p>{t(`promise${n}Body`)}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="home-selection section">
-        <div className="shell">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">{t('selected')}</p>
-              <h2 style={{ marginTop: 17 }}>{t('selectedTitle')}</h2>
-            </div>
-            <Link className="button button-outline" href={`/${locale}/search`}>
-              {t('viewCollection')}
-              <ArrowUpRight size={16} />
-            </Link>
-          </div>
-          <div className="grid">
-            {properties.map((p) => (
-              <PropertyCard key={p.id} property={p} />
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+    <Arrival
+      data={data}
+      locale={locale}
+      initialTheme={theme === 'light' ? 'light' : 'dark'}
+      signedIn={!!viewer}
+      viewerRole={viewer?.role}
+    />
   );
 }

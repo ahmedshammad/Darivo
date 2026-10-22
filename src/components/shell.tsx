@@ -18,8 +18,9 @@ export function Shell({
   const locale = useLocale();
   const path = usePathname();
   const [dark, setDark] = useState(false);
-  // The design guide owns its deliberately minimal preview chrome.
-  if (path.endsWith('/design')) return children;
+  // The atlas and design guide own their full-viewport navigation and theme.
+  if (path.endsWith('/design') || path === `/${locale}` || path.endsWith('/explore'))
+    return children;
   return (
     <>
       <a className="skip" href="#main">
