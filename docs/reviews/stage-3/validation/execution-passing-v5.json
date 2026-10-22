@@ -1,0 +1,42 @@
+{
+  "scope": "authorized-concierge-execution",
+  "checkpoint": "stage-3-recovery",
+  "sourceLog": "/tmp/darivo-stage3-recovery-evals.log",
+  "version": 1,
+  "mock": {
+    "provider": "mock",
+    "cases": 412,
+    "turns": 576,
+    "cards": 1684,
+    "facts": 15239,
+    "actions": 590,
+    "durationMs": 37670,
+    "counters": {
+      "executionErrors": 0,
+      "semanticFailures": 0,
+      "hallucinatedIds": 0,
+      "hallucinatedValues": 0,
+      "invalidSourceReferences": 0,
+      "privateLeaks": 0,
+      "currencyErrors": 0,
+      "mapErrors": 0,
+      "toneViolations": 0,
+      "refusalFailures": 0,
+      "schoolDisclosureFailures": 0,
+      "unconfirmedWrites": 0,
+      "streamErrors": 0
+    },
+    "failures": []
+  },
+  "real": {
+    "status": "skipped",
+    "reason": "No OPENAI_API_KEY; real provider not tested."
+  },
+  "totalDurationMs": 39058,
+  "limits": [
+    "Fresh DAL checks certify only this seeded local database state, not current external market truth.",
+    "Mock semantic/execution evidence does not certify native Arabic quality, browser UI, real-provider behavior or external writes.",
+    "No viewing, handoff or portfolio confirmation is executed.",
+    "Execution duration is a validation-run duration, not a browser response-time, Lighthouse, INP or device-performance measurement."
+  ]
+}

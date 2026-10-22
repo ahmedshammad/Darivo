@@ -2,7 +2,7 @@
 
 Stage 3 is in progress. These checks validate the implemented Concierge, not the full Darivo v2 goal or a passing design review.
 
-## Current code checks
+## Initial integration checks (historical)
 
 - Native PostgreSQL16 + pgvector: 251 unit/integration tests in 25 files pass. Includes scoped access, fresh evidence, constraint edits, exact schedules, consent, atomic confirmations, deletion and cancellation boundaries.
 - Full ESLint, TypeScript and formatting checks pass after the final presentation feedback changes.
@@ -35,3 +35,15 @@ All271 unit/integration tests pass in27files. Legacy36 and parser97 cases/118phr
 Production buildv3 succeeds. Two new scenario UI cases pass inEN/AR. Four mobile control cases stop at a remaining wordmark label-content-name mismatch: the nested brand text concatenates without whitespace while its explicit accessible name contains a space. The expanded controls are hidden correctly; the collapsed-control assertions remain unexecuted until this label is repaired. The complete original failure log remains `/tmp/darivo-stage3-reading-v3.log`. No full matrix pass is claimed.
 
 The rebuilt wordmark repair passes all6 focused production cases: EN/AR, WebGL/fallback mobile reading and fully reachable collapsed controls, plus visible calculation values/inputs/qualifications. Both production builds succeed. The regional map change reduces the measured initial transfer from about3.7MiB to0.67MiB; Concierge performance99, LCP2181.2ms, TBT49ms. Legacy Arabic detail scores95. Both strict two-second LCP limits remain unmet; `lighthouse-repair-v1.json` records scope and timing. Fresh full captures and board scores remain pending.
+
+## Recovery checkpoint — production build v5
+
+The latest recovery validation passes **275 native PostgreSQL unit/integration tests in 28 files**, **36 legacy evaluations**, and **97 parser cases covering 118 distinct phrases**. The parser runner remains a semantic check, not proof of authorization or source grounding. Full lint and formatting checks pass. Logs: `/tmp/darivo-stage3-recovery-{tests,evals,lint,format}.log`.
+
+[execution-passing-v5.json](execution-passing-v5.json) is extracted from that eval log. It records **412 authorized execution cases and 576 turns**, checking **1,684 cards, 15,239 facts and 590 actions**, with **all 13 counters zero** and no failures. The corpus spans guest, client, verified-client and developer-partner viewers, plus unit follow-ups and access/revocation probes. Returned-record community checks distinguish Palm Jumeirah from Jebel Ali. Total validation-run duration is 39.058 seconds; this is not response-time or browser-performance evidence. The real provider remains **skipped** because no key is configured; no portfolio, viewing or handoff confirmation is executed by this runner.
+
+Recovery now describes a missing required feature only when a nonempty authorized cohort satisfies every other requirement within the same geographic, budget and deadline scope. Missing evidence is not described as proof that the feature is absent. The EN/AR Sheikha request retains Palm/Saadiyat and strict requirements, returns no nonmatching cards, and presents one conditional no-match notice. The recovery control opens the existing requirements editor without changing or submitting the Brief. No criteria are silently relaxed.
+
+Production **build v5 passes**, followed by **eight focused production browser checks**: EN/AR reading and map-control reachability in WebGL/fallback, visible scenario results/inputs/qualifications, and recovery-editor behavior. Evidence logs are `/tmp/darivo-stage3-build-v5.log` and `/tmp/darivo-stage3-reading-v5.log`. This is a focused pass, not a new complete browser-suite or full capture-matrix pass.
+
+The first failed board review, sixteen mobile axe failures, failed execution reports, accessible-name regression and hosted Arabic-detail performance failure remain preserved above and in their original artifacts. The earlier regional-map Lighthouse result (99, LCP 2181.2ms, TBT 49ms) precedes this recovery checkpoint and is not a fresh v5 measurement; its strict two-second LCP miss remains open. The source recovery is committed and pushed as `210f413`. Nine additional public Concierge/Atlas browser tests pass (`/tmp/darivo-stage3-public-ui-v5.log`); this is another focused run, not a full-suite claim. Capture v4 stopped after four clean states when the automation raced an automatically opened disclosure and clicked it closed. The harness now waits for the visible checkbox, and the full matrix is recording into `../media/v5/`; v4 is not complete. Fresh v5 production media, the second formal review and green current-source hosted CI remain pending. **Stage 3 is not accepted by this checkpoint.** Human language, real-provider, full assistive-technology, physical-device and field-INP limits are unchanged.

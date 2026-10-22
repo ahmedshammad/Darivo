@@ -1,0 +1,446 @@
+[
+  {
+    "kind": "map",
+    "journey": "elena",
+    "locale": "en",
+    "width": 1440,
+    "settled": true,
+    "state": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "preview-1792701411368",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.13900000000001,25.117999999999995]",
+      "zoom": "12.600",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"palm\",\"rect\":{\"x\":349.5,\"y\":368,\"width\":185,\"height\":32},\"offset\":[0,-44]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "failures": [
+      {
+        "url": "http://localhost:3001/en?_rsc=E1P9FADL4kVIwHiC",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/explore?_rsc=E1P9FADL4kVIwHiC",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/login?returnTo=%2Fen%2Fconcierge%3Fq%3D%26theme%3Ddark&_rsc=E1P9FADL4kVIwHiC",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en?_rsc=lyoSKeUxcY2ENihj",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/explore?_rsc=lyoSKeUxcY2ENihj",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/login?returnTo=%2Fen%2Fconcierge%3Fq%3D%26theme%3Ddark&_rsc=v2r9VTQmXF_VVrR7",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/login?_rsc=E1P9FADL4kVIwHiC",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  },
+  {
+    "kind": "requirements",
+    "locale": "en",
+    "width": 1440,
+    "before": 0,
+    "outer": 0,
+    "reading": 1751
+  },
+  {
+    "kind": "map",
+    "journey": "sheikha",
+    "locale": "en",
+    "width": 1440,
+    "settled": true,
+    "state": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "b43fae7b-e56b-4c99-ac81-0458fcbfabdf:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"saadiyat\",\"rect\":{\"x\":470.0000000001743,\"y\":411.99999999991286,\"width\":211,\"height\":32},\"offset\":[133.5,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "failures": [
+      {
+        "url": "http://localhost:3001/en?_rsc=E1P9FADL4kVIwHiC",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/explore?_rsc=E1P9FADL4kVIwHiC",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/login?returnTo=%2Fen%2Fconcierge%3Fq%3D%26theme%3Ddark&_rsc=E1P9FADL4kVIwHiC",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en?_rsc=lyoSKeUxcY2ENihj",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/explore?_rsc=lyoSKeUxcY2ENihj",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/login?returnTo=%2Fen%2Fconcierge%3Fq%3D%26theme%3Ddark&_rsc=v2r9VTQmXF_VVrR7",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/login?_rsc=E1P9FADL4kVIwHiC",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en?_rsc=E1P9FADL4kVIwHiC",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/explore?_rsc=E1P9FADL4kVIwHiC",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/login?returnTo=%2Fen%2Fconcierge%3Fq%3D%26theme%3Ddark&_rsc=E1P9FADL4kVIwHiC",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/concierge?q=&theme=dark&_rsc=lyoSKeUxcY2ENihj",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/concierge?q=A+beachfront+villa+on+Saadiyat+or+the+Palm&theme=dark&_rsc=lyoSKeUxcY2ENihj",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/login?returnTo=%2Fen%2Fconcierge%3Fq%3DA%2Bbeachfront%2Bvilla%2Bon%2BSaadiyat%2Bor%2Bthe%2BPalm%26theme%3Ddark&_rsc=lyoSKeUxcY2ENihj",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  },
+  {
+    "kind": "map",
+    "journey": "elena",
+    "locale": "ar",
+    "width": 1440,
+    "settled": true,
+    "state": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "preview-1792701425240",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.13900000000001,25.117999999999995]",
+      "zoom": "12.600",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"palm\",\"rect\":{\"x\":369,\"y\":368,\"width\":146,\"height\":32},\"offset\":[0,-44]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "failures": [
+      {
+        "url": "http://localhost:3001/ar?_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/explore?_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/login?returnTo=%2Far%2Fconcierge%3Fq%3D%26theme%3Ddark&_rsc=__IACjoWyK5pxEVN",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/login?_rsc=b8TX17zEgYEH7cst",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  },
+  {
+    "kind": "requirements",
+    "locale": "ar",
+    "width": 1440,
+    "before": 0,
+    "outer": 0,
+    "reading": 1768
+  },
+  {
+    "kind": "map",
+    "journey": "sheikha",
+    "locale": "ar",
+    "width": 1440,
+    "settled": true,
+    "state": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "e1c3840d-fc9a-4881-9bc1-16890bd61b21:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"saadiyat\",\"rect\":{\"x\":470.0000000001743,\"y\":411.99999999991286,\"width\":198,\"height\":32},\"offset\":[127,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "failures": [
+      {
+        "url": "http://localhost:3001/ar?_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/explore?_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/login?returnTo=%2Far%2Fconcierge%3Fq%3D%26theme%3Ddark&_rsc=__IACjoWyK5pxEVN",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/login?_rsc=b8TX17zEgYEH7cst",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar?_rsc=b8TX17zEgYEH7cst",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/login?returnTo=%2Far%2Fconcierge%3Fq%3D%26theme%3Ddark&_rsc=b8TX17zEgYEH7cst",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/explore?_rsc=b8TX17zEgYEH7cst",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/concierge?q=&theme=dark&_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar?_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/concierge?q=%D9%81%D9%8A%D9%84%D8%A7+%D8%B9%D9%84%D9%89+%D8%A7%D9%84%D8%A8%D8%AD%D8%B1+%D9%81%D9%8A+%D8%A7%D9%84%D8%B3%D8%B9%D8%AF%D9%8A%D8%A7%D8%AA+%D8%A3%D9%88+%D8%A7%D9%84%D9%86%D8%AE%D9%84%D8%A9&theme=dark&_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/login?returnTo=%2Far%2Fconcierge%3Fq%3D%25D9%2581%25D9%258A%25D9%2584%25D8%25A7%2B%25D8%25B9%25D9%2584%25D9%2589%2B%25D8%25A7%25D9%2584%25D8%25A8%25D8%25AD%25D8%25B1%2B%25D9%2581%25D9%258A%2B%25D8%25A7%25D9%2584%25D8%25B3%25D8%25B9%25D8%25AF%25D9%258A%25D8%25A7%25D8%25AA%2B%25D8%25A3%25D9%2588%2B%25D8%25A7%25D9%2584%25D9%2586%25D8%25AE%25D9%2584%25D8%25A9%26theme%3Ddark&_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  },
+  {
+    "kind": "map",
+    "journey": "elena",
+    "locale": "en",
+    "width": 390,
+    "settled": true,
+    "state": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "preview-1792701437656",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.13900000000001,25.117999999999995]",
+      "zoom": "12.600",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"palm\",\"rect\":{\"x\":94.5,\"y\":229.99999999979252,\"width\":185,\"height\":32},\"offset\":[0,-44]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "failures": [
+      {
+        "url": "http://localhost:3001/en?_rsc=lyoSKeUxcY2ENihj",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  },
+  {
+    "kind": "requirements",
+    "locale": "en",
+    "width": 390,
+    "before": 0,
+    "outer": 0,
+    "reading": 2145
+  },
+  {
+    "kind": "map",
+    "journey": "sheikha",
+    "locale": "en",
+    "width": 390,
+    "settled": true,
+    "state": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "44e8f008-8e5d-4ccb-b01a-ad9e24c53c7e:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "failures": [
+      {
+        "url": "http://localhost:3001/en?_rsc=lyoSKeUxcY2ENihj",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en?_rsc=lyoSKeUxcY2ENihj",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar/concierge?q=A+beachfront+villa+on+Saadiyat+or+the+Palm&theme=dark&_rsc=lyoSKeUxcY2ENihj",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/api/v1/concierge",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  },
+  {
+    "kind": "map",
+    "journey": "elena",
+    "locale": "ar",
+    "width": 390,
+    "settled": true,
+    "state": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "preview-1792701450022",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.13900000000001,25.117999999999995]",
+      "zoom": "12.600",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"palm\",\"rect\":{\"x\":114,\"y\":229.99999999979252,\"width\":146,\"height\":32},\"offset\":[0,-44]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "failures": [
+      {
+        "url": "http://localhost:3001/ar?_rsc=b8TX17zEgYEH7cst",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/concierge?q=&theme=dark&_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar?_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  },
+  {
+    "kind": "requirements",
+    "locale": "ar",
+    "width": 390,
+    "before": 0,
+    "outer": 0,
+    "reading": 2163
+  },
+  {
+    "kind": "map",
+    "journey": "sheikha",
+    "locale": "ar",
+    "width": 390,
+    "settled": true,
+    "state": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "6fce7b2a-bf98-4ac1-ba60-6c415cfea5ae:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "failures": [
+      {
+        "url": "http://localhost:3001/ar?_rsc=b8TX17zEgYEH7cst",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/concierge?q=&theme=dark&_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/ar?_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://localhost:3001/en/concierge?q=%D9%81%D9%8A%D9%84%D8%A7+%D8%B9%D9%84%D9%89+%D8%A7%D9%84%D8%A8%D8%AD%D8%B1+%D9%81%D9%8A+%D8%A7%D9%84%D8%B3%D8%B9%D8%AF%D9%8A%D8%A7%D8%AA+%D8%A3%D9%88+%D8%A7%D9%84%D9%86%D8%AE%D9%84%D8%A9&theme=dark&_rsc=LXCHL04HPD4gdD18",
+        "error": "net::ERR_ABORTED"
+      }
+    ]
+  }
+]

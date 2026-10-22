@@ -1,0 +1,21 @@
+{
+  "scope": "Stage 3 Concierge production at 210f413",
+  "scores": {
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 96,
+    "seo": 100
+  },
+  "metrics": {
+    "lcpMs": 2181.8483,
+    "blockingMs": 51,
+    "layoutShift": 0,
+    "transferBytes": 702589
+  },
+  "rawReport": "/tmp/darivo-stage3-lighthouse-v5/concierge.json",
+  "limits": [
+    "Simulated mobile lab test; not physical-device cadence or field INP.",
+    "Strict LCP below 2000ms remains unmet.",
+    "Measured without concurrent local browser, build or eval workload."
+  ]
+}
