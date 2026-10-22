@@ -14,6 +14,16 @@ for (const locale of ['en', 'ar'] as const) {
     const turn = page.getByTestId('concierge-turn').last();
     await expect(turn).toHaveAttribute('data-status', 'complete', { timeout: 30000 });
     await expect(turn.locator('[data-component-kind="comparison"]')).toBeAttached();
+    const comparison = turn.locator('[data-component-kind="comparison"]');
+    await expect(comparison.getByRole('rowheader', { name: copy.price, exact: true })).toHaveCount(
+      1,
+    );
+    await expect(
+      comparison.getByRole('rowheader', {
+        name: locale === 'ar' ? 'السعر الأصلي' : 'Original price',
+        exact: true,
+      }),
+    ).toHaveCount(0);
     await expect(page.locator('#concierge-prompt')).toHaveValue('');
     await page.getByRole('button', { name: copy.brief, exact: true }).click();
     const brief = page.getByTestId('concierge-brief');

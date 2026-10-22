@@ -19,17 +19,23 @@ test('consultant → named shortlist → comparison → bilingual PDF → privat
   await page.locator('input[name=name]').first().fill('Dubai family home');
   await page.getByRole('button', { name: 'Add these residences', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Dubai family home', exact: true })).toBeVisible();
-  const pdfHref = await page
+  const savedCollection = page.locator('.shortlist-section').filter({
+    has: page.getByRole('heading', { name: 'Dubai family home', exact: true }),
+  });
+  const pdfHref = await savedCollection
     .getByRole('link', { name: 'Download private dossier' })
-    .first()
     .getAttribute('href');
   const pdf = await page.request.get(pdfHref!);
   expect(pdf.ok()).toBeTruthy();
   const bytes = await pdf.body();
   expect(bytes.subarray(0, 5).toString()).toBe('%PDF-');
   writeFileSync('/tmp/darivo-dossier-qa.pdf', bytes);
-  await page.getByRole('checkbox', { name: 'Select for comparison' }).first().check();
+  const selections = savedCollection.getByRole('checkbox', { name: 'Select for comparison' });
+  await selections.nth(0).check();
+  await selections.nth(1).check();
   await page.getByRole('link', { name: 'Compare selected' }).click();
+  // A cold development route compiles on navigation; this is not a performance budget.
+  await expect(page).toHaveURL(/\/en\/compare\?ids=[^&]+/, { timeout: 20000 });
   await expect(page.getByRole('table')).toBeVisible();
   await page.getByRole('link', { name: 'Request a private viewing' }).first().click();
   const slot = new Date(Date.now() + 7 * 86400000).toISOString().slice(0, 16);

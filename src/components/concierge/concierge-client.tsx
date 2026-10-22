@@ -367,8 +367,8 @@ export function ConciergeClient({
         {t.prompt}
       </a>
       <header className="cq-header">
-        <Link href={`/${locale}`} className="cq-wordmark" aria-label={t.home}>
-          DARIVO<span>PRIVATE PROPERTY OFFICE</span>
+        <Link href={`/${locale}`} className="cq-wordmark" title={t.home}>
+          DARIVO <span>PRIVATE PROPERTY OFFICE</span>
         </Link>
         <Link className="cq-atlas-link" href={`/${locale}/explore`}>
           {t.explore}
@@ -399,6 +399,8 @@ export function ConciergeClient({
         }}
         role="region"
         aria-label={t.map}
+        inert={mobile && expanded}
+        aria-hidden={mobile && expanded}
       >
         <LivingMap
           projects={data.projects}
@@ -496,7 +498,7 @@ export function ConciergeClient({
           </div>
           <button
             className="cq-icon"
-            aria-label={t.digits}
+            aria-label={`١٢٣ · ${t.digits}`}
             aria-pressed={arabicIndicDigits}
             onClick={() => setArabicIndicDigits(!arabicIndicDigits)}
           >
@@ -568,13 +570,13 @@ export function ConciergeClient({
             </div>
           </details>
           <div hidden={tab !== 'conversation'}>
-            <div
-              className={`cq-introduction ${concierge.turns.length ? 'cq-introduction-small' : ''}`}
-            >
-              <p className="cq-eyebrow">{t.eyebrow}</p>
-              <h2 className="cq-page-title">{t.title}</h2>
-              {!concierge.turns.length && <p>{t.intro}</p>}
-            </div>
+            {!concierge.turns.length && (
+              <div className="cq-introduction">
+                <p className="cq-eyebrow">{t.eyebrow}</p>
+                <h2 className="cq-page-title">{t.title}</h2>
+                <p>{t.intro}</p>
+              </div>
+            )}
             {!concierge.turns.length && (
               <div className="cq-examples">
                 {t.examples.map((example, index) => (
@@ -596,7 +598,7 @@ export function ConciergeClient({
                 ))}
               </div>
             )}
-            <div className="cq-turns" aria-label={t.conversation}>
+            <div className="cq-turns" role="log" aria-live="off" aria-label={t.conversation}>
               {concierge.turns.map((turn) => (
                 <article
                   className="cq-turn"
@@ -604,11 +606,20 @@ export function ConciergeClient({
                   data-testid="concierge-turn"
                   data-status={turn.status}
                 >
-                  <p className="cq-user-message" dir="auto">
-                    {turn.userText}
-                  </p>
+                  <details className="cq-user-request">
+                    <summary>
+                      <span>{t.yourRequest}</span>
+                      <span className="cq-request-preview" dir="auto">
+                        {turn.userText}
+                      </span>
+                      <ChevronDown aria-hidden="true" />
+                    </summary>
+                    <p className="cq-user-message" dir="auto">
+                      {turn.userText}
+                    </p>
+                  </details>
                   <div className="cq-assistant">
-                    <p className="cq-eyebrow">DARIVO</p>
+                    <p className="cq-sr">DARIVO</p>
                     {turn.assistantText && (
                       <p className="cq-answer" dir="auto">
                         {turn.assistantText}

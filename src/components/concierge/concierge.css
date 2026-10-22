@@ -280,13 +280,6 @@
   font-size: 14px;
   max-width: 40ch;
 }
-.cq-introduction-small {
-  padding: 0 0 24px;
-}
-.cq-introduction-small .cq-page-title {
-  font-size: 34px;
-  margin: 10px 0;
-}
 .cq-examples {
   margin-top: 4px;
   border-top: 1px solid var(--cq-line);
@@ -412,19 +405,48 @@
 .cq-turn {
   margin-bottom: 36px;
 }
+.concierge .cq-user-request {
+  margin: 0 0 12px;
+  border: 0;
+}
+.concierge .cq-user-request summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  min-height: 44px;
+}
+.cq-user-request summary > span:first-child {
+  flex-shrink: 0;
+}
+.cq-request-preview {
+  color: var(--cq-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+.cq-user-request summary svg {
+  width: 14px;
+  height: 14px;
+}
+.cq-user-request[open] summary svg {
+  transform: rotate(180deg);
+}
 .cq-user-message {
   border-inline-start: 2px solid var(--cq-accent);
   padding: 12px 16px;
   background: var(--cq-soft);
   font-size: 14px;
   white-space: pre-wrap;
-  margin-bottom: 24px !important;
+  margin-bottom: 12px !important;
 }
 .cq-answer {
-  font-size: 15px;
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 1.65;
   white-space: pre-wrap;
-  margin: 12px 0 24px !important;
+  margin: 0 0 16px !important;
 }
 .cq-assistant > .cq-text-button {
   margin-top: 12px;
@@ -613,6 +635,13 @@
 .concierge td .cq-card-price strong {
   font-size: 14px;
 }
+.concierge td small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--cq-muted);
+}
 .concierge caption {
   text-align: start;
   font-size: 12px;
@@ -735,10 +764,6 @@
   background: var(--cq-soft);
   margin: 20px 0;
   font-size: 13px;
-}
-.cq-notice h3 {
-  font-size: 23px;
-  margin-bottom: 12px;
 }
 .cq-proposals {
   padding: 20px;
@@ -870,7 +895,7 @@
   .cq-inline-map-sources {
     display: block;
     margin-top: 0 !important;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
   }
   .cq-inline-map-sources .cq-sources {
     display: flex;
@@ -908,6 +933,10 @@
     top: 20px;
   }
   .cq-map .atlas-map-legend {
+    display: none;
+  }
+  .concierge[data-sheet='expanded'] .cq-map .maplibregl-ctrl-group,
+  .concierge[data-sheet='expanded'] .cq-map .atlas-fallback-controls {
     display: none;
   }
   .cq-map .atlas-fallback-label {
@@ -966,7 +995,7 @@
     min-width: 36px;
   }
   .cq-reading {
-    padding: 24px 20px;
+    padding: 16px 20px;
   }
   .cq-introduction {
     padding: 0 0 24px;
@@ -974,9 +1003,6 @@
   .cq-introduction .cq-page-title {
     font-size: 43px;
     margin: 12px 0;
-  }
-  .cq-introduction-small .cq-page-title {
-    font-size: 30px;
   }
   .cq-introduction > p:last-child {
     font-size: 13px;
@@ -1179,6 +1205,11 @@
 .cq-composer[data-empty='true'] textarea {
   min-height: 52px;
   height: 52px;
+  padding-block: 14px;
+  line-height: 22px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .cq-composer[data-empty='true'] .cq-composer-actions {
   flex-direction: row;
@@ -1190,4 +1221,31 @@
 }
 .cq-constraint-editor details {
   margin-bottom: 4px;
+}
+
+.cq-scenario {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid var(--cq-line);
+  background: var(--cq-soft);
+}
+.cq-scenario h4 {
+  margin: 10px 0 6px;
+  font-size: 13px;
+}
+.cq-scenario > strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 30px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.cq-scenario .cq-sources {
+  margin-top: 10px;
+  padding: 0;
+  gap: 8px;
+}
+
+.cq-scenario-inputs {
+  margin-top: 12px !important;
 }

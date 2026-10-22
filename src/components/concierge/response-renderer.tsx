@@ -8,6 +8,7 @@ import type {
   GroundedSource,
 } from '@/src/lib/concierge';
 import { ConciergeMiniMap } from './mini-map';
+import { conciergeToolCallSchema } from '@/src/lib/concierge';
 import type { AtlasProject } from '@/src/lib/atlas';
 import type { AtlasCamera } from '@/src/lib/atlas';
 import { conciergeCopy, type ConciergeLocale } from '@/messages/concierge';
@@ -127,6 +128,19 @@ export function CardPrice({ card, locale }: { card: GroundedCard; locale: Concie
   );
 }
 
+function scenarioInputs(fact: GroundedFact | undefined) {
+  if (!fact?.originalText) return null;
+  try {
+    const parsed = conciergeToolCallSchema.safeParse({
+      name: 'investment_calc',
+      arguments: JSON.parse(fact.originalText),
+    });
+    return parsed.success && parsed.data.name === 'investment_calc' ? parsed.data.arguments : null;
+  } catch {
+    return null;
+  }
+}
+
 export function ConciergeCard({
   card,
   locale,
@@ -141,6 +155,11 @@ export function ConciergeCard({
   onCompare: () => void;
 }) {
   const t = conciergeCopy[locale];
+  const { format } = useConciergeNumbers(locale);
+  const scenario = card.facts.find(
+    (fact) => fact.key === 'scenario-yield' && typeof fact.value === 'number',
+  );
+  const assumptions = scenarioInputs(scenario);
   return (
     <article
       className="cq-project"
@@ -164,6 +183,51 @@ export function ConciergeCard({
           <ArrowUpRight aria-hidden="true" />
         </button>
       </h3>
+      {scenario && typeof scenario.value === 'number' && (
+        <section className="cq-scenario" data-testid="concierge-scenario-yield">
+          <span className="cq-badge">{t.assumption}</span>
+          <h4>{scenario.label[locale]}</h4>
+          <strong>
+            <bdi>
+              {format(scenario.value)}
+              {scenario.unit ? ` ${scenario.unit}` : ''}
+            </bdi>
+          </strong>
+          {scenario.qualifier && <p className="cq-fine">{scenario.qualifier[locale]}</p>}
+          {assumptions ? (
+            <dl className="cq-scenario-inputs">
+              <div>
+                <dt>{t.annualRent}</dt>
+                <dd>
+                  <bdi>
+                    {format(assumptions.annualRent.amount, assumptions.annualRent.currency)}
+                  </bdi>
+                </dd>
+              </div>
+              <div>
+                <dt>{t.annualCosts}</dt>
+                <dd>
+                  <bdi>
+                    {format(assumptions.annualCosts.amount, assumptions.annualCosts.currency)}
+                  </bdi>
+                </dd>
+              </div>
+              <div>
+                <dt>{t.vacancy}</dt>
+                <dd>
+                  <bdi>{format(assumptions.vacancyPercent)}%</bdi>
+                </dd>
+              </div>
+            </dl>
+          ) : (
+            <p className="cq-fine">{t.scenarioInputsUnknown}</p>
+          )}
+          <SourceEvidence
+            sources={card.sources.filter((source) => scenario.sourceIds.includes(source.id))}
+            locale={locale}
+          />
+        </section>
+      )}
       <CardPrice card={card} locale={locale} />
       <p className="cq-fine">{card.kind === 'reference-project' ? t.noAvailability : t.demoOnly}</p>
       <SourceEvidence sources={card.sources.slice(0, 1)} locale={locale} />
@@ -268,19 +332,24 @@ export function ResponseComponent({
                     </td>
                   ))}
                 </tr>
-                {component.rows.map((row) => (
-                  <tr key={row.factKey}>
-                    <th scope="row">{row.label[locale]}</th>
-                    {component.cards.map((card) => (
-                      <td key={card.id}>
-                        <FactValue
-                          fact={card.facts.find((fact) => fact.key === row.factKey)}
-                          locale={locale}
-                        />
-                      </td>
-                    ))}
-                  </tr>
-                ))}
+                {component.rows
+                  .filter(
+                    (row) =>
+                      row.factKey !== 'price' || !component.cards.every((card) => card.price),
+                  )
+                  .map((row) => (
+                    <tr key={row.factKey}>
+                      <th scope="row">{row.label[locale]}</th>
+                      {component.cards.map((card) => (
+                        <td key={card.id}>
+                          <FactValue
+                            fact={card.facts.find((fact) => fact.key === row.factKey)}
+                            locale={locale}
+                          />
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
                 <tr>
                   <th scope="row">{t.tradeoff}</th>
                   {component.cards.map((card) => (
@@ -512,8 +581,7 @@ export function ResponseComponent({
       );
     case 'notice':
       return (
-        <aside className="cq-notice" data-component-kind={component.kind}>
-          <h3>{t.notice}</h3>
+        <aside className="cq-notice" aria-label={t.notice} data-component-kind={component.kind}>
           <p>{component.text[locale]}</p>
         </aside>
       );

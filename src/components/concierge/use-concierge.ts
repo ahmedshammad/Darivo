@@ -15,6 +15,7 @@ import {
 import {
   initialConciergeState,
   reduceConciergeEvent,
+  replaySelection,
   type ClientTurn,
 } from '@/src/lib/concierge-client-state';
 import type { ConciergeRequest, ConciergeUIMessage } from '@/src/lib/concierge-transport';
@@ -143,17 +144,7 @@ export function useConcierge({
         if (epoch.current !== loadingEpoch || controller.signal.aborted) return;
         conversation.current = replay.conversationId;
         briefRef.current = replay.brief;
-        const last = replay.turns.at(-1)?.components.find((component) => 'cards' in component);
-        priorEntities.current =
-          last && 'cards' in last
-            ? last.cards
-                .map((card) =>
-                  card.kind === 'demo-unit'
-                    ? { kind: 'unit' as const, id: card.unitId }
-                    : { kind: 'project' as const, id: card.projectId },
-                )
-                .slice(0, 12)
-            : [];
+        priorEntities.current = replaySelection(replay.turns);
         setState({ ...initialConciergeState(), brief: replay.brief, turns: replay.turns });
       })
       .catch(() => {
