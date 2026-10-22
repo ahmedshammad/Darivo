@@ -22,3 +22,10 @@
 - Grounding is enforced by rendering trusted templates and tool-result cards; model prose is discarded. Restricted IDs resolve to no card. Advice queries create an advisor handoff. Write tools additionally check user intent. Saved history re-authorizes every referenced property.
 - Checks: lint/typecheck pass; 14 tests pass; 36/36 EN/AR/mixed/adversarial mock evals pass with zero off-market leakage; 4 browser tests pass, including bilingual acceptance prompts and hidden-ID refusal.
 - Real-provider eval explicitly skipped because no key is configured. Offline embeddings remain deterministic in this stage; provider embedding configuration/re-indexing remains a hardening item. Stage 3 completes client workflow screens and dossier export.
+
+## Stage 3 — Client workflow (2026-10-22)
+- Connected named shortlists, rename/removal, up-to-four comparison, private PDF export, viewing requests, persistent preferences, mock verification and account deletion.
+- Dossiers are rendered server-side by Chromium using local fonts, escaped data and local-only illustrations. Each exported property is re-authorized. English/Arabic content appears together; no external render requests are allowed.
+- Dubai/Cairo local slots use Temporal with ambiguous/nonexistent DST times rejected and UTC storage. Investment calculator uses bounded user assumptions and labels every result as an estimate.
+- Checks: lint/typecheck clean; 18 tests pass; 36 evals pass; 6 browser tests pass, including consultant → shortlist → compare → PDF → viewing and profile role-injection rejection. Exported A4 cover and property page were rendered with Poppler and visually inspected for readable Arabic, alignment, margins and clipping.
+- Mock verification deliberately submits a built-in placeholder and collects no identity document. PDF runtime requires Chrome (`pnpm exec playwright install chrome` if absent). Production e-mail, real KYC and legal compliance remain explicitly out of scope.
