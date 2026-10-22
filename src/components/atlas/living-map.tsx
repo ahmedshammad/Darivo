@@ -38,6 +38,7 @@ const copy = {
   en: {
     map: 'Living map',
     loading: 'Finding our bearings',
+    loadingDetail: 'Loading local geography · regional context retained',
     fallback: 'Regional 2D map',
     fallbackDetail: 'Offline geography · street and 3D detail unavailable',
     softwareFallback: 'Smoother 2D map for this device · street and 3D detail unavailable',
@@ -74,6 +75,7 @@ const copy = {
   ar: {
     map: 'الخريطة الحيّة',
     loading: 'نرسم ملامح المكان',
+    loadingDetail: 'جارٍ تحميل التفاصيل المحلية · السياق الإقليمي باقٍ',
     fallback: 'خريطة إقليمية ثنائية الأبعاد',
     fallbackDetail: 'جغرافيا محفوظة · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة',
     softwareFallback:
@@ -492,6 +494,7 @@ export function LivingMap(props: LivingMapProps) {
     forceFallback ? 'forced' : undefined,
   );
   const [overlayOff, setOverlayOff] = useState(false);
+  const [detailPending, setDetailPending] = useState(false);
   const [overview, setOverview] = useState(
     (props.camera?.zoom ?? (mode === 'arrival' ? 2.3 : 10.5)) < 5,
   );
@@ -518,6 +521,7 @@ export function LivingMap(props: LivingMapProps) {
       clearTimeout(timeout);
       clearTimeout(arrivalTimer);
       setStatus('fallback');
+      setDetailPending(false);
       setFallbackReason(reason);
       latest.current.onReady?.('fallback');
       queueMicrotask(() => {
@@ -545,6 +549,7 @@ export function LivingMap(props: LivingMapProps) {
         setFallbackReason(undefined);
         setTerrainOff(false);
         setOverlayOff(false);
+        setDetailPending(false);
       }
     });
     void (async () => {
@@ -553,6 +558,8 @@ export function LivingMap(props: LivingMapProps) {
         // Regional conversations need the same lightweight coastline as the Arrival.
         // Street tiles at this scale add megabytes without useful local detail.
         const startOverview = (latest.current.camera?.zoom ?? (arrival ? 2.3 : 10.5)) < 5;
+        let detailReady = !startOverview;
+        let detailLoading = false;
         setOverview(startOverview);
         const capability = await probeMapCapability(abort.signal);
         if (disposed) return;
@@ -564,7 +571,7 @@ export function LivingMap(props: LivingMapProps) {
           import('maplibre-gl'),
           startOverview
             ? Promise.resolve({
-                ...atlasOverviewStyle(theme),
+                ...atlasOverviewStyle(theme, openTileProvider, locale),
                 projection: { type: arrival ? ('globe' as const) : ('mercator' as const) },
               })
             : loadAtlasStyle(theme, locale, abort.signal),
@@ -653,12 +660,42 @@ export function LivingMap(props: LivingMapProps) {
           activeMap.on('movestart', () => {
             instrumentedRoot.dataset.tilesReady = 'false';
           });
+          activeMap.on('sourcedataloading', () => {
+            instrumentedRoot.dataset.tilesReady = 'false';
+          });
+          activeMap.on('styledataloading', () => {
+            instrumentedRoot.dataset.tilesReady = 'false';
+          });
           activeMap.on('style.load', () => {
             instrumentedRoot.dataset.styleLoaded = 'true';
-            instrumentedRoot.dataset.tilesReady = String(activeMap.areTilesLoaded());
+            instrumentedRoot.dataset.tilesReady = String(
+              !detailLoading && activeMap.areTilesLoaded(),
+            );
           });
           activeMap.on('idle', () => {
-            instrumentedRoot.dataset.tilesReady = String(activeMap.areTilesLoaded());
+            if (
+              detailLoading &&
+              activeMap.getSource('openmaptiles') &&
+              activeMap.isSourceLoaded('openmaptiles') &&
+              activeMap.areTilesLoaded()
+            ) {
+              // Keep the regional coast above the incoming style until its source
+              // has painted. The next idle certifies the revealed detailed scene.
+              detailLoading = false;
+              detailReady = true;
+              clearTimeout(timeout);
+              for (const id of ['overview-water', 'overview-land', 'overview-country-labels'])
+                activeMap.setLayoutProperty(id, 'visibility', 'none');
+              setOverview(false);
+              setDetailPending(false);
+              instrumentedRoot.dataset.mapDetail = 'local';
+              instrumentedRoot.dataset.tilesReady = 'false';
+              activeMap.triggerRepaint();
+              return;
+            }
+            instrumentedRoot.dataset.tilesReady = String(
+              !detailLoading && activeMap.isStyleLoaded() && activeMap.areTilesLoaded(),
+            );
           });
         }
         const recordCamera = () => {
@@ -721,7 +758,8 @@ export function LivingMap(props: LivingMapProps) {
           if (sourceId === 'atlas-terrain') {
             activeMap.setTerrain(null);
             setTerrainOff(true);
-          } else if (sourceId === 'openmaptiles' && ++sourceFailures >= 6) fallback();
+          } else if (sourceId === 'openmaptiles' && (detailLoading || ++sourceFailures >= 6))
+            fallback();
         });
         activeMap.on('load', () => {
           if (disposed || failed) return;
@@ -799,8 +837,65 @@ export function LivingMap(props: LivingMapProps) {
             worldMarkerSignature = '';
           };
           const updateWorldMarkers = () => {
-            if (!startOverview || disposed || failed) return;
-            if (activeMap.getZoom() >= 5) {
+            if (disposed || failed) return;
+            const current = latest.current;
+            const compared = (current.compareIds ?? [])
+              .map((id) => current.projects.find((project) => project.id === id))
+              .filter((project): project is AtlasProject => Boolean(project))
+              .slice(0, 4);
+            const regional = activeMap.getZoom() < 5;
+            const namedComparison = regional && compared.length > 1;
+            for (const id of ['atlas-clusters', 'atlas-cluster-counts', 'atlas-markers']) {
+              const visibility = namedComparison ? 'none' : 'visible';
+              if (activeMap.getLayoutProperty(id, 'visibility') !== visibility)
+                activeMap.setLayoutProperty(id, 'visibility', visibility);
+            }
+            if (!regional) {
+              clearWorldMarkers?.();
+              return;
+            }
+            if (namedComparison) {
+              const signature = JSON.stringify([
+                'comparison',
+                compared.map((project) => project.id),
+              ]);
+              if (signature === worldMarkerSignature) return;
+              clearWorldMarkers?.();
+              worldMarkerSignature = signature;
+              for (const project of compared) {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'atlas-world-endpoint';
+                const title = document.createElement('strong');
+                title.textContent = nameOf(project, locale);
+                const country = document.createElement('span');
+                country.textContent =
+                  locale === 'ar'
+                    ? project.country === 'UAE'
+                      ? 'الإمارات'
+                      : 'مصر'
+                    : project.country;
+                button.append(title, country);
+                button.addEventListener('click', (event) => {
+                  event.stopPropagation();
+                  latest.current.onSelect?.(project.id);
+                });
+                const west =
+                  activeMap.project(project.center).x < activeMap.getContainer().clientWidth / 2;
+                const marker = new Marker({
+                  element: button,
+                  anchor: west ? 'left' : 'right',
+                  offset: [west ? 12 : -12, 28],
+                  opacityWhenCovered: 0,
+                  subpixelPositioning: true,
+                })
+                  .setLngLat(project.center)
+                  .addTo(activeMap);
+                worldMarkers.push(marker);
+              }
+              return;
+            }
+            if (!startOverview) {
               clearWorldMarkers?.();
               return;
             }
@@ -814,7 +909,6 @@ export function LivingMap(props: LivingMapProps) {
               unique.set(key, feature);
             }
             const features = [...unique.values()];
-            const current = latest.current;
             const signature = JSON.stringify([
               current.arabicIndicDigits,
               features.map((f) => [
@@ -876,13 +970,11 @@ export function LivingMap(props: LivingMapProps) {
               worldMarkers.push(marker);
             }
           };
-          if (startOverview) {
-            activeMap.on('idle', updateWorldMarkers);
-            activeMap.on('moveend', updateWorldMarkers);
-            activeMap.on('zoomstart', () => {
-              if ((latest.current.camera?.zoom ?? 0) >= 5) clearWorldMarkers?.();
-            });
-          }
+          activeMap.on('idle', updateWorldMarkers);
+          activeMap.on('moveend', updateWorldMarkers);
+          activeMap.on('zoomstart', () => {
+            if ((latest.current.camera?.zoom ?? 0) >= 5) clearWorldMarkers?.();
+          });
           activeMap.addSource('atlas-overlay-labels', {
             type: 'geojson',
             data: { type: 'FeatureCollection', features: [] },
@@ -1120,8 +1212,6 @@ export function LivingMap(props: LivingMapProps) {
             };
           }
           let basePainted = false;
-          let detailReady = !startOverview;
-          let detailLoading = false;
           let deckLoading = false;
           let terrainEnabled = false;
           let terrainFailed = false;
@@ -1142,21 +1232,19 @@ export function LivingMap(props: LivingMapProps) {
             const local = zoom >= 9;
             if (!detailReady && !detailLoading && zoom >= 5) {
               detailLoading = true;
+              setDetailPending(true);
+              timeout = setTimeout(fallback, 14000);
+              if (root.current) root.current.dataset.tilesReady = 'false';
               void loadAtlasStyle(theme, locale, abort.signal)
                 .then((detailStyle) => {
                   if (disposed || failed) return;
                   for (const [id, source] of Object.entries(detailStyle.sources))
                     if (!activeMap.getSource(id)) activeMap.addSource(id, source);
                   for (const layer of detailStyle.layers)
-                    activeMap.addLayer(layer, 'atlas-clusters');
-                  for (const id of ['overview-water', 'overview-land'])
-                    activeMap.setLayoutProperty(id, 'visibility', 'none');
-                  detailReady = true;
-                  setOverview(false);
-                  if (root.current) root.current.dataset.mapDetail = 'local';
+                    activeMap.addLayer(layer, 'overview-water');
                 })
                 .catch(() => {
-                  if (!disposed) setTerrainOff(true);
+                  if (!disposed) fallback();
                 });
             }
             // DEM geometry is invisible on the world globe and unnecessary in a flat overview.
@@ -1383,7 +1471,11 @@ export function LivingMap(props: LivingMapProps) {
           <span>{text.loading}</span>
         </div>
       )}
-      {mode === 'explore' && !fallback && <div className="atlas-map-legend">{text.legend}</div>}
+      {(mode === 'explore' || detailPending) && !fallback && (
+        <div className="atlas-map-legend" role={detailPending ? 'status' : undefined}>
+          {detailPending ? text.loadingDetail : text.legend}
+        </div>
+      )}
       <div className="atlas-map-evidence">
         <details>
           <summary>{text.sources}</summary>

@@ -66,6 +66,7 @@ export async function loadAtlasStyle(
 export function atlasOverviewStyle(
   theme: AtlasTheme,
   provider = openTileProvider,
+  locale: AtlasLocale = 'en',
 ): StyleSpecification {
   const dark = theme === 'dark';
   return {
@@ -75,6 +76,24 @@ export function atlasOverviewStyle(
     glyphs: 'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf',
     sources: {
       'atlas-world-land': { type: 'geojson', data: provider.offlineLand, tolerance: 1, maxzoom: 5 },
+      'atlas-region-names': {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [
+            {
+              type: 'Feature',
+              geometry: { type: 'Point', coordinates: [29.5, 27] },
+              properties: { name: locale === 'ar' ? 'مصر' : 'Egypt' },
+            },
+            {
+              type: 'Feature',
+              geometry: { type: 'Point', coordinates: [54.5, 23.5] },
+              properties: { name: locale === 'ar' ? 'الإمارات' : 'UAE' },
+            },
+          ],
+        },
+      },
     },
     layers: [
       {
@@ -89,6 +108,26 @@ export function atlasOverviewStyle(
         paint: {
           'fill-color': dark ? '#292b2e' : '#e9e2d6',
           'fill-outline-color': dark ? '#777267' : '#aba594',
+        },
+      },
+      {
+        id: 'overview-country-labels',
+        type: 'symbol',
+        source: 'atlas-region-names',
+        minzoom: 3,
+        maxzoom: 5,
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-font': ['Noto Sans Regular'],
+          'text-size': 14,
+          'text-letter-spacing': locale === 'ar' ? 0 : 0.08,
+          'text-allow-overlap': false,
+          'text-padding': 12,
+        },
+        paint: {
+          'text-color': dark ? '#E9E2D6' : '#393B36',
+          'text-halo-color': dark ? '#111215' : '#F7F4EE',
+          'text-halo-width': 2,
         },
       },
     ],

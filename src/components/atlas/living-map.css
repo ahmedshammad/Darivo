@@ -80,6 +80,28 @@
   border-radius: 2px;
   pointer-events: none;
 }
+.living-map .atlas-world-endpoint {
+  display: grid;
+  gap: 2px;
+  max-width: 190px;
+  min-height: 44px;
+  padding: 8px 12px;
+  color: var(--atlas-ink);
+  background: var(--atlas-paper);
+  border: 1px solid var(--atlas-edge);
+  border-radius: 2px;
+  text-align: start;
+  font: 12px/1.4 var(--sans);
+  cursor: pointer;
+}
+.living-map .atlas-world-endpoint span {
+  font-size: 11px;
+  opacity: 0.8;
+}
+.living-map .atlas-world-endpoint:focus-visible {
+  outline: 2px solid #b08d57;
+  outline-offset: 3px;
+}
 .atlas-map-evidence {
   position: absolute;
   z-index: 3;

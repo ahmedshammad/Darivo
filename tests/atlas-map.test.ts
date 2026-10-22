@@ -113,17 +113,14 @@ describe('progressive world geography', () => {
     for (const theme of ['dark', 'light'] as const) {
       const style = atlasOverviewStyle(theme);
       expect(style.projection).toEqual({ type: 'globe' });
-      expect(Object.keys(style.sources)).toEqual(['atlas-world-land']);
+      expect(Object.values(style.sources).every((source) => source.type === 'geojson')).toBe(true);
       const source = style.sources['atlas-world-land'];
       expect(source.type).toBe('geojson');
       if (source.type === 'geojson')
         expect(source.data).toBe('/map-styles/natural-earth-land.geojson');
       expect(style.terrain).toBeUndefined();
-      expect(style.layers).toHaveLength(2);
       expect(
-        style.layers.some(
-          (layer) => layer.type === 'line' || layer.type === 'symbol' || layer.type === 'circle',
-        ),
+        style.layers.some((layer) => layer.type === 'symbol' && (layer.minzoom ?? 0) < 3),
       ).toBe(false);
       const land = style.layers.find((layer) => layer.id === 'overview-land');
       expect(land?.type === 'fill' && land.paint?.['fill-outline-color']).toBeTruthy();
