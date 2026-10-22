@@ -1,0 +1,50 @@
+{
+  "gl": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)",
+  "methods": [
+    {
+      "method": "getProgramParameter",
+      "ms": 6,
+      "start": 372.19999998807907
+    },
+    {
+      "method": "getProgramParameter",
+      "ms": 1.9000000059604645,
+      "start": 381.7999999821186
+    },
+    {
+      "method": "getProgramParameter",
+      "ms": 2.2000000178813934,
+      "start": 386.2999999821186
+    },
+    {
+      "method": "getProgramParameter",
+      "ms": 2.7000000178813934,
+      "start": 439.39999997615814
+    },
+    {
+      "method": "getProgramParameter",
+      "ms": 3.4000000059604645,
+      "start": 443.09999999403954
+    },
+    {
+      "method": "getProgramParameter",
+      "ms": 2.300000011920929,
+      "start": 447.2999999821186
+    },
+    {
+      "method": "getProgramParameter",
+      "ms": 3.399999976158142,
+      "start": 450
+    },
+    {
+      "method": "getProgramParameter",
+      "ms": 3.5999999940395355,
+      "start": 674.5
+    },
+    {
+      "method": "getProgramParameter",
+      "ms": 3.2999999821186066,
+      "start": 678.5999999940395
+    }
+  ]
+}

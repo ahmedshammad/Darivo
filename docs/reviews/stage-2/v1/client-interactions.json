@@ -1,0 +1,118 @@
+[
+  {
+    "persona": "sheikha",
+    "errors": [],
+    "url": "http://localhost:3000/ar/explore?theme=light",
+    "brief": "طلبك بكلماتك\n\nأبحث عن فيلا على البحر في السعديات أو نخلة جميرا لعائلتي، والخصوصية شرط أساسي\n\nحدّثنا الخريطة بحسب الأماكن والطبقات التي تعرّفنا عليها. بقية متطلباتك محفوظة في طلبك، ولم نتحقّق من مطابقتها.",
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "أبحث عن فيلا على البحر في السعديات أو نخلة جميرا لعائلتي، والخصوصية شرط أساسي-1792677817796",
+      "mapPhase": "evening",
+      "styleLoaded": "true",
+      "center": "[55.13900000000001,25.117999999999995]",
+      "zoom": "12.600",
+      "pitch": "48.0",
+      "moving": "false",
+      "deckReady": "true"
+    },
+    "cards": [
+      "1\nتجريبي\nحي السكينة 01\nPalm Jumeirah · Dubai\n\n35,300,000 AED\n\nتقدير تجريبي · التاريخ غير مذكور\n\nلماذا هنا\nمشروع في المنطقة التي تستكشفها.\n\nضع في بالك\nمشروع تجريبي خيالي؛ ليس عرضاً أو عقارات متاحة للبيع.",
+      "2\nتجريبي\nحي السكينة 04\nEmirates Hills · Dubai\n\n2,200,000 AED\n\nتقدير تجريبي · التاريخ غير مذكور\n\nلماذا هنا\nمشروع في المنطقة التي تستكشفها.\n\nضع في بالك\nمشروع تجريبي خيالي؛ ليس عرضاً أو عقارات متاحة للبيع.",
+      "3\nتجريبي\nحي السكينة 06\nDubai Marina · Dubai\n\n2,030,000 AED\n\nتقدير تجريبي · التاريخ غير مذكور\n\nلماذا هنا\nمشروع في المنطقة التي تستكشفها.\n\nضع في بالك\nمشروع تجريبي خيالي؛ ليس عرضاً أو عقارات متاحة للبيع.",
+      "4\nتجريبي\nحي السكينة 08\nSaadiyat Island · Abu Dhabi\n\n5,100,000 AED\n\nتقدير تجريبي · التاريخ غير مذكور\n\nلماذا هنا\nمشروع في المنطقة التي تستكشفها.\n\nضع في بالك\nمشروع تجريبي خيالي؛ ليس عرضاً أو عقارات متاحة للبيع.",
+      "5\nتجريبي\nحي السكينة 09\nAl Reem Island · Abu Dhabi\n\n2,600,000 AED\n\nتقدير تجريبي · التاريخ غير مذكور\n\nلماذا هنا\nمشروع في المنطقة التي تستكشفها.\n\nضع في بالك\nمشروع تجريبي خيالي؛ ليس عرضاً أو عقارات متاحة للبيع.",
+      "6\nمرجع\nMarsa Al Saadiyat\nSaadiyat Island · Abu Dhabi\n\nالسعر عند الطلب\n\nالأساس غير مذكور · 2026-07-23 · bhomes.com\n\nلماذا هنا\nمشروع في المنطقة التي تستكشفها.\n\nضع في بالك\nمرجع على مستوى المشروع فقط. التوافر والشروط الحالية يحتاجان إلى تأكيد.",
+      "7\nمرجع\nOrla, Dorchester Collection\nPalm Jumeirah (Crescent) · Dubai\n\n57,300,000 AED\n\n4-bedroom residences from\n\nإعلان وكيل · 2026-06 · nestseekers.com\n\nلماذا هنا\nمشروع في المنطقة التي تستكشفها.\n\nضع في بالك\nمرجع على مستوى المشروع فقط. التوافر والشروط الحالية يحتاجان إلى تأكيد.",
+      "8\nمرجع\nSaadiyat Lagoons\nSaadiyat Island · Abu Dhabi\n\n6,800,000 AED\n\nFrom\n\nصفحة مشروع في بوابة عقارية · 2026 · propertyfinder.ae\n\nلماذا هنا\nمشروع في المنطقة التي تستكشفها.\n\nضع في بالك\nمرجع على مستوى المشروع فقط. التوافر والشروط الحالية يحتاجان إلى تأكيد.",
+      "9\nمرجع\nSei Saadiyat\nSaadiyat Cultural District · Abu Dhabi\n\n2,950,000 AED\n\nFrom\n\nصفحة مشروع لدى وسيط · 2026-08 · luxhabitat.ae\n\nلماذا هنا\nمشروع في المنطقة التي تستكشفها.\n\nضع في بالك\nمرجع على مستوى المشروع فقط. التوافر والشروط الحالية يحتاجان إلى تأكيد."
+    ],
+    "evidence": "العودة إلى الأماكن\nالمصدر والسياق\nحي السكينة 01\n\nPalm Jumeirah · Dubai\n\n35,300,000 AED\n\nالعملة الأصلية · دون تحويل\n\nتجريبي\n\nمشروع تجريبي خيالي؛ ليس عرضاً أو عقارات متاحة للبيع.\n\nالمطوّر\nNacre Habitat\nالإنجاز\nready\nبتاريخ\nالتاريخ غير مذكور\n\nإحداثيات المشروع تقريبية\n\nسجل المصدر\n\nعرض تجريبي خيالي. لا يمثّل سعراً من السوق.\n\nقارن على الخريطة\n\nمشروع تجريبي خيالي؛ ليس عرضاً أو عقارات متاحة للبيع.\n\nتحدّث مع المكتب الخاص\n\nتفتح الخطوة التالية خدمة المحادثة الحالية. لن يُرسل أي استفسار تلقائياً.\n\nكلماتك ونقاطك المختارة تبقى في هذه الصفحة.",
+    "focusAfterClose": "<button class=\"atlas-project-select\"><h3>حي السكينة 01</h3><span>Palm Jumeirah · Dubai</span><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" ",
+    "overflow": false
+  },
+  {
+    "persona": "karim",
+    "errors": [],
+    "url": "http://localhost:3000/en/explore?theme=dark",
+    "brief": "YOUR WORDS\n\nNorth Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.\n\nThe map now reflects the places and layers recognised below. Other requirements remain in your brief; they are not verified filters.",
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.-1792677821893",
+      "mapPhase": "evening",
+      "styleLoaded": "true",
+      "center": "[28.019999999999982,31.099999999999994]",
+      "zoom": "9.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "deckReady": "true"
+    },
+    "cards": [
+      "1\nDemo\nThe Quiet Quarter 01\nPalm Jumeirah · Dubai\n\n35,300,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "2\nDemo\nThe Quiet Quarter 02\nDubai Hills Estate · Dubai\n\n2,030,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "3\nDemo\nThe Quiet Quarter 03\nDowntown · Dubai\n\n1,540,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "4\nDemo\nThe Quiet Quarter 04\nEmirates Hills · Dubai\n\n2,200,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "5\nDemo\nThe Quiet Quarter 05\nJumeirah Bay · Dubai\n\n32,690,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "6\nDemo\nThe Quiet Quarter 06\nDubai Marina · Dubai\n\n2,030,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "7\nDemo\nThe Quiet Quarter 07\nBusiness Bay · Dubai\n\n1,420,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "8\nDemo\nThe Quiet Quarter 14\nNorth Coast · North Coast\n\n18,260,000 EGP\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "9\nReference\nJune\nRas El Hekma · North Coast\n\n22,400,000 EGP\n\nStandalone villa (222 sqm) recently listed at\n\nRecent listing · 2026-07 · invest-gate.me\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation.",
+      "10\nReference\nMarassi North Coast\nSidi Abdel Rahman · North Coast\n\nPrice on request\n\nBasis not supplied · Date not provided · nawy.com\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation.",
+      "11\nReference\nOrla, Dorchester Collection\nPalm Jumeirah (Crescent) · Dubai\n\n57,300,000 AED\n\n4-bedroom residences from\n\nAgent listing · 2026-06 · nestseekers.com\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation.",
+      "12\nReference\nPalace Villas Ostra, The Oasis\nThe Oasis (Dubailand) · Dubai\n\n13,130,000 AED\n\nFrom\n\nBroker project page · 2026 · bhomes.com\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation."
+    ],
+    "comparison": "Between these places\nClear\n\nChoose 2–4 projects. Lines are straight-line distances; time assumes 40 km/h, without roads or traffic.\n\nThe Quiet Quarter 14 ↔ Orla, Dorchester Collection\n2,640.1 km · ~3,960 min",
+    "selected": [
+      "8\nDemo\nThe Quiet Quarter 14\nNorth Coast · North Coast\n\n18,260,000 EGP\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "11\nReference\nOrla, Dorchester Collection\nPalm Jumeirah (Crescent) · Dubai\n\n57,300,000 AED\n\n4-bedroom residences from\n\nAgent listing · 2026-06 · nestseekers.com\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation."
+    ],
+    "overflow": false
+  },
+  {
+    "persona": "elena",
+    "errors": [],
+    "url": "http://localhost:3000/en/explore?theme=light",
+    "brief": "YOUR WORDS\n\nExplain Dubai neighbourhoods for a family with two kids near a British school\n\nThe map now reflects the places and layers recognised below. Other requirements remain in your brief; they are not verified filters.",
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "Explain Dubai neighbourhoods for a family with two kids near a British school-1792677825667",
+      "mapPhase": "evening",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.140000000000015]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "deckReady": "true"
+    },
+    "cards": [
+      "1\nDemo\nThe Quiet Quarter 01\nPalm Jumeirah · Dubai\n\n35,300,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "2\nDemo\nThe Quiet Quarter 02\nDubai Hills Estate · Dubai\n\n2,030,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "3\nDemo\nThe Quiet Quarter 03\nDowntown · Dubai\n\n1,540,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "4\nDemo\nThe Quiet Quarter 04\nEmirates Hills · Dubai\n\n2,200,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "5\nDemo\nThe Quiet Quarter 05\nJumeirah Bay · Dubai\n\n32,690,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "6\nDemo\nThe Quiet Quarter 06\nDubai Marina · Dubai\n\n2,030,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "7\nDemo\nThe Quiet Quarter 07\nBusiness Bay · Dubai\n\n1,420,000 AED\n\nDemo estimate · Date not provided\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nFictional demo project; not an offer or available inventory.",
+      "8\nReference\nOrla, Dorchester Collection\nPalm Jumeirah (Crescent) · Dubai\n\n57,300,000 AED\n\n4-bedroom residences from\n\nAgent listing · 2026-06 · nestseekers.com\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation.",
+      "9\nReference\nPalace Villas Ostra, The Oasis\nThe Oasis (Dubailand) · Dubai\n\n13,130,000 AED\n\nFrom\n\nBroker project page · 2026 · bhomes.com\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation.",
+      "10\nReference\nPalm Central Private Residences\nPalm Jebel Ali · Dubai\n\n2,700,000 AED\n\nFrom\n\nPress report · 2026-06-24 · thenationalnews.com\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation.",
+      "11\nReference\nPalm Jebel Ali — Beach & Coral Collection Villas\nPalm Jebel Ali · Dubai\n\n20,000,000 AED\n\nBeach Collection villas from\n\nAgent listing · 2026-08-20 · khaleejtimes.com\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation.",
+      "12\nReference\nPalmiera Collective, The Oasis\nThe Oasis (Dubailand) · Dubai\n\n16,500,000 AED\n\nFrom\n\nBroker project page · 2026 · metropolitan.realestate\n\nWhy here\nA project in the area you are exploring.\n\nKeep in mind\nProject-level reference only. Availability and current terms require confirmation."
+    ],
+    "tools": "١٢٣\nArabic-Indic numerals\nLife around you\nBeaches & marinas\nGolf\nSchools\nHospitals\nAirports\nDining & culture\nArea price / m²\n\nLifestyle points are fictional Demo POIs. Area prices are demo estimates.\n\nTime & distance\nReach from\nA point on the map\nMy office\nMy children’s school\nChoose on the map\n10 min\n20 min\n30 min\n\nApproximate radius at 40 km/h. Not road routing; no traffic or accessibility data.\n\nSun & view study",
+    "schoolPressed": "true",
+    "schoolAfter": "false",
+    "toolsAfter": "١٢٣\nArabic-Indic numerals\nLife around you\nBeaches & marinas\nGolf\nSchools\nHospitals\nAirports\nDining & culture\nArea price / m²\n\nLifestyle points are fictional Demo POIs. Area prices are demo estimates.\n\nTime & distance\nReach from\nA point on the map\nMy office\nMy children’s school\nChoose on the map\n10 min\n20 min\n30 min\n\nApproximate radius at 40 km/h. Not road routing; no traffic or accessibility data.\n\nHide reach area\nSun & view study",
+    "toolsClosed": 0,
+    "focusAfterClose": "<button class=\"atlas-tool-toggle\" aria-expanded=\"false\" aria-controls=\"atlas-tools\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-li",
+    "story": "STOP 1 / 3\nPalm Jumeirah\n\nThree island settings along the Dubai coast.\n\nReduced motion: explore each stop manually.",
+    "overflow": false
+  }
+]

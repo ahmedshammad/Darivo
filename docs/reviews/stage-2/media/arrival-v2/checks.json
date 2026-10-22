@@ -1,0 +1,38 @@
+[
+  {
+    "locale": "en",
+    "indic": false,
+    "placeholder": "A beachfront villa on Palm Jebel Ali for my family, ready by 2027",
+    "readyTitle": "Ready Before 2028",
+    "counters": ["01", "02", "03", "04", "05"],
+    "overflow": false,
+    "brokenWords": []
+  },
+  {
+    "locale": "en",
+    "indic": true,
+    "placeholder": "A beachfront villa on Palm Jebel Ali for my family, ready by ٢٠٢٧",
+    "readyTitle": "Ready Before ٢٠٢٨",
+    "counters": ["٠١", "٠٢", "٠٣", "٠٤", "٠٥"],
+    "overflow": false,
+    "brokenWords": []
+  },
+  {
+    "locale": "ar",
+    "indic": false,
+    "placeholder": "فيلا على البحر في نخلة جبل علي للعائلة، تسليم 2027",
+    "readyTitle": "قبل 2028",
+    "counters": ["01", "02", "03", "04", "05"],
+    "overflow": false,
+    "brokenWords": []
+  },
+  {
+    "locale": "ar",
+    "indic": true,
+    "placeholder": "فيلا على البحر في نخلة جبل علي للعائلة، تسليم ٢٠٢٧",
+    "readyTitle": "قبل ٢٠٢٨",
+    "counters": ["٠١", "٠٢", "٠٣", "٠٤", "٠٥"],
+    "overflow": false,
+    "brokenWords": []
+  }
+]

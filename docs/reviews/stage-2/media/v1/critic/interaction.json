@@ -1,0 +1,12 @@
+{
+  "storyInitial": "Map stories\nThe Islands\nBranded Residences\nSahel Summer\nSaadiyat Culture\nReady Before 2028\nSTOP 1 / 3\nPalm Jumeirah\n\nThree island settings along the Dubai coast.\n\nReduced motion: explore each stop manually.",
+  "storyNext": "Map stories\nThe Islands\nBranded Residences\nSahel Summer\nSaadiyat Culture\nReady Before 2028\nSTOP 2 / 3\nPalm Jebel Ali\n\nThree island settings along the Dubai coast.\n\nReduced motion: explore each stop manually.",
+  "focus": "atlas-evidence-title",
+  "evidence": "Back to the places\nEVIDENCE & CONTEXT\nPalm Central Private Residences\n\nPalm Jebel Ali · Dubai\n\n2,700,000 AED\n\nOriginal currency · no FX conversion\n\nFrom\n\nPress report\n\nIndicative — confirm with advisor\n\nDeveloper\nNakheel (Dubai Holding Real Estate)\nCompletion\nNot provided\nAs of\n2026-06-24\n\nApproximate project coordinates\n\nSource record\nthenationalnews.com\nBasis not supplied · 2026-06-24\nthenationalnews.com\nPress report · 2026-06-24\nCompare on map\n\nResidences available on request\n\nTalk to the private office\n\nThe next step opens our existing concierge. No enquiry is sent automatically.",
+  "returnFocus": "atlas-project-select",
+  "afterIntent": "Dubai with schools within 20 minutes of Downtown-1792677854394",
+  "comparison": "Between these places\nClear\n\nChoose 2–4 projects. Lines are straight-line distances; time assumes 40 km/h, without roads or traffic.\n\nThe Quiet Quarter 02 ↔ The Quiet Quarter 03\n9.5 km · ~14 min",
+  "tools": "١٢٣\nArabic-Indic numerals\nLife around you\nBeaches & marinas\nGolf\nSchools\nHospitals\nAirports\nDining & culture\nArea price / m²\n\nLifestyle points are fictional Demo POIs. Area prices are demo estimates.\n\nTime & distance\nReach from\nA point on the map\nMy office\nMy children’s school\nChoose on the map\n10 min\n20 min\n30 min\n\nApproximate radius at 40 km/h. Not road routing; no traffic or accessibility data.\n\nHide reach area\nSun & view study",
+  "picking": "Click an empty point on the map. Or choose a project as the origin.",
+  "fallback": "fallback"
+}

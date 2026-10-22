@@ -1,0 +1,38 @@
+[
+  {
+    "file": "page@bd2c15346ad6d101d027ce108e5c07c2.webm",
+    "duration": 7.48,
+    "captures": [
+      {
+        "time": 1,
+        "path": "/Users/hammad/Codex-App-Development/Darivo-v1/docs/reviews/stage-2/v1/video-bd2c1534-10.png"
+      },
+      {
+        "time": 3.74,
+        "path": "/Users/hammad/Codex-App-Development/Darivo-v1/docs/reviews/stage-2/v1/video-bd2c1534-37.png"
+      },
+      {
+        "time": 6.48,
+        "path": "/Users/hammad/Codex-App-Development/Darivo-v1/docs/reviews/stage-2/v1/video-bd2c1534-65.png"
+      }
+    ]
+  },
+  {
+    "file": "page@cb5e3c21c083d7784d7329767eb2cd7a.webm",
+    "duration": 18.12,
+    "captures": [
+      {
+        "time": 1,
+        "path": "/Users/hammad/Codex-App-Development/Darivo-v1/docs/reviews/stage-2/v1/video-cb5e3c21-10.png"
+      },
+      {
+        "time": 6,
+        "path": "/Users/hammad/Codex-App-Development/Darivo-v1/docs/reviews/stage-2/v1/video-cb5e3c21-60.png"
+      },
+      {
+        "time": 17.12,
+        "path": "/Users/hammad/Codex-App-Development/Darivo-v1/docs/reviews/stage-2/v1/video-cb5e3c21-171.png"
+      }
+    ]
+  }
+]

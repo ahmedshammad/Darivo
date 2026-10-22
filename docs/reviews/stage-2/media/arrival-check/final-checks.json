@@ -1,0 +1,84 @@
+[
+  {
+    "locale": "en",
+    "initial": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapReady": "true",
+      "cameraKey": "arrival-world-mobile",
+      "mapPhase": "day",
+      "center": "[42,27]",
+      "zoom": "1.350",
+      "pitch": "0.0",
+      "moving": "false",
+      "deckReady": "true"
+    },
+    "approach": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapReady": "true",
+      "cameraKey": "arrival-approach-Africa/Cairo",
+      "mapPhase": "day",
+      "center": "[32,29]",
+      "zoom": "1.500",
+      "pitch": "0.0",
+      "moving": "false",
+      "deckReady": "true"
+    },
+    "fallback": "Voice is unavailable in this browser. Your request can be typed below.",
+    "intent": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapReady": "true",
+      "cameraKey": "arrival-A villa on Palm Jumeirah near schools",
+      "mapPhase": "day",
+      "center": "[55.13900000000001,25.117999999999967]",
+      "zoom": "12.600",
+      "pitch": "48.0",
+      "moving": "false",
+      "deckReady": "true"
+    },
+    "shoresHidden": true
+  },
+  {
+    "locale": "ar",
+    "initial": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapReady": "true",
+      "cameraKey": "arrival-world-mobile",
+      "mapPhase": "day",
+      "center": "[42,27]",
+      "zoom": "1.350",
+      "pitch": "0.0",
+      "moving": "false",
+      "deckReady": "true"
+    },
+    "approach": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapReady": "true",
+      "cameraKey": "arrival-approach-Africa/Cairo",
+      "mapPhase": "day",
+      "center": "[32,29]",
+      "zoom": "1.500",
+      "pitch": "0.0",
+      "moving": "false",
+      "deckReady": "true"
+    },
+    "fallback": "الإدخال الصوتي غير متاح في هذا المتصفح. يمكنك كتابة طلبك أدناه.",
+    "intent": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapReady": "true",
+      "cameraKey": "arrival-فيلا في نخلة جميرا قرب المدارس",
+      "mapPhase": "day",
+      "center": "[55.13900000000001,25.117999999999967]",
+      "zoom": "12.600",
+      "pitch": "48.0",
+      "moving": "false",
+      "deckReady": "true"
+    },
+    "shoresHidden": true
+  }
+]

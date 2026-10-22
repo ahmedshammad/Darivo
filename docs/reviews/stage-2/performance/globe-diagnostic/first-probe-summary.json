@@ -1,0 +1,8 @@
+{
+  "scope": "Fresh browser, local production v3 Home, 390x844, unthrottled Apple M3 Metal. First observed probe; not a certified OS shader-cache purge.",
+  "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)",
+  "sampledWebGLSelfMs": 203.452,
+  "largestLinkStatusWaitMs": 170.5,
+  "otherLinkStatusWaitsMs": [7.7, 4.4, 3.2, 3.1, 3.1, 2.7, 2.7, 2.4],
+  "evidenceLimitation": "First probe raw files were overwritten by the second shader-identification probe. These exact values are retained from its tool output; warm raw CPU profile is separate. Neither run is a replacement for fresh production Lighthouse."
+}
