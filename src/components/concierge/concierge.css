@@ -469,6 +469,16 @@
 .cq-text-button span {
   font-size: 11px;
 }
+.cq-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  align-items: start;
+}
+.cq-card-actions > * {
+  max-width: 100%;
+  flex-wrap: wrap;
+}
 .cq-action {
   display: inline-flex;
   align-items: center;

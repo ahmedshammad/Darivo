@@ -119,7 +119,10 @@ export const conciergeCopy = {
     paymentCurrency: 'Payment currency',
     unspecified: 'Not specified',
     privacy: 'Privacy preferences',
-    doNotSave: 'Do not save this conversation',
+    doNotSave: 'Do not save new content',
+    durablePrivacy:
+      'These restrictions also apply in your Private Office. Review privacy settings to lift an active restriction.',
+    managePrivacy: 'Review privacy settings',
     doNotShare: 'Do not share',
     doNotBook: 'Do not book',
     discreet: 'Discreet handling',
@@ -370,7 +373,10 @@ export const conciergeCopy = {
     paymentCurrency: 'عملة السداد',
     unspecified: 'غير محدد',
     privacy: 'تفضيلات الخصوصية',
-    doNotSave: 'عدم حفظ هذا الحوار',
+    doNotSave: 'عدم حفظ محتوى جديد',
+    durablePrivacy:
+      'تسري هذه القيود أيضاً في مكتبك الخاص. لإلغاء قيد مفعّل، راجع إعدادات الخصوصية.',
+    managePrivacy: 'راجع إعدادات الخصوصية',
     doNotShare: 'عدم المشاركة',
     doNotBook: 'عدم الحجز',
     discreet: 'تعامل بخصوصية إضافية',

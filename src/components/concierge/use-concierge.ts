@@ -276,12 +276,16 @@ export function useConcierge({
   const clearHistory = useCallback(async () => {
     await stop();
     let nextConversationId = crypto.randomUUID() as string;
+    const clean = initialConciergeState();
     if (!guest) {
       const response = await fetch('/api/v1/concierge', { method: 'DELETE' });
       if (!response.ok) throw new Error('history_delete_failed');
-      nextConversationId = conciergeReplaySchema.parse(await response.json()).conversationId;
+      const replay = conciergeReplaySchema.parse(await response.json());
+      nextConversationId = replay.conversationId;
+      // Keep the authoritative reset Brief, including durable account restrictions.
+      // History, pending actions and selections still start empty; nothing is replayed.
+      clean.brief = replay.brief;
     }
-    const clean = initialConciergeState();
     briefRef.current = clean.brief;
     conversation.current = nextConversationId;
     lastRequest.current = null;

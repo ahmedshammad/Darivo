@@ -279,19 +279,21 @@ export function ConciergeCard({
         </dl>
         <SourceEvidence sources={card.sources} locale={locale} />
       </details>
-      {card.center && (
-        <button className="cq-text-button" onClick={onSelect}>
-          <MapPin aria-hidden="true" />
-          {t.showMap}
-          {card.coordinatesApproximate && <span> · {t.approximate}</span>}
-        </button>
-      )}
-      {card.storyPath && (
-        <Link className="cq-text-button" href={`/${locale}${card.storyPath}`}>
-          {t.readStory}
-          <ArrowUpRight aria-hidden="true" />
-        </Link>
-      )}
+      <div className="cq-card-actions">
+        {card.center && (
+          <button className="cq-text-button" onClick={onSelect}>
+            <MapPin aria-hidden="true" />
+            {t.showMap}
+            {card.coordinatesApproximate && <span> · {t.approximate}</span>}
+          </button>
+        )}
+        {card.storyPath && (
+          <Link className="cq-text-button" href={`/${locale}${card.storyPath}`}>
+            {t.readStory}
+            <ArrowUpRight aria-hidden="true" />
+          </Link>
+        )}
+      </div>
     </article>
   );
 }

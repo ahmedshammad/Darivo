@@ -683,6 +683,7 @@ export function BriefEditor({
             <input
               type="checkbox"
               checked={current.privacy[key]}
+              disabled={!guest && brief.privacy[key]}
               onChange={(event) =>
                 change({ ...current, privacy: { ...current.privacy, [key]: event.target.checked } })
               }
@@ -690,6 +691,11 @@ export function BriefEditor({
             {t[key]}
           </label>
         ))}
+        {!guest && (
+          <p className="cq-fine">
+            {t.durablePrivacy} <Link href={`/${locale}/office/privacy`}>{t.managePrivacy}</Link>
+          </p>
+        )}
         <label className="cq-check">
           <input
             type="checkbox"

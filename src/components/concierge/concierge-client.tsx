@@ -190,7 +190,14 @@ export function ConciergeClient({
       ? requested.cards.map((card) => card.projectId)
       : [];
   const mobile = geometry.width <= 760;
-  const signInHref = `/${locale}/login?returnTo=${encodeURIComponent(`/${locale}/concierge?${new URLSearchParams({ q: draft || concierge.brief.rawRequest, theme })}`)}`;
+  // Keep server-resolved subject names out of navigation URLs. The destination
+  // resolves the identifier again under its current session and language.
+  const continuationQuery = new URLSearchParams(
+    initialSelection
+      ? { [initialSelection.kind === 'unit' ? 'unit' : 'project']: initialSelection.id, theme }
+      : { q: draft || concierge.brief.rawRequest, theme },
+  );
+  const signInHref = `/${locale}/login?returnTo=${encodeURIComponent(`/${locale}/concierge?${continuationQuery}`)}`;
   const bottomPadding = mobile
     ? (expanded ? geometry.height * 0.74 : Math.max(geometry.height * 0.25, 206)) + 90
     : 120;
@@ -397,9 +404,7 @@ export function ConciergeClient({
           <ArrowUpRight aria-hidden="true" />
         </Link>
         <nav aria-label={t.conversation}>
-          <Link
-            href={`/${locale === 'en' ? 'ar' : 'en'}/concierge?${new URLSearchParams({ q: draft || concierge.brief.rawRequest, theme })}`}
-          >
+          <Link href={`/${locale === 'en' ? 'ar' : 'en'}/concierge?${continuationQuery}`}>
             {t.language}
           </Link>
           <button
@@ -961,6 +966,7 @@ export function ConciergeClient({
                 <ArrowUpRight aria-hidden="true" />
               </Link>
             )}
+            {!guest && <Link href={`/${locale}/office?theme=${theme}`}>{t.office}</Link>}
           </div>
         </div>
       </section>
