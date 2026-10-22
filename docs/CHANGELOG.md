@@ -95,3 +95,8 @@
 - Closed Search map and consultant resources now load on demand. The bilingual keyboard opening/closing regression passes; local production performance is **94/94/95** for Home/Search/Arabic detail with the unchanged gate. Full Lighthouse JSON reports are retained by subsequent hosted runs. Hosted confirmation is still required.
 
 - A production-only immediate keyboard probe exposed a pre-hydration trigger race. The native consultant button now stays disabled until its handler is attached; the test waits for that observable state. Rebuilt production discovery checks pass **3/3** in EN/AR, including map loading, direct private-record denial and consultant focus restoration. The failed first probe remains in the validation record.
+
+## V2 Stage 1 — accepted (2026-10-22)
+
+- [Hosted CI](https://github.com/ahmedshammad/Darivo/actions/runs/39786834330) passed at `432c67a`: PostgreSQL 16 migrations/seed, formatting, lint, types, 40 tests, 36 mock evals, 21 browser cases and production build. Lighthouse performance **99/98/94**, accessibility **100**, best practices **96**, SEO **100**; thresholds unchanged. Full Lighthouse reports are retained as CI artifacts.
+- Simulated board **9.065**, minimum **8.5**, with every review iteration preserved. Stage 1 is accepted. Next: the full cinematic Arrival and Living Map, with new interaction, WebGL fallback, performance and review evidence. Later native-language, assistive-technology and physical-device validation remains distinct from automated checks.

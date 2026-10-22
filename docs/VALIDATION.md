@@ -2,7 +2,7 @@
 
 ## V2 Stage 1 — current checkpoint
 
-The [hosted run for checkpoint86e307b](https://github.com/ahmedshammad/Darivo/actions/runs/39783604867) passed migration, seed, static checks,40 tests,36 evals,20 browser tests and production build. Lighthouse returned Home92/Search89/Arabic detail96; Search missed the unchanged90-point gate. A targeted initial-load repair now passes locally at 94/94/95 and awaits hosted confirmation, so this document does not yet claim hosted acceptance. [Detailed local evidence](reviews/stage-1/local-checks.json) preserves failures, repairs and environment limits.
+The [hosted run for checkpoint 432c67a](https://github.com/ahmedshammad/Darivo/actions/runs/39786834330) passed migration, seed, static checks, 40 tests, 36 evals, 21 browser tests, production build and the unchanged Lighthouse gate. Hosted performance scores were Home **99**, Search **98**, Arabic detail **94**; accessibility 100, best practices 96 and SEO 100. Stage 1 passes. [Detailed evidence](reviews/stage-1/hosted-ci.json) preserves the earlier cancelled and failed runs. These scores do not establish the later Stage 6 LCP or physical-device budgets.
 
 | Check                          | Result                                                                                                                                                                                                      |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

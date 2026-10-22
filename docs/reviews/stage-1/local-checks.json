@@ -27,9 +27,9 @@
     "Initial sandboxed browser launch aborted before tests; authorized local-browser rerun passed."
   ],
   "hostedCI": {
-    "status": "failure",
-    "url": "https://github.com/ahmedshammad/Darivo/actions/runs/39783604867",
-    "commit": "86e307bf2a85bde49a13b44e7852d50e6e5df305",
+    "status": "success",
+    "url": "https://github.com/ahmedshammad/Darivo/actions/runs/39786834330",
+    "commit": "432c67a9ac4179db3347fee53e83b51e57142667",
     "passed": [
       "migration",
       "seed",
@@ -38,11 +38,11 @@
       "typecheck",
       "40 tests",
       "36 evals",
-      "20 browser tests",
-      "production build"
+      "21 browser tests",
+      "production build",
+      "Lighthouse 99/98/94"
     ],
-    "failed": "Search Lighthouse performance89; required90",
-    "repair": "Deferred closed map styles and consultant implementation; local performance now 94/94/95. Full audit reports will be retained by CI; hosted verification pending."
+    "previousRuns": "hosted-ci.json"
   },
   "productionBuild": "pass after lazy Search resource repair",
   "designRegression": {

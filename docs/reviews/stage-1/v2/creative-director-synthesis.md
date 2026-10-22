@@ -1,6 +1,6 @@
 # Stage 1 — repaired foundation review
 
-The seven simulated reviews now average **9.065/10**, with minimum criterion **8.5**. The design review gate passes. Stage1 as a whole remains open until the production regression and hosted CI checks pass.
+The seven simulated reviews now average **9.065/10**, with minimum criterion **8.5**. The design review gate passes. Stage 1 also passes its production and hosted CI gates at commit `432c67a`.
 
 | Persona         |  Mean |
 | --------------- | ----: |
@@ -27,4 +27,4 @@ These repairs were verified by independent reviewer probes and four focused brow
 - The later persistent Brief, actual Concierge tools and spatial renderer must earn their own functional and performance evidence. Component scores do not certify those unbuilt features.
 - Native Gulf-Arabic editorial review, physical-phone measurements and assistive-technology validation are distinct from this simulated board.
 
-The first Stage1 production Lighthouse regression returned Home88/Search86/Arabic detail94 for performance. The language switch no longer preloads the other locale, and the shared layout no longer preloads an unused Arabic display font on every Arabic page. The rebuilt production gate passes at Home94/Search91/Arabic detail94, with accessibility100, best practices96 and SEO100. All four guide tests pass on production; language switching also passes. A combined development sign-in test cannot complete on production because quick demo login is deliberately absent there; its failure is retained in local-checks.json. Hosted CI remains pending. Do not start Stage2 until hosted checks are green.
+The first Stage1 production Lighthouse regression returned Home88/Search86/Arabic detail94 for performance. The language switch no longer preloads the other locale, and the shared layout no longer preloads an unused Arabic display font on every Arabic page. The rebuilt production gate passes at Home94/Search91/Arabic detail94, with accessibility100, best practices96 and SEO100. All four guide tests pass on production; language switching also passes. A combined development sign-in test cannot complete on production because quick demo login is deliberately absent there; its failure is retained in local-checks.json. The first hosted replacement run failed Search at 89. Deferring closed map and consultant resources, plus a verified hydration-readiness fix, passed the final [hosted run](https://github.com/ahmedshammad/Darivo/actions/runs/39786834330): 40 tests, 36 evals, 21 browser cases, build and performance 99/98/94. The design gate and engineering gate are now both closed; Stage 2 may begin.

@@ -47,6 +47,63 @@
           "report": "/tmp/darivo-lighthouse-8Iysvf/detail-ar.json"
         }
       ]
+    },
+    {
+      "id": 39786834330,
+      "url": "https://github.com/ahmedshammad/Darivo/actions/runs/39786834330",
+      "status": "success",
+      "commit": "432c67a9ac4179db3347fee53e83b51e57142667",
+      "unitTests": 40,
+      "mockEvals": 36,
+      "browserTests": 21,
+      "build": "pass",
+      "lighthouse": [
+        {
+          "page": "/en",
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 2055.784,
+            "blockingMs": 45.30400000000009,
+            "layoutShift": 0
+          },
+          "report": "/tmp/darivo-lighthouse-report/home.json"
+        },
+        {
+          "page": "/en/search",
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 2340.025,
+            "blockingMs": 36,
+            "layoutShift": 0
+          },
+          "report": "/tmp/darivo-lighthouse-report/search.json"
+        },
+        {
+          "page": "/ar/properties/property-002",
+          "scores": {
+            "performance": 94,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 2867.349,
+            "blockingMs": 69,
+            "layoutShift": 0.001315044593994684
+          },
+          "report": "/tmp/darivo-lighthouse-report/detail-ar.json"
+        }
+      ]
     }
   ]
 }

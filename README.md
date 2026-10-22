@@ -1,6 +1,6 @@
 # Darivo
 
-A private, bilingual property-office demo for the UAE and Egypt. V2 is in progress: the Noir Atlas concept sprint is approved, and the foundation/design system has passed its simulated review and is awaiting hosted CI. The existing consultant, portfolios, PDF and advisor/admin workflows remain runnable while the later V2 experiences are built. See the [full delivery ledger](docs/studio/DELIVERY-LEDGER.md) for honest stage status.
+A private, bilingual property-office demo for the UAE and Egypt. V2 is in progress: the Noir Atlas concept sprint is approved, and the foundation/design system has passed its simulated review and hosted CI. The existing consultant, portfolios, PDF and advisor/admin workflows remain runnable while the later V2 experiences are built. See the [full delivery ledger](docs/studio/DELIVERY-LEDGER.md) for honest stage status.
 
 ## Run in a few minutes
 
