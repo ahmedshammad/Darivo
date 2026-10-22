@@ -14,15 +14,15 @@ test('cross-market comparison refits both endpoints after the mobile sheet colla
     if (fallback) {
       const initialCenter = await map.getAttribute('data-center');
       const initialZoom = Number(await map.getAttribute('data-zoom'));
-      await map.getByRole('button', { name: 'Zoom in', exact: true }).click();
-      await map.getByRole('button', { name: 'Zoom in', exact: true }).click();
+      await map.getByRole('button', { name: 'Zoom out', exact: true }).click();
+      await map.getByRole('button', { name: 'Zoom out', exact: true }).click();
       await map.getByTestId('atlas-fallback').focus();
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowRight');
       await expect(map).not.toHaveAttribute('data-center', initialCenter!);
       await expect
         .poll(async () => Number(await map.getAttribute('data-zoom')))
-        .toBeGreaterThan(initialZoom);
+        .toBeLessThan(initialZoom);
     }
     await page.locator('.atlas-sheet-handle').click();
     for (const id of ['june-sodic', 'orla-palm-jumeirah'])
