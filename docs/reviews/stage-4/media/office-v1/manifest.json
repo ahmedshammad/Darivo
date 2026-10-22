@@ -1,0 +1,287 @@
+{
+  "sourceHead": "87c8eef5a0d691c0473916fb10fad5cd2e9665f4",
+  "dirty": "M docs/API.md\n M docs/ARCHITECTURE.md\n M docs/openapi.json\n M next-env.d.ts\n M scripts/openapi.ts\n?? app/[locale]/(public)/office/\n?? app/[locale]/(public)/p/\n?? app/api/v1/portfolios/[id]/dossier/\n?? docs/reviews/stage-4/media/\n?? docs/reviews/stage-4/v1/\n?? docs/reviews/stage-4/validation/office-accessibility-v3.json\n?? docs/reviews/stage-4/validation/office-initial-v1.json\n?? docs/reviews/stage-4/validation/office-interaction-v2.json\n?? e2e/office-journey.spec.ts\n?? e2e/office-security.spec.ts\n?? e2e/office.spec.ts\n?? e2e/story.spec.ts\n?? messages/office.ts\n?? messages/story.ts\n?? scripts/capture-office.ts\n?? scripts/capture-story.mjs\n?? scripts/render-office-dossier-fixture.ts\n?? src/components/office/\n?? src/components/story/\n?? src/server/pdf/office-dossier.ts\n?? tests/fixtures/\n?? tests/office-dossier-export.test.ts\n?? tests/office-dossier.test.ts\n?? tests/story-presentation.test.ts",
+  "baseURL": "http://localhost:3000",
+  "startedAt": "2026-10-22T23:25:11.995Z",
+  "states": [
+    {
+      "name": "portfolios-en-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-en-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-en-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-en-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-en-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-en-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    }
+  ],
+  "failures": [
+    {
+      "name": "en-light-390",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    7 × locator resolved to <ol class=\"of-messages\" aria-label=\"Your private conversation\"></ol>\n      - unexpected value \"hidden\"\n",
+      "errors": []
+    },
+    {
+      "name": "en-light-1024",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    12 × locator resolved to <ol class=\"of-messages\" aria-label=\"Your private conversation\"></ol>\n       - unexpected value \"hidden\"\n",
+      "errors": []
+    },
+    {
+      "name": "en-light-1440",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    12 × locator resolved to <ol class=\"of-messages\" aria-label=\"Your private conversation\"></ol>\n       - unexpected value \"hidden\"\n",
+      "errors": []
+    },
+    {
+      "name": "en-dark-390",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    12 × locator resolved to <ol class=\"of-messages\" aria-label=\"Your private conversation\"></ol>\n       - unexpected value \"hidden\"\n",
+      "errors": []
+    },
+    {
+      "name": "en-dark-1024",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    12 × locator resolved to <ol class=\"of-messages\" aria-label=\"Your private conversation\"></ol>\n       - unexpected value \"hidden\"\n",
+      "errors": []
+    },
+    {
+      "name": "en-dark-1440",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    12 × locator resolved to <ol class=\"of-messages\" aria-label=\"Your private conversation\"></ol>\n       - unexpected value \"hidden\"\n",
+      "errors": []
+    },
+    {
+      "name": "ar-light-390",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    9 × locator resolved to <ol class=\"of-messages\" aria-label=\"محادثتك الخاصة\"></ol>\n      - unexpected value \"hidden\"\n",
+      "errors": []
+    },
+    {
+      "name": "ar-light-1024",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    12 × locator resolved to <ol class=\"of-messages\" aria-label=\"محادثتك الخاصة\"></ol>\n       - unexpected value \"hidden\"\n",
+      "errors": []
+    },
+    {
+      "name": "ar-light-1440",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    12 × locator resolved to <ol class=\"of-messages\" aria-label=\"محادثتك الخاصة\"></ol>\n       - unexpected value \"hidden\"\n",
+      "errors": []
+    },
+    {
+      "name": "ar-dark-390",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    12 × locator resolved to <ol class=\"of-messages\" aria-label=\"محادثتك الخاصة\"></ol>\n       - unexpected value \"hidden\"\n",
+      "errors": []
+    },
+    {
+      "name": "ar-dark-1024",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    11 × locator resolved to <ol class=\"of-messages\" aria-label=\"محادثتك الخاصة\"></ol>\n       - unexpected value \"hidden\"\n",
+      "errors": []
+    },
+    {
+      "name": "ar-dark-1440",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.of-messages')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.of-messages') with timeout 5000ms\n  - waiting for locator('.of-messages')\n    12 × locator resolved to <ol class=\"of-messages\" aria-label=\"محادثتك الخاصة\"></ol>\n       - unexpected value \"hidden\"\n",
+      "errors": []
+    }
+  ],
+  "finishedAt": "2026-10-22T23:27:11.391Z"
+}

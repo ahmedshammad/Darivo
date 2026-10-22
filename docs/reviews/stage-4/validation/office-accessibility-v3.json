@@ -1,0 +1,10 @@
+{
+  "scope": "Development Office EN/AR journeys, third run",
+  "result": "2 passed, 2 failed",
+  "confirmedRepair": "Both mixed-board journeys reached actual pointer source disclosure after USD change, preserving comparison.",
+  "finding": "All-rules axe reported landmark-unique: site header and Office section navigation both reused the Office title as label.",
+  "repair": "Distinct localized site-navigation and Office-section labels; no axe exclusion or weakened assertion.",
+  "log": "/tmp/darivo-office-e2e-v3.log",
+  "traces": "/tmp/darivo-office-e2e-v3",
+  "limits": "Later validation is separate; this remains a failed evidence round."
+}

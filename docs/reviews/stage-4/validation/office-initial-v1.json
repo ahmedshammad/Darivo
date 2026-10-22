@@ -1,0 +1,10 @@
+{
+  "scope": "Development browser validation, four EN/AR Office cases",
+  "result": "2 passed, 2 failed",
+  "failure": "Both mixed-board journeys used exact getByLabel on the Save to wrapped select. Its accessible combobox name was correct; label text included option contents. Updated harness to getByRole(combobox, name, exact). No product fix for this initial failure.",
+  "passing": "Durable no-share restrictions in Office UI, direct viewing API denial, and explicit privacy settings navigation passed in EN/AR.",
+  "log": "/tmp/darivo-office-e2e-v1.log",
+  "traces": "/tmp/darivo-office-e2e-v1",
+  "cleanup": "The two temporary portfolio IDs from timed-out journeys were deleted through the owner API, both HTTP 200. Later tests restore privacy/preferences and cancel viewing requests.",
+  "limits": "Not a production visual, device performance, native-reader or full assistive-technology certification. Later runs are separate evidence."
+}

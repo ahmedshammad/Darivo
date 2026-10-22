@@ -1,0 +1,25 @@
+{
+  "scope": "Local development Chrome Office integration, EN/AR at 390×844",
+  "tests": 4,
+  "passed": 4,
+  "durationSeconds": 38.1,
+  "checks": [
+    "Draft preview performs no write",
+    "Real reference plus exact fictional unit portfolio persistence",
+    "Source-bearing comparison retains original currency amounts after USD display change",
+    "Pointer-accessible source and conversion disclosure",
+    "Comparison all-rules axe and viewport overflow",
+    "Three-city confirmation precedes exactly one real unit viewing request",
+    "REQUESTED status is not confirmed availability",
+    "Durable no-share blocks viewing in UI and direct API",
+    "Explicit versioned privacy settings navigation"
+  ],
+  "cleanup": "Created portfolios deleted, viewing requests cancelled through owner APIs, original privacy and display preferences restored. Cancelled request rows remain as designed.",
+  "log": "/tmp/darivo-office-e2e-v4.log",
+  "priorFailedRounds": [
+    "office-initial-v1.json",
+    "office-interaction-v2.json",
+    "office-accessibility-v3.json"
+  ],
+  "limits": "Development browser evidence, not production performance, physical phone, native Arabic human review, or full assistive-technology certification. Formal visual matrix is separate."
+}

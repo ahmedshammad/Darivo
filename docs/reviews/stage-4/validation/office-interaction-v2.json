@@ -1,0 +1,12 @@
+{
+  "scope": "Development Office EN/AR journeys, second run",
+  "result": "2 passed, 2 failed",
+  "productFindings": [
+    "Changing display currency re-resolved the retained URL intent and reopened the save view, displacing comparison.",
+    "The sticky selection tray intercepted a source-disclosure click on the phone comparison table."
+  ],
+  "repair": "Activate the draft query once per explicit keyed navigation; later preference projections update data without repeating the action. Keep the selection tray in normal document flow so it cannot cover source controls.",
+  "log": "/tmp/darivo-office-e2e-v2.log",
+  "traces": "/tmp/darivo-office-e2e-v2",
+  "limits": "This failed round remains preserved. Subsequent browser results are separate; no production visual or device certification is implied."
+}

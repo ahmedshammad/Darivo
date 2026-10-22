@@ -1,0 +1,442 @@
+{
+  "sourceHead": "87c8eef5a0d691c0473916fb10fad5cd2e9665f4",
+  "dirty": "M docs/API.md\n M docs/ARCHITECTURE.md\n M docs/openapi.json\n M messages/concierge.ts\n M next-env.d.ts\n M scripts/openapi.ts\n M src/components/concierge/brief-editor.tsx\n M src/components/concierge/concierge-client.tsx\n?? app/[locale]/(public)/office/\n?? app/[locale]/(public)/p/\n?? app/api/v1/portfolios/[id]/dossier/\n?? docs/reviews/stage-4/media/\n?? docs/reviews/stage-4/v1/\n?? docs/reviews/stage-4/validation/office-accessibility-v3.json\n?? docs/reviews/stage-4/validation/office-initial-v1.json\n?? docs/reviews/stage-4/validation/office-interaction-v2.json\n?? docs/reviews/stage-4/validation/office-passing-v4.json\n?? e2e/office-journey.spec.ts\n?? e2e/office-security.spec.ts\n?? e2e/office.spec.ts\n?? e2e/story.spec.ts\n?? messages/office.ts\n?? messages/story.ts\n?? scripts/capture-office.ts\n?? scripts/capture-story.mjs\n?? scripts/render-office-dossier-fixture.ts\n?? src/components/office/\n?? src/components/story/\n?? src/server/pdf/office-dossier.ts\n?? tests/fixtures/\n?? tests/office-dossier-export.test.ts\n?? tests/office-dossier.test.ts\n?? tests/story-presentation.test.ts",
+  "baseURL": "http://localhost:3000",
+  "startedAt": "2026-10-22T23:28:02.826Z",
+  "states": [
+    {
+      "name": "portfolios-en-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-en-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-en-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-en-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-en-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-en-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-en-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-en-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-en-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-en-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-en-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-en-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-en-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-en-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-en-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-en-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-en-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-en-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-en-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-en-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-en-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-en-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-en-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-en-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-en-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-en-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-ar-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-ar-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-ar-light-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-ar-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-ar-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-ar-light-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-ar-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-ar-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-ar-light-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-ar-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-ar-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-ar-dark-390",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-ar-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-ar-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-ar-dark-1024",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "portfolios-ar-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "comparison-ar-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "viewings-ar-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "advisor-ar-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "privacy-ar-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "name": "private-ar-dark-1440",
+      "errors": [],
+      "overflow": false,
+      "violations": []
+    }
+  ],
+  "failures": [],
+  "finishedAt": "2026-10-22T23:30:24.179Z"
+}
