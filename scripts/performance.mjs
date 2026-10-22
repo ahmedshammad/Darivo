@@ -27,6 +27,8 @@ const pages = [
   ['explore', '/en/explore'],
   ['concierge', '/en/concierge'],
   ['detail-ar', '/ar/properties/property-002'],
+  ['story', '/en/p/project-orla-palm-jumeirah'],
+  ['story-ar', '/ar/p/unit-the-courtyard-001'],
 ];
 const requested = process.env.LIGHTHOUSE_PAGES?.split(',');
 if (requested?.some((name) => !pages.some(([candidate]) => candidate === name)))

@@ -56,9 +56,40 @@ Responses use the Vercel AI SDK `text/event-stream` protocol. `data-concierge` c
 
 `GET /concierge` returns a current-user `ConciergeReplay`, with re-authorized evidence and `applyActions: false`. `DELETE /concierge` removes the conversation, taste memory and proposals, then returns a new empty server session. A late generation cannot recreate the deleted session. A stale revision or concurrent session update fails rather than silently overwriting newer work.
 
-`POST /concierge/confirm` accepts only an owned server-held proposal ID, a request ID and confirm/reject decision. The proposal claim and write share a database transaction; repeat confirmation returns the prior result. Current visibility, privacy, expiry and future viewing slots are checked again. Real project references are not unit inventory and cannot use unit-only portfolio/viewing writes. Natural-language advice offers an enquiry without contacting an advisor.
+`POST /concierge/confirm` accepts only an owned server-held proposal ID, a request ID and confirm/reject decision. The proposal claim and write share a database transaction; repeat confirmation returns the prior result. Current visibility, privacy, expiry and future viewing slots are checked again. Real project references may be saved as project interests in mixed portfolios; they cannot use unit-only viewing writes. Natural-language advice offers an enquiry without contacting an advisor.
 
 Taste memory requires an explicit UI consent action. The initial supported extraction is narrow and deterministic (contemporary design, low-rise preference, high-rise exclusion); it retains only the explicit phrase. Revoking memory removes it even when the current conversation is not saved. An explicit refusal of external AI processing sets the retained no-sharing restriction. No-sharing selects the local mock before provider I/O on this and subsequent turns, including when an API key is configured; it covers disclosure to an inference service as well as advisor sharing. These boundaries are being validated for Stage 3; they are not a claim of full stage acceptance.
+
+## Story and Private Office
+
+Story identities use `/p/project-{storedSlug}` and `/p/unit-{storedSlug}`. Slugs are alphanumeric, with hyphens and underscores allowed after the first character. `GET /stories/{slug}` returns the strict `StoryDTO` projection: native price, qualified conversions, sourced facts, unavailable-metric reasons, payment timeline, developer evidence and current action capabilities. Missing and inaccessible records return the same opaque 404. Metadata and HTML use the same authorized resolver.
+
+| Route                           | Methods            | Scope                                                        |
+| ------------------------------- | ------------------ | ------------------------------------------------------------ |
+| `/office`                       | GET                | Current client overview                                      |
+| `/office/entity`                | GET                | Read-only preview of a typed project interest or demo unit   |
+| `/portfolios`                   | GET, POST          | Owner's mixed project-interest/unit boards                   |
+| `/portfolios/{id}`              | GET, PATCH, DELETE | Owner only; expected version for rename                      |
+| `/portfolios/{id}/items`        | POST, DELETE       | Typed references, expected version, idempotency ID           |
+| `/portfolios/{id}/dossier`      | GET                | Owner-only bilingual PDF; fresh authorization before release |
+| `/office/comparison`            | POST               | Atomic comparison of two to four currently visible subjects  |
+| `/office/viewings`              | GET, POST          | Exact demo-unit requests with server-resolved local times    |
+| `/office/viewings/{id}`         | DELETE             | Owner cancellation                                           |
+| `/project-enquiries`            | POST               | Explicit real-project enquiry to the assigned thread         |
+| `/project-enquiries/{id}`       | DELETE             | Owner cancellation                                           |
+| `/office/advisor`               | GET                | Current client's assigned fictional advisor                  |
+| `/office/advisor/availability`  | PATCH              | Current advisor's declared availability, server timestamp    |
+| `/office/threads/{id}/messages` | GET, POST          | Client/current assigned advisor; reauthorized attachments    |
+| `/office/private-collection`    | GET                | Currently authorized private inventory only                  |
+| `/office/privacy`               | GET, PATCH         | Durable flags, explicit expected-version replacement         |
+
+The full Zod input/output shapes are in OpenAPI. Responses are DTOs directly, without a `data` wrapper. Explicit Office navigation parameters (`action`, `kind`, `id`) open drafts and never write automatically, including after sign-in. Legacy unit-only shortlist/viewing endpoints remain compatible. Mixed reference interests use a separate relation; existing property foreign keys remain intact.
+
+New writes respect durable `doNotSave`, communications respect `doNotShare`, and viewing requests respect `doNotBook`. Restrictive Concierge text takes effect before provider processing, even if generation is cancelled. Only explicit versioned privacy settings relax these restrictions. Legacy Consultant processing and tools use the same policy. Reading, deletion, cancellation and owner-only dossier downloads remain available. A private URL conveys no grant; its recipient must have their own access.
+
+Dossier query preferences accept `locale`, `currency`, `areaUnit` and `arabicIndicDigits` (`1`/`0` or `true`/`false`). Any changed/inaccessible selection returns a neutral 409 without hidden identity or count. After reviewing the now-visible collection, `reviewVisible=true` explicitly requests that visible set. The route fingerprints the projection before rendering, reauthorizes after rendering, discards changed bytes, and returns `private, no-store`. A downloaded copy cannot be remotely revoked.
+
+Viewing inputs carry local date/time strings plus Dubai, Cairo or London IANA timezone. Ambiguous/nonexistent DST times are rejected. `REQUESTED` is not a confirmed appointment; `confirmedSlot` remains null until the advisor workflow confirms it. Repeating an idempotency ID with unchanged input returns the prior effect; changed input conflicts. A concurrent race may return 409, permitting an unchanged retry.
 
 ## Deliberate demo boundaries
 

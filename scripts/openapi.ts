@@ -11,6 +11,8 @@ import {
   conciergeStreamEventSchema,
   writeConfirmationSchema,
 } from '../src/lib/concierge';
+import * as office from '../src/lib/office';
+import { storyDTOSchema, storySummarySchema } from '../src/lib/story';
 const convert = (schema: z.ZodType) => {
   const result = z.toJSONSchema(schema, { io: 'input', target: 'draft-7' });
   delete result.$schema;
@@ -197,6 +199,7 @@ function op(
   roles = 'CLIENT',
   parameters: unknown[] = [],
   contentType = 'application/json',
+  successStatus?: number,
 ) {
   const optional = roles === 'PUBLIC';
   const content = { [contentType]: { schema: response } };
@@ -220,7 +223,8 @@ function op(
       ? { requestBody: { required: true, content: { 'application/json': { schema: body } } } }
       : {}),
     responses: {
-      [method === 'post' && ['/shortlists', '/viewings'].includes(path) ? '201' : '200']: {
+      [successStatus ??
+      (method === 'post' && ['/shortlists', '/viewings'].includes(path) ? '201' : '200')]: {
         description: 'Successful operation',
         content,
       },
@@ -527,6 +531,316 @@ for (const [resource, schema] of [
       [idQuery],
     );
 }
+const officeSchemas: Record<string, z.ZodType> = {
+  Story: storyDTOSchema,
+  StorySummary: storySummarySchema,
+  Office: office.officeDTOSchema,
+  Portfolio: office.portfolioDTOSchema,
+  PortfolioCreate: office.portfolioCreateSchema,
+  PortfolioRename: office.portfolioRenameSchema,
+  PortfolioItems: office.portfolioItemsInputSchema,
+  OfficeComparison: office.officeComparisonSchema,
+  OfficeComparisonInput: office.comparisonInputSchema,
+  OfficeViewing: office.viewingDTOSchema,
+  OfficeViewingInput: office.viewingInputSchema,
+  ProjectEnquiry: office.projectEnquirySchema,
+  ProjectEnquiryInput: office.projectEnquiryInputSchema,
+  AssignedAdvisor: office.advisorDTOSchema,
+  AdvisorThread: office.threadDTOSchema,
+  AdvisorMessageInput: office.threadMessageInputSchema,
+  OfficePrivacy: office.officePrivacySchema,
+  OfficePrivacyInput: office.privacySettingsInputSchema,
+};
+for (const [name, schema] of Object.entries(officeSchemas))
+  schemas[name] = compactSchema(name, schema);
+const officeRoles = 'CLIENT or VERIFIED_CLIENT';
+const preferenceParams = [
+  { in: 'query', name: 'locale', schema: { enum: ['en', 'ar'] } },
+  { in: 'query', name: 'currency', schema: { enum: ['AED', 'EGP', 'USD', 'EUR', 'SAR', 'GBP'] } },
+  { in: 'query', name: 'areaUnit', schema: { enum: ['sqm', 'sqft'] } },
+  { in: 'query', name: 'arabicIndicDigits', schema: { type: 'string', enum: ['1', '0'] } },
+];
+op(
+  '/stories/{slug}',
+  'get',
+  'getStory',
+  'Fresh authorized editorial story; missing and denied are opaque',
+  ref('Story'),
+  undefined,
+  'PUBLIC',
+  [
+    {
+      in: 'path',
+      name: 'slug',
+      required: true,
+      schema: { type: 'string', pattern: '^(project|unit)-[a-zA-Z0-9][a-zA-Z0-9-]{0,180}$' },
+    },
+    ...preferenceParams,
+  ],
+);
+op(
+  '/office',
+  'get',
+  'getOffice',
+  'Owned boards, requests, current advisor and privacy policy',
+  ref('Office'),
+  undefined,
+  officeRoles,
+  preferenceParams,
+);
+op(
+  '/office/entity',
+  'get',
+  'getOfficeEntity',
+  'Resolve a draft intent without writing',
+  ref('StorySummary'),
+  undefined,
+  officeRoles,
+  [
+    {
+      in: 'query',
+      name: 'kind',
+      required: true,
+      schema: { enum: ['reference-project', 'demo-unit'] },
+    },
+    idQuery,
+    ...preferenceParams,
+  ],
+);
+op(
+  '/portfolios',
+  'get',
+  'listPortfolios',
+  'List owned, freshly authorized mixed portfolios',
+  array(ref('Portfolio')),
+  undefined,
+  officeRoles,
+  preferenceParams,
+);
+op(
+  '/portfolios',
+  'post',
+  'createPortfolio',
+  'Create a named portfolio with an idempotency key',
+  ref('Portfolio'),
+  ref('PortfolioCreate'),
+  officeRoles,
+  [],
+  'application/json',
+  201,
+);
+op(
+  '/portfolios/{id}',
+  'get',
+  'getPortfolio',
+  'Read one owned portfolio; inaccessible entries are omitted',
+  ref('Portfolio'),
+  undefined,
+  officeRoles,
+  [idParam, ...preferenceParams],
+);
+op(
+  '/portfolios/{id}',
+  'patch',
+  'renamePortfolio',
+  'Rename using an expected version and idempotency key',
+  ref('Portfolio'),
+  ref('PortfolioRename'),
+  officeRoles,
+  [idParam],
+);
+op(
+  '/portfolios/{id}',
+  'delete',
+  'deletePortfolio',
+  'Delete an owned portfolio; permitted under privacy restrictions',
+  object({ deleted: bool }),
+  undefined,
+  officeRoles,
+  [idParam],
+);
+for (const method of ['post', 'delete'])
+  op(
+    '/portfolios/{id}/items',
+    method,
+    method === 'post' ? 'addPortfolioItems' : 'removePortfolioItems',
+    method === 'post'
+      ? 'Atomically add authorized typed interests'
+      : 'Remove owned interests; permitted under privacy restrictions',
+    ref('Portfolio'),
+    ref('PortfolioItems'),
+    officeRoles,
+    [idParam],
+  );
+op(
+  '/portfolios/{id}/dossier',
+  'get',
+  'downloadOfficeDossier',
+  'Bilingual owner-only PDF; reauthorize before and after rendering; no new client content is persisted',
+  { type: 'string', format: 'binary' },
+  undefined,
+  officeRoles,
+  [
+    idParam,
+    ...preferenceParams.filter((p) => p.name !== 'arabicIndicDigits'),
+    {
+      in: 'query',
+      name: 'arabicIndicDigits',
+      schema: { type: 'string', enum: ['1', '0', 'true', 'false'] },
+    },
+    {
+      in: 'query',
+      name: 'reviewVisible',
+      schema: { type: 'string', enum: ['true', 'false'] },
+      description:
+        'Explicitly export the currently visible set after a neutral portfolio_changed or dossier_review_required response. Does not grant access.',
+    },
+  ],
+  'application/pdf',
+);
+op(
+  '/office/comparison',
+  'post',
+  'compareOfficeEntities',
+  'Compare two to four fresh authorized interests, preserving native currencies and price bases',
+  ref('OfficeComparison'),
+  ref('OfficeComparisonInput'),
+  officeRoles,
+  preferenceParams,
+);
+op(
+  '/office/viewings',
+  'get',
+  'listOfficeViewings',
+  'Read own requests with current unit authorization',
+  array(ref('OfficeViewing')),
+  undefined,
+  officeRoles,
+  preferenceParams,
+);
+op(
+  '/office/viewings',
+  'post',
+  'requestOfficeViewing',
+  'Request one authorized fictional unit; reject ambiguous/nonexistent local times',
+  ref('OfficeViewing'),
+  ref('OfficeViewingInput'),
+  officeRoles,
+  [],
+  'application/json',
+  201,
+);
+op(
+  '/office/viewings/{id}',
+  'delete',
+  'cancelOfficeViewing',
+  'Cancel an owned request under any privacy policy',
+  object({ cancelled: bool }),
+  undefined,
+  officeRoles,
+  [idParam],
+);
+op(
+  '/project-enquiries',
+  'get',
+  'listProjectEnquiries',
+  'Read own reference-project enquiries',
+  array(ref('ProjectEnquiry')),
+  undefined,
+  officeRoles,
+  preferenceParams,
+);
+op(
+  '/project-enquiries',
+  'post',
+  'requestProjectEnquiry',
+  'Persist an explicit reference enquiry in the assigned advisor thread; never create a unit viewing',
+  ref('ProjectEnquiry'),
+  ref('ProjectEnquiryInput'),
+  officeRoles,
+  [],
+  'application/json',
+  201,
+);
+op(
+  '/project-enquiries/{id}',
+  'delete',
+  'cancelProjectEnquiry',
+  'Cancel an owned reference enquiry',
+  object({ cancelled: bool }),
+  undefined,
+  officeRoles,
+  [idParam],
+);
+op(
+  '/office/advisor',
+  'get',
+  'getAssignedAdvisor',
+  'Current fictional demo advisor with authored availability, or null',
+  { anyOf: [ref('AssignedAdvisor'), { type: 'null' }] },
+  undefined,
+  officeRoles,
+);
+op(
+  '/office/advisor/availability',
+  'patch',
+  'setAdvisorAvailability',
+  'Author own availability; does not assert live online presence',
+  object({ updated: bool }),
+  object({ availability: convert(office.advisorAvailabilitySchema) }),
+  'ADVISOR',
+);
+op(
+  '/office/threads/{id}/messages',
+  'get',
+  'readAssignedThread',
+  'Read only as owning client or current assigned advisor; attachments use client visibility',
+  ref('AdvisorThread'),
+  undefined,
+  officeRoles + ' or current assigned ADVISOR',
+  [idParam, { in: 'query', name: 'cursor', schema: str }, ...preferenceParams],
+);
+op(
+  '/office/threads/{id}/messages',
+  'post',
+  'sendAssignedMessage',
+  'Explicit idempotent plain-text message; no automatic Brief/history copy',
+  ref('AdvisorThread'),
+  ref('AdvisorMessageInput'),
+  officeRoles + ' or current assigned ADVISOR',
+  [idParam],
+  'application/json',
+  201,
+);
+op(
+  '/office/privacy',
+  'get',
+  'getOfficePrivacy',
+  'Read durable minimal privacy policy',
+  ref('OfficePrivacy'),
+  undefined,
+  officeRoles,
+);
+op(
+  '/office/privacy',
+  'patch',
+  'replaceOfficePrivacy',
+  'Explicit versioned policy settings; invalidates old proposals',
+  ref('OfficePrivacy'),
+  ref('OfficePrivacyInput'),
+  officeRoles,
+);
+op(
+  '/office/private-collection',
+  'get',
+  'getPrivateCollection',
+  'Authorized collection only; no withheld count or preview',
+  array(ref('StorySummary')),
+  undefined,
+  officeRoles,
+  preferenceParams,
+);
+
 writeFileSync(
   'docs/openapi.json',
   JSON.stringify(
@@ -536,7 +850,7 @@ writeFileSync(
         title: 'Darivo API',
         version: '1.0.0',
         description:
-          'Synthetic bilingual property demo. Session-cookie auth; role and visibility checked server-side.',
+          'Bilingual sourced reference projects and fictional demo inventory. Session-cookie auth; current role, ownership, privacy and visibility checked server-side.',
       },
       servers: [{ url: '/api/v1' }],
       components: {

@@ -1,6 +1,6 @@
 # Darivo
 
-A private, bilingual property-office demo for the UAE and Egypt. V2 is in progress: the concept, foundation/design system, Arrival and Living Map stages are accepted. The Concierge's sixth simulated review and hosted CI gates also pass, with documented hardening limits still open. The existing portfolios, PDF and advisor/admin workflows remain runnable while the later V2 experiences are built. See the [full delivery ledger](docs/studio/DELIVERY-LEDGER.md) for current evidence and remaining limitations.
+A private, bilingual property-office demo for the UAE and Egypt. V2 is in progress: the concept, foundation/design system, Arrival, Living Map and Concierge stages have passed their review and CI gates. Project Stories and the Private Office are implemented and undergoing browser, dossier and journey acceptance checks. Developer experiences and final hardening remain ahead. See the [full delivery ledger](docs/studio/DELIVERY-LEDGER.md) for current evidence and limitations.
 
 ## Run in a few minutes
 
@@ -30,6 +30,12 @@ Use **Private access → Explore the demo**:
 | Administrator     | admin@darivo.example    | Inventory, users, verification, audit and analytics          |
 
 No passwords are needed for these explicit **development-only** identities. The normal email-link form prints a single-use Auth.js link in the local server console. Only invited/seeded accounts may sign in. Production demo credentials and the console mailer are disabled.
+
+## Try Stories and the Private Office
+
+From a Concierge card, choose **Explore the story**. Or open **/en/p/project-orla-palm-jumeirah** for a sourced project reference and **/en/p/unit-the-courtyard-001** for an exact fictional residence. Their eight chapters distinguish documented facts, unknowns, sources, native prices and indicative display conversions. Real project interests lead to enquiries; fictional units support viewing requests.
+
+Choose **Add to portfolio**, sign in with a demo client and explicitly save a named collection. **/en/office** (also **/ar/office**) supports mixed project/unit portfolios, comparison, bilingual dossier download, three-city viewing review, a persisted thread with a fictional assigned advisor, and authorized Private Collection entries. Availability is an authored demo status, not live human presence. No external message is sent. Privacy restrictions apply across Office and Concierge; review **/en/office/privacy** to explicitly change them.
 
 ## Try the V2 Concierge
 

@@ -10,6 +10,7 @@ import type { StoryDTO } from '../src/lib/story';
 async function main() {
   const dir = process.env.OFFICE_CAPTURE_DIR ?? 'docs/reviews/stage-4/media/office-v1';
   const baseURL = process.env.TEST_BASE_URL ?? 'http://localhost:3000';
+  const selected = process.env.OFFICE_CAPTURE_FILTER?.split(',') ?? [];
   await fs.mkdir(dir, { recursive: false }); // Never overwrite an earlier evidence round.
   const manifest: {
     sourceHead: string;
@@ -118,6 +119,7 @@ async function main() {
         for (const width of [390, 1024, 1440]) {
           const t = officeCopy[locale],
             name = `${locale}-${theme}-${width}`;
+          if (selected.length && !selected.includes(name)) continue;
           const context = await browser.newContext({
             baseURL,
             storageState,
