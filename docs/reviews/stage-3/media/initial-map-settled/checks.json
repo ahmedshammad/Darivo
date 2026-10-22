@@ -1,0 +1,18 @@
+[
+  {
+    "stem": "en-light-390",
+    "errors": [],
+    "violations": [],
+    "mode": "webgl",
+    "points": "[{\"id\":\"southmed\",\"x\":82.99999999999959,\"y\":263.91432431077885},{\"id\":\"orla-palm-jumeirah\",\"x\":290.9999999999996,\"y\":316.0856756892214}]",
+    "overflow": false
+  },
+  {
+    "stem": "ar-dark-390",
+    "errors": [],
+    "violations": [],
+    "mode": "webgl",
+    "points": "[{\"id\":\"southmed\",\"x\":82.99999999999959,\"y\":263.91432431077885},{\"id\":\"orla-palm-jumeirah\",\"x\":290.9999999999996,\"y\":316.0856756892214}]",
+    "overflow": false
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "scope": "deterministic-parser",
+  "cases": 91,
+  "distinctPhrases": 113,
+  "passed": 91,
+  "failures": [],
+  "limitations": [
+    "No database authorization or source-grounding execution is performed by this runner.",
+    "Provider proposals are not proof that a write is authorized, an entity exists, or a fact is grounded.",
+    "No browser, native Arabic reader, or real-provider certification."
+  ]
+}

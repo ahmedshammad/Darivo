@@ -5,12 +5,26 @@ import { briefSchema, toolSchemas } from '../src/server/ai/schema';
 import { listingInput } from '../src/server/admin';
 import { profileSchema, displayPreferencesSchema } from '../src/lib/preferences';
 import { Role } from '@prisma/client';
+import { conciergeRequestSchema } from '../src/lib/concierge-transport';
+import {
+  conciergeReplaySchema,
+  conciergeStreamEventSchema,
+  writeConfirmationSchema,
+} from '../src/lib/concierge';
 const convert = (schema: z.ZodType) => {
   const result = z.toJSONSchema(schema, { io: 'input', target: 'draft-7' });
   delete result.$schema;
   return result;
 };
 const ref = (name: string) => ({ $ref: `#/components/schemas/${name}` });
+function compactSchema(name: string, schema: z.ZodType) {
+  const result = z.toJSONSchema(schema, { io: 'input', target: 'draft-2020-12', reused: 'ref' });
+  delete result.$schema;
+  // Definitions remain within this component; JSON pointers are document-relative.
+  return JSON.parse(
+    JSON.stringify(result).replaceAll('"#/$defs/', `"#/components/schemas/${name}/$defs/`),
+  ) as unknown;
+}
 const str = { type: 'string' },
   num = { type: 'number' },
   bool = { type: 'boolean' };
@@ -70,6 +84,10 @@ const schemas: Record<string, unknown> = {
   SearchResponse: object({ properties: array(ref('Property')), total: { type: 'integer' } }),
   Filters: convert(filterSchema),
   Brief: convert(briefSchema),
+  ConciergeRequest: compactSchema('ConciergeRequest', conciergeRequestSchema),
+  ConciergeReplay: compactSchema('ConciergeReplay', conciergeReplaySchema),
+  ConciergeEvent: compactSchema('ConciergeEvent', conciergeStreamEventSchema),
+  ConciergeConfirmation: compactSchema('ConciergeConfirmation', writeConfirmationSchema),
   ListingInput: convert(listingInput),
   Shortlist: object({
     id: str,
@@ -213,6 +231,44 @@ function op(
 const idParam = { in: 'path', name: 'id', required: true, schema: str };
 const idQuery = { in: 'query', name: 'id', required: true, schema: str };
 const ok = object({ saved: bool }, []);
+op(
+  '/concierge',
+  'get',
+  'conciergeHistory',
+  'Re-authorized history snapshot; no replayed actions',
+  ref('ConciergeReplay'),
+);
+op(
+  '/concierge',
+  'delete',
+  'deleteConciergeHistory',
+  'Delete history and memory; return a new empty session',
+  ref('ConciergeReplay'),
+);
+op(
+  '/concierge',
+  'post',
+  'conciergeTurn',
+  'Stream SDK UI data events for a grounded Concierge turn',
+  {
+    type: 'string',
+    description:
+      'Vercel AI SDK SSE frames. data-concierge chunks contain ConciergeEvent; finishes with [DONE].',
+    'x-event-schema': ref('ConciergeEvent'),
+  },
+  ref('ConciergeRequest'),
+  'PUBLIC',
+  [],
+  'text/event-stream',
+);
+op(
+  '/concierge/confirm',
+  'post',
+  'confirmConciergeAction',
+  'Explicitly confirm or reject an owned server-held proposal',
+  object({ status: { enum: ['CONFIRMED', 'REJECTED'] }, result: { type: 'object' } }, ['status']),
+  ref('ConciergeConfirmation'),
+);
 const filterJson = convert(filterSchema) as { properties: Record<string, unknown> };
 op(
   '/properties',

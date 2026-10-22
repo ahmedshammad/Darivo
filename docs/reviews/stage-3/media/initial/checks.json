@@ -1,0 +1,47 @@
+[
+  {
+    "stem": "en-dark-1440-1000",
+    "errors": [],
+    "violations": [],
+    "overflow": false,
+    "composer": "{\"x\":25,\"y\":824.203125,\"width\":435,\"height\":100,\"top\":824.203125,\"right\":460,\"bottom\":924.203125,\"left\":25}",
+    "panel": "{\"x\":0,\"y\":88,\"width\":540,\"height\":912,\"top\":88,\"right\":540,\"bottom\":1000,\"left\":0}",
+    "reading": "{\"x\":0,\"y\":157,\"width\":539,\"height\":571.203125,\"top\":157,\"right\":539,\"bottom\":728.203125,\"left\":0}"
+  },
+  {
+    "stem": "ar-light-1024-1000",
+    "errors": [],
+    "violations": [],
+    "overflow": false,
+    "composer": "{\"x\":664,\"y\":824.203125,\"width\":335,\"height\":100,\"top\":824.203125,\"right\":999,\"bottom\":924.203125,\"left\":664}",
+    "panel": "{\"x\":584,\"y\":88,\"width\":440,\"height\":912,\"top\":88,\"right\":1024,\"bottom\":1000,\"left\":584}",
+    "reading": "{\"x\":585,\"y\":157,\"width\":439,\"height\":571.203125,\"top\":157,\"right\":1024,\"bottom\":728.203125,\"left\":585}"
+  },
+  {
+    "stem": "en-light-390-844",
+    "errors": [],
+    "violations": [],
+    "overflow": false,
+    "composer": "{\"x\":18,\"y\":733.5,\"width\":266,\"height\":58,\"top\":733.5,\"right\":284,\"bottom\":791.5,\"left\":18}",
+    "panel": "{\"x\":0,\"y\":219.453125,\"width\":390,\"height\":624.546875,\"top\":219.453125,\"right\":390,\"bottom\":844,\"left\":0}",
+    "reading": "{\"x\":1,\"y\":301.453125,\"width\":388,\"height\":361.953125,\"top\":301.453125,\"right\":389,\"bottom\":663.40625,\"left\":1}"
+  },
+  {
+    "stem": "ar-dark-390-844",
+    "errors": [],
+    "violations": [],
+    "overflow": false,
+    "composer": "{\"x\":106,\"y\":733.5,\"width\":266,\"height\":58,\"top\":733.5,\"right\":372,\"bottom\":791.5,\"left\":106}",
+    "panel": "{\"x\":0,\"y\":219.453125,\"width\":390,\"height\":624.546875,\"top\":219.453125,\"right\":390,\"bottom\":844,\"left\":0}",
+    "reading": "{\"x\":1,\"y\":301.453125,\"width\":388,\"height\":360.953125,\"top\":301.453125,\"right\":389,\"bottom\":662.40625,\"left\":1}"
+  },
+  {
+    "stem": "ar-light-375-500",
+    "errors": [],
+    "violations": [],
+    "overflow": false,
+    "composer": "{\"x\":106,\"y\":435,\"width\":251,\"height\":58,\"top\":435,\"right\":357,\"bottom\":493,\"left\":106}",
+    "panel": "{\"x\":0,\"y\":78,\"width\":375,\"height\":422,\"top\":78,\"right\":375,\"bottom\":500,\"left\":0}",
+    "reading": "{\"x\":1,\"y\":152,\"width\":373,\"height\":243.90625,\"top\":152,\"right\":374,\"bottom\":395.90625,\"left\":1}"
+  }
+]

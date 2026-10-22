@@ -1,0 +1,42 @@
+[
+  {
+    "stem": "en-dark-1440-1000",
+    "errors": [],
+    "anchors": ["1Palm Jumeirah", "2Dubai Hills", "3Downtown Dubai"],
+    "draft": "",
+    "violations": [],
+    "overflow": false,
+    "composer": "{\"x\":25,\"y\":872.203125,\"width\":389,\"height\":52,\"top\":872.203125,\"right\":414,\"bottom\":924.203125,\"left\":25}",
+    "reading": "{\"x\":0,\"y\":157,\"width\":539,\"height\":661.203125,\"top\":157,\"right\":539,\"bottom\":818.203125,\"left\":0}"
+  },
+  {
+    "stem": "ar-light-1024-1000",
+    "errors": [],
+    "anchors": ["1نخلة جميرا", "2دبي هيلز", "3وسط دبي"],
+    "draft": "",
+    "violations": [],
+    "overflow": false,
+    "composer": "{\"x\":710,\"y\":872.203125,\"width\":289,\"height\":52,\"top\":872.203125,\"right\":999,\"bottom\":924.203125,\"left\":710}",
+    "reading": "{\"x\":585,\"y\":157,\"width\":439,\"height\":661.203125,\"top\":157,\"right\":1024,\"bottom\":818.203125,\"left\":585}"
+  },
+  {
+    "stem": "en-light-390-844",
+    "errors": [],
+    "anchors": ["1Palm Jumeirah", "2Dubai Hills", "3Downtown Dubai"],
+    "draft": "",
+    "violations": [],
+    "overflow": false,
+    "composer": "{\"x\":18,\"y\":739.5,\"width\":266,\"height\":52,\"top\":739.5,\"right\":284,\"bottom\":791.5,\"left\":18}",
+    "reading": "{\"x\":1,\"y\":301.453125,\"width\":388,\"height\":394.046875,\"top\":301.453125,\"right\":389,\"bottom\":695.5,\"left\":1}"
+  },
+  {
+    "stem": "ar-dark-390-844",
+    "errors": [],
+    "anchors": ["1نخلة جميرا", "2دبي هيلز", "3وسط دبي"],
+    "draft": "",
+    "violations": [],
+    "overflow": false,
+    "composer": "{\"x\":106,\"y\":739.5,\"width\":266,\"height\":52,\"top\":739.5,\"right\":372,\"bottom\":791.5,\"left\":106}",
+    "reading": "{\"x\":1,\"y\":301.453125,\"width\":388,\"height\":394.046875,\"top\":301.453125,\"right\":389,\"bottom\":695.5,\"left\":1}"
+  }
+]

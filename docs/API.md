@@ -4,8 +4,8 @@ Base path: `/api/v1`. The machine-readable contract is `openapi.json`, generated
 
 ## Common behavior
 
-- JSON unless a PDF or NDJSON content type is specified. API responses are not cached.
-- All mutations require a valid session and an Origin equal to `AUTH_URL`. Cross-origin writes return 403. Payloads above 32 KiB return 413.
+- JSON unless a PDF, NDJSON or SSE content type is specified. API responses are not cached.
+- Mutations require an Origin equal to `AUTH_URL`; durable writes require a valid session. Concierge POST also supports public read-only guest turns. Cross-origin writes return 403. Payloads above 32 KiB return 413, except Concierge turns which allow 64 KiB for the structured Brief.
 - 400: invalid schema/parameters; 401: no session; 403: wrong role/origin; 404: missing or inaccessible resource (indistinguishable for private inventory); 409: linked resource or last-admin conflict; 429: rate limit; 500: sanitized internal failure.
 - Amounts are stored as minor-unit integers and exposed as decimal strings in `priceMinor`. `priceAed` is the seeded comparison value. Dimensions are square metres. Dates use ISO 8601, with viewing slots in UTC plus an IANA timezone.
 - Anonymous discovery sees public inventory only. VERIFIED_CLIENT plus current VERIFIED status adds VERIFIED_ONLY; PRIVATE_INVITE always requires a grant for client roles. DEVELOPER_PARTNER never inherits private or staff access. Authorization resolves the current database identity by immutable session user ID; stale roles and deleted accounts do not retain access. Shortlists, PDF, history, comparison and tools reapply visibility.
@@ -48,6 +48,18 @@ The response is `application/x-ndjson`, one JSON object per line. Consume all li
 
 A failure after streaming starts is `{"type":"error","key":"chatError"}`. Provider prose never bypasses tool grounding. The authenticated user is assigned by the server, never accepted as model input.
 
+## V2 Concierge (Stage 3 implementation)
+
+`POST /concierge` accepts the strict `ConciergeRequest` schema: UUID request/conversation IDs, message, locale, structured Brief, optional revisioned edit and at most 12 prior entity references. The server re-authorizes prior references. Guests may query public records; their conversation is held in the mounted client only. Authenticated history is separate from the legacy Consultant.
+
+Responses use the Vercel AI SDK `text/event-stream` protocol. `data-concierge` chunks contain versioned `ConciergeEvent` values: turn/status/tool progress, Brief updates, application text, typed components, live UI actions, proposals and terminal completion/error. Model-authored prose is never streamed. Components arrive as tools complete. Consumers must reject old request IDs and nonincreasing sequence numbers, and must not replay actions from history.
+
+`GET /concierge` returns a current-user `ConciergeReplay`, with re-authorized evidence and `applyActions: false`. `DELETE /concierge` removes the conversation, taste memory and proposals, then returns a new empty server session. A late generation cannot recreate the deleted session. A stale revision or concurrent session update fails rather than silently overwriting newer work.
+
+`POST /concierge/confirm` accepts only an owned server-held proposal ID, a request ID and confirm/reject decision. The proposal claim and write share a database transaction; repeat confirmation returns the prior result. Current visibility, privacy, expiry and future viewing slots are checked again. Real project references are not unit inventory and cannot use unit-only portfolio/viewing writes. Natural-language advice offers an enquiry without contacting an advisor.
+
+Taste memory requires an explicit UI consent action. The initial supported extraction is narrow and deterministic (contemporary design, low-rise preference, high-rise exclusion); it retains only the explicit phrase. Revoking memory removes it even when the current conversation is not saved. An explicit refusal of external AI processing sets the retained no-sharing restriction. No-sharing selects the local mock before provider I/O on this and subsequent turns, including when an API key is configured; it covers disclosure to an inference service as well as advisor sharing. These boundaries are being validated for Stage 3; they are not a claim of full stage acceptance.
+
 ## Deliberate demo boundaries
 
-The rate limiter is per-process (auth 30/minute, chat 20/user/minute, search and detail 120/identity/minute, dossier 6/user/minute). Anonymous clients share a bucket rather than trusting spoofable forwarding headers. Add a trusted-proxy/shared limiter adapter for production. Magic-link email and KYC are local stubs; map data is original schematic GeoJSON. See compliance review notes before any real data deployment.
+The rate limiter is per-process (auth 30/minute, legacy chat 20/user/minute, Concierge 30/user/minute or 60/shared public bucket, confirmation 10/user/minute, search and detail 120/identity/minute, dossier 6/user/minute). Anonymous clients share a bucket rather than trusting spoofable forwarding headers. Add a trusted-proxy/shared limiter adapter for production. Magic-link email and KYC are local stubs; map data includes an approximate schematic fallback. See compliance review notes before any real data deployment.

@@ -1,0 +1,34 @@
+[
+  {
+    "stem": "en-dark-1440",
+    "errors": [],
+    "violations": [],
+    "mode": "webgl",
+    "points": "[{\"id\":\"southmed\",\"x\":82.99999999999932,\"y\":337.9542541112451},{\"id\":\"orla-palm-jumeirah\",\"x\":801,\"y\":518.0457458887536}]",
+    "overflow": false
+  },
+  {
+    "stem": "ar-light-1024",
+    "errors": [],
+    "violations": [],
+    "mode": "webgl",
+    "points": "[{\"id\":\"southmed\",\"x\":82.99999999999932,\"y\":377.5844152544854},{\"id\":\"orla-palm-jumeirah\",\"x\":484.9999999999993,\"y\":478.4155847455139}]",
+    "overflow": false
+  },
+  {
+    "stem": "en-light-390",
+    "errors": [],
+    "violations": [],
+    "mode": "webgl",
+    "points": "[{\"id\":\"southmed\",\"x\":82.99999999999959,\"y\":263.91432431077885},{\"id\":\"orla-palm-jumeirah\",\"x\":290.9999999999996,\"y\":316.0856756892214}]",
+    "overflow": false
+  },
+  {
+    "stem": "ar-dark-390",
+    "errors": [],
+    "violations": [],
+    "mode": "webgl",
+    "points": "[{\"id\":\"southmed\",\"x\":82.99999999999959,\"y\":263.91432431077885},{\"id\":\"orla-palm-jumeirah\",\"x\":290.9999999999996,\"y\":316.0856756892214}]",
+    "overflow": false
+  }
+]

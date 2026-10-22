@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "mock": {
+    "provider": "mock",
+    "cases": 360,
+    "turns": 508,
+    "cards": 1736,
+    "facts": 15615,
+    "actions": 514,
+    "durationMs": 42861,
+    "counters": {
+      "executionErrors": 0,
+      "semanticFailures": 14,
+      "hallucinatedIds": 0,
+      "hallucinatedValues": 0,
+      "invalidSourceReferences": 0,
+      "privateLeaks": 0,
+      "currencyErrors": 0,
+      "mapErrors": 0,
+      "toneViolations": 0,
+      "refusalFailures": 0,
+      "schoolDisclosureFailures": 4,
+      "unconfirmedWrites": 0,
+      "streamErrors": 0
+    },
+    "failures": [
+      {
+        "case": "guest/C58",
+        "category": "schoolDisclosureFailures",
+        "detail": "School requirement has no explicit unavailable-curriculum/demo disclosure"
+      },
+      {
+        "case": "client/C58",
+        "category": "schoolDisclosureFailures",
+        "detail": "School requirement has no explicit unavailable-curriculum/demo disclosure"
+      },
+      {
+        "case": "verified_client/C58",
+        "category": "schoolDisclosureFailures",
+        "detail": "School requirement has no explicit unavailable-curriculum/demo disclosure"
+      },
+      {
+        "case": "developer_partner/C58",
+        "category": "schoolDisclosureFailures",
+        "detail": "School requirement has no explicit unavailable-curriculum/demo disclosure"
+      },
+      {
+        "case": "guest/unit-journey-en/step-3",
+        "category": "semanticFailures",
+        "detail": "Natural first-unit timeline missing or selected the project aggregate"
+      },
+      {
+        "case": "guest/unit-journey-ar/step-3",
+        "category": "semanticFailures",
+        "detail": "Natural first-unit timeline missing or selected the project aggregate"
+      },
+      {
+        "case": "client/unit-journey-en/step-3",
+        "category": "semanticFailures",
+        "detail": "Natural first-unit timeline missing or selected the project aggregate"
+      },
+      {
+        "case": "client/unit-journey-ar/step-3",
+        "category": "semanticFailures",
+        "detail": "Natural first-unit timeline missing or selected the project aggregate"
+      },
+      {
+        "case": "verified_client/unit-journey-en/step-3",
+        "category": "semanticFailures",
+        "detail": "Natural first-unit timeline missing or selected the project aggregate"
+      },
+      {
+        "case": "verified_client/unit-journey-ar/step-3",
+        "category": "semanticFailures",
+        "detail": "Natural first-unit timeline missing or selected the project aggregate"
+      },
+      {
+        "case": "developer_partner/unit-journey-en/step-3",
+        "category": "semanticFailures",
+        "detail": "Natural first-unit timeline missing or selected the project aggregate"
+      },
+      {
+        "case": "developer_partner/unit-journey-ar/step-3",
+        "category": "semanticFailures",
+        "detail": "Natural first-unit timeline missing or selected the project aggregate"
+      },
+      {
+        "case": "guest/access/PUBLIC",
+        "category": "semanticFailures",
+        "detail": "Expected access=true, emitted=false"
+      },
+      {
+        "case": "client/access/PUBLIC",
+        "category": "semanticFailures",
+        "detail": "Expected access=true, emitted=false"
+      },
+      {
+        "case": "verified_client/access/PUBLIC",
+        "category": "semanticFailures",
+        "detail": "Expected access=true, emitted=false"
+      },
+      {
+        "case": "verified_client/access/VERIFIED_ONLY",
+        "category": "semanticFailures",
+        "detail": "Expected access=true, emitted=false"
+      },
+      {
+        "case": "developer_partner/access/PUBLIC",
+        "category": "semanticFailures",
+        "detail": "Expected access=true, emitted=false"
+      },
+      {
+        "case": "client/grant-active",
+        "category": "semanticFailures",
+        "detail": "Expected access=true, emitted=false"
+      }
+    ]
+  },
+  "real": {
+    "status": "skipped",
+    "reason": "No OPENAI_API_KEY; real provider not tested."
+  },
+  "totalDurationMs": 44227,
+  "limits": [
+    "Fresh DAL checks certify only this seeded local database state, not current external market truth.",
+    "Mock semantic/execution evidence does not certify native Arabic quality, browser UI, real-provider behavior or external writes.",
+    "No viewing, handoff or portfolio confirmation is executed."
+  ]
+}

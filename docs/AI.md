@@ -1,5 +1,15 @@
 # Consultant architecture
 
+## V2 Concierge implementation
+
+Stage 3 adds `/concierge` and `/api/v1/concierge` alongside the compatible legacy flow described below. `src/lib/concierge.ts` defines strict per-market Briefs, grounded facts/sources, React component descriptors, UI actions and proposal-only writes. The provider interface receives prior authorized entities and tool results for up to three bounded planning rounds. The OpenAI-compatible adapter uses the installed Vercel AI SDK; without a key the deterministic bilingual parser uses the same tools.
+
+SDK UI data streams report actual interpretation/retrieval progress and completed tool components. Trusted application copy supplies prose; raw model text is discarded. One persistent map consumes live action IDs and Brief revisions. History restoration re-authorizes references and cannot replay actions. Cancellation propagates to provider work and prevents observed in-flight persistence from committing. Explicit write confirmations are atomic and idempotent.
+
+Parser evals and execution safety evals are separate: semantic extraction does not prove authorized retrieval or fact grounding. Stage 3 validation is in progress. The required bilingual journeys, evidence captures, board reviews and CI remain acceptance gates.
+
+## Legacy Consultant compatibility
+
 `AIProvider` proposes allowlisted client tool calls; it never has database credentials or admin tools. The deterministic MockProvider extracts Arabic/English briefs, normalizes Arabic numerals and carries preferences between turns. `AI_PROVIDER=openai` plus a key enables the optional OpenAI-compatible Chat Completions adapter. Without a key it falls back to MockProvider. The adapter follows [official function-calling documentation](https://developers.openai.com/api/docs/guides/function-calling), requires tools and validates every argument with Zod.
 
 The application executes tools with a freshly loaded authenticated user. All listing access passes through the shared visibility predicate. Tool facts are rendered as scoped cards and estimate panels; free-form model prose is discarded. Trusted bilingual templates explain results, no-matches and advice handoffs. This conservative MVP trades conversational variety for auditable grounding. Model-invented IDs cannot resolve to cards. A second code gate checks explicit user intent before shortlist/viewing writes.
