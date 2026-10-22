@@ -3,6 +3,8 @@ import { afterAll, describe, expect, it } from 'vitest';
 import { db } from '@/src/server/db/client';
 import {
   emptyConciergeBrief,
+  conciergeComponentSchema,
+  conciergeToolCallSchema,
   type ConciergeProvider,
   type ConciergeProviderPlan,
   type ConciergeStreamEvent,
@@ -509,8 +511,11 @@ describe('Concierge authorized engine and grounded replay', () => {
       context(),
     );
     expect(sourced.components[0].kind).toBe('payment-timeline');
-    if (sourced.components[0].kind === 'payment-timeline')
+    if (sourced.components[0].kind === 'payment-timeline') {
       expect(sourced.components[0].schedule.reduce((sum, row) => sum + row.percent, 0)).toBe(100);
+      const fresh = await resolveCard(sourced.components[0].entity, null, emptyConciergeBrief());
+      expect(sourced.components[0].subjectName).toEqual(fresh!.name);
+    }
     const missing = await executeConciergeTool(
       { name: 'ui.showTimeline', arguments: { projectId: 'orla-palm-jumeirah' } },
       context(),
@@ -843,6 +848,8 @@ describe('Concierge authorized engine and grounded replay', () => {
     expect(timeline).toBeDefined();
     if (timeline?.kind !== 'payment-timeline') throw new Error('Missing timeline');
     expect(timeline.entity).toEqual({ kind: 'unit', id: unit.id });
+    const fresh = await resolveCard(timeline.entity, null, emptyConciergeBrief());
+    expect(timeline.subjectName).toEqual(fresh!.name);
     expect(timeline.mode).toBe('DEMO_ESTIMATE');
     expect(timeline.price.native).toEqual({
       amount: Number(unit.priceMinor) / 100,
@@ -885,6 +892,104 @@ describe('Concierge authorized engine and grounded replay', () => {
       context(),
     );
     expect(mismatched.components[0].kind).toBe('notice');
+  });
+  it('accepts old timeline history, refreshes authorized names and drops them after grant revocation', async () => {
+    const id = `timeline-identity-${randomUUID()}`;
+    const user = await db.user.create({
+      data: { id, email: `${id}@darivo.example`, role: 'CLIENT', verification: 'UNVERIFIED' },
+    });
+    try {
+      const template = await db.property.findFirstOrThrow({
+        where: { visibility: 'PUBLIC', developer: { kind: 'DEMO' }, project: { kind: 'DEMO' } },
+      });
+      await db.property.create({
+        data: {
+          ...template,
+          id,
+          slug: id,
+          visibility: 'PRIVATE_INVITE',
+          permitNumber: 'DEMO-TIMELINE-IDENTITY',
+          translations: {
+            create: [
+              {
+                locale: 'en',
+                title: 'Private timeline fixture',
+                description: 'Fictional test unit.',
+              },
+              {
+                locale: 'ar',
+                title: 'وحدة خاصة لاختبار السداد',
+                description: 'وحدة خيالية للاختبار.',
+              },
+            ],
+          },
+          paymentPlan: {
+            create: { bookingPercent: 20, constructionPercent: 60, handoverPercent: 20 },
+          },
+        },
+      });
+      await db.offMarketGrant.create({
+        data: { userId: user.id, propertyId: id, grantedBy: 'timeline-identity-test' },
+      });
+      const result = await executeConciergeTool(
+        { name: 'ui.showTimeline', arguments: { unitId: id } },
+        { ...context(), viewer: user },
+      );
+      const timeline = result.components.find((component) => component.kind === 'payment-timeline');
+      if (timeline?.kind !== 'payment-timeline')
+        throw new Error('Missing authorized private timeline');
+      expect(timeline.subjectName).toEqual({
+        en: 'Private timeline fixture',
+        ar: 'وحدة خاصة لاختبار السداد',
+      });
+      expect(
+        conciergeToolCallSchema.safeParse({
+          name: 'ui.showTimeline',
+          arguments: { unitId: id, subjectName: { en: 'Invented name', ar: 'اسم مختلق' } },
+        }).success,
+      ).toBe(false);
+      const legacy = { ...timeline, subjectName: undefined };
+      expect(conciergeComponentSchema.safeParse(legacy).success).toBe(true);
+      await db.propertyTranslation.update({
+        where: { propertyId_locale: { propertyId: id, locale: 'en' } },
+        data: { title: 'Renamed private timeline fixture' },
+      });
+      await db.propertyTranslation.update({
+        where: { propertyId_locale: { propertyId: id, locale: 'ar' } },
+        data: { title: 'الاسم المحدث لوحدة السداد' },
+      });
+      const forged = { ...timeline, subjectName: { en: 'Invented name', ar: 'اسم مختلق' } };
+      const replay = await rehydrateConciergeComponents(
+        [legacy, forged],
+        user,
+        emptyConciergeBrief(),
+      );
+      expect(replay).toHaveLength(2);
+      for (const current of replay) {
+        expect(current.kind).toBe('payment-timeline');
+        if (current.kind !== 'payment-timeline') throw new Error('Missing refreshed timeline');
+        expect(current.subjectName).toEqual({
+          en: 'Renamed private timeline fixture',
+          ar: 'الاسم المحدث لوحدة السداد',
+        });
+        expect(current.entity).toEqual({ kind: 'unit', id });
+      }
+      await db.offMarketGrant.deleteMany({ where: { userId: user.id, propertyId: id } });
+      // A stale viewer and a previously valid named component confer no continuing authority.
+      expect(await rehydrateConciergeComponents(replay, user, emptyConciergeBrief())).toEqual([]);
+      const denied = await executeConciergeTool(
+        { name: 'ui.showTimeline', arguments: { unitId: id } },
+        { ...context(), viewer: user },
+      );
+      const deniedText = JSON.stringify(denied.components);
+      for (const secret of [id, 'Renamed private timeline fixture', 'الاسم المحدث لوحدة السداد'])
+        expect(deniedText).not.toContain(secret);
+    } finally {
+      await db.offMarketGrant.deleteMany({ where: { userId: user.id } });
+      await db.property.deleteMany({ where: { id } });
+      await db.auditLog.deleteMany({ where: { actorId: user.id } });
+      await db.user.delete({ where: { id: user.id } });
+    }
   });
   it('keeps unit identities out of replayable unavailable-payment notices', async () => {
     const unit = await db.property.findFirstOrThrow({

@@ -312,6 +312,7 @@ export async function runKarimCurrencyJourney(
   if (!timeline || timeline.kind !== 'payment-timeline')
     throw new Error('Missing exact demo-unit timeline');
   expect(timeline.entity).toEqual({ kind: 'unit', id: 'property-001' });
+  expect(timeline.subjectName).toEqual(unit!.name);
   expect(timeline.price.native).toEqual({ currency: 'AED', amount: 42980000 });
   expect(timeline.price.paymentCurrency).toBe('EGP');
   expect(timeline.price.converted.map((value) => value.money.currency)).toEqual(['GBP']);
@@ -319,10 +320,13 @@ export async function runKarimCurrencyJourney(
   expect(timeline.schedule.map((step) => step.percent)).toEqual([20, 40, 40]);
   expect(stableBrief(latest.brief)).toEqual(stableBrief(beforeTimeline.brief));
   const schedule = turns.last().locator('[data-component-kind="payment-timeline"]');
+  const subject = schedule.getByTestId('concierge-timeline-subject');
+  await expect(subject).toHaveText(unit!.name[locale]);
   await expect(schedule).toContainText(format(8596000, 'AED'));
   await expect(schedule).toContainText(format(17192000, 'AED'));
   await expect(schedule).toContainText(format(42980000, 'AED'));
   await schedule.evaluate((element) => element.scrollIntoView({ block: 'start' }));
+  await expect(subject).toBeInViewport({ ratio: 1 });
   await record('exact-unit-timeline', latest);
   await namedSchedule(latest, 'southmed-after-unit');
 }

@@ -876,7 +876,8 @@ export async function rehydrateConciergeComponents(
         (component.entity.kind === 'project' || component.entity.kind === 'unit')) ||
       component.kind === 'itinerary'
     ) {
-      // Re-run only these read-only tools. Saved arithmetic/text is not authoritative.
+      // Re-run only these read-only tools. Saved arithmetic/text, including a timeline
+      // subjectName, is not authoritative. Fresh authorization refreshes its name or drops it.
       const { executeConciergeTool } = await import('./tools');
       const call =
         component.kind === 'itinerary'

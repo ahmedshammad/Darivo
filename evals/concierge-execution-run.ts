@@ -621,6 +621,13 @@ async function verifyResult(
           'invalidSourceReferences',
           'Timeline source/price bundle differs from current authorized record',
         );
+      if (fresh && !equal(component.subjectName, fresh.name))
+        fail(
+          out,
+          label,
+          'hallucinatedValues',
+          'Timeline subject name differs from the authorized record',
+        );
       const scheduleFact = fresh?.facts.find((fact) => fact.key === 'payment_plan');
       const sourcePercentages =
         typeof scheduleFact?.value === 'string'

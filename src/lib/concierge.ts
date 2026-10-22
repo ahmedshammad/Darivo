@@ -585,6 +585,8 @@ export const conciergeComponentSchema = z.discriminatedUnion('kind', [
       ...evidenceBundle,
       kind: z.literal('payment-timeline'),
       entity: entityRefSchema,
+      // Optional only for persisted older components; tools derive it from an authorized record.
+      subjectName: localizedTextSchema.optional(),
       price: moneyDisplaySchema,
       schedule: paymentScheduleSchema,
       mode: z.enum(['SOURCED_SCHEDULE', 'DEMO_ESTIMATE', 'USER_ASSUMPTION']),

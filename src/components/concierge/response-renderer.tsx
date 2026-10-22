@@ -415,6 +415,9 @@ export function ResponseComponent({
                   : t.reference}
             </span>
           </div>
+          <p data-testid="concierge-timeline-subject">
+            <bdi>{component.subjectName?.[locale] ?? component.entity.id}</bdi>
+          </p>
           <ol className="cq-payment">
             {component.schedule.map((step) => (
               <li key={step.id}>

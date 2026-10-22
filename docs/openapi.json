@@ -2217,6 +2217,9 @@
                   "entity": {
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema51"
                   },
+                  "subjectName": {
+                    "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema39"
+                  },
                   "price": {
                     "$ref": "#/components/schemas/ConciergeReplay/$defs/__schema43"
                   },
@@ -3644,6 +3647,9 @@
                       },
                       "entity": {
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema53"
+                      },
+                      "subjectName": {
+                        "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema41"
                       },
                       "price": {
                         "$ref": "#/components/schemas/ConciergeEvent/$defs/__schema45"

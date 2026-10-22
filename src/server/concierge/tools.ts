@@ -802,6 +802,7 @@ export async function executeConciergeTool(
         turnId: context.turnId,
         kind: 'payment-timeline',
         entity: cardEntity(card),
+        subjectName: card.name,
         price: card.price,
         facts: card.facts,
         sources: card.sources,
