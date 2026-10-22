@@ -15,6 +15,8 @@ import type { AtlasPoint, AtlasProject, LivingMapProps } from '@/src/lib/atlas';
 import { ATLAS_TRAVEL_SPEED_KMH } from '@/src/lib/atlas';
 import { ATLAS_PLACES, atlasComparisonMetrics } from '@/src/lib/atlas-intent';
 import { FX, FX_DATE } from '@/src/lib/catalog';
+import { hasSoftwareRasterizer } from '@/src/lib/map-capability';
+import { probeMapCapability } from '@/src/lib/map-capability-probe';
 import {
   atlasCircle,
   atlasCameraPadding,
@@ -33,6 +35,7 @@ const copy = {
     loading: 'Finding our bearings',
     fallback: 'Regional 2D map',
     fallbackDetail: 'Offline geography · street and 3D detail unavailable',
+    softwareFallback: 'Smoother 2D map for this device · street and 3D detail unavailable',
     zoomIn: 'Zoom in',
     zoomOut: 'Zoom out',
     north: 'Face north',
@@ -68,6 +71,8 @@ const copy = {
     loading: 'نرسم ملامح المكان',
     fallback: 'خريطة إقليمية ثنائية الأبعاد',
     fallbackDetail: 'جغرافيا محفوظة · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة',
+    softwareFallback:
+      'خريطة ثنائية الأبعاد أكثر سلاسة لهذا الجهاز · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة',
     zoomIn: 'تكبير الخريطة',
     zoomOut: 'تصغير الخريطة',
     north: 'الاتجاه نحو الشمال',
@@ -101,6 +106,7 @@ const copy = {
 };
 
 type DeckLayers = typeof import('@deck.gl/layers');
+type FallbackReason = 'forced' | 'unavailable' | 'software-renderer';
 type MapRuntime = {
   map: LibreMap;
   overlay?: MapLibreOverlay;
@@ -388,6 +394,24 @@ function renderLayers(runtime: MapRuntime, props: LivingMapProps) {
         onClick: select,
       }),
     );
+    layers.push(
+      new ScatterplotLayer<AtlasProject>({
+        id: 'atlas-compare-hit-targets',
+        data: comparison,
+        getPosition: (p) => p.center,
+        getRadius: 22,
+        radiusUnits: 'pixels',
+        billboard: true,
+        filled: true,
+        stroked: false,
+        getFillColor: [0, 0, 0, 0],
+        pickable: true,
+        // Picking writes an object color even though the normal draw is transparent.
+        // The map click handler dispatches selection once, ahead of native clusters.
+        onClick: () => true,
+        parameters: { depthWriteEnabled: false },
+      }),
+    );
     labels.features.push(
       ...links.map((link) => ({
         type: 'Feature' as const,
@@ -459,6 +483,9 @@ export function LivingMap(props: LivingMapProps) {
     forceFallback ? 'fallback' : 'loading',
   );
   const [terrainOff, setTerrainOff] = useState(false);
+  const [fallbackReason, setFallbackReason] = useState<FallbackReason | undefined>(
+    forceFallback ? 'forced' : undefined,
+  );
   const [overlayOff, setOverlayOff] = useState(false);
   const [overview, setOverview] = useState(mode === 'arrival' && (props.camera?.zoom ?? 2.3) < 5);
   const [phase, setPhase] = useState<'day' | 'evening' | 'night'>('night');
@@ -477,12 +504,13 @@ export function LivingMap(props: LivingMapProps) {
     let arrivalTimer: ReturnType<typeof setTimeout> | undefined;
     let detachMeasurement: (() => void) | undefined;
     let clearWorldMarkers: (() => void) | undefined;
-    const fallback = () => {
+    const fallback = (reason: FallbackReason = 'unavailable') => {
       if (disposed || failed) return;
       failed = true;
       clearTimeout(timeout);
       clearTimeout(arrivalTimer);
       setStatus('fallback');
+      setFallbackReason(reason);
       latest.current.onReady?.('fallback');
       queueMicrotask(() => {
         if (disposed) return;
@@ -497,7 +525,7 @@ export function LivingMap(props: LivingMapProps) {
       });
     };
     if (forceFallback) {
-      queueMicrotask(fallback);
+      queueMicrotask(() => fallback('forced'));
       return () => {
         disposed = true;
       };
@@ -505,6 +533,7 @@ export function LivingMap(props: LivingMapProps) {
     queueMicrotask(() => {
       if (!disposed) {
         setStatus('loading');
+        setFallbackReason(undefined);
         setTerrainOff(false);
         setOverlayOff(false);
       }
@@ -514,6 +543,12 @@ export function LivingMap(props: LivingMapProps) {
         const arrival = mode === 'arrival';
         const startOverview = arrival && (latest.current.camera?.zoom ?? 2.3) < 5;
         setOverview(startOverview);
+        const capability = await probeMapCapability(abort.signal);
+        if (disposed) return;
+        if (capability === 'software-renderer') {
+          fallback('software-renderer');
+          return;
+        }
         const [{ Map, NavigationControl, Popup, Marker, setWorkerUrl }, style] = await Promise.all([
           import('maplibre-gl'),
           startOverview
@@ -535,13 +570,19 @@ export function LivingMap(props: LivingMapProps) {
           bearing: camera?.bearing ?? (arrival ? 0 : -15),
           attributionControl: false,
           pixelRatio: Math.min(window.devicePixelRatio || 1, 1.6),
-          canvasContextAttributes: { antialias: false },
+          canvasContextAttributes: { antialias: false, failIfMajorPerformanceCaveat: true },
           locale: {
             'NavigationControl.ZoomIn': text.zoomIn,
             'NavigationControl.ZoomOut': text.zoomOut,
             'NavigationControl.ResetBearing': text.north,
           },
         });
+        // Some browsers still accept known CPU rasterizers with the native caveat
+        // flag. Inspect the real context before any animation frame or shader draw.
+        if (hasSoftwareRasterizer(map.getCanvas().getContext('webgl2'))) {
+          fallback('software-renderer');
+          return;
+        }
         const activeMap = map;
         const instrumentedRoot = root.current;
         if (instrumentedRoot) {
@@ -631,7 +672,7 @@ export function LivingMap(props: LivingMapProps) {
           const point = activeMap.getCenter();
           latest.current.onPoint?.([point.lng, point.lat]);
         });
-        activeMap.getCanvas().addEventListener('webglcontextlost', fallback);
+        activeMap.getCanvas().addEventListener('webglcontextlost', () => fallback());
         if (arrival) activeMap.scrollZoom.disable();
         activeMap.addControl(
           new NavigationControl({ showCompass: true, visualizePitch: true }),
@@ -944,6 +985,16 @@ export function LivingMap(props: LivingMapProps) {
           runtime.current = entry;
           activeMap.on('moveend', entry.update);
           activeMap.on('click', (event) => {
+            const endpoint = entry.overlay?.pickObject({
+              x: event.point.x,
+              y: event.point.y,
+              radius: 0,
+              layerIds: ['atlas-compare-hit-targets'],
+            });
+            if (endpoint?.object) {
+              latest.current.onSelect?.((endpoint.object as AtlasProject).id);
+              return;
+            }
             const features = activeMap.queryRenderedFeatures(event.point, {
               layers: ['atlas-clusters', 'atlas-markers'],
             });
@@ -1070,12 +1121,15 @@ export function LivingMap(props: LivingMapProps) {
   ]);
 
   const fallback = forceFallback || status === 'fallback';
+  const fallbackDetail =
+    fallbackReason === 'software-renderer' ? text.softwareFallback : text.fallbackDetail;
   return (
     <div
       ref={root}
       className={`living-map living-map--${theme}`}
       data-map-status={fallback ? 'fallback' : status}
       data-map-mode={fallback ? 'fallback' : 'webgl'}
+      data-fallback-reason={fallback ? fallbackReason : undefined}
       data-map-scene={mode}
       data-map-ready={fallback || status === 'webgl'}
       data-tiles-ready="false"
@@ -1085,7 +1139,13 @@ export function LivingMap(props: LivingMapProps) {
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
       <div ref={host} className="atlas-map-canvas" hidden={fallback} />
-      {fallback && <FallbackMap key={props.camera?.key ?? 'regional'} {...props} />}
+      {fallback && (
+        <FallbackMap
+          key={props.camera?.key ?? 'regional'}
+          {...props}
+          fallbackDetail={fallbackDetail}
+        />
+      )}
       {status === 'loading' && !forceFallback && (
         <div className="atlas-map-loading" role="status">
           <Compass size={26} strokeWidth={1} />
@@ -1098,11 +1158,7 @@ export function LivingMap(props: LivingMapProps) {
           <summary>{text.sources}</summary>
           <div className="atlas-map-source-panel">
             <p>
-              {fallback
-                ? text.fallbackDetail
-                : overview
-                  ? 'Natural Earth · 1:110m'
-                  : text.sourceData}
+              {fallback ? fallbackDetail : overview ? 'Natural Earth · 1:110m' : text.sourceData}
             </p>
             <p>{text.approximation}</p>
             {!fallback && <p>{text.clusters}</p>}
@@ -1137,13 +1193,17 @@ export function LivingMap(props: LivingMapProps) {
         </div>
       </div>
       <div className="sr-only" role="status" aria-live="polite">
-        {fallback ? text.fallback : status === 'webgl' ? text.map : text.loading}
+        {fallback
+          ? `${text.fallback}. ${fallbackDetail}`
+          : status === 'webgl'
+            ? text.map
+            : text.loading}
       </div>
     </div>
   );
 }
 
-function FallbackMap(props: LivingMapProps) {
+function FallbackMap(props: LivingMapProps & { fallbackDetail: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 1024, height: 720 });
   const [land, setLand] = useState<FeatureCollection<Geometry> | null>(null);
@@ -1410,13 +1470,13 @@ function FallbackMap(props: LivingMapProps) {
       {props.mode === 'explore' && compared.length > 1 ? null : props.mode === 'explore' ? (
         <details className="atlas-fallback-label atlas-fallback-label--compact">
           <summary>{text.fallback}</summary>
-          <span>{text.fallbackDetail}</span>
+          <span>{props.fallbackDetail}</span>
           {props.sun && <span role="status">{text.sunFallback}</span>}
         </details>
       ) : (
         <div className="atlas-fallback-label">
           <strong>{text.fallback}</strong>
-          <span>{text.fallbackDetail}</span>
+          <span>{props.fallbackDetail}</span>
           {props.sun && <span role="status">{text.sunFallback}</span>}
         </div>
       )}

@@ -1,0 +1,9 @@
+{
+  "endpointGeometryCasesPassed": 8,
+  "actualFallbackClicksPassed": 8,
+  "browserClosed": true,
+  "overallVisualPass": false,
+  "defect": "View comparison paints over the lower lines of the expanded map-source disclosure",
+  "evidence": ["ar-375-fallback-02-limitations.png", "en-390-fallback-02-limitations.png"],
+  "limits": "Offline street/3D warning is readable; complete text is present in DOM, but lower route/distance qualifications are visually obstructed. No new scored review."
+}

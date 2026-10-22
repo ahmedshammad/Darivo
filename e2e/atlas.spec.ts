@@ -1,9 +1,11 @@
 import { test, expect } from '@playwright/test';
+import { expectAtlasMode } from './atlas-capability';
 
 test('Arrival intent moves the geographic camera and carries the request into Explore', async ({
   page,
 }) => {
   await page.goto('/en');
+  await expectAtlasMode(page);
   const map = page.locator('.living-map');
   await expect(map).toHaveAttribute('data-map-ready', 'true', { timeout: 30000 });
   await page.locator('#arrival-intent').fill('Schools within 20 minutes of Downtown Dubai');
@@ -106,14 +108,11 @@ test('keyboard can place an office origin in WebGL and geographic fallback', asy
     await expect(page.locator('.living-map')).toHaveAttribute('data-map-ready', 'true', {
       timeout: 30000,
     });
-    await expect(page.locator('.living-map')).toHaveAttribute(
-      'data-map-mode',
-      fallback ? 'fallback' : 'webgl',
-    );
+    const actualFallback = await expectAtlasMode(page, fallback);
     await page.locator('.atlas-tool-toggle').click();
     await page.locator('#atlas-origin').selectOption('office');
     await page.getByRole('button', { name: 'Choose on the map', exact: true }).click();
-    const surface = page.locator(fallback ? '.atlas-fallback' : '.maplibregl-canvas');
+    const surface = page.locator(actualFallback ? '.atlas-fallback' : '.maplibregl-canvas');
     await expect(surface).toBeFocused();
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('Enter');
@@ -121,6 +120,6 @@ test('keyboard can place an office origin in WebGL and geographic fallback', asy
     await expect(page.locator('.atlas-minute-options button[aria-pressed="true"]')).toContainText(
       '20',
     );
-    if (fallback) await expect(page.locator('.atlas-fallback-ring').first()).toBeVisible();
+    if (actualFallback) await expect(page.locator('.atlas-fallback-ring').first()).toBeVisible();
   }
 });

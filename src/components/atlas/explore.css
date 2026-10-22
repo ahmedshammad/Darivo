@@ -89,6 +89,16 @@
   position: absolute;
   inset: 0;
 }
+.atlas-explore:has(.atlas-map-evidence details[open]) .atlas-comparison-peek,
+.atlas-explore:has(.atlas-map-evidence details[open]) .atlas-stories,
+.atlas-explore:has(.atlas-map-evidence details[open]) .atlas-map-toolbar {
+  visibility: hidden;
+}
+@media (max-width: 760px) {
+  .atlas-explore .atlas-map-source-panel {
+    max-height: min(45svh, calc(100svh - max(34svh, 268px) - 200px));
+  }
+}
 .atlas-header {
   position: absolute;
   z-index: 5;

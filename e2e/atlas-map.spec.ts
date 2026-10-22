@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { expectAtlasMode } from './atlas-capability';
 
 for (const width of [375, 390]) {
   for (const locale of ['en', 'ar']) {
@@ -15,7 +16,7 @@ for (const width of [375, 390]) {
         await page.goto(`/${locale}/explore?${query}`);
         const map = page.locator('.living-map');
         await expect(map).toHaveAttribute('data-map-ready', 'true', { timeout: 30000 });
-        await expect(map).toHaveAttribute('data-map-mode', fallback ? 'fallback' : 'webgl');
+        const actualFallback = await expectAtlasMode(page, fallback);
         await page.locator('.atlas-sheet-handle').click();
         const ids =
           locale === 'ar'
@@ -71,7 +72,7 @@ for (const width of [375, 390]) {
             { timeout: 15000 },
           )
           .toEqual([]);
-        if (fallback) {
+        if (actualFallback) {
           await expect(map.locator('.atlas-fallback-label')).toHaveCount(0);
           for (const id of ids)
             await map
@@ -99,8 +100,8 @@ test('cross-market comparison refits both endpoints after the mobile sheet colla
     await page.goto(`/en/explore?${query}`);
     const map = page.locator('.living-map');
     await expect(map).toHaveAttribute('data-map-ready', 'true', { timeout: 30000 });
-    await expect(map).toHaveAttribute('data-map-mode', fallback ? 'fallback' : 'webgl');
-    if (fallback) {
+    const actualFallback = await expectAtlasMode(page, fallback);
+    if (actualFallback) {
       await expect(map).toHaveAttribute('data-center', /^\[/);
       await expect(map).toHaveAttribute('data-zoom', /\d/);
       const notice = map.locator('details.atlas-fallback-label');
@@ -157,7 +158,7 @@ test('cross-market comparison refits both endpoints after the mobile sheet colla
         { timeout: 15000 },
       )
       .toBe(true);
-    if (fallback) {
+    if (actualFallback) {
       await expect(map.locator('details.atlas-fallback-label')).toHaveCount(0);
       const june = map.locator('.atlas-fallback-point[data-project-id="june-sodic"]');
       // Pointer actionability catches notices or neighbouring markers covering the endpoint.
@@ -171,7 +172,11 @@ test('active WebGL comparison refits after a width-only viewport resize', async 
   await page.goto('/en/explore?q=North+Coast+and+Dubai');
   const map = page.locator('.living-map');
   await expect(map).toHaveAttribute('data-map-ready', 'true', { timeout: 30000 });
-  await expect(map).toHaveAttribute('data-map-mode', 'webgl');
+  const softwareFallback = await expectAtlasMode(page);
+  test.skip(
+    softwareFallback,
+    'Browser reports software rendering; this WebGL-specific resize case requires a GPU host.',
+  );
   for (const id of ['june-sodic', 'orla-palm-jumeirah'])
     await page.locator(`[data-project="${id}"] .atlas-compare-add`).click();
   await expect

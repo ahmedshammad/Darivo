@@ -1,0 +1,2770 @@
+[
+  {
+    "name": "ar-375-webgl",
+    "locale": "ar",
+    "width": 375,
+    "fallback": false,
+    "errors": [],
+    "clicks": [],
+    "comparisonText": "بين هذه الأماكن\nمسح\n\nاختر من مشروعين إلى أربعة. المسافات بخط مستقيم. للأماكن القريبة في البلد نفسه تقدير توضيحي بسرعة 40 كم/س دون طرق أو حركة مرور. المسافات البعيدة والعابرة للحدود ليست مسارات قيادة.\n\nحي السكينة 01 ↔ حي السكينة 04\n5.8 كم · ~9 دقيقة\nاعرض المسافات على الخريطة",
+    "clearance": {
+      "map": {
+        "mapStatus": "webgl",
+        "mapMode": "webgl",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "فيلا على البحر في السعديات أو النخلة",
+        "mapPhase": "evening",
+        "mapDetail": "local",
+        "styleLoaded": "true",
+        "center": "[55.153999999999996,25.090001977625434]",
+        "zoom": "10.762",
+        "pitch": "0.0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"demo-project-palm-jumeirah\",\"x\":150.45097677392522,\"y\":221.16477272726829},{\"id\":\"demo-project-emirates-hills\",\"x\":224.54902322617266,\"y\":341.16477272726826}]",
+        "basePainted": "true",
+        "deckReady": "true"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 202,
+            "y": 147,
+            "width": 153,
+            "height": 40,
+            "top": 147,
+            "right": 355,
+            "bottom": 187,
+            "left": 202
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 335,
+            "height": 40,
+            "top": 147,
+            "right": 355,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 85,
+            "y": 391.921875,
+            "width": 270,
+            "height": 44,
+            "top": 391.921875,
+            "right": 355,
+            "bottom": 435.921875,
+            "left": 85
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 8,
+            "y": 443.921875,
+            "width": 293.140625,
+            "height": 84,
+            "top": 443.921875,
+            "right": 301.140625,
+            "bottom": 527.921875,
+            "left": 8
+          }
+        },
+        {
+          "selector": ".maplibregl-ctrl-group",
+          "rect": {
+            "x": 10,
+            "y": 180,
+            "width": 46,
+            "height": 134,
+            "top": 180,
+            "right": 56,
+            "bottom": 314,
+            "left": 10
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 20,
+            "y": 92,
+            "width": 193.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 68,
+            "y": 92,
+            "width": 145.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 68
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 78,
+            "top": 0,
+            "right": 375,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "demo-project-palm-jumeirah",
+          "x": 150.45097677392522,
+          "y": 221.16477272726829,
+          "target": {
+            "left": 128.45097677392522,
+            "right": 172.45097677392522,
+            "top": 199.16477272726829,
+            "bottom": 243.16477272726829
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "CANVAS",
+              "class": "maplibregl-canvas"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-canvas maplibregl-map"
+            },
+            {
+              "tag": "DIV",
+              "class": "living-map living-map--dark"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-surface"
+            }
+          ]
+        },
+        {
+          "id": "demo-project-emirates-hills",
+          "x": 224.54902322617266,
+          "y": 341.16477272726826,
+          "target": {
+            "left": 202.54902322617266,
+            "right": 246.54902322617266,
+            "top": 319.16477272726826,
+            "bottom": 363.16477272726826
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "CANVAS",
+              "class": "maplibregl-canvas"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-canvas maplibregl-map"
+            },
+            {
+              "tag": "DIV",
+              "class": "living-map living-map--dark"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-surface"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "noticeCount": 0,
+    "pass": true
+  },
+  {
+    "name": "ar-375-fallback",
+    "locale": "ar",
+    "width": 375,
+    "fallback": true,
+    "errors": [],
+    "clicks": [
+      {
+        "id": "demo-project-palm-jumeirah",
+        "box": {
+          "x": 128.4375,
+          "y": 199.15625,
+          "width": 44,
+          "height": 44
+        },
+        "title": "حي السكينة 01",
+        "focused": true
+      },
+      {
+        "id": "demo-project-emirates-hills",
+        "box": {
+          "x": 202.546875,
+          "y": 319.15625,
+          "width": 44,
+          "height": 44
+        },
+        "title": "حي السكينة 04",
+        "focused": true
+      }
+    ],
+    "comparisonText": "بين هذه الأماكن\nمسح\n\nاختر من مشروعين إلى أربعة. المسافات بخط مستقيم. للأماكن القريبة في البلد نفسه تقدير توضيحي بسرعة 40 كم/س دون طرق أو حركة مرور. المسافات البعيدة والعابرة للحدود ليست مسارات قيادة.\n\nحي السكينة 01 ↔ حي السكينة 04\n5.8 كم · ~9 دقيقة\nاعرض المسافات على الخريطة",
+    "clearance": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "فيلا على البحر في السعديات أو النخلة",
+        "mapPhase": "night",
+        "mapDetail": "local",
+        "center": "[55.154000000000025,25.09000197762542]",
+        "zoom": "11.762",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"demo-project-palm-jumeirah\",\"x\":150.45097677386366,\"y\":221.16477272721454},{\"id\":\"demo-project-emirates-hills\",\"x\":224.54902322613634,\"y\":341.16477272721454}]"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 202,
+            "y": 147,
+            "width": 153,
+            "height": 40,
+            "top": 147,
+            "right": 355,
+            "bottom": 187,
+            "left": 202
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 335,
+            "height": 40,
+            "top": 147,
+            "right": 355,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 85,
+            "y": 391.921875,
+            "width": 270,
+            "height": 44,
+            "top": 391.921875,
+            "right": 355,
+            "bottom": 435.921875,
+            "left": 85
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 8,
+            "y": 443.921875,
+            "width": 170.265625,
+            "height": 84,
+            "top": 443.921875,
+            "right": 178.265625,
+            "bottom": 527.921875,
+            "left": 8
+          }
+        },
+        {
+          "selector": ".atlas-fallback-controls",
+          "rect": {
+            "x": 16,
+            "y": 170,
+            "width": 46,
+            "height": 90,
+            "top": 170,
+            "right": 62,
+            "bottom": 260,
+            "left": 16
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 20,
+            "y": 92,
+            "width": 193.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 68,
+            "y": 92,
+            "width": 145.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 68
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 78,
+            "top": 0,
+            "right": 375,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "demo-project-palm-jumeirah",
+          "x": 150.45097677386366,
+          "y": 221.16477272721454,
+          "target": {
+            "left": 128.45097677386366,
+            "right": 172.45097677386366,
+            "top": 199.16477272721454,
+            "bottom": 243.16477272721454
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "line",
+              "class": "atlas-fallback-line"
+            },
+            {
+              "tag": "path",
+              "class": "atlas-fallback-land"
+            }
+          ]
+        },
+        {
+          "id": "demo-project-emirates-hills",
+          "x": 224.54902322613634,
+          "y": 341.16477272721454,
+          "target": {
+            "left": 202.54902322613634,
+            "right": 246.54902322613634,
+            "top": 319.16477272721454,
+            "bottom": 363.16477272721454
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "line",
+              "class": "atlas-fallback-line"
+            },
+            {
+              "tag": "path",
+              "class": "atlas-fallback-land"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "noticeCount": 0,
+    "sourceText": "جغرافيا محفوظة · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة\n\nالمواقع تقريبية. الأعمدة ترمز للأسعار وليست ارتفاعات المباني.\n\nارتفاع العمود يقارن أسعاراً استرشادية بالدرهم، بصرف تجريبي ثابت · 2026-10-01. دون سعر: علامة مسطّحة.\n\nمرافق تجريبية · أماكن افتراضية وليست مرافق موثّقة\n\nمسافة بخط مستقيم · تقدير محلي بسرعة ٤٠ كم/ساعة. عبر الحدود أو أكثر من ١٥٠ كم: المسافة فقط، وليست مساراً.",
+    "fullLimitations": true,
+    "returnClearance": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "project-demo-project-emirates-hills-true",
+        "mapPhase": "night",
+        "mapDetail": "local",
+        "center": "[55.154000000000025,25.09000197762542]",
+        "zoom": "11.762",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"demo-project-palm-jumeirah\",\"x\":150.45097677386366,\"y\":221.16477272721454},{\"id\":\"demo-project-emirates-hills\",\"x\":224.54902322613634,\"y\":341.16477272721454}]"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 202,
+            "y": 147,
+            "width": 153,
+            "height": 40,
+            "top": 147,
+            "right": 355,
+            "bottom": 187,
+            "left": 202
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 335,
+            "height": 40,
+            "top": 147,
+            "right": 355,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 85,
+            "y": 391.921875,
+            "width": 270,
+            "height": 44,
+            "top": 391.921875,
+            "right": 355,
+            "bottom": 435.921875,
+            "left": 85
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 8,
+            "y": 443.921875,
+            "width": 170.265625,
+            "height": 84,
+            "top": 443.921875,
+            "right": 178.265625,
+            "bottom": 527.921875,
+            "left": 8
+          }
+        },
+        {
+          "selector": ".atlas-fallback-controls",
+          "rect": {
+            "x": 16,
+            "y": 170,
+            "width": 46,
+            "height": 90,
+            "top": 170,
+            "right": 62,
+            "bottom": 260,
+            "left": 16
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 20,
+            "y": 92,
+            "width": 193.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 68,
+            "y": 92,
+            "width": 145.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 68
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 78,
+            "top": 0,
+            "right": 375,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "demo-project-palm-jumeirah",
+          "x": 150.45097677386366,
+          "y": 221.16477272721454,
+          "target": {
+            "left": 128.45097677386366,
+            "right": 172.45097677386366,
+            "top": 199.16477272721454,
+            "bottom": 243.16477272721454
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "line",
+              "class": "atlas-fallback-line"
+            },
+            {
+              "tag": "path",
+              "class": "atlas-fallback-land"
+            }
+          ]
+        },
+        {
+          "id": "demo-project-emirates-hills",
+          "x": 224.54902322613634,
+          "y": 341.16477272721454,
+          "target": {
+            "left": 202.54902322613634,
+            "right": 246.54902322613634,
+            "top": 319.16477272721454,
+            "bottom": 363.16477272721454
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "line",
+              "class": "atlas-fallback-line"
+            },
+            {
+              "tag": "path",
+              "class": "atlas-fallback-land"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "pass": true
+  },
+  {
+    "name": "en-375-webgl",
+    "locale": "en",
+    "width": 375,
+    "fallback": false,
+    "errors": [],
+    "clicks": [],
+    "comparisonText": "Between these places\nClear\n\nChoose 2–4 projects. Lines show straight-line distances. Nearby places in one country use an illustrative 40 km/h estimate, without roads or traffic. Cross-border and long distances are not driving routes.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 km · Distance only · not a driving route\nShow connections on the map",
+    "clearance": {
+      "map": {
+        "mapStatus": "webgl",
+        "mapMode": "webgl",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.",
+        "mapPhase": "evening",
+        "mapDetail": "local",
+        "styleLoaded": "true",
+        "center": "[41.499000000000024,28.2174266902268]",
+        "zoom": "2.432",
+        "pitch": "0.0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":83.00000000000018,\"y\":254.63141896874566},{\"id\":\"orla-palm-jumeirah\",\"x\":292,\"y\":307.69812648580046}]",
+        "basePainted": "true",
+        "deckReady": "true"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 167,
+            "height": 40,
+            "top": 147,
+            "right": 187,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 335,
+            "height": 40,
+            "top": 147,
+            "right": 355,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 20,
+            "y": 391.921875,
+            "width": 270,
+            "height": 44,
+            "top": 391.921875,
+            "right": 290,
+            "bottom": 435.921875,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 51.046875,
+            "y": 443.921875,
+            "width": 315.953125,
+            "height": 84,
+            "top": 443.921875,
+            "right": 367,
+            "bottom": 527.921875,
+            "left": 51.046875
+          }
+        },
+        {
+          "selector": ".maplibregl-ctrl-group",
+          "rect": {
+            "x": 319,
+            "y": 180,
+            "width": 46,
+            "height": 134,
+            "top": 180,
+            "right": 365,
+            "bottom": 314,
+            "left": 319
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 169.890625,
+            "y": 92,
+            "width": 185.109375,
+            "height": 40,
+            "top": 92,
+            "right": 355,
+            "bottom": 132,
+            "left": 169.890625
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 169.890625,
+            "y": 92,
+            "width": 137.109375,
+            "height": 40,
+            "top": 92,
+            "right": 307,
+            "bottom": 132,
+            "left": 169.890625
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 78,
+            "top": 0,
+            "right": 375,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "june-sodic",
+          "x": 83.00000000000018,
+          "y": 254.63141896874566,
+          "target": {
+            "left": 61.000000000000185,
+            "right": 105.00000000000018,
+            "top": 232.63141896874566,
+            "bottom": 276.63141896874566
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "CANVAS",
+              "class": "maplibregl-canvas"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-canvas maplibregl-map"
+            },
+            {
+              "tag": "DIV",
+              "class": "living-map living-map--dark"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-surface"
+            }
+          ]
+        },
+        {
+          "id": "orla-palm-jumeirah",
+          "x": 292,
+          "y": 307.69812648580046,
+          "target": {
+            "left": 270,
+            "right": 314,
+            "top": 285.69812648580046,
+            "bottom": 329.69812648580046
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "CANVAS",
+              "class": "maplibregl-canvas"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-canvas maplibregl-map"
+            },
+            {
+              "tag": "DIV",
+              "class": "living-map living-map--dark"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-surface"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "noticeCount": 0,
+    "pass": true
+  },
+  {
+    "name": "en-375-fallback",
+    "locale": "en",
+    "width": 375,
+    "fallback": true,
+    "errors": [],
+    "clicks": [
+      {
+        "id": "june-sodic",
+        "box": {
+          "x": 61,
+          "y": 232.625,
+          "width": 44,
+          "height": 44
+        },
+        "title": "June",
+        "focused": true
+      },
+      {
+        "id": "orla-palm-jumeirah",
+        "box": {
+          "x": 270,
+          "y": 285.6875,
+          "width": 44,
+          "height": 44
+        },
+        "title": "Orla, Dorchester Collection",
+        "focused": true
+      }
+    ],
+    "comparisonText": "Between these places\nClear\n\nChoose 2–4 projects. Lines show straight-line distances. Nearby places in one country use an illustrative 40 km/h estimate, without roads or traffic. Cross-border and long distances are not driving routes.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 km · Distance only · not a driving route\nShow connections on the map",
+    "clearance": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.",
+        "mapPhase": "night",
+        "mapDetail": "local",
+        "center": "[41.498999999999995,28.217426690226784]",
+        "zoom": "3.432",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":82.99999999999977,\"y\":254.6314189687448},{\"id\":\"orla-palm-jumeirah\",\"x\":291.9999999999998,\"y\":307.69812648580023}]"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 167,
+            "height": 40,
+            "top": 147,
+            "right": 187,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 335,
+            "height": 40,
+            "top": 147,
+            "right": 355,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 20,
+            "y": 391.921875,
+            "width": 270,
+            "height": 44,
+            "top": 391.921875,
+            "right": 290,
+            "bottom": 435.921875,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 150.140625,
+            "y": 443.921875,
+            "width": 216.859375,
+            "height": 84,
+            "top": 443.921875,
+            "right": 367,
+            "bottom": 527.921875,
+            "left": 150.140625
+          }
+        },
+        {
+          "selector": ".atlas-fallback-controls",
+          "rect": {
+            "x": 313,
+            "y": 170,
+            "width": 46,
+            "height": 90,
+            "top": 170,
+            "right": 359,
+            "bottom": 260,
+            "left": 313
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 169.890625,
+            "y": 92,
+            "width": 185.109375,
+            "height": 40,
+            "top": 92,
+            "right": 355,
+            "bottom": 132,
+            "left": 169.890625
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 169.890625,
+            "y": 92,
+            "width": 137.109375,
+            "height": 40,
+            "top": 92,
+            "right": 307,
+            "bottom": 132,
+            "left": 169.890625
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 78,
+            "top": 0,
+            "right": 375,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "june-sodic",
+          "x": 82.99999999999977,
+          "y": 254.6314189687448,
+          "target": {
+            "left": 60.99999999999977,
+            "right": 104.99999999999977,
+            "top": 232.6314189687448,
+            "bottom": 276.6314189687448
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            }
+          ]
+        },
+        {
+          "id": "orla-palm-jumeirah",
+          "x": 291.9999999999998,
+          "y": 307.69812648580023,
+          "target": {
+            "left": 269.9999999999998,
+            "right": 313.9999999999998,
+            "top": 285.69812648580023,
+            "bottom": 329.69812648580023
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "noticeCount": 0,
+    "sourceText": "Offline geography · street and 3D detail unavailable\n\nLocations approximate. Columns are price symbols, not building heights.\n\nColumn height compares indicative prices in AED using static demo FX · 2026-10-01. No price: flat marker.\n\nStraight-line distance · local illustration at 40 km/h. Cross-border or over 150 km: distance only. Not a route.",
+    "fullLimitations": true,
+    "returnClearance": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "project-orla-palm-jumeirah-true",
+        "mapPhase": "night",
+        "mapDetail": "local",
+        "center": "[41.498999999999995,28.217426690226784]",
+        "zoom": "3.432",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":82.99999999999977,\"y\":254.6314189687448},{\"id\":\"orla-palm-jumeirah\",\"x\":291.9999999999998,\"y\":307.69812648580023}]"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 167,
+            "height": 40,
+            "top": 147,
+            "right": 187,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 335,
+            "height": 40,
+            "top": 147,
+            "right": 355,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 20,
+            "y": 391.921875,
+            "width": 270,
+            "height": 44,
+            "top": 391.921875,
+            "right": 290,
+            "bottom": 435.921875,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 150.140625,
+            "y": 443.921875,
+            "width": 216.859375,
+            "height": 84,
+            "top": 443.921875,
+            "right": 367,
+            "bottom": 527.921875,
+            "left": 150.140625
+          }
+        },
+        {
+          "selector": ".atlas-fallback-controls",
+          "rect": {
+            "x": 313,
+            "y": 170,
+            "width": 46,
+            "height": 90,
+            "top": 170,
+            "right": 359,
+            "bottom": 260,
+            "left": 313
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 169.890625,
+            "y": 92,
+            "width": 185.109375,
+            "height": 40,
+            "top": 92,
+            "right": 355,
+            "bottom": 132,
+            "left": 169.890625
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 169.890625,
+            "y": 92,
+            "width": 137.109375,
+            "height": 40,
+            "top": 92,
+            "right": 307,
+            "bottom": 132,
+            "left": 169.890625
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 535.921875,
+            "width": 375,
+            "height": 276.078125,
+            "top": 535.921875,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 78,
+            "top": 0,
+            "right": 375,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "june-sodic",
+          "x": 82.99999999999977,
+          "y": 254.6314189687448,
+          "target": {
+            "left": 60.99999999999977,
+            "right": 104.99999999999977,
+            "top": 232.6314189687448,
+            "bottom": 276.6314189687448
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            }
+          ]
+        },
+        {
+          "id": "orla-palm-jumeirah",
+          "x": 291.9999999999998,
+          "y": 307.69812648580023,
+          "target": {
+            "left": 269.9999999999998,
+            "right": 313.9999999999998,
+            "top": 285.69812648580023,
+            "bottom": 329.69812648580023
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "pass": true
+  },
+  {
+    "name": "ar-390-webgl",
+    "locale": "ar",
+    "width": 390,
+    "fallback": false,
+    "errors": [],
+    "clicks": [],
+    "comparisonText": "بين هذه الأماكن\nمسح\n\nاختر من مشروعين إلى أربعة. المسافات بخط مستقيم. للأماكن القريبة في البلد نفسه تقدير توضيحي بسرعة 40 كم/س دون طرق أو حركة مرور. المسافات البعيدة والعابرة للحدود ليست مسارات قيادة.\n\nحي السكينة 01 ↔ حي السكينة 04\n5.8 كم · ~9 دقيقة\nاعرض المسافات على الخريطة",
+    "clearance": {
+      "map": {
+        "mapStatus": "webgl",
+        "mapMode": "webgl",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "فيلا على البحر في السعديات أو النخلة",
+        "mapPhase": "evening",
+        "mapDetail": "local",
+        "styleLoaded": "true",
+        "center": "[55.153999999999996,25.090001977625434]",
+        "zoom": "10.866",
+        "pitch": "0.0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"demo-project-palm-jumeirah\",\"x\":155.17230003187066,\"y\":225.00000000009416},{\"id\":\"demo-project-emirates-hills\",\"x\":234.82769996803518,\"y\":354}]",
+        "basePainted": "true",
+        "deckReady": "true"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 217,
+            "y": 147,
+            "width": 153,
+            "height": 40,
+            "top": 147,
+            "right": 370,
+            "bottom": 187,
+            "left": 217
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 350,
+            "height": 40,
+            "top": 147,
+            "right": 370,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 100,
+            "y": 413.046875,
+            "width": 270,
+            "height": 44,
+            "top": 413.046875,
+            "right": 370,
+            "bottom": 457.046875,
+            "left": 100
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 8,
+            "y": 465.046875,
+            "width": 293.140625,
+            "height": 84,
+            "top": 465.046875,
+            "right": 301.140625,
+            "bottom": 549.046875,
+            "left": 8
+          }
+        },
+        {
+          "selector": ".maplibregl-ctrl-group",
+          "rect": {
+            "x": 10,
+            "y": 180,
+            "width": 46,
+            "height": 134,
+            "top": 180,
+            "right": 56,
+            "bottom": 314,
+            "left": 10
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 20,
+            "y": 92,
+            "width": 193.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 68,
+            "y": 92,
+            "width": 145.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 68
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 78,
+            "top": 0,
+            "right": 390,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "demo-project-palm-jumeirah",
+          "x": 155.17230003187066,
+          "y": 225.00000000009416,
+          "target": {
+            "left": 133.17230003187066,
+            "right": 177.17230003187066,
+            "top": 203.00000000009416,
+            "bottom": 247.00000000009416
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "CANVAS",
+              "class": "maplibregl-canvas"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-canvas maplibregl-map"
+            },
+            {
+              "tag": "DIV",
+              "class": "living-map living-map--dark"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-surface"
+            }
+          ]
+        },
+        {
+          "id": "demo-project-emirates-hills",
+          "x": 234.82769996803518,
+          "y": 354,
+          "target": {
+            "left": 212.82769996803518,
+            "right": 256.8276999680352,
+            "top": 332,
+            "bottom": 376
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "CANVAS",
+              "class": "maplibregl-canvas"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-canvas maplibregl-map"
+            },
+            {
+              "tag": "DIV",
+              "class": "living-map living-map--dark"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-surface"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "noticeCount": 0,
+    "pass": true
+  },
+  {
+    "name": "ar-390-fallback",
+    "locale": "ar",
+    "width": 390,
+    "fallback": true,
+    "errors": [],
+    "clicks": [
+      {
+        "id": "demo-project-palm-jumeirah",
+        "box": {
+          "x": 133.171875,
+          "y": 203,
+          "width": 44,
+          "height": 44
+        },
+        "title": "حي السكينة 01",
+        "focused": true
+      },
+      {
+        "id": "demo-project-emirates-hills",
+        "box": {
+          "x": 212.8125,
+          "y": 332,
+          "width": 44,
+          "height": 44
+        },
+        "title": "حي السكينة 04",
+        "focused": true
+      }
+    ],
+    "comparisonText": "بين هذه الأماكن\nمسح\n\nاختر من مشروعين إلى أربعة. المسافات بخط مستقيم. للأماكن القريبة في البلد نفسه تقدير توضيحي بسرعة 40 كم/س دون طرق أو حركة مرور. المسافات البعيدة والعابرة للحدود ليست مسارات قيادة.\n\nحي السكينة 01 ↔ حي السكينة 04\n5.8 كم · ~9 دقيقة\nاعرض المسافات على الخريطة",
+    "clearance": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "فيلا على البحر في السعديات أو النخلة",
+        "mapPhase": "night",
+        "mapDetail": "local",
+        "center": "[55.154000000000025,25.09000197762542]",
+        "zoom": "11.866",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"demo-project-palm-jumeirah\",\"x\":155.1723000317579,\"y\":224.9999999999418},{\"id\":\"demo-project-emirates-hills\",\"x\":234.82769996800926,\"y\":353.9999999999418}]"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 217,
+            "y": 147,
+            "width": 153,
+            "height": 40,
+            "top": 147,
+            "right": 370,
+            "bottom": 187,
+            "left": 217
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 350,
+            "height": 40,
+            "top": 147,
+            "right": 370,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 100,
+            "y": 413.046875,
+            "width": 270,
+            "height": 44,
+            "top": 413.046875,
+            "right": 370,
+            "bottom": 457.046875,
+            "left": 100
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 8,
+            "y": 465.046875,
+            "width": 170.265625,
+            "height": 84,
+            "top": 465.046875,
+            "right": 178.265625,
+            "bottom": 549.046875,
+            "left": 8
+          }
+        },
+        {
+          "selector": ".atlas-fallback-controls",
+          "rect": {
+            "x": 16,
+            "y": 170,
+            "width": 46,
+            "height": 90,
+            "top": 170,
+            "right": 62,
+            "bottom": 260,
+            "left": 16
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 20,
+            "y": 92,
+            "width": 193.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 68,
+            "y": 92,
+            "width": 145.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 68
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 78,
+            "top": 0,
+            "right": 390,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "demo-project-palm-jumeirah",
+          "x": 155.1723000317579,
+          "y": 224.9999999999418,
+          "target": {
+            "left": 133.1723000317579,
+            "right": 177.1723000317579,
+            "top": 202.9999999999418,
+            "bottom": 246.9999999999418
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "line",
+              "class": "atlas-fallback-line"
+            },
+            {
+              "tag": "path",
+              "class": "atlas-fallback-land"
+            }
+          ]
+        },
+        {
+          "id": "demo-project-emirates-hills",
+          "x": 234.82769996800926,
+          "y": 353.9999999999418,
+          "target": {
+            "left": 212.82769996800926,
+            "right": 256.82769996800926,
+            "top": 331.9999999999418,
+            "bottom": 375.9999999999418
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "line",
+              "class": "atlas-fallback-line"
+            },
+            {
+              "tag": "path",
+              "class": "atlas-fallback-land"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "noticeCount": 0,
+    "sourceText": "جغرافيا محفوظة · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة\n\nالمواقع تقريبية. الأعمدة ترمز للأسعار وليست ارتفاعات المباني.\n\nارتفاع العمود يقارن أسعاراً استرشادية بالدرهم، بصرف تجريبي ثابت · 2026-10-01. دون سعر: علامة مسطّحة.\n\nمرافق تجريبية · أماكن افتراضية وليست مرافق موثّقة\n\nمسافة بخط مستقيم · تقدير محلي بسرعة ٤٠ كم/ساعة. عبر الحدود أو أكثر من ١٥٠ كم: المسافة فقط، وليست مساراً.",
+    "fullLimitations": true,
+    "returnClearance": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "project-demo-project-emirates-hills-true",
+        "mapPhase": "night",
+        "mapDetail": "local",
+        "center": "[55.154000000000025,25.09000197762542]",
+        "zoom": "11.866",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"demo-project-palm-jumeirah\",\"x\":155.1723000317579,\"y\":224.9999999999418},{\"id\":\"demo-project-emirates-hills\",\"x\":234.82769996800926,\"y\":353.9999999999418}]"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 217,
+            "y": 147,
+            "width": 153,
+            "height": 40,
+            "top": 147,
+            "right": 370,
+            "bottom": 187,
+            "left": 217
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 350,
+            "height": 40,
+            "top": 147,
+            "right": 370,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 100,
+            "y": 413.046875,
+            "width": 270,
+            "height": 44,
+            "top": 413.046875,
+            "right": 370,
+            "bottom": 457.046875,
+            "left": 100
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 8,
+            "y": 465.046875,
+            "width": 170.265625,
+            "height": 84,
+            "top": 465.046875,
+            "right": 178.265625,
+            "bottom": 549.046875,
+            "left": 8
+          }
+        },
+        {
+          "selector": ".atlas-fallback-controls",
+          "rect": {
+            "x": 16,
+            "y": 170,
+            "width": 46,
+            "height": 90,
+            "top": 170,
+            "right": 62,
+            "bottom": 260,
+            "left": 16
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 20,
+            "y": 92,
+            "width": 193.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 68,
+            "y": 92,
+            "width": 145.734375,
+            "height": 40,
+            "top": 92,
+            "right": 213.734375,
+            "bottom": 132,
+            "left": 68
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 78,
+            "top": 0,
+            "right": 390,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "demo-project-palm-jumeirah",
+          "x": 155.1723000317579,
+          "y": 224.9999999999418,
+          "target": {
+            "left": 133.1723000317579,
+            "right": 177.1723000317579,
+            "top": 202.9999999999418,
+            "bottom": 246.9999999999418
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "line",
+              "class": "atlas-fallback-line"
+            },
+            {
+              "tag": "path",
+              "class": "atlas-fallback-land"
+            }
+          ]
+        },
+        {
+          "id": "demo-project-emirates-hills",
+          "x": 234.82769996800926,
+          "y": 353.9999999999418,
+          "target": {
+            "left": 212.82769996800926,
+            "right": 256.82769996800926,
+            "top": 331.9999999999418,
+            "bottom": 375.9999999999418
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "line",
+              "class": "atlas-fallback-line"
+            },
+            {
+              "tag": "path",
+              "class": "atlas-fallback-land"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "pass": true
+  },
+  {
+    "name": "en-390-webgl",
+    "locale": "en",
+    "width": 390,
+    "fallback": false,
+    "errors": [],
+    "clicks": [],
+    "comparisonText": "Between these places\nClear\n\nChoose 2–4 projects. Lines show straight-line distances. Nearby places in one country use an illustrative 40 km/h estimate, without roads or traffic. Cross-border and long distances are not driving routes.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 km · Distance only · not a driving route\nShow connections on the map",
+    "clearance": {
+      "map": {
+        "mapStatus": "webgl",
+        "mapMode": "webgl",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.",
+        "mapPhase": "evening",
+        "mapDetail": "local",
+        "styleLoaded": "true",
+        "center": "[41.499000000000024,28.217426690226773]",
+        "zoom": "2.532",
+        "pitch": "0.0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":82.99999999999963,\"y\":261.06233855545383},{\"id\":\"orla-palm-jumeirah\",\"x\":306.99999999999966,\"y\":317.93766144454634}]",
+        "basePainted": "true",
+        "deckReady": "true"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 167,
+            "height": 40,
+            "top": 147,
+            "right": 187,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 350,
+            "height": 40,
+            "top": 147,
+            "right": 370,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 20,
+            "y": 413.046875,
+            "width": 270,
+            "height": 44,
+            "top": 413.046875,
+            "right": 290,
+            "bottom": 457.046875,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 66.046875,
+            "y": 465.046875,
+            "width": 315.953125,
+            "height": 84,
+            "top": 465.046875,
+            "right": 382,
+            "bottom": 549.046875,
+            "left": 66.046875
+          }
+        },
+        {
+          "selector": ".maplibregl-ctrl-group",
+          "rect": {
+            "x": 334,
+            "y": 180,
+            "width": 46,
+            "height": 134,
+            "top": 180,
+            "right": 380,
+            "bottom": 314,
+            "left": 334
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 184.890625,
+            "y": 92,
+            "width": 185.109375,
+            "height": 40,
+            "top": 92,
+            "right": 370,
+            "bottom": 132,
+            "left": 184.890625
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 184.890625,
+            "y": 92,
+            "width": 137.109375,
+            "height": 40,
+            "top": 92,
+            "right": 322,
+            "bottom": 132,
+            "left": 184.890625
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 78,
+            "top": 0,
+            "right": 390,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "june-sodic",
+          "x": 82.99999999999963,
+          "y": 261.06233855545383,
+          "target": {
+            "left": 60.99999999999963,
+            "right": 104.99999999999963,
+            "top": 239.06233855545383,
+            "bottom": 283.06233855545383
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "CANVAS",
+              "class": "maplibregl-canvas"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-canvas maplibregl-map"
+            },
+            {
+              "tag": "DIV",
+              "class": "living-map living-map--dark"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-surface"
+            }
+          ]
+        },
+        {
+          "id": "orla-palm-jumeirah",
+          "x": 306.99999999999966,
+          "y": 317.93766144454634,
+          "target": {
+            "left": 284.99999999999966,
+            "right": 328.99999999999966,
+            "top": 295.93766144454634,
+            "bottom": 339.93766144454634
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "CANVAS",
+              "class": "maplibregl-canvas"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-canvas maplibregl-map"
+            },
+            {
+              "tag": "DIV",
+              "class": "living-map living-map--dark"
+            },
+            {
+              "tag": "DIV",
+              "class": "atlas-map-surface"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "noticeCount": 0,
+    "pass": true
+  },
+  {
+    "name": "en-390-fallback",
+    "locale": "en",
+    "width": 390,
+    "fallback": true,
+    "errors": [],
+    "clicks": [
+      {
+        "id": "june-sodic",
+        "box": {
+          "x": 61,
+          "y": 239.046875,
+          "width": 44,
+          "height": 44
+        },
+        "title": "June",
+        "focused": true
+      },
+      {
+        "id": "orla-palm-jumeirah",
+        "box": {
+          "x": 285,
+          "y": 295.9375,
+          "width": 44,
+          "height": 44
+        },
+        "title": "Orla, Dorchester Collection",
+        "focused": true
+      }
+    ],
+    "comparisonText": "Between these places\nClear\n\nChoose 2–4 projects. Lines show straight-line distances. Nearby places in one country use an illustrative 40 km/h estimate, without roads or traffic. Cross-border and long distances are not driving routes.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 km · Distance only · not a driving route\nShow connections on the map",
+    "clearance": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.",
+        "mapPhase": "night",
+        "mapDetail": "local",
+        "center": "[41.498999999999995,28.2174266902268]",
+        "zoom": "3.532",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":82.99999999999977,\"y\":261.0623385554536},{\"id\":\"orla-palm-jumeirah\",\"x\":306.9999999999998,\"y\":317.9376614445464}]"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 167,
+            "height": 40,
+            "top": 147,
+            "right": 187,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 350,
+            "height": 40,
+            "top": 147,
+            "right": 370,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 20,
+            "y": 413.046875,
+            "width": 270,
+            "height": 44,
+            "top": 413.046875,
+            "right": 290,
+            "bottom": 457.046875,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 165.140625,
+            "y": 465.046875,
+            "width": 216.859375,
+            "height": 84,
+            "top": 465.046875,
+            "right": 382,
+            "bottom": 549.046875,
+            "left": 165.140625
+          }
+        },
+        {
+          "selector": ".atlas-fallback-controls",
+          "rect": {
+            "x": 328,
+            "y": 170,
+            "width": 46,
+            "height": 90,
+            "top": 170,
+            "right": 374,
+            "bottom": 260,
+            "left": 328
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 184.890625,
+            "y": 92,
+            "width": 185.109375,
+            "height": 40,
+            "top": 92,
+            "right": 370,
+            "bottom": 132,
+            "left": 184.890625
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 184.890625,
+            "y": 92,
+            "width": 137.109375,
+            "height": 40,
+            "top": 92,
+            "right": 322,
+            "bottom": 132,
+            "left": 184.890625
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 78,
+            "top": 0,
+            "right": 390,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "june-sodic",
+          "x": 82.99999999999977,
+          "y": 261.0623385554536,
+          "target": {
+            "left": 60.99999999999977,
+            "right": 104.99999999999977,
+            "top": 239.0623385554536,
+            "bottom": 283.0623385554536
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            }
+          ]
+        },
+        {
+          "id": "orla-palm-jumeirah",
+          "x": 306.9999999999998,
+          "y": 317.9376614445464,
+          "target": {
+            "left": 284.9999999999998,
+            "right": 328.9999999999998,
+            "top": 295.9376614445464,
+            "bottom": 339.9376614445464
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "noticeCount": 0,
+    "sourceText": "Offline geography · street and 3D detail unavailable\n\nLocations approximate. Columns are price symbols, not building heights.\n\nColumn height compares indicative prices in AED using static demo FX · 2026-10-01. No price: flat marker.\n\nStraight-line distance · local illustration at 40 km/h. Cross-border or over 150 km: distance only. Not a route.",
+    "fullLimitations": true,
+    "returnClearance": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "explore",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "project-orla-palm-jumeirah-true",
+        "mapPhase": "night",
+        "mapDetail": "local",
+        "center": "[41.498999999999995,28.2174266902268]",
+        "zoom": "3.532",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":82.99999999999977,\"y\":261.0623385554536},{\"id\":\"orla-palm-jumeirah\",\"x\":306.9999999999998,\"y\":317.9376614445464}]"
+      },
+      "overlays": [
+        {
+          "selector": ".atlas-stories select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 167,
+            "height": 40,
+            "top": 147,
+            "right": 187,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-story-select",
+          "rect": {
+            "x": 20,
+            "y": 147,
+            "width": 350,
+            "height": 40,
+            "top": 147,
+            "right": 370,
+            "bottom": 187,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-comparison-peek",
+          "rect": {
+            "x": 20,
+            "y": 413.046875,
+            "width": 270,
+            "height": 44,
+            "top": 413.046875,
+            "right": 290,
+            "bottom": 457.046875,
+            "left": 20
+          }
+        },
+        {
+          "selector": ".atlas-map-evidence",
+          "rect": {
+            "x": 165.140625,
+            "y": 465.046875,
+            "width": 216.859375,
+            "height": 84,
+            "top": 465.046875,
+            "right": 382,
+            "bottom": 549.046875,
+            "left": 165.140625
+          }
+        },
+        {
+          "selector": ".atlas-fallback-controls",
+          "rect": {
+            "x": 328,
+            "y": 170,
+            "width": 46,
+            "height": 90,
+            "top": 170,
+            "right": 374,
+            "bottom": 260,
+            "left": 328
+          }
+        },
+        {
+          "selector": ".atlas-map-toolbar",
+          "rect": {
+            "x": 184.890625,
+            "y": 92,
+            "width": 185.109375,
+            "height": 40,
+            "top": 92,
+            "right": 370,
+            "bottom": 132,
+            "left": 184.890625
+          }
+        },
+        {
+          "selector": ".atlas-tool-toggle",
+          "rect": {
+            "x": 184.890625,
+            "y": 92,
+            "width": 137.109375,
+            "height": 40,
+            "top": 92,
+            "right": 322,
+            "bottom": 132,
+            "left": 184.890625
+          }
+        },
+        {
+          "selector": ".atlas-conversation",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": "[data-testid=\"explore-sheet\"]",
+          "rect": {
+            "x": 0,
+            "y": 557.046875,
+            "width": 390,
+            "height": 286.953125,
+            "top": 557.046875,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          }
+        },
+        {
+          "selector": ".atlas-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 78,
+            "top": 0,
+            "right": 390,
+            "bottom": 78,
+            "left": 0
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "june-sodic",
+          "x": 82.99999999999977,
+          "y": 261.0623385554536,
+          "target": {
+            "left": 60.99999999999977,
+            "right": 104.99999999999977,
+            "top": 239.0623385554536,
+            "bottom": 283.0623385554536
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            }
+          ]
+        },
+        {
+          "id": "orla-palm-jumeirah",
+          "x": 306.9999999999998,
+          "y": 317.9376614445464,
+          "target": {
+            "left": 284.9999999999998,
+            "right": 328.9999999999998,
+            "top": 295.9376614445464,
+            "bottom": 339.9376614445464
+          },
+          "collisions": [],
+          "outside": false,
+          "hitElements": [
+            {
+              "tag": "SPAN",
+              "class": ""
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            },
+            {
+              "tag": "BUTTON",
+              "class": "atlas-fallback-point"
+            }
+          ]
+        }
+      ],
+      "overflow": false
+    },
+    "pass": true
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-22",
+  "source": "Isolated Playwright Chrome capability probe; values transcribed from tool output rounded to0.1ms",
+  "sequence": "Each mode uses a fresh browser; flagfalse thenflagtrue in one page, so shader/cache order is confounded. No controlled cache purge. All four shader links succeeded and returned contextattributes echoed their requested flag.",
+  "results": [
+    {
+      "mode": "default",
+      "version": "155.0.8059.85",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)",
+      "results": [
+        {
+          "flag": false,
+          "accepted": true,
+          "contextMs": 73.4,
+          "shaderMs": 238.3
+        },
+        {
+          "flag": true,
+          "accepted": true,
+          "contextMs": 4.8,
+          "shaderMs": 0.4
+        }
+      ]
+    },
+    {
+      "mode": "explicit-swiftshader",
+      "version": "155.0.8059.85",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+      "args": ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
+      "results": [
+        {
+          "flag": false,
+          "accepted": true,
+          "contextMs": 65.4,
+          "shaderMs": 911.0
+        },
+        {
+          "flag": true,
+          "accepted": true,
+          "contextMs": 552.3,
+          "shaderMs": 10.4
+        }
+      ]
+    }
+  ]
+}
