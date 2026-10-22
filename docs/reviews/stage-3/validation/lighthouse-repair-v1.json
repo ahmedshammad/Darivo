@@ -1,0 +1,60 @@
+{
+  "scope": "Production v3 before final wordmark whitespace fix; no browser/build/eval overlap during measurements",
+  "entries": [
+    {
+      "page": "concierge",
+      "url": "http://localhost:3001/en/concierge",
+      "fetchTime": "2026-10-22T20:12:56.967Z",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+        "benchmarkIndex": 3793.5,
+        "credits": {
+          "axe-core": "4.14.0"
+        }
+      },
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 96,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 2181.2291,
+        "tbtMs": 49,
+        "cls": 0,
+        "transferBytes": 701773
+      }
+    },
+    {
+      "page": "detail-ar",
+      "url": "http://localhost:3001/ar/properties/property-002",
+      "fetchTime": "2026-10-22T20:14:05.172Z",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+        "benchmarkIndex": 3743.5,
+        "credits": {
+          "axe-core": "4.14.0"
+        }
+      },
+      "scores": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 3010.1352,
+        "tbtMs": 32,
+        "cls": 0,
+        "transferBytes": 406538
+      }
+    }
+  ],
+  "limits": [
+    "Strict LCP <2000ms remains unmet.",
+    "TBT is not field INP; no physical-device cadence certification.",
+    "Accessibility score does not override state-specific axe findings."
+  ]
+}

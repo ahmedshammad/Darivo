@@ -3,36 +3,28 @@
     "locale": "en",
     "name": "units",
     "prompt": "Show demo units in Dubai",
-    "kinds": [
-      "project-cards"
-    ],
+    "kinds": ["project-cards"],
     "text": "Show demo units in Dubai\n\nDARIVO\n\nHere are the available records to review against your Brief. The cards keep original prices, sources and unknowns visible.\n\nDemo\nThe Dune 210\nAED 3,850,000\nOriginal currency\n\nFictional demonstration; not an offer or available inventory.\n\nDemo estimate\nAs of Not provided\nWhy this, for you\nRecorded location: Dubai Hills Estate. Compare this with your requested areas.\nOriginal AED price basis retained; your budget still needs confirmation.\nKeep in mind\n\nFictional demo inventory; this is not a real availability offer.\n\nEvidence & sources\nShow on the map\n· Approximate location\nDemo\nThe Horizon 194\nAED 4,460,000\nOriginal currency\n\nFictional demonstration; not an offer or available inventory.\n\nDemo estimate\nAs of Not provided\nWhy this, for you\nRecorded location: Dubai Hills Estate. Compare this with your requested areas.\nOriginal AED price basis retained; your budget still needs confirmation.\nKeep in mind\n\nFictional demo inventory; this is not a real availability offer.\n\nEvidence & sources\nShow on the map\n· Approximate location\nDemo\nThe Dune 114\nAED 4,850,000\nOriginal currency\n\nFictional demonstration; not an offer or available inventory.\n\nDemo estimate\nAs of Not provided\nWhy this, for you\nRecorded location: Dubai Hills Estate. Compare this with your requested areas.\nOriginal AED price basis retained; your budget still needs confirmation.\nKeep in mind\n\nFictional demo inventory; this is not a real availability offer.\n\nEvidence & sources\nShow on the map\n· Approximate location\nDemo\nThe Terrace 130\nAED 3,430,000\nOriginal currency\n\nFictional demonstration; not an offer or available inventory.\n\nDemo estimate\nAs of Not provided\nWhy this, for you\nRecorded location: Dubai Hills Estate. Compare this with your requested areas.\nOriginal AED price basis retained; your budget still needs confirmation.\nKeep in mind\n\nFictional demo inventory; this is not a real availability offer.\n\nEvidence & sources\nShow on the map\n· Approximate location\nDemo\nThe Terrace 082\nAED 2,730,000\nOriginal currency\n\nFictional demonstration; not an offer or available inventory.\n\nDemo estimate\nAs of Not provided\nWhy this, for you\nRecorded location: Dubai Hills Estate. Compare this with your requested areas.\nOriginal AED price basis retained; your budget still needs confirmation.\nKeep in mind\n\nFictional demo inventory; this is not a real availability offer.\n\nEvidence & sources\nShow on the map\n· Approximate location\nDemo\nThe Dune 162\nAED 6,180,000\nOriginal currency\n\nFictional demonstration; not an offer or available inventory.\n\nDemo estimate\nAs of Not provided\nWhy this, for you\nRecorded location: Dubai Hills Estate. Compare this with your requested areas.\nOriginal AED price basis retained; your budget still needs confirmation.\nKeep in mind\n\nFictional demo inventory; this is not a real availability offer.\n\nEvidence & sources\nShow on the map\n· Approximate location\nRead this response aloud"
   },
   {
     "locale": "en",
     "name": "chart",
     "prompt": "Show price-area chart",
-    "kinds": [
-      "price-area-chart"
-    ],
+    "kinds": ["price-area-chart"],
     "text": "Show price-area chart\n\nDARIVO\n\nHere are the available records to review against your Brief. The cards keep original prices, sources and unknowns visible.\n\nPrice and area\n\nSeparate native currencies; no implied conversion or community average.\n\nPrice · AED / Area · sqm\n0\n800 sqm\nAED 6,180,000\n1\n2\n3\n4\n5\n6\nThe Dune 210\nThe Horizon 194\nThe Dune 114\nThe Terrace 130\nThe Terrace 082\nThe Dune 162\nLocations\tPrice\tArea\nThe Dune 210\tAED 3,850,000\t800 sqm\nThe Horizon 194\tAED 4,460,000\t300 sqm\nThe Dune 114\tAED 4,850,000\t800 sqm\nThe Terrace 130\tAED 3,430,000\t143 sqm\nThe Terrace 082\tAED 2,730,000\t120 sqm\nThe Dune 162\tAED 6,180,000\t800 sqm\nEvidence & sources\nRead this response aloud"
   },
   {
     "locale": "en",
     "name": "timeline",
     "prompt": "Show payment plan for the first one",
-    "kinds": [
-      "notice"
-    ],
+    "kinds": ["notice"],
     "text": "Show payment plan for the first one\n\nDARIVO\n\nI could not establish a match from the available records. We can adjust the Brief or ask an advisor.\n\nA note before we go further\n\nA complete payment schedule is unavailable for this selected record. An advisor can confirm it; no instalments have been invented.\n\nRead this response aloud"
   },
   {
     "locale": "en",
     "name": "calculation",
     "prompt": "Calculate for the first one: annual rent 100000 AED, annual costs 10000 AED, vacancy 5%",
-    "kinds": [
-      "project-cards"
-    ],
+    "kinds": ["project-cards"],
     "text": "Calculate for the first one: annual rent 100000 AED, annual costs 10000 AED, vacancy 5%\n\nDARIVO\n\nHere are the available records to review against your Brief. The cards keep original prices, sources and unknowns visible.\n\nDemo\nThe Dune 210\nAED 3,850,000\nOriginal currency\n\nFictional demonstration; not an offer or available inventory.\n\nDemo estimate\nAs of Not provided\nWhy this, for you\nRecorded location: Dubai Hills Estate. Compare this with your requested areas.\nOriginal AED price basis retained; your budget still needs confirmation.\nKeep in mind\n\nFictional demo inventory; this is not a real availability offer.\n\nEvidence & sources\nShow on the map\n· Approximate location\nRead this response aloud"
   },
   {
@@ -46,45 +38,35 @@
     "locale": "en",
     "name": "developer",
     "prompt": "Tell me about developer Omniyat",
-    "kinds": [
-      "developer-card"
-    ],
+    "kinds": ["developer-card"],
     "text": "Tell me about developer Omniyat\n\nDARIVO\n\nI could not establish a match from the available records. We can adjust the Brief or ask an advisor.\n\nDEVELOPER CONTEXT\n\nOMNIYAT\nCountry\nUAE\nPublished portfolio mention\nThe Opus\nOriginal source wording\nPublished portfolio mention\nThe Sterling\nOriginal source wording\nPublished portfolio mention\nOne at Palm Jumeirah\nOriginal source wording\nPublished portfolio mention\nOrla\nOriginal source wording\nPublished description\nDesign-led ultra-prime developer; branded residences\nOriginal source wording\nluxhabitat.ae\nSource unknown · As of Not provided\nRead this response aloud"
   },
   {
     "locale": "ar",
     "name": "units",
     "prompt": "اعرض وحدات تجريبية في دبي",
-    "kinds": [
-      "project-cards"
-    ],
+    "kinds": ["project-cards"],
     "text": "اعرض وحدات تجريبية في دبي\n\nDARIVO\n\nإليك السجلات المتاحة لمراجعتها مقابل طلبك. تُبقي البطاقات الأسعار الأصلية والمصادر والمعلومات غير المؤكدة ظاهرة.\n\nتجريبي\nدار الأفق 230\n‏5,230,000 د.إ.‏\nالعملة الأصلية\n\nمثال تجريبي خيالي، وليس عرضًا أو عقارًا متاحًا للبيع.\n\nتقدير تجريبي\nبتاريخ غير مذكور\nلماذا هذا الخيار لك\nالموقع المسجل: النص الأصلي للمصدر: Dubai Marina. قارنه بالمناطق المطلوبة.\nاحتُفظ بأساس السعر الأصلي بعملة AED؛ لا تزال ميزانيتك بحاجة إلى تأكيد.\nضع في اعتبارك\n\nمخزون تجريبي خيالي؛ ليس عرض توافر حقيقياً.\n\nالمعلومات والمصادر\nعرض على الخريطة\n· الموقع تقريبي\nتجريبي\nدار الأفق 194\n‏4,460,000 د.إ.‏\nالعملة الأصلية\n\nمثال تجريبي خيالي، وليس عرضًا أو عقارًا متاحًا للبيع.\n\nتقدير تجريبي\nبتاريخ غير مذكور\nلماذا هذا الخيار لك\nالموقع المسجل: النص الأصلي للمصدر: Dubai Hills Estate. قارنه بالمناطق المطلوبة.\nاحتُفظ بأساس السعر الأصلي بعملة AED؛ لا تزال ميزانيتك بحاجة إلى تأكيد.\nضع في اعتبارك\n\nمخزون تجريبي خيالي؛ ليس عرض توافر حقيقياً.\n\nالمعلومات والمصادر\nعرض على الخريطة\n· الموقع تقريبي\nتجريبي\nدار الأفق 050\n‏4,210,000 د.إ.‏\nالعملة الأصلية\n\nمثال تجريبي خيالي، وليس عرضًا أو عقارًا متاحًا للبيع.\n\nتقدير تجريبي\nبتاريخ غير مذكور\nلماذا هذا الخيار لك\nالموقع المسجل: النص الأصلي للمصدر: Dubai Hills Estate. قارنه بالمناطق المطلوبة.\nاحتُفظ بأساس السعر الأصلي بعملة AED؛ لا تزال ميزانيتك بحاجة إلى تأكيد.\nضع في اعتبارك\n\nمخزون تجريبي خيالي؛ ليس عرض توافر حقيقياً.\n\nالمعلومات والمصادر\nعرض على الخريطة\n· الموقع تقريبي\nتجريبي\nدار الأفق 146\n‏3,450,000 د.إ.‏\nالعملة الأصلية\n\nمثال تجريبي خيالي، وليس عرضًا أو عقارًا متاحًا للبيع.\n\nتقدير تجريبي\nبتاريخ غير مذكور\nلماذا هذا الخيار لك\nالموقع المسجل: النص الأصلي للمصدر: Dubai Hills Estate. قارنه بالمناطق المطلوبة.\nاحتُفظ بأساس السعر الأصلي بعملة AED؛ لا تزال ميزانيتك بحاجة إلى تأكيد.\nضع في اعتبارك\n\nمخزون تجريبي خيالي؛ ليس عرض توافر حقيقياً.\n\nالمعلومات والمصادر\nعرض على الخريطة\n· الموقع تقريبي\nتجريبي\nدار الفناء 115\n‏2,730,000 د.إ.‏\nالعملة الأصلية\n\nمثال تجريبي خيالي، وليس عرضًا أو عقارًا متاحًا للبيع.\n\nتقدير تجريبي\nبتاريخ غير مذكور\nلماذا هذا الخيار لك\nالموقع المسجل: النص الأصلي للمصدر: Downtown. قارنه بالمناطق المطلوبة.\nاحتُفظ بأساس السعر الأصلي بعملة AED؛ لا تزال ميزانيتك بحاجة إلى تأكيد.\nضع في اعتبارك\n\nمخزون تجريبي خيالي؛ ليس عرض توافر حقيقياً.\n\nالمعلومات والمصادر\nعرض على الخريطة\n· الموقع تقريبي\nتجريبي\nدار الكثبان 210\n‏3,850,000 د.إ.‏\nالعملة الأصلية\n\nمثال تجريبي خيالي، وليس عرضًا أو عقارًا متاحًا للبيع.\n\nتقدير تجريبي\nبتاريخ غير مذكور\nلماذا هذا الخيار لك\nالموقع المسجل: النص الأصلي للمصدر: Dubai Hills Estate. قارنه بالمناطق المطلوبة.\nاحتُفظ بأساس السعر الأصلي بعملة AED؛ لا تزال ميزانيتك بحاجة إلى تأكيد.\nضع في اعتبارك\n\nمخزون تجريبي خيالي؛ ليس عرض توافر حقيقياً.\n\nالمعلومات والمصادر\nعرض على الخريطة\n· الموقع تقريبي\nقراءة الرد بصوت مسموع"
   },
   {
     "locale": "ar",
     "name": "chart",
     "prompt": "اعرض مخطط السعر والمساحة",
-    "kinds": [
-      "price-area-chart"
-    ],
+    "kinds": ["price-area-chart"],
     "text": "اعرض مخطط السعر والمساحة\n\nDARIVO\n\nإليك السجلات المتاحة لمراجعتها مقابل طلبك. تُبقي البطاقات الأسعار الأصلية والمصادر والمعلومات غير المؤكدة ظاهرة.\n\nالسعر والمساحة\n\nكل سعر بعملته الأصلية؛ لا تحويل ضمني ولا متوسط للمنطقة.\n\nالسعر · AED / المساحة · sqm\n0\n800 sqm\n‏5,230,000 د.إ.‏\n1\n2\n3\n4\n5\n6\nدار الأفق 230\nدار الأفق 194\nدار الأفق 050\nدار الأفق 146\nدار الفناء 115\nدار الكثبان 210\nالمواقع\tالسعر\tالمساحة\nدار الأفق 230\t‏5,230,000 د.إ.‏\t300 sqm\nدار الأفق 194\t‏4,460,000 د.إ.‏\t300 sqm\nدار الأفق 050\t‏4,210,000 د.إ.‏\t300 sqm\nدار الأفق 146\t‏3,450,000 د.إ.‏\t300 sqm\nدار الفناء 115\t‏2,730,000 د.إ.‏\t120 sqm\nدار الكثبان 210\t‏3,850,000 د.إ.‏\t800 sqm\nالمعلومات والمصادر\nقراءة الرد بصوت مسموع"
   },
   {
     "locale": "ar",
     "name": "timeline",
     "prompt": "اعرض خطة السداد للاول",
-    "kinds": [
-      "notice"
-    ],
+    "kinds": ["notice"],
     "text": "اعرض خطة السداد للاول\n\nDARIVO\n\nلم أتمكن من إثبات تطابق من السجلات المتاحة. يمكننا تعديل الطلب أو الاستعانة بمستشار.\n\nملاحظة قبل أن نكمل\n\nلا تتوفر خطة سداد كاملة لهذا السجل المختار. يستطيع المستشار تأكيدها؛ لم تُنشأ أقساط افتراضية.\n\nقراءة الرد بصوت مسموع"
   },
   {
     "locale": "ar",
     "name": "calculation",
     "prompt": "احسب للاول: ايجار سنوي ١٠٠٠٠٠ درهم، تكاليف سنوية ١٠٠٠٠ درهم، شغور ٥%",
-    "kinds": [
-      "project-cards"
-    ],
+    "kinds": ["project-cards"],
     "text": "احسب للاول: ايجار سنوي ١٠٠٠٠٠ درهم، تكاليف سنوية ١٠٠٠٠ درهم، شغور ٥%\n\nDARIVO\n\nإليك السجلات المتاحة لمراجعتها مقابل طلبك. تُبقي البطاقات الأسعار الأصلية والمصادر والمعلومات غير المؤكدة ظاهرة.\n\nتجريبي\nدار الأفق 230\n‏5,230,000 د.إ.‏\nالعملة الأصلية\n\nمثال تجريبي خيالي، وليس عرضًا أو عقارًا متاحًا للبيع.\n\nتقدير تجريبي\nبتاريخ غير مذكور\nلماذا هذا الخيار لك\nالموقع المسجل: النص الأصلي للمصدر: Dubai Marina. قارنه بالمناطق المطلوبة.\nاحتُفظ بأساس السعر الأصلي بعملة AED؛ لا تزال ميزانيتك بحاجة إلى تأكيد.\nضع في اعتبارك\n\nمخزون تجريبي خيالي؛ ليس عرض توافر حقيقياً.\n\nالمعلومات والمصادر\nعرض على الخريطة\n· الموقع تقريبي\nقراءة الرد بصوت مسموع"
   },
   {
@@ -98,12 +80,7 @@
     "locale": "ar",
     "name": "developer",
     "prompt": "عرفني على المطور سوديك",
-    "kinds": [
-      "notice",
-      "mini-map",
-      "project-cards",
-      "developer-card"
-    ],
+    "kinds": ["notice", "mini-map", "project-cards", "developer-card"],
     "text": "عرفني على المطور سوديك\n\nDARIVO\n\nإليك السجلات المتاحة لمراجعتها مقابل طلبك. تُبقي البطاقات الأسعار الأصلية والمصادر والمعلومات غير المؤكدة ظاهرة.\n\nملاحظة قبل أن نكمل\n\nابدأ بثلاثة مواقع على الخريطة التقريبية: نخلة جميرا غرباً، ودبي هيلز إلى الداخل جنوباً، ووسط دبي أبعد إلى الشمال الشرقي. تعرض الأمثلة أدناه منازل خيالية وتقديرات للمناطق للمقارنة بين السجلات. وهي لا تثبت ملاءمة المدارس.\n\nالأماكن في سياقها\nالموقع تقريبي\n1\n2\n3\n↑\n\nساحل إقليمي ومواقع تقريبية؛ لا تمثل الشوارع أو حدود العقارات · Natural Earth\n\n1\nنخلة جميرا\n2\nدبي هيلز\n3\nوسط دبي\nعرض على الخريطة\nتجريبي\nدار الفناء 001\n‏42,980,000 د.إ.‏\nالعملة الأصلية\n\nمثال تجريبي خيالي، وليس عرضًا أو عقارًا متاحًا للبيع.\n\nتقدير تجريبي\nبتاريخ غير مذكور\nلماذا هذا الخيار لك\nمثال خيالي في نخلة جميرا للمقارنة بين المناطق.\nتبقى متطلبات الأسرة والمدرسة بحاجة إلى تحقق مستقل؛ هذا المثال لا يثبتها.\nضع في اعتبارك\n\nالمدارس نقاط تجريبية خيالية. المنهج البريطاني والقبول وأزمنة التنقل الفعلية غير متحقق منها.\n\nالمعلومات والمصادر\nعرض على الخريطة\n· الموقع تقريبي\nتجريبي\nدار الأفق 002\n‏8,800,000 د.إ.‏\nالعملة الأصلية\n\nمثال تجريبي خيالي، وليس عرضًا أو عقارًا متاحًا للبيع.\n\nتقدير تجريبي\nبتاريخ غير مذكور\nلماذا هذا الخيار لك\nمثال خيالي في دبي هيلز للمقارنة بين المناطق.\nتبقى متطلبات الأسرة والمدرسة بحاجة إلى تحقق مستقل؛ هذا المثال لا يثبتها.\nضع في اعتبارك\n\nالمدارس نقاط تجريبية خيالية. المنهج البريطاني والقبول وأزمنة التنقل الفعلية غير متحقق منها.\n\nالمعلومات والمصادر\nعرض على الخريطة\n· الموقع تقريبي\nتجريبي\nدار البستان 003\n‏2,380,000 د.إ.‏\nالعملة الأصلية\n\nمثال تجريبي خيالي، وليس عرضًا أو عقارًا متاحًا للبيع.\n\nتقدير تجريبي\nبتاريخ غير مذكور\nلماذا هذا الخيار لك\nمثال خيالي في وسط دبي للمقارنة بين المناطق.\nتبقى متطلبات الأسرة والمدرسة بحاجة إلى تحقق مستقل؛ هذا المثال لا يثبتها.\nضع في اعتبارك\n\nالمدارس نقاط تجريبية خيالية. المنهج البريطاني والقبول وأزمنة التنقل الفعلية غير متحقق منها.\n\nالمعلومات والمصادر\nعرض على الخريطة\n· الموقع تقريبي\n\nعن المطوّر\n\nSODIC\nالدولة\nمصر\nالنص الأصلي للمصدر: Egypt\nذكر في محفظة المشاريع المنشورة\nJune (Ras El Hekma)\nالنص الأصلي للمصدر\nذكر في محفظة المشاريع المنشورة\nCaesar\nالنص الأصلي للمصدر\nذكر في محفظة المشاريع المنشورة\nMalaaz\nالنص الأصلي للمصدر\nذكر في محفظة المشاريع المنشورة\nOgami\nالنص الأصلي للمصدر\nالوصف المنشور\nPremium residential and North Coast resorts; Nobu-branded residences in pipeline; fast H1 2026 growth (≈EGP 23.6bn, +227% YoY)\nالنص الأصلي للمصدر\nenterpriseam.com\nالمصدر غير معروف · بتاريخ غير مذكور\nقراءة الرد بصوت مسموع"
   }
 ]

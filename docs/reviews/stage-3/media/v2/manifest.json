@@ -78,12 +78,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -134,15 +129,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -193,9 +180,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -297,12 +282,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -353,15 +333,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -412,9 +384,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -516,12 +486,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 901,
       "y": 157,
@@ -572,15 +537,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 901,
       "y": 157,
@@ -631,9 +588,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 901,
       "y": 157,
@@ -735,12 +690,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 901,
       "y": 157,
@@ -791,15 +741,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 901,
       "y": 157,
@@ -850,9 +792,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 901,
       "y": 157,
@@ -954,12 +894,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -1010,15 +945,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -1069,9 +996,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -1173,12 +1098,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -1229,15 +1149,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -1288,9 +1200,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 0,
       "y": 157,
@@ -1392,12 +1302,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 585,
       "y": 157,
@@ -1448,15 +1353,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 585,
       "y": 157,
@@ -1507,9 +1404,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 585,
       "y": 157,
@@ -1611,12 +1506,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 585,
       "y": 157,
@@ -1667,15 +1557,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 585,
       "y": 157,
@@ -1726,9 +1608,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 585,
       "y": 157,
@@ -1806,9 +1686,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -1843,12 +1721,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -1875,9 +1748,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -1912,15 +1783,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -1947,9 +1810,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -1984,9 +1845,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -2013,9 +1872,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2077,9 +1934,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2114,12 +1969,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -2146,9 +1996,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2183,15 +2031,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -2218,9 +2058,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2255,9 +2093,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -2284,9 +2120,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2348,9 +2182,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2385,12 +2217,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -2417,9 +2244,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2454,15 +2279,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -2489,9 +2306,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2526,9 +2341,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -2555,9 +2368,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2619,9 +2430,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2656,12 +2465,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards",
-      "project-cards",
-      "comparison",
-      "notice"
-    ],
+    "components": ["project-cards", "project-cards", "comparison", "notice"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -2688,9 +2492,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2725,15 +2527,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "notice",
-      "notice",
-      "notice",
-      "notice",
-      "mini-map",
-      "project-cards",
-      "notice"
-    ],
+    "components": ["notice", "notice", "notice", "notice", "mini-map", "project-cards", "notice"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -2760,9 +2554,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]
@@ -2797,9 +2589,7 @@
       "basePainted": "true",
       "deckReady": "true"
     },
-    "components": [
-      "project-cards"
-    ],
+    "components": ["project-cards"],
     "reading": {
       "x": 1,
       "y": 301.453125,
@@ -2826,9 +2616,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".maplibregl-ctrl-zoom-out"
-            ],
+            "target": [".maplibregl-ctrl-zoom-out"],
             "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
           }
         ]

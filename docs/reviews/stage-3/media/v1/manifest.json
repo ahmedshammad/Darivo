@@ -54,9 +54,7 @@
         "impact": "serious",
         "nodes": [
           {
-            "target": [
-              ".cq-turns"
-            ],
+            "target": [".cq-turns"],
             "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"div\" elements with no valid role attribute."
           }
         ]
