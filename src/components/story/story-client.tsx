@@ -11,7 +11,7 @@ import { formatAmount, formatNumber } from '@/src/lib/format';
 import { StoryFact, StoryMoney, StoryPayment, StorySources } from './evidence';
 import { StoryMap } from './story-map';
 import { StorySmoothScroll } from './smooth-scroll';
-import { storyCompletionDate } from './presentation';
+import { storyCompletionDate, storyPropertyTypeLabel } from './presentation';
 import './story.css';
 const chapters = [
   'arrival',
@@ -88,6 +88,14 @@ export function StoryClient({
   const narrative = firstNarrative
     ? [firstNarrative, ...story.narrative.filter((entry) => entry.id !== firstNarrative.id)]
     : [];
+  const firstTypeFact =
+    !isReference && firstNarrative
+      ? story.facts.find((fact) => firstNarrative.factIds.includes(fact.id) && fact.key === 'type')
+      : undefined;
+  const ideaText =
+    storyPropertyTypeLabel(firstTypeFact?.value, locale) ??
+    firstNarrative?.text[locale] ??
+    t.ideaFallback;
   const blockedActions = story.capabilities.filter(
     (capability) =>
       !capability.allowed &&
@@ -226,7 +234,7 @@ export function StoryClient({
         <div className="story-editorial">
           <section id="story-idea" tabIndex={-1} className="story-idea">
             {heading(1)}
-            <p className="story-display">{firstNarrative?.text[locale] ?? t.ideaFallback}</p>
+            <p className="story-display">{ideaText}</p>
             {story.narrative.length ? (
               narrative.map((entry) => (
                 <div className="story-narrative" key={entry.id}>
@@ -354,15 +362,24 @@ export function StoryClient({
                 <h3>{metric.label[locale]}</h3>
                 <p className="story-metric-value">
                   {metric.status === 'AVAILABLE' ? (
-                    <bdi>
-                      {metric.unit === 'boolean'
-                        ? metric.value === 1
-                          ? t.thresholdMet
-                          : t.thresholdNotMet
-                        : metric.currency
-                          ? `${formatAmount(metric.value, metric.currency, locale, arabicIndicDigits)}${metric.unit === 'sqm' || metric.unit === 'sqft' ? ` / ${t[metric.unit]}` : ''}`
-                          : `${formatNumber(metric.value, locale, arabicIndicDigits, 2)} ${metric.unit === 'sqm' || metric.unit === 'sqft' ? t[metric.unit] : metric.unit}`}
-                    </bdi>
+                    <>
+                      <bdi>
+                        {metric.unit === 'boolean'
+                          ? metric.value === 1
+                            ? t.thresholdMet
+                            : t.thresholdNotMet
+                          : metric.currency
+                            ? `${formatAmount(metric.value, metric.currency, locale, arabicIndicDigits)}${locale !== 'ar' && (metric.unit === 'sqm' || metric.unit === 'sqft') ? ` / ${t[metric.unit]}` : ''}`
+                            : `${formatNumber(metric.value, locale, arabicIndicDigits, 2)} ${metric.unit === 'sqm' || metric.unit === 'sqft' ? t[metric.unit] : metric.unit}`}
+                      </bdi>
+                      {locale === 'ar' &&
+                        metric.currency &&
+                        (metric.unit === 'sqm' || metric.unit === 'sqft') && (
+                          <span className="story-metric-unit">
+                            {metric.unit === 'sqm' ? t.perSqm : t.perSqft}
+                          </span>
+                        )}
+                    </>
                   ) : (
                     t.metricReasons[metric.reason]
                   )}

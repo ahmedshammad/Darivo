@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { storyCompletionDate } from '../src/components/story/presentation';
+import { storyCompletionDate, storyPropertyTypeLabel } from '../src/components/story/presentation';
+it('labels only recognized stored property types without inventing unknown source wording', () => {
+  expect(storyPropertyTypeLabel('apartment', 'en')).toBe('Apartment');
+  expect(storyPropertyTypeLabel('apartment', 'ar')).toBe('شقة');
+  expect(storyPropertyTypeLabel('villa', 'ar')).toBe('فيلا');
+  for (const value of ['branded apartments', 'private island', null])
+    expect(storyPropertyTypeLabel(value, 'ar')).toBeNull();
+});
 describe('Story completion date presentation', () => {
   it('localizes an exact UTC completion timestamp without altering its canonical value', () => {
     const original = '2026-08-31T00:00:00.000Z';

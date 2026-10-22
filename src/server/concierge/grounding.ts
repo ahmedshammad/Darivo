@@ -3,6 +3,8 @@ import type { AtlasProject } from '@/src/lib/atlas';
 import { ATLAS_PLACES } from '@/src/lib/atlas-intent';
 import { FX, FX_DATE } from '@/src/lib/catalog';
 import { exploreReferenceArabic } from '@/messages/explore';
+import { demoAmenityLabels, demoViewLabels } from '@/messages/demo-facts';
+import { storyReferenceFactsAr } from '@/messages/story-reference-facts';
 import {
   conciergeComponentSchema,
   conciergeCurrencySchema,
@@ -46,6 +48,7 @@ const labels: Record<string, ReturnType<typeof bilingual>> = {
 };
 const sourceTranslations: Record<string, string> = {
   ...exploreReferenceArabic,
+  ...storyReferenceFactsAr,
   UAE: 'الإمارات',
   Egypt: 'مصر',
   Dubai: 'دبي',
@@ -710,6 +713,19 @@ export function groundUnit(unit: PropertyDTO, brief: ConciergeBrief): GroundedCa
     community: unit.community.nameEn,
     completion: unit.status === 'ready' ? 'ready' : unit.handoverDate,
   }).map(([key, value]) => createFact(entity, key, value, [source.id], 'DEMO'));
+  // Localize authored demo enums without changing the evidence consumed by filters or replay.
+  if (unit.amenities.length)
+    facts.find((fact) => fact.key === 'amenities')!.displayValue = bilingual(
+      unit.amenities.map((value) => demoAmenityLabels[value]?.en ?? value).join(', '),
+      unit.amenities.map((value) => demoAmenityLabels[value]?.ar ?? value).join('، '),
+    );
+  const viewFact = facts.find((fact) => fact.key === 'view')!;
+  if (Object.hasOwn(demoViewLabels, unit.view)) viewFact.displayValue = demoViewLabels[unit.view];
+  else delete viewFact.displayValue;
+  facts.find((fact) => fact.key === 'community')!.displayValue = bilingual(
+    unit.community.nameEn,
+    unit.community.nameAr,
+  );
   facts.find((fact) => fact.key === 'price')!.currency = conciergeCurrencySchema.parse(
     unit.currency,
   );

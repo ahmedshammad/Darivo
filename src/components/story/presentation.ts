@@ -1,4 +1,11 @@
-import type { StoryLocale } from '@/messages/story';
+import { storyCopy, type StoryLocale } from '@/messages/story';
+
+/** Only recognized stored Demo type values receive an authored UI label. */
+export function storyPropertyTypeLabel(value: unknown, locale: StoryLocale): string | null {
+  if (typeof value !== 'string') return null;
+  const labels = storyCopy[locale].propertyTypes;
+  return Object.hasOwn(labels, value) ? labels[value as keyof typeof labels] : null;
+}
 /** Format only an exact timestamp; never turn a reported year/quarter into a guessed date. */
 export function storyCompletionDate(
   value: unknown,

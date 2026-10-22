@@ -556,6 +556,11 @@
   font: 400 34px var(--serif);
   margin: 16px 0 !important;
 }
+.story-metric-unit {
+  display: block;
+  font: 400 14px var(--sans);
+  margin-top: 8px;
+}
 .story-ledger article > p:not(.story-metric-value) {
   font-size: 14px;
   margin-bottom: 12px;

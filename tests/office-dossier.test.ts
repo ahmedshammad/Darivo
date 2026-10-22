@@ -3,6 +3,22 @@ import { officeDossierHtml } from '@/src/server/pdf/office-dossier';
 import { documentFixture } from './fixtures/office-dossier';
 
 describe('source-bearing bilingual dossier', () => {
+  it('presents localized fact labels while retaining the unmodified source wording', async () => {
+    const data = documentFixture();
+    data.stories[0].facts.push({
+      ...data.stories[0].facts[0],
+      id: 'fixture:amenities',
+      key: 'amenities',
+      value: 'private_pool, garden',
+      originalText: 'private_pool, garden',
+      currency: null,
+      unit: null,
+      displayValue: { en: 'Private pool, garden', ar: 'مسبح خاص، حديقة' },
+    });
+    const html = await officeDossierHtml(data);
+    expect(html).toContain('<bdi>مسبح خاص، حديقة</bdi>');
+    expect(html).toContain('النص الأصلي للمصدر: <span dir="auto">private_pool, garden</span>');
+  });
   it('keeps project and developer citation dates separate when their source IDs match', async () => {
     const data = documentFixture();
     data.preferences = { ...data.preferences, locale: 'en', arabicIndicDigits: false };
