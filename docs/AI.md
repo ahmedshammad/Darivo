@@ -1,0 +1,11 @@
+# Consultant architecture
+
+`AIProvider` proposes allowlisted client tool calls; it never has database credentials or admin tools. The deterministic MockProvider extracts Arabic/English briefs, normalizes Arabic numerals and carries preferences between turns. `AI_PROVIDER=openai` plus a key enables the optional OpenAI-compatible Chat Completions adapter. Without a key it falls back to MockProvider. The adapter follows [official function-calling documentation](https://developers.openai.com/api/docs/guides/function-calling), requires tools and validates every argument with Zod.
+
+The application executes tools with a freshly loaded authenticated user. All listing access passes through the shared visibility predicate. Tool facts are rendered as scoped cards and estimate panels; free-form model prose is discarded. Trusted bilingual templates explain results, no-matches and advice handoffs. This conservative MVP trades conversational variety for auditable grounding. Model-invented IDs cannot resolve to cards. A second code gate checks explicit user intent before shortlist/viewing writes.
+
+History stores property IDs, not snapshots of restricted inventory. Every replay rechecks visibility so a revoked grant does not leak historical property details. User-entered messages are rendered as escaped text. Conversation deletion cascades to its messages. Briefs are independently editable and retained until account deletion.
+
+The endpoint streams NDJSON status, brief, text, properties, results and done/error events. It does not stream unvalidated model tokens. The UI consumes incremental text and rich cards. Client tools cover search, scoped detail, comparison, synthetic area insights, deterministic investment estimates, saving, viewings and human handoff.
+
+Run `pnpm eval` for the bilingual fixture suite. The same cases run on the real provider if a key is present; otherwise a clear skip is printed. No real-provider success is claimed without execution. Embeddings currently use normalized deterministic 64-dimensional hashing for consistent offline search. Production semantic embeddings require a versioned model/dimension migration and re-indexing; this is a documented remaining limitation of the optional provider.
