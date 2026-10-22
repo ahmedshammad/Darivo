@@ -30,3 +30,24 @@ test('filters, map and Arabic property details work at mobile width', async ({ p
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   ).toBeTruthy();
 });
+
+test('on-demand consultant preserves keyboard entry and closing focus in both languages', async ({
+  page,
+}) => {
+  for (const locale of ['en', 'ar']) {
+    await page.goto(`/${locale}/search`);
+    await expect(page.locator('.dock-window')).toHaveCount(0);
+    await expect(page.locator('.dock-toggle')).toBeEnabled();
+    await page.locator('.dock-toggle').focus();
+    await page.keyboard.press('Enter');
+    const composer = page.locator('#dock-message');
+    await expect(composer).toBeFocused();
+    await composer.fill(locale === 'en' ? 'A family home near the sea' : 'بيت للعائلة قرب البحر');
+    await expect(composer).not.toHaveValue('');
+    await page.locator('.dock-heading button').click();
+    await expect(page.locator('.dock-window')).toHaveCount(0);
+    await expect(page.locator('.dock-toggle')).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(composer).toBeFocused();
+  }
+});

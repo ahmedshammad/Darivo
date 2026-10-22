@@ -1,6 +1,6 @@
 'use client';
-import { ConsultantDock } from './consultant';
-import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import { useState, useSyncExternalStore } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   Search as SearchIcon,
@@ -9,20 +9,44 @@ import {
   Map as MapIcon,
   ArrowUpRight,
   LockKeyhole,
+  MessageCircle,
 } from 'lucide-react';
 import Link from 'next/link';
 import { AREAS, TYPES } from '@/src/lib/catalog';
 import type { PropertyDTO } from '@/src/server/db/properties';
 import { PropertyCard } from './property-card';
 import { DisplayPreferences, usePreferences } from './preferences';
-import { MapView } from './map-view';
+const MapView = dynamic(() => import('./map-view').then((module) => module.MapView), {
+  ssr: false,
+});
+function DockLoading() {
+  const t = useTranslations();
+  return (
+    <div className="consultant-widget">
+      <button className="button button-primary dock-toggle" aria-expanded="true" disabled>
+        <MessageCircle size={18} />
+        <span role="status">{t('loading')}</span>
+      </button>
+    </div>
+  );
+}
+const ConsultantDock = dynamic(
+  () => import('./consultant').then((module) => module.ConsultantDock),
+  { ssr: false, loading: DockLoading },
+);
+const subscribeToHydration = () => () => {};
+const clientReady = () => true;
+const serverReady = () => false;
 export function Search({ initial }: { initial: { properties: PropertyDTO[]; total: number } }) {
   const t = useTranslations(),
     locale = useLocale(),
     pref = usePreferences();
+  // The server-rendered trigger must not accept activation before its handler is attached.
+  const interactive = useSyncExternalStore(subscribeToHydration, clientReady, serverReady);
   const [result, setResult] = useState(initial),
     [advanced, setAdvanced] = useState(false),
     [map, setMap] = useState(false),
+    [dockActivated, setDockActivated] = useState(false),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(false);
   async function submit(form: HTMLFormElement) {
@@ -219,7 +243,22 @@ export function Search({ initial }: { initial: { properties: PropertyDTO[]; tota
           <ArrowUpRight size={16} />
         </Link>
       </aside>
-      <ConsultantDock />
+      {dockActivated ? (
+        <ConsultantDock initialOpen />
+      ) : (
+        <div className="consultant-widget">
+          <button
+            className="button button-primary dock-toggle"
+            aria-expanded="false"
+            aria-busy={!interactive}
+            disabled={!interactive}
+            onClick={() => setDockActivated(true)}
+          >
+            <MessageCircle size={18} />
+            {t('openConsultant')}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

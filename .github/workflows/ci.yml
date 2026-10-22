@@ -45,8 +45,18 @@ jobs:
           retention-days: 7
       - run: pnpm build
       - name: Production Lighthouse checks
+        env:
+          LIGHTHOUSE_OUTPUT_DIR: /tmp/darivo-lighthouse-report
         run: |
           AUTH_URL=http://localhost:3001 pnpm start --port 3001 &
           preview_pid=$!
           trap 'kill "$preview_pid"' EXIT
           pnpm test:performance
+      - name: Retain Lighthouse diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: /tmp/darivo-lighthouse-report
+          if-no-files-found: ignore
+          retention-days: 7

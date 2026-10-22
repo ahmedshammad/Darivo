@@ -1,0 +1,52 @@
+{
+  "runs": [
+    {
+      "id": 39782522405,
+      "status": "cancelled",
+      "commit": "d4b1ca7",
+      "reason": "Superseded redundant browser installation; it upgraded runner Chrome 155 to 156 after roughly 7 minutes."
+    },
+    {
+      "id": 39783604867,
+      "status": "failure",
+      "commit": "86e307b",
+      "unitTests": 40,
+      "mockEvals": 36,
+      "browserTests": 20,
+      "build": "pass",
+      "failedGate": "Search Lighthouse performance 89; threshold 90 retained",
+      "lighthouse": [
+        {
+          "page": "/en",
+          "scores": {
+            "performance": 92,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "report": "/tmp/darivo-lighthouse-8Iysvf/home.json"
+        },
+        {
+          "page": "/en/search",
+          "scores": {
+            "performance": 89,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "report": "/tmp/darivo-lighthouse-8Iysvf/search.json"
+        },
+        {
+          "page": "/ar/properties/property-002",
+          "scores": {
+            "performance": 96,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "report": "/tmp/darivo-lighthouse-8Iysvf/detail-ar.json"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,29 @@
 # Validation record — 22 October 2026
 
-Validated locally on macOS arm64, Node 22.22.3, pnpm 11.25.0, Chrome and PGlite with pgvector. All inventory and identities are synthetic.
+## V2 Stage 1 — current checkpoint
+
+The [hosted run for checkpoint86e307b](https://github.com/ahmedshammad/Darivo/actions/runs/39783604867) passed migration, seed, static checks,40 tests,36 evals,20 browser tests and production build. Lighthouse returned Home92/Search89/Arabic detail96; Search missed the unchanged90-point gate. A targeted initial-load repair now passes locally at 94/94/95 and awaits hosted confirmation, so this document does not yet claim hosted acceptance. [Detailed local evidence](reviews/stage-1/local-checks.json) preserves failures, repairs and environment limits.
+
+| Check                          | Result                                                                                                                                                                                                      |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Reference/demo database        | Native PostgreSQL16.2 + pgvector0.6.2; all three migrations and two seed runs pass                                                                                                                          |
+| Seed boundaries                | 250 fictional units,16 demo projects,13 real references,9 real organisations plus one aggregate,41 sources,241 sourced fact records,52 demo POIs; zero invalid unit attachments or invented retrieval dates |
+| Unit/integration suite         | 40 tests pass on native PostgreSQL                                                                                                                                                                          |
+| Mock evals                     | 36/36 pass, zero private-inventory leakage; real provider skipped without a key                                                                                                                             |
+| Browser checks                 | 16 application cases plus four new design-system regressions pass; final demo sign-in/preferences subset4/4 also passes                                                                                     |
+| Design matrix                  | EN/AR × light/dark ×1440/1024/390:12 configurations, zero axe findings, overflow or page errors; two signature videos                                                                                       |
+| Simulated review board         | Initial8.839/min8; repaired9.065/min8.5; all iterations preserved                                                                                                                                           |
+| Production build/static checks | Build, lint, strict types and formatting pass                                                                                                                                                               |
+| Production guide               | Four focused guide cases pass on the optimized build                                                                                                                                                        |
+| Local Lighthouse               | Home94, Search94, Arabic detail95 performance; accessibility100, best practices96, SEO100                                                                                                                   |
+
+The first production performance run returned88/86/94. Removing unnecessary other-language font prefetching and a shared unused font preload repaired the regression without lowering the90-point gate. Language switching passes in production. A combined development sign-in probe cannot finish there because production intentionally excludes quick demo credentials; this is recorded as an inapplicable test step, not bypassed by enabling production demo accounts.
+
+The native fixture is temporary, loopback-only validation infrastructure. Docker itself remains unavailable on this host. These results do not certify live source freshness, native Gulf-Arabic quality, physical-phone performance, human screen-reader usability, production mail or legal compliance. Stage2–6 remain separate acceptance gates.
+
+## V1 historical baseline
+
+The following records the earlier MVP before V2 reference data and component work. It is retained as history, not a claim about V2 completion. It was validated locally on macOS arm64, Node22.22.3, pnpm11.25.0, Chrome and PGlite with pgvector. Its inventory and identities were synthetic.
 
 | Check                               | Result                                                                            |
 | ----------------------------------- | --------------------------------------------------------------------------------- |
@@ -15,7 +38,7 @@ Validated locally on macOS arm64, Node 22.22.3, pnpm 11.25.0, Chrome and PGlite 
 
 Browser coverage includes the full consultant → shortlist → comparison → PDF → viewing journey; Arabic filters and map; mobile layouts at 375px; keyboard entry; axe AA scans on public, client and staff screens; role injection and staff API rejection; grant isolation, revocation and audit; shortlist/PDF ownership; CSRF, body limits and private HTML redaction. Automated accessibility checks supplement, rather than replace, human screen-reader testing.
 
-## Production performance
+### V1 production performance
 
 `pnpm test:performance` uses Lighthouse 13.5 with its default simulated mobile throttling against the optimized production build. Each route uses a fresh browser audit. Scores are observations from this host and may vary with hardware and load; the script and CI enforce a minimum of 90 in each category.
 
@@ -27,7 +50,7 @@ Browser coverage includes the full consultant → shortlist → comparison → P
 
 Local font preloads, reserved loading space, image priorities and an explicitly opened detail map reduce initial layout shifts and browser work. The interactive search map still opens directly from the map tab.
 
-## External checks not performed
+### External checks not performed at the V1 checkpoint
 
 - No Git remote is configured, so GitHub Actions has not run. The workflow provisions PostgreSQL 16 + pgvector and runs formatting, lint, types, tests, evals, browser checks, production build and Lighthouse. Equivalent available checks passed locally.
 - Docker/PostgreSQL 16 could not run on this host. Fresh migrations and integration checks used real PostgreSQL semantics through PGlite; this does not verify the canonical deployment engine.

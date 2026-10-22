@@ -1,6 +1,6 @@
 # Darivo
 
-A private, bilingual property-office demo for the UAE and Egypt. V2 is in progress: the Noir Atlas concept sprint is approved, and the foundation/design system is under review. The existing consultant, portfolios, PDF and advisor/admin workflows remain runnable while the later V2 experiences are built. See the [full delivery ledger](docs/studio/DELIVERY-LEDGER.md) for honest stage status.
+A private, bilingual property-office demo for the UAE and Egypt. V2 is in progress: the Noir Atlas concept sprint is approved, and the foundation/design system has passed its simulated review and is awaiting hosted CI. The existing consultant, portfolios, PDF and advisor/admin workflows remain runnable while the later V2 experiences are built. See the [full delivery ledger](docs/studio/DELIVERY-LEDGER.md) for honest stage status.
 
 ## Run in a few minutes
 
@@ -11,7 +11,7 @@ pnpm install
 pnpm demo
 ```
 
-Open **http://localhost:3000/en** or **http://localhost:3000/ar**. The new living component guide is at **/en/design** and **/ar/design**. Leave that terminal running. The launcher creates a private `.env` with a random auth secret, starts persistent local PGlite + pgvector, applies migrations, imports13 sourced reference projects and seeds250 fictional units. Re-seeding refreshes demo identities and fixture fields but retains portfolios, conversations and viewing relationships. PGlite data lives in the OS temporary directory under `darivo-postgres-<project hash>`; use Docker volumes for durable development. `pnpm dev` is an alias for the same launcher.
+Open **http://localhost:3000/en** or **http://localhost:3000/ar**. The new living component guide is at **/en/design** and **/ar/design**. Leave that terminal running. The launcher creates a private `.env` with a random auth secret, starts persistent local PGlite + pgvector, applies migrations, imports 13 sourced reference projects and seeds 250 fictional units. Re-seeding refreshes demo identities and fixture fields but retains portfolios, conversations and viewing relationships. PGlite data lives in the OS temporary directory under `darivo-postgres-<project hash>`; use Docker volumes for durable development. `pnpm dev` is an alias for the same launcher.
 
 If Chrome is missing, install it for PDF rendering and tests:
 
@@ -40,7 +40,7 @@ No passwords are needed for these explicit **development-only** identities. The 
 5. Submit the profile’s built-in verification placeholder. Sign in as admin, choose **Users & verification**, and approve it.
 6. From the advisor desk, grant `property-020` to the private client. It becomes visible to that client only. Revoke it and access disappears immediately. Audit records both actions.
 
-The250 unit listings, their16 projects and4 developers, permits, POIs, investment assumptions and accounts are fictional. Separately, the supplied reference dataset contains9 real developer organisations, one aggregate research note,13 real projects and3 market statistics. Reference projects have source/date/basis metadata and on-request availability; they never own demo units. See [data boundaries](docs/REFERENCE_DATA.md). No developer logos or renders are used. The legacy offline map is schematic; the concept studio uses actual geographic tiles.
+The 250 unit listings, their 16 projects and 4 developers, permits, POIs, investment assumptions and accounts are fictional. Separately, the supplied reference dataset contains 9 real developer organisations, one aggregate research note, 13 real projects and 3 market statistics. Reference projects have source/date/basis metadata and on-request availability; they never own demo units. See [data boundaries](docs/REFERENCE_DATA.md). No developer logos or renders are used. The legacy offline map is schematic; the concept studio uses actual geographic tiles.
 
 ## PostgreSQL 16 + pgvector (canonical setup)
 
@@ -53,7 +53,7 @@ docker compose up -d --wait
 pnpm dev
 ```
 
-The database binds to loopback port55432. Set a unique `POSTGRES_PASSWORD` and matching `DATABASE_URL` for any shared environment. CI uses PostgreSQL16 with pgvector. V2 migration, seed and test validation also runs on an isolated native PostgreSQL16.2 + pgvector0.6.2 fixture. The no-install PGlite fallback remains a single-backend WASM development database, not a production service.
+The database binds to loopback port 55432. Set a unique `POSTGRES_PASSWORD` and matching `DATABASE_URL` for any shared environment. CI uses PostgreSQL 16 with pgvector. V2 migration, seed and test validation also runs on an isolated native PostgreSQL 16.2 + pgvector 0.6.2 fixture. The no-install PGlite fallback remains a single-backend WASM development database, not a production service.
 
 ## AI configuration
 

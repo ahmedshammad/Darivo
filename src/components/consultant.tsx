@@ -367,19 +367,31 @@ export function Consultant({
     </div>
   );
 }
-export function ConsultantDock() {
+export function ConsultantDock({ initialOpen = false }: { initialOpen?: boolean }) {
   const t = useTranslations(),
-    [open, setOpen] = useState(false);
+    [open, setOpen] = useState(initialOpen);
+  const toggle = useRef<HTMLButtonElement>(null);
+  const dockWindow = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (open) {
+      dockWindow.current
+        ?.querySelector<HTMLTextAreaElement>('#dock-message')
+        ?.focus({ preventScroll: true });
+    }
+  }, [open]);
   return (
     <div className="consultant-widget">
       {open && (
-        <div className="dock-window">
+        <div ref={dockWindow} className="dock-window">
           <div className="dock-heading">
             <span>{t('consultant')}</span>
             <button
               className="button button-ghost"
               aria-label={t('close')}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                toggle.current?.focus({ preventScroll: true });
+              }}
             >
               <X size={18} />
             </button>
@@ -388,6 +400,7 @@ export function ConsultantDock() {
         </div>
       )}
       <button
+        ref={toggle}
         className="button button-primary dock-toggle"
         aria-expanded={open}
         onClick={() => setOpen(!open)}

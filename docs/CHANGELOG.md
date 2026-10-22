@@ -89,3 +89,9 @@
 - Stage1 awaits the hosted GitHub Actions run before closure. Stage2 has not begun.
 
 - Hosted CI passed migration/seed/static/unit/eval checks, then spent over five minutes in the redundant browser installation step. The documented [Ubuntu24.04 runner image](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md#browsers-and-drivers) already includes Google Chrome. CI now pins that runner, verifies its Chrome executable and runs the same Playwright/PDF/Lighthouse checks against it. A30-minute job timeout bounds infrastructure stalls; no test or threshold is removed.
+
+- Replacement hosted run passed40 unit tests,36 mock evals,20 browser cases and the production build. Lighthouse returned92/89/96 for Home/Search/Arabic detail; Search failed the unchanged90 threshold. Closed-map CSS and consultant code are being deferred, and future Lighthouse JSON reports will be retained as CI artifacts.
+
+- Closed Search map and consultant resources now load on demand. The bilingual keyboard opening/closing regression passes; local production performance is **94/94/95** for Home/Search/Arabic detail with the unchanged gate. Full Lighthouse JSON reports are retained by subsequent hosted runs. Hosted confirmation is still required.
+
+- A production-only immediate keyboard probe exposed a pre-hydration trigger race. The native consultant button now stays disabled until its handler is attached; the test waits for that observable state. Rebuilt production discovery checks pass **3/3** in EN/AR, including map loading, direct private-record denial and consultant focus restoration. The failed first probe remains in the validation record.

@@ -1,10 +1,12 @@
 import { spawn } from 'node:child_process';
-import { mkdtemp, readFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const base = process.env.LIGHTHOUSE_BASE_URL ?? 'http://localhost:3001';
-const output = await mkdtemp(join(tmpdir(), 'darivo-lighthouse-'));
+const output =
+  process.env.LIGHTHOUSE_OUTPUT_DIR ?? (await mkdtemp(join(tmpdir(), 'darivo-lighthouse-')));
+await mkdir(output, { recursive: true });
 let ready = false;
 for (let attempt = 0; attempt < 60; attempt++) {
   try {
@@ -49,6 +51,11 @@ for (const [name, path] of [
   const scores = Object.fromEntries(
     Object.entries(result.categories).map(([key, value]) => [key, Math.round(value.score * 100)]),
   );
-  console.info(JSON.stringify({ page: path, scores, report }));
+  const metrics = {
+    lcpMs: result.audits['largest-contentful-paint'].numericValue,
+    blockingMs: result.audits['total-blocking-time'].numericValue,
+    layoutShift: result.audits['cumulative-layout-shift'].numericValue,
+  };
+  console.info(JSON.stringify({ page: path, scores, metrics, report }));
   if (Object.values(scores).some((score) => score < 90)) process.exitCode = 1;
 }

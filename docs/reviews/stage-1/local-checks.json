@@ -26,8 +26,25 @@
   "environmentFailures": [
     "Initial sandboxed browser launch aborted before tests; authorized local-browser rerun passed."
   ],
-  "hostedCI": "pending",
-  "productionBuild": "pass after font-prefetch repair",
+  "hostedCI": {
+    "status": "failure",
+    "url": "https://github.com/ahmedshammad/Darivo/actions/runs/39783604867",
+    "commit": "86e307bf2a85bde49a13b44e7852d50e6e5df305",
+    "passed": [
+      "migration",
+      "seed",
+      "format",
+      "lint",
+      "typecheck",
+      "40 tests",
+      "36 evals",
+      "20 browser tests",
+      "production build"
+    ],
+    "failed": "Search Lighthouse performance89; required90",
+    "repair": "Deferred closed map styles and consultant implementation; local performance now 94/94/95. Full audit reports will be retained by CI; hosted verification pending."
+  },
+  "productionBuild": "pass after lazy Search resource repair",
   "designRegression": {
     "passed": 4,
     "failed": 0,
@@ -146,6 +163,80 @@
         }
       ],
       "gate": true
+    },
+    {
+      "version": "v3",
+      "repair": "Load closed Search map and consultant resources on demand. Threshold unchanged.",
+      "results": [
+        {
+          "page": "/en",
+          "scores": {
+            "performance": 94,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3017.1180000000004,
+            "blockingMs": 22,
+            "layoutShift": 0
+          },
+          "report": "/var/folders/b4/5p4h2wnj1_31fsgsh7gl2k640000gn/T/darivo-lighthouse-jMZWUv/home.json"
+        },
+        {
+          "page": "/en/search",
+          "scores": {
+            "performance": 94,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3084.6010000000006,
+            "blockingMs": 20,
+            "layoutShift": 0
+          },
+          "report": "/var/folders/b4/5p4h2wnj1_31fsgsh7gl2k640000gn/T/darivo-lighthouse-jMZWUv/search.json"
+        },
+        {
+          "page": "/ar/properties/property-002",
+          "scores": {
+            "performance": 95,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 2863.0315499999997,
+            "blockingMs": 25,
+            "layoutShift": 0.0008320374689347665
+          },
+          "report": "/var/folders/b4/5p4h2wnj1_31fsgsh7gl2k640000gn/T/darivo-lighthouse-jMZWUv/detail-ar.json"
+        }
+      ],
+      "gate": true
     }
-  ]
+  ],
+  "finalDemoAuthRegression": {
+    "passed": 4,
+    "failed": 0,
+    "scope": "language/sign-in, partner denial, persistent numerals, failed-save recovery after immutable identity lookup"
+  },
+  "lazySearchRegression": {
+    "passed": 3,
+    "failed": 0,
+    "scope": "API visibility, mobile filters/map/detail, bilingual keyboard consultant open/type/close/reopen"
+  },
+  "lazySearchProductionRegression": {
+    "passed": 2,
+    "failed": 1,
+    "failure": "Immediate keyboard activation reached the server-rendered consultant trigger before its handler was ready; composer did not open. Repair pending.",
+    "evidence": "/tmp/darivo-stage1-lazy-production.log",
+    "repaired": {
+      "passed": 3,
+      "failed": 0,
+      "fix": "Native trigger disabled until hydration; test waits for enabled state before keyboard focus/activation.",
+      "evidence": "/tmp/darivo-stage1-lazy-production-v2.log"
+    }
+  }
 }
