@@ -29,3 +29,10 @@
 - Dubai/Cairo local slots use Temporal with ambiguous/nonexistent DST times rejected and UTC storage. Investment calculator uses bounded user assumptions and labels every result as an estimate.
 - Checks: lint/typecheck clean; 18 tests pass; 36 evals pass; 6 browser tests pass, including consultant → shortlist → compare → PDF → viewing and profile role-injection rejection. Exported A4 cover and property page were rendered with Poppler and visually inspected for readable Arabic, alignment, margins and clipping.
 - Mock verification deliberately submits a built-in placeholder and collects no identity document. PDF runtime requires Chrome (`pnpm exec playwright install chrome` if absent). Production e-mail, real KYC and legal compliance remain explicitly out of scope.
+
+## Stage 4 — Advisor and admin (2026-10-22)
+- Added advisor client briefs/shortlists, private notes, scoped suggestions, viewing status updates, handoff resolution and private introductions with revocation.
+- Added admin CRUD for listings (including bilingual copy, verification and visibility), fictional developers, communities and illustration media; user role/verification controls; event analytics and audit trail. Last-admin demotion is rejected.
+- Private grants and their audit events are transactional. Advisors cannot suggest an address the receiving client cannot access. All staff REST routes enforce fresh database roles independently of navigation.
+- Checks: lint/typecheck pass; 20 tests and 36 evals pass. Eight browser cases pass (seven in the full run; the final staff case passed after correcting a test-only sign-out navigation race). Grant isolation, direct staff API denial, audit recording, immediate revocation, private notes and developer create/update/delete are covered.
+- No real CRM, identity provider or external messaging is connected. Next: production build, accessibility/performance, security review and complete runbook/OpenAPI documentation.
