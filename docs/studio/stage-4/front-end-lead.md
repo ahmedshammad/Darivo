@@ -1,0 +1,9 @@
+# Front-end Lead — Stage 4
+
+Build on the existing Next16 App Router, strict TypeScript, shared Noir Atlas tokens and authorization DAL. Read installed Next guides before implementation. Server routes resolve the current viewer and return bounded safe DTOs; client controls never receive raw references, unfiltered relations or hidden inventory counts. The property/project story resolves a typed entity, and portfolio operations preserve that identity rather than silently attaching a unit to a reference project.
+
+Keep the editorial shell server-rendered. Hydrate only controls, map and purposeful motion. One map instance per story; no array of heavy miniature WebGL canvases on office boards. Prefer CSS sticky layout and reduced-motion-safe transitions, with progressive map detail and a truthful fallback. Desktop/tablet/mobile share reading order, and sticky actions cannot cover evidence or keyboard focus. All display amounts retain native money, dated Demo FX and user digit/unit preferences.
+
+A shared versioned contract will precede parallel implementation. The backend owns DTO/schema/API authorization; Story and Office own separate component trees and localized copy; the parent owns route integration, transition links, dossier rendering, cross-flow validation and CI. Shared files have explicit ownership. Additive migrations preserve legacy routes and existing client data. Browser, capture, PDF-render, performance and production-build slots are serialized.
+
+Acceptance: the EN/AR × light/dark ×1440/1024/390 matrix and signature recordings; a measured Concierge→map→story→portfolio→dossier→viewing path; real API/UI/AI private-leak checks including revocation; source-rich bilingual PDF page rendering; keyboard/axe checks; meaningful unit/integration and provider eval regressions; full current-source hosted CI. No fabricated data, hidden broadening, fake activity or weakened performance thresholds.
