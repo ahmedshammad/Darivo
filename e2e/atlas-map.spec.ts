@@ -11,6 +11,19 @@ test('cross-market comparison refits both endpoints after the mobile sheet colla
     const map = page.locator('.living-map');
     await expect(map).toHaveAttribute('data-map-ready', 'true', { timeout: 30000 });
     await expect(map).toHaveAttribute('data-map-mode', fallback ? 'fallback' : 'webgl');
+    if (fallback) {
+      const initialCenter = await map.getAttribute('data-center');
+      const initialZoom = Number(await map.getAttribute('data-zoom'));
+      await map.getByRole('button', { name: 'Zoom in', exact: true }).click();
+      await map.getByRole('button', { name: 'Zoom in', exact: true }).click();
+      await map.getByTestId('atlas-fallback').focus();
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight');
+      await expect(map).not.toHaveAttribute('data-center', initialCenter!);
+      await expect
+        .poll(async () => Number(await map.getAttribute('data-zoom')))
+        .toBeGreaterThan(initialZoom);
+    }
     await page.locator('.atlas-sheet-handle').click();
     for (const id of ['june-sodic', 'orla-palm-jumeirah'])
       await page.locator(`[data-project="${id}"] .atlas-compare-add`).click();
@@ -59,4 +72,41 @@ test('cross-market comparison refits both endpoints after the mobile sheet colla
       await expect(notice).not.toHaveAttribute('open');
     }
   }
+});
+
+test('active WebGL comparison refits after a width-only viewport resize', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/en/explore?q=North+Coast+and+Dubai');
+  const map = page.locator('.living-map');
+  await expect(map).toHaveAttribute('data-map-ready', 'true', { timeout: 30000 });
+  await expect(map).toHaveAttribute('data-map-mode', 'webgl');
+  for (const id of ['june-sodic', 'orla-palm-jumeirah'])
+    await page.locator(`[data-project="${id}"] .atlas-compare-add`).click();
+  await expect
+    .poll(async () => {
+      const points = JSON.parse((await map.getAttribute('data-comparison-points')) || '[]');
+      return points.length === 2 && (await map.getAttribute('data-moving')) === 'false';
+    })
+    .toBe(true);
+  const initialZoom = Number(await map.getAttribute('data-zoom'));
+  await page.setViewportSize({ width: 1024, height: 900 });
+  await expect
+    .poll(
+      async () => {
+        const points = JSON.parse((await map.getAttribute('data-comparison-points')) || '[]') as {
+          x: number;
+          y: number;
+        }[];
+        return (
+          (await map.getAttribute('data-moving')) === 'false' &&
+          Number(await map.getAttribute('data-zoom')) < initialZoom - 0.1 &&
+          points.length === 2 &&
+          points.every(
+            (point) => point.x >= 430 && point.x <= 1024 - 70 && point.y >= 100 && point.y <= 800,
+          )
+        );
+      },
+      { timeout: 15000 },
+    )
+    .toBe(true);
 });

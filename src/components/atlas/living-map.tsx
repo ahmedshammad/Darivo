@@ -637,7 +637,26 @@ export function LivingMap(props: LivingMapProps) {
           new NavigationControl({ showCompass: true, visualizePitch: true }),
           locale === 'ar' ? 'top-left' : 'top-right',
         );
-        observer = new ResizeObserver(() => activeMap.resize());
+        let viewportWidth = host.current.clientWidth;
+        let viewportHeight = host.current.clientHeight;
+        observer = new ResizeObserver(() => {
+          const width = activeMap.getContainer().clientWidth;
+          const height = activeMap.getContainer().clientHeight;
+          const changed = width !== viewportWidth || height !== viewportHeight;
+          viewportWidth = width;
+          viewportHeight = height;
+          activeMap.resize();
+          // Padding alone does not change on a width-only resize. Refit an active
+          // comparison against the new aperture, preserving manual navigation otherwise.
+          if (
+            changed &&
+            width > 0 &&
+            height > 0 &&
+            runtime.current?.map === activeMap &&
+            (latest.current.compareIds?.length ?? 0) > 1
+          )
+            cameraFlight(activeMap, latest.current);
+        });
         observer.observe(host.current);
         timeout = setTimeout(fallback, 14000);
         let sourceFailures = 0;
@@ -1128,8 +1147,19 @@ function FallbackMap(props: LivingMapProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 1024, height: 720 });
   const [land, setLand] = useState<FeatureCollection<Geometry> | null>(null);
-  const [offset, setOffset] = useState(0);
-  const [pan, setPan] = useState<AtlasPoint>([0, 0]);
+  const [manual, setManual] = useState({ key: '', offset: 0, pan: [0, 0] as AtlasPoint });
+  const requestKey = JSON.stringify([
+    props.camera?.key,
+    props.compareIds ?? [],
+    props.camera?.padding,
+    size.width,
+    size.height,
+  ]);
+  if (manual.key !== requestKey) setManual({ key: requestKey, offset: 0, pan: [0, 0] });
+  // Manual control lasts until a new navigation/framing request. Deriving from the
+  // request key avoids even one render with stale pan/zoom applied to new bounds.
+  const offset = manual.key === requestKey ? manual.offset : 0;
+  const pan: AtlasPoint = manual.key === requestKey ? manual.pan : [0, 0];
   const text = copy[props.locale];
   const compared = (props.compareIds ?? [])
     .slice(0, 4)
@@ -1254,7 +1284,7 @@ function FallbackMap(props: LivingMapProps) {
         const step = direction[event.key];
         if (!step) return;
         event.preventDefault();
-        setPan(([x, y]) => [x + step[0], y + step[1]]);
+        setManual({ key: requestKey, offset, pan: [pan[0] + step[0], pan[1] + step[1]] });
       }}
     >
       <svg
@@ -1361,14 +1391,18 @@ function FallbackMap(props: LivingMapProps) {
         <button
           aria-label={text.zoomIn}
           disabled={zoom >= maxZoom}
-          onClick={() => setOffset((value) => Math.min(value + 1, maxZoom - baseZoom))}
+          onClick={() =>
+            setManual({ key: requestKey, pan, offset: Math.min(offset + 1, maxZoom - baseZoom) })
+          }
         >
           <Plus size={18} />
         </button>
         <button
           aria-label={text.zoomOut}
           disabled={zoom <= 1}
-          onClick={() => setOffset((value) => Math.max(value - 1, 1 - baseZoom))}
+          onClick={() =>
+            setManual({ key: requestKey, pan, offset: Math.max(offset - 1, 1 - baseZoom) })
+          }
         >
           <Minus size={18} />
         </button>
