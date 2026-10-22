@@ -1,0 +1,395 @@
+{
+  "folder": "docs/reviews/stage-0/v1",
+  "column": 1,
+  "boardAverage": 7.702,
+  "minimum": 6,
+  "blanketPerfect": false,
+  "pass": false,
+  "reviews": [
+    {
+      "name": "sheikha",
+      "average": 7.792,
+      "minimum": 7,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9
+        },
+        {
+          "criterion": "Originality",
+          "score": 8
+        },
+        {
+          "criterion": "AI-first",
+          "score": 7
+        },
+        {
+          "criterion": "Map experience",
+          "score": 7
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 8
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 8
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 7
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 8
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 8
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 8.5
+        },
+        {
+          "criterion": "Speed",
+          "score": 8
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 7
+        }
+      ]
+    },
+    {
+      "name": "karim",
+      "average": 7.625,
+      "minimum": 6.5,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 8.5
+        },
+        {
+          "criterion": "Originality",
+          "score": 8
+        },
+        {
+          "criterion": "AI-first",
+          "score": 6.5
+        },
+        {
+          "criterion": "Map experience",
+          "score": 7
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 8
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 8
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 7
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 7.5
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 8
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 8
+        },
+        {
+          "criterion": "Speed",
+          "score": 8
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 7
+        }
+      ]
+    },
+    {
+      "name": "elena",
+      "average": 7.917,
+      "minimum": 7,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9
+        },
+        {
+          "criterion": "Originality",
+          "score": 8.5
+        },
+        {
+          "criterion": "AI-first",
+          "score": 7
+        },
+        {
+          "criterion": "Map experience",
+          "score": 7.5
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 8.5
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 8
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 7
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 8
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 8
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 8.5
+        },
+        {
+          "criterion": "Speed",
+          "score": 8
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 7
+        }
+      ]
+    },
+    {
+      "name": "rajiv",
+      "average": 7.667,
+      "minimum": 7,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 8
+        },
+        {
+          "criterion": "Originality",
+          "score": 8
+        },
+        {
+          "criterion": "AI-first",
+          "score": 8
+        },
+        {
+          "criterion": "Map experience",
+          "score": 7
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 8
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 8
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 7
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 7
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 8
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 8
+        },
+        {
+          "criterion": "Speed",
+          "score": 8
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 7
+        }
+      ]
+    },
+    {
+      "name": "head-of-sales",
+      "average": 7.75,
+      "minimum": 7,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9
+        },
+        {
+          "criterion": "Originality",
+          "score": 8
+        },
+        {
+          "criterion": "AI-first",
+          "score": 7
+        },
+        {
+          "criterion": "Map experience",
+          "score": 8
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 7
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 7
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 8
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 8
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 8
+        },
+        {
+          "criterion": "Speed",
+          "score": 7
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 7
+        }
+      ]
+    },
+    {
+      "name": "private-advisor",
+      "average": 7.833,
+      "minimum": 7,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9
+        },
+        {
+          "criterion": "Originality",
+          "score": 8
+        },
+        {
+          "criterion": "AI-first",
+          "score": 8
+        },
+        {
+          "criterion": "Map experience",
+          "score": 7
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 8
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 8
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 7
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 8
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 8
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 8
+        },
+        {
+          "criterion": "Speed",
+          "score": 8
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 7
+        }
+      ]
+    },
+    {
+      "name": "critic",
+      "average": 7.333,
+      "minimum": 6,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9
+        },
+        {
+          "criterion": "Originality",
+          "score": 8
+        },
+        {
+          "criterion": "AI-first",
+          "score": 7
+        },
+        {
+          "criterion": "Map experience",
+          "score": 7
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 8
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 7
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 6
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 8
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 7
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 8
+        },
+        {
+          "criterion": "Speed",
+          "score": 7
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 6
+        }
+      ]
+    }
+  ]
+}

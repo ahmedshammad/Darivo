@@ -51,3 +51,22 @@
 - Checks: lint/typecheck/format pass; 24 unit/integration tests pass; 36/36 mock evals pass with zero leakage; all 13 browser tests pass. Production build passes. Fresh isolated migrations and seed produce exactly 200 listings with the required visibility mix. Bilingual PDF pages were visually inspected.
 - Final mobile Lighthouse scores: landing 93, search 91, Arabic detail 98; accessibility, best practices and SEO are 100 on all three. See VALIDATION.md for the test scope and reproduction commands.
 - External limitations: no Git remote exists to execute hosted CI, Docker/PG16 is unavailable locally, and real-provider evals are skipped without an API key. Production mail, distributed rate limiting, real identity integrations and qualified legal review remain required before real deployment. No extra product features were introduced.
+
+## V2 Stage 0 — Concept sprint in progress (2026-10-22)
+
+- Started the supplied Master Build Brief v2 as a new full-scope goal. Preserved the complete brief and a stage-by-stage delivery ledger; the earlier MVP is not treated as v2 completion.
+- The studio produced ten role briefs, seven persona job stories and three separate interactive HTML Home/Map studies. Production feature code remains unchanged while Stage 0 is open.
+- Located and copied the supplied reference dataset exactly (SHA-256 `8c22ce499c141479320b749108c16f5bd1c6e13a8046b8b9cfe8029d7706bc7c`). Identified nine real developer organisations plus one aggregate editorial placeholder, 13 projects and three market statistics. Missing dates/low-confidence notes are retained, not invented.
+- Captured current-app baseline and 72 concept-state screenshots across 1440/1024/390, EN/AR and light/dark, plus six signature recordings. Three-dimensional geographic prototypes use keyless OpenFreeMap with attribution; the static studies currently need network tiles.
+- First simulated review round: all seven personas scored all three concepts and identified real defects. Concept C's globe revision leads but remains below the 9.0 gate. Full criterion tables are retained in `docs/reviews/stage-0/v1/`; none is represented as a human interview or endorsement.
+- Creative direction selected for repair: **Noir Atlas** (C's spatial structure, A's restrained palette, B's evidence typography). Labels, Arabic display typography, mobile target visibility, faithful Brief extraction and explicit provenance are being revised before re-review. Stage 1 has not started.
+- Known external gates remain open: hosted CI has no Git remote, native PostgreSQL16/Docker is absent, and target-device/human linguistic/accessibility certification must not be inferred from local automated evidence.
+
+## V2 Stage 0 — Direction approved (2026-10-22)
+
+- Initial board means: A7.702 (min6), B8.048 (min7), C8.185 (min7). Selected Noir Atlas was revised through v3 and v4; all interim findings and evidence remain saved.
+- Re-review of C v4: board mean9.018, minimum8. The Critic remains8.917; the aggregate gate in PartA3 passes without rounding or claiming unanimous9s. `docs/reviews/stage-0/v2/creative-director-synthesis.md` records the dissent and all carry-forward work.
+- Corrected mobile map target visibility, Arabic display type, multi-market/year/privacy intent retention, source context, recommendation trade-offs and attribution. Real-reference facts remain separate from fictional concepts and on-request availability.
+- Fresh24-state matrix plus2 videos;12 accessibility configurations, zero Home/Map axe violations or overflow. Independent EN/AR client flows, keyboard dialogs, focus restoration and reduced motion checked. Local moving-frame median16.6ms, p9517.5ms; useful-map readiness1.28–3.58s remains a Stage2 performance concern. No physical-phone/4G/native-reader certification is claimed.
+- Lint/typecheck,24 existing tests and13 browser tests pass. The first sandboxed database run failed to connect; the local-network-enabled rerun passed. No v2 production feature code was written before this gate.
+- Next: Stage1 full component library and bilingual design guide, data provenance models/reference ingest,250 isolated fictional units, roles and preferences. Hosted CI/nativePG16 and final target-device validation remain unresolved external gates.

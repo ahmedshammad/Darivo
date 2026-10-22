@@ -1,0 +1,2623 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Darivo · Noir Atlas concept</title>
+    <link rel="stylesheet" href="/node_modules/maplibre-gl/dist/maplibre-gl.css" />
+    <style>
+      @font-face {
+        font-family: ArabicDisplay;
+        src: url('/prototypes/shared/fonts/amiri-arabic.woff2');
+        font-display: swap;
+      }
+      @font-face {
+        font-family: Display;
+        src: url('/public/fonts/display.woff2');
+      }
+      @font-face {
+        font-family: Inter;
+        src: url('/public/fonts/ui.woff2');
+      }
+      @font-face {
+        font-family: Arabic;
+        src: url('/public/fonts/arabic.woff2');
+      }
+      :root {
+        color-scheme: dark;
+        --ink: #f1eee7;
+        --muted: #c4c8c5;
+        --bg: #132c32;
+        --panel: rgba(17, 29, 32, 0.87);
+        --border: rgba(234, 231, 219, 0.22);
+        --soft: rgba(238, 229, 209, 0.07);
+        --accent: #dfc494;
+        --line: rgba(225, 228, 215, 0.4);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        font-family: Inter, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      html[data-theme='light'] {
+        color-scheme: light;
+        --ink: #202c2b;
+        --muted: #465754;
+        --bg: #d7ded6;
+        --panel: rgba(249, 248, 239, 0.9);
+        --border: rgba(38, 62, 58, 0.23);
+        --soft: rgba(43, 65, 54, 0.06);
+        --accent: #72582e;
+        --line: rgba(58, 74, 61, 0.4);
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+      button {
+        cursor: pointer;
+        color: inherit;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 5px;
+      }
+      button {
+        border: 0;
+      }
+      a {
+        color: inherit;
+      }
+      button:disabled {
+        cursor: default;
+      }
+      button svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .skip {
+        position: fixed;
+        inset-block-start: -100px;
+        inset-inline-start: 12px;
+        z-index: 20;
+        background: var(--panel);
+        padding: 16px;
+      }
+      .skip:focus {
+        inset-block-start: 10px;
+      }
+      #atlas {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+      }
+      .veil {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background:
+          linear-gradient(90deg, rgba(8, 23, 27, 0.63), transparent 70%),
+          linear-gradient(0deg, rgba(8, 23, 27, 0.58), transparent 45%);
+      }
+      html[data-theme='light'] .veil {
+        background:
+          linear-gradient(90deg, rgba(246, 246, 232, 0.71), transparent 75%),
+          linear-gradient(0deg, rgba(246, 246, 232, 0.7), transparent 40%);
+      }
+      header {
+        position: relative;
+        z-index: 5;
+        padding: 32px 44px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .wordmark {
+        font-family: Display, serif;
+        font-size: 36px;
+        letter-spacing: 6px;
+        font-weight: 500;
+        text-decoration: none;
+        line-height: 1;
+      }
+      .navigation {
+        display: flex;
+        gap: 4px;
+        border: 1px solid var(--border);
+        border-radius: 40px;
+        padding: 4px;
+        background: var(--panel);
+        backdrop-filter: blur(20px);
+      }
+      .navbtn {
+        background: transparent;
+        border-radius: 30px;
+        padding: 12px 22px;
+        font-size: 12px;
+      }
+      .navbtn.active {
+        background: var(--ink);
+        color: var(--bg);
+      }
+      .utilities {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .utility {
+        height: 44px;
+        min-width: 44px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 13px;
+      }
+      .private {
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-inline-end: 12px;
+      }
+      .private:before {
+        content: '';
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      main {
+        pointer-events: none;
+        position: relative;
+        z-index: 2;
+        min-height: calc(100svh - 113px);
+      }
+      .arrival {
+        padding: 9vh 6.5vw 0;
+        max-width: 850px;
+        pointer-events: none;
+      }
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted);
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .eyebrow:before {
+        content: '';
+        height: 1px;
+        width: 42px;
+        background: var(--accent);
+      }
+      h1 {
+        font-family: Display, serif;
+        font-weight: 400;
+        letter-spacing: -0.045em;
+        line-height: 0.92;
+        font-size: clamp(80px, 8.7vw, 136px);
+        margin: 26px 0 24px;
+      }
+      h1 em {
+        font-weight: 400;
+        color: var(--accent);
+      }
+      .intro {
+        font-size: 14px;
+        line-height: 1.85;
+        max-width: 360px;
+        color: var(--muted);
+      }
+      .coordinates {
+        position: absolute;
+        inset-inline-end: 48px;
+        inset-block-start: 24vh;
+        display: flex;
+        flex-direction: column;
+        text-align: end;
+        gap: 11px;
+        font-size: 10px;
+        letter-spacing: 0.15em;
+      }
+      .coordinates strong {
+        font-family: Display, serif;
+        font-size: 30px;
+        font-weight: 400;
+        letter-spacing: 0;
+      }
+      .coordinate-value {
+        font-variant-numeric: tabular-nums;
+        color: var(--muted);
+      }
+      .atlas-mark {
+        width: 26px;
+        height: 26px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        align-self: flex-end;
+        margin-block-end: 8px;
+        font-size: 14px;
+      }
+      .composer-zone {
+        position: fixed;
+        z-index: 5;
+        bottom: 58px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(730px, calc(100% - 80px));
+      }
+      .suggestions {
+        display: flex;
+        gap: 9px;
+        margin-block-end: 14px;
+        justify-content: center;
+      }
+      .suggestion {
+        font-size: 11px;
+        padding: 10px 14px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 30px;
+        backdrop-filter: blur(16px);
+      }
+      .composer {
+        display: flex;
+        align-items: center;
+        padding: 10px 11px 10px 23px;
+        gap: 15px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--panel);
+        box-shadow: 0 12px 50px rgba(0, 0, 0, 0.13);
+        backdrop-filter: blur(24px);
+      }
+      .spark {
+        color: var(--accent);
+        font-size: 24px;
+        font-family: Display, serif;
+      }
+      .composer input {
+        min-width: 0;
+        flex: 1;
+        background: none;
+        border: 0;
+        color: var(--ink);
+        font-size: 13px;
+        height: 44px;
+        padding: 0;
+        outline-offset: 2px;
+      }
+      .composer input::placeholder {
+        color: var(--muted);
+        opacity: 1;
+      }
+      .voice,
+      .submit {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        flex: none;
+        background: transparent;
+      }
+      .submit {
+        color: var(--bg);
+        background: var(--ink);
+      }
+      .composer-caption {
+        display: flex;
+        justify-content: space-between;
+        font-size: 9px;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        padding: 11px 8px 0;
+      }
+      .site-footer {
+        position: fixed;
+        bottom: 19px;
+        inset-inline: 44px;
+        z-index: 5;
+        display: flex;
+        justify-content: space-between;
+        font-size: 9px;
+        letter-spacing: 0.07em;
+        color: var(--muted);
+        pointer-events: none;
+      }
+      .site-footer span {
+        max-width: 58%;
+      }
+      .explore-panel {
+        pointer-events: auto;
+        display: none;
+        position: absolute;
+        inset-inline-start: 36px;
+        top: 8px;
+        width: 350px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 24px;
+        backdrop-filter: blur(24px);
+        box-shadow: 0 18px 70px rgba(0, 0, 0, 0.1);
+      }
+      .panel-kicker {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 9px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .live {
+        font-size: 9px;
+        padding: 4px 7px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        letter-spacing: 0.08em;
+      }
+      .explore-panel h2 {
+        font-family: Display, serif;
+        font-weight: 400;
+        font-size: 37px;
+        line-height: 1.05;
+        margin: 21px 0 13px;
+        letter-spacing: -0.025em;
+      }
+      .explore-panel .response {
+        font-size: 12px;
+        line-height: 1.8;
+        color: var(--muted);
+        margin: 0 0 23px;
+      }
+      .project {
+        display: grid;
+        grid-template-columns: 33px 1fr 16px;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        text-align: start;
+        padding: 16px 0;
+        border-top: 1px solid var(--border);
+        background: none;
+      }
+      .project:last-of-type {
+        border-bottom: 1px solid var(--border);
+      }
+      .project-number {
+        font-family: Display, serif;
+        font-size: 23px;
+        color: var(--accent);
+      }
+      .project strong {
+        font-size: 12px;
+        font-weight: 500;
+        display: block;
+        margin-block-end: 7px;
+      }
+      .project small {
+        font-size: 10px;
+        color: var(--muted);
+        display: block;
+      }
+      .project-arrow {
+        font-size: 16px;
+        color: var(--accent);
+      }
+      .project.selected .project-number {
+        font-style: italic;
+      }
+      .project.selected strong {
+        color: var(--accent);
+      }
+      .evidence {
+        font-size: 9px;
+        line-height: 1.7;
+        color: var(--muted);
+        margin: 18px 0 0;
+      }
+      .brief {
+        pointer-events: auto;
+        display: none;
+        position: absolute;
+        inset-inline-end: 36px;
+        top: 8px;
+        width: 228px;
+        padding: 22px;
+        border-radius: 16px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(24px);
+      }
+      .brief dl {
+        margin: 22px 0 0;
+      }
+      .brief dt {
+        font-size: 9px;
+        color: var(--muted);
+        margin-block-start: 17px;
+      }
+      .brief dd {
+        font-size: 12px;
+        margin: 7px 0 0;
+      }
+      .brief-edit {
+        font-size: 10px;
+        background: none;
+        color: var(--accent);
+        padding: 0;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+      .brief .line {
+        height: 1px;
+        background: var(--border);
+        margin: 20px 0;
+      }
+      .brief-note {
+        font-size: 10px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+      .layer-tray {
+        pointer-events: auto;
+        display: none;
+        position: absolute;
+        inset-inline-end: 36px;
+        top: 366px;
+        gap: 7px;
+        flex-direction: column;
+      }
+      .layer {
+        font-size: 10px;
+        padding: 12px 16px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 30px;
+        text-align: start;
+      }
+      .layer.active {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+      body[data-view='map'] .arrival,
+      body[data-view='map'] .coordinates {
+        display: none;
+      }
+      body[data-view='map'] .explore-panel,
+      body[data-view='map'] .brief {
+        display: block;
+      }
+      body[data-view='map'] .layer-tray {
+        display: flex;
+      }
+      body[data-view='map'] .composer-zone {
+        width: min(670px, calc(100% - 80px));
+        bottom: 58px;
+      }
+      body[data-view='map'] .suggestions {
+        display: none;
+      }
+      .toast {
+        position: fixed;
+        z-index: 12;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 180px;
+        max-width: 400px;
+        width: calc(100% - 40px);
+        padding: 16px 20px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 10px 40px #0002;
+        font-size: 12px;
+        line-height: 1.7;
+        display: none;
+      }
+      .toast.show {
+        display: block;
+      }
+      .maplibregl-ctrl-bottom-right {
+        bottom: 34px;
+        right: 12px;
+      }
+      .maplibregl-ctrl-attrib {
+        font-size: 9px !important;
+        background: var(--panel) !important;
+        color: var(--muted) !important;
+      }
+      .maplibregl-ctrl-attrib a {
+        color: var(--muted) !important;
+      }
+      .map-status {
+        position: absolute;
+        inset: 40% 30%;
+        font-size: 13px;
+        text-align: center;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+      [dir='rtl'] {
+        font-family: Arabic, Arial, sans-serif;
+      }
+      [dir='rtl'] h1,
+      [dir='rtl'] h2,
+      [dir='rtl'] .coordinates strong {
+        font-family: Arabic, serif;
+        letter-spacing: 0;
+        line-height: 1.4;
+      }
+      [dir='rtl'] h1 {
+        font-size: clamp(60px, 7vw, 100px);
+        margin: 15px 0;
+      }
+      [dir='rtl'] .explore-panel h2 {
+        font-size: 30px;
+      }
+      [dir='rtl'] .eyebrow,
+      [dir='rtl'] .panel-kicker,
+      [dir='rtl'] .site-footer,
+      [dir='rtl'] .composer-caption {
+        letter-spacing: 0;
+      }
+      [dir='rtl'] .intro {
+        font-size: 16px;
+      }
+      [dir='rtl'] .arrival {
+        max-width: 900px;
+      }
+      [dir='rtl'] .veil {
+        transform: scaleX(-1);
+      }
+      [dir='rtl'] .project-arrow,
+      [dir='rtl'] .submit svg {
+        transform: scaleX(-1);
+      }
+      @media (min-width: 1600px) {
+        .arrival {
+          padding-block-start: 14vh;
+        }
+        .explore-panel {
+          top: 40px;
+        }
+        .brief {
+          top: 40px;
+        }
+        .layer-tray {
+          top: 398px;
+        }
+      }
+      @media (max-width: 1100px) {
+        header {
+          padding: 26px;
+        }
+        .private {
+          display: none;
+        }
+        .arrival {
+          padding: 10vh 5vw 0;
+        }
+        .coordinates {
+          inset-inline-end: 30px;
+        }
+        .explore-panel {
+          inset-inline-start: 24px;
+          width: 322px;
+          padding: 22px;
+        }
+        .brief {
+          inset-inline-end: 24px;
+          width: 208px;
+        }
+        .layer-tray {
+          inset-inline-end: 24px;
+        }
+        .site-footer {
+          inset-inline: 26px;
+        }
+      }
+      @media (max-height: 850px) and (min-width: 701px) {
+        .arrival {
+          padding-block-start: 6vh;
+        }
+        h1 {
+          font-size: 100px;
+        }
+        .explore-panel {
+          padding: 20px;
+          top: 0;
+        }
+        .explore-panel h2 {
+          font-size: 32px;
+          margin-top: 15px;
+        }
+        .explore-panel .response {
+          margin-bottom: 14px;
+        }
+        .project {
+          padding: 12px 0;
+        }
+        .evidence {
+          margin-top: 12px;
+        }
+        .composer-zone {
+          bottom: 48px;
+        }
+        .site-footer {
+          bottom: 13px;
+        }
+      }
+      @media (max-width: 700px) {
+        header {
+          padding: 22px 20px;
+          flex-wrap: wrap;
+          gap: 18px;
+        }
+        .wordmark {
+          font-size: 29px;
+          letter-spacing: 5px;
+        }
+        .utilities {
+          gap: 8px;
+        }
+        .utility {
+          width: 40px;
+          height: 40px;
+          min-width: 40px;
+        }
+        .navigation {
+          order: 3;
+          margin: auto;
+          padding: 3px;
+          gap: 0;
+        }
+        .navbtn {
+          font-size: 11px;
+          padding: 10px 28px;
+          min-height: 40px;
+        }
+        .arrival {
+          padding: 7vh 28px 0;
+          max-width: 100%;
+        }
+        h1 {
+          font-size: 75px;
+          line-height: 0.97;
+          margin: 24px 0 18px;
+        }
+        .eyebrow {
+          font-size: 9px;
+          gap: 10px;
+          letter-spacing: 0.12em;
+        }
+        .eyebrow:before {
+          width: 24px;
+        }
+        .intro {
+          font-size: 12px;
+          max-width: 265px;
+          line-height: 1.85;
+        }
+        .coordinates {
+          top: 39vh;
+          inset-inline-end: 22px;
+          font-size: 8px;
+          gap: 6px;
+        }
+        .coordinates strong {
+          font-size: 22px;
+        }
+        .atlas-mark {
+          display: none;
+        }
+        .composer-zone,
+        body[data-view='map'] .composer-zone {
+          width: calc(100% - 32px);
+          bottom: 52px;
+        }
+        .suggestions {
+          gap: 6px;
+          justify-content: flex-start;
+          overflow-x: auto;
+          scrollbar-width: none;
+          margin-bottom: 10px;
+        }
+        .suggestion {
+          white-space: nowrap;
+          font-size: 10px;
+          padding: 10px 11px;
+        }
+        .composer {
+          padding: 8px 8px 8px 14px;
+          gap: 8px;
+          border-radius: 14px;
+        }
+        .composer input {
+          font-size: 11px;
+        }
+        .spark {
+          font-size: 22px;
+        }
+        .voice,
+        .submit {
+          width: 40px;
+          height: 44px;
+        }
+        .composer-caption {
+          font-size: 8px;
+          padding-inline: 3px;
+          letter-spacing: 0;
+        }
+        .site-footer {
+          inset-inline: 20px;
+          bottom: 17px;
+          font-size: 8px;
+        }
+        .site-footer .edition {
+          display: none;
+        }
+        .site-footer span {
+          max-width: 100%;
+        }
+        .explore-panel {
+          top: 22vh;
+          inset-inline: 16px;
+          width: auto;
+          padding: 19px;
+          border-radius: 18px;
+        }
+        .explore-panel h2 {
+          font-size: 30px;
+          margin: 14px 0 10px;
+        }
+        .explore-panel .response {
+          font-size: 11px;
+          line-height: 1.65;
+          margin-bottom: 12px;
+        }
+        .project {
+          padding: 12px 0;
+          grid-template-columns: 27px 1fr 16px;
+        }
+        .project strong {
+          font-size: 11px;
+          margin-bottom: 5px;
+        }
+        .project small {
+          font-size: 9px;
+        }
+        .project-number {
+          font-size: 20px;
+        }
+        .project:nth-of-type(3) {
+          display: none;
+        }
+        .evidence {
+          font-size: 8px;
+          margin: 12px 0 0;
+        }
+        .brief {
+          top: 7px;
+          inset-inline-start: 16px;
+          inset-inline-end: 16px;
+          width: auto;
+          padding: 15px 18px;
+          border-radius: 12px;
+        }
+        .brief dl {
+          display: flex;
+          justify-content: space-between;
+          margin: 12px 0 0;
+          gap: 12px;
+        }
+        .brief dl div:last-child {
+          display: none;
+        }
+        .brief dt {
+          margin: 0;
+          font-size: 8px;
+        }
+        .brief dd {
+          font-size: 10px;
+          margin-top: 5px;
+        }
+        .brief .line,
+        .brief-note {
+          display: none;
+        }
+        .layer-tray {
+          top: 135px;
+          inset-inline: 16px;
+          flex-direction: row;
+          justify-content: flex-end;
+        }
+        .layer {
+          font-size: 9px;
+          padding: 10px 13px;
+        }
+        .layer:last-child {
+          display: none;
+        }
+        body[data-view='map'] .layer-tray {
+          display: flex;
+        }
+        .toast {
+          bottom: 155px;
+        }
+        [dir='rtl'] h1 {
+          font-size: 57px;
+          line-height: 1.5;
+          margin: 18px 0;
+        }
+        [dir='rtl'] .arrival {
+          padding-top: 4vh;
+        }
+        [dir='rtl'] .intro {
+          font-size: 14px;
+        }
+        [dir='rtl'] .explore-panel h2 {
+          font-size: 26px;
+          margin-block: 8px;
+        }
+      }
+      @media (max-height: 780px) and (max-width: 700px) {
+        .arrival {
+          padding-top: 4vh;
+        }
+        h1 {
+          font-size: 65px;
+        }
+        .coordinates {
+          top: 38vh;
+        }
+        .explore-panel {
+          top: 24vh;
+        }
+        .explore-panel .response {
+          display: none;
+        }
+        .evidence {
+          font-size: 8px;
+        }
+        .brief {
+          padding: 12px 16px;
+        }
+        .layer-tray {
+          top: 122px;
+        }
+        [dir='rtl'] h1 {
+          font-size: 48px;
+        }
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .arrival {
+          animation: arrive 900ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .explore-panel {
+          animation: arrive 450ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .project:hover {
+          transform: translateX(3px);
+        }
+        .project {
+          transition: transform 0.25s;
+        }
+      }
+      @keyframes arrive {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* Stage 0 v2: Home is a global instrument; Explore retains its journal layout. */
+      body[data-view='home'] .arrival {
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0;
+        width: 100%;
+        max-width: 900px;
+        text-align: center;
+        animation: none;
+      }
+      body[data-view='home'] .eyebrow {
+        justify-content: center;
+        font-size: 9px;
+        letter-spacing: 0.22em;
+      }
+      body[data-view='home'] .eyebrow:before {
+        display: none;
+      }
+      body[data-view='home'] h1 {
+        font-size: 66px;
+        line-height: 1.2;
+        letter-spacing: -0.025em;
+        margin: 17px 0 12px;
+      }
+      body[data-view='home'] .intro {
+        max-width: none;
+        font-size: 12px;
+        line-height: 1.7;
+        margin: 0;
+        color: var(--muted);
+      }
+      body[data-view='home'] .coordinates {
+        display: none;
+      }
+      body[data-view='home'] .veil {
+        background: linear-gradient(
+          0deg,
+          rgba(9, 20, 24, 0.6),
+          transparent 34%,
+          transparent 67%,
+          rgba(9, 20, 24, 0.5)
+        );
+      }
+      html[data-theme='light'] body[data-view='home'] .veil {
+        background: linear-gradient(
+          0deg,
+          rgba(235, 235, 222, 0.6),
+          transparent 34%,
+          transparent 67%,
+          rgba(235, 235, 222, 0.4)
+        );
+      }
+      .region-plate {
+        pointer-events: auto;
+        position: absolute;
+        top: 36vh;
+        width: 216px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--panel);
+        backdrop-filter: blur(24px);
+        padding: 19px 21px;
+        text-align: start;
+        color: var(--ink);
+      }
+      .region-plate.first {
+        inset-inline-start: 4.5vw;
+      }
+      .region-plate.second {
+        inset-inline-end: 4.5vw;
+      }
+      .region-plate .region-number {
+        font-size: 9px;
+        color: var(--accent);
+        letter-spacing: 0.16em;
+        display: block;
+        margin-bottom: 15px;
+      }
+      .region-plate strong {
+        display: block;
+        font-family: Display, serif;
+        font-size: 28px;
+        line-height: 1.1;
+        font-weight: 400;
+        margin-bottom: 9px;
+      }
+      .region-plate small {
+        display: block;
+        font-size: 10px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .region-plate .region-action {
+        font-size: 9px;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        padding-top: 13px;
+        border-top: 1px solid var(--border);
+        color: var(--accent);
+      }
+      body[data-view='map'] .region-plate {
+        display: none;
+      }
+      body[data-view='home'] .composer-zone {
+        bottom: 68px;
+        width: min(650px, calc(100% - 80px));
+      }
+      body[data-view='home'] .suggestions {
+        margin-bottom: 12px;
+      }
+      [dir='rtl'] body[data-view='home'] h1 {
+        font-size: 48px;
+        line-height: 1.6;
+        letter-spacing: 0;
+      }
+      [dir='rtl'] .region-plate strong {
+        font-family: Arabic, serif;
+        font-size: 24px;
+        line-height: 1.5;
+      }
+      @media (max-width: 1100px) {
+        .region-plate {
+          width: 184px;
+          padding: 18px;
+        }
+        .region-plate.first {
+          inset-inline-start: 3vw;
+        }
+        .region-plate.second {
+          inset-inline-end: 3vw;
+        }
+        body[data-view='home'] h1 {
+          font-size: 57px;
+        }
+      }
+      @media (max-width: 700px) {
+        body[data-view='home'] .arrival {
+          top: 14px;
+          width: 100%;
+          padding: 0 20px;
+        }
+        body[data-view='home'] .eyebrow {
+          font-size: 8px;
+          letter-spacing: 0.13em;
+        }
+        body[data-view='home'] h1 {
+          font-size: 40px;
+          line-height: 1.08;
+          margin: 14px 0 12px;
+        }
+        body[data-view='home'] .intro {
+          font-size: 10px;
+          line-height: 1.75;
+          max-width: 260px;
+          margin: auto;
+        }
+        .region-plate {
+          top: 46vh;
+          width: calc(50% - 25px);
+          padding: 12px;
+          border-radius: 10px;
+        }
+        .region-plate.first {
+          inset-inline-start: 16px;
+        }
+        .region-plate.second {
+          inset-inline-end: 16px;
+        }
+        .region-plate .region-number {
+          font-size: 7px;
+          margin-bottom: 8px;
+        }
+        .region-plate strong {
+          font-size: 21px;
+          margin-bottom: 5px;
+        }
+        .region-plate small {
+          font-size: 8px;
+        }
+        .region-plate .region-action {
+          font-size: 8px;
+          margin-top: 9px;
+          padding-top: 8px;
+        }
+        body[data-view='home'] .composer-zone {
+          width: calc(100% - 32px);
+          bottom: 52px;
+        }
+        body[data-view='home'] .suggestions {
+          display: none;
+        }
+        [dir='rtl'] body[data-view='home'] h1 {
+          font-size: 29px;
+          line-height: 1.7;
+        }
+        [dir='rtl'] .region-plate strong {
+          font-size: 18px;
+        }
+        [dir='rtl'] body[data-view='home'] .arrival {
+          padding-top: 0;
+        }
+      }
+      @media (max-width: 700px) {
+        .maplibregl-ctrl-bottom-right {
+          bottom: 21px;
+          right: 8px;
+        }
+        .maplibregl-ctrl-attrib {
+          font-size: 7px !important;
+          line-height: 14px !important;
+        }
+        .site-footer {
+          bottom: 5px;
+        }
+      }
+      @media (max-height: 780px) and (max-width: 700px) {
+        .region-plate {
+          top: 42vh;
+        }
+        .region-plate small {
+          display: none;
+        }
+        .region-plate .region-action {
+          margin-top: 6px;
+          padding-top: 7px;
+        }
+      }
+
+      /* v3 selected direction — Noir Atlas */
+      .veil {
+        background:
+          linear-gradient(90deg, rgba(11, 11, 12, 0.63), transparent 70%),
+          linear-gradient(0deg, rgba(11, 11, 12, 0.58), transparent 45%);
+      }
+      html[data-theme='light'] .veil {
+        background:
+          linear-gradient(90deg, rgba(247, 244, 238, 0.71), transparent 75%),
+          linear-gradient(0deg, rgba(233, 226, 214, 0.7), transparent 40%);
+      }
+      :root {
+        --ink: #f7f4ee;
+        --muted: #ccc6bc;
+        --bg: #0b0b0c;
+        --panel: rgba(22, 23, 26, 0.95);
+        --border: rgba(233, 226, 214, 0.24);
+        --soft: #2a2b30;
+        --accent: #cdb38c;
+        --line: rgba(233, 226, 214, 0.4);
+      }
+      html[data-theme='light'] {
+        --ink: #16171a;
+        --muted: #53514b;
+        --bg: #e9e2d6;
+        --panel: rgba(247, 244, 238, 0.96);
+        --border: rgba(42, 43, 48, 0.25);
+        --soft: #e9e2d6;
+        --accent: #76592f;
+        --line: rgba(42, 43, 48, 0.4);
+      }
+      body[data-view='home'] .veil {
+        background: linear-gradient(
+          0deg,
+          rgba(11, 11, 12, 0.6),
+          transparent 30%,
+          transparent 67%,
+          rgba(11, 11, 12, 0.4)
+        );
+      }
+      html[data-theme='light'] body[data-view='home'] .veil {
+        background: linear-gradient(
+          0deg,
+          rgba(233, 226, 214, 0.6),
+          transparent 34%,
+          transparent 67%,
+          rgba(233, 226, 214, 0.4)
+        );
+      }
+      [dir='rtl'] h1 em {
+        font-style: normal;
+      }
+      body[data-view='home'] h1 {
+        font-size: 60px;
+      }
+      .region-plate {
+        background: var(--panel);
+      }
+      .project .tradeoff {
+        font-size: 10px;
+        line-height: 1.5;
+        color: var(--muted);
+        margin-top: 7px;
+      }
+      .project {
+        gap: 9px;
+        padding: 13px 0;
+      }
+      .explore-panel {
+        width: 360px;
+        max-height: calc(100svh - 275px);
+        overflow: auto;
+      }
+      .explore-panel h2 {
+        font-size: 34px;
+      }
+      .explore-panel .response {
+        font-size: 12px;
+        margin-bottom: 16px;
+      }
+      .brief dt {
+        font-size: 10px;
+      }
+      .brief dd {
+        font-size: 12px;
+      }
+      .brief-note {
+        font-size: 11px;
+      }
+      .brief .line {
+        margin: 16px 0;
+      }
+      .source-button {
+        margin-top: 12px;
+        background: transparent;
+        border: 1px solid var(--border);
+        padding: 12px;
+        border-radius: 7px;
+        font-size: 11px;
+        width: 100%;
+        text-align: start;
+        min-height: 44px;
+      }
+      .source-button:hover {
+        border-color: var(--accent);
+      }
+      .layer-tray {
+        top: 450px;
+      }
+      .sheet-toggle {
+        display: none;
+      }
+      .sheet-details {
+        display: block;
+      }
+      .reference-dialog {
+        color: var(--ink);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 30px;
+        width: min(510px, calc(100% - 32px));
+        max-height: 85svh;
+        box-shadow: 0 30px 100px #0005;
+      }
+      .reference-dialog::backdrop {
+        background: #0b0b0c99;
+        backdrop-filter: blur(6px);
+      }
+      .reference-dialog h2 {
+        font-family: Display, serif;
+        font-size: 36px;
+        font-weight: 400;
+        line-height: 1.15;
+        margin: 20px 0 8px;
+      }
+      .reference-dialog p {
+        font-size: 12px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+      .reference-dialog .reference-price {
+        font-size: 24px;
+        color: var(--ink);
+        font-variant-numeric: tabular-nums;
+        margin: 4px 0 12px;
+      }
+      .reference-dialog .reference-label {
+        font-size: 11px;
+        margin-bottom: 0;
+      }
+      .reference-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 20px 0;
+      }
+      .reference-meta span {
+        font-size: 10px;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        padding: 8px;
+      }
+      .reference-links {
+        display: flex;
+        gap: 15px;
+        margin-block: 18px;
+        flex-wrap: wrap;
+      }
+      .reference-links a {
+        font-size: 11px;
+        text-underline-offset: 4px;
+      }
+      .dialog-close {
+        min-height: 44px;
+        min-width: 44px;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        float: inline-end;
+        font-size: 20px;
+      }
+      .reference-dialog .reference-disclosure {
+        border-top: 1px solid var(--border);
+        padding-top: 16px;
+        font-size: 11px;
+      }
+      .maplibregl-ctrl-bottom-right {
+        bottom: 31px;
+        right: 18px;
+      }
+      .maplibregl-ctrl-attrib {
+        font-size: 10px !important;
+        line-height: 18px !important;
+        background: var(--panel) !important;
+      }
+      .site-footer {
+        bottom: 11px;
+        font-size: 9px;
+      }
+      .composer-zone,
+      body[data-view='map'] .composer-zone {
+        bottom: 80px;
+      }
+      body[data-view='home'] .composer-zone {
+        bottom: 80px;
+      }
+      .composer-caption {
+        font-size: 10px;
+        letter-spacing: 0;
+      }
+      .coordinates {
+        font-size: 11px;
+      }
+      .toast {
+        bottom: 205px;
+      }
+      .evidence {
+        font-size: 10px;
+      }
+      .region-plate small {
+        font-size: 11px;
+      }
+      .region-plate .region-action {
+        font-size: 10px;
+      }
+      @media (max-width: 1100px) and (min-width: 701px) {
+        .explore-panel {
+          width: 310px;
+          padding: 20px;
+        }
+        .explore-panel h2 {
+          font-size: 30px;
+        }
+        .brief {
+          width: 200px;
+        }
+        .explore-panel .response {
+          font-size: 11px;
+        }
+      }
+      @media (max-width: 700px) {
+        body[data-view='home'] h1 {
+          font-size: 38px;
+        }
+        [dir='rtl'] body[data-view='home'] h1 {
+          font-size: 30px;
+        }
+        .region-plate {
+          top: 42vh;
+        }
+        .region-plate strong {
+          font-size: 20px;
+        }
+        .region-plate small {
+          font-size: 9px;
+        }
+        .region-plate .region-action {
+          font-size: 9px;
+        }
+        .region-plate .region-number {
+          font-size: 9px;
+        }
+        .composer-zone,
+        body[data-view='map'] .composer-zone,
+        body[data-view='home'] .composer-zone {
+          bottom: 71px;
+        }
+        .composer-caption {
+          font-size: 8px;
+        }
+        .maplibregl-ctrl-bottom-right {
+          bottom: 26px;
+          right: 8px;
+          left: 8px;
+        }
+        .maplibregl-ctrl-attrib {
+          font-size: 9px !important;
+          line-height: 18px !important;
+        }
+        .maplibregl-ctrl-attrib-button {
+          width: 24px !important;
+          height: 24px !important;
+        }
+        .site-footer {
+          bottom: 7px;
+          font-size: 8px;
+        }
+        .brief {
+          padding: 12px 15px;
+          top: 0;
+        }
+        .brief .panel-kicker {
+          font-size: 10px;
+        }
+        .brief dl {
+          margin-top: 7px;
+        }
+        .brief dt {
+          font-size: 9px;
+        }
+        .brief dd {
+          font-size: 11px;
+        }
+        .brief dl div:last-child {
+          display: block;
+        }
+        .source-button {
+          position: absolute;
+          top: 107px;
+          inset-inline-end: 0;
+          width: auto;
+          min-height: 40px;
+          padding: 10px 13px;
+          background: var(--panel);
+          font-size: 10px;
+          border-radius: 30px;
+          margin: 0;
+        }
+        .layer-tray {
+          top: 107px;
+          inset-inline-start: 0;
+          inset-inline-end: auto;
+          gap: 4px;
+        }
+        .layer {
+          font-size: 9px;
+          padding: 10px 11px;
+          min-height: 40px;
+        }
+        .explore-panel {
+          position: fixed;
+          top: auto;
+          bottom: 174px;
+          inset-inline: 16px;
+          width: auto;
+          padding: 0 16px 14px;
+          max-height: 190px;
+          overflow: hidden;
+          border-radius: 16px;
+          transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .explore-panel.expanded {
+          max-height: min(280px, calc(100svh - 480px));
+          overflow: auto;
+        }
+        .sheet-toggle {
+          display: flex;
+          width: 100%;
+          min-height: 44px;
+          padding: 12px 0;
+          background: none;
+          justify-content: space-between;
+          align-items: center;
+          color: var(--muted);
+          font-size: 10px;
+          border-bottom: 1px solid var(--border);
+          margin-bottom: 12px;
+        }
+        .sheet-toggle span:last-child {
+          font-size: 18px;
+          color: var(--accent);
+        }
+        .explore-panel .panel-kicker {
+          font-size: 9px;
+        }
+        .explore-panel h2 {
+          font-size: 25px;
+          margin: 12px 0 0;
+          line-height: 1.1;
+        }
+        .explore-panel:not(.expanded) .sheet-details {
+          display: none;
+        }
+        .explore-panel .response {
+          display: block;
+          font-size: 11px;
+          margin: 12px 0;
+        }
+        .project {
+          padding: 12px 0;
+          grid-template-columns: 25px 1fr 15px;
+        }
+        .project strong {
+          font-size: 12px;
+        }
+        .project small {
+          font-size: 11px;
+        }
+        .project .tradeoff {
+          font-size: 10px;
+        }
+        .project:nth-of-type(3) {
+          display: grid;
+        }
+        .evidence {
+          font-size: 10px;
+        }
+        .reference-dialog {
+          padding: 24px;
+        }
+        .reference-dialog h2 {
+          font-size: 31px;
+        }
+        .reference-dialog p {
+          font-size: 12px;
+        }
+        [dir='rtl'] .reference-dialog h2 {
+          font-family: Arabic, serif;
+          font-size: 25px;
+        }
+        [dir='rtl'] .explore-panel h2 {
+          font-size: 23px;
+          line-height: 1.5;
+        }
+        .toast {
+          bottom: 270px;
+          font-size: 11px;
+        }
+      }
+      @media (max-width: 700px) {
+        .layer:last-child {
+          display: block;
+        }
+        .layer-tray {
+          gap: 3px;
+        }
+        .layer {
+          font-size: 9px;
+          padding-inline: 8px;
+        }
+        .source-button {
+          font-size: 9px;
+          padding-inline: 9px;
+          top: 153px;
+        }
+        .brief dl {
+          gap: 8px;
+        }
+        .brief dl div:last-child {
+          max-width: 100px;
+        }
+        .brief dd {
+          font-size: 10px;
+        }
+        .explore-panel:not(.expanded) {
+          max-height: 175px;
+        }
+        .region-plate {
+          top: 40vh;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .explore-panel {
+          transition: none;
+        }
+      }
+
+      [dir='rtl'] h1,
+      [dir='rtl'] h2,
+      [dir='rtl'] .coordinates strong,
+      [dir='rtl'] .region-plate strong,
+      [dir='rtl'] .reference-dialog h2 {
+        font-family: ArabicDisplay, Display, serif;
+        font-style: normal;
+        font-weight: 400;
+      }
+      [dir='rtl'] body[data-view='home'] h1 {
+        font-size: 58px;
+        line-height: 1.5;
+      }
+      [dir='rtl'] .explore-panel h2 {
+        font-size: 38px;
+        line-height: 1.25;
+      }
+      [dir='rtl'] .region-plate strong {
+        font-size: 32px;
+        line-height: 1.4;
+      }
+      @media (max-width: 700px) {
+        [dir='rtl'] body[data-view='home'] h1 {
+          font-size: 38px;
+          line-height: 1.5;
+        }
+        [dir='rtl'] .explore-panel h2 {
+          font-size: 31px;
+          line-height: 1.2;
+        }
+        [dir='rtl'] .region-plate strong {
+          font-size: 25px;
+          line-height: 1.3;
+        }
+        [dir='rtl'] .reference-dialog h2 {
+          font-size: 32px;
+          line-height: 1.2;
+        }
+        .explore-panel:not(.expanded) {
+          max-height: 180px;
+        }
+      }
+
+      /* v4: source controls remain above the geographic scrim. */
+      .map-controls-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 4;
+        pointer-events: none;
+      }
+      .map-controls-overlay .maplibregl-ctrl {
+        pointer-events: auto;
+      }
+      .brief-context {
+        font-size: 11px;
+        line-height: 1.5;
+        color: var(--accent);
+        margin: 12px 0 0;
+      }
+      .brief-context:empty {
+        display: none;
+      }
+      .brief-state {
+        font-size: 9px;
+        color: var(--muted);
+        margin: 8px 0 0;
+      }
+      .user-words {
+        font-size: 11px;
+        line-height: 1.65;
+        color: var(--muted);
+        margin: 14px 0;
+      }
+      .user-words summary {
+        min-height: 32px;
+        cursor: pointer;
+        color: var(--accent);
+        padding-block: 6px;
+      }
+      .user-words p {
+        overflow-wrap: anywhere;
+        margin: 7px 0;
+      }
+      @media (max-width: 700px) {
+        .layer-tray {
+          inset-inline-start: 16px;
+        }
+        .brief-state {
+          font-size: 8px;
+          margin-top: 6px;
+        }
+        .brief-context {
+          font-size: 10px;
+          margin-top: 7px;
+        }
+        .source-button {
+          top: calc(100% + 60px);
+        }
+        .brief dd {
+          overflow-wrap: anywhere;
+        }
+        .brief dl div:nth-child(2) {
+          max-width: 130px;
+        }
+        .user-words {
+          font-size: 11px;
+        }
+        .map-controls-overlay .maplibregl-ctrl-attrib {
+          background: var(--panel) !important;
+          color: var(--ink) !important;
+        }
+        .map-controls-overlay .maplibregl-ctrl-attrib a {
+          color: var(--muted) !important;
+        }
+      }
+    </style>
+  </head>
+  <body data-view="home">
+    <a class="skip" href="#intent" data-t="skip">Skip to your request</a>
+    <div id="atlas" aria-label="Geographic map of Dubai" role="region">
+      <p class="map-status" data-t="loading">Opening your atlas…</p>
+    </div>
+    <div class="veil"></div>
+    <header>
+      <a class="wordmark" href="?view=home" aria-label="Darivo home">DARIVO</a>
+      <nav class="navigation" aria-label="Experience">
+        <button class="navbtn active" id="home-view" data-t="arrival">Arrival</button
+        ><button class="navbtn" id="map-view" data-t="atlas">Living Atlas</button>
+      </nav>
+      <div class="utilities">
+        <span class="private" data-t="private">A private property office</span
+        ><button class="utility" id="language" aria-label="Switch to Arabic">ع</button
+        ><button class="utility" id="theme" aria-label="Switch color theme">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="arrival">
+        <div class="eyebrow" data-t="eyebrow">A different sense of place</div>
+        <h1 data-t-html="headline">A life,<br /><em>located.</em></h1>
+        <p class="intro" data-t="intro">
+          Tell us how you want to live.<br />We’ll begin with the places that matter.
+        </p>
+      </section>
+      <button class="region-plate first" data-region="coast">
+        <span class="region-number">01 / <span data-t="egyptLabel">EGYPT</span></span
+        ><strong data-t="egyptTitle">The Mediterranean</strong
+        ><small data-t="egyptPlaces">North Coast · Cairo · Red Sea</small
+        ><span class="region-action"
+          ><span data-t="regionExplore">Explore this part of your world</span
+          ><span aria-hidden="true">↗</span></span
+        ></button
+      ><button class="region-plate second" data-region="dubai">
+        <span class="region-number">02 / <span data-t="uaeLabel">UAE</span></span
+        ><strong data-t="uaeTitle">The Arabian Gulf</strong
+        ><small data-t="uaePlaces">Dubai · Abu Dhabi</small
+        ><span class="region-action"
+          ><span data-t="regionExplore">Explore this part of your world</span
+          ><span aria-hidden="true">↗</span></span
+        >
+      </button>
+      <aside class="coordinates" aria-label="Current map location">
+        <span class="atlas-mark">+</span><span data-t="current">IN YOUR ATLAS</span
+        ><strong id="place-label">Dubai</strong
+        ><bdi class="coordinate-value" id="coordinates">25.20° N · 55.27° E</bdi
+        ><span data-t="geography">Real geography. New possibilities.</span>
+      </aside>
+      <section class="explore-panel" aria-labelledby="reply-title">
+        <button
+          class="sheet-toggle"
+          id="sheet-toggle"
+          aria-expanded="false"
+          aria-controls="sheet-details"
+        >
+          <span data-t="expandReply">Open your curated reply</span><span aria-hidden="true">+</span>
+        </button>
+        <div class="panel-kicker">
+          <span data-t="concierge">From your concierge</span
+          ><span class="live" data-t="demo">DEMO</span>
+        </div>
+        <h2 id="reply-title" data-t="replyTitle">Find your kind<br />of coastline.</h2>
+        <div class="sheet-details" id="sheet-details">
+          <p class="response" id="response" data-t="response">
+            Begin with the shoreline, then consider the rhythm of your day. These fictional concepts
+            illustrate how we would curate for you.
+          </p>
+          <details class="user-words" id="user-words" hidden>
+            <summary id="user-words-label">Your words, retained</summary>
+            <p id="user-words-text"></p>
+          </details>
+          <div id="project-list"></div>
+          <p class="evidence" data-t="evidence">
+            Fictional projects · approximate locations.<br />No live inventory or availability is
+            implied.
+          </p>
+        </div>
+      </section>
+      <aside class="brief" aria-labelledby="brief-title">
+        <div class="panel-kicker">
+          <span id="brief-title" data-t="brief">Your living brief</span
+          ><button class="brief-edit" id="edit-brief" data-t="edit">Edit</button>
+        </div>
+        <dl>
+          <div>
+            <dt data-t="purposeLabel">PURPOSE</dt>
+            <dd data-t="purpose">A place for family</dd>
+          </div>
+          <div>
+            <dt data-t="placeField">PLACE</dt>
+            <dd id="brief-location">Dubai</dd>
+          </div>
+          <div>
+            <dt data-t="priorityLabel">PRIORITY</dt>
+            <dd data-t="priority">Close to the water</dd>
+          </div>
+        </dl>
+        <p class="brief-context" id="brief-context"></p>
+        <p class="brief-state" id="brief-state">Illustrative brief</p>
+        <div class="line"></div>
+        <p class="brief-note" data-t="briefNote">
+          Illustrative brief. Your words shape the map; nothing is saved in this prototype.
+        </p>
+        <button class="source-button" id="source-reference" data-t="referenceButton">
+          Reference spotlight ↗
+        </button>
+      </aside>
+      <div class="layer-tray" aria-label="Map stories">
+        <button class="layer active" data-place="dubai" data-t="dubai">Dubai</button
+        ><button class="layer" data-place="saadiyat" data-t="saadiyat">Saadiyat</button
+        ><button class="layer" data-place="coast" data-t="coast">North Coast</button>
+      </div>
+    </main>
+    <div class="composer-zone">
+      <div class="suggestions">
+        <button class="suggestion" data-prompt="family" data-t="suggest1">
+          A family home by the sea</button
+        ><button class="suggestion" data-prompt="coast" data-t="suggest2">
+          A summer on the North Coast</button
+        ><button class="suggestion" data-prompt="teach" data-t="suggest3">
+          Help me understand Dubai
+        </button>
+      </div>
+      <form class="composer" id="ask-form">
+        <span class="spark" aria-hidden="true">✧</span
+        ><input
+          id="intent"
+          aria-label="Tell Darivo how you want to live"
+          autocomplete="off"
+          placeholder="A place by the sea, with room for everyone…"
+        /><button class="voice" id="voice" type="button" aria-label="Voice input information">
+          <svg viewBox="0 0 24 24">
+            <rect x="9" y="2" width="6" height="13" rx="3" />
+            <path d="M5.5 10v2a6.5 6.5 0 0 0 13 0v-2M12 18.5V22m-4 0h8" />
+          </svg></button
+        ><button class="submit" type="submit" aria-label="Explore your request">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+        </button>
+      </form>
+      <div class="composer-caption">
+        <span data-t="caption">A conversation, not a search.</span
+        ><span data-t="simulation">Interactive concept · simulated concierge</span>
+      </div>
+    </div>
+    <span
+      id="flow-status"
+      role="status"
+      aria-live="polite"
+      style="position: fixed; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%)"
+    ></span>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <footer class="site-footer">
+      <span data-t="footer">NOIR ATLAS · CONCEPT 03 · FICTIONAL EXAMPLES</span
+      ><span class="edition" data-t="edition">UAE & EGYPT — A WORLD WITHIN REACH</span>
+    </footer>
+    <dialog class="reference-dialog" id="reference-dialog" aria-labelledby="reference-title">
+      <button class="dialog-close" id="close-reference" aria-label="Close source panel">×</button>
+      <div class="panel-kicker" data-t="referenceKicker">REFERENCE · PROJECT FACTS</div>
+      <div id="reference-content"></div>
+    </dialog>
+    <script type="module">
+      const params = new URLSearchParams(location.search);
+      let locale = params.get('lang') === 'ar' ? 'ar' : 'en';
+      let theme = params.get('theme') === 'light' ? 'light' : 'dark';
+      let view = params.get('view') === 'map' ? 'map' : 'home';
+      let map;
+      let referenceData;
+      const symbolVisibility = new Map();
+      let cameraTarget = null;
+      let schoolIntent = false;
+      let briefLocations = [];
+      let place = 'dubai';
+      let toastTimer;
+      let flyTimer;
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const copy = {
+        en: {
+          referenceButton: 'Reference spotlight ↗',
+          referenceKicker: 'REFERENCE · PROJECT FACTS',
+          expandReply: 'Open your curated reply',
+          collapseReply: 'Return to the map',
+          skip: 'Skip to your request',
+          loading: 'Opening your atlas…',
+          arrival: 'Arrival',
+          atlas: 'Living Atlas',
+          private: 'A private property office',
+          eyebrow: 'A private atlas of possibility',
+          headline: 'Your world, <em>in perspective.</em>',
+          intro:
+            'One private office. Two remarkable shores.<br>Begin with the life you have in mind.',
+          egyptLabel: 'EGYPT',
+          egyptTitle: 'The Mediterranean',
+          egyptPlaces: 'North Coast · Cairo · Red Sea',
+          uaeLabel: 'UAE',
+          uaeTitle: 'The Arabian Gulf',
+          uaePlaces: 'Dubai · Abu Dhabi',
+          regionExplore: 'Explore this part of your world',
+          current: 'IN YOUR ATLAS',
+          geography: 'Real geography. New possibilities.',
+          concierge: 'From your concierge',
+          demo: 'DEMO',
+          replyTitle: 'Find your kind<br>of coastline.',
+          response:
+            'Begin with the shoreline, then consider the rhythm of your day. These fictional concepts illustrate how we would curate for you.',
+          evidence:
+            'Fictional projects · approximate locations.<br>No live inventory or availability is implied.',
+          brief: 'Your living brief',
+          edit: 'Edit',
+          purposeLabel: 'PURPOSE',
+          purpose: 'A place for family',
+          placeField: 'PLACE',
+          priorityLabel: 'PRIORITY',
+          priority: 'Close to the water',
+          briefNote:
+            'Illustrative brief. Your words shape the map; nothing is saved in this prototype.',
+          dubai: 'Dubai',
+          saadiyat: 'Saadiyat',
+          coast: 'North Coast',
+          suggest1: 'A family home by the sea',
+          suggest2: 'A summer on the North Coast',
+          suggest3: 'Help me understand Dubai',
+          caption: 'A conversation, not a search.',
+          simulation: 'Interactive concept · simulated concierge',
+          footer: 'NOIR ATLAS · CONCEPT 03 · FICTIONAL EXAMPLES',
+          edition: 'UAE & EGYPT — A WORLD WITHIN REACH',
+          placeholder: 'A place by the sea, with room for everyone…',
+          voice:
+            'Voice is part of the proposed experience. This concept accepts typed requests only.',
+          mapError:
+            'The geographic map is unavailable. You can still explore the concept controls.',
+          updated: 'Your illustrative brief now follows this place.',
+          teaching: 'Let’s read<br>the city together.',
+          teachingText:
+            'Start with the relationship between the coast and the city. Select a fictional concept to see its approximate setting on the map.',
+          coastTitle: 'Summer, with<br>a sense of place.',
+          coastText:
+            'Your atlas has moved to Egypt’s Mediterranean coast. These fictional concepts demonstrate a quieter way to consider a summer home.',
+          familyPrompt: 'A family home by the sea in Dubai',
+          coastPrompt: 'A summer home on the North Coast',
+          teachPrompt: 'Help me understand Dubai',
+          cardReason: 'Waterfront setting · family focus',
+          cardReasons: [
+            'A family base · coastal concept',
+            'Quiet living · courtyard concept',
+            'Gathering space · shared-house concept',
+          ],
+          cardTradeoffs: [
+            'Trade-off: exact setting unverified',
+            'Trade-off: no unit inventory',
+            'Trade-off: school access unverified',
+          ],
+          cardTradeoff: 'Trade-off: concept only; no availability',
+          cardNames: ['Tidal House', 'The Quiet Cove', 'Horizon Court'],
+        },
+        ar: {
+          referenceButton: 'المشروع ومصادره ↗',
+          referenceKicker: 'مرجع · معلومات المشروع',
+          expandReply: 'اطّلع على اختياراتك',
+          collapseReply: 'العودة إلى الخريطة',
+          skip: 'انتقل إلى طلبك',
+          loading: 'نفتح أطلسك…',
+          arrival: 'البداية',
+          atlas: 'الأطلس الحي',
+          private: 'مكتبك العقاري الخاص',
+          eyebrow: 'أطلسك الخاص لآفاق جديدة',
+          headline: 'العالم، <em>من زاويتك.</em>',
+          intro: 'مكتب خاص واحد. وضفتان لحياة تتمنّاها.<br>نبدأ بما يشبهك.',
+          egyptLabel: 'مصر',
+          egyptTitle: 'ضفاف المتوسط',
+          egyptPlaces: 'الساحل الشمالي · القاهرة · البحر الأحمر',
+          uaeLabel: 'الإمارات',
+          uaeTitle: 'الخليج العربي',
+          uaePlaces: 'دبي · أبوظبي',
+          regionExplore: 'استكشف هذا الجانب من عالمك',
+          current: 'في أطلسك',
+          geography: 'جغرافيا حقيقية. آفاق جديدة.',
+          concierge: 'من مستشارك',
+          demo: 'تجريبي',
+          replyTitle: 'أيّ ساحل<br>يشبه حياتك؟',
+          response:
+            'نبدأ من البحر، ثم نفكر في تفاصيل يومك. هذه تصوّرات خيالية توضّح كيف نختار ما يناسبك.',
+          evidence: 'مشاريع خيالية · مواقع تقريبية.<br>لا تمثل وحدات متاحة أو عروضاً فعلية.',
+          brief: 'ملامح طلبك',
+          edit: 'تعديل',
+          purposeLabel: 'الغاية',
+          purpose: 'مكان للعائلة',
+          placeField: 'المكان',
+          priorityLabel: 'الأولوية',
+          priority: 'بالقرب من البحر',
+          briefNote: 'طلب توضيحي. كلماتك توجه الخريطة، ولا تُحفظ في هذا النموذج.',
+          dubai: 'دبي',
+          saadiyat: 'السعديات',
+          coast: 'الساحل الشمالي',
+          suggest1: 'بيت للعائلة على البحر',
+          suggest2: 'صيف على الساحل الشمالي',
+          suggest3: 'عرّفني على دبي',
+          caption: 'حوار يفهمك، قبل البحث.',
+          simulation: 'تصوّر تفاعلي · مستشار محاكى',
+          footer: 'أطلس داريفو · التصوّر ٠٣ · أمثلة خيالية',
+          edition: 'الإمارات ومصر — عالم أقرب إليك',
+          placeholder: 'بيت على البحر، يتّسع للعائلة…',
+          voice: 'الصوت جزء من التجربة المقترحة. هذا التصوّر يقبل الكتابة فقط.',
+          mapError: 'الخريطة غير متاحة حالياً. يمكنك متابعة تجربة عناصر التصوّر.',
+          updated: 'أصبح هذا المكان ضمن طلبك التوضيحي.',
+          teaching: 'نقرأ المدينة<br>معاً.',
+          teachingText:
+            'نبدأ بعلاقة المدينة بالبحر. اختر تصوّراً خيالياً لترى موقعه التقريبي على الخريطة.',
+          coastTitle: 'للصيف<br>مكانه.',
+          coastText:
+            'انتقل أطلسك إلى ساحل مصر على المتوسط. هذه تصوّرات خيالية لتجربة اختيار بيت صيفي بهدوء.',
+          familyPrompt: 'بيت للعائلة على البحر في دبي',
+          coastPrompt: 'بيت صيفي في الساحل الشمالي',
+          teachPrompt: 'عرّفني على دبي',
+          cardReason: 'قرب البحر · مساحة للعائلة',
+          cardReasons: [
+            'بيت للعائلة · تصوّر ساحلي',
+            'هدوء المعيشة · تصوّر بفناء',
+            'مساحة تجمع العائلة · تصوّر مشترك',
+          ],
+          cardTradeoffs: [
+            'للتوضيح: الموقع الدقيق غير موثّق',
+            'للتوضيح: لا وحدات متاحة هنا',
+            'للتوضيح: الوصول للمدارس غير موثّق',
+          ],
+          cardTradeoff: 'للتوضيح فقط؛ لا وحدات متاحة ضمن هذا التصوّر',
+          cardNames: ['دار الموج', 'الخليج الهادئ', 'فناء الأفق'],
+        },
+      };
+      const places = {
+        dubai: { center: [55.16, 25.1], zoom: 11.5, coords: '25.10° N · 55.16° E' },
+        saadiyat: { center: [54.43, 24.54], zoom: 12, coords: '24.54° N · 54.43° E' },
+        coast: { center: [27.93, 31.1], zoom: 9.5, coords: '31.10° N · 27.93° E' },
+      };
+
+      function cameraPadding() {
+        if (view === 'home') return { top: 0, bottom: 0, left: 0, right: 0 };
+        if (innerWidth <= 700) {
+          const sheet = document.querySelector('.explore-panel').getBoundingClientRect();
+          return {
+            top: Math.min(
+              innerHeight -
+                Math.min(innerHeight - 300, Math.max(190, innerHeight - sheet.top + 18)) -
+                40,
+              document.querySelector('.brief').getBoundingClientRect().bottom + 70,
+            ),
+            bottom: Math.min(innerHeight - 300, Math.max(190, innerHeight - sheet.top + 18)),
+            left: 18,
+            right: 18,
+          };
+        }
+        const panel = document.querySelector('.explore-panel').getBoundingClientRect();
+        const brief = document.querySelector('.brief').getBoundingClientRect();
+        return locale === 'ar'
+          ? { top: 140, bottom: 195, left: brief.right + 20, right: innerWidth - panel.left + 20 }
+          : { top: 140, bottom: 195, left: panel.right + 20, right: innerWidth - brief.left + 20 };
+      }
+      function flyTarget(target) {
+        cameraTarget = target;
+        if (!map) return;
+        map.flyTo({
+          ...target,
+          pitch: target.pitch ?? 49,
+          bearing: target.bearing ?? -18,
+          padding: cameraPadding(),
+          duration: reduce ? 0 : 600,
+          essential: false,
+        });
+      }
+      function applyMapMode() {
+        map.setProjection({ type: view === 'home' ? 'globe' : 'mercator' });
+        for (const [id, visibility] of symbolVisibility) {
+          if (map.getLayer(id))
+            map.setLayoutProperty(id, 'visibility', view === 'home' ? 'none' : visibility);
+        }
+      }
+      function refineMap() {
+        const dark = theme === 'dark';
+        for (const layer of map.getStyle().layers) {
+          if (layer.type === 'symbol' && !layer.id.startsWith('concept-'))
+            symbolVisibility.set(layer.id, layer.layout?.visibility ?? 'visible');
+          if (layer.type === 'background')
+            map.setPaintProperty(layer.id, 'background-color', dark ? '#16171A' : '#E9E2D6');
+          if (layer.type === 'fill')
+            map.setPaintProperty(
+              layer.id,
+              'fill-color',
+              /water/.test(layer.id)
+                ? dark
+                  ? '#0B0B0C'
+                  : '#D3CDC2'
+                : /park|wood|grass/.test(layer.id)
+                  ? dark
+                    ? '#2A2B30'
+                    : '#D8D2C5'
+                  : dark
+                    ? '#16171A'
+                    : '#E9E2D6',
+            );
+        }
+        applyMapMode();
+      }
+      document.querySelector('#sheet-toggle').addEventListener('click', () => {
+        const panel = document.querySelector('.explore-panel');
+        const expanded = panel.classList.toggle('expanded');
+        document.querySelector('#sheet-toggle').setAttribute('aria-expanded', String(expanded));
+        document.querySelector('#sheet-toggle').firstElementChild.textContent =
+          copy[locale][expanded ? 'collapseReply' : 'expandReply'];
+        document.querySelector('#sheet-toggle').lastElementChild.textContent = expanded ? '−' : '+';
+        setTimeout(() => flyTarget(cameraTarget ?? places[place]), reduce ? 0 : 410);
+      });
+      function sourceText(en, ar) {
+        return locale === 'ar' ? ar : en;
+      }
+      async function openReference() {
+        const dialog = document.querySelector('#reference-dialog'),
+          content = document.querySelector('#reference-content');
+        content.replaceChildren();
+        const title = document.createElement('h2');
+        title.id = 'reference-title';
+        title.textContent = sourceText('Loading reference…', 'نحمّل المرجع…');
+        content.append(title);
+        dialog.showModal();
+        try {
+          referenceData ??= await fetch('/data/reference/darivo_reference_dataset.json').then(
+            (r) => {
+              if (!r.ok) throw Error('Unavailable');
+              return r.json();
+            },
+          );
+          const project = referenceData.projects.find(
+            (p) =>
+              p.id ===
+              { coast: 'southmed', saadiyat: 'sei-saadiyat', dubai: 'orla-palm-jumeirah' }[place],
+          );
+          if (!project) throw Error('Missing reference');
+          title.textContent = project.name;
+          const add = (text, cls) => {
+            const el = document.createElement('p');
+            el.className = cls ?? '';
+            el.textContent = text;
+            content.append(el);
+            return el;
+          };
+          add(project.community + ' · ' + project.city);
+          const listing = project.price_from.basis.includes('listing');
+          add(
+            listing
+              ? sourceText(
+                  'Recently listed from · 4-bedroom residences',
+                  'سعر إدراج حديث يبدأ من · وحدات بأربع غرف نوم',
+                )
+              : sourceText(
+                  place === 'coast'
+                    ? 'Publicly reported from · premium beachfront villas'
+                    : 'Publicly reported from · apartments',
+                  place === 'coast'
+                    ? 'سعر منشور يبدأ من · فلل على الشاطئ'
+                    : 'سعر منشور يبدأ من · شقق',
+                ),
+            'reference-label',
+          );
+          const price = add(
+            new Intl.NumberFormat(locale === 'ar' ? 'ar-AE' : 'en-AE', {
+              style: 'currency',
+              currency: project.price_from.currency,
+              maximumFractionDigits: 0,
+            }).format(project.price_from.amount),
+            'reference-price',
+          );
+          price.dir = 'auto';
+          const meta = document.createElement('div');
+          meta.className = 'reference-meta';
+          for (const text of [
+            sourceText('As of ', 'بتاريخ ') + '\u2066' + project.as_of + '\u2069',
+            listing
+              ? sourceText('Basis: agent listing', 'الأساس: إدراج وسيط')
+              : project.price_from.basis === 'broker_project_page'
+                ? sourceText('Basis: broker project page', 'الأساس: صفحة مشروع لدى وسيط')
+                : sourceText('Basis: press report', 'الأساس: تقرير صحفي'),
+          ]) {
+            const badge = document.createElement('span');
+            badge.textContent = text;
+            meta.append(badge);
+          }
+          content.append(meta);
+          add(
+            sourceText(
+              'Indicative, publicly reported — confirm with advisor.',
+              'استرشادي ومنشور للعامة — يرجى التأكيد مع المستشار.',
+            ),
+          );
+          const links = document.createElement('div');
+          links.className = 'reference-links';
+          project.sources.forEach((url, i) => {
+            if (!url.startsWith('https://')) return;
+            const a = document.createElement('a');
+            a.href = url;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.textContent =
+              sourceText('Source ' + (i + 1) + ' · ', 'المصدر ' + (i + 1) + ' · ') +
+              new URL(url).hostname;
+            links.append(a);
+          });
+          content.append(links);
+          const coords = add(
+            sourceText('Approximate coordinates: ', 'إحداثيات تقريبية: ') +
+              '\u2066' +
+              project.approx_coords[0] +
+              '° N · ' +
+              project.approx_coords[1] +
+              '° E' +
+              '\u2069',
+          );
+          add(
+            sourceText(
+              'Residences available on request via your Darivo advisor. Project reference only; demo concepts are unrelated fictional examples. Re-verify before any public launch.',
+              'الوحدات عند الطلب عبر مستشار داريفو. مرجع للمشروع فقط؛ التصوّرات التجريبية خيالية ولا تتبعه. تُراجع المعلومات قبل النشر العام.',
+            ),
+            'reference-disclosure',
+          );
+        } catch {
+          title.textContent = sourceText('Reference unavailable', 'المرجع غير متاح');
+          const note = document.createElement('p');
+          note.textContent = sourceText(
+            'The supplied dataset could not be loaded. No project facts are being substituted.',
+            'تعذّر تحميل البيانات المرفقة. لن نستبدلها بمعلومات غير موثقة.',
+          );
+          content.append(note);
+        }
+      }
+      document.querySelector('#source-reference').addEventListener('click', openReference);
+      document
+        .querySelector('#close-reference')
+        .addEventListener('click', () => document.querySelector('#reference-dialog').close());
+      window.addEventListener('resize', () => {
+        positionTools();
+        if (map && view === 'map') flyTarget(cameraTarget ?? places[place]);
+      });
+
+      function toast(message) {
+        clearTimeout(toastTimer);
+        document.querySelector('#toast').textContent = message;
+        document.querySelector('#toast').classList.add('show');
+        toastTimer = setTimeout(
+          () => document.querySelector('#toast').classList.remove('show'),
+          5000,
+        );
+      }
+      function syncUrl() {
+        params.set('lang', locale);
+        params.set('theme', theme);
+        params.set('view', view);
+        history.replaceState(null, '', '?' + params);
+      }
+      function applyCopy() {
+        if (locale === 'ar' && !document.querySelector('[data-arabic-preload]')) {
+          const preload = document.createElement('link');
+          preload.rel = 'preload';
+          preload.as = 'font';
+          preload.type = 'font/woff2';
+          preload.crossOrigin = 'anonymous';
+          preload.href = '/prototypes/shared/fonts/amiri-arabic.woff2';
+          preload.dataset.arabicPreload = 'true';
+          document.head.append(preload);
+        }
+        document.documentElement.lang = locale;
+        document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
+        document.documentElement.dataset.theme = theme;
+        document
+          .querySelectorAll('[data-t]')
+          .forEach((el) => (el.innerHTML = copy[locale][el.dataset.t]));
+        document
+          .querySelectorAll('[data-t-html]')
+          .forEach((el) => (el.innerHTML = copy[locale][el.dataset.tHtml]));
+        document.querySelector('#intent').placeholder = copy[locale].placeholder;
+        document.querySelector('#intent').ariaLabel =
+          locale === 'ar'
+            ? 'حدث داريفو عن الحياة التي تتمناها'
+            : 'Tell Darivo how you want to live';
+        document.querySelector('.submit').ariaLabel =
+          locale === 'ar' ? 'استكشف طلبك' : 'Explore your request';
+        document.querySelector('#voice').ariaLabel =
+          locale === 'ar' ? 'معلومات الإدخال الصوتي' : 'Voice input information';
+        document.querySelector('#close-reference').ariaLabel =
+          locale === 'ar' ? 'إغلاق المصادر' : 'Close source panel';
+        document.querySelector('#theme').ariaLabel =
+          locale === 'ar' ? 'تغيير المظهر' : 'Switch color theme';
+        document.querySelector('#language').textContent = locale === 'ar' ? 'EN' : 'ع';
+        document.querySelector('#language').ariaLabel =
+          locale === 'ar' ? 'Switch to English' : 'التبديل إلى العربية';
+        document.querySelector('#atlas').ariaLabel =
+          locale === 'ar' ? 'خريطة جغرافية تفاعلية' : 'Interactive geographic map';
+        document.querySelector('#brief-state').textContent = sourceText(
+          'Illustrative brief',
+          'طلب توضيحي',
+        );
+        renderProjects();
+        updatePlace(false);
+        setView(view);
+      }
+      function setView(next) {
+        view = next;
+        document.body.dataset.view = view;
+        document.querySelector('#home-view').classList.toggle('active', view === 'home');
+        document.querySelector('#map-view').classList.toggle('active', view === 'map');
+        document.querySelector('#home-view').setAttribute('aria-pressed', String(view === 'home'));
+        document.querySelector('#map-view').setAttribute('aria-pressed', String(view === 'map'));
+        syncUrl();
+        requestAnimationFrame(positionTools);
+        if (map) {
+          applyMapMode();
+          requestAnimationFrame(() => {
+            if (view === 'home')
+              map.flyTo({
+                center: [42, 27],
+                zoom: 2.4,
+                pitch: 0,
+                bearing: 0,
+                padding: 0,
+                duration: reduce ? 0 : 600,
+              });
+            else flyTarget(places[place]);
+          });
+        }
+      }
+      function updatePlace(fly = true) {
+        document.querySelector('#place-label').textContent = copy[locale][place];
+        document.querySelector('#brief-location').textContent = briefLocations.length
+          ? briefLocations.map((item) => item.label).join(' · ')
+          : copy[locale][place];
+        document.querySelector('#coordinates').textContent = places[place].coords;
+        document.querySelectorAll('[data-place]').forEach((el) => {
+          el.classList.toggle('active', el.dataset.place === place);
+          el.setAttribute('aria-pressed', String(el.dataset.place === place));
+        });
+        if (fly && map) flyTarget(places[place]);
+        renderProjects();
+      }
+      function mentionedPlaces(text) {
+        const value = text.toLowerCase();
+        const options = [
+          {
+            id: 'coast',
+            pattern: /north coast|sahel|egypt|الساحل الشمالي|ساحل|مصر/,
+            label: copy[locale].coast,
+          },
+          {
+            id: 'saadiyat',
+            pattern: /saadiyat|abu dhabi|سعديات|ظبي/,
+            label: copy[locale].saadiyat,
+          },
+          { id: 'dubai', pattern: /palm|نخلة/, label: sourceText('The Palm', 'النخلة') },
+          { id: 'dubai', pattern: /dubai|دبي/, label: copy[locale].dubai },
+        ];
+        return options
+          .map((option) => ({ ...option, index: value.search(option.pattern) }))
+          .filter((option) => option.index >= 0)
+          .sort((a, b) => a.index - b.index)
+          .filter(
+            (option, index, all) => all.findIndex((other) => other.id === option.id) === index,
+          );
+      }
+      function infer(text) {
+        return mentionedPlaces(text)[0]?.id ?? place;
+      }
+      function positionTools() {
+        if (innerWidth <= 700) {
+          const brief = document.querySelector('.brief');
+          document.querySelector('.layer-tray').style.top =
+            brief.offsetTop + brief.offsetHeight + 12 + 'px';
+        } else {
+          const brief = document.querySelector('.brief');
+          document.querySelector('.layer-tray').style.top =
+            brief.offsetTop + brief.offsetHeight + 18 + 'px';
+        }
+      }
+      function retainIntent(raw) {
+        const value = raw
+          .toLowerCase()
+          .replace(/[٠-٩]/g, (d) => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)))
+          .replace(/[۰-۹]/g, (d) => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)));
+        briefLocations = mentionedPlaces(value);
+        const purposes = [];
+        if (/summer|صيف/.test(value)) purposes.push(sourceText('Summer home', 'بيت صيفي'));
+        if (/invest|استثمار/.test(value)) purposes.push(sourceText('Investment', 'استثمار'));
+        if (/family|kids|children|عائل|أهل|اهل|أطفال|اطفال/.test(value))
+          purposes.push(sourceText('Family', 'العائلة'));
+        document.querySelector('[data-t=purpose]').textContent = purposes.length
+          ? purposes.join(' · ')
+          : sourceText('To clarify', 'للتوضيح');
+        const year = value.match(/\b20[2-4][0-9]\b/)?.[0];
+        const privacy = /privacy|private|discreet|discretion|خصوصي|سري|سرية|خصوصية/.test(value);
+        const context = [];
+        if (year)
+          context.push(sourceText('Requested by ', 'الموعد المطلوب ') + '\u2066' + year + '\u2069');
+        if (privacy) context.push(sourceText('Discretion requested', 'الخصوصية مطلوبة'));
+        document.querySelector('#brief-context').textContent = context.join(' · ');
+        document.querySelector('#brief-state').textContent = sourceText(
+          'Your words · simulated interpretation',
+          'من كلماتك · فهم توضيحي',
+        );
+        document.querySelector('#user-words').hidden = !raw.trim();
+        document.querySelector('#user-words-label').textContent = sourceText(
+          'Your words, retained',
+          'كلماتك كما وردت',
+        );
+        document.querySelector('#user-words-text').textContent = raw;
+        requestAnimationFrame(() => {
+          positionTools();
+          if (view === 'map') flyTarget(cameraTarget ?? places[place]);
+        });
+      }
+      function renderProjects() {
+        const list = document.querySelector('#project-list');
+        list.replaceChildren();
+        copy[locale].cardNames.forEach((name, i) => {
+          const button = document.createElement('button');
+          button.className = 'project';
+          button.dataset.project = String(i);
+          button.innerHTML = `<span class="project-number">0${i + 1}</span><span><strong>${name} <span class="live">${copy[locale].demo}</span></strong><small>${schoolIntent ? sourceText('Family brief · schools to verify', 'طلب عائلي · المدارس تحتاج تحققاً') : copy[locale].cardReasons[i]}</small><small class="tradeoff">${copy[locale].cardTradeoffs[i]}</small></span><span class="project-arrow" aria-hidden="true">↗</span>`;
+          button.addEventListener('click', () => {
+            list.querySelectorAll('button').forEach((b) => b.classList.remove('selected'));
+            button.classList.add('selected');
+            const base = places[place].center;
+            cameraTarget = {
+              center: [base[0] + i * 0.035, base[1] + i * 0.025],
+              zoom: 13,
+              pitch: 55,
+              bearing: -25 + i * 20,
+            };
+            flyTarget(cameraTarget);
+            toast(copy[locale].cardTradeoff);
+          });
+          list.append(button);
+        });
+      }
+      document.querySelectorAll('[data-region]').forEach((el) =>
+        el.addEventListener('click', () => {
+          place = el.dataset.region;
+          setView('map');
+          updatePlace();
+        }),
+      );
+      function submit() {
+        const input = document.querySelector('#intent');
+        schoolIntent = /school|مدرس|مدارس|بريطاني/.test(input.value.toLowerCase());
+        document.querySelector('[data-t=priority]').textContent = schoolIntent
+          ? sourceText('Schools to verify', 'التحقق من المدارس')
+          : /beach|water|sea|بحر|شاطئ/.test(input.value.toLowerCase())
+            ? copy[locale].priority
+            : sourceText('To clarify', 'للتوضيح');
+        retainIntent(input.value);
+        place = infer(input.value);
+        setView('map');
+        updatePlace();
+        const teaching = /understand|explain|عرّف|عرف|اشرح/.test(input.value.toLowerCase());
+        document.querySelector('#reply-title').innerHTML =
+          copy[locale][teaching ? 'teaching' : place === 'coast' ? 'coastTitle' : 'replyTitle'];
+        document.querySelector('#response').textContent =
+          copy[locale][teaching ? 'teachingText' : place === 'coast' ? 'coastText' : 'response'];
+        if (schoolIntent)
+          document.querySelector('#response').textContent = sourceText(
+            'Your family brief now includes schools. Begin with the coast and city; specific schools and travel times need verified evidence. These concepts do not imply school proximity.',
+            'أضفنا المدارس إلى طلب عائلتك. نبدأ بعلاقة المدينة بالبحر؛ أسماء المدارس وأوقات الوصول تحتاج بيانات موثقة. هذه التصوّرات لا تعني قرب المدارس.',
+          );
+        if (briefLocations.length > 1)
+          document.querySelector('#response').textContent += sourceText(
+            ' Both places remain in your brief. This concept has not compared real listings.',
+            ' احتفظنا بالمكانين في طلبك. هذا التصوّر لم يقارن عروضاً فعلية.',
+          );
+        document.querySelector('#flow-status').textContent = copy[locale].updated;
+      }
+      document.querySelector('#ask-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        submit();
+      });
+      document.querySelector('#intent').addEventListener('input', (e) => {
+        clearTimeout(flyTimer);
+        flyTimer = setTimeout(() => {
+          const inferred = infer(e.target.value);
+          if (inferred !== place) {
+            place = inferred;
+            updatePlace();
+          }
+        }, 350);
+      });
+      document.querySelector('#home-view').addEventListener('click', () => setView('home'));
+      document.querySelector('#map-view').addEventListener('click', () => {
+        setView('map');
+        updatePlace();
+      });
+      document.querySelector('#edit-brief').addEventListener('click', () => {
+        document.querySelector('#intent').focus();
+        toast(
+          locale === 'ar'
+            ? 'اكتب المكان الذي تفضله لتعديل هذا الطلب التوضيحي.'
+            : 'Type your preferred place to revise this illustrative brief.',
+        );
+      });
+      document.querySelector('#voice').addEventListener('click', () => toast(copy[locale].voice));
+      document.querySelectorAll('[data-prompt]').forEach((el) =>
+        el.addEventListener('click', () => {
+          document.querySelector('#intent').value =
+            copy[locale][
+              el.dataset.prompt === 'family'
+                ? 'familyPrompt'
+                : el.dataset.prompt === 'coast'
+                  ? 'coastPrompt'
+                  : 'teachPrompt'
+            ];
+          submit();
+        }),
+      );
+      document.querySelectorAll('[data-place]').forEach((el) =>
+        el.addEventListener('click', () => {
+          place = el.dataset.place;
+          updatePlace();
+          toast(copy[locale].updated);
+        }),
+      );
+      document.querySelector('#language').addEventListener('click', () => {
+        locale = locale === 'en' ? 'ar' : 'en';
+        syncUrl();
+        location.reload();
+      });
+      document.querySelector('#theme').addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        syncUrl();
+        location.reload();
+      });
+      document.querySelector('.wordmark').addEventListener('click', (e) => {
+        e.preventDefault();
+        setView('home');
+      });
+      applyCopy();
+      try {
+        const { createConceptMap } = await import('/prototypes/shared/map.js');
+        map = await createConceptMap(document.querySelector('#atlas'), {
+          theme,
+          locale,
+          center: view === 'home' ? [42, 27] : places.dubai.center,
+          zoom: view === 'home' ? 2.4 : 10.5,
+          pitch: view === 'home' ? 0 : 48,
+        });
+        document.querySelector('.map-status')?.remove();
+        window.conceptMap = map;
+        refineMap();
+        const controls = document.querySelector('#atlas .maplibregl-control-container');
+        if (controls) {
+          controls.classList.add('map-controls-overlay');
+          document.body.append(controls);
+        }
+        if (view === 'map') updatePlace();
+      } catch (error) {
+        const status = document.createElement('p');
+        status.className = 'map-status';
+        status.textContent = copy[locale].mapError;
+        document.querySelector('#atlas').replaceChildren(status);
+        console.warn('Concept map unavailable', error);
+      }
+    </script>
+  </body>
+</html>

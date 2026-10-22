@@ -1,0 +1,1435 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Darivo — The considered atlas</title>
+    <link rel="stylesheet" href="/node_modules/maplibre-gl/dist/maplibre-gl.css" />
+    <style>
+      @font-face {
+        font-family: Display;
+        src: url('/public/fonts/display.woff2');
+      }
+      @font-face {
+        font-family: UI;
+        src: url('/public/fonts/ui.woff2');
+      }
+      @font-face {
+        font-family: Arabic;
+        src: url('/public/fonts/arabic.woff2');
+      }
+      :root {
+        --paper: #f7f4ee;
+        --ink: #20251f;
+        --muted: #64695f;
+        --line: #cccac0;
+        --soft: #e9e2d6;
+        --accent: #78603b;
+        --inverse: #f7f4ee;
+        --shadow: 0 16px 60px #1c271f15;
+        color-scheme: light;
+      }
+      html[data-theme='dark'] {
+        --paper: #151916;
+        --ink: #eee9de;
+        --muted: #b2b6a9;
+        --line: #41483e;
+        --soft: #252c25;
+        --accent: #d0b887;
+        --inverse: #151916;
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          14px/1.6 UI,
+          Arial,
+          sans-serif;
+      }
+      html[lang='ar'] body {
+        font-family: Arabic, sans-serif;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+      button {
+        cursor: pointer;
+        color: inherit;
+        background: none;
+        border: 0;
+      }
+      a {
+        color: inherit;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 5px;
+      }
+      button:hover {
+        color: var(--accent);
+      }
+      .skip {
+        position: fixed;
+        inset-block-start: -100px;
+        z-index: 100;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 16px;
+      }
+      .skip:focus {
+        inset-block-start: 0;
+      }
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      html[lang='ar'] .eyebrow {
+        letter-spacing: 0;
+        font-size: 12px;
+      }
+      .top {
+        height: 94px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4%;
+        gap: 24px;
+        border-block-end: 1px solid var(--line);
+      }
+      .wordmark {
+        font-family: Display, serif;
+        font-size: 39px;
+        letter-spacing: 0.12em;
+        line-height: 1;
+        text-decoration: none;
+      }
+      .wordmark small {
+        display: block;
+        font:
+          8px UI,
+          sans-serif;
+        letter-spacing: 0.3em;
+        text-align: center;
+        margin-block-start: 7px;
+      }
+      .nav {
+        display: flex;
+        gap: 28px;
+        align-items: center;
+      }
+      .nav button {
+        min-height: 44px;
+        padding: 0 4px;
+        font-size: 12px;
+      }
+      .nav button[aria-current='page'] {
+        border-block-end: 1px solid var(--ink);
+      }
+      .utilities {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .utilities button {
+        min-width: 44px;
+        min-height: 44px;
+      }
+      .theme {
+        font-size: 22px;
+      }
+      .locale {
+        font-family: Arabic, UI, sans-serif;
+      }
+      .menu-dot {
+        width: 6px;
+        height: 6px;
+        background: var(--accent);
+        border-radius: 50%;
+        display: inline-block;
+        margin-inline-end: 7px;
+      }
+      .arrival {
+        display: grid;
+        grid-template-columns: 42% 58%;
+        min-height: 680px;
+        height: calc(100svh - 94px);
+        max-height: 890px;
+      }
+      .editorial {
+        padding: 50px 10% 34px 9.5%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+      .intro-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .intro-label:before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: var(--accent);
+      }
+      h1 {
+        font-family: Display, serif;
+        font-weight: 400;
+        font-size: clamp(64px, 6.7vw, 110px);
+        line-height: 0.91;
+        letter-spacing: -0.035em;
+        margin: 45px 0 26px;
+      }
+      h1 em {
+        color: var(--accent);
+        font-weight: 400;
+      }
+      html[lang='ar'] h1 {
+        font-family: Arabic, sans-serif;
+        font-size: clamp(48px, 5.3vw, 80px);
+        line-height: 1.4;
+        letter-spacing: -0.04em;
+        margin-block: 23px 19px;
+      }
+      .lede {
+        max-width: 310px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.85;
+        margin: 0 0 26px;
+      }
+      .composer {
+        margin-block-start: auto;
+      }
+      .composer label {
+        display: block;
+        font-size: 11px;
+        margin-block-end: 13px;
+      }
+      .compose-box {
+        border-block-end: 1px solid var(--ink);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding-block-end: 12px;
+      }
+      .compose-box input {
+        width: 100%;
+        min-width: 0;
+        border: 0;
+        background: none;
+        color: var(--ink);
+        font-size: 13px;
+        outline-offset: 0;
+        padding: 9px 0;
+      }
+      .compose-box input::placeholder {
+        color: var(--muted);
+      }
+      .compose-box button {
+        min-width: 44px;
+        min-height: 44px;
+      }
+      .send {
+        background: var(--ink);
+        color: var(--paper);
+        border-radius: 50%;
+        font-size: 22px;
+      }
+      .send:hover {
+        color: var(--paper);
+        background: var(--accent);
+      }
+      .voice svg {
+        width: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.3;
+      }
+      .privacy {
+        display: flex;
+        gap: 7px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 10px;
+        margin-block: 13px 22px;
+      }
+      .privacy svg {
+        width: 12px;
+        fill: none;
+        stroke: currentColor;
+      }
+      .suggestions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .suggestions button {
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        font-size: 10px;
+        min-height: 34px;
+        padding: 5px 10px;
+      }
+      .issue {
+        display: flex;
+        justify-content: space-between;
+        margin-block-start: 37px;
+        padding-block-start: 18px;
+        border-block-start: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 9px;
+        letter-spacing: 0.1em;
+      }
+      .map-stage {
+        position: relative;
+        overflow: hidden;
+        min-height: 500px;
+        background: #d8d4bf;
+        margin: 24px 24px 24px 0;
+        border-radius: 1px;
+      }
+      html[dir='rtl'] .map-stage {
+        margin: 24px 0 24px 24px;
+      }
+      #map {
+        position: absolute;
+        inset: 0;
+      }
+      .map-shade {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(180deg, #eef0d51c, transparent 35%, #12251cc9);
+      }
+      .map-title {
+        position: absolute;
+        inset-block-start: 27px;
+        inset-inline-start: 28px;
+        z-index: 3;
+        color: #263c30;
+      }
+      .map-title .eyebrow {
+        font-size: 9px;
+      }
+      .map-title strong {
+        display: block;
+        font:
+          36px/1.2 Display,
+          serif;
+        margin-block-start: 3px;
+      }
+      .map-title small {
+        font-size: 10px;
+        opacity: 0.8;
+      }
+      html[data-theme='dark'] .map-title {
+        color: #eee9de;
+      }
+      html[lang='ar'] .map-title strong {
+        font-family: Arabic;
+        font-size: 27px;
+      }
+      .map-note {
+        position: absolute;
+        inset-block-end: 102px;
+        inset-inline-start: 30px;
+        max-width: 300px;
+        color: #fff;
+        z-index: 2;
+      }
+      .map-note h2 {
+        font:
+          42px/1.05 Display,
+          serif;
+        margin: 10px 0;
+      }
+      .map-note p {
+        font-size: 11px;
+        line-height: 1.7;
+        max-width: 250px;
+        margin: 12px 0;
+      }
+      html[lang='ar'] .map-note h2 {
+        font-family: Arabic;
+        font-size: 32px;
+        line-height: 1.5;
+      }
+      .map-nav {
+        position: absolute;
+        inset-block-end: 27px;
+        inset-inline: 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 4;
+        gap: 8px;
+        color: #fff;
+      }
+      .city-tabs {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+      .city-tabs button {
+        padding: 11px 12px;
+        border: 1px solid #ffffff70;
+        border-radius: 2px;
+        font-size: 10px;
+        min-height: 42px;
+        background: #17382d55;
+        color: #fff;
+        backdrop-filter: blur(10px);
+      }
+      .city-tabs button[aria-pressed='true'] {
+        background: #f7f4ee;
+        color: #20251f;
+      }
+      .atlas {
+        background: var(--paper);
+        color: var(--ink);
+        border-radius: 50%;
+        width: 52px;
+        height: 52px;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+      .map-corner {
+        position: absolute;
+        inset-inline-end: 24px;
+        inset-block-start: 30px;
+        z-index: 3;
+        border: 1px solid #355e4960;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        font-size: 11px;
+        color: #35503a;
+        background: #f7f4ee90;
+      }
+      .column {
+        position: absolute;
+        z-index: 2;
+        width: 20px;
+        height: 74px;
+        pointer-events: none;
+        transform: translate(-50%, -100%);
+        background: linear-gradient(to top, #d4b97bd9, #f8ecd987);
+        clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+        filter: drop-shadow(0 0 8px #fff);
+      }
+      .column:after {
+        content: '';
+        position: absolute;
+        inset-block-end: 0;
+        inset-inline: 0;
+        height: 4px;
+        background: #fff;
+      }
+      .status {
+        min-height: 18px;
+        color: var(--accent);
+        font-size: 11px;
+        margin-block-start: 12px;
+      }
+      .below {
+        padding: 50px 4%;
+        border-block-start: 1px solid var(--line);
+      }
+      .below-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+      }
+      .below h2 {
+        font:
+          48px Display,
+          serif;
+        margin: 10px 0 26px;
+      }
+      html[lang='ar'] .below h2 {
+        font: 34px Arabic;
+      }
+      .story-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+      .story {
+        border-block-start: 1px solid var(--line);
+        padding-block: 18px;
+        text-align: start;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        min-height: 84px;
+      }
+      .story b {
+        display: block;
+        font:
+          26px Display,
+          serif;
+      }
+      .story span {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      html[lang='ar'] .story b {
+        font: 22px Arabic;
+      }
+      .story i {
+        font-style: normal;
+      }
+      .explore-top {
+        display: none;
+      }
+      .results {
+        display: none;
+      }
+      .explore .arrival {
+        grid-template-columns: 340px 1fr;
+        max-height: none;
+        height: calc(100svh - 94px);
+        min-height: 650px;
+      }
+      .explore .editorial {
+        padding: 28px 27px;
+        overflow: auto;
+      }
+      .explore .home-intro,
+      .explore .issue,
+      .explore .below {
+        display: none;
+      }
+      .explore .explore-top {
+        display: block;
+      }
+      .explore-top h1 {
+        font-size: 49px;
+        line-height: 1.05;
+        margin: 12px 0 18px;
+      }
+      html[lang='ar'] .explore-top h1 {
+        font-size: 35px;
+      }
+      .explore .composer {
+        margin-block-start: 0;
+        order: 1;
+      }
+      .explore .suggestions {
+        display: none;
+      }
+      .explore .privacy {
+        margin-block-end: 13px;
+      }
+      .explore .results {
+        display: block;
+        order: 2;
+      }
+      .explore .map-stage {
+        margin: 0;
+      }
+      .explore .map-note {
+        inset-block-end: 95px;
+      }
+      .explore .map-title {
+        inset-block-start: 25px;
+      }
+      .results-head {
+        display: flex;
+        justify-content: space-between;
+        border-block-end: 1px solid var(--line);
+        padding-block: 15px;
+        font-size: 10px;
+      }
+      .project {
+        padding-block: 20px;
+        border-block-end: 1px solid var(--line);
+      }
+      .project-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .project button.save {
+        border: 1px solid var(--line);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .project h2 {
+        font:
+          28px/1.15 Display,
+          serif;
+        margin: 8px 0;
+      }
+      .project small {
+        font-size: 9px;
+        color: var(--muted);
+      }
+      html[lang='ar'] .project h2 {
+        font: 23px Arabic;
+      }
+      .project p {
+        font-size: 11px;
+        margin: 12px 0;
+        color: var(--muted);
+      }
+      .project .price {
+        font-size: 13px;
+        font-variant-numeric: tabular-nums;
+      }
+      .project .focus-place {
+        min-height: 40px;
+        font-size: 10px;
+        padding: 0;
+        text-decoration: underline;
+        text-underline-offset: 5px;
+      }
+      .sheet-button {
+        display: none;
+      }
+      .maplibregl-ctrl-attrib {
+        font-size: 9px !important;
+      }
+      .prototype-badge {
+        font-size: 9px;
+        color: var(--muted);
+        margin-block-start: 10px;
+      }
+      .frame-mark {
+        display: none;
+        font: 10px UI;
+        letter-spacing: 0.2em;
+        position: absolute;
+        inset-inline-end: 27px;
+        inset-block-end: 100px;
+        color: #fff8;
+        writing-mode: vertical-rl;
+      }
+      .dialog {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink);
+        max-width: 400px;
+        padding: 32px;
+      }
+      .dialog::backdrop {
+        background: #0007;
+      }
+      .dialog h2 {
+        font: 34px Display;
+        margin: 0 0 12px;
+      }
+      .dialog button {
+        border: 1px solid var(--line);
+        padding: 10px 16px;
+        min-height: 44px;
+      }
+      .dialog p {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .demo-pill {
+        border: 1px solid var(--line);
+        padding: 2px 6px;
+        font-size: 9px;
+        line-height: 1.4;
+        color: var(--muted);
+      }
+      @media (min-width: 1600px) {
+        .top,
+        .below {
+          padding-inline: calc((100% - 1470px) / 2);
+        }
+        .arrival {
+          max-width: 1600px;
+          margin-inline: auto;
+        }
+      }
+      @media (max-width: 1100px) {
+        .arrival {
+          grid-template-columns: 45% 55%;
+          min-height: 690px;
+        }
+        .editorial {
+          padding: 40px 8%;
+        }
+        h1 {
+          font-size: 78px;
+          margin-block-start: 40px;
+        }
+        .map-stage {
+          margin-inline-end: 16px;
+        }
+        .top {
+          height: 80px;
+        }
+        .arrival {
+          height: calc(100svh - 80px);
+        }
+        .nav {
+          gap: 18px;
+        }
+        .explore .arrival {
+          height: calc(100svh - 80px);
+          grid-template-columns: 315px 1fr;
+        }
+        .map-nav {
+          inset-inline: 20px;
+        }
+        .city-tabs button {
+          padding-inline: 10px;
+        }
+        .map-note {
+          inset-inline-start: 24px;
+        }
+        .map-title {
+          inset-inline-start: 24px;
+        }
+        html[lang='ar'] h1 {
+          font-size: 55px;
+        }
+      }
+      @media (max-width: 700px) {
+        .top {
+          height: 75px;
+          padding-inline: 22px;
+          gap: 10px;
+        }
+        .wordmark {
+          font-size: 29px;
+        }
+        .wordmark small {
+          font-size: 6px;
+        }
+        .nav {
+          display: none;
+        }
+        .utilities {
+          gap: 3px;
+        }
+        .arrival {
+          height: auto;
+          max-height: none;
+          min-height: 0;
+          display: flex;
+          flex-direction: column;
+        }
+        .editorial {
+          padding: 28px 26px 25px;
+        }
+        .intro-label {
+          font-size: 9px;
+        }
+        h1 {
+          font-size: 71px;
+          line-height: 0.91;
+          margin: 27px 0 18px;
+          max-width: 330px;
+        }
+        .lede {
+          font-size: 11px;
+          max-width: 290px;
+          margin-block-end: 24px;
+        }
+        .composer {
+          margin-block-start: 0;
+        }
+        .compose-box input {
+          font-size: 12px;
+        }
+        .composer label {
+          font-size: 10px;
+        }
+        .privacy {
+          font-size: 9px;
+          margin-block-end: 14px;
+        }
+        .suggestions button {
+          min-height: 36px;
+        }
+        .issue {
+          display: none;
+        }
+        .map-stage,
+        html[dir='rtl'] .map-stage {
+          height: 430px;
+          min-height: 430px;
+          margin: 0 13px 15px;
+        }
+        .map-title {
+          inset-block-start: 22px;
+          inset-inline-start: 20px;
+        }
+        .map-title strong {
+          font-size: 30px;
+        }
+        .map-note {
+          inset-block-end: 95px;
+          inset-inline-start: 21px;
+        }
+        .map-note h2 {
+          font-size: 37px;
+        }
+        .map-note p {
+          font-size: 10px;
+        }
+        .map-nav {
+          inset-inline: 16px;
+          inset-block-end: 23px;
+        }
+        .city-tabs button {
+          font-size: 9px;
+          padding: 8px 10px;
+        }
+        .atlas {
+          width: 44px;
+          height: 44px;
+        }
+        .map-corner {
+          inset-inline-end: 19px;
+          inset-block-start: 24px;
+        }
+        .below {
+          padding: 30px 26px;
+        }
+        .below h2 {
+          font-size: 39px;
+        }
+        .story-grid {
+          display: block;
+        }
+        .story {
+          min-height: 85px;
+        }
+        .prototype-badge {
+          font-size: 8px;
+        }
+        html[lang='ar'] h1 {
+          font-size: 51px;
+          line-height: 1.35;
+          margin: 18px 0 12px;
+        }
+        html[lang='ar'] .lede {
+          font-size: 13px;
+          line-height: 1.8;
+        }
+        .explore .arrival {
+          height: calc(100svh - 75px);
+          min-height: 650px;
+          display: block;
+          position: relative;
+        }
+        .explore .map-stage,
+        html[dir='rtl'] .explore .map-stage {
+          position: absolute;
+          inset: 0;
+          height: auto;
+          min-height: 0;
+          margin: 0;
+        }
+        .explore .editorial {
+          position: absolute;
+          inset-inline: 10px;
+          inset-block-end: 10px;
+          z-index: 10;
+          background: var(--paper);
+          border: 1px solid var(--line);
+          border-radius: 16px 16px 4px 4px;
+          padding: 0 20px 16px;
+          max-height: 58%;
+          overflow: auto;
+          box-shadow: var(--shadow);
+          transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .explore .editorial.expanded {
+          max-height: 88%;
+        }
+        .sheet-button {
+          display: block;
+          width: 100%;
+          min-height: 40px;
+          font-size: 10px;
+          position: sticky;
+          top: 0;
+          background: var(--paper);
+          z-index: 1;
+        }
+        .sheet-button:before {
+          content: '';
+          display: block;
+          margin: 8px auto 1px;
+          width: 32px;
+          height: 3px;
+          background: var(--line);
+          border-radius: 8px;
+        }
+        .explore .explore-top .eyebrow {
+          display: none;
+        }
+        .explore-top h1 {
+          font-size: 35px;
+          margin: 0 0 12px;
+        }
+        html[lang='ar'] .explore-top h1 {
+          font-size: 25px;
+          margin: 0 0 10px;
+        }
+        .explore .composer label,
+        .explore .privacy {
+          display: none;
+        }
+        .explore .status {
+          margin-block-start: 8px;
+        }
+        .explore .project {
+          padding-block: 13px;
+        }
+        .explore .project h2 {
+          font-size: 24px;
+        }
+        .explore .map-note,
+        .explore .map-nav,
+        .explore .frame-mark {
+          display: none;
+        }
+        .explore .map-title {
+          inset-block-start: 20px;
+        }
+        .explore .results-head {
+          padding-block: 10px;
+        }
+        .explore .map-corner {
+          inset-block-start: 20px;
+        }
+        .explore .editorial:not(.expanded) .project:not(:first-of-type) {
+          display: none;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *:before,
+        *:after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main" data-i18n="skip">Skip to main content</a>
+    <header class="top">
+      <a class="wordmark" href="#home" aria-label="Darivo home"
+        >DARIVO<small data-i18n="office">A PRIVATE PROPERTY OFFICE</small></a
+      >
+      <nav class="nav" aria-label="Primary">
+        <button data-view="home" aria-current="page" data-i18n="journal">The Journal</button
+        ><button data-view="map" data-i18n="atlas">The Atlas</button
+        ><button id="saved-button">
+          <span class="menu-dot"></span><span data-i18n="selection">Your selection</span>
+          <span id="save-count">0</span>
+        </button>
+      </nav>
+      <div class="utilities">
+        <button class="locale" id="locale-toggle" aria-label="Switch to Arabic">العربية</button
+        ><button class="theme" id="theme-toggle" aria-label="Switch theme">◐</button>
+      </div>
+    </header>
+    <main id="main">
+      <section class="arrival">
+        <div class="editorial" id="editorial">
+          <button class="sheet-button" id="sheet-toggle" aria-expanded="false" data-i18n="sheet">
+            Open your selection
+          </button>
+          <div class="home-intro">
+            <div class="intro-label eyebrow" data-i18n="opening">A considered atlas. Issue 01.</div>
+            <h1 id="main-heading">A considered<br />life. A place<br /><em>for it.</em></h1>
+            <p class="lede" data-i18n="lede">
+              Some places change how you live.<br />Let’s find the one that feels like you.
+            </p>
+          </div>
+          <div class="explore-top">
+            <div class="eyebrow" data-i18n="your-atlas">Your personal atlas</div>
+            <h1 data-i18n="selected">A sense of place.</h1>
+          </div>
+          <form class="composer" id="composer">
+            <label for="brief" data-i18n="label">Tell us what your next chapter looks like.</label>
+            <div class="compose-box">
+              <input
+                id="brief"
+                autocomplete="off"
+                placeholder="A quieter life, close to the sea…"
+                aria-label="Describe the life you want"
+              /><button class="voice" type="button" id="voice" aria-label="Speak your brief">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="9" y="2" width="6" height="12" rx="3" />
+                  <path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8" />
+                </svg></button
+              ><button class="send" type="submit" aria-label="Explore your brief">↗</button>
+            </div>
+            <div class="privacy">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <rect x="4" y="8" width="12" height="9" rx="1" />
+                <path d="M7 8V5a3 3 0 0 1 6 0v3" /></svg
+              ><span data-i18n="privacy"
+                >Typed briefs stay here. Voice uses your browser service.</span
+              >
+            </div>
+            <div class="suggestions">
+              <button type="button" data-prompt="sea" data-i18n="sea">A home by the sea</button
+              ><button type="button" data-prompt="family" data-i18n="family">
+                Space for family</button
+              ><button type="button" data-prompt="egypt" data-i18n="egypt-intent">
+                A summer in Egypt
+              </button>
+            </div>
+            <div id="status" class="status" aria-live="polite"></div>
+          </form>
+          <div class="results">
+            <div class="results-head">
+              <span data-i18n="curation">A SMALL, CONSIDERED SELECTION</span
+              ><span class="demo-pill" data-i18n="demo">Demo</span>
+            </div>
+            <div id="projects"></div>
+            <p class="prototype-badge" data-i18n="disclaimer">
+              Fictional projects · indicative demo prices · approximate locations.
+            </p>
+          </div>
+          <div class="issue">
+            <span data-i18n="markets">DUBAI — ABU DHABI — EGYPT</span
+            ><span data-i18n="edition">THE PLACE EDITION</span>
+          </div>
+        </div>
+        <div class="map-stage">
+          <div id="map" role="region" aria-label="Geographic map of selected places"></div>
+          <div class="map-shade"></div>
+          <div class="map-title">
+            <span class="eyebrow" data-i18n="field">Field notes / 25.2048° N</span
+            ><strong id="map-city">The Dubai coastline</strong
+            ><small data-i18n="location-note">A geographic introduction. Not a listing map.</small>
+          </div>
+          <div class="map-corner" aria-hidden="true">N ↑</div>
+          <div class="map-note">
+            <span class="eyebrow" data-i18n="chapter">01 / WATER & STILLNESS</span>
+            <h2 data-i18n="mapheadline">A different<br />point of view.</h2>
+            <p data-i18n="maplede">Begin with the landscape.<br />The right address comes after.</p>
+          </div>
+          <div class="map-nav">
+            <div class="city-tabs">
+              <button data-city="dubai" aria-pressed="true" data-i18n="dubai">Dubai</button
+              ><button data-city="abu" aria-pressed="false" data-i18n="abu">Abu Dhabi</button
+              ><button data-city="egypt" aria-pressed="false" data-i18n="coast">North Coast</button>
+            </div>
+            <button class="atlas" data-view="map" aria-label="Open the atlas">↗</button>
+          </div>
+          <span class="frame-mark" data-i18n="map-mark">DARIVO · PLACES, CONSIDERED</span>
+        </div>
+      </section>
+      <section class="below">
+        <div class="below-head">
+          <div>
+            <span class="eyebrow" data-i18n="collection-label">Ways to begin</span>
+            <h2 data-i18n="collections">Follow a feeling.</h2>
+          </div>
+          <span class="eyebrow" data-i18n="editorial-stories">Three map stories</span>
+        </div>
+        <div class="story-grid">
+          <button class="story" data-city="dubai" data-open-map>
+            <div>
+              <b data-i18n="islands">The island life</b
+              ><span data-i18n="islandscaption">Dubai · a change of pace</span>
+            </div>
+            <i>01 ↗</i></button
+          ><button class="story" data-city="abu" data-open-map>
+            <div>
+              <b data-i18n="culture">Room for culture</b
+              ><span data-i18n="culturecaption">Abu Dhabi · a wider perspective</span>
+            </div>
+            <i>02 ↗</i></button
+          ><button class="story" data-city="egypt" data-open-map>
+            <div>
+              <b data-i18n="summers">Longer summers</b
+              ><span data-i18n="summerscaption">Egypt · the Mediterranean coast</span>
+            </div>
+            <i>03 ↗</i>
+          </button>
+        </div>
+      </section>
+    </main>
+    <dialog class="dialog" id="selection-dialog">
+      <h2 data-i18n="selection">Your selection</h2>
+      <p id="selection-text"></p>
+      <button id="close-dialog" data-i18n="close">Continue exploring</button>
+    </dialog>
+    <script type="module">
+      import { createConceptMap } from '../shared/map.js';
+      const params = new URLSearchParams(location.search);
+      const ar = params.get('lang') === 'ar';
+      let theme = params.get('theme') || 'light';
+      const root = document.documentElement;
+      root.lang = ar ? 'ar' : 'en';
+      root.dir = ar ? 'rtl' : 'ltr';
+      root.dataset.theme = theme;
+      const dictionary = {
+        skip: 'انتقل إلى المحتوى',
+        office: 'مكتبك العقاري الخاص',
+        journal: 'البداية',
+        atlas: 'الأطلس',
+        selection: 'اختياراتك',
+        opening: 'أطلس لحياة أهدأ · العدد الأول',
+        lede: 'في أماكن تغيّر تفاصيل حياتك.<br>خلّنا نلقى المكان اللي يشبهك.',
+        label: 'صف لنا المكان اللي في بالك.',
+        privacy: 'النص يبقى هنا. الصوت يستخدم خدمة المتصفح.',
+        sea: 'بيت على البحر',
+        family: 'مساحة للعائلة',
+        'egypt-intent': 'صيف في مصر',
+        markets: 'دبي — أبوظبي — مصر',
+        edition: 'عن المكان والحياة',
+        'your-atlas': 'أطلسك الخاص',
+        selected: 'هنا تبدأ الحكاية.',
+        curation: 'اختيارات قليلة، بعناية',
+        demo: 'تجريبي',
+        disclaimer: 'مشاريع خيالية · أسعار تجريبية استرشادية · مواقع تقريبية',
+        field: 'من دفتر الأماكن · دبي',
+        'location-note': 'نظرة على المكان، وليست خريطة عقارات.',
+        chapter: '٠١ / البحر والسكينة',
+        mapheadline: 'زاوية أخرى<br>للحياة.',
+        maplede: 'نبدأ بالمكان.<br>والعنوان المناسب يجي بعده.',
+        dubai: 'دبي',
+        abu: 'أبوظبي',
+        coast: 'الساحل الشمالي',
+        'map-mark': 'داريفو · للمكان معنى',
+        'collection-label': 'من وين نبدأ؟',
+        collections: 'اتبع إحساسك بالمكان.',
+        'editorial-stories': 'ثلاث حكايات على الخريطة',
+        islands: 'حياة على جزيرة',
+        islandscaption: 'دبي · إيقاع مختلف',
+        culture: 'مساحة للثقافة',
+        culturecaption: 'أبوظبي · نظرة أوسع',
+        summers: 'صيف يطول',
+        summerscaption: 'مصر · ساحل البحر المتوسط',
+        sheet: 'افتح اختياراتك',
+        close: 'كمّل استكشافك',
+      };
+      if (ar) {
+        document
+          .querySelectorAll('[data-i18n]')
+          .forEach((el) => (el.innerHTML = dictionary[el.dataset.i18n] || el.innerHTML));
+        document.querySelector('#main-heading').innerHTML = 'لكل حياة<br><em>مكانها.</em>';
+        document.querySelector('#brief').placeholder = 'بيت أهدأ، قريب من البحر…';
+        document.querySelector('#brief').ariaLabel = 'صف الحياة اللي تتمناها';
+        document.querySelector('#voice').ariaLabel = 'تحدّث عن المكان اللي في بالك';
+        document.querySelector('.send').ariaLabel = 'استكشف طلبك';
+        document.querySelector('#map').ariaLabel = 'خريطة جغرافية للأماكن المختارة';
+        document.querySelector('.atlas').ariaLabel = 'افتح الأطلس';
+        document.querySelector('.wordmark').ariaLabel = 'داريفو، البداية';
+        document.querySelector('.nav').ariaLabel = 'التنقل الرئيسي';
+      }
+      const localeButton = document.querySelector('#locale-toggle');
+      localeButton.textContent = ar ? 'English' : 'العربية';
+      localeButton.ariaLabel = ar ? 'Switch to English' : 'التبديل للعربية';
+      localeButton.onclick = () => {
+        params.set('lang', ar ? 'en' : 'ar');
+        location.search = params;
+      };
+      const themeButton = document.querySelector('#theme-toggle');
+      themeButton.ariaLabel = ar ? 'بدّل لون الواجهة' : 'Change color theme';
+      themeButton.onclick = () => {
+        params.set('theme', theme === 'dark' ? 'light' : 'dark');
+        location.search = params;
+      };
+      const status = document.querySelector('#status');
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let map;
+      let city = 'dubai';
+      let saved = new Set();
+      const locations = {
+        dubai: {
+          center: [55.159, 25.103],
+          zoom: 10.8,
+          title: ar ? 'على ساحل دبي' : 'The Dubai coastline',
+          name: ar ? 'دبي' : 'Dubai',
+        },
+        abu: {
+          center: [54.428, 24.529],
+          zoom: 11.1,
+          title: ar ? 'جزر أبوظبي' : 'The islands of Abu Dhabi',
+          name: ar ? 'أبوظبي' : 'Abu Dhabi',
+        },
+        egypt: {
+          center: [28.12, 31.1],
+          zoom: 8.8,
+          title: ar ? 'صيف على الساحل' : 'The Mediterranean coast',
+          name: ar ? 'الساحل الشمالي' : 'North Coast',
+        },
+      };
+      const projects = {
+        dubai: [
+          [
+            'The Quiet House',
+            'دار السكينة',
+            'AED 18.4M',
+            'Family space, close to the water.',
+            'مساحة للعائلة، قريبة من البحر.',
+            'A quieter setting means a longer city journey.',
+            'الهدوء هنا يعني مشوار أطول للمدينة.',
+          ],
+          [
+            'Tidal Courtyard',
+            'فناء الموج',
+            'AED 22.8M',
+            'A low-rise home with room to gather.',
+            'بيت منخفض الارتفاع ومساحة للّمة.',
+            'Fewer nearby services in this demo scenario.',
+            'خدمات قريبة أقل في هذا التصور التجريبي.',
+          ],
+        ],
+        abu: [
+          [
+            'The Dune Residence',
+            'دار الكثيب',
+            'AED 16.2M',
+            'Space, privacy and an island setting.',
+            'مساحة وخصوصية، في محيط جزيرة.',
+            'Island travel adds time to mainland journeys.',
+            'مشاوير البر تحتاج وقت إضافي.',
+          ],
+          [
+            'Garden Pavilion',
+            'جناح الحديقة',
+            'AED 21.6M',
+            'A generous family gathering space.',
+            'مساحة رحبة تجمع العائلة.',
+            'A garden needs ongoing care.',
+            'الحديقة تحتاج عناية مستمرة.',
+          ],
+        ],
+        egypt: [
+          [
+            'The Summer House',
+            'دار الصيف',
+            'EGP 89M',
+            'A home imagined around long summer days.',
+            'بيت نتخيّله لأيام الصيف الطويلة.',
+            'A seasonal setting needs winter planning.',
+            'المكان الموسمي يحتاج تخطيط للشتاء.',
+          ],
+          [
+            'Salt & Stone',
+            'ملح وحجر',
+            'EGP 74M',
+            'Room for the whole family by the coast.',
+            'مساحة للعائلة كلها، قريبة من الساحل.',
+            'The city is a separate journey.',
+            'المدينة تحتاج مشوار مستقل.',
+          ],
+        ],
+      };
+      function renderProjects() {
+        document.querySelector('#projects').innerHTML = projects[city]
+          .map(
+            (p, i) =>
+              `<article class="project"><div class="project-head"><div><small>${locations[city].name} · ${ar ? 'مشروع خيالي' : 'FICTIONAL PROJECT'}</small><h2>${p[ar ? 1 : 0]}</h2></div><button class="save" data-save="${city}-${i}" aria-label="${ar ? 'احفظ' : 'Save'} ${p[ar ? 1 : 0]}" aria-pressed="${saved.has(city + '-' + i)}">${saved.has(city + '-' + i) ? '✓' : '+'}</button></div><bdi class="price">${p[2]}</bdi> <span class="demo-pill">${ar ? 'تجريبي' : 'Demo'}</span><p>${p[ar ? 4 : 3]}<br>${ar ? 'خذ في بالك: ' : 'Consider: '}${p[ar ? 6 : 5]}</p><button class="focus-place" data-focus="${i}">${ar ? 'شوف المكان على الخريطة' : 'Locate on your atlas'} ↗</button></article>`,
+          )
+          .join('');
+        document.querySelectorAll('[data-save]').forEach(
+          (b) =>
+            (b.onclick = () => {
+              saved.has(b.dataset.save) ? saved.delete(b.dataset.save) : saved.add(b.dataset.save);
+              document.querySelector('#save-count').textContent = saved.size;
+              renderProjects();
+              status.textContent = ar
+                ? 'اختياراتك محفوظة هنا فقط، لين تغلق الصفحة.'
+                : 'Your selection stays here, until you close this page.';
+            }),
+        );
+        document.querySelectorAll('[data-focus]').forEach(
+          (b) =>
+            (b.onclick = () => {
+              const center = [...locations[city].center];
+              center[0] += (Number(b.dataset.focus) - 0.5) * 0.035;
+              map?.flyTo({
+                center,
+                zoom: 12,
+                pitch: 52,
+                bearing: -22,
+                duration: reduced ? 0 : 1400,
+              });
+              status.textContent = ar
+                ? 'موقع تقريبي لمشروع تجريبي.'
+                : 'Approximate location of a fictional demo project.';
+            }),
+        );
+      }
+      function switchView(view) {
+        document.body.classList.toggle('explore', view === 'map');
+        params.set('view', view);
+        history.replaceState(null, '', location.pathname + '?' + params);
+        document
+          .querySelectorAll('.nav [data-view]')
+          .forEach((b) =>
+            b.setAttribute('aria-current', b.dataset.view === view ? 'page' : 'false'),
+          );
+        requestAnimationFrame(() => map?.resize());
+        window.scrollTo({ top: 0, behavior: reduced ? 'instant' : 'smooth' });
+        renderProjects();
+      }
+      function selectCity(next, announce = true) {
+        city = next;
+        const place = locations[next];
+        document.querySelector('#map-city').textContent = place.title;
+        document
+          .querySelectorAll('.city-tabs [data-city]')
+          .forEach((b) => b.setAttribute('aria-pressed', b.dataset.city === city));
+        map?.flyTo({
+          center: place.center,
+          zoom: place.zoom,
+          pitch: 48,
+          bearing: -18,
+          duration: reduced ? 0 : 1700,
+        });
+        if (announce)
+          status.textContent = ar
+            ? `نبدأ من ${place.name}. الاختيارات المعروضة تجريبية.`
+            : `Beginning in ${place.name}. Shown homes are fictional demos.`;
+        renderProjects();
+      }
+      document
+        .querySelectorAll('[data-view]')
+        .forEach((b) => (b.onclick = () => switchView(b.dataset.view)));
+      document.querySelector('.wordmark').onclick = (e) => {
+        e.preventDefault();
+        switchView('home');
+      };
+      document.querySelectorAll('[data-city]').forEach(
+        (b) =>
+          (b.onclick = () => {
+            selectCity(b.dataset.city);
+            if (b.hasAttribute('data-open-map')) switchView('map');
+          }),
+      );
+      const brief = document.querySelector('#brief');
+      function detect(text) {
+        return /egypt|sahel|coast|مصر|ساحل/.test(text.toLowerCase())
+          ? 'egypt'
+          : /abu|saadiyat|أبو|ابو|سعديات/.test(text.toLowerCase())
+            ? 'abu'
+            : 'dubai';
+      }
+      let typingTimer;
+      brief.oninput = () => {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(() => {
+          if (brief.value.trim().length > 3) selectCity(detect(brief.value));
+        }, 450);
+      };
+      document.querySelector('#composer').onsubmit = (e) => {
+        e.preventDefault();
+        selectCity(detect(brief.value));
+        switchView('map');
+        status.textContent = ar
+          ? 'هذا تصور تجريبي. نبدأ بالمكان، ونراجع التفاصيل معك.'
+          : 'A demo interpretation. Start with the place; refine the details together.';
+      };
+      document.querySelectorAll('[data-prompt]').forEach(
+        (b) =>
+          (b.onclick = () => {
+            brief.value = b.textContent;
+            selectCity(b.dataset.prompt === 'egypt' ? 'egypt' : 'dubai');
+            switchView('map');
+          }),
+      );
+      document.querySelector('#sheet-toggle').onclick = () => {
+        const panel = document.querySelector('#editorial');
+        const expanded = panel.classList.toggle('expanded');
+        document.querySelector('#sheet-toggle').setAttribute('aria-expanded', expanded);
+        document.querySelector('#sheet-toggle').textContent = expanded
+          ? ar
+            ? 'ارجع للخريطة'
+            : 'Return to the map'
+          : ar
+            ? 'افتح اختياراتك'
+            : 'Open your selection';
+      };
+      const dialog = document.querySelector('#selection-dialog');
+      document.querySelector('#saved-button').onclick = () => {
+        document.querySelector('#selection-text').textContent = saved.size
+          ? ar
+            ? `${saved.size} اختيارات تجريبية محفوظة في هذه الصفحة. ما شاركناها مع أحد.`
+            : `${saved.size} fictional homes saved in this page. Nothing has been shared.`
+          : ar
+            ? 'ما حفظت أي مكان بعد. افتح الأطلس واختر علامة + جنب البيت.'
+            : 'Nothing saved yet. Open the Atlas and choose + beside a home.';
+        dialog.showModal();
+      };
+      document.querySelector('#close-dialog').onclick = () => dialog.close();
+      document.querySelector('#voice').onclick = () => {
+        const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!Recognition) {
+          status.textContent = ar
+            ? 'الصوت غير متاح في هذا المتصفح. تقدر تكتب طلبك.'
+            : 'Voice is unavailable in this browser. Please type your brief.';
+          brief.focus();
+          return;
+        }
+        const recognition = new Recognition();
+        recognition.lang = ar ? 'ar-AE' : 'en-GB';
+        recognition.onresult = (e) => {
+          brief.value = e.results[0][0].transcript;
+          selectCity(detect(brief.value));
+          switchView('map');
+        };
+        recognition.onerror = () =>
+          (status.textContent = ar
+            ? 'ما قدرنا نسمعك. تقدر تكتب طلبك.'
+            : 'We could not hear you. Please type your brief.');
+        recognition.onend = () =>
+          document.querySelector('#voice').setAttribute('aria-pressed', 'false');
+        recognition.start();
+        document.querySelector('#voice').setAttribute('aria-pressed', 'true');
+        status.textContent = ar
+          ? 'نسمعك عبر خدمة الصوت في المتصفح…'
+          : 'Listening through your browser’s speech service…';
+      };
+      selectCity(city, false);
+      if (params.get('view') === 'map') switchView('map');
+      try {
+        map = await createConceptMap(document.querySelector('#map'), {
+          theme,
+          locale: ar ? 'ar' : 'en',
+          center: locations.dubai.center,
+          zoom: 10.8,
+          pitch: 48,
+        });
+        window.__conceptMap = map;
+        window.__conceptReady = true;
+        map?.resize();
+      } catch (error) {
+        status.textContent = ar
+          ? 'الخريطة غير متاحة الآن. تقدر تستكشف الأماكن من القائمة.'
+          : 'The map is unavailable. Places remain accessible in the list.';
+        window.__conceptReady = true;
+        console.warn(error);
+      }
+    </script>
+  </body>
+</html>

@@ -26,4 +26,4 @@ The current captures show three distinct approaches. A makes a strong cinematic 
 
 ## Gate status
 
-Open. The initial reviews identify material defects; no score is rounded up to satisfy the gate. The team will re-review the selected, repaired concept before any production feature work.
+Passed after v4 evidence and the second scored board review: mean9.018 across84 scores, minimum8. See `docs/reviews/stage-0/v2/creative-director-synthesis.md` and its exact scorecard. The Critic's individual8.917 remains recorded; the user-specified board-average gate passes, while map readiness and the other carry-forward requirements remain open for production implementation. Stage1 may now begin.

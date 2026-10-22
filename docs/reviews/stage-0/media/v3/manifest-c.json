@@ -1,0 +1,386 @@
+[
+  {
+    "concept": "c",
+    "width": 1440,
+    "lang": "en",
+    "theme": "light",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-en-light-1440.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1440,
+    "lang": "en",
+    "theme": "light",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-en-light-1440.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      55.16000000000304,
+      25.09999999999907
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1440,
+    "lang": "en",
+    "theme": "dark",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-en-dark-1440.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1440,
+    "lang": "en",
+    "theme": "dark",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-en-dark-1440.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      55.16000000000304,
+      25.09999999999907
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1440,
+    "lang": "ar",
+    "theme": "light",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-ar-light-1440.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1440,
+    "lang": "ar",
+    "theme": "light",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-ar-light-1440.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      55.16000000000304,
+      25.09999999999907
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1440,
+    "lang": "ar",
+    "theme": "dark",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-ar-dark-1440.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1440,
+    "lang": "ar",
+    "theme": "dark",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-ar-dark-1440.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      55.16000000000304,
+      25.09999999999907
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1024,
+    "lang": "en",
+    "theme": "light",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-en-light-1024.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1024,
+    "lang": "en",
+    "theme": "light",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-en-light-1024.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      55.15999999999963,
+      25.09999999999981
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1024,
+    "lang": "en",
+    "theme": "dark",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-en-dark-1024.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1024,
+    "lang": "en",
+    "theme": "dark",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-en-dark-1024.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      55.15999999999963,
+      25.09999999999981
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1024,
+    "lang": "ar",
+    "theme": "light",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-ar-light-1024.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1024,
+    "lang": "ar",
+    "theme": "light",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-ar-light-1024.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      55.15999999999963,
+      25.09999999999981
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1024,
+    "lang": "ar",
+    "theme": "dark",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-ar-dark-1024.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 1024,
+    "lang": "ar",
+    "theme": "dark",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-ar-dark-1024.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      55.15999999999963,
+      25.09999999999981
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 390,
+    "lang": "en",
+    "theme": "light",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-en-light-390.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 390,
+    "lang": "en",
+    "theme": "light",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-en-light-390.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      55.160000000000764,
+      25.10000000000032
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 390,
+    "lang": "en",
+    "theme": "dark",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-en-dark-390.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 390,
+    "lang": "en",
+    "theme": "dark",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-en-dark-390.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "en",
+    "dir": "ltr",
+    "center": [
+      55.160000000000764,
+      25.10000000000032
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 390,
+    "lang": "ar",
+    "theme": "light",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-ar-light-390.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 390,
+    "lang": "ar",
+    "theme": "light",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-ar-light-390.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      55.160000000000764,
+      25.10000000000032
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 390,
+    "lang": "ar",
+    "theme": "dark",
+    "view": "home",
+    "file": "docs/reviews/stage-0/media/v3/c-home-ar-dark-390.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      42,
+      27
+    ]
+  },
+  {
+    "concept": "c",
+    "width": 390,
+    "lang": "ar",
+    "theme": "dark",
+    "view": "map",
+    "file": "docs/reviews/stage-0/media/v3/c-map-ar-dark-390.png",
+    "errors": [],
+    "overflow": false,
+    "htmlLang": "ar",
+    "dir": "rtl",
+    "center": [
+      55.160000000000764,
+      25.10000000000032
+    ]
+  }
+]

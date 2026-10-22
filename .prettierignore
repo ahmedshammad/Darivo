@@ -11,3 +11,5 @@ playwright-report
 test-results
 *.tsbuildinfo
 next-env.d.ts
+data/reference
+docs/studio/MASTER-BRIEF-V2.md

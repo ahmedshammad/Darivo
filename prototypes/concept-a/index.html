@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Darivo — A life, well placed · Concept A</title>
+    <link rel="stylesheet" href="/node_modules/maplibre-gl/dist/maplibre-gl.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body data-view="home">
+    <a class="skip" href="#conversation">Skip to conversation</a>
+    <main class="experience">
+      <div id="map" aria-label="Geographic map"></div>
+      <div class="atmosphere" aria-hidden="true"></div>
+      <header class="header">
+        <a class="wordmark" href="./" aria-label="Darivo home">darivo</a>
+        <nav class="nav" aria-label="Main navigation">
+          <button class="nav-link active" data-view="home" data-i18n="arrival">The arrival</button
+          ><button class="nav-link" data-view="map" data-i18n="explore">Explore the map</button>
+        </nav>
+        <div class="utilities">
+          <button id="language" aria-label="Switch to Arabic">العربية</button
+          ><button id="theme" class="theme-button" aria-label="Switch to light theme">◐</button
+          ><span class="office"
+            ><span class="status-dot"></span
+            ><span data-i18n="private">A private property office</span></span
+          >
+        </div>
+      </header>
+
+      <section class="arrival-content" aria-labelledby="arrival-title">
+        <div class="eyebrow">
+          <span class="rule"></span
+          ><span data-i18n="eyebrow">A WORLD OF POSSIBILITY. PERSONALLY CONSIDERED.</span>
+        </div>
+        <h1 id="arrival-title">
+          <span data-i18n="headline1">Your life.</span><br /><em data-i18n="headline2"
+            >Beautifully placed.</em
+          >
+        </h1>
+        <p class="intro" data-i18n="intro">
+          Somewhere between the life you have<br />and the one you imagine, there is a place.
+        </p>
+        <button class="discover" data-view="map">
+          <span class="circle-arrow">↗</span><span data-i18n="discover">Let's find yours</span>
+        </button>
+      </section>
+
+      <div class="location-marker home-marker" aria-hidden="true">
+        <span class="marker-line"></span><span class="marker-orbit"></span
+        ><span class="marker-caption">25.1124° N<br />55.1390° E</span>
+      </div>
+      <aside class="place-caption">
+        <span class="micro" data-i18n="looking">YOUR FIRST PERSPECTIVE</span
+        ><span class="place-name" id="place-name">Palm Jumeirah</span
+        ><span class="place-detail" data-i18n="coast">Dubai · Arabian Gulf</span>
+      </aside>
+
+      <section class="map-conversation" aria-labelledby="map-title">
+        <div class="micro">
+          <span class="status-dot"></span><span data-i18n="concierge">YOUR PRIVATE CONCIERGE</span>
+        </div>
+        <h2 id="map-title" data-i18n="mapTitle">Start with<br />what matters.</h2>
+        <div class="conversation-thread">
+          <div class="user-bubble" data-i18n="userMessage">
+            A quieter life, by the water.<br />Somewhere for all of us.
+          </div>
+          <p class="response" data-i18n="response">
+            Let's begin with the coast. I've placed three perspectives on your map — each with a
+            different rhythm.
+          </p>
+        </div>
+        <div class="brief">
+          <div class="brief-heading">
+            <span data-i18n="brief">YOUR EMERGING BRIEF</span><span>01</span>
+          </div>
+          <div class="brief-chips">
+            <span data-i18n="family">Family life</span
+            ><span data-i18n="waterfront">By the water</span
+            ><span data-i18n="quiet">A little quieter</span>
+          </div>
+          <p data-i18n="briefNote">Only you can see this conversation.</p>
+        </div>
+        <button class="map-story" id="story">
+          <span>↗</span><span data-i18n="story">Follow the coastline</span
+          ><span class="story-count">01 — 03</span>
+        </button>
+      </section>
+
+      <section class="map-tools" aria-label="Map destinations">
+        <button class="place-pill selected" data-place="dubai" data-i18n="palm">
+          Palm Jumeirah</button
+        ><button class="place-pill" data-place="saadiyat" data-i18n="saadiyat">
+          Saadiyat Island</button
+        ><button class="place-pill" data-place="sahel" data-i18n="sahel">North Coast</button>
+      </section>
+
+      <aside class="project-dossier" aria-labelledby="project-title">
+        <div class="dossier-top">
+          <span class="micro" data-i18n="perspective">A DIFFERENT PERSPECTIVE</span
+          ><span class="demo">DEMO</span>
+        </div>
+        <div class="project-number">01 <span>/ 03</span></div>
+        <h3 id="project-title" data-i18n="project">The Tidal House</h3>
+        <p class="project-location" data-i18n="projectPlace">
+          A fictional residence · Palm Jumeirah
+        </p>
+        <div class="project-divider"></div>
+        <div class="fit">
+          <span class="fit-symbol">↗</span>
+          <p data-i18n="fit">
+            Room for the whole family.<br />A closer relationship with the water.
+          </p>
+        </div>
+        <p class="tradeoff">
+          <span data-i18n="consider">Worth considering</span><br /><span data-i18n="tradeoff"
+            >Island life means a longer journey into the city.</span
+          >
+        </p>
+        <button id="project-open" class="project-action">
+          <span data-i18n="closer">Take a closer look</span><span>↗</span>
+        </button>
+        <p class="demo-note" data-i18n="demoNote">Concept study · Illustrative positioning only</p>
+      </aside>
+
+      <section class="composer-region" id="conversation">
+        <form id="composer" class="composer">
+          <label class="sr-only" for="intent" data-i18n="label"
+            >Describe the life you are looking for</label
+          ><span class="composer-symbol" aria-hidden="true">✧</span
+          ><input
+            id="intent"
+            autocomplete="off"
+            placeholder="Tell us about the life you're looking for…"
+          /><button id="voice" type="button" class="voice" aria-label="Voice input">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              aria-hidden="true"
+            >
+              <rect x="9" y="3" width="6" height="12" rx="3" />
+              <path d="M6 10v2a6 6 0 0 0 12 0v-2M12 18v3M9 21h6" />
+            </svg></button
+          ><button class="submit" aria-label="Begin conversation"><span>↗</span></button>
+        </form>
+        <div class="composer-foot">
+          <span
+            ><span class="lock">⌑</span
+            ><span data-i18n="discreet">Private by design. Guided by you.</span></span
+          ><span class="suggestion"
+            ><span data-i18n="try">Try</span>
+            <button data-prompt="sahel" data-i18n="example">
+              “A summer on the North Coast”
+            </button></span
+          >
+        </div>
+      </section>
+      <footer class="foot">
+        <span data-i18n="concept">CONCEPT 01 / NOIR CINEMATIC</span
+        ><span data-i18n="markets">DUBAI · ABU DHABI · EGYPT</span>
+      </footer>
+      <div id="notice" role="status" aria-live="polite"></div>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

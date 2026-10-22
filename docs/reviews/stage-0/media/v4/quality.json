@@ -1,0 +1,204 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "dark",
+      "lcp": 152,
+      "mapReadyMs": 1389.1000000238419,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            PURPOSE\n            Family\n          \n          \n            PLACE\n            Dubai\n          \n          \n            PRIORITY\n            Schools to verify\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "theme": "light",
+      "lcp": 52,
+      "mapReadyMs": 1282.5,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            PURPOSE\n            Family\n          \n          \n            PLACE\n            Dubai\n          \n          \n            PRIORITY\n            Schools to verify\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "theme": "dark",
+      "lcp": 64,
+      "mapReadyMs": 1865.7000000178814,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            الغاية\n            العائلة\n          \n          \n            المكان\n            دبي\n          \n          \n            الأولوية\n            التحقق من المدارس\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "theme": "light",
+      "lcp": 64,
+      "mapReadyMs": 2039.5999999940395,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            الغاية\n            العائلة\n          \n          \n            المكان\n            دبي\n          \n          \n            الأولوية\n            التحقق من المدارس\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "theme": "dark",
+      "lcp": 56,
+      "mapReadyMs": 1531.5,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            PURPOSE\n            Family\n          \n          \n            PLACE\n            Dubai\n          \n          \n            PRIORITY\n            Schools to verify\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "theme": "light",
+      "lcp": 68,
+      "mapReadyMs": 1431,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            PURPOSE\n            Family\n          \n          \n            PLACE\n            Dubai\n          \n          \n            PRIORITY\n            Schools to verify\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    },
+    {
+      "width": 1024,
+      "locale": "ar",
+      "theme": "dark",
+      "lcp": 64,
+      "mapReadyMs": 1362.699999988079,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            الغاية\n            العائلة\n          \n          \n            المكان\n            دبي\n          \n          \n            الأولوية\n            التحقق من المدارس\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    },
+    {
+      "width": 1024,
+      "locale": "ar",
+      "theme": "light",
+      "lcp": 68,
+      "mapReadyMs": 1415.9000000059605,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            الغاية\n            العائلة\n          \n          \n            المكان\n            دبي\n          \n          \n            الأولوية\n            التحقق من المدارس\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "dark",
+      "lcp": 60,
+      "mapReadyMs": 1423.699999988079,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            PURPOSE\n            Family\n          \n          \n            PLACE\n            Dubai\n          \n          \n            PRIORITY\n            Schools to verify\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "theme": "light",
+      "lcp": 56,
+      "mapReadyMs": 1619.4000000059605,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            PURPOSE\n            Family\n          \n          \n            PLACE\n            Dubai\n          \n          \n            PRIORITY\n            Schools to verify\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "theme": "dark",
+      "lcp": 64,
+      "mapReadyMs": 3582.300000011921,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            الغاية\n            العائلة\n          \n          \n            المكان\n            دبي\n          \n          \n            الأولوية\n            التحقق من المدارس\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "theme": "light",
+      "lcp": 56,
+      "mapReadyMs": 1397.2999999821186,
+      "homeViolations": [],
+      "mapViolations": [],
+      "overflow": false,
+      "brief": "\n          \n            الغاية\n            العائلة\n          \n          \n            المكان\n            دبي\n          \n          \n            الأولوية\n            التحقق من المدارس\n          \n        ",
+      "center": [
+        55.15999999999997,
+        25.099999999999966
+      ],
+      "schoolMatched": true
+    }
+  ],
+  "frames": {
+    "samples": 106,
+    "medianMs": 16.600000023841858,
+    "p95Ms": 17.5,
+    "maximumMs": 18.30000001192093,
+    "longFramesOver50Ms": 0,
+    "note": "Local Chrome rendering sample; not an M1/mid-range physical-device certification."
+  }
+}
