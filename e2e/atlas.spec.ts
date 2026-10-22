@@ -15,7 +15,9 @@ test('Arrival intent moves the geographic camera and carries the request into Ex
     })
     .toBe(true);
   await page.locator('#arrival-intent').press('Enter');
-  await expect(page).toHaveURL(/\/en\/explore\?/);
+  // The CI dev server compiles Explore on its first navigation. Production load
+  // budgets are checked separately by Lighthouse, without this compilation step.
+  await expect(page).toHaveURL(/\/en\/explore\?/, { timeout: 15000 });
   await expect(page.locator('#atlas-prompt')).toHaveValue(
     'Schools within 20 minutes of Downtown Dubai',
   );
