@@ -1,0 +1,816 @@
+{
+  "reportLcp": 2180.5060000000003,
+  "reconstructedLcp": 2180.5060000000003,
+  "reconstructedFcp": 808.253,
+  "observedTimings": {
+    "timeOrigin": 0,
+    "firstPaint": 56.532,
+    "firstContentfulPaint": 56.532,
+    "firstContentfulPaintAllFrames": 56.532,
+    "largestContentfulPaint": 56.532,
+    "largestContentfulPaintAllFrames": 56.532,
+    "load": 100.97,
+    "domContentLoaded": 25.118,
+    "traceEnd": 2652.838
+  },
+  "settings": {
+    "output": ["json"],
+    "maxWaitForFcp": 30000,
+    "maxWaitForLoad": 45000,
+    "pauseAfterFcpMs": 1000,
+    "pauseAfterLoadMs": 1000,
+    "networkQuietThresholdMs": 1000,
+    "cpuQuietThresholdMs": 1000,
+    "formFactor": "mobile",
+    "throttling": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    },
+    "throttlingMethod": "simulate",
+    "screenEmulation": {
+      "mobile": true,
+      "width": 412,
+      "height": 823,
+      "deviceScaleFactor": 1.75,
+      "disabled": false
+    },
+    "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+    "auditMode": false,
+    "gatherMode": false,
+    "clearStorageTypes": ["file_systems", "shader_cache", "service_workers", "cache_storage"],
+    "disableStorageReset": false,
+    "debugNavigation": false,
+    "channel": "cli",
+    "usePassiveGathering": false,
+    "disableFullPageScreenshot": false,
+    "skipAboutBlank": false,
+    "blankPage": "about:blank",
+    "ignoreStatusCode": false,
+    "locale": "en-US",
+    "blockedUrlPatterns": null,
+    "additionalTraceCategories": null,
+    "extraHeaders": null,
+    "precomputedLanternData": null,
+    "onlyAudits": null,
+    "onlyCategories": ["performance"],
+    "skipAudits": null
+  },
+  "optimistic": {
+    "timeInMs": 2180.5060000000003,
+    "nodes": [
+      {
+        "id": "5804423.262748351606",
+        "type": "cpu",
+        "startTime": 2106.5060000000003,
+        "endTime": 2180.5060000000003,
+        "duration": 74,
+        "dependencies": [
+          "0BC67D8AEBB5EFCB0358667C439CB01B",
+          "80013.4",
+          "80013.2",
+          "80013.5",
+          "80013.3"
+        ],
+        "observedStartMs": 47.761,
+        "observedDurationMs": 18.391,
+        "scripts": ["http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js"],
+        "events": [
+          {
+            "name": "EvaluateScript",
+            "durationMs": 17.811,
+            "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js"
+          },
+          {
+            "name": "ScriptCompiled",
+            "durationMs": 14.191,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.run",
+            "durationMs": 14.178
+          },
+          {
+            "name": "RunMicrotasks",
+            "durationMs": 4.06
+          },
+          {
+            "name": "v8.compile",
+            "durationMs": 3.614,
+            "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js"
+          },
+          {
+            "name": "EventDispatch",
+            "durationMs": 0.37
+          },
+          {
+            "name": "v8.callFunction",
+            "durationMs": 0.343
+          },
+          {
+            "name": "FunctionCall",
+            "durationMs": 0.341,
+            "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js"
+          },
+          {
+            "name": "v8.callFunction",
+            "durationMs": 0.171
+          },
+          {
+            "name": "FunctionCall",
+            "durationMs": 0.168,
+            "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js"
+          },
+          {
+            "name": "ScriptCatchup",
+            "durationMs": 0.129
+          },
+          {
+            "name": "v8.callFunction",
+            "durationMs": 0.018
+          },
+          {
+            "name": "FunctionCall",
+            "durationMs": 0.009,
+            "url": "http://localhost:3001/_next/static/chunks/webpack-f0c1a940908b782e.js"
+          },
+          {
+            "name": "v8.newInstance",
+            "durationMs": 0.008
+          },
+          {
+            "name": "v8.produceCache",
+            "durationMs": 0.007
+          }
+        ]
+      },
+      {
+        "id": "80013.3",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 2106.5060000000003,
+        "duration": 1353.2530000000002,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.723,
+        "observedDurationMs": 12.058000030517578,
+        "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js",
+        "resourceType": "Script",
+        "priority": "Low",
+        "transferSize": 64731,
+        "resourceSize": 203727,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "80013.4",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 2106.5060000000003,
+        "duration": 1353.2530000000002,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.748,
+        "observedDurationMs": 14.381999969482422,
+        "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js",
+        "resourceType": "Script",
+        "priority": "Low",
+        "transferSize": 67864,
+        "resourceSize": 243181,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "80013.7",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 1656.506,
+        "duration": 903.253,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.86699996948242,
+        "observedDurationMs": 6.364000030517579,
+        "url": "http://localhost:3001/fonts/ui.woff2",
+        "resourceType": "Font",
+        "priority": "High",
+        "transferSize": 24178,
+        "resourceSize": 23664,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "80013.6",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 1506.506,
+        "duration": 753.253,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.793,
+        "observedDurationMs": 6.631999969482422,
+        "url": "http://localhost:3001/fonts/display.woff2",
+        "resourceType": "Font",
+        "priority": "High",
+        "transferSize": 23390,
+        "resourceSize": 22876,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "80013.2",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 1056.506,
+        "duration": 303.25300000000004,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.555,
+        "observedDurationMs": 5.805,
+        "url": "http://localhost:3001/_next/static/chunks/webpack-f0c1a940908b782e.js",
+        "resourceType": "Script",
+        "priority": "Low",
+        "transferSize": 3170,
+        "resourceSize": 5186,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "80013.5",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 1056.506,
+        "duration": 303.25300000000004,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.769,
+        "observedDurationMs": 7.077,
+        "url": "http://localhost:3001/_next/static/chunks/main-app-00c210d1e25e7938.js",
+        "resourceType": "Script",
+        "priority": "Low",
+        "transferSize": 1106,
+        "resourceSize": 527,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "5804423.262748345337",
+        "type": "cpu",
+        "startTime": 802.253,
+        "endTime": 808.253,
+        "duration": 6,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 41.492,
+        "observedDurationMs": 3.066,
+        "scripts": [],
+        "events": [
+          {
+            "name": "Layout",
+            "durationMs": 1.165
+          },
+          {
+            "name": "PrePaint",
+            "durationMs": 0.649
+          },
+          {
+            "name": "Paint",
+            "durationMs": 0.488
+          },
+          {
+            "name": "UpdateLayoutTree",
+            "durationMs": 0.168
+          },
+          {
+            "name": "Layerize",
+            "durationMs": 0.092
+          },
+          {
+            "name": "Commit",
+            "durationMs": 0.071
+          },
+          {
+            "name": "IntersectionObserverController::computeIntersections",
+            "durationMs": 0.007
+          },
+          {
+            "name": "UpdateLayer",
+            "durationMs": 0.002
+          },
+          {
+            "name": "EventDispatch",
+            "durationMs": 0.001
+          },
+          {
+            "name": "UpdateLayer",
+            "durationMs": 0.001
+          }
+        ]
+      },
+      {
+        "id": "5804423.262748328760",
+        "type": "cpu",
+        "startTime": 771.253,
+        "endTime": 802.253,
+        "duration": 31,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 24.915,
+        "observedDurationMs": 15.367,
+        "scripts": [],
+        "events": [
+          {
+            "name": "Layout",
+            "durationMs": 7.642
+          },
+          {
+            "name": "UpdateLayoutTree",
+            "durationMs": 6.901
+          },
+          {
+            "name": "Layout",
+            "durationMs": 0.014
+          },
+          {
+            "name": "EventDispatch",
+            "durationMs": 0.01
+          },
+          {
+            "name": "ParseHTML",
+            "durationMs": 0.002
+          },
+          {
+            "name": "ParseHTML",
+            "durationMs": 0.001
+          },
+          {
+            "name": "EventDispatch",
+            "durationMs": 0.001
+          }
+        ]
+      },
+      {
+        "id": "5804423.262748324030",
+        "type": "cpu",
+        "startTime": 753.253,
+        "endTime": 771.253,
+        "duration": 18,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 20.185,
+        "observedDurationMs": 4.404,
+        "scripts": ["http://localhost:3001/en"],
+        "events": [
+          {
+            "name": "ParseHTML",
+            "durationMs": 4.319
+          },
+          {
+            "name": "EvaluateScript",
+            "durationMs": 2.043,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.compile",
+            "durationMs": 2.024,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "EvaluateScript",
+            "durationMs": 0.114,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.compile",
+            "durationMs": 0.072,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "ScriptCatchup",
+            "durationMs": 0.037
+          },
+          {
+            "name": "ScriptCompiled",
+            "durationMs": 0.032,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.run",
+            "durationMs": 0.023
+          },
+          {
+            "name": "ScriptCompiled",
+            "durationMs": 0.015,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.run",
+            "durationMs": 0.009
+          },
+          {
+            "name": "HTMLDocumentParser::DocumentElementAvailable",
+            "durationMs": 0.003
+          },
+          {
+            "name": "ScriptCatchup",
+            "durationMs": 0.001,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "ScriptCatchup",
+            "durationMs": 0.001
+          },
+          {
+            "name": "ScriptCatchup",
+            "durationMs": 0.001,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.produceCache",
+            "durationMs": 0.001
+          }
+        ]
+      },
+      {
+        "id": "0BC67D8AEBB5EFCB0358667C439CB01B",
+        "type": "network",
+        "startTime": 0,
+        "endTime": 753.253,
+        "duration": 753.253,
+        "dependencies": [],
+        "observedStartMs": 0.28899996948242185,
+        "observedDurationMs": 17.265000061035156,
+        "url": "http://localhost:3001/en",
+        "resourceType": "Document",
+        "priority": "VeryHigh",
+        "transferSize": 40507,
+        "resourceSize": 176407,
+        "initiatorType": "other"
+      }
+    ]
+  },
+  "pessimistic": {
+    "timeInMs": 2180.5060000000003,
+    "nodes": [
+      {
+        "id": "5804423.262748351606",
+        "type": "cpu",
+        "startTime": 2106.5060000000003,
+        "endTime": 2180.5060000000003,
+        "duration": 74,
+        "dependencies": [
+          "0BC67D8AEBB5EFCB0358667C439CB01B",
+          "80013.4",
+          "80013.2",
+          "80013.5",
+          "80013.3"
+        ],
+        "observedStartMs": 47.761,
+        "observedDurationMs": 18.391,
+        "scripts": ["http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js"],
+        "events": [
+          {
+            "name": "EvaluateScript",
+            "durationMs": 17.811,
+            "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js"
+          },
+          {
+            "name": "ScriptCompiled",
+            "durationMs": 14.191,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.run",
+            "durationMs": 14.178
+          },
+          {
+            "name": "RunMicrotasks",
+            "durationMs": 4.06
+          },
+          {
+            "name": "v8.compile",
+            "durationMs": 3.614,
+            "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js"
+          },
+          {
+            "name": "EventDispatch",
+            "durationMs": 0.37
+          },
+          {
+            "name": "v8.callFunction",
+            "durationMs": 0.343
+          },
+          {
+            "name": "FunctionCall",
+            "durationMs": 0.341,
+            "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js"
+          },
+          {
+            "name": "v8.callFunction",
+            "durationMs": 0.171
+          },
+          {
+            "name": "FunctionCall",
+            "durationMs": 0.168,
+            "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js"
+          },
+          {
+            "name": "ScriptCatchup",
+            "durationMs": 0.129
+          },
+          {
+            "name": "v8.callFunction",
+            "durationMs": 0.018
+          },
+          {
+            "name": "FunctionCall",
+            "durationMs": 0.009,
+            "url": "http://localhost:3001/_next/static/chunks/webpack-f0c1a940908b782e.js"
+          },
+          {
+            "name": "v8.newInstance",
+            "durationMs": 0.008
+          },
+          {
+            "name": "v8.produceCache",
+            "durationMs": 0.007
+          }
+        ]
+      },
+      {
+        "id": "80013.3",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 2106.5060000000003,
+        "duration": 1353.2530000000002,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.723,
+        "observedDurationMs": 12.058000030517578,
+        "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js",
+        "resourceType": "Script",
+        "priority": "Low",
+        "transferSize": 64731,
+        "resourceSize": 203727,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "80013.4",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 2106.5060000000003,
+        "duration": 1353.2530000000002,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.748,
+        "observedDurationMs": 14.381999969482422,
+        "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js",
+        "resourceType": "Script",
+        "priority": "Low",
+        "transferSize": 67864,
+        "resourceSize": 243181,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "80013.7",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 1656.506,
+        "duration": 903.253,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.86699996948242,
+        "observedDurationMs": 6.364000030517579,
+        "url": "http://localhost:3001/fonts/ui.woff2",
+        "resourceType": "Font",
+        "priority": "High",
+        "transferSize": 24178,
+        "resourceSize": 23664,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "80013.6",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 1506.506,
+        "duration": 753.253,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.793,
+        "observedDurationMs": 6.631999969482422,
+        "url": "http://localhost:3001/fonts/display.woff2",
+        "resourceType": "Font",
+        "priority": "High",
+        "transferSize": 23390,
+        "resourceSize": 22876,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "80013.2",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 1056.506,
+        "duration": 303.25300000000004,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.555,
+        "observedDurationMs": 5.805,
+        "url": "http://localhost:3001/_next/static/chunks/webpack-f0c1a940908b782e.js",
+        "resourceType": "Script",
+        "priority": "Low",
+        "transferSize": 3170,
+        "resourceSize": 5186,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "80013.5",
+        "type": "network",
+        "startTime": 753.253,
+        "endTime": 1056.506,
+        "duration": 303.25300000000004,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 19.769,
+        "observedDurationMs": 7.077,
+        "url": "http://localhost:3001/_next/static/chunks/main-app-00c210d1e25e7938.js",
+        "resourceType": "Script",
+        "priority": "Low",
+        "transferSize": 1106,
+        "resourceSize": 527,
+        "initiatorType": "parser"
+      },
+      {
+        "id": "5804423.262748345337",
+        "type": "cpu",
+        "startTime": 802.253,
+        "endTime": 808.253,
+        "duration": 6,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 41.492,
+        "observedDurationMs": 3.066,
+        "scripts": [],
+        "events": [
+          {
+            "name": "Layout",
+            "durationMs": 1.165
+          },
+          {
+            "name": "PrePaint",
+            "durationMs": 0.649
+          },
+          {
+            "name": "Paint",
+            "durationMs": 0.488
+          },
+          {
+            "name": "UpdateLayoutTree",
+            "durationMs": 0.168
+          },
+          {
+            "name": "Layerize",
+            "durationMs": 0.092
+          },
+          {
+            "name": "Commit",
+            "durationMs": 0.071
+          },
+          {
+            "name": "IntersectionObserverController::computeIntersections",
+            "durationMs": 0.007
+          },
+          {
+            "name": "UpdateLayer",
+            "durationMs": 0.002
+          },
+          {
+            "name": "EventDispatch",
+            "durationMs": 0.001
+          },
+          {
+            "name": "UpdateLayer",
+            "durationMs": 0.001
+          }
+        ]
+      },
+      {
+        "id": "5804423.262748328760",
+        "type": "cpu",
+        "startTime": 771.253,
+        "endTime": 802.253,
+        "duration": 31,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 24.915,
+        "observedDurationMs": 15.367,
+        "scripts": [],
+        "events": [
+          {
+            "name": "Layout",
+            "durationMs": 7.642
+          },
+          {
+            "name": "UpdateLayoutTree",
+            "durationMs": 6.901
+          },
+          {
+            "name": "Layout",
+            "durationMs": 0.014
+          },
+          {
+            "name": "EventDispatch",
+            "durationMs": 0.01
+          },
+          {
+            "name": "ParseHTML",
+            "durationMs": 0.002
+          },
+          {
+            "name": "ParseHTML",
+            "durationMs": 0.001
+          },
+          {
+            "name": "EventDispatch",
+            "durationMs": 0.001
+          }
+        ]
+      },
+      {
+        "id": "5804423.262748324030",
+        "type": "cpu",
+        "startTime": 753.253,
+        "endTime": 771.253,
+        "duration": 18,
+        "dependencies": ["0BC67D8AEBB5EFCB0358667C439CB01B"],
+        "observedStartMs": 20.185,
+        "observedDurationMs": 4.404,
+        "scripts": ["http://localhost:3001/en"],
+        "events": [
+          {
+            "name": "ParseHTML",
+            "durationMs": 4.319
+          },
+          {
+            "name": "EvaluateScript",
+            "durationMs": 2.043,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.compile",
+            "durationMs": 2.024,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "EvaluateScript",
+            "durationMs": 0.114,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.compile",
+            "durationMs": 0.072,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "ScriptCatchup",
+            "durationMs": 0.037
+          },
+          {
+            "name": "ScriptCompiled",
+            "durationMs": 0.032,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.run",
+            "durationMs": 0.023
+          },
+          {
+            "name": "ScriptCompiled",
+            "durationMs": 0.015,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.run",
+            "durationMs": 0.009
+          },
+          {
+            "name": "HTMLDocumentParser::DocumentElementAvailable",
+            "durationMs": 0.003
+          },
+          {
+            "name": "ScriptCatchup",
+            "durationMs": 0.001,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "ScriptCatchup",
+            "durationMs": 0.001
+          },
+          {
+            "name": "ScriptCatchup",
+            "durationMs": 0.001,
+            "url": "http://localhost:3001/en"
+          },
+          {
+            "name": "v8.produceCache",
+            "durationMs": 0.001
+          }
+        ]
+      },
+      {
+        "id": "0BC67D8AEBB5EFCB0358667C439CB01B",
+        "type": "network",
+        "startTime": 0,
+        "endTime": 753.253,
+        "duration": 753.253,
+        "dependencies": [],
+        "observedStartMs": 0.28899996948242185,
+        "observedDurationMs": 17.265000061035156,
+        "url": "http://localhost:3001/en",
+        "resourceType": "Document",
+        "priority": "VeryHigh",
+        "transferSize": 40507,
+        "resourceSize": 176407,
+        "initiatorType": "other"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "path": "/tmp/darivo-html-scope-2500-intl-False.html",
+    "retainedCSSRawBytesApprox": 2500,
+    "removeLegacyIntlMessages": false,
+    "rawBytes": 127602,
+    "gzipBytes": 27853,
+    "brotli6Bytes": 21824,
+    "brotli11Bytes": 19458
+  },
+  {
+    "path": "/tmp/darivo-html-scope-2500-intl-True.html",
+    "retainedCSSRawBytesApprox": 2500,
+    "removeLegacyIntlMessages": true,
+    "rawBytes": 110581,
+    "gzipBytes": 21742,
+    "brotli6Bytes": 16102,
+    "brotli11Bytes": 14434
+  },
+  {
+    "path": "/tmp/darivo-html-scope-3500-intl-False.html",
+    "retainedCSSRawBytesApprox": 3500,
+    "removeLegacyIntlMessages": false,
+    "rawBytes": 129624,
+    "gzipBytes": 28084,
+    "brotli6Bytes": 22082,
+    "brotli11Bytes": 19633
+  },
+  {
+    "path": "/tmp/darivo-html-scope-3500-intl-True.html",
+    "retainedCSSRawBytesApprox": 3500,
+    "removeLegacyIntlMessages": true,
+    "rawBytes": 112603,
+    "gzipBytes": 22013,
+    "brotli6Bytes": 16285,
+    "brotli11Bytes": 14616
+  }
+]

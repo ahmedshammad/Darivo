@@ -1,0 +1,419 @@
+{
+  "compression": [
+    {
+      "url": "/en",
+      "rawBytes": 176407,
+      "gzipBytes": 38555,
+      "gzipMs": 2.3569590000000176,
+      "levels": [
+        {
+          "quality": 4,
+          "bytes": 29807,
+          "compressionMs": 1.1932920000000422,
+          "savedVsGzip": 8748
+        },
+        {
+          "quality": 6,
+          "bytes": 27369,
+          "compressionMs": 1.8210829999999874,
+          "savedVsGzip": 11186
+        },
+        {
+          "quality": 9,
+          "bytes": 27001,
+          "compressionMs": 5.029042000000004,
+          "savedVsGzip": 11554
+        },
+        {
+          "quality": 11,
+          "bytes": 24526,
+          "compressionMs": 117.29899999999998,
+          "savedVsGzip": 14029
+        }
+      ]
+    },
+    {
+      "url": "/_next/static/chunks/3c783e23-c7263ae43255cbcc.js",
+      "rawBytes": 203727,
+      "gzipBytes": 64062,
+      "gzipMs": 3.0827919999999267,
+      "levels": [
+        {
+          "quality": 4,
+          "bytes": 64093,
+          "compressionMs": 1.7169169999999667,
+          "savedVsGzip": -31
+        },
+        {
+          "quality": 6,
+          "bytes": 59851,
+          "compressionMs": 3.308958000000075,
+          "savedVsGzip": 4211
+        },
+        {
+          "quality": 9,
+          "bytes": 59072,
+          "compressionMs": 5.9295419999999694,
+          "savedVsGzip": 4990
+        },
+        {
+          "quality": 11,
+          "bytes": 54693,
+          "compressionMs": 206.55833400000006,
+          "savedVsGzip": 9369
+        }
+      ]
+    },
+    {
+      "url": "/_next/static/chunks/954-2bbbf70e456176d2.js",
+      "rawBytes": 243181,
+      "gzipBytes": 67188,
+      "gzipMs": 2.9066249999999627,
+      "levels": [
+        {
+          "quality": 4,
+          "bytes": 64793,
+          "compressionMs": 1.8617920000000368,
+          "savedVsGzip": 2395
+        },
+        {
+          "quality": 6,
+          "bytes": 59953,
+          "compressionMs": 3.3845830000000205,
+          "savedVsGzip": 7235
+        },
+        {
+          "quality": 9,
+          "bytes": 59158,
+          "compressionMs": 5.877250000000004,
+          "savedVsGzip": 8030
+        },
+        {
+          "quality": 11,
+          "bytes": 54611,
+          "compressionMs": 231.73408300000006,
+          "savedVsGzip": 12577
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Document transfer reduction sensitivity",
+      "savedDocumentBytes": 4000,
+      "lcp": 2180.5060000000003,
+      "fcp": 808.253,
+      "optimistic": 2180.5060000000003,
+      "pessimistic": 2180.5060000000003
+    },
+    {
+      "name": "Document transfer reduction sensitivity",
+      "savedDocumentBytes": 8000,
+      "lcp": 2180.5060000000003,
+      "fcp": 808.253,
+      "optimistic": 2180.5060000000003,
+      "pessimistic": 2180.5060000000003
+    },
+    {
+      "name": "Document transfer reduction sensitivity",
+      "savedDocumentBytes": 12000,
+      "lcp": 2180.5060000000003,
+      "fcp": 808.253,
+      "optimistic": 2180.5060000000003,
+      "pessimistic": 2180.5060000000003
+    },
+    {
+      "name": "Document transfer reduction sensitivity",
+      "savedDocumentBytes": 16000,
+      "lcp": 2180.5060000000003,
+      "fcp": 808.253,
+      "optimistic": 2180.5060000000003,
+      "pessimistic": 2180.5060000000003
+    },
+    {
+      "name": "Document transfer reduction sensitivity",
+      "savedDocumentBytes": 20000,
+      "lcp": 2180.5060000000003,
+      "fcp": 808.253,
+      "optimistic": 2180.5060000000003,
+      "pessimistic": 2180.5060000000003
+    },
+    {
+      "name": "Document transfer reduction sensitivity",
+      "savedDocumentBytes": 26000,
+      "lcp": 2030.506,
+      "fcp": 658.253,
+      "optimistic": 2030.506,
+      "pessimistic": 2030.506
+    },
+    {
+      "name": "Document transfer reduction sensitivity",
+      "savedDocumentBytes": 30000,
+      "lcp": 2030.506,
+      "fcp": 658.253,
+      "optimistic": 2030.506,
+      "pessimistic": 2030.506
+    },
+    {
+      "name": "Brotli transfer-only estimate",
+      "quality": 4,
+      "includeDocument": false,
+      "mutated": [
+        {
+          "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js",
+          "from": 64731,
+          "to": 64762
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js",
+          "from": 67864,
+          "to": 65469
+        },
+        {
+          "url": "http://localhost:3001/en?theme=dark&_rsc=1vwYfVB7_E9t4fEj",
+          "from": 2046,
+          "to": -6702
+        }
+      ],
+      "lcp": 2180.5060000000003,
+      "fcp": 808.253,
+      "optimistic": 2180.5060000000003,
+      "pessimistic": 2180.5060000000003
+    },
+    {
+      "name": "Brotli transfer-only estimate",
+      "quality": 4,
+      "includeDocument": true,
+      "mutated": [
+        {
+          "url": "http://localhost:3001/en",
+          "from": 40507,
+          "to": 31759
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js",
+          "from": 64731,
+          "to": 64762
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js",
+          "from": 67864,
+          "to": 65469
+        },
+        {
+          "url": "http://localhost:3001/en?theme=dark&_rsc=1vwYfVB7_E9t4fEj",
+          "from": 2046,
+          "to": -6702
+        }
+      ],
+      "lcp": 2180.5060000000003,
+      "fcp": 808.253,
+      "optimistic": 2180.5060000000003,
+      "pessimistic": 2180.5060000000003
+    },
+    {
+      "name": "Brotli transfer-only estimate",
+      "quality": 6,
+      "includeDocument": false,
+      "mutated": [
+        {
+          "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js",
+          "from": 64731,
+          "to": 60520
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js",
+          "from": 67864,
+          "to": 60629
+        },
+        {
+          "url": "http://localhost:3001/en?theme=dark&_rsc=1vwYfVB7_E9t4fEj",
+          "from": 2046,
+          "to": -9140
+        }
+      ],
+      "lcp": 2180.5060000000003,
+      "fcp": 808.253,
+      "optimistic": 2180.5060000000003,
+      "pessimistic": 2180.5060000000003
+    },
+    {
+      "name": "Brotli transfer-only estimate",
+      "quality": 6,
+      "includeDocument": true,
+      "mutated": [
+        {
+          "url": "http://localhost:3001/en",
+          "from": 40507,
+          "to": 29321
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js",
+          "from": 64731,
+          "to": 60520
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js",
+          "from": 67864,
+          "to": 60629
+        },
+        {
+          "url": "http://localhost:3001/en?theme=dark&_rsc=1vwYfVB7_E9t4fEj",
+          "from": 2046,
+          "to": -9140
+        }
+      ],
+      "lcp": 2180.5060000000003,
+      "fcp": 808.253,
+      "optimistic": 2180.5060000000003,
+      "pessimistic": 2180.5060000000003
+    },
+    {
+      "name": "Brotli transfer-only estimate",
+      "quality": 9,
+      "includeDocument": false,
+      "mutated": [
+        {
+          "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js",
+          "from": 64731,
+          "to": 59741
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js",
+          "from": 67864,
+          "to": 59834
+        },
+        {
+          "url": "http://localhost:3001/en?theme=dark&_rsc=1vwYfVB7_E9t4fEj",
+          "from": 2046,
+          "to": -9508
+        }
+      ],
+      "lcp": 2180.5060000000003,
+      "fcp": 808.253,
+      "optimistic": 2180.5060000000003,
+      "pessimistic": 2180.5060000000003
+    },
+    {
+      "name": "Brotli transfer-only estimate",
+      "quality": 9,
+      "includeDocument": true,
+      "mutated": [
+        {
+          "url": "http://localhost:3001/en",
+          "from": 40507,
+          "to": 28953
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js",
+          "from": 64731,
+          "to": 59741
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js",
+          "from": 67864,
+          "to": 59834
+        },
+        {
+          "url": "http://localhost:3001/en?theme=dark&_rsc=1vwYfVB7_E9t4fEj",
+          "from": 2046,
+          "to": -9508
+        }
+      ],
+      "lcp": 2180.5060000000003,
+      "fcp": 808.253,
+      "optimistic": 2180.5060000000003,
+      "pessimistic": 2180.5060000000003
+    },
+    {
+      "name": "Brotli transfer-only estimate",
+      "quality": 11,
+      "includeDocument": false,
+      "mutated": [
+        {
+          "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js",
+          "from": 64731,
+          "to": 55362
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js",
+          "from": 67864,
+          "to": 55287
+        },
+        {
+          "url": "http://localhost:3001/en?theme=dark&_rsc=1vwYfVB7_E9t4fEj",
+          "from": 2046,
+          "to": -11983
+        }
+      ],
+      "lcp": 2030.506,
+      "fcp": 808.253,
+      "optimistic": 2030.506,
+      "pessimistic": 2030.506
+    },
+    {
+      "name": "Brotli transfer-only estimate",
+      "quality": 11,
+      "includeDocument": true,
+      "mutated": [
+        {
+          "url": "http://localhost:3001/en",
+          "from": 40507,
+          "to": 26478
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/3c783e23-c7263ae43255cbcc.js",
+          "from": 64731,
+          "to": 55362
+        },
+        {
+          "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js",
+          "from": 67864,
+          "to": 55287
+        },
+        {
+          "url": "http://localhost:3001/en?theme=dark&_rsc=1vwYfVB7_E9t4fEj",
+          "from": 2046,
+          "to": -11983
+        }
+      ],
+      "lcp": 2030.506,
+      "fcp": 808.253,
+      "optimistic": 2030.506,
+      "pessimistic": 2030.506
+    },
+    {
+      "name": "Precompressed static core Brotli11 plus document byte budget",
+      "targetDocumentBytes": 24000,
+      "lcp": 2030.506,
+      "fcp": 808.253,
+      "optimistic": 2030.506,
+      "pessimistic": 2030.506
+    },
+    {
+      "name": "Precompressed static core Brotli11 plus document byte budget",
+      "targetDocumentBytes": 18000,
+      "lcp": 2030.506,
+      "fcp": 808.253,
+      "optimistic": 2030.506,
+      "pessimistic": 2030.506
+    },
+    {
+      "name": "Precompressed static core Brotli11 plus document byte budget",
+      "targetDocumentBytes": 14000,
+      "lcp": 1880.506,
+      "fcp": 658.253,
+      "optimistic": 1880.506,
+      "pessimistic": 1880.506
+    },
+    {
+      "name": "Precompressed static core Brotli11 plus document byte budget",
+      "targetDocumentBytes": 10000,
+      "lcp": 1880.506,
+      "fcp": 658.253,
+      "optimistic": 1880.506,
+      "pessimistic": 1880.506
+    }
+  ],
+  "limits": "Read-only graph sensitivity, not a measured serving change. Uses gzip byte deltas to preserve recorded response overhead. HTML is a fresh read of same build, not saved trace response. Recorded CPU/TTFB/paint cutoff fixed, excludes compression/decompression cost and header negotiation. Timings are one local M3 sync compression sample each, not server throughput benchmarks."
+}
