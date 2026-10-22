@@ -16,6 +16,8 @@ export type ParserEvalCase = {
   /** Execution-only assertions against returned records, not parsed intent. */
   resultPlaces?: ('palm' | 'saadiyat' | 'jebel-ali')[];
   forbiddenNoticeCodes?: string[];
+  scheduleSubject?: { kind: 'project'; id: string };
+  preserveBriefOnLastTurn?: boolean;
 };
 export function readParserCases(): ParserEvalCase[] {
   return readFileSync(new URL('./concierge.jsonl', import.meta.url), 'utf8')

@@ -161,6 +161,48 @@ function cardRefs(components: ConciergeComponent[]): ConciergeEntityRef[] {
     ).values(),
   ].slice(0, 12);
 }
+async function verifyScheduleSubject(
+  test: ParserEvalCase,
+  result: ConciergeTurnResult,
+  viewer: User | null,
+  out: Report,
+  label: string,
+) {
+  if (!test.scheduleSubject) return;
+  const expected = test.scheduleSubject;
+  const card = await resolveCard(expected, viewer, result.brief);
+  const timelines = result.components.filter((component) => component.kind === 'payment-timeline');
+  const notices = result.components.filter((component) => component.kind === 'notice');
+  if (
+    !card ||
+    cardRefs(result.components).length ||
+    result.proposals.length ||
+    result.components.some((component) => !['payment-timeline', 'notice'].includes(component.kind))
+  )
+    fail(
+      out,
+      label,
+      'semanticFailures',
+      'Named schedule emitted unrelated content or an unavailable subject',
+    );
+  if (timelines.length) {
+    if (timelines.length !== 1 || !equal(timelines[0].entity, expected))
+      fail(out, label, 'semanticFailures', 'Named schedule returned a different timeline subject');
+  } else if (
+    !card ||
+    notices.length !== 1 ||
+    notices[0].code !== 'UNKNOWN_FACT' ||
+    !notices[0].text.en.includes(card.name.en) ||
+    !notices[0].text.ar.includes(card.name.ar)
+  )
+    fail(
+      out,
+      label,
+      'semanticFailures',
+      'Missing schedule must name the exact authorized subject in both languages',
+    );
+}
+
 async function verifyReturnedGeography(
   test: ParserEvalCase,
   result: ConciergeTurnResult,
@@ -747,6 +789,7 @@ async function runCorpus(actors: Actor[], provider: ConciergeProvider, out: Repo
           },
         };
         try {
+          const briefBeforeTurn = structuredClone(brief);
           last = await runConciergeTurn(
             {
               message,
@@ -764,6 +807,17 @@ async function runCorpus(actors: Actor[], provider: ConciergeProvider, out: Repo
             },
           );
           await verifyResult(last, events, actor.user, out, label);
+          if (test.preserveBriefOnLastTurn && index === test.turns.length - 1) {
+            const stable = (value: ConciergeBrief) => {
+              const { rawRequest, revision, provenance, ...rest } = value;
+              void rawRequest;
+              void revision;
+              void provenance;
+              return rest;
+            };
+            if (!equal(stable(briefBeforeTurn), stable(last.brief)))
+              fail(out, label, 'semanticFailures', 'Named schedule mutated unrelated Brief fields');
+          }
           brief = last.brief;
           seen.push(...last.components);
           const refs = cardRefs(last.components);
@@ -781,6 +835,7 @@ async function runCorpus(actors: Actor[], provider: ConciergeProvider, out: Repo
       if (last) {
         checkSemantics(test, last, plan, lastCalls, out, `${actor.label}/${test.id}`);
         await verifyReturnedGeography(test, last, actor.user, out, `${actor.label}/${test.id}`);
+        await verifyScheduleSubject(test, last, actor.user, out, `${actor.label}/${test.id}`);
       }
       if (
         brief.household.schoolRequirement !== 'unspecified' &&

@@ -370,3 +370,67 @@ it('does not turn a developer explanation into a guide to the previously selecte
   ]);
   expect(result.brief.markets).toEqual(prior.markets);
 });
+
+it.each(['Show SouthMED payment plan', 'اعرض خطة السداد في ساوث ميد'])(
+  'keeps a named schedule scoped despite prior market and unit selections: %s',
+  (message) => {
+    const before = parseConciergeMessage(
+      'North Coast summer home ready by 2028, compare with a Dubai investment; private pool',
+      emptyConciergeBrief(),
+    ).brief;
+    const original = structuredClone(before);
+    for (const priorEntities of [
+      [{ kind: 'project' as const, id: 'orla-palm-jumeirah' }],
+      [{ kind: 'unit' as const, id: 'unit-prior-selection' }],
+    ]) {
+      const result = parseConciergeMessage(message, before, { priorEntities });
+      expect(result.plan.calls).toEqual([
+        { name: 'ui.showTimeline', arguments: { projectId: 'southmed' } },
+      ]);
+      expect(result.plan.continue).toBe(false);
+      expect(result.plan.clarificationFields).toEqual([]);
+      expect(result.brief).toEqual({
+        ...before,
+        rawRequest: message,
+        revision: before.revision + 1,
+        provenance: [
+          ...before.provenance,
+          { fieldId: 'rawRequest', rawText: message, origin: 'user' },
+        ],
+      });
+      expect(before).toEqual(original);
+    }
+  },
+);
+it('retains privacy and response-language restrictions on a named schedule lookup', () => {
+  const result = parseConciergeMessage(
+    'Show SouthMED payment plan; no external AI processing; reply in Arabic',
+    emptyConciergeBrief(),
+  );
+  expect(result.brief.privacy.doNotShare).toBe(true);
+  expect(result.brief.responseLanguage).toBe('ar');
+  expect(result.plan.responseLanguage).toBe('ar');
+  expect(result.plan.calls).toEqual([
+    { name: 'ui.showTimeline', arguments: { projectId: 'southmed' } },
+  ]);
+});
+it('keeps an explicit mixed inventory search instead of swallowing it as a schedule lookup', () => {
+  const result = parseConciergeMessage(
+    'Find Dubai villas and show SouthMED payment plan',
+    emptyConciergeBrief(),
+  );
+  expect(result.plan.calls.some((call) => call.name === 'search_projects')).toBe(true);
+  expect(result.plan.calls).toContainEqual({
+    name: 'ui.showTimeline',
+    arguments: { projectId: 'southmed' },
+  });
+});
+
+it('does not let a named schedule bypass advice refusal', () => {
+  expect(
+    parseConciergeMessage(
+      'Show SouthMED payment plan and give financial advice',
+      emptyConciergeBrief(),
+    ).plan.replyKey,
+  ).toBe('ADVICE_HANDOFF');
+});

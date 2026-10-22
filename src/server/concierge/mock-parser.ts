@@ -233,6 +233,34 @@ function semanticPatch(before: ConciergeBrief, after: ConciergeBrief): ProviderB
   return { baseRevision: before.revision, operations };
 }
 
+function applyConversationPreferences(
+  brief: ConciergeBrief,
+  before: ConciergeBrief,
+  raw: string,
+  options: ConciergeParseOptions,
+) {
+  const text = normalizeConciergeText(raw);
+  const restrictions = extractConciergePrivacy(raw);
+  brief.privacy.doNotSave ||= restrictions.doNotSave;
+  brief.privacy.doNotShare ||= restrictions.doNotShare;
+  brief.privacy.doNotBook ||= restrictions.doNotBook;
+  if (restrictions.discreet) brief.privacy.mode = 'discreet';
+  if (restrictions.restrictMemory)
+    brief.tasteMemory = {
+      consent: ['granted', 'revoked'].includes(before.tasteMemory.consent) ? 'revoked' : 'declined',
+      consentedAt: null,
+      items: [],
+    };
+  if (/in english|reply in english|بالانجليزي|بالانجليزيه/.test(text))
+    brief.responseLanguage = 'en';
+  else if (/in arabic|reply in arabic|بالعربي|بالعربية/.test(text)) brief.responseLanguage = 'ar';
+  const responseLanguage =
+    brief.responseLanguage === 'auto'
+      ? (options.responseLanguage ?? (/[\u0600-\u06ff]/.test(raw) ? 'ar' : 'en'))
+      : brief.responseLanguage;
+  return { restrictions, responseLanguage };
+}
+
 /** Deterministic intent parsing. This proposes actions; it never executes or authorizes them. */
 export function parseConciergeMessage(
   message: string,
@@ -243,10 +271,48 @@ export function parseConciergeMessage(
   const brief = structuredClone(before);
   const raw = message.trim().slice(0, 4000);
   const text = normalizeConciergeText(raw);
-  const calculationIntent = /calculate|scenario|illustrative yield|احسب|حساب توضيحي/.test(text);
   const advice = /(?:tax|legal|invest my savings|financial advice|ضريب|قانوني|استثمر مدخراتي)/.test(
     text,
   );
+  const namedScheduleProjects = spans(text, projectCatalogue).filter((span) => !span.negative);
+  const scheduleCommand = text.match(
+    /timeline|payment plan|schedule|خط[ةه]\s+(?:ال)?سداد|جدول|دفعات/,
+  );
+  // A single named schedule is a lookup, not a new location/selection request.
+  // In particular, SouthMED is also a North Coast alias in the map catalogue.
+  // The timeline tool resolves the named record through the authorized DAL itself.
+  const namedScheduleOnly =
+    !advice &&
+    scheduleCommand &&
+    !isNegative(text, scheduleCommand.index!) &&
+    unique(namedScheduleProjects.map((span) => span.id)).length === 1 &&
+    !/\b(?:find|search|recommend|compare|save|book|units|properties|projects)\b|ابحث|رشح|اقترح|قارن|احفظ|احجز|وحدات|مشاريع/.test(
+      text,
+    );
+  if (namedScheduleOnly) {
+    brief.rawRequest = raw;
+    const { responseLanguage } = applyConversationPreferences(brief, before, raw, options);
+    brief.provenance = [
+      ...brief.provenance,
+      { fieldId: 'rawRequest', rawText: raw.slice(0, 1000), origin: 'user' as const },
+    ].slice(-100);
+    brief.revision = before.revision + 1;
+    conciergeBriefSchema.parse(brief);
+    return {
+      brief,
+      plan: providerPlanSchema.parse({
+        version: 1,
+        baseRevision: before.revision,
+        briefPatch: semanticPatch(before, brief),
+        calls: [{ name: 'ui.showTimeline', arguments: { projectId: namedScheduleProjects[0].id } }],
+        replyKey: 'RESULTS',
+        clarificationFields: [],
+        responseLanguage,
+        continue: false,
+      }),
+    };
+  }
+  const calculationIntent = /calculate|scenario|illustrative yield|احسب|حساب توضيحي/.test(text);
   brief.rawRequest = raw;
   const clarification = new Set<string>();
   const uncertainty = (key: string) => {
@@ -532,24 +598,12 @@ export function parseConciergeMessage(
         });
     }
   }
-  const restrictions = extractConciergePrivacy(raw);
-  brief.privacy.doNotSave ||= restrictions.doNotSave;
-  brief.privacy.doNotShare ||= restrictions.doNotShare;
-  brief.privacy.doNotBook ||= restrictions.doNotBook;
-  if (restrictions.discreet) brief.privacy.mode = 'discreet';
-  if (restrictions.restrictMemory)
-    brief.tasteMemory = {
-      consent: ['granted', 'revoked'].includes(before.tasteMemory.consent) ? 'revoked' : 'declined',
-      consentedAt: null,
-      items: [],
-    };
-  if (/in english|reply in english|بالانجليزي|بالانجليزيه/.test(text))
-    brief.responseLanguage = 'en';
-  else if (/in arabic|reply in arabic|بالعربي|بالعربية/.test(text)) brief.responseLanguage = 'ar';
-  const responseLanguage =
-    brief.responseLanguage === 'auto'
-      ? (options.responseLanguage ?? (/[\u0600-\u06ff]/.test(raw) ? 'ar' : 'en'))
-      : brief.responseLanguage;
+  const { restrictions, responseLanguage } = applyConversationPreferences(
+    brief,
+    before,
+    raw,
+    options,
+  );
   for (const list of ['mustHaves', 'exclusions'] as const)
     brief[list] = brief[list].flatMap((constraint) => {
       const marketIds = constraint.marketIds.filter((id) => brief.markets.some((m) => m.id === id));

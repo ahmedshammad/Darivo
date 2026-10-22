@@ -22,7 +22,7 @@ import {
   projectMatchesMarket,
 } from '@/src/server/concierge/tools';
 import { getAtlasData } from '@/src/server/db/atlas';
-import { MockConciergeProvider } from '@/src/server/concierge/mock-parser';
+import { MockConciergeProvider, parseConciergeMessage } from '@/src/server/concierge/mock-parser';
 import type { MarketBrief } from '@/src/lib/concierge';
 
 const providerFor = (
@@ -763,6 +763,73 @@ describe('Concierge authorized engine and grounded replay', () => {
     expect(JSON.stringify(replay)).not.toContain('fabricated history value');
     expect(replay[0].kind).toBe('developer-card');
   });
+  it('keeps a named SouthMED payment request attached to that project after a selected unit and ORLA', async () => {
+    const unit = await db.property.findFirstOrThrow({
+      where: { visibility: 'PUBLIC', paymentPlan: { isNot: null } },
+    });
+    const original = parseConciergeMessage(
+      'North Coast summer home ready by 2028, compare with a Dubai investment',
+      emptyConciergeBrief(),
+    ).brief;
+    const requested = await resolveCard({ kind: 'project', id: 'southmed' }, null, original);
+    expect(requested).not.toBeNull();
+    for (const [locale, message] of [
+      ['en', 'Show SouthMED payment plan'],
+      ['ar', 'اعرض خطة السداد في ساوث ميد'],
+    ] as const) {
+      const events: ConciergeStreamEvent[] = [];
+      const result = await runConciergeTurn(
+        {
+          ...input(new MockConciergeProvider()),
+          brief: structuredClone(original),
+          locale,
+          message,
+          priorEntities: [
+            { kind: 'unit', id: unit.id },
+            { kind: 'project', id: 'orla-palm-jumeirah' },
+          ],
+        },
+        (event) => {
+          events.push(event);
+        },
+      );
+      expect(result.status).toBe('complete');
+      expect(result.brief.markets).toEqual(original.markets);
+      expect(
+        result.components.some(
+          (component) => 'cards' in component || component.kind === 'payment-timeline',
+        ),
+      ).toBe(false);
+      expect(
+        events.filter((event) => event.type === 'tool.started').map((event) => event.toolName),
+      ).toEqual(['ui.showTimeline']);
+      const missing = result.components.find(
+        (component) => component.kind === 'notice' && component.code === 'UNKNOWN_FACT',
+      );
+      expect(missing?.kind).toBe('notice');
+      if (missing?.kind !== 'notice') throw new Error('missing_payment_notice');
+      expect(missing.text[locale]).toContain(requested!.name[locale]);
+      expect(missing.text.en).not.toContain('Orla');
+      expect(result.text).not.toContain('Review your requirements');
+      expect(result.actions).toEqual([]);
+      expect(result.proposals).toEqual([]);
+    }
+  });
+  it('names only an authorized timeline subject when its supplied payment evidence cannot be used', async () => {
+    const result = await executeConciergeTool(
+      {
+        name: 'payment_plan_projection',
+        arguments: { projectId: 'southmed', scheduleFactIds: ['unrelated:payment_plan'] },
+      },
+      context(),
+    );
+    const missing = result.components[0];
+    expect(missing.kind).toBe('notice');
+    if (missing.kind !== 'notice') throw new Error('missing_payment_notice');
+    expect(missing.text.en).toContain('SouthMED');
+    expect(missing.text.en).not.toContain('unrelated');
+    expect(result.actions).toEqual([]);
+  });
   it('uses the exact authorized fictional unit price and seeded payment schedule, including replay', async () => {
     const unit = await db.property.findFirstOrThrow({
       where: { visibility: 'PUBLIC', paymentPlan: { isNot: null } },
@@ -818,6 +885,27 @@ describe('Concierge authorized engine and grounded replay', () => {
       context(),
     );
     expect(mismatched.components[0].kind).toBe('notice');
+  });
+  it('keeps unit identities out of replayable unavailable-payment notices', async () => {
+    const unit = await db.property.findFirstOrThrow({
+      where: { visibility: 'PUBLIC', paymentPlan: { is: null } },
+    });
+    const card = await resolveCard({ kind: 'unit', id: unit.id }, null, emptyConciergeBrief());
+    expect(card).not.toBeNull();
+    const output = await executeConciergeTool(
+      { name: 'ui.showTimeline', arguments: { unitId: unit.id } },
+      context(),
+    );
+    const noticeText = JSON.stringify(output.components);
+    expect(noticeText).not.toContain(unit.id);
+    expect(noticeText).not.toContain(card!.name.en);
+    expect(noticeText).not.toContain(card!.name.ar);
+    const replay = await rehydrateConciergeComponents(
+      output.components,
+      null,
+      emptyConciergeBrief(),
+    );
+    expect(replay).toEqual(output.components);
   });
   it('does not expose a private unit timeline or manufacture a plan for a real project passed as unit', async () => {
     for (const unitId of ['property-017', 'property-020', 'orla-palm-jumeirah']) {

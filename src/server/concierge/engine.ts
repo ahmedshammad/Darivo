@@ -396,21 +396,41 @@ export async function runConciergeTurn(
       }
     }
     await send({ type: 'status', phase: 'composing' });
-    if (replyKey === 'RESULTS' && !components.some((component) => component.kind !== 'notice'))
+    const paymentUnavailable = components.some(
+      (component) =>
+        component.kind === 'notice' &&
+        component.code === 'UNKNOWN_FACT' &&
+        component.id.endsWith(':payment-unavailable'),
+    );
+    if (
+      replyKey === 'RESULTS' &&
+      !paymentUnavailable &&
+      !components.some((component) => component.kind !== 'notice')
+    )
       replyKey = 'NO_MATCHES';
     if (proposals.length) replyKey = 'WRITE_CONFIRMATION';
     // Application-owned prose is never composed from provider-authored factual strings.
-    const contextualCopy = components.some((component) => component.kind === 'comparison')
+    const contextualCopy = paymentUnavailable
       ? {
-          en: 'Compare the original prices and reported completion details below. Unknowns remain explicit; availability needs confirmation.',
-          ar: 'قارن الأسعار الأصلية وتفاصيل الإنجاز المعلنة أدناه. تبقى المعلومات غير المعروفة واضحة؛ والتوافر يحتاج إلى تأكيد.',
+          en: 'The requested payment terms need confirmation; I have not estimated instalments.',
+          ar: 'تحتاج شروط السداد المطلوبة إلى تأكيد؛ لم أقدّر أي أقساط.',
         }
-      : components.some((component) => component.id.endsWith(':area-qualification'))
+      : components.some((component) => component.kind === 'payment-timeline')
         ? {
-            en: 'Start with the neighbourhood map, then compare the labelled fictional examples. School suitability remains an open check.',
-            ar: 'ابدأ بخريطة المناطق، ثم قارن الأمثلة الخيالية المعلّمة بوضوح. تبقى ملاءمة المدارس بحاجة إلى تحقق.',
+            en: 'Review the recorded payment schedule and its source details below.',
+            ar: 'راجع خطة السداد المسجلة وتفاصيل مصدرها أدناه.',
           }
-        : copy.RESULTS;
+        : components.some((component) => component.kind === 'comparison')
+          ? {
+              en: 'Compare the original prices and reported completion details below. Unknowns remain explicit; availability needs confirmation.',
+              ar: 'قارن الأسعار الأصلية وتفاصيل الإنجاز المعلنة أدناه. تبقى المعلومات غير المعروفة واضحة؛ والتوافر يحتاج إلى تأكيد.',
+            }
+          : components.some((component) => component.id.endsWith(':area-qualification'))
+            ? {
+                en: 'Start with the neighbourhood map, then compare the labelled fictional examples. School suitability remains an open check.',
+                ar: 'ابدأ بخريطة المناطق، ثم قارن الأمثلة الخيالية المعلّمة بوضوح. تبقى ملاءمة المدارس بحاجة إلى تحقق.',
+              }
+            : copy.RESULTS;
     const sentence =
       replyKey === 'CLARIFY'
         ? (clarificationCopy[clarificationFields.find((field) => clarificationCopy[field]) ?? ''] ??

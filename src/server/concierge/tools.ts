@@ -751,6 +751,30 @@ export async function executeConciergeTool(
         context.viewer,
         context.brief,
       );
+      // Notices replay as text; never persist a scoped unit's identity in one.
+      // Public reference names are resolved through the DAL, never provider-authored.
+      const publicSubject = card?.kind === 'reference-project' ? card.name : null;
+      const unavailablePayment = (completeSchedule: boolean): ConciergeComponent => ({
+        ...notice(
+          context,
+          'UNKNOWN_FACT',
+          publicSubject
+            ? completeSchedule
+              ? `A complete payment schedule for ${publicSubject.en} is unavailable in this record. An advisor can confirm the terms; no instalments have been invented.`
+              : `The requested payment evidence for ${publicSubject.en} is unavailable in this record.`
+            : card && completeSchedule
+              ? 'A complete payment schedule is unavailable for this selected record. An advisor can confirm it; no instalments have been invented.'
+              : 'The requested payment evidence is unavailable.',
+          publicSubject
+            ? completeSchedule
+              ? `لا تتوفر في هذا السجل خطة سداد كاملة لـ${publicSubject.ar}. يستطيع المستشار تأكيد الشروط؛ لم تُنشأ أقساط افتراضية.`
+              : `دليل السداد المطلوب لـ${publicSubject.ar} غير متاح في هذا السجل.`
+            : card && completeSchedule
+              ? 'لا تتوفر خطة سداد كاملة لهذا السجل المختار. يستطيع المستشار تأكيدها؛ لم تُنشأ أقساط افتراضية.'
+              : 'دليل السداد المطلوب غير متاح.',
+        ),
+        id: `${componentId}:payment-unavailable`,
+      });
       const scheduleFact = card?.facts.find((fact) => fact.key === 'payment_plan');
       if (
         call.name === 'payment_plan_projection' &&
@@ -758,14 +782,7 @@ export async function executeConciergeTool(
           (id) => !card?.facts.some((fact) => fact.id === id && fact.key === 'payment_plan'),
         )
       ) {
-        result.components.push(
-          notice(
-            context,
-            'UNKNOWN_FACT',
-            'The requested payment evidence is unavailable.',
-            'دليل السداد المطلوب غير متاح.',
-          ),
-        );
+        result.components.push(unavailablePayment(false));
         break;
       }
       const pieces = typeof scheduleFact?.value === 'string' ? scheduleFact.value.split('/') : [];
@@ -777,14 +794,7 @@ export async function executeConciergeTool(
         percentages.some((value) => !Number.isFinite(value)) ||
         Math.abs(percentages.reduce((a, b) => a + b, 0) - 100) > 0.001
       ) {
-        result.components.push(
-          notice(
-            context,
-            'UNKNOWN_FACT',
-            'A complete payment schedule is unavailable for this selected record. An advisor can confirm it; no instalments have been invented.',
-            'لا تتوفر خطة سداد كاملة لهذا السجل المختار. يستطيع المستشار تأكيدها؛ لم تُنشأ أقساط افتراضية.',
-          ),
-        );
+        result.components.push(unavailablePayment(true));
         break;
       }
       result.components.push({
