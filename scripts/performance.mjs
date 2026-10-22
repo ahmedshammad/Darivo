@@ -21,11 +21,16 @@ for (let attempt = 0; attempt < 60; attempt++) {
 }
 if (!ready) throw new Error(`Production preview unavailable at ${base}`);
 
-for (const [name, path] of [
+const pages = [
   ['home', '/en'],
   ['search', '/en/search'],
+  ['explore', '/en/explore'],
   ['detail-ar', '/ar/properties/property-002'],
-]) {
+];
+const requested = process.env.LIGHTHOUSE_PAGES?.split(',');
+if (requested?.some((name) => !pages.some(([candidate]) => candidate === name)))
+  throw new Error('Unknown LIGHTHOUSE_PAGES entry');
+for (const [name, path] of pages.filter(([name]) => !requested || requested.includes(name))) {
   const report = join(output, `${name}.json`);
   await new Promise((resolve, reject) => {
     const child = spawn(
