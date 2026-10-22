@@ -132,6 +132,25 @@ export function atlasCircle(center: AtlasPoint, kilometres: number, segments = 6
   });
 }
 
+/** Keep a positive camera aperture even while a mobile sheet occupies most of the map. */
+export function atlasCameraPadding(
+  width: number,
+  height: number,
+  padding: { top: number; bottom: number; left: number; right: number },
+  margin = 0,
+) {
+  const pair = (first: number, second: number, extent: number) => {
+    const a = Math.max(0, first + margin);
+    const b = Math.max(0, second + margin);
+    const budget = Math.max(0, extent - Math.min(120, extent / 2));
+    const scale = a + b > budget ? budget / (a + b) : 1;
+    return [a * scale, b * scale];
+  };
+  const [left, right] = pair(padding.left, padding.right, width);
+  const [top, bottom] = pair(padding.top, padding.bottom, height);
+  return { top, bottom, left, right };
+}
+
 /** Fit real geographic points inside the visible padded region of the 2D fallback. */
 export function atlasFitPoints(
   points: AtlasPoint[],

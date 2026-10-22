@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   atlasCircle,
+  atlasCameraPadding,
   atlasFitPoints,
   atlasOverviewStyle,
   atlasProjectPoint,
@@ -44,6 +45,29 @@ describe('geographic map calculations', () => {
 
 describe('comparison truthfulness and framing', () => {
   const palm = { center: [55.139, 25.112] as AtlasPoint, country: 'UAE' };
+  it('retains a usable aperture when expanded mobile UI exceeds the viewport', () => {
+    for (const height of [667, 844]) {
+      const padding = atlasCameraPadding(
+        390,
+        height,
+        { top: 140, bottom: height - 180, left: 24, right: 24 },
+        35,
+      );
+      expect(height - padding.top - padding.bottom).toBeCloseTo(120);
+      const fitted = atlasFitPoints([palm.center, [28.02, 31.1]], 390, height, padding);
+      expect(Number.isFinite(fitted.zoom)).toBe(true);
+      const origin = atlasProjectPoint(fitted.center, fitted.zoom);
+      for (const point of [palm.center, [28.02, 31.1] as AtlasPoint]) {
+        const projected = atlasProjectPoint(point, fitted.zoom);
+        const x = projected[0] - origin[0] + (390 + padding.left - padding.right) / 2;
+        const y = projected[1] - origin[1] + (height + padding.top - padding.bottom) / 2;
+        expect(x).toBeGreaterThanOrEqual(padding.left - 0.001);
+        expect(x).toBeLessThanOrEqual(390 - padding.right + 0.001);
+        expect(y).toBeGreaterThanOrEqual(padding.top - 0.001);
+        expect(y).toBeLessThanOrEqual(height - padding.bottom + 0.001);
+      }
+    }
+  });
   it('uses the shared speed for local straight-line illustrations', () => {
     const metrics = atlasComparisonMetrics(palm, { center: [55.27, 25.19], country: 'UAE' });
     expect(metrics.estimatedMinutes).toBe(

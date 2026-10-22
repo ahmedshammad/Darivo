@@ -17,6 +17,7 @@ import { ATLAS_PLACES, atlasComparisonMetrics } from '@/src/lib/atlas-intent';
 import { FX, FX_DATE } from '@/src/lib/catalog';
 import {
   atlasCircle,
+  atlasCameraPadding,
   atlasFitPoints,
   atlasOverviewStyle,
   atlasProjectPoint,
@@ -140,6 +141,7 @@ function timeOfDay() {
 function cameraFlight(map: LibreMap, props: LivingMapProps) {
   if (!props.camera) return;
   const camera = props.camera;
+  const viewport = map.getContainer();
   map.stop();
   const comparison = (props.compareIds ?? [])
     .slice(0, 4)
@@ -155,12 +157,10 @@ function cameraFlight(map: LibreMap, props: LivingMapProps) {
         [Math.max(...xs), Math.max(...ys)],
       ],
       {
-        padding: {
-          top: padding.top + 35,
-          bottom: padding.bottom + 35,
-          left: padding.left + 35,
-          right: padding.right + 35,
-        },
+        padding: atlasCameraPadding(viewport.clientWidth, viewport.clientHeight, padding, 35),
+        // MapLibre 6 otherwise adds this to the previous flight's padding, which can
+        // leave a negative mobile aperture and silently cancel the bounds fit.
+        absolutePadding: true,
         pitch: 0,
         bearing: 0,
         maxZoom: 13,
@@ -185,7 +185,11 @@ function cameraFlight(map: LibreMap, props: LivingMapProps) {
     zoom: camera.zoom,
     pitch: camera.pitch ?? 48,
     bearing: camera.bearing ?? -15,
-    padding: camera.padding ?? { top: 60, bottom: 70, left: 20, right: 20 },
+    padding: atlasCameraPadding(
+      viewport.clientWidth,
+      viewport.clientHeight,
+      camera.padding ?? { top: 60, bottom: 70, left: 20, right: 20 },
+    ),
     duration: flightDuration(),
     essential: false,
     easing: (t) => 1 - (1 - t) ** 3,
@@ -608,6 +612,14 @@ export function LivingMap(props: LivingMapProps) {
           root.current.dataset.zoom = activeMap.getZoom().toFixed(3);
           root.current.dataset.pitch = activeMap.getPitch().toFixed(1);
           root.current.dataset.moving = String(activeMap.isMoving());
+          root.current.dataset.comparisonPoints = JSON.stringify(
+            (latest.current.compareIds ?? []).slice(0, 4).flatMap((id) => {
+              const project = latest.current.projects.find((item) => item.id === id);
+              if (!project) return [];
+              const point = activeMap.project(project.center);
+              return [{ id, x: point.x, y: point.y }];
+            }),
+          );
         };
         activeMap.on('movestart', recordCamera);
         activeMap.on('moveend', recordCamera);
@@ -1119,22 +1131,22 @@ function FallbackMap(props: LivingMapProps) {
   const [offset, setOffset] = useState(0);
   const [pan, setPan] = useState<AtlasPoint>([0, 0]);
   const text = copy[props.locale];
-  const padding = props.camera?.padding ?? { top: 80, bottom: 80, left: 30, right: 30 };
   const compared = (props.compareIds ?? [])
     .slice(0, 4)
     .flatMap((id) => props.projects.filter((p) => p.id === id));
+  const padding = atlasCameraPadding(
+    size.width,
+    size.height,
+    props.camera?.padding ?? { top: 80, bottom: 80, left: 30, right: 30 },
+    compared.length > 1 ? 35 : 0,
+  );
   const fitted =
     compared.length > 1
       ? atlasFitPoints(
           compared.map((p) => p.center),
           size.width,
           size.height,
-          {
-            top: padding.top + 35,
-            bottom: padding.bottom + 35,
-            left: padding.left + 35,
-            right: padding.right + 35,
-          },
+          padding,
         )
       : null;
   const baseCenter = fitted?.center ?? props.camera?.center ?? initialCenter;
@@ -1174,7 +1186,13 @@ function FallbackMap(props: LivingMapProps) {
     root.dataset.pitch = '0';
     root.dataset.moving = 'false';
     root.dataset.tilesReady = String(Boolean(land));
-  }, [center, zoom, land]);
+    root.dataset.comparisonPoints = JSON.stringify(
+      compared.map((item) => {
+        const [x, y] = project(item.center);
+        return { id: item.id, x, y };
+      }),
+    );
+  });
   function polygonPath(rings: Position[][]) {
     return rings
       .map(
