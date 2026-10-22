@@ -15,6 +15,12 @@ export default withNextIntl({
           { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains' },
         ],
       },
+      ...['/en', '/ar'].map((source) => ({
+        source,
+        headers: [
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(self), geolocation=()' },
+        ],
+      })),
       {
         source: '/api/(.*)',
         headers: [

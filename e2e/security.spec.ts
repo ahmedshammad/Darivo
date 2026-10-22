@@ -3,6 +3,10 @@ test('security headers, CSRF, payload validation and private HTML', async ({ pag
   const pageResponse = await request.get('/en');
   expect(pageResponse.headers()['content-security-policy']).toContain("frame-ancestors 'none'");
   expect(pageResponse.headers()['x-content-type-options']).toBe('nosniff');
+  expect(pageResponse.headers()['permissions-policy']).toContain('microphone=(self)');
+  expect((await request.get('/en/search')).headers()['permissions-policy']).toContain(
+    'microphone=()',
+  );
   await page.goto('/en/login');
   await page.getByRole('button', { name: 'Private client', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Sign out' })).toBeVisible();
