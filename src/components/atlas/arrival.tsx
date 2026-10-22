@@ -522,10 +522,7 @@ export function Arrival({
           <p className="arrival-eyebrow">{t.officeKicker}</p>
           <h2 id="office-title">{t.officeTitle}</h2>
           <p>{t.officeBody}</p>
-          <Link
-            href={`/${locale}/${signedIn ? 'shortlists' : 'login'}?${query()}`}
-            className="arrival-office-action"
-          >
+          <Link href={`/${locale}/office?${query()}`} className="arrival-office-action">
             {t.officeAction}
             <ArrowUpRight aria-hidden="true" />
           </Link>

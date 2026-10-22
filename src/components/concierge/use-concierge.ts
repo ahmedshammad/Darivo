@@ -11,6 +11,7 @@ import {
   writeProposalSchema,
   type BriefPatch,
   type ConciergeAction,
+  type ConciergeEntityRef,
 } from '@/src/lib/concierge';
 import {
   initialConciergeState,
@@ -29,10 +30,12 @@ export function useConcierge({
   locale,
   guest,
   onAction,
+  initialSelection,
 }: {
   locale: 'en' | 'ar';
   guest: boolean;
   initialDraft?: string;
+  initialSelection?: ConciergeEntityRef;
   onAction?: (action: ConciergeAction) => void;
 }) {
   const [state, setState] = useState(initialConciergeState);
@@ -47,7 +50,10 @@ export function useConcierge({
   const submissions = useRef(0);
   const lastRequest = useRef<{ message: string; patch?: BriefPatch } | null>(null);
   const actions = useRef(new Set<string>());
-  const priorEntities = useRef<ConciergeRequest['priorEntities']>([]);
+  const initialSelectionRef = useRef(initialSelection);
+  const priorEntities = useRef<ConciergeRequest['priorEntities']>(
+    initialSelection ? [initialSelection] : [],
+  );
   const outcome = useRef<'pending' | 'complete' | 'failed'>('pending');
   const chat = useChat<ConciergeUIMessage>({
     transport,
@@ -144,7 +150,9 @@ export function useConcierge({
         if (epoch.current !== loadingEpoch || controller.signal.aborted) return;
         conversation.current = replay.conversationId;
         briefRef.current = replay.brief;
-        priorEntities.current = replaySelection(replay.turns);
+        priorEntities.current = initialSelectionRef.current
+          ? [initialSelectionRef.current]
+          : replaySelection(replay.turns);
         setState({ ...initialConciergeState(), brief: replay.brief, turns: replay.turns });
       })
       .catch(() => {
@@ -214,6 +222,9 @@ export function useConcierge({
         brief: briefRef.current,
         priorEntities: priorEntities.current,
       };
+      // The explicit Story selection takes precedence over old history only for this visit.
+      // The API resolves it afresh; it conveys context, never inventory permission.
+      initialSelectionRef.current = undefined;
       const turn: ClientTurn = {
         id: requestId,
         requestId,
@@ -275,6 +286,7 @@ export function useConcierge({
     conversation.current = nextConversationId;
     lastRequest.current = null;
     priorEntities.current = [];
+    initialSelectionRef.current = undefined;
     setState(clean);
     setMessages([]);
     setProposals([]);

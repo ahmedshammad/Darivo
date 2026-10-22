@@ -676,6 +676,7 @@ export async function groundProject(
   );
   const card = groundedCardSchema.parse({
     id: `card:${project.id}`,
+    storyPath: `/p/project-${project.slug}`,
     kind: project.kind === 'REAL_REFERENCE' ? 'reference-project' : 'demo-project',
     projectId: project.id,
     developerId: project.developerId,
@@ -730,6 +731,7 @@ export function groundUnit(unit: PropertyDTO, brief: ConciergeBrief): GroundedCa
   }
   const card = groundedCardSchema.parse({
     id: `card:${unit.id}`,
+    storyPath: `/p/unit-${unit.slug}`,
     kind: 'demo-unit',
     unitId: unit.id,
     projectId: unit.projectId,

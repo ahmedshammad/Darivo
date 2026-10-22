@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowUpRight, MapPin, Plus, Minus } from 'lucide-react';
+import Link from 'next/link';
 import type {
   ConciergeComponent,
   GroundedCard,
@@ -284,6 +285,12 @@ export function ConciergeCard({
           {t.showMap}
           {card.coordinatesApproximate && <span> · {t.approximate}</span>}
         </button>
+      )}
+      {card.storyPath && (
+        <Link className="cq-text-button" href={`/${locale}${card.storyPath}`}>
+          {t.readStory}
+          <ArrowUpRight aria-hidden="true" />
+        </Link>
       )}
     </article>
   );

@@ -26,7 +26,7 @@ import type {
   AtlasLayer,
   AtlasTheme,
 } from '@/src/lib/atlas';
-import type { ConciergeAction, GroundedCard } from '@/src/lib/concierge';
+import type { ConciergeAction, ConciergeEntityRef, GroundedCard } from '@/src/lib/concierge';
 import { isRepeatedDeadlineAssumption } from '@/src/lib/concierge-context';
 import { ATLAS_PLACES, ATLAS_STORIES, projectInPlace } from '@/src/lib/atlas-intent';
 import { openTileProvider } from '@/src/lib/tiles';
@@ -64,6 +64,7 @@ export function ConciergeClient({
   data,
   guest,
   initialDraft = '',
+  initialSelection,
   initialTheme = 'dark',
   forceFallback = false,
 }: {
@@ -71,6 +72,7 @@ export function ConciergeClient({
   data: Pick<AtlasData, 'projects' | 'pois'>;
   guest: boolean;
   initialDraft?: string;
+  initialSelection?: ConciergeEntityRef;
   initialTheme?: AtlasTheme;
   forceFallback?: boolean;
 }) {
@@ -156,7 +158,7 @@ export function ConciergeClient({
     },
     [locale],
   );
-  const concierge = useConcierge({ locale, guest, initialDraft, onAction });
+  const concierge = useConcierge({ locale, guest, initialDraft, initialSelection, onAction });
   const busy = concierge.status === 'submitted' || concierge.status === 'streaming';
   const components = concierge.turns.flatMap((turn) => turn.components);
   const cards = [

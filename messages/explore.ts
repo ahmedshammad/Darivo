@@ -19,6 +19,7 @@ export const exploreCopy = {
     mapSources: 'Reading this map',
     originalSource: 'Original source wording',
     contextualRequest: 'Discuss this project with Concierge',
+    readStory: 'Explore the project story',
     continueConcierge: 'Continue with Concierge',
     handoffSummary:
       'Your conversation will start with this project and your words. Nothing is sent until you choose to send it.',
@@ -146,6 +147,7 @@ export const exploreCopy = {
     },
   },
   ar: {
+    readStory: 'استكشف تفاصيل المشروع',
     fitPlace: 'مشروع في {community}، ضمن منطقة {place} التي تستكشفها.',
     storyStops: {
       palm: 'الهلال والسعف يرسمان شكل الجزيرة. اختر عموداً لقراءة مصادر المشروع.',

@@ -534,7 +534,7 @@ export function Explore({
           DARIVO<span>{t.tagline}</span>
         </a>
         <nav aria-label={t.home}>
-          <a className="atlas-office-link" href={`/${locale}/${signedIn ? 'shortlists' : 'login'}`}>
+          <a className="atlas-office-link" href={`/${locale}/office`}>
             {signedIn ? t.office : t.signIn}
           </a>
           <a href={`/${arabic ? 'en' : 'ar'}/explore?${localeParams}`} lang={arabic ? 'en' : 'ar'}>
@@ -689,6 +689,13 @@ export function Explore({
                 <p className="atlas-evidence-note">
                   {selected.kind === 'DEMO' ? t.demoTradeoff : t.indicative}
                 </p>
+                <a
+                  className="atlas-action"
+                  href={`/${locale}/p/project-${selected.slug}?${new URLSearchParams({ theme })}`}
+                >
+                  {t.readStory}
+                  <ArrowUpRight aria-hidden="true" />
+                </a>
                 <dl>
                   <div>
                     <dt>{t.developer}</dt>

@@ -400,6 +400,11 @@ const explanationSchema = z
   });
 const cardFields = {
   id,
+  // Optional for replay compatibility; freshly authorized cards carry their Story route.
+  storyPath: z
+    .string()
+    .regex(/^\/p\/(project|unit)-[a-zA-Z0-9][a-zA-Z0-9_-]{0,180}$/)
+    .optional(),
   name: localizedTextSchema,
   center: z
     .tuple([z.number().min(-180).max(180), z.number().min(-85.051129).max(85.051129)])

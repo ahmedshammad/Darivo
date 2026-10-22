@@ -6,10 +6,14 @@ describe('explicit local sign-in continuation', () => {
     '/en/concierge?q=North+Coast&theme=dark',
     '/ar/consultant?q=%D8%AF%D8%A8%D9%8A',
     '/ar/office?intent=save&unit=property-001#portfolios',
-    '/en/office/portfolios/board_123',
     '/en/office/viewings',
+    '/ar/office/privacy',
+    '/en/office/comparison',
+    '/ar/office/private-collection',
     '/ar/p/project-orla',
     '/en/p/unit-demo-residence-001',
+    '/en/p/unit-authorized_fixture-001',
+    '/ar/p/project-' + 'a'.repeat(181),
   ])('preserves a permitted destination: %s', (path) => {
     expect(safeLoginReturn(path)).toBe(path);
   });
@@ -24,6 +28,9 @@ describe('explicit local sign-in continuation', () => {
     '/en/p/unqualified-project',
     '/fr/office',
     '/en/office/arbitrary',
+    '/en/office/portfolios/board_123',
+    '/en/p/unit-_leading-underscore',
+    '/en/p/unit-' + 'a'.repeat(182),
     '/en/office?draft=' + 'x'.repeat(6000),
     undefined,
     ['en/office'],
