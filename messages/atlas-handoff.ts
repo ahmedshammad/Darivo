@@ -1,0 +1,28 @@
+export const atlasHandoff = {
+  en: {
+    title: 'From your map',
+    draft: 'Your request is ready to review. Nothing has been sent.',
+    project: 'Selected project',
+    request: 'Your request',
+    ask: 'I would like to discuss',
+    reference: 'Project reference · residences available on request',
+    demo: 'Demo project · fictional inventory',
+    source: 'Original source',
+    dateUnknown: 'Date not supplied',
+    confirm: 'Indicative — confirm with advisor',
+    back: 'Return to your map',
+  },
+  ar: {
+    title: 'من خريطتك',
+    draft: 'طلبك جاهز للمراجعة. لم يُرسل أي شيء بعد.',
+    project: 'المشروع المختار',
+    request: 'طلبك',
+    ask: 'أرغب في مناقشة',
+    reference: 'مرجع عن المشروع · تفاصيل المساكن عند الطلب',
+    demo: 'مشروع تجريبي · وحدات خيالية',
+    source: 'المصدر الأصلي',
+    dateUnknown: 'التاريخ غير مذكور',
+    confirm: 'للاسترشاد — يُرجى التأكيد مع المستشار',
+    back: 'العودة إلى خريطتك',
+  },
+};

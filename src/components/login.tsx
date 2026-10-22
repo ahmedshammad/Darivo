@@ -1,11 +1,17 @@
 'use client';
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { signIn } from 'next-auth/react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Button } from './ui/button';
-export function Login({ demo }: { demo: boolean }) {
+const subscribe = () => () => {};
+export function Login({ demo, returnTo }: { demo: boolean; returnTo?: string }) {
   const t = useTranslations();
   const locale = useLocale();
+  const hydrated = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
   return (
@@ -23,7 +29,7 @@ export function Login({ demo }: { demo: boolean }) {
             await signIn('nodemailer', {
               email: data.get('email'),
               redirect: false,
-              callbackUrl: `/${locale}/search`,
+              callbackUrl: returnTo || `/${locale}/search`,
             });
             setSent(true);
             setBusy(false);
@@ -33,7 +39,7 @@ export function Login({ demo }: { demo: boolean }) {
             {t('email')}
             <input type="email" name="email" required autoComplete="email" />
           </label>
-          <Button disabled={busy}>{t('magicLink')}</Button>
+          <Button disabled={busy || !hydrated}>{t('magicLink')}</Button>
           {sent && <p role="status">{t('emailSent')}</p>}
         </form>
         {demo && (
@@ -51,10 +57,11 @@ export function Login({ demo }: { demo: boolean }) {
                 <Button
                   variant="outline"
                   key={email}
+                  disabled={!hydrated}
                   onClick={() =>
                     signIn('credentials', {
                       email: `${email}@darivo.example`,
-                      callbackUrl: `/${locale}/search`,
+                      callbackUrl: returnTo || `/${locale}/search`,
                     })
                   }
                 >

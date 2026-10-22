@@ -17,16 +17,20 @@ type Message = {
 export function Consultant({
   docked = false,
   propertyId,
+  initialInput,
 }: {
   docked?: boolean;
   propertyId?: string;
+  initialInput?: string;
 }) {
   const t = useTranslations(),
     locale = useLocale(),
     reduced = useReducedMotion();
   const [messages, setMessages] = useState<Message[]>([]),
     [brief, setBrief] = useState<Brief>({ filters: {} }),
-    [input, setInput] = useState(propertyId ? `${t('askProperty')} ${propertyId}` : ''),
+    [input, setInput] = useState(
+      initialInput ?? (propertyId ? `${t('askProperty')} ${propertyId}` : ''),
+    ),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
     [saved, setSaved] = useState(false);
