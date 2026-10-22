@@ -44,9 +44,10 @@ async function main() {
     for (const width of [1440, 1024, 390])
       for (const locale of ['en', 'ar'] as const)
         for (const theme of ['dark', 'light'] as const) {
-          const page = await browser.newPage({
+          const context = await browser.newContext({
             viewport: { width, height: width === 390 ? 844 : 1000 },
           });
+          const page = await context.newPage();
           const errors: string[] = [];
           page.on('pageerror', (error) => errors.push(String(error)));
           try {
@@ -116,7 +117,7 @@ async function main() {
               .catch(() => {});
             throw error;
           } finally {
-            await page.close();
+            await context.close();
           }
         }
   } catch (error) {

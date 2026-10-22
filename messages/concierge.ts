@@ -5,6 +5,7 @@ export const conciergeCopy = {
     intro:
       'Begin with the life you have in mind. We will put the places, the possibilities and the evidence in perspective.',
     conversation: 'Conversation',
+    responseHeading: 'Response {number}',
     brief: 'Your brief',
     map: 'The living map',
     mapReading: 'Reading this map',
@@ -254,6 +255,7 @@ export const conciergeCopy = {
     intro:
       'ابدأ بالحياة التي تتطلع إليها. نضع أمامك الأماكن والخيارات والمعلومات التي تساعدك على الاختيار.',
     conversation: 'الحوار',
+    responseHeading: 'الرد {number}',
     brief: 'طلبك',
     map: 'الخريطة الحية',
     mapReading: 'قراءة هذه الخريطة',

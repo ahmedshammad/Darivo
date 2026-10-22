@@ -641,7 +641,15 @@ export function ConciergeClient({
                     </p>
                   </details>
                   <div className="cq-assistant">
-                    <p className="cq-sr">DARIVO</p>
+                    <h2 className="cq-sr">
+                      {t.responseHeading.replace(
+                        '{number}',
+                        new Intl.NumberFormat(locale, {
+                          useGrouping: false,
+                          numberingSystem: arabicIndicDigits ? 'arab' : 'latn',
+                        }).format(turnIndex + 1),
+                      )}
+                    </h2>
                     {turn.assistantText && (
                       <p className="cq-answer" dir="auto">
                         {turn.assistantText}
