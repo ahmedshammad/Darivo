@@ -114,6 +114,16 @@
   max-width: min(430px, calc(100% - 32px));
   transition: bottom 0.3s ease;
 }
+.atlas-poi-qualification {
+  margin: 0;
+  padding: 5px 9px;
+  max-width: 100%;
+  color: var(--atlas-ink);
+  background: var(--atlas-paper);
+  border: 1px solid var(--atlas-edge);
+  font-size: 12px;
+  line-height: 1.5;
+}
 .atlas-map-evidence details {
   position: relative;
   max-width: 100%;

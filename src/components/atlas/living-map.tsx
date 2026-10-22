@@ -11,7 +11,7 @@ import type {
 import type { MapLibreOverlay } from '@deck.gl/maplibre';
 import type { Color, Layer } from '@deck.gl/core';
 import type { FeatureCollection, Geometry, Position } from 'geojson';
-import type { AtlasPoint, AtlasProject, LivingMapProps } from '@/src/lib/atlas';
+import type { AtlasPoint, AtlasPOI, AtlasProject, LivingMapProps } from '@/src/lib/atlas';
 import { ATLAS_TRAVEL_SPEED_KMH } from '@/src/lib/atlas';
 import { ATLAS_PLACES, atlasComparisonMetrics } from '@/src/lib/atlas-intent';
 import { FX, FX_DATE } from '@/src/lib/catalog';
@@ -56,6 +56,7 @@ const copy = {
     unknown: 'No price: flat marker',
     approximation: 'Locations approximate. Columns are price symbols, not building heights.',
     poi: 'Demo POIs · fictional places, not verified amenities',
+    poiLegend: 'Demo amenities · not verified',
     hex: 'Demo unit price per m² · not a community average',
     ring: `Illustrative reach · ${ATLAS_TRAVEL_SPEED_KMH} km/h, no roads or traffic. Not a drive-time result.`,
     compare: `Straight-line distance · local illustration at ${ATLAS_TRAVEL_SPEED_KMH} km/h. Cross-border or over 150 km: distance only. Not a route.`,
@@ -94,6 +95,7 @@ const copy = {
     unknown: 'دون سعر: علامة مسطّحة',
     approximation: 'المواقع تقريبية. الأعمدة ترمز للأسعار وليست ارتفاعات المباني.',
     poi: 'مرافق تجريبية · أماكن افتراضية وليست مرافق موثّقة',
+    poiLegend: 'مرافق تجريبية · غير موثّقة',
     hex: 'سعر المتر لوحدة تجريبية · ليس متوسط المنطقة',
     ring: `نطاق توضيحي بسرعة ${new Intl.NumberFormat('ar-u-nu-arab').format(ATLAS_TRAVEL_SPEED_KMH)} كم/ساعة دون طرق أو ازدحام. ليس زمن قيادة فعلياً.`,
     compare: `مسافة بخط مستقيم · تقدير محلي بسرعة ${new Intl.NumberFormat('ar-u-nu-arab').format(ATLAS_TRAVEL_SPEED_KMH)} كم/ساعة. عبر الحدود أو أكثر من ١٥٠ كم: المسافة فقط، وليست مساراً.`,
@@ -137,6 +139,12 @@ const featureData = (projects: AtlasProject[]): FeatureCollection => ({
 });
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const flightDuration = () => (reducedMotion() ? 0 : 600);
+/** Only the seeded generic wrapper is shortened; the always-visible legend qualifies every POI. */
+function poiLabel(poi: AtlasPOI, locale: LivingMapProps['locale']) {
+  return locale === 'ar'
+    ? poi.nameAr.replace(/^موقع تجريبي\s*·\s*/, '')
+    : poi.nameEn.replace(/^Demo POI\s*·\s*/, '');
+}
 function priceHeight(project: AtlasProject) {
   if (!project.amount || !FX[project.currency]) return 0;
   return Math.max(
@@ -314,7 +322,7 @@ function renderLayers(runtime: MapRuntime, props: LivingMapProps) {
         type: 'Feature' as const,
         geometry: { type: 'Point' as const, coordinates: p.center },
         properties: {
-          name: `${props.locale === 'ar' ? p.nameAr : p.nameEn} · ${props.locale === 'ar' ? 'تجريبي' : 'Demo'}`,
+          name: poiLabel(p, props.locale),
         },
       })),
     );
@@ -845,6 +853,17 @@ export function LivingMap(props: LivingMapProps) {
               .slice(0, 4);
             const regional = activeMap.getZoom() < 5;
             const namedComparison = regional && compared.length > 1;
+            // DOM endpoints carry their country, but cannot join basemap symbol collision placement.
+            // Hide only the redundant country layers; restore the correct source when comparison ends.
+            for (const id of ['overview-country-labels', 'label-country']) {
+              if (!activeMap.getLayer(id)) continue;
+              const visibility =
+                namedComparison || (id === 'overview-country-labels' && detailReady)
+                  ? 'none'
+                  : 'visible';
+              if (activeMap.getLayoutProperty(id, 'visibility') !== visibility)
+                activeMap.setLayoutProperty(id, 'visibility', visibility);
+            }
             for (const id of ['atlas-clusters', 'atlas-cluster-counts', 'atlas-markers']) {
               const visibility = namedComparison ? 'none' : 'visible';
               if (activeMap.getLayoutProperty(id, 'visibility') !== visibility)
@@ -1477,6 +1496,9 @@ export function LivingMap(props: LivingMapProps) {
         </div>
       )}
       <div className="atlas-map-evidence">
+        {props.pois?.some((poi) => props.layers?.some((layer) => layer === poi.kind)) && (
+          <p className="atlas-poi-qualification">{text.poiLegend}</p>
+        )}
         <details>
           <summary>{text.sources}</summary>
           <div className="atlas-map-source-panel">
@@ -1652,7 +1674,7 @@ function FallbackMap(props: LivingMapProps & { fallbackDetail: string }) {
     .filter((poi) => props.layers?.some((layer) => layer === poi.kind))
     .map((poi) => {
       const [x, y] = project(poi.center);
-      const label = `${props.locale === 'ar' ? poi.nameAr : poi.nameEn} · ${props.locale === 'ar' ? 'تجريبي' : 'Demo'}`;
+      const label = poiLabel(poi, props.locale);
       const width = label.length * 8 + 16;
       const labelY = [y + 18, y - 14].find(
         (candidate) =>
