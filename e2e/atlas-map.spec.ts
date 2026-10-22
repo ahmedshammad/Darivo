@@ -12,6 +12,8 @@ test('cross-market comparison refits both endpoints after the mobile sheet colla
     await expect(map).toHaveAttribute('data-map-ready', 'true', { timeout: 30000 });
     await expect(map).toHaveAttribute('data-map-mode', fallback ? 'fallback' : 'webgl');
     if (fallback) {
+      await expect(map).toHaveAttribute('data-center', /^\[/);
+      await expect(map).toHaveAttribute('data-zoom', /\d/);
       const initialCenter = await map.getAttribute('data-center');
       const initialZoom = Number(await map.getAttribute('data-zoom'));
       await map.getByRole('button', { name: 'Zoom out', exact: true }).click();
