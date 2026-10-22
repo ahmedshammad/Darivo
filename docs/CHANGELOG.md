@@ -217,3 +217,7 @@ Arabic reading now prioritizes translated source labels, native and converted am
 The 303 unit/integration tests pass, as do legacy36, parser105/124 phrases and 444 authorized execution cases across632turns with all13 safety counters zero. Source219204a supplies60 clean production states, six recordings,18 numerical/proposal supplements and28 real currency checkpoints. Source0b304f7 adds a visible bilingual Demo-amenity qualifier above the expanded phone sheet; all six focused currency/reading WebGL/fallback browser cases pass on production buildv12. Targeted final qualification evidence and formal v4 scoring are being completed.
 
 Fresh retained-build Lighthouse is99/LCP2183.545ms/TBT61.5ms/CLS0. Twelve isolated M3 interaction windows show MapLibre render medians16.5–16.9ms, with one33.5ms interval and none above50ms; sheet RAF medians are about16.7ms. Strict LCP<2s, physical-phone/M1 cadence, field INP, real-provider evaluation and human language/AT validation remain open. No lower budget or simulated-human endorsement is claimed.
+
+### Stage 3 — fourth review remains below the gate
+
+The seven simulated contributor reviews produce an exact aggregate **8.994047619/10, minimum8**, across84 scores. This is below9.0 and is not rounded into acceptance. All reviews and final evidence are retained under `reviews/stage-3/v4`. The next bounded correction keeps the authorized bilingual unit identity with a successful payment timeline; repeated deadline caveats and strict loading/field-validation limits remain explicit. Stage4 has not begun.

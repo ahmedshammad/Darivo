@@ -1,0 +1,479 @@
+{
+  "review": "Simulated contributor reviews, not independent human endorsement",
+  "source": "0b304f7",
+  "count": 84,
+  "mean": 8.994047619047619,
+  "minimum": 8.0,
+  "pass": false,
+  "personas": [
+    {
+      "persona": "sheikha",
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0,
+          "evidence": "Quiet Arabic composition and visible island geography establish a distinctive private-office setting."
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0,
+          "evidence": "Conversation, spatial context and editable evidence requirements form a coherent alternative to portal filtering."
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0,
+          "evidence": "Honest no-match leads to explicit, reversible refinement without silently changing the requested place."
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0,
+          "evidence": "Actual coast and readable labels support orientation; final phone qualification survives the expanded sheet."
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0,
+          "evidence": "Near-price caveat and concise Arabic evidence improve the first reading region across inspected widths."
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0,
+          "evidence": "Purposeful flights/sheet transitions now have bounded local cadence evidence, with one minor long interval."
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0,
+          "evidence": "Arabic recovery and evidence hierarchy feel deliberate; original wording remains available rather than competing throughout."
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.0,
+          "evidence": "Strict versus relaxed results, unknown price, source dates and fictional amenities remain visibly distinguishable."
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.0,
+          "evidence": "Guest-storage notice and explicit proposal boundaries are clear; scoped safety checks support restrictive behavior."
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0,
+          "evidence": "Project identity receives a restrained presentation without invented availability or unsupported beachfront assurance."
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.5,
+          "evidence": "Final LCP 2183.545ms misses the strict 2000ms budget despite Lighthouse 99 and low blocking."
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0,
+          "evidence": "Clean matrix/POI axe checks and focused browser passes support repaired framing and controls; full AT remains unproven."
+        }
+      ],
+      "mean": 8.958333333333334,
+      "minimum": 8.5
+    },
+    {
+      "persona": "karim",
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0,
+          "evidence": "Calm editorial type and two-market geography make the workspace immediately understandable."
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0,
+          "evidence": "Conversation-driven comparison, geographic context and source-aware numerical components remain distinctive."
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0,
+          "evidence": "The initial comparison and later named-subject lookup retain context; display and payment preferences remain separate."
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0,
+          "evidence": "Named endpoints support cross-market orientation; reduced label clutter preserves the geographic reading path."
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0,
+          "evidence": "Optional FX/original-wording disclosures reduce narrow-column density while keeping amounts and basis visible."
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0,
+          "evidence": "Purposeful map/sheet transitions now have measured local cadence support; physical-device performance is still unproven."
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0,
+          "evidence": "Arabic milestones lead the schedule; exact original wording remains accessible without repeated English in the main path."
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.0,
+          "evidence": "Actual currency checkpoints preserve native values, explicit FX provenance, scoped deadlines and unknown schedules."
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.0,
+          "evidence": "Guest-storage disclosure and explicit confirmation boundaries remain clear, supported by scoped safety checks."
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0,
+          "evidence": "Project identity survives comparisons and follow-ups, with restrained evidence-led presentation."
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.5,
+          "evidence": "Lighthouse99 and TBT61.5ms are strong lab results; LCP2183.545ms still exceeds the explicit 2s budget."
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0,
+          "evidence": "Clean automated states and focused currency/control journeys support usability, without claiming full AT certification."
+        }
+      ],
+      "mean": 8.958333333333334,
+      "minimum": 8.5
+    },
+    {
+      "persona": "elena",
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0,
+          "evidence": "Recognisable geography, restrained display typography and the first named response form a coherent private-office introduction."
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0,
+          "evidence": "Conversation, editable Brief and one shared map remain a distinctive working surface rather than a disguised listing grid."
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0,
+          "evidence": "Named teaching actions arrive earlier, follow-up currency intent remains editable, and no-match recovery leaves the decision with the user. Actual school suitability remains unverified."
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0,
+          "evidence": "Current desktop/tablet geography and final phone map/qualification captures support useful spatial orientation with less repetitive label clutter."
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0,
+          "evidence": "Names precede the large preview; caveats sit beside decisions; secondary arithmetic and original wording remain available without dominating the answer."
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0,
+          "evidence": "[Motion evidence](../media/motion-v1/) records 418 moving intervals across twelve M3 windows: medians 16.5\u201316.9 ms, one 33.5 ms interval, none above 50 ms. This is bounded evidence, not a physical-phone guarantee."
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0,
+          "evidence": "The final Arabic phone hierarchy is readable; faithful source display terms and optional original wording reduce mixed-language density. Native Gulf editorial and speech validation remain open."
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.5,
+          "evidence": "Source uncertainty, approximate locations, fictional amenities and unverified features remain explicit after the reading simplification and final mobile repair."
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.0,
+          "evidence": "Useful guest reading, explicit proposal review and a visible private-access boundary avoid implying that contact or saving has already occurred."
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 8.5,
+          "evidence": "Project identity and provenance are treated carefully, but this family journey still supplies orientation rather than a commercially verified school/property fit."
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.5,
+          "evidence": "[Final Lighthouse](../validation/lighthouse-presentation-v12.json): performance 99, LCP 2183.545 ms, TBT 61.5 ms, CLS 0. The strict two-second LCP budget remains missed."
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0,
+          "evidence": "Sixty clean main states, sixty-four targeted phone states and focused reading/currency regressions support reachable controls and stable framing. Full assistive-technology certification is absent."
+        }
+      ],
+      "mean": 8.958333333333334,
+      "minimum": 8.5
+    },
+    {
+      "persona": "rajiv",
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0,
+          "evidence": "The opening reaches a relevant project and native amount with little ceremony."
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0,
+          "evidence": "Multi-market conversational analysis and spatial comparison work as one experience."
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.5,
+          "evidence": "Actual currency and named-payment follow-ups retain the Brief and requested subject."
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0,
+          "evidence": "Identifiable endpoints and real detailed geography make comparisons intelligible."
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0,
+          "evidence": "Visible arithmetic, chart leaders and secondary source disclosures support scrutiny."
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0,
+          "evidence": "Measured local flights and sheet transitions support the observed interaction quality."
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0,
+          "evidence": "Arabic price qualifiers and schedule wording improve without discarding originals."
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.5,
+          "evidence": "Original amounts, conversion assumptions, source dates and unavailable plans remain separate."
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.5,
+          "evidence": "No unrequested save or booking is implied by the guest action-review state."
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0,
+          "evidence": "Sourced project terms remain professional and distinct from fictional unit schedules."
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.0,
+          "evidence": "99 performance is strong, but LCP2.184s remains outside the declared budget."
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0,
+          "evidence": "Numeric tables, readable controls and clean targeted checks support access; full AT remains unproven."
+        }
+      ],
+      "mean": 9.041666666666666,
+      "minimum": 8.0
+    },
+    {
+      "persona": "head-of-sales",
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0,
+          "evidence": "Quiet typography and meaningful geography support the brand without speculative renderings or promotional urgency."
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0,
+          "evidence": "The source-aware advisory composition and spatial response feel materially different from conventional property portals."
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0,
+          "evidence": "Entity-specific payment follow-up, independent currency preferences and explicit evidence recovery demonstrate useful orchestration in the tested MockProvider journeys."
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0,
+          "evidence": "Named cross-market endpoints and reduced country/POI clutter aid interpretation. Final phone qualification captures preserve the Demo distinction when reading covers the lower legend."
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0,
+          "evidence": "Amounts, caveats, dates and source basis stay primary; calculation and original schedule wording are optional. Confirmation expiry now reads as client-facing copy."
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0,
+          "evidence": "[Twelve bounded motion windows](../media/motion-v1/) show 16.5\u201316.9 ms moving medians on M3, with one 33.5 ms interval and none above 50 ms. Target-device guarantees remain unsupported."
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0,
+          "evidence": "Localized reasons, preserved original source details and readable Arabic proposal/timeline hierarchy reduce the prior English-heavy density. This is not native-language certification."
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.5,
+          "evidence": "Reference prices, Demo units, static conversion, scenario assumptions and missing payment evidence remain distinct. Easier reading has not removed commercial qualifications."
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.0,
+          "evidence": "The proposal states no save/contact/booking has occurred, lists the intended action and retains explicit confirmation and guest sign-in boundaries."
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0,
+          "evidence": "Project identity, source fidelity and uncertainty now receive appropriate prominence; the response can begin a qualified discussion without implying live availability."
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.5,
+          "evidence": "[Final Lighthouse](../validation/lighthouse-presentation-v12.json): 99 performance, 2183.545 ms LCP, 61.5 ms TBT, zero CLS. The strict sub-two-second target remains unmet."
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0,
+          "evidence": "Main and final qualification matrices are clean; scoped tests cover reading, labels, currency and recovery. They do not establish complete screen-reader or physical-device usability."
+        }
+      ],
+      "mean": 9.0,
+      "minimum": 8.5
+    },
+    {
+      "persona": "advisor",
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0,
+          "evidence": "Quiet arrival and compact replies suit a private-office conversation."
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.5,
+          "evidence": "Client-controlled evidence verification alongside a geographic Brief is distinctive."
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0,
+          "evidence": "Teaching, Brief edits and subject-specific follow-ups reduce repeated interviewing."
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0,
+          "evidence": "Local geography and named regional comparisons provide usable context."
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0,
+          "evidence": "Warnings, original amounts and optional source details now have clearer hierarchy."
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0,
+          "evidence": "Actual local flight/sheet samples support purposeful movement within bounded hardware evidence."
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0,
+          "evidence": "Authored Arabic reasons and interpretable proposal expiry improve client reading."
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.5,
+          "evidence": "Unknown evidence remains unknown; mobile Demo labelling now survives expanded reading."
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.5,
+          "evidence": "Guest status and deliberate, scoped confirmation boundaries remain clear."
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0,
+          "evidence": "Qualified project enquiries avoid presenting reference records as available units."
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.0,
+          "evidence": "Final LCP exceeds the explicit budget; physical and field performance remain unproven."
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0,
+          "evidence": "Targeted controls and clean geometry/axe evidence support access without claiming complete AT coverage."
+        }
+      ],
+      "mean": 9.041666666666666,
+      "minimum": 8.0
+    },
+    {
+      "persona": "critic",
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0,
+          "evidence": "Composed arrival and compact substantive replies create a convincing opening."
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0,
+          "evidence": "Conversation, geographic teaching and editable evidence requirements remain distinctive."
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0,
+          "evidence": "Comparison, refinement and named follow-ups visibly change the interface."
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0,
+          "evidence": "Named regional connections and actual local coastline support spatial understanding."
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0,
+          "evidence": "Country clutter and source-reading hierarchy improve across the inspected breakpoints."
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0,
+          "evidence": "The actual local render/sheet windows support purposeful pacing, within stated limits."
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0,
+          "evidence": "Authored location/type/price terms now read coherently in the mirrored Arabic layout."
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.5,
+          "evidence": "Native facts, unknowns and final always-visible Demo qualification remain explicit."
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.5,
+          "evidence": "Guest status, scoped evidence and deliberate action review retain a discreet tone."
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0,
+          "evidence": "Project presentation is restrained and preserves qualified availability."
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.0,
+          "evidence": "2.184s LCP still misses the explicit budget; field responsiveness is not established."
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0,
+          "evidence": "Clean captures and focus/control checks are strong, without claiming full AT certification."
+        }
+      ],
+      "mean": 9.0,
+      "minimum": 8.0
+    }
+  ]
+}
