@@ -492,7 +492,9 @@ export function LivingMap(props: LivingMapProps) {
     forceFallback ? 'forced' : undefined,
   );
   const [overlayOff, setOverlayOff] = useState(false);
-  const [overview, setOverview] = useState(mode === 'arrival' && (props.camera?.zoom ?? 2.3) < 5);
+  const [overview, setOverview] = useState(
+    (props.camera?.zoom ?? (mode === 'arrival' ? 2.3 : 10.5)) < 5,
+  );
   const [phase, setPhase] = useState<'day' | 'evening' | 'night'>('night');
   const text = copy[locale];
   useEffect(() => {
@@ -548,7 +550,9 @@ export function LivingMap(props: LivingMapProps) {
     void (async () => {
       try {
         const arrival = mode === 'arrival';
-        const startOverview = arrival && (latest.current.camera?.zoom ?? 2.3) < 5;
+        // Regional conversations need the same lightweight coastline as the Arrival.
+        // Street tiles at this scale add megabytes without useful local detail.
+        const startOverview = (latest.current.camera?.zoom ?? (arrival ? 2.3 : 10.5)) < 5;
         setOverview(startOverview);
         const capability = await probeMapCapability(abort.signal);
         if (disposed) return;
@@ -559,7 +563,10 @@ export function LivingMap(props: LivingMapProps) {
         const [{ Map, NavigationControl, Popup, Marker, setWorkerUrl }, style] = await Promise.all([
           import('maplibre-gl'),
           startOverview
-            ? Promise.resolve(atlasOverviewStyle(theme))
+            ? Promise.resolve({
+                ...atlasOverviewStyle(theme),
+                projection: { type: arrival ? ('globe' as const) : ('mercator' as const) },
+              })
             : loadAtlasStyle(theme, locale, abort.signal),
           import('maplibre-gl/dist/maplibre-gl.css'),
         ]);

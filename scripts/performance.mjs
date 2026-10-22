@@ -25,6 +25,7 @@ const pages = [
   ['home', '/en'],
   ['search', '/en/search'],
   ['explore', '/en/explore'],
+  ['concierge', '/en/concierge'],
   ['detail-ar', '/ar/properties/property-002'],
 ];
 const requested = process.env.LIGHTHOUSE_PAGES?.split(',');

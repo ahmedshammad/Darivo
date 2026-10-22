@@ -22,6 +22,15 @@ export default async function Layout({
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <head>
+        {locale === 'ar' && (
+          <link
+            rel="preload"
+            href="/fonts/arabic-display.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+        )}
         <link
           rel="preload"
           href={locale === 'ar' ? '/fonts/arabic.woff2' : '/fonts/display.woff2'}

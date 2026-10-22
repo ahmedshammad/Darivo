@@ -1,6 +1,6 @@
 'use client';
 import { InvestmentCalculator } from './investment-calculator';
-import { ConsultantDock } from './consultant';
+import { ConsultantLauncher } from './consultant-launcher';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -223,7 +223,7 @@ export function PropertyDetail({ property: p }: { property: PropertyDTO }) {
           </section>
         </aside>
       </div>
-      <ConsultantDock />
+      <ConsultantLauncher />
     </div>
   );
 }
