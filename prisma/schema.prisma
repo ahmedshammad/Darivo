@@ -44,6 +44,7 @@ model User {
   viewings      ViewingRequest[]
   brief         ClientBrief?
   conversations ConsultantConversation[]
+  concierge     ConciergeSession?
   grants        OffMarketGrant[]
   handoffs      Handoff[]
   notes         AdvisorNote[]            @relation("ClientNotes")
@@ -324,6 +325,30 @@ model ConsultantMessage {
   content        Json
   createdAt      DateTime               @default(now())
   conversation   ConsultantConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+}
+
+// Separate from the legacy Consultant. Version invalidates in-flight generations
+// after edits/deletion; only complete, privacy-eligible snapshots are retained.
+model ConciergeSession {
+  id        String              @id @default(uuid())
+  userId    String              @unique
+  version   Int                 @default(0)
+  snapshot  Json
+  updatedAt DateTime            @updatedAt
+  user      User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  proposals ConciergeProposal[]
+}
+
+model ConciergeProposal {
+  id        String           @id
+  sessionId String
+  data      Json
+  status    String           @default("PENDING")
+  result    Json?
+  expiresAt DateTime
+  session   ConciergeSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId, status])
 }
 
 model OffMarketGrant {

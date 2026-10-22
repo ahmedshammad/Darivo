@@ -14,7 +14,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:performance": "node scripts/performance.mjs",
-    "eval": "tsx evals/run.ts",
+    "eval": "tsx evals/run.ts && pnpm eval:concierge",
+    "eval:concierge": "node --import tsx evals/concierge-run.ts && node --import tsx evals/concierge-execution-run.ts",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",
@@ -27,6 +28,8 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@ai-sdk/openai-compatible": "3.0.75",
+    "@ai-sdk/react": "4.0.152",
     "@auth/prisma-adapter": "^2.11.3",
     "@deck.gl/core": "^9.4.0",
     "@deck.gl/layers": "^9.4.0",
@@ -38,6 +41,7 @@
     "@js-temporal/polyfill": "^0.5.1",
     "@prisma/client": "6.19.3",
     "@radix-ui/react-slot": "^1.5.0",
+    "ai": "7.0.148",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^18.0.8",
