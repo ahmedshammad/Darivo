@@ -69,6 +69,11 @@ const mediaInput = z
     position: z.coerce.number().int().min(0).max(20),
   })
   .strict();
+async function requireDemoDeveloper(tx: Prisma.TransactionClient, id: string) {
+  const developer = await tx.developer.findUnique({ where: { id }, select: { kind: true } });
+  if (!developer) throw new HttpError(404, 'not_found');
+  if (developer.kind !== 'DEMO') throw new HttpError(403, 'reference_read_only');
+}
 export async function adminWrite(resource: string, input: unknown, actorId: string) {
   let preparedVector: string | undefined;
   if (resource === 'properties') {
@@ -140,10 +145,11 @@ export async function adminWrite(resource: string, input: unknown, actorId: stri
         targetId = id;
       } else if (resource === 'developers') {
         const { id, ...data } = developerInput.parse(input);
+        if (id) await requireDemoDeveloper(tx, id);
         targetId = (
           id
-            ? await tx.developer.update({ where: { id }, data })
-            : await tx.developer.create({ data })
+            ? await tx.developer.update({ where: { id, kind: 'DEMO' }, data })
+            : await tx.developer.create({ data: { ...data, kind: 'DEMO' } })
         ).id;
       } else if (resource === 'communities') {
         const data = communityInput.parse(input);
@@ -159,7 +165,11 @@ export async function adminWrite(resource: string, input: unknown, actorId: stri
         ).id;
       } else if (resource === 'users') {
         const a = z
-          .object({ id: text, role: z.enum(['CLIENT', 'ADVISOR', 'ADMIN']), verification })
+          .object({
+            id: text,
+            role: z.enum(['CLIENT', 'VERIFIED_CLIENT', 'ADVISOR', 'DEVELOPER_PARTNER', 'ADMIN']),
+            verification,
+          })
           .strict()
           .parse(input);
         const target = await tx.user.findUnique({ where: { id: a.id } });
@@ -192,7 +202,8 @@ export async function adminDelete(resource: string, id: string, actorId: string)
           await tx.property.delete({ where: { id } });
           break;
         case 'developers':
-          await tx.developer.delete({ where: { id } });
+          await requireDemoDeveloper(tx, id);
+          await tx.developer.delete({ where: { id, kind: 'DEMO' } });
           break;
         case 'communities':
           await tx.community.delete({ where: { id } });

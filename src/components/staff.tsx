@@ -419,7 +419,10 @@ export function Admin({ data }: { data: AdminData }) {
       ];
     if (resource === 'users')
       fields = [
-        { name: 'role', options: options(['CLIENT', 'ADVISOR', 'ADMIN']) },
+        {
+          name: 'role',
+          options: options(['CLIENT', 'VERIFIED_CLIENT', 'ADVISOR', 'DEVELOPER_PARTNER', 'ADMIN']),
+        },
         { name: 'verification', options: options(['UNVERIFIED', 'PENDING', 'VERIFIED']) },
       ];
   }

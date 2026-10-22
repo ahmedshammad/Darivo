@@ -2,10 +2,12 @@
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { money } from '@/src/lib/catalog';
+import { usePreferences } from './preferences';
 import type { PropertyDTO } from '@/src/server/db/properties';
 export function InvestmentCalculator({ property }: { property: PropertyDTO }) {
   const t = useTranslations(),
-    locale = useLocale();
+    locale = useLocale(),
+    pref = usePreferences();
   const [result, setResult] = useState<{ grossYield: number; annualCashFlow: number } | null>(null),
     [error, setError] = useState(false);
   return (
@@ -62,7 +64,8 @@ export function InvestmentCalculator({ property }: { property: PropertyDTO }) {
             {t('grossYield')}: {result.grossYield.toFixed(2)}%
           </p>
           <p>
-            {t('annualCashFlow')}: {money(result.annualCashFlow, 'AED', locale)}
+            {t('annualCashFlow')}:{' '}
+            {money(result.annualCashFlow, 'AED', locale, pref.arabicIndicDigits)}
           </p>
           <p className="muted">{t('estimate')}</p>
         </div>

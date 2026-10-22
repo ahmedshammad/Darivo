@@ -348,5 +348,14 @@
   "openMap": "Explore this location",
   "zoomIn": "Zoom in",
   "zoomOut": "Zoom out",
-  "resetBearing": "Reset north"
+  "resetBearing": "Reset north",
+  "partnerRole": "Developer partner",
+  "arabicIndicDigits": "Arabic-Indic digits",
+  "savingPreferences": "Saving display preferences…",
+  "preferencesSaved": "Display preferences saved.",
+  "preferencesSaveFailed": "Your display changed, but it could not be saved. Try again.",
+  "sourcePrice": "Source price",
+  "indicativeConversion": "Indicative conversion",
+  "VERIFIED_CLIENT": "Verified client",
+  "DEVELOPER_PARTNER": "Developer partner"
 }

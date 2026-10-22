@@ -1,16 +1,17 @@
 # Darivo
 
-A private, bilingual property-finder demo for the UAE and Egypt. English and Arabic/RTL, 200 fictional residences, a grounded AI consultant, private collections, bilingual PDF dossiers and advisor/admin workflows.
+A private, bilingual property-office demo for the UAE and Egypt. V2 is in progress: the Noir Atlas concept sprint is approved, and the foundation/design system is under review. The existing consultant, portfolios, PDF and advisor/admin workflows remain runnable while the later V2 experiences are built. See the [full delivery ledger](docs/studio/DELIVERY-LEDGER.md) for honest stage status.
 
 ## Run in a few minutes
 
 Requirements: **Node.js 22**, **pnpm 11**, and Chrome for PDF export/browser tests. No AI key or Docker is required for the quick demo.
 
 ```sh
-pnpm install && pnpm dev
+pnpm install
+pnpm demo
 ```
 
-Open **http://localhost:3000/en** or **http://localhost:3000/ar**. Leave that terminal running. The launcher creates a private `.env` with a random auth secret, starts persistent local PGlite + pgvector, applies migrations, seeds 200 properties and starts Next.js. Restarting does not reset your saved work. PGlite data lives in your OS temporary directory under `darivo-postgres-<project hash>`; OS cleanup can remove it, so use Docker volumes for durable development.
+Open **http://localhost:3000/en** or **http://localhost:3000/ar**. The new living component guide is at **/en/design** and **/ar/design**. Leave that terminal running. The launcher creates a private `.env` with a random auth secret, starts persistent local PGlite + pgvector, applies migrations, imports13 sourced reference projects and seeds250 fictional units. Re-seeding refreshes demo identities and fixture fields but retains portfolios, conversations and viewing relationships. PGlite data lives in the OS temporary directory under `darivo-postgres-<project hash>`; use Docker volumes for durable development. `pnpm dev` is an alias for the same launcher.
 
 If Chrome is missing, install it for PDF rendering and tests:
 
@@ -20,12 +21,13 @@ pnpm exec playwright install chrome
 
 Use **Private access → Explore the demo**:
 
-| Account         | Email                   | Access                                              |
-| --------------- | ----------------------- | --------------------------------------------------- |
-| Private client  | client@darivo.example   | Public inventory                                    |
-| Verified client | verified@darivo.example | Public + verified-only                              |
-| Advisor         | advisor@darivo.example  | Advisor desk + private introductions                |
-| Administrator   | admin@darivo.example    | Inventory, users, verification, audit and analytics |
+| Account           | Email                   | Access                                                       |
+| ----------------- | ----------------------- | ------------------------------------------------------------ |
+| Private client    | client@darivo.example   | Public inventory                                             |
+| Verified client   | verified@darivo.example | Public + verified-only                                       |
+| Developer partner | partner@darivo.example  | Public unit inventory; no staff or private-client privileges |
+| Advisor           | advisor@darivo.example  | Advisor desk + private introductions                         |
+| Administrator     | admin@darivo.example    | Inventory, users, verification, audit and analytics          |
 
 No passwords are needed for these explicit **development-only** identities. The normal email-link form prints a single-use Auth.js link in the local server console. Only invited/seeded accounts may sign in. Production demo credentials and the console mailer are disabled.
 
@@ -38,7 +40,7 @@ No passwords are needed for these explicit **development-only** identities. The 
 5. Submit the profile’s built-in verification placeholder. Sign in as admin, choose **Users & verification**, and approve it.
 6. From the advisor desk, grant `property-020` to the private client. It becomes visible to that client only. Revoke it and access disappears immediately. Audit records both actions.
 
-All listings, developers, permits, insights, financial assumptions and accounts are fictional. The area names are real geography. Illustrations are original vector artwork, not listing photographs. The offline map is schematic, not a navigational map.
+The250 unit listings, their16 projects and4 developers, permits, POIs, investment assumptions and accounts are fictional. Separately, the supplied reference dataset contains9 real developer organisations, one aggregate research note,13 real projects and3 market statistics. Reference projects have source/date/basis metadata and on-request availability; they never own demo units. See [data boundaries](docs/REFERENCE_DATA.md). No developer logos or renders are used. The legacy offline map is schematic; the concept studio uses actual geographic tiles.
 
 ## PostgreSQL 16 + pgvector (canonical setup)
 
@@ -51,7 +53,7 @@ docker compose up -d --wait
 pnpm dev
 ```
 
-The database binds to loopback port 55432. Set a unique `POSTGRES_PASSWORD` and matching `DATABASE_URL` for any shared environment. CI uses PostgreSQL 16 with pgvector. This host lacked Docker, so local execution was validated using the PGlite fallback; it uses real PostgreSQL semantics but is a single-backend WASM development database, not the production engine or a production service.
+The database binds to loopback port55432. Set a unique `POSTGRES_PASSWORD` and matching `DATABASE_URL` for any shared environment. CI uses PostgreSQL16 with pgvector. V2 migration, seed and test validation also runs on an isolated native PostgreSQL16.2 + pgvector0.6.2 fixture. The no-install PGlite fallback remains a single-backend WASM development database, not a production service.
 
 ## AI configuration
 

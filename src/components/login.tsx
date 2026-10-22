@@ -44,6 +44,7 @@ export function Login({ demo }: { demo: boolean }) {
               {[
                 ['client', 'client'],
                 ['verified', 'verified'],
+                ['partner', 'partnerRole'],
                 ['advisor', 'advisorRole'],
                 ['admin', 'adminRole'],
               ].map(([email, key]) => (

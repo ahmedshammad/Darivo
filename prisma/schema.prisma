@@ -9,6 +9,8 @@ datasource db {
 
 enum Role {
   CLIENT
+  VERIFIED_CLIENT
+  DEVELOPER_PARTNER
   ADVISOR
   ADMIN
 }
@@ -82,15 +84,16 @@ model VerificationToken {
 }
 
 model ClientProfile {
-  id            String    @id @default(cuid())
-  userId        String    @unique
-  language      String    @default("en")
-  currency      String    @default("AED")
-  areaUnit      String    @default("sqm")
-  timezone      String    @default("Asia/Dubai")
-  notifications Boolean   @default(false)
-  consentAt     DateTime?
-  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String    @id @default(cuid())
+  userId            String    @unique
+  language          String    @default("en")
+  currency          String    @default("AED")
+  areaUnit          String    @default("sqm")
+  timezone          String    @default("Asia/Dubai")
+  notifications     Boolean   @default(false)
+  arabicIndicDigits Boolean   @default(false)
+  consentAt         DateTime?
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Advisor {
@@ -125,14 +128,56 @@ model Community {
   city       City         @relation(fields: [cityId], references: [id])
   properties Property[]
   insight    AreaInsight?
+  demoPois   DemoPOI[]
+}
+
+enum DeveloperKind {
+  REAL_REFERENCE
+  DEMO
+  AGGREGATE
+}
+
+enum ProjectKind {
+  REAL_REFERENCE
+  DEMO
+}
+
+enum DatePrecision {
+  UNKNOWN
+  YEAR
+  MONTH
+  DAY
+}
+
+enum SourceBasis {
+  UNKNOWN
+  AGENT_LISTING
+  LISTING
+  BROKER_PROJECT_PAGE
+  PORTAL_PROJECT_PAGE
+  PRESS_REPORT
+  DEMO_ESTIMATE
+}
+
+enum SourceConfidence {
+  UNASSESSED
+  LOW
+  MEDIUM
+  HIGH
 }
 
 model Developer {
-  id            String     @id @default(cuid())
+  id            String          @id @default(cuid())
   nameEn        String
   nameAr        String
   descriptionEn String
   descriptionAr String
+  kind          DeveloperKind   @default(DEMO)
+  country       String?
+  knownFor      String[]        @default([])
+  rawReference  Json?
+  projects      Project[]
+  facts         ReferenceFact[]
   properties    Property[]
 }
 
@@ -141,6 +186,10 @@ model Property {
   slug               String                     @unique
   communityId        String
   developerId        String
+  // The write trigger assigns a fictional project for legacy admin creates.
+  // A DB check guarantees persisted units always have a project.
+  projectId          String?
+  project            Project?                   @relation(fields: [projectId], references: [id], onDelete: Restrict)
   type               String
   status             String
   handoverDate       DateTime?
@@ -326,4 +375,104 @@ model AnalyticsEvent {
   kind      String
   areaId    String?
   createdAt DateTime @default(now())
+}
+
+model Project {
+  id                     String           @id
+  slug                   String           @unique
+  kind                   ProjectKind
+  developerId            String
+  nameEn                 String
+  nameAr                 String?
+  country                String
+  city                   String
+  communityName          String
+  communityId            String?
+  lat                    Float
+  lng                    Float
+  coordinatesApproximate Boolean          @default(true)
+  types                  String[]         @default([])
+  status                 String?
+  completion             String?
+  priceFromAmount        Decimal?         @db.Decimal(20, 2)
+  priceFromCurrency      String?
+  priceFromLabel         String?
+  priceBasis             SourceBasis      @default(UNKNOWN)
+  priceNote              String?
+  paymentPlanText        String?
+  asOf                   String?
+  asOfPrecision          DatePrecision    @default(UNKNOWN)
+  confidence             SourceConfidence @default(UNASSESSED)
+  rawReference           Json?
+  demoPriceBasis         Json?
+  developer              Developer        @relation(fields: [developerId], references: [id])
+  units                  Property[]
+  facts                  ReferenceFact[]
+
+  @@index([kind, country, city])
+  @@index([developerId, kind])
+}
+
+model Source {
+  id                     String           @id
+  url                    String
+  // Publisher is the original hostname unless the dataset names a publisher.
+  publisher              String
+  basis                  SourceBasis      @default(UNKNOWN)
+  retrievedAt            DateTime?
+  retrievedDatePrecision DatePrecision    @default(UNKNOWN)
+  confidence             SourceConfidence @default(UNASSESSED)
+  facts                  ReferenceFact[]
+
+  @@unique([url, basis])
+}
+
+// One fact belongs to exactly one reference record (enforced by DB check).
+// Dataset URLs are record-level citations: no finer attribution is invented.
+model ReferenceFact {
+  id            String           @id
+  key           String
+  value         Json
+  developerId   String?
+  projectId     String?
+  marketStatId  String?
+  asOf          String?
+  asOfPrecision DatePrecision    @default(UNKNOWN)
+  basis         SourceBasis      @default(UNKNOWN)
+  confidence    SourceConfidence @default(UNASSESSED)
+  citationScope String           @default("record")
+  developer     Developer?       @relation(fields: [developerId], references: [id], onDelete: Cascade)
+  project       Project?         @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  marketStat    MarketStat?      @relation(fields: [marketStatId], references: [id], onDelete: Cascade)
+  sources       Source[]
+
+  @@index([developerId])
+  @@index([projectId])
+  @@index([marketStatId])
+}
+
+model MarketStat {
+  id            String          @id
+  market        String
+  metric        String
+  value         String
+  detail        String?
+  asOf          String?
+  asOfPrecision DatePrecision   @default(UNKNOWN)
+  rawReference  Json
+  facts         ReferenceFact[]
+}
+
+model DemoPOI {
+  id          String    @id
+  communityId String
+  nameEn      String
+  nameAr      String
+  kind        String
+  lat         Float
+  lng         Float
+  isDemo      Boolean   @default(true)
+  community   Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+
+  @@index([communityId, kind])
 }

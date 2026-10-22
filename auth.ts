@@ -19,6 +19,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             email: z.enum([
               'client@darivo.example',
               'verified@darivo.example',
+              'partner@darivo.example',
               'advisor@darivo.example',
               'admin@darivo.example',
             ]),

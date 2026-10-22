@@ -1,0 +1,338 @@
+[
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "dark",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "light",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": ["span:nth-child(1) > b"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ["span:nth-child(1) > small"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 6.0pt (8px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "dark",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "light",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": ["span:nth-child(1) > b"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ["span:nth-child(1) > small"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 6.0pt (8px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "dark",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "light",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": ["span:nth-child(1) > b"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ["span:nth-child(1) > small"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 6.0pt (8px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "dark",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "light",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": ["span:nth-child(1) > b"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ["span:nth-child(1) > small"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 6.0pt (8px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "dark",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": ["#design-digits"],
+            "summary": "Fix any of the following:\n  Target has insufficient size (12px by 12px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "light",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": ["span:nth-child(1) > b"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ["span:nth-child(1) > small"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 4.5pt (6px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": ["#design-digits"],
+            "summary": "Fix any of the following:\n  Target has insufficient size (12px by 12px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "dark",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": ["#design-digits"],
+            "summary": "Fix any of the following:\n  Target has insufficient size (12px by 12px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "light",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": ["span:nth-child(1) > b"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ["span:nth-child(1) > small"],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.09 (foreground color: #16171a, background color: #0b0b0c, font size: 4.5pt (6px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": ["#design-digits"],
+            "summary": "Fix any of the following:\n  Target has insufficient size (12px by 12px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  }
+]

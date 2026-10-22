@@ -3,6 +3,8 @@ import { z } from 'zod';
 import { filterSchema } from '../src/server/db/properties';
 import { briefSchema, toolSchemas } from '../src/server/ai/schema';
 import { listingInput } from '../src/server/admin';
+import { profileSchema, displayPreferencesSchema } from '../src/lib/preferences';
+import { Role } from '@prisma/client';
 const convert = (schema: z.ZodType) => {
   const result = z.toJSONSchema(schema, { io: 'input', target: 'draft-7' });
   delete result.$schema;
@@ -78,18 +80,14 @@ const schemas: Record<string, unknown> = {
   SaveShortlist: convert(toolSchemas.save_to_shortlist),
   ViewingInput: convert(toolSchemas.request_viewing),
   InvestmentInput: convert(toolSchemas.calculate_investment),
-  ProfileInput: object({
-    language: { enum: ['en', 'ar'] },
-    currency: { enum: ['AED', 'EGP', 'USD', 'EUR', 'SAR', 'GBP'] },
-    areaUnit: { enum: ['sqm', 'sqft'] },
-    timezone: { enum: ['Asia/Dubai', 'Africa/Cairo'] },
-    notifications: bool,
-    consent: { const: true },
-  }),
+  ProfileInput: convert(profileSchema),
+  DisplayPreferencesInput: { ...convert(displayPreferencesSchema), minProperties: 1 },
+  DisplayPreferences: object({ currency: str, areaUnit: str, arabicIndicDigits: bool }),
   Profile: object({
     language: str,
     currency: str,
     areaUnit: str,
+    arabicIndicDigits: bool,
     timezone: str,
     notifications: bool,
     consentAt: { type: ['string', 'null'], format: 'date-time' },
@@ -117,12 +115,12 @@ const schemas: Record<string, unknown> = {
   User: object({
     id: str,
     email: { type: 'string', format: 'email' },
-    role: { enum: ['CLIENT', 'ADVISOR', 'ADMIN'] },
+    role: { enum: Object.values(Role) },
     verification: { enum: ['UNVERIFIED', 'PENDING', 'VERIFIED'] },
   }),
   UserInput: object({
     id: str,
-    role: { enum: ['CLIENT', 'ADVISOR', 'ADMIN'] },
+    role: { enum: Object.values(Role) },
     verification: { enum: ['UNVERIFIED', 'PENDING', 'VERIFIED'] },
   }),
   AuditEvent: object({
@@ -368,6 +366,15 @@ op(
   'Save current profile and consent',
   ref('Profile'),
   ref('ProfileInput'),
+);
+op(
+  '/preferences',
+  'patch',
+  'updateDisplayPreferences',
+  'Save currency, area unit and numeral preference without changing consent or access',
+  ref('DisplayPreferences'),
+  ref('DisplayPreferencesInput'),
+  'AUTHENTICATED',
 );
 op(
   '/profile',

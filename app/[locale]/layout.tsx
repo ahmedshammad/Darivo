@@ -6,6 +6,7 @@ import { db } from '@/src/server/db/client';
 import { PreferencesProvider } from '@/src/components/preferences';
 import { Shell } from '@/src/components/shell';
 import '../globals.css';
+import '@/src/styles/tokens.css';
 export const metadata = {
   title: { default: 'Darivo · A considered address', template: '%s · Darivo' },
   description: 'A private, bilingual property collection. Synthetic demonstration.',
@@ -22,8 +23,8 @@ export default async function Layout({
   setRequestLocale(locale);
   const messages = await getMessages({ locale });
   const session = await auth();
-  const user = session?.user?.email
-    ? await db.user.findUnique({ where: { email: session.user.email }, include: { profile: true } })
+  const user = session?.user?.id
+    ? await db.user.findUnique({ where: { id: session.user.id }, include: { profile: true } })
     : null;
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
@@ -45,7 +46,13 @@ export default async function Layout({
       </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <PreferencesProvider currency={user?.profile?.currency} unit={user?.profile?.areaUnit}>
+          <PreferencesProvider
+            key={user?.id ?? 'anonymous'}
+            userId={user?.id}
+            currency={user?.profile?.currency}
+            unit={user?.profile?.areaUnit}
+            arabicIndicDigits={user?.profile?.arabicIndicDigits}
+          >
             <Shell email={user?.email} role={user?.role}>
               {children}
             </Shell>

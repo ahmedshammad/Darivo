@@ -348,5 +348,14 @@
   "openMap": "استكشف الموقع",
   "zoomIn": "تكبير",
   "zoomOut": "تصغير",
-  "resetBearing": "الاتجاه إلى الشمال"
+  "resetBearing": "الاتجاه إلى الشمال",
+  "partnerRole": "شريك التطوير العقاري",
+  "arabicIndicDigits": "الأرقام العربية الهندية",
+  "savingPreferences": "نحفظ تفضيلات العرض…",
+  "preferencesSaved": "تم حفظ تفضيلات العرض.",
+  "preferencesSaveFailed": "تغيّر العرض، لكن تعذّر حفظه. حاول مرة أخرى.",
+  "sourcePrice": "السعر بعملته الأصلية",
+  "indicativeConversion": "تحويل استرشادي",
+  "VERIFIED_CLIENT": "عميل موثّق",
+  "DEVELOPER_PARTNER": "شريك التطوير العقاري"
 }

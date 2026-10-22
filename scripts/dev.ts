@@ -11,6 +11,9 @@ async function main() {
       `DATABASE_URL="postgresql://postgres:postgres@127.0.0.1:55432/postgres?connection_limit=1&pgbouncer=true&statement_cache_size=0"\nAUTH_SECRET="${randomBytes(32).toString('hex')}"\nAUTH_URL="http://localhost:3000"\nDEMO_MODE="true"\nAI_PROVIDER="mock"\nLOCAL_DB="pglite"\nDATA_REGION="UAE"\n`,
     );
   config({ quiet: true });
+  if (process.env.NODE_ENV === 'production' || process.env.DEMO_MODE !== 'true') {
+    throw new Error('The demo launcher requires DEMO_MODE=true outside production.');
+  }
   if (!process.env.AUTH_SECRET) {
     process.env.AUTH_SECRET = randomBytes(32).toString('hex');
     appendFileSync('.env', `\nAUTH_SECRET="${process.env.AUTH_SECRET}"\n`);
@@ -46,9 +49,14 @@ async function main() {
     };
     console.info('Local PostgreSQL + pgvector ready (PGlite development fallback).');
   }
-  await run(['db:generate']);
-  await run(['db:migrate']);
-  await run(['db:seed']);
+  try {
+    await run(['db:generate']);
+    await run(['db:migrate']);
+    await run(['db:seed']);
+  } catch (error) {
+    await stop?.();
+    throw error;
+  }
   const app = spawn('pnpm', ['dev:next'], { stdio: 'inherit', env: process.env });
   const shutdown = async () => {
     app.kill('SIGTERM');

@@ -3,10 +3,7 @@
   "escapeCloses": true,
   "focusAfterClose": "source-reference",
   "intent": {
-    "center": [
-      27.930000000000064,
-      31.100000000000023
-    ],
+    "center": [27.930000000000064, 31.100000000000023],
     "expanded": "false",
     "moving": false
   },

@@ -2,6 +2,7 @@ import { z } from 'zod';
 import type { User } from '@prisma/client';
 import { db } from './db/client';
 import { HttpError } from './errors';
+import { isClientRole, isStaffRole } from './auth/roles';
 export const grantInput = z
   .object({ userId: z.string().min(1).max(100), propertyId: z.string().min(1).max(100) })
   .strict();
@@ -10,16 +11,18 @@ export async function changeGrant(
   input: unknown,
   revoke = false,
 ) {
-  if (!['ADVISOR', 'ADMIN'].includes(actor.role)) throw new HttpError(403, 'forbidden');
+  if (!isStaffRole(actor.role)) throw new HttpError(403, 'forbidden');
   const a = grantInput.parse(input);
   return db.$transaction(async (tx) => {
+    const currentActor = await tx.user.findUnique({ where: { id: actor.id } });
+    if (!currentActor || !isStaffRole(currentActor.role)) throw new HttpError(403, 'forbidden');
     const property = await tx.property.findUnique({ where: { id: a.propertyId } }),
       client = await tx.user.findUnique({ where: { id: a.userId } });
     if (
       !property ||
-      property.visibility !== 'PRIVATE_INVITE' ||
+      (!revoke && property.visibility !== 'PRIVATE_INVITE') ||
       !client ||
-      client.role !== 'CLIENT'
+      (!revoke && !isClientRole(client.role))
     )
       throw new HttpError(400, 'invalid_grant');
     if (revoke) await tx.offMarketGrant.deleteMany({ where: a });

@@ -1,0 +1,88 @@
+/* Darivo Noir & Sand. Raw brand values are distinct from accessible text roles. */
+@font-face {
+  font-family: DarivoArabicDisplay;
+  src: url('/fonts/arabic-display.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --noir: #0b0b0c;
+  --ink: #16171a;
+  --graphite: #2a2b30;
+  --sand: #e9e2d6;
+  --ivory: #f7f4ee;
+  --bronze: #b08d57;
+  --signal-green: #3e7c6b;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-10: 80px;
+  --space-12: 96px;
+  --content-width: 1280px;
+  --reading-width: 68ch;
+  --grid-columns: 12;
+
+  --type-caption: 0.75rem;
+  --type-small: 0.875rem;
+  --type-body: 1rem;
+  --type-lead: 1.25rem;
+  --type-title: clamp(2rem, 3.5vw, 3.5rem);
+  --type-display: clamp(2.75rem, 5.5vw, 5.5rem);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-short: 200ms;
+  --motion-medium: 400ms;
+  --motion-long: 600ms;
+
+  --background: var(--ivory);
+  --surface: #fffdfa;
+  --foreground: var(--ink);
+  --muted: #59564f;
+  --accent: #76582e;
+  --border: #c9c2b6;
+  --dark: var(--noir);
+  --positive: var(--signal-green);
+  --serif: DarivoDisplay, Georgia, serif;
+  --sans: DarivoUI, Arial, sans-serif;
+}
+
+[data-theme='dark'] {
+  --background: var(--noir);
+  --surface: var(--ink);
+  --foreground: var(--ivory);
+  --muted: #bcb8af;
+  --accent: #d2b17d;
+  --border: #4a4947;
+  --dark: var(--noir);
+  --positive: #8cc9b6;
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+}
+
+[dir='rtl'] {
+  --serif: DarivoArabicDisplay, Georgia, serif;
+  --sans: DarivoArabic, Tahoma, sans-serif;
+}
+
+.tabular,
+.price,
+.detail-price {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-short: 0ms;
+    --motion-medium: 0ms;
+    --motion-long: 0ms;
+  }
+}

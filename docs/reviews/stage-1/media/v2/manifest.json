@@ -1,0 +1,206 @@
+[
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "dark",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "light",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "dark",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "light",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "dark",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "light",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "dark",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "light",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": []
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "dark",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": []
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "light",
+    "errors": [],
+    "language": "en",
+    "direction": "ltr",
+    "overflow": false,
+    "headings": [
+      "Begin with a life.",
+      "A handful, with a reason.",
+      "Less interface. More place.",
+      "Numbers, in context.",
+      "Care, even when nothing is found."
+    ],
+    "violations": []
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "dark",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": []
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "light",
+    "errors": [],
+    "language": "ar",
+    "direction": "rtl",
+    "overflow": false,
+    "headings": [
+      "نبدأ من الحياة.",
+      "اختيارات قليلة، وأسباب واضحة.",
+      "واجهة أهدأ، ومكان أوضح.",
+      "أرقام لها سياق.",
+      "العناية، حتى قبل العثور على المكان."
+    ],
+    "violations": []
+  }
+]

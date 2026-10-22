@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { ArrowUpRight, BedDouble, Maximize, ShieldCheck } from 'lucide-react';
 import type { PropertyDTO } from '@/src/server/db/properties';
-import { money, size } from '@/src/lib/catalog';
+import { size } from '@/src/lib/catalog';
 import { usePreferences } from './preferences';
+import { Price } from './price';
 export function PropertyCard({ property: p }: { property: PropertyDTO }) {
   const locale = useLocale(),
     t = useTranslations(),
@@ -31,7 +32,7 @@ export function PropertyCard({ property: p }: { property: PropertyDTO }) {
         <Link href={`/${locale}/properties/${p.id}`}>
           <h3>{tr.title}</h3>
         </Link>
-        <p className="property-price">{money(p.priceAed, pref.currency, locale)}</p>
+        <Price className="property-price" property={p} />
         <div className="property-meta">
           <span>
             <BedDouble size={15} />
@@ -39,7 +40,7 @@ export function PropertyCard({ property: p }: { property: PropertyDTO }) {
           </span>
           <span>
             <Maximize size={14} />
-            {size(p.areaSqm, pref.unit, locale)} {t(pref.unit)}
+            {size(p.areaSqm, pref.unit, locale, pref.arabicIndicDigits)} {t(pref.unit)}
           </span>
           <span>{t(p.type)}</span>
         </div>

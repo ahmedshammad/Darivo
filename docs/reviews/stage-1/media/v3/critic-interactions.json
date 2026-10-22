@@ -1,0 +1,50 @@
+[
+  {
+    "lang": "en",
+    "initial": "INPUT",
+    "up": "Care, even when nothing is found.",
+    "selected": {
+      "tag": "H2",
+      "text": "Care, even when nothing is found."
+    },
+    "table": "Fictional concepts · comparison\nScroll horizontally to compare both concepts\nCRITERION\tTidal House\tQuiet Court\nIllustrative price\t٢٠٬٠٠٠٬٠٠٠ AED\t١٨٬٠٠٠٬٠٠٠ AED\nIllustrative area\t٥٢٠ m²\t٤٦٠ m²\nDemo timing\t٢٠٢٨\t٢٠٢٩\nNext step\tAdvisor confirmation\tAdvisor confirmation",
+    "timeline": "Illustrative payment plan\nDemo\n٢٠%\nReservation\n\n٢٠٢٦\n\n٥٤٬٠٠٠٬٠٠٠ EGP\n٦٠%\nDuring construction\n\n٢٠٢٦–٢٠٢٨\n\n١٦٢٬٠٠٠٬٠٠٠ EGP\n٢٠%\nAt handover\n\n٢٠٢٨\n\n٥٤٬٠٠٠٬٠٠٠ EGP\nTotal ١٠٠%\n٢٧٠٬٠٠٠٬٠٠٠ EGP\n\nDemo projection only. No financing or availability is offered.",
+    "before": {
+      "x": 16,
+      "y": 270.09375,
+      "width": 358,
+      "height": 573.90625
+    },
+    "after": {
+      "x": 16,
+      "y": 84.40625,
+      "width": 358,
+      "height": 759.59375
+    },
+    "returned": "design-sheet-trigger"
+  },
+  {
+    "lang": "ar",
+    "initial": "INPUT",
+    "up": "العناية، حتى قبل العثور على المكان.",
+    "selected": {
+      "tag": "H2",
+      "text": "العناية، حتى قبل العثور على المكان."
+    },
+    "table": "مقارنة تصوّرات خيالية\nمرّر أفقياً لمقارنة التصوّرين\nالمعيار\tدار الموج\tالفناء الهادئ\nسعر توضيحي\t‏٢٠٬٠٠٠٬٠٠٠ د.إ.‏\t‏١٨٬٠٠٠٬٠٠٠ د.إ.‏\nمساحة توضيحية\t٥٢٠ م²\t٤٦٠ م²\nموعد تجريبي\t٢٠٢٨\t٢٠٢٩\nالخطوة التالية\tالتأكيد مع المستشار\tالتأكيد مع المستشار",
+    "timeline": "خطة دفع توضيحية\nتجريبي\n٢٠%\nالحجز\n\n٢٠٢٦\n\n‏٥٤٬٠٠٠٬٠٠٠ ج.م.‏\n٦٠%\nخلال الإنشاء\n\n٢٠٢٦–٢٠٢٨\n\n‏١٦٢٬٠٠٠٬٠٠٠ ج.م.‏\n٢٠%\nعند التسليم\n\n٢٠٢٨\n\n‏٥٤٬٠٠٠٬٠٠٠ ج.م.‏\nالإجمالي ١٠٠%\n‏٢٧٠٬٠٠٠٬٠٠٠ ج.م.‏\n\nحساب تجريبي فقط. لا يتضمن عرض تمويل أو وحدات متاحة.",
+    "before": {
+      "x": 16,
+      "y": 270.09375,
+      "width": 358,
+      "height": 573.90625
+    },
+    "after": {
+      "x": 16,
+      "y": 84.40625,
+      "width": 358,
+      "height": 759.59375
+    },
+    "returned": "design-sheet-trigger"
+  }
+]

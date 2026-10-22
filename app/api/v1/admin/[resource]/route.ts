@@ -16,7 +16,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ resource
           ),
         );
       case 'developers':
-        return json(await db.developer.findMany());
+        return json(await db.developer.findMany({ where: { kind: 'DEMO' } }));
       case 'communities':
         return json(await db.community.findMany({ include: { city: true } }));
       case 'media':

@@ -10,6 +10,7 @@ import type { PropertyDTO } from '@/src/server/db/properties';
 import { money, size, FX } from '@/src/lib/catalog';
 import { DisplayPreferences, usePreferences } from './preferences';
 import { MapView } from './map-view';
+import { Price } from './price';
 export function PropertyDetail({ property: p }: { property: PropertyDTO }) {
   const t = useTranslations(),
     locale = useLocale(),
@@ -20,7 +21,10 @@ export function PropertyDetail({ property: p }: { property: PropertyDTO }) {
     [t('type'), t(p.type)],
     [t('bedrooms'), p.bedrooms],
     [t('baths'), p.bathrooms],
-    [t('areaUnit'), `${size(p.areaSqm, pref.unit, locale)} ${t(pref.unit)}`],
+    [
+      t('areaUnit'),
+      `${size(p.areaSqm, pref.unit, locale, pref.arabicIndicDigits)} ${t(pref.unit)}`,
+    ],
     [t('status'), t(p.status)],
     [t('view'), t(p.view)],
   ];
@@ -39,7 +43,7 @@ export function PropertyDetail({ property: p }: { property: PropertyDTO }) {
           <p className="muted">{t('illustration')}</p>
         </div>
         <div>
-          <p className="detail-price">{money(p.priceAed, pref.currency, locale)}</p>
+          <Price className="detail-price" property={p} />
           <DisplayPreferences />
         </div>
       </div>
@@ -131,10 +135,18 @@ export function PropertyDetail({ property: p }: { property: PropertyDTO }) {
             <h3>{t('investment')}</h3>
             <dl className="data-list">
               {[
-                [t('pricePerSqm'), money(p.priceAed / p.areaSqm, pref.currency, locale)],
+                [
+                  t('pricePerSqm'),
+                  money(p.priceAed / p.areaSqm, pref.currency, locale, pref.arabicIndicDigits),
+                ],
                 [
                   t('areaAverage'),
-                  money(p.community.insight?.averageAedSqm ?? 0, pref.currency, locale),
+                  money(
+                    p.community.insight?.averageAedSqm ?? 0,
+                    pref.currency,
+                    locale,
+                    pref.arabicIndicDigits,
+                  ),
                 ],
                 [
                   t('grossYield'),
@@ -142,7 +154,12 @@ export function PropertyDetail({ property: p }: { property: PropertyDTO }) {
                 ],
                 [
                   t('serviceCharge'),
-                  money(p.serviceChargeMinor / 100 / FX[p.currency], pref.currency, locale),
+                  money(
+                    p.serviceChargeMinor / 100 / FX[p.currency],
+                    pref.currency,
+                    locale,
+                    pref.arabicIndicDigits,
+                  ),
                 ],
               ].map(([k, v]) => (
                 <div key={k}>

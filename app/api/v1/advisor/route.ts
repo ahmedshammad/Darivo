@@ -44,7 +44,9 @@ export async function POST(req: Request) {
     const user = await requireUser(['ADVISOR', 'ADMIN']),
       a = input.parse(await readJson(req));
     if (a.action === 'note' || a.action === 'suggest') {
-      const client = await db.user.findFirst({ where: { id: a.clientId, role: 'CLIENT' } });
+      const client = await db.user.findFirst({
+        where: { id: a.clientId, role: { in: ['CLIENT', 'VERIFIED_CLIENT'] } },
+      });
       if (!client) throw new HttpError(404, 'not_found');
       if (a.action === 'note')
         await db.advisorNote.create({

@@ -6,8 +6,8 @@ import { HttpError } from './errors';
 export { HttpError } from './errors';
 export async function requireUser(roles?: Role[]) {
   const session = await auth();
-  const user = session?.user?.email
-    ? await db.user.findUnique({ where: { email: session.user.email }, include: { profile: true } })
+  const user = session?.user?.id
+    ? await db.user.findUnique({ where: { id: session.user.id }, include: { profile: true } })
     : null;
   if (!user) throw new HttpError(401, 'unauthorized');
   if (roles && !roles.includes(user.role)) throw new HttpError(403, 'forbidden');
@@ -41,7 +41,7 @@ export function failure(error: unknown) {
 }
 export async function optionalUser() {
   const session = await auth();
-  return session?.user?.email ? db.user.findUnique({ where: { email: session.user.email } }) : null;
+  return session?.user?.id ? db.user.findUnique({ where: { id: session.user.id } }) : null;
 }
 
 export async function readJson(req: Request, maxBytes = 32768): Promise<unknown> {

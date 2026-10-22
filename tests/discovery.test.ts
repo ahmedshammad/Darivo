@@ -5,10 +5,10 @@ import { embed } from '../src/server/search/embedding';
 const client = { id: 'demo-client', role: 'CLIENT' as const, verification: 'UNVERIFIED' as const };
 afterAll(() => db.$disconnect());
 describe('discovery and scope', () => {
-  it('seeds 200 listings and the exact visibility mix', async () => {
-    expect(await db.property.count()).toBe(200);
-    expect(await db.property.count({ where: { visibility: 'VERIFIED_ONLY' } })).toBe(30);
-    expect(await db.property.count({ where: { visibility: 'PRIVATE_INVITE' } })).toBe(10);
+  it('seeds 250 fictional units with approximately 15% verified and 5% private', async () => {
+    expect(await db.property.count()).toBe(250);
+    expect(await db.property.count({ where: { visibility: 'VERIFIED_ONLY' } })).toBe(38);
+    expect(await db.property.count({ where: { visibility: 'PRIVATE_INVITE' } })).toBe(12);
   });
   it('returns the acceptance villa while preserving filters', async () => {
     const r = await searchProperties(

@@ -12,7 +12,7 @@ export default async function Page() {
   const [properties, developers, communities, cities, media, users, audit, events, areas] =
     await Promise.all([
       db.property.findMany({ include: propertyInclude, orderBy: { id: 'asc' } }),
-      db.developer.findMany(),
+      db.developer.findMany({ where: { kind: 'DEMO' } }),
       db.community.findMany(),
       db.city.findMany(),
       db.propertyMedia.findMany(),

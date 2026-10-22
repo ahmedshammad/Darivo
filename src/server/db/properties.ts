@@ -3,18 +3,28 @@ import { z } from 'zod';
 import { db } from './client';
 import { embedText, embeddingSource } from '../search/provider';
 import { FX } from '@/src/lib/catalog';
+import { canAccessVerifiedInventory, isClientRole, isStaffRole } from '../auth/roles';
 export type Viewer = Pick<User, 'id' | 'role' | 'verification'> | null;
 export function visibilityWhere(user: Viewer): Prisma.PropertyWhereInput {
-  if (user?.role === 'ADMIN' || user?.role === 'ADVISOR') return {};
+  if (user && isStaffRole(user.role)) return {};
+  if (!user || !isClientRole(user.role)) return { visibility: 'PUBLIC' };
   return {
     OR: [
       { visibility: 'PUBLIC' },
-      ...(user?.verification === 'VERIFIED' ? [{ visibility: 'VERIFIED_ONLY' as const }] : []),
+      ...(canAccessVerifiedInventory(user) ? [{ visibility: 'VERIFIED_ONLY' as const }] : []),
       ...(user
         ? [{ visibility: 'PRIVATE_INVITE' as const, grants: { some: { userId: user.id } } }]
         : []),
     ],
   };
+}
+export async function currentViewer(user: Viewer): Promise<Viewer> {
+  return user
+    ? db.user.findUnique({
+        where: { id: user.id },
+        select: { id: true, role: true, verification: true },
+      })
+    : null;
 }
 export const filterSchema = z
   .object({
@@ -64,21 +74,23 @@ export function serializeProperty(p: RecordProperty) {
 export type PropertyDTO = ReturnType<typeof serializeProperty>;
 export async function getProperty(id: string, user: Viewer) {
   z.string().min(1).max(144).parse(id);
+  const viewer = await currentViewer(user);
   const p = await db.property.findFirst({
-    where: { AND: [{ OR: [{ id }, { slug: id }] }, visibilityWhere(user)] },
+    where: { AND: [{ OR: [{ id }, { slug: id }] }, visibilityWhere(viewer)] },
     include: propertyInclude,
   });
-  if (p?.visibility !== 'PUBLIC' && p && user)
+  if (p?.visibility !== 'PUBLIC' && p && viewer)
     await db.auditLog.create({
-      data: { actorId: user.id, action: 'PRIVATE_PROPERTY_READ', targetId: p.id },
+      data: { actorId: viewer.id, action: 'PRIVATE_PROPERTY_READ', targetId: p.id },
     });
   return p ? serializeProperty(p) : null;
 }
 export async function searchProperties(input: unknown, user: Viewer) {
+  const viewer = await currentViewer(user);
   const f = filterSchema.parse(input),
     rate = FX[f.currency];
   const where: Prisma.PropertyWhereInput = {
-    AND: [visibilityWhere(user)],
+    AND: [visibilityWhere(viewer)],
     ...(f.country || f.city
       ? {
           community: {

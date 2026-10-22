@@ -1,5 +1,8 @@
 import 'dotenv/config';
 import { PrismaClient, type Role } from '@prisma/client';
+import { seedReference } from './seed-reference';
+import { DEMO_UNIT_COUNT, demoPrice, demoProjectId, demoVisibility } from './demo-data';
+import type { ReferenceDataset } from '../src/lib/reference-data';
 import { AREAS, TYPES, typeAr, FX, FX_DATE } from '../src/lib/catalog';
 import { embed } from '../src/server/search/embedding';
 import { embedText, embeddingSource } from '../src/server/search/provider';
@@ -7,13 +10,14 @@ const db = new PrismaClient();
 async function seed() {
   for (const [id, role, verified] of [
     ['client', 'CLIENT', false],
-    ['verified', 'CLIENT', true],
+    ['verified', 'VERIFIED_CLIENT', true],
+    ['partner', 'DEVELOPER_PARTNER', true],
     ['advisor', 'ADVISOR', true],
     ['admin', 'ADMIN', true],
   ] as const) {
     await db.user.upsert({
       where: { email: `${id}@darivo.example` },
-      update: {},
+      update: { role: role as Role, verification: verified ? 'VERIFIED' : 'UNVERIFIED' },
       create: {
         id: `demo-${id}`,
         name: `Demo ${id}`,
@@ -25,11 +29,14 @@ async function seed() {
       },
     });
   }
-  await seedInventory();
+  const dataset = await seedReference(db);
+  await seedInventory(dataset);
   await reindex();
-  console.info('Demo identities and 200 fictional properties ready.');
+  console.info(
+    'Reference data: 9 organisations, 1 aggregate, 13 projects, 3 market stats; 250 fictional units ready.',
+  );
 }
-async function seedInventory() {
+async function seedInventory(dataset: ReferenceDataset) {
   for (const [id, nameEn, nameAr] of [
     ['AE', 'United Arab Emirates', 'الإمارات العربية المتحدة'],
     ['EG', 'Egypt', 'مصر'],
@@ -58,11 +65,18 @@ async function seedInventory() {
             yieldLow: 4.5,
             yieldHigh: 6.5,
             notesEn:
-              'Synthetic outlook: a balanced pipeline of low-density homes. All figures are illustrative.',
-            notesAr:
-              'توقعات افتراضية: معروض متوازن من المساكن منخفضة الكثافة. جميع الأرقام توضيحية.',
+              'Demo estimate: synthetic area prices and yield ranges, not observed market evidence.',
+            notesAr: 'تقدير تجريبي: أسعار مناطق وعوائد افتراضية، وليست بيانات سوق مرصودة.',
           },
         },
+      },
+    });
+    await db.areaInsight.update({
+      where: { communityId: id },
+      data: {
+        notesEn:
+          'Demo estimate: synthetic area prices and yield ranges, not observed market evidence.',
+        notesAr: 'تقدير تجريبي: أسعار مناطق وعوائد افتراضية، وليست بيانات سوق مرصودة.',
       },
     });
   }
@@ -82,6 +96,7 @@ async function seedInventory() {
         descriptionEn:
           'A fictional studio of considered homes, created for this Darivo demonstration.',
         descriptionAr: 'استوديو عقاري افتراضي لمساكن مدروسة بعناية، صُمّم لعرض داريفو التجريبي.',
+        kind: 'DEMO',
       },
     });
   for (const [currency, perAed] of Object.entries(FX))
@@ -90,7 +105,68 @@ async function seedInventory() {
       update: {},
       create: { currency, perAed, asOf: new Date(FX_DATE) },
     });
-  if (await db.property.count()) return;
+  for (const [index, area] of AREAS.entries()) {
+    const id = demoProjectId(area[0]);
+    const priceBasis = demoPrice(index, area, 'villa', dataset);
+    const project = {
+      slug: id,
+      kind: 'DEMO' as const,
+      developerId: `developer-${index % 4}`,
+      nameEn: `The Quiet Quarter ${String(index + 1).padStart(2, '0')}`,
+      nameAr: `حي السكينة ${String(index + 1).padStart(2, '0')}`,
+      country: area[7] === 'AE' ? 'UAE' : 'Egypt',
+      city: area[1],
+      communityName: area[3],
+      communityId: area[0],
+      lat: area[5],
+      lng: area[6],
+      coordinatesApproximate: true,
+      types: [...TYPES],
+      priceBasis: 'DEMO_ESTIMATE' as const,
+      demoPriceBasis: {
+        ...priceBasis,
+        referenceProjectIds: [
+          ...new Set(TYPES.map((type) => demoPrice(index, area, type, dataset).referenceId)),
+        ],
+        method:
+          'Reference anchor × 0.75–1.40 × fictional type factor; non-coastal Egypt factor 0.70. Stable acceptance villa AED 8.8M.',
+        fxBasis: 'Demo FX',
+        fxDate: FX_DATE,
+      },
+    };
+    await db.project.upsert({ where: { id }, create: { id, ...project }, update: project });
+    const coastal = [
+      'palm-jumeirah',
+      'jumeirah-bay',
+      'dubai-marina',
+      'saadiyat',
+      'yas',
+      'north-coast',
+      'el-gouna',
+      'sokhna',
+    ].includes(area[0]);
+    const kinds = [
+      'school',
+      'hospital',
+      ...(coastal ? ['marina', 'beach'] : []),
+      ...(['dubai-hills', 'emirates-hills', 'yas', 'north-coast'].includes(area[0])
+        ? ['golf']
+        : []),
+    ];
+    for (const [poiIndex, kind] of kinds.entries()) {
+      const poiId = `demo-poi-${area[0]}-${kind}`;
+      const poi = {
+        communityId: area[0],
+        nameEn: `Demo POI · ${kind}`,
+        nameAr: `موقع تجريبي · ${{ school: 'مدرسة', hospital: 'مستشفى', marina: 'مرسى', beach: 'شاطئ', golf: 'غولف' }[kind as 'school']}`,
+        kind,
+        lat: area[5] + 0.003 * (poiIndex + 1),
+        lng: area[6] + 0.002 * (poiIndex + 1),
+        isDemo: true,
+      };
+      await db.demoPOI.upsert({ where: { id: poiId }, create: { id: poiId, ...poi }, update: poi });
+    }
+  }
   const names = [
     'The Courtyard',
     'The Horizon',
@@ -107,36 +183,53 @@ async function seedInventory() {
     'دار السكينة',
     'دار الكثبان',
   ];
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < DEMO_UNIT_COUNT; i++) {
     const area = AREAS[i % AREAS.length],
       type = i === 1 ? 'villa' : TYPES[i % 6],
       beds = i === 1 ? 3 : type === 'plot' ? 0 : 2 + (i % 5);
-    const priceAed =
-      i === 1
-        ? 8800000
-        : area[7] === 'AE'
-          ? 1800000 + (i % 21) * 710000 + (type === 'mansion' ? 18000000 : 0)
-          : 650000 + (i % 17) * 180000;
-    const currency = area[7] === 'AE' ? 'AED' : 'EGP',
-      status = i % 3 === 0 ? 'off_plan' : 'ready',
+    const estimate = demoPrice(i, area, type, dataset);
+    const currency = estimate.currency;
+    const priceAed = estimate.amount / FX[currency];
+    const indicativeAedSqm = ['palm-jumeirah', 'jumeirah-bay'].includes(area[0])
+      ? 65000
+      : area[7] === 'AE'
+        ? 24000
+        : 6500;
+    const areaSqm = Math.max(
+      type === 'mansion' ? 800 : type === 'villa' ? 300 : 120,
+      Math.round(priceAed / indicativeAedSqm),
+    );
+    const status = i % 3 === 0 ? 'off_plan' : 'ready',
       view = i % 2 === 0 ? 'sea' : 'garden';
     const title = `${names[i % 6]} ${String(i + 1).padStart(3, '0')}`,
       titleAr = `${namesAr[i % 6]} ${String(i + 1).padStart(3, '0')}`;
     const description = `An inviting ${type} in ${area[3]}, with ${beds} bedrooms, considered proportions and a ${view} outlook. Quiet interiors open onto generous outdoor living. Fictional property, illustrative design.`;
     const descriptionAr = `${typeAr[type]} في ${area[4]}، تضم ${beds} غرف نوم ومساحات رحبة وإطلالة ${view === 'sea' ? 'بحرية' : 'على الحديقة'}. تنسجم التفاصيل الهادئة مع مساحات خارجية مريحة. عقار افتراضي وتصميم توضيحي.`;
     const id = `property-${String(i + 1).padStart(3, '0')}`;
-    await db.property.create({
-      data: {
+    await db.property.upsert({
+      where: { id },
+      update: {
+        projectId: demoProjectId(area[0]),
+        developerId: `developer-${i % 4}`,
+        communityId: area[0],
+        areaSqm,
+        priceAed,
+        priceMinor: BigInt(Math.round(estimate.amount * 100)),
+        currency,
+        visibility: demoVisibility(i),
+      },
+      create: {
         id,
         slug: title.toLowerCase().replaceAll(' ', '-'),
         communityId: area[0],
         developerId: `developer-${i % 4}`,
+        projectId: demoProjectId(area[0]),
         type,
         status,
         handoverDate: status === 'off_plan' ? new Date('2028-06-30') : null,
         bedrooms: beds,
         bathrooms: Math.max(1, beds + 1),
-        areaSqm: 140 + (i % 12) * 55,
+        areaSqm,
         plotSqm: type === 'villa' || type === 'mansion' ? 700 + i * 5 : null,
         priceMinor: BigInt(Math.round(priceAed * FX[currency] * 100)),
         currency,
@@ -150,7 +243,7 @@ async function seedInventory() {
           ...(i % 2 ? ['private_pool', 'school'] : ['gym', 'beach']),
         ],
         branded: i % 7 === 0,
-        visibility: i % 20 === 19 ? 'PRIVATE_INVITE' : i % 20 >= 16 ? 'VERIFIED_ONLY' : 'PUBLIC',
+        visibility: demoVisibility(i),
         permitNumber: `SYN-${area[7]}-${String(i + 1).padStart(5, '0')}`,
         lastVerifiedAt: new Date('2026-10-01'),
         verification: 'VERIFIED',
@@ -194,6 +287,8 @@ async function seedInventory() {
     );
     await db.$executeRaw`UPDATE "Property" SET embedding=${embedding}::vector WHERE id=${id}`;
   }
+  // Remove only migration-created empty bridge collections; all unit identities remain stable.
+  await db.project.deleteMany({ where: { id: { startsWith: 'demo-auto-' }, units: { none: {} } } });
 }
 async function reindex() {
   const source = embeddingSource();

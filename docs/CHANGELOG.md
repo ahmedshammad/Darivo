@@ -70,3 +70,20 @@
 - Fresh24-state matrix plus2 videos;12 accessibility configurations, zero Home/Map axe violations or overflow. Independent EN/AR client flows, keyboard dialogs, focus restoration and reduced motion checked. Local moving-frame median16.6ms, p9517.5ms; useful-map readiness1.28–3.58s remains a Stage2 performance concern. No physical-phone/4G/native-reader certification is claimed.
 - Lint/typecheck,24 existing tests and13 browser tests pass. The first sandboxed database run failed to connect; the local-network-enabled rerun passed. No v2 production feature code was written before this gate.
 - Next: Stage1 full component library and bilingual design guide, data provenance models/reference ingest,250 isolated fictional units, roles and preferences. Hosted CI/nativePG16 and final target-device validation remain unresolved external gates.
+
+## V2 Stage 1 — Foundation implemented, review repair in progress (2026-10-22)
+
+- Added Noir/Sand tokens, Amiri editorial Arabic, all 16 component types and the bilingual `/design` atlas. All 12 width/language/theme configurations pass automated accessibility, overflow and page-error checks after fixing the first preflight's swatch contrast and digit-toggle target size.
+- Imported the supplied reference dataset without fabricated dates or unit availability: 13 real projects, nine real organisations plus one aggregate, three market statistics, 41 sources and 241 fact records. Seeded 250 units across 16 fictional projects, with 52 demo POIs and database-enforced separation from real references.
+- Added verified-client and developer-partner roles, fresh database authorization, persisted display preferences and Arabic-Indic digits without modifying native property amounts. The legacy developer editor now rejects real-reference writes.
+- Native PostgreSQL16 + pgvector validation now passes the full migration chain, two seed runs, 40 tests and 36 mock evaluations with zero private-inventory leakage. Lint, typecheck and formatting pass. The user supplied the GitHub destination; hosted CI is pending.
+- Initial simulated board mean **8.839**, minimum **8**: gate fails. Independent reviews found initial/destination command focus, ArrowUp navigation, partial numeral formatting, clipped long mobile Brief values and ineffective sheet expansion. All reports and captures are retained; repairs and re-review are underway before Stage 2.
+- Local database and UI checks do not establish live source accuracy, native-language certification, production mail readiness or the later map/performance gates. No new scope was added.
+
+## V2 Stage 1 — Review and local gates pass (2026-10-22)
+
+- Repaired command search/arrow/destination focus, consistent numeral formatting, long mobile Brief wrapping and real sheet expansion. Added a comparison-scroll hint and larger mobile evidence text. All four focused browser regressions pass; fresh12-state captures and two signature recordings have zero axe violations, page errors or overflow.
+- Re-review mean **9.065**, minimum **8.5**. All seven initial and repaired reviews remain preserved with explicit simulated-review limits and carry-forward requirements.
+- All16 application browser regressions pass. Production build, lint, typecheck and format pass. Initial production performance scores88/86/94 exposed unnecessary font prefetching through the language switch; removing it and the unused shared Arabic-display preload yields94/91/94, with accessibility100, best practices96 and SEO100. Thresholds were not lowered.
+- Four guide cases also pass on the production build. A combined language/demo-sign-in probe passes language switching but cannot complete the development-only sign-in step because production deliberately omits those buttons; the failed probe is documented rather than weakening the production boundary.
+- Stage1 awaits the hosted GitHub Actions run before closure. Stage2 has not begun.

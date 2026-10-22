@@ -1,0 +1,252 @@
+[
+  {
+    "locale": "en",
+    "steps": [
+      {
+        "prompt": "A private beachfront villa on Saadiyat or the Palm for my family",
+        "reply": "Demo\n\nDesign demonstration: your words have been retained. The components below use fictional examples; no live search was performed.\n\nA private beachfront villa on Saadiyat or the Palm for my family"
+      },
+      {
+        "prompt": "North Coast summer home ready by 2028, compare with a Dubai investment",
+        "reply": "Demo\n\nDesign demonstration: your words have been retained. The components below use fictional examples; no live search was performed.\n\nNorth Coast summer home ready by 2028, compare with a Dubai investment"
+      },
+      {
+        "prompt": "Explain Dubai for a family with two kids near a British school",
+        "reply": "Demo\n\nDesign demonstration: your words have been retained. The components below use fictional examples; no live search was performed.\n\nExplain Dubai for a family with two kids near a British school"
+      }
+    ],
+    "skip": {
+      "text": "The system",
+      "href": "#main"
+    },
+    "brief": [
+      {
+        "label": "Purpose",
+        "value": "Family home and investment",
+        "clipped": false,
+        "height": 37
+      },
+      {
+        "label": "Places",
+        "value": "North Coast · Dubai",
+        "clipped": false,
+        "height": 37
+      },
+      {
+        "label": "Budget and currency",
+        "value": "GBP 4 million / EGP payment",
+        "clipped": false,
+        "height": 37
+      },
+      {
+        "label": "Timing",
+        "value": "Ready before 2028",
+        "clipped": false,
+        "height": 37
+      },
+      {
+        "label": "Must-have",
+        "value": "British school · 2 children",
+        "clipped": false,
+        "height": 37
+      },
+      {
+        "label": "Deal-breakers",
+        "value": "No compromised privacy",
+        "clipped": false,
+        "height": 37
+      }
+    ],
+    "usd": "Display currency\nAED\nUSD\nEGP\n$5,446,000\n\nDemo FX · fixed ⁦2026-10-01⁩ · AED 1 = USD 0.2723 = EGP 13.5. Fictional illustrative rates, not market quotations.",
+    "usdPayment": "Illustrative payment plan\nDemo\n20%\nReservation\n\n2026\n\n$1,089,200\n60%\nDuring construction\n\n2026–2028\n\n$3,267,600\n20%\nAt handover\n\n2028\n\n$1,089,200\nTotal 100%\n$5,446,000\n\nDemo projection only. No financing or availability is offered.",
+    "egp": "Display currency\nAED\nUSD\nEGP\nEGP 270,000,000\n\nDemo FX · fixed ⁦2026-10-01⁩ · AED 1 = USD 0.2723 = EGP 13.5. Fictional illustrative rates, not market quotations.",
+    "egpPayment": "Illustrative payment plan\nDemo\n20%\nReservation\n\n2026\n\nEGP 54,000,000\n60%\nDuring construction\n\n2026–2028\n\nEGP 162,000,000\n20%\nAt handover\n\n2028\n\nEGP 54,000,000\nTotal 100%\nEGP 270,000,000\n\nDemo projection only. No financing or availability is offered.",
+    "digits": "Illustrative payment plan\nDemo\n٢٠%\nReservation\n\n٢٠٢٦\n\n٥٤٬٠٠٠٬٠٠٠ EGP\n٦٠%\nDuring construction\n\n٢٠٢٦–٢٠٢٨\n\n١٦٢٬٠٠٠٬٠٠٠ EGP\n٢٠%\nAt handover\n\n٢٠٢٨\n\n٥٤٬٠٠٠٬٠٠٠ EGP\nTotal ١٠٠%\n٢٧٠٬٠٠٠٬٠٠٠ EGP\n\nDemo projection only. No financing or availability is offered.",
+    "sourceDate": "Nest Seekers · ORLA\nAs of ٢٠٢٦-٠٦",
+    "comparisonDigits": "Fictional concepts · comparison\nScroll horizontally to compare both concepts\nCRITERION\tTidal House\tQuiet Court\nIllustrative price\t٢٠٬٠٠٠٬٠٠٠ AED\t١٨٬٠٠٠٬٠٠٠ AED\nIllustrative area\t٥٢٠ m²\t٤٦٠ m²\nDemo timing\t٢٠٢٨\t٢٠٢٩\nNext step\tAdvisor confirmation\tAdvisor confirmation",
+    "independent": "Independent fictional amounts; no currency conversion.\n٢٠٬٠٠٠٬٠٠٠ AED\n٩١٬٢٠٠٬٠٠٠ EGP\n٥٬٢٠٠٬٠٠٠ $",
+    "school": {
+      "text": "Schools",
+      "pressed": "true"
+    },
+    "sheetFocus": "Expand sheet",
+    "expanded": {
+      "initial": {
+        "x": 16,
+        "y": 270.09375,
+        "width": 358,
+        "height": 573.90625
+      },
+      "expanded": {
+        "x": 16,
+        "y": 84.40625,
+        "width": 358,
+        "height": 759.59375
+      }
+    },
+    "sheetTraps": {
+      "tag": "BUTTON",
+      "inside": true
+    },
+    "sheetRestored": "design-sheet-trigger",
+    "paletteInitialFocus": {
+      "tag": "INPUT",
+      "label": null
+    },
+    "arrowUp": "Care, even when nothing is found.",
+    "noCommands": "No matching sections. Try another word.",
+    "commandFocus": "Numbers, in context.",
+    "paletteClosed": true,
+    "afterCommand": {
+      "active": {
+        "id": "",
+        "text": "Numbers, in context."
+      },
+      "evidenceY": 23.828125
+    },
+    "recovered": "The demonstration is ready.",
+    "overflow": false,
+    "components": [
+      "composer",
+      "trust-badge",
+      "brief",
+      "project-card",
+      "price",
+      "light-column",
+      "layer-chip",
+      "comparison-table",
+      "payment-timeline",
+      "stat-block",
+      "source-chip",
+      "empty-state",
+      "loading-state",
+      "bottom-sheet",
+      "command-palette"
+    ]
+  },
+  {
+    "locale": "ar",
+    "steps": [
+      {
+        "prompt": "فيلا خاصة للعائلة على البحر في السعديات أو النخلة",
+        "reply": "تجريبي\n\nتجربة تصميمية: احتفظنا بكلماتك. الأمثلة التالية خيالية، ولم يُجرَ بحث فعلي.\n\nفيلا خاصة للعائلة على البحر في السعديات أو النخلة"
+      },
+      {
+        "prompt": "بيت صيفي في الساحل الشمالي قبل ٢٠٢٨ ومقارنة مع استثمار في دبي",
+        "reply": "تجريبي\n\nتجربة تصميمية: احتفظنا بكلماتك. الأمثلة التالية خيالية، ولم يُجرَ بحث فعلي.\n\nبيت صيفي في الساحل الشمالي قبل ٢٠٢٨ ومقارنة مع استثمار في دبي"
+      },
+      {
+        "prompt": "عرّفني بأحياء دبي لعائلة مع طفلين بالقرب من مدرسة بريطانية",
+        "reply": "تجريبي\n\nتجربة تصميمية: احتفظنا بكلماتك. الأمثلة التالية خيالية، ولم يُجرَ بحث فعلي.\n\nعرّفني بأحياء دبي لعائلة مع طفلين بالقرب من مدرسة بريطانية"
+      }
+    ],
+    "skip": {
+      "text": "النظام",
+      "href": "#main"
+    },
+    "brief": [
+      {
+        "label": "الغاية",
+        "value": "بيت للعائلة واستثمار",
+        "clipped": false,
+        "height": 37
+      },
+      {
+        "label": "الأماكن",
+        "value": "الساحل الشمالي · دبي",
+        "clipped": false,
+        "height": 37
+      },
+      {
+        "label": "الميزانية والعملة",
+        "value": "٤ ملايين جنيه إسترليني والدفع بالجنيه المصري",
+        "clipped": false,
+        "height": 37
+      },
+      {
+        "label": "الموعد",
+        "value": "جاهز قبل ٢٠٢٨",
+        "clipped": false,
+        "height": 37
+      },
+      {
+        "label": "ما يهمّك",
+        "value": "مدرسة بريطانية · طفلان",
+        "clipped": false,
+        "height": 37
+      },
+      {
+        "label": "ما لا يناسبك",
+        "value": "الخصوصية شرط أساسي",
+        "clipped": false,
+        "height": 37
+      }
+    ],
+    "usd": "عملة العرض\nAED\nUSD\nEGP\n‏5,446,000 US$\n\nصرف تجريبي ثابت بتاريخ ⁦2026-10-01⁩: درهم واحد = 0.2723 دولار = 13.5 جنيه. نسب خيالية للتوضيح، وليست أسعار سوق.",
+    "usdPayment": "خطة دفع توضيحية\nتجريبي\n20%\nالحجز\n\n2026\n\n‏1,089,200 US$\n60%\nخلال الإنشاء\n\n2026–2028\n\n‏3,267,600 US$\n20%\nعند التسليم\n\n2028\n\n‏1,089,200 US$\nالإجمالي 100%\n‏5,446,000 US$\n\nحساب تجريبي فقط. لا يتضمن عرض تمويل أو وحدات متاحة.",
+    "egp": "عملة العرض\nAED\nUSD\nEGP\n‏270,000,000 ج.م.‏\n\nصرف تجريبي ثابت بتاريخ ⁦2026-10-01⁩: درهم واحد = 0.2723 دولار = 13.5 جنيه. نسب خيالية للتوضيح، وليست أسعار سوق.",
+    "egpPayment": "خطة دفع توضيحية\nتجريبي\n20%\nالحجز\n\n2026\n\n‏54,000,000 ج.م.‏\n60%\nخلال الإنشاء\n\n2026–2028\n\n‏162,000,000 ج.م.‏\n20%\nعند التسليم\n\n2028\n\n‏54,000,000 ج.م.‏\nالإجمالي 100%\n‏270,000,000 ج.م.‏\n\nحساب تجريبي فقط. لا يتضمن عرض تمويل أو وحدات متاحة.",
+    "digits": "خطة دفع توضيحية\nتجريبي\n٢٠%\nالحجز\n\n٢٠٢٦\n\n‏٥٤٬٠٠٠٬٠٠٠ ج.م.‏\n٦٠%\nخلال الإنشاء\n\n٢٠٢٦–٢٠٢٨\n\n‏١٦٢٬٠٠٠٬٠٠٠ ج.م.‏\n٢٠%\nعند التسليم\n\n٢٠٢٨\n\n‏٥٤٬٠٠٠٬٠٠٠ ج.م.‏\nالإجمالي ١٠٠%\n‏٢٧٠٬٠٠٠٬٠٠٠ ج.م.‏\n\nحساب تجريبي فقط. لا يتضمن عرض تمويل أو وحدات متاحة.",
+    "sourceDate": "Nest Seekers · ORLA\nبتاريخ ٢٠٢٦-٠٦",
+    "comparisonDigits": "مقارنة تصوّرات خيالية\nمرّر أفقياً لمقارنة التصوّرين\nالمعيار\tدار الموج\tالفناء الهادئ\nسعر توضيحي\t‏٢٠٬٠٠٠٬٠٠٠ د.إ.‏\t‏١٨٬٠٠٠٬٠٠٠ د.إ.‏\nمساحة توضيحية\t٥٢٠ م²\t٤٦٠ م²\nموعد تجريبي\t٢٠٢٨\t٢٠٢٩\nالخطوة التالية\tالتأكيد مع المستشار\tالتأكيد مع المستشار",
+    "independent": "مبالغ خيالية مستقلة؛ ليست تحويلات عملة.\n‏٢٠٬٠٠٠٬٠٠٠ د.إ.‏\n‏٩١٬٢٠٠٬٠٠٠ ج.م.‏\n‏٥٬٢٠٠٬٠٠٠ US$",
+    "school": {
+      "text": "المدارس",
+      "pressed": "true"
+    },
+    "sheetFocus": "توسيع اللوحة",
+    "expanded": {
+      "initial": {
+        "x": 16,
+        "y": 270.09375,
+        "width": 358,
+        "height": 573.90625
+      },
+      "expanded": {
+        "x": 16,
+        "y": 84.40625,
+        "width": 358,
+        "height": 759.59375
+      }
+    },
+    "sheetTraps": {
+      "tag": "BODY",
+      "inside": false
+    },
+    "sheetRestored": "design-sheet-trigger",
+    "paletteInitialFocus": {
+      "tag": "INPUT",
+      "label": null
+    },
+    "arrowUp": "العناية، حتى قبل العثور على المكان.",
+    "noCommands": "لا أقسام مطابقة. جرّب كلمة أخرى.",
+    "commandFocus": "أرقام لها سياق.",
+    "paletteClosed": true,
+    "afterCommand": {
+      "active": {
+        "id": "",
+        "text": "أرقام لها سياق."
+      },
+      "evidenceY": 24.34375
+    },
+    "recovered": "المثال جاهز الآن.",
+    "overflow": false,
+    "components": [
+      "composer",
+      "trust-badge",
+      "brief",
+      "project-card",
+      "price",
+      "light-column",
+      "layer-chip",
+      "comparison-table",
+      "payment-timeline",
+      "stat-block",
+      "source-chip",
+      "empty-state",
+      "loading-state",
+      "bottom-sheet",
+      "command-palette"
+    ]
+  }
+]

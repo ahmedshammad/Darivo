@@ -54,7 +54,7 @@ export const toolSchemas = {
         .min(1)
         .max(3),
       mode: z.enum(['in_person', 'video']),
-      timezone: z.enum(['Asia/Dubai', 'Africa/Cairo']).default('Asia/Dubai'),
+      timezone: z.enum(['Asia/Dubai', 'Africa/Cairo', 'Europe/London']).default('Asia/Dubai'),
     })
     .strict(),
   handoff_to_advisor: z.object({ reason: z.string().trim().min(1).max(1000) }).strict(),

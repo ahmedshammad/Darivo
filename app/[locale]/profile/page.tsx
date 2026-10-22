@@ -16,6 +16,7 @@ export default async function Page() {
           areaUnit: 'sqm',
           timezone: 'Asia/Dubai',
           notifications: false,
+          arabicIndicDigits: false,
         }
       }
     />

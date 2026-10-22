@@ -671,7 +671,7 @@
           "timezone": {
             "default": "Asia/Dubai",
             "type": "string",
-            "enum": ["Asia/Dubai", "Africa/Cairo"]
+            "enum": ["Asia/Dubai", "Africa/Cairo", "Europe/London"]
           }
         },
         "required": ["property_id", "preferred_slots", "mode"],
@@ -716,26 +716,68 @@
       "ProfileInput": {
         "type": "object",
         "properties": {
-          "language": {
-            "enum": ["en", "ar"]
-          },
           "currency": {
+            "type": "string",
             "enum": ["AED", "EGP", "USD", "EUR", "SAR", "GBP"]
           },
           "areaUnit": {
+            "type": "string",
             "enum": ["sqm", "sqft"]
           },
+          "arabicIndicDigits": {
+            "type": "boolean"
+          },
+          "language": {
+            "type": "string",
+            "enum": ["en", "ar"]
+          },
           "timezone": {
-            "enum": ["Asia/Dubai", "Africa/Cairo"]
+            "type": "string",
+            "enum": ["Asia/Dubai", "Africa/Cairo", "Europe/London"]
           },
           "notifications": {
             "type": "boolean"
           },
           "consent": {
+            "type": "boolean",
             "const": true
           }
         },
-        "required": ["language", "currency", "areaUnit", "timezone", "notifications", "consent"]
+        "required": ["currency", "areaUnit", "language", "timezone", "notifications", "consent"],
+        "additionalProperties": false
+      },
+      "DisplayPreferencesInput": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "enum": ["AED", "EGP", "USD", "EUR", "SAR", "GBP"]
+          },
+          "areaUnit": {
+            "type": "string",
+            "enum": ["sqm", "sqft"]
+          },
+          "arabicIndicDigits": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "minProperties": 1
+      },
+      "DisplayPreferences": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string"
+          },
+          "areaUnit": {
+            "type": "string"
+          },
+          "arabicIndicDigits": {
+            "type": "boolean"
+          }
+        },
+        "required": ["currency", "areaUnit", "arabicIndicDigits"]
       },
       "Profile": {
         "type": "object",
@@ -749,6 +791,9 @@
           "areaUnit": {
             "type": "string"
           },
+          "arabicIndicDigits": {
+            "type": "boolean"
+          },
           "timezone": {
             "type": "string"
           },
@@ -760,7 +805,15 @@
             "format": "date-time"
           }
         },
-        "required": ["language", "currency", "areaUnit", "timezone", "notifications", "consentAt"]
+        "required": [
+          "language",
+          "currency",
+          "areaUnit",
+          "arabicIndicDigits",
+          "timezone",
+          "notifications",
+          "consentAt"
+        ]
       },
       "Grant": {
         "type": "object",
@@ -888,7 +941,7 @@
             "format": "email"
           },
           "role": {
-            "enum": ["CLIENT", "ADVISOR", "ADMIN"]
+            "enum": ["CLIENT", "VERIFIED_CLIENT", "DEVELOPER_PARTNER", "ADVISOR", "ADMIN"]
           },
           "verification": {
             "enum": ["UNVERIFIED", "PENDING", "VERIFIED"]
@@ -903,7 +956,7 @@
             "type": "string"
           },
           "role": {
-            "enum": ["CLIENT", "ADVISOR", "ADMIN"]
+            "enum": ["CLIENT", "VERIFIED_CLIENT", "DEVELOPER_PARTNER", "ADVISOR", "ADMIN"]
           },
           "verification": {
             "enum": ["UNVERIFIED", "PENDING", "VERIFIED"]
@@ -3388,6 +3441,121 @@
                     }
                   },
                   "required": ["deleted"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "See Error schema and API.md",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "See Error schema and API.md",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "See Error schema and API.md",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "See Error schema and API.md",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "See Error schema and API.md",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "See Error schema and API.md",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "See Error schema and API.md",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "See Error schema and API.md",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/preferences": {
+      "patch": {
+        "operationId": "updateDisplayPreferences",
+        "summary": "Save currency, area unit and numeral preference without changing consent or access",
+        "description": "Required role: AUTHENTICATED. Mutations require same-origin Origin header.",
+        "security": [
+          {
+            "SessionCookie": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DisplayPreferencesInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DisplayPreferences"
                 }
               }
             }

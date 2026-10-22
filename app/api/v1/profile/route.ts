@@ -1,16 +1,6 @@
-import { z } from 'zod';
+import { profileSchema } from '@/src/lib/preferences';
 import { db } from '@/src/server/db/client';
 import { readJson, requireUser, sameOrigin, failure, json, HttpError } from '@/src/server/security';
-const profileSchema = z
-  .object({
-    language: z.enum(['en', 'ar']),
-    currency: z.enum(['AED', 'EGP', 'USD', 'EUR', 'SAR', 'GBP']),
-    areaUnit: z.enum(['sqm', 'sqft']),
-    timezone: z.enum(['Asia/Dubai', 'Africa/Cairo']),
-    notifications: z.boolean(),
-    consent: z.literal(true),
-  })
-  .strict();
 export async function GET() {
   try {
     const user = await requireUser();

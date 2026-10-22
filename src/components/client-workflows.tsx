@@ -6,10 +6,11 @@ import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { ArrowUpRight, FileDown, Heart, ShieldCheck } from 'lucide-react';
 import type { PropertyDTO } from '@/src/server/db/properties';
-import { FX, money, size } from '@/src/lib/catalog';
+import { FX, size } from '@/src/lib/catalog';
 import { slotToIso } from '@/src/lib/timezone';
 import { PropertyCard } from './property-card';
 import { DisplayPreferences, usePreferences } from './preferences';
+import { Price } from './price';
 type Shortlist = { id: string; name: string; properties: PropertyDTO[] };
 export function Shortlists({
   initial,
@@ -191,9 +192,12 @@ export function Comparison({ properties }: { properties: PropertyDTO[] }) {
   const rows: [string, (p: PropertyDTO) => React.ReactNode][] = [
     ['community', (p) => (locale === 'ar' ? p.community.nameAr : p.community.nameEn)],
     ['type', (p) => t(p.type)],
-    ['maxPrice', (p) => money(p.priceAed, pref.currency, locale)],
+    ['maxPrice', (p) => <Price property={p} />],
     ['bedrooms', (p) => p.bedrooms],
-    ['areaUnit', (p) => `${size(p.areaSqm, pref.unit, locale)} ${t(pref.unit)}`],
+    [
+      'areaUnit',
+      (p) => `${size(p.areaSqm, pref.unit, locale, pref.arabicIndicDigits)} ${t(pref.unit)}`,
+    ],
     ['status', (p) => t(p.status)],
     ['view', (p) => t(p.view)],
     ['grossYield', (p) => `${p.community.insight?.yieldLow}–${p.community.insight?.yieldHigh}%`],
@@ -341,6 +345,7 @@ export function Viewing({
                 <select name="timezone" defaultValue={timezone}>
                   <option>Asia/Dubai</option>
                   <option>Africa/Cairo</option>
+                  <option>Europe/London</option>
                 </select>
               </label>
               {['slot', 'slot2', 'slot3'].map((name, i) => (
@@ -390,6 +395,7 @@ type ProfileData = {
   areaUnit: string;
   timezone: string;
   notifications: boolean;
+  arabicIndicDigits?: boolean;
 };
 export function Profile({ profile, verification }: { profile: ProfileData; verification: string }) {
   const t = useTranslations(),
@@ -420,16 +426,21 @@ export function Profile({ profile, verification }: { profile: ProfileData; verif
               areaUnit: String(form.get('areaUnit')),
               timezone: String(form.get('timezone')),
               notifications: form.get('notifications') === 'on',
+              arabicIndicDigits: form.get('arabicIndicDigits') === 'on',
               consent: form.get('consent') === 'on',
             };
+            await pref.flush();
             const r = await fetch('/api/v1/profile', {
               method: 'PATCH',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(data),
             });
             if (r.ok) {
-              pref.setCurrency(data.currency);
-              pref.setUnit(data.areaUnit);
+              pref.applySavedPreferences({
+                currency: data.currency,
+                unit: data.areaUnit,
+                arabicIndicDigits: data.arabicIndicDigits,
+              });
               setStatus('profileSaved');
               if (data.language !== locale) router.push(`/${data.language}/profile`);
             } else setStatus('errorBody');
@@ -463,9 +474,18 @@ export function Profile({ profile, verification }: { profile: ProfileData; verif
               <select name="timezone" defaultValue={profile.timezone}>
                 <option>Asia/Dubai</option>
                 <option>Africa/Cairo</option>
+                <option>Europe/London</option>
               </select>
             </label>
           </div>
+          <label className="row">
+            <input
+              type="checkbox"
+              name="arabicIndicDigits"
+              defaultChecked={profile.arabicIndicDigits ?? false}
+            />
+            {t('arabicIndicDigits')} <bdi>١٢٣٤٥٦٧٨٩٠</bdi>
+          </label>
           <label className="row">
             <input type="checkbox" name="notifications" defaultChecked={profile.notifications} />
             {t('notifications')}
@@ -516,6 +536,7 @@ export function Profile({ profile, verification }: { profile: ProfileData; verif
             <button
               className="button button-outline"
               onClick={async () => {
+                await pref.flush();
                 const r = await fetch('/api/v1/profile', { method: 'DELETE' });
                 if (r.ok) await signOut({ callbackUrl: `/${locale}` });
                 else setStatus('errorBody');

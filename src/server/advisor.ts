@@ -2,7 +2,7 @@ import { db } from './db/client';
 export async function advisorInbox() {
   const [clients, viewings, handoffs, privateProperties, grants] = await Promise.all([
     db.user.findMany({
-      where: { role: 'CLIENT' },
+      where: { role: { in: ['CLIENT', 'VERIFIED_CLIENT'] } },
       select: {
         id: true,
         name: true,

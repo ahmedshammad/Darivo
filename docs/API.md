@@ -8,7 +8,7 @@ Base path: `/api/v1`. The machine-readable contract is `openapi.json`, generated
 - All mutations require a valid session and an Origin equal to `AUTH_URL`. Cross-origin writes return 403. Payloads above 32 KiB return 413.
 - 400: invalid schema/parameters; 401: no session; 403: wrong role/origin; 404: missing or inaccessible resource (indistinguishable for private inventory); 409: linked resource or last-admin conflict; 429: rate limit; 500: sanitized internal failure.
 - Amounts are stored as minor-unit integers and exposed as decimal strings in `priceMinor`. `priceAed` is the seeded comparison value. Dimensions are square metres. Dates use ISO 8601, with viewing slots in UTC plus an IANA timezone.
-- Anonymous discovery sees public inventory only. Verified status adds VERIFIED_ONLY; PRIVATE_INVITE always requires a grant for clients. Staff management access is role checked separately. Shortlists, PDF, history, comparison and tools reapply visibility.
+- Anonymous discovery sees public inventory only. VERIFIED_CLIENT plus current VERIFIED status adds VERIFIED_ONLY; PRIVATE_INVITE always requires a grant for client roles. DEVELOPER_PARTNER never inherits private or staff access. Authorization resolves the current database identity by immutable session user ID; stale roles and deleted accounts do not retain access. Shortlists, PDF, history, comparison and tools reapply visibility.
 
 ## Routes
 
@@ -25,12 +25,15 @@ Base path: `/api/v1`. The machine-readable contract is `openapi.json`, generated
 | `/viewings`            | GET, POST          | Current user's requests; 1–3 future slots, up to a year                |
 | `/investment`          | POST               | Authenticated; bounded assumptions; estimate only                      |
 | `/profile`             | GET, PATCH, DELETE | Current user; role injection rejected                                  |
+| `/preferences`         | PATCH              | Authenticated; strict nonempty display-only update                     |
 | `/verification`        | POST               | Built-in synthetic placeholder only; admin approval required           |
 | `/advisor`             | GET, POST          | ADVISOR/ADMIN; inbox, note, suggestion, viewing status, handoff status |
 | `/grants`              | POST, DELETE       | ADVISOR/ADMIN; client-specific private introduction + audit            |
 | `/admin/{resource}`    | GET, POST, DELETE  | ADMIN; resource-specific allowlists, CRUD, users, analytics, audit     |
 
 ## Consultant streaming
+
+Display preferences accept only `currency`, `areaUnit` and `arabicIndicDigits`. The server rejects additional fields, including role, verification and consent. Profile timezone options include Dubai, Cairo and London. Original property prices remain in their native currency; UI conversions are explicitly indicative and carry the static FX date. Real-reference projects are separate from the unit API and do not expose unit availability.
 
 POST `{ "message": "3-bedroom villa in Dubai Hills under 12 million dirhams", "locale": "en" }`.
 

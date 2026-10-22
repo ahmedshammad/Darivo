@@ -1,3 +1,4 @@
+import { formatAmount, formatNumber } from './format';
 export const AREAS = [
   ['palm-jumeirah', 'Dubai', 'دبي', 'Palm Jumeirah', 'نخلة جميرا', 25.112, 55.139, 'AE'],
   ['dubai-hills', 'Dubai', 'دبي', 'Dubai Hills Estate', 'دبي هيلز', 25.111, 55.254, 'AE'],
@@ -43,15 +44,9 @@ export const typeAr: Record<string, string> = {
   plot: 'قطعة أرض',
   mansion: 'قصر',
 };
-export function money(aed: number, currency = 'AED', locale = 'en') {
-  return new Intl.NumberFormat(locale === 'ar' ? 'ar-AE' : 'en-AE', {
-    style: 'currency',
-    currency,
-    maximumFractionDigits: 0,
-  }).format(aed * (FX[currency] ?? 1));
+export function money(aed: number, currency = 'AED', locale = 'en', arabicIndicDigits = false) {
+  return formatAmount(aed * (FX[currency] ?? 1), currency, locale, arabicIndicDigits);
 }
-export function size(sqm: number, unit = 'sqm', locale = 'en') {
-  return new Intl.NumberFormat(locale === 'ar' ? 'ar-AE' : 'en-AE', {
-    maximumFractionDigits: 0,
-  }).format(unit === 'sqft' ? sqm * 10.7639 : sqm);
+export function size(sqm: number, unit = 'sqm', locale = 'en', arabicIndicDigits = false) {
+  return formatNumber(unit === 'sqft' ? sqm * 10.7639 : sqm, locale, arabicIndicDigits);
 }

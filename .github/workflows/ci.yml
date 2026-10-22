@@ -34,6 +34,13 @@ jobs:
       - run: pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm eval
       - run: pnpm exec playwright install --with-deps chrome
       - run: pnpm test:e2e
+      - name: Retain browser failure evidence
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-regression-evidence
+          path: /tmp/darivo-e2e-results
+          retention-days: 7
       - run: pnpm build
       - name: Production Lighthouse checks
         run: |

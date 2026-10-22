@@ -1,0 +1,21 @@
+{
+  "locale": "ar",
+  "width": 390,
+  "reducedMotion": true,
+  "reply": "تجريبي\n\nتجربة تصميمية: احتفظنا بكلماتك. الأمثلة التالية خيالية، ولم يُجرَ بحث فعلي.\n\nبيت قريب من البحر",
+  "comparisonScrollBefore": 0,
+  "comparisonScrollAfter": -29,
+  "loadingAnimation": "none",
+  "previousENProbe": {
+    "paletteInitialFocus": "Close button",
+    "typingWithoutRefocus": "query remained empty",
+    "arrowUpFromSearch": "fourth item of five, expected last",
+    "sheetEscapeFocus": "design-sheet-trigger",
+    "digits": {
+      "pricesAndPercentages": "Arabic-Indic",
+      "areasAndYears": "Latin"
+    },
+    "egpMilestones": [54000000, 162000000, 54000000],
+    "egpTotal": 270000000
+  }
+}

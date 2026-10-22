@@ -18,6 +18,8 @@ export function Shell({
   const locale = useLocale();
   const path = usePathname();
   const [dark, setDark] = useState(false);
+  // The design guide owns its deliberately minimal preview chrome.
+  if (path.endsWith('/design')) return children;
   return (
     <>
       <a className="skip" href="#main">
@@ -52,6 +54,7 @@ export function Shell({
             <Link
               href={path.replace(/^\/(en|ar)/, locale === 'en' ? '/ar' : '/en')}
               lang={locale === 'en' ? 'ar' : 'en'}
+              prefetch={false}
             >
               {t('language')}
             </Link>

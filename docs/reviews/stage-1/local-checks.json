@@ -1,0 +1,151 @@
+{
+  "recordedAt": "2026-10-22T12:42:51.367499+00:00",
+  "unit": {
+    "engine": "native PostgreSQL16.2 with pgvector",
+    "passed": 40,
+    "failed": 0
+  },
+  "eval": {
+    "provider": "mock",
+    "passed": 36,
+    "total": 36,
+    "offMarketLeakage": 0,
+    "realProvider": "skipped; no API key"
+  },
+  "browserRegression": {
+    "engine": "Chrome / local demo PGlite",
+    "passed": 16,
+    "failed": 0,
+    "scope": "existing application and new role/display preference journeys; design-system focused checks pending"
+  },
+  "static": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "format": "pass"
+  },
+  "environmentFailures": [
+    "Initial sandboxed browser launch aborted before tests; authorized local-browser rerun passed."
+  ],
+  "hostedCI": "pending",
+  "productionBuild": "pass after font-prefetch repair",
+  "designRegression": {
+    "passed": 4,
+    "failed": 0,
+    "scope": "keyboard initial/destination focus and wrapping; EN/AR numerals; mobile Brief and sheet geometry"
+  },
+  "guideMatrix": {
+    "version": "v3",
+    "configurations": 12,
+    "axeViolations": 0,
+    "pageErrors": 0,
+    "horizontalOverflow": 0,
+    "signatureVideos": 2
+  },
+  "productionGuideRegression": {
+    "passed": 4,
+    "failed": 0,
+    "scope": "same four focused guide cases on production build"
+  },
+  "productionFoundationProbe": {
+    "languageSwitch": "passed",
+    "demoSignIn": "not applicable: production intentionally hides development-only demo buttons; combined dev test failed waiting for that absent control"
+  },
+  "lighthouseIterations": [
+    {
+      "version": "v1",
+      "results": [
+        {
+          "page": "http://localhost:3001/en",
+          "scores": {
+            "performance": 88,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "largest-contentful-paint": 3859.628000000001,
+            "total-blocking-time": 29,
+            "cumulative-layout-shift": 0
+          }
+        },
+        {
+          "page": "http://localhost:3001/en/search",
+          "scores": {
+            "performance": 86,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "largest-contentful-paint": 4232.995999999999,
+            "total-blocking-time": 32,
+            "cumulative-layout-shift": 0
+          }
+        },
+        {
+          "page": "http://localhost:3001/ar/properties/property-002",
+          "scores": {
+            "performance": 94,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "largest-contentful-paint": 3158.6719999999996,
+            "total-blocking-time": 28,
+            "cumulative-layout-shift": 0
+          }
+        }
+      ],
+      "gate": false
+    },
+    {
+      "version": "v2",
+      "results": [
+        {
+          "page": "http://localhost:3001/en",
+          "scores": {
+            "performance": 94,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "largest-contentful-paint": 3035.8240000000005,
+            "total-blocking-time": 22,
+            "cumulative-layout-shift": 0
+          }
+        },
+        {
+          "page": "http://localhost:3001/en/search",
+          "scores": {
+            "performance": 91,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "largest-contentful-paint": 3476.3100000000004,
+            "total-blocking-time": 24,
+            "cumulative-layout-shift": 0
+          }
+        },
+        {
+          "page": "http://localhost:3001/ar/properties/property-002",
+          "scores": {
+            "performance": 94,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 100
+          },
+          "metrics": {
+            "largest-contentful-paint": 3015.246,
+            "total-blocking-time": 24,
+            "cumulative-layout-shift": 0.0008320374689347665
+          }
+        }
+      ],
+      "gate": true
+    }
+  ]
+}

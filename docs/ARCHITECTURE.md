@@ -2,7 +2,9 @@
 
 ## Purpose and boundaries
 
-Darivo is a bilingual, private property discovery demo. All accounts, listings, permits, insights and financial assumptions are fictional. English and Arabic share the same domain model and REST API. No production compliance is claimed.
+Darivo is a bilingual private property office demo. V2 introduces supplied, sourced real-project reference data alongside fictional unit inventory. Accounts, demo units, permits, POIs and illustrative investment assumptions remain fictional. Reference projects never own demo units. English and Arabic share the same domain model and REST API. No production compliance is claimed.
+
+The full V2 scope and current gates are preserved in [the studio brief](studio/MASTER-BRIEF-V2.md) and [delivery ledger](studio/DELIVERY-LEDGER.md). Earlier MVP behavior is a working substrate, not proof that the V2 stages are complete.
 
 ## Runtime
 
@@ -30,7 +32,7 @@ Client briefs, named shortlists, preferences, viewing requests, consent and conv
 
 Environment configuration contains secrets and region intent. Structured logs omit conversations and tokens except deliberately printed local development magic links. OpenTelemetry-ready hooks expose request timing. CI provisions pgvector, migrates, seeds, then runs lint, typecheck, unit, integration, e2e and consultant eval checks. Production deployment requires legal review, distributed rate limiting, mail delivery, identity checks and operational controls documented in COMPLIANCE_TODO.md.
 
-## Stage 0 plan
+## Original MVP Stage 0 plan (completed before V2)
 
 1. Initialize package/tooling, Git, environment example and PostgreSQL Compose.
 2. Define Prisma entities and initial migration; provision a working local database.
@@ -40,8 +42,16 @@ Environment configuration contains secrets and region intent. Structured logs om
 
 ## Acceptance gates
 
-Stages follow the supplied brief in order: foundation; data/discovery; grounded consultant; client workflow; advisor/admin; polish/hardening. Each stage adds meaningful tests and a changelog entry with verified checks and explicit limitations. External infrastructure limitations must be reported, not represented as passing checks.
+V2 stages follow the current master brief: concept sprint; foundation/design system; Arrival/Living Map; Concierge; Stories/Office; Developers/Launch/Partner; Operations/Hardening. Every stage adds browser evidence, seven simulated persona reviews, meaningful checks and a changelog entry. The board-average gate is9.0 with no criterion below8. External infrastructure limitations are reported, never represented as passing checks.
 
 ## Local host adaptation
 
-This host has no Docker or PostgreSQL installation. `pnpm dev` uses persistent PGlite with pgvector over a loopback PostgreSQL socket by default. This is a development-only WebAssembly PostgreSQL build with a single database connection, not a substitute for production PostgreSQL 16. Docker Compose and CI use PostgreSQL 16. Prisma 6.19 is pinned for its stable schema-engine workflow; Prisma 8 was a release candidate at implementation time.
+`pnpm demo` (and `pnpm dev`) uses persistent PGlite with pgvector over a loopback PostgreSQL socket by default when no environment exists. This is a development-only WebAssembly PostgreSQL build with a single database connection, not a substitute for production PostgreSQL16. Docker Compose and CI use PostgreSQL16. V2 validation additionally provisions a temporary native PostgreSQL16.2 + pgvector0.6.2 binary under `/tmp`, isolated from the demo; test results are recorded separately. It is a validation fixture, not a production installation. Prisma6.19 remains pinned to preserve the existing migration/client contract.
+
+## V2 foundation contracts
+
+Reference ingestion preserves the supplied record and individual fact provenance. Source URL/publisher/basis/confidence and nullable retrieval dates remain separate from fact as-of precision and dataset compilation date. Missing dates are unknown, not fresh. Real developer organisations are distinct from the aggregate editorial entry. Database constraints prevent fictional units from attaching to real-reference projects or developers.
+
+The approved Noir Atlas direction becomes shared raw and semantic CSS tokens plus local Latin/Arabic font families. `/design` is the living component guide; production feature screens wait for the relevant later-stage gate. Interactive primitives own focus, reduced motion and logical-direction behavior. Prices preserve native currency and expose any indicative static-FX conversion separately.
+
+Roles expand to CLIENT, VERIFIED_CLIENT, ADVISOR, DEVELOPER_PARTNER and ADMIN. Verified eligibility is checked against current database verification; a role label or stale session alone never grants access. Developer partners have no implicit advisor, admin or private-client authority. Preference mutations accept only declared display fields, including Arabic-Indic digits, and never role or verification state.

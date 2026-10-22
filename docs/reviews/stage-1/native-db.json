@@ -1,0 +1,34 @@
+{
+  "engine": "PostgreSQL 16.2 on aarch64-apple-darwin23.5.0, compiled by Apple clang version 15.0.0 (clang-1500.0.40.1), 64-bit",
+  "vector_version": "0.6.2",
+  "units": 250,
+  "demo_projects": 16,
+  "reference_projects": 13,
+  "reference_organisations": 9,
+  "aggregate_records": 1,
+  "market_stats": 3,
+  "sources": 41,
+  "facts": 241,
+  "demo_pois": 52,
+  "invalid_unit_attachments": 0,
+  "invented_retrieval_dates": 0,
+  "visibility": [
+    {
+      "visibility": "PUBLIC",
+      "count": 200
+    },
+    {
+      "visibility": "VERIFIED_ONLY",
+      "count": 38
+    },
+    {
+      "visibility": "PRIVATE_INVITE",
+      "count": 12
+    }
+  ],
+  "seedRuns": 2,
+  "migrationChain": "All three migrations applied successfully from an empty database",
+  "binarySource": "https://pypi.org/project/pgserver/0.1.4/",
+  "wheelSha256": "780fa89f26a960cca0215caf471e70848dd8597bd8ceaeba7faf42170278980c",
+  "scope": "Temporary native validation fixture; not a production installation"
+}
