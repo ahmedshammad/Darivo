@@ -54,6 +54,18 @@ for (const locale of ['en', 'ar'] as const) {
         { timeout: 30000 },
       );
       await expect(page.locator('.cq-introduction')).toHaveCount(0);
+      // Short POI names remain explicitly Demo even while expanded reading hides map sources.
+      const qualification = page.locator('.atlas-poi-strip-qualification');
+      await expect(qualification).toBeVisible();
+      await expect(qualification).toHaveText(
+        locale === 'ar' ? 'مرافق تجريبية · غير موثّقة' : 'Demo amenities · not verified',
+      );
+      const qualificationBox = (await qualification.boundingBox())!;
+      const mapBox = (await page.locator('.cq-map').boundingBox())!;
+      const sheetBox = (await page.locator('.cq-panel').boundingBox())!;
+      expect(qualificationBox.y).toBeGreaterThanOrEqual(mapBox.y);
+      expect(qualificationBox.y + qualificationBox.height).toBeLessThanOrEqual(sheetBox.y);
+
       const request = page.getByTestId('concierge-turn').last().locator('.cq-user-request');
       await expect(request).not.toHaveAttribute('open');
       await request.locator('summary').click();
@@ -96,6 +108,8 @@ for (const locale of ['en', 'ar'] as const) {
       expect(expandedAudit.violations).toEqual([]);
       await page.getByRole('button', { name: copy.collapse, exact: true }).click();
       await expect(page.locator('.cq-map')).not.toHaveAttribute('inert');
+      await expect(qualification).toBeHidden();
+      await expect(page.locator('.atlas-map-evidence .atlas-poi-qualification')).toBeVisible();
       await expect(controls).toBeVisible();
       const blocked = await controls.locator('button:not(:disabled)').evaluateAll(
         (buttons) =>

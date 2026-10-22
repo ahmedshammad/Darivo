@@ -1495,6 +1495,9 @@ export function LivingMap(props: LivingMapProps) {
           {detailPending ? text.loadingDetail : text.legend}
         </div>
       )}
+      {props.pois?.some((poi) => props.layers?.some((layer) => layer === poi.kind)) && (
+        <p className="atlas-poi-qualification atlas-poi-strip-qualification">{text.poiLegend}</p>
+      )}
       <div className="atlas-map-evidence">
         {props.pois?.some((poi) => props.layers?.some((layer) => layer === poi.kind)) && (
           <p className="atlas-poi-qualification">{text.poiLegend}</p>

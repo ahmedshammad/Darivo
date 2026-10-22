@@ -49,24 +49,35 @@ export async function runKarimCurrencyJourney(
       if (record) evidenceWindow.__darivoKarimSse.push(record);
       const pending = originalFetch(input, init);
       if (record) {
-        const failed = (error: unknown) => {
-          record.error = String(error);
-          record.complete = true;
-        };
-        void pending.then((response) => {
-          record.status = response.status;
-          try {
-            void response
-              .clone()
-              .text()
-              .then((text) => {
-                record.text = text;
-                record.complete = true;
-              }, failed);
-          } catch (error) {
-            failed(error);
-          }
-        }, failed);
+        // Inline callbacks serialize under both Playwright and tsx; a named local
+        // arrow gains tsx's module-only __name helper, absent in the browser.
+        void pending.then(
+          (response) => {
+            record.status = response.status;
+            try {
+              void response
+                .clone()
+                .text()
+                .then(
+                  (text) => {
+                    record.text = text;
+                    record.complete = true;
+                  },
+                  (error: unknown) => {
+                    record.error = String(error);
+                    record.complete = true;
+                  },
+                );
+            } catch (error) {
+              record.error = String(error);
+              record.complete = true;
+            }
+          },
+          (error: unknown) => {
+            record.error = String(error);
+            record.complete = true;
+          },
+        );
       }
       return pending;
     };

@@ -124,6 +124,21 @@
   font-size: 12px;
   line-height: 1.5;
 }
+.atlas-poi-strip-qualification {
+  display: none;
+}
+@media (max-width: 760px) {
+  /* The expanded Concierge sheet hides map controls/sources, but leaves a visible map strip. */
+  .concierge[data-sheet='expanded'] .atlas-poi-strip-qualification {
+    display: block;
+    position: absolute;
+    top: 8px;
+    inset-inline-start: 12px;
+    max-width: calc(100% - 24px);
+    z-index: 3;
+    pointer-events: none;
+  }
+}
 .atlas-map-evidence details {
   position: relative;
   max-width: 100%;
