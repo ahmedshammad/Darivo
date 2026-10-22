@@ -1,0 +1,397 @@
+{
+  "source": "a2880747d2a439852885d520d58a1df02bc7b9ed",
+  "scope": "Simulated contributor reviews, not independent human validation",
+  "count": 84,
+  "sum": 756.5,
+  "mean": 9.005952380952381,
+  "minimum": 8.0,
+  "reviewGatePassed": true,
+  "stageAcceptance": "Pending current-source hosted CI; remaining hardening/external limitations preserved",
+  "personas": [
+    {
+      "persona": "sheikha",
+      "mean": 8.958333333333334,
+      "minimum": 8.5,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.0
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.0
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.5
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0
+        }
+      ]
+    },
+    {
+      "persona": "karim",
+      "mean": 8.958333333333334,
+      "minimum": 8.5,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.0
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.0
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.5
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0
+        }
+      ]
+    },
+    {
+      "persona": "elena",
+      "mean": 8.958333333333334,
+      "minimum": 8.5,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.5
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.0
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 8.5
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.5
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0
+        }
+      ]
+    },
+    {
+      "persona": "head-of-sales",
+      "mean": 9.0,
+      "minimum": 8.5,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.5
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.0
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.5
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0
+        }
+      ]
+    },
+    {
+      "persona": "rajiv",
+      "mean": 9.083333333333334,
+      "minimum": 8.0,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.5
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.5
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.5
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.5
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.0
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0
+        }
+      ]
+    },
+    {
+      "persona": "advisor",
+      "mean": 9.083333333333334,
+      "minimum": 8.0,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.5
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.5
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.5
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.5
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.0
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0
+        }
+      ]
+    },
+    {
+      "persona": "critic",
+      "mean": 9.0,
+      "minimum": 8.0,
+      "scores": [
+        {
+          "criterion": "First-5-seconds wow",
+          "score": 9.0
+        },
+        {
+          "criterion": "Originality",
+          "score": 9.0
+        },
+        {
+          "criterion": "AI-first",
+          "score": 9.0
+        },
+        {
+          "criterion": "Map experience",
+          "score": 9.0
+        },
+        {
+          "criterion": "Visual craft",
+          "score": 9.0
+        },
+        {
+          "criterion": "Motion quality",
+          "score": 9.0
+        },
+        {
+          "criterion": "Arabic & RTL",
+          "score": 9.0
+        },
+        {
+          "criterion": "Trust & evidence",
+          "score": 9.5
+        },
+        {
+          "criterion": "Discretion & privacy",
+          "score": 9.5
+        },
+        {
+          "criterion": "Developer appeal",
+          "score": 9.0
+        },
+        {
+          "criterion": "Speed",
+          "score": 8.0
+        },
+        {
+          "criterion": "Accessibility",
+          "score": 9.0
+        }
+      ]
+    }
+  ]
+}

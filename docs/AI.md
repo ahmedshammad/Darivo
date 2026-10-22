@@ -6,7 +6,9 @@ Stage 3 adds `/concierge` and `/api/v1/concierge` alongside the compatible legac
 
 SDK UI data streams report actual interpretation/retrieval progress and completed tool components. Trusted application copy supplies prose; raw model text is discarded. One persistent map consumes live action IDs and Brief revisions. History restoration re-authorizes references and cannot replay actions. Cancellation propagates to provider work and prevents observed in-flight persistence from committing. Explicit write confirmations are atomic and idempotent.
 
-Parser evals and execution safety evals are separate: semantic extraction does not prove authorized retrieval or fact grounding. Stage 3 validation is in progress. The required bilingual journeys, evidence captures, board reviews and CI remain acceptance gates.
+Parser evals and execution safety evals are separate: semantic extraction does not prove authorized retrieval or fact grounding. Current mock coverage includes105 parser cases/124 phrases and444 authorized execution cases/632 turns with13 zero safety counters. Real-provider checks remain explicitly skipped without a key. The sixth simulated board passes9.005952381/min8; final current-source hosted acceptance is pending. See the [delivery ledger](studio/DELIVERY-LEDGER.md) and [review evidence](reviews/stage-3/v6/creative-director.md).
+
+Payment timelines retain a freshly authorized bilingual subject identity; history refreshes names and removes revoked records. Deadline interpretation notices retain their full original text in SSE and history. Optional server-generated typed context identifies the market, country, year and scope. The client may compact only an exact repeat in adjacent completed turns; it never scans past failure, cancellation, removal or missing legacy context, and never compacts unknown payment facts. The same interpretation remains beside the editable Brief deadline. Provider plans and tool arguments cannot author this presentation metadata.
 
 ## Legacy Consultant compatibility
 

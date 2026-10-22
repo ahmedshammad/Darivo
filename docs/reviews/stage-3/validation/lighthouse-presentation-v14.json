@@ -1,0 +1,16 @@
+{
+  "page": "/en/concierge",
+  "scores": {
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 96,
+    "seo": 100
+  },
+  "metrics": {
+    "lcpMs": 2183.0567,
+    "blockingMs": 63.5,
+    "layoutShift": 0
+  },
+  "report": "/tmp/darivo-stage3-lighthouse-v14/concierge.json",
+  "scope": "Retained Webpack production build v14 with adjacent deadline context; same Lighthouse settings. Strict LCP<2000ms remains unmet."
+}

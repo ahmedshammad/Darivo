@@ -1,0 +1,29 @@
+{
+  "source": "a2880747d2a439852885d520d58a1df02bc7b9ed",
+  "build": "Webpack production v16",
+  "browserChecks": {
+    "passed": 14,
+    "failed": 0,
+    "scope": [
+      "EN/AR deadline journey and all-rules axe, including cancelled request barrier",
+      "EN/AR currency native/display/payment preservation",
+      "EN/AR reading controls, WebGL and fallback, scenario evidence, no-match recovery, chart labels"
+    ],
+    "log": "/tmp/darivo-stage3-browser-v16.log"
+  },
+  "visual": {
+    "manifest": "../media/v10-deadline-final/deadline-context/manifest.json",
+    "states": 84,
+    "failures": 0,
+    "axeViolations": 0,
+    "pageErrors": 0,
+    "overflow": 0,
+    "settledWebGL": 84
+  },
+  "scopeLimits": [
+    "Unit/eval evidence from f88e9a2 before late accessibility-semantic corrections; provider/backend unchanged.",
+    "Initial Lighthouse v14 is retained, not a new v16 measurement; strict 2-second budget remains unmet.",
+    "Current-source hosted CI39864420684 pending at this record.",
+    "No physical-phone/M1, field INP, human Arabic/full assistive-technology or real-provider certification."
+  ]
+}

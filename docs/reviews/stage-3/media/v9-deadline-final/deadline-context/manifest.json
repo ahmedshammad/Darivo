@@ -1,0 +1,18 @@
+{
+  "source": "f88e9a2b3654c2a829a2ee5efbd2640b7c976218",
+  "workingTreeStatus": "M docs/studio/DELIVERY-LEDGER.md\n?? docs/reviews/stage-3/validation/execution-passing-v9.json\n?? docs/reviews/stage-3/validation/hosted-0b304f7.json\n?? docs/reviews/stage-3/validation/hosted-cd92e4e.json\n?? docs/reviews/stage-3/validation/lighthouse-presentation-v14.json\n?? docs/reviews/stage-3/validation/turbopack-experiment.json",
+  "startedAt": "2026-10-22T22:15:43.794Z",
+  "origin": "http://localhost:3001",
+  "browser": "155.0.8059.85",
+  "scope": "Real guest UI and unmodified streamed responses; no mocked responses or confirmed writes. Cancellation is tested separately, not in this capture.",
+  "limitations": [
+    "Phone emulation/reduced motion, not physical-device performance.",
+    "Each state records actual renderer and settled flags. Fallback states do not certify WebGL; unsettled states are retained as failures.",
+    "MockProvider and seeded data; no live-provider/native-human or external-market certification."
+  ],
+  "expectedConfigurations": 12,
+  "states": [],
+  "failures": [
+    "en/dark/1440: Error: Please use browser.newContext()\n Please check out https://github.com/dequelabs/axe-core-npm/blob/develop/packages/playwright/error-handling.md"
+  ]
+}

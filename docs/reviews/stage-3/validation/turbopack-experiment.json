@@ -1,0 +1,71 @@
+{
+  "scope": "Temporary default Turbopack production build on source cd92e4e; no source/build-script changes",
+  "retained": false,
+  "reason": "Existing Lighthouse settings regressed materially versus retained webpack build",
+  "scores": {
+    "performance": 74,
+    "accessibility": 100,
+    "best-practices": 96,
+    "seo": 100
+  },
+  "metrics": {
+    "lcpMs": 2993.5410500000003,
+    "blockingMs": 926.9999999999995,
+    "layoutShift": 0
+  },
+  "bundles": {
+    "htmlGzip": 27081,
+    "scripts": [
+      {
+        "url": "/_next/static/chunks/3c2g0acn2pxgj.js",
+        "gzip": 8760
+      },
+      {
+        "url": "/_next/static/chunks/2zc1sc-8ew4cp.js",
+        "gzip": 71907
+      },
+      {
+        "url": "/_next/static/chunks/40_7iguc6kovq.js",
+        "gzip": 45143
+      },
+      {
+        "url": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+        "gzip": 4390
+      },
+      {
+        "url": "/_next/static/chunks/07v39jqzrn94t.js",
+        "gzip": 3513
+      },
+      {
+        "url": "/_next/static/chunks/09y9q4spfr9y5.js",
+        "gzip": 1235
+      },
+      {
+        "url": "/_next/static/chunks/327as_wsc3jyl.js",
+        "gzip": 11008
+      },
+      {
+        "url": "/_next/static/chunks/394eah-9blq91.js",
+        "gzip": 63538
+      },
+      {
+        "url": "/_next/static/chunks/24oskydtc-tqe.js",
+        "gzip": 50407
+      },
+      {
+        "url": "/_next/static/chunks/0cz1d0mv5g_q7.js",
+        "gzip": 39627
+      },
+      {
+        "url": "/_next/static/chunks/1jl99rmsjo6fl.js",
+        "gzip": 2033
+      }
+    ]
+  },
+  "rawReport": "/tmp/darivo-stage3-lighthouse-turbopack/concierge.json",
+  "limits": [
+    "One bounded diagnostic experiment; not a retained-build result.",
+    "No acceptance budget or visual behavior was changed.",
+    "Production will be rebuilt with the existing --webpack command."
+  ]
+}

@@ -1,6 +1,6 @@
 # Darivo
 
-A private, bilingual property-office demo for the UAE and Egypt. V2 is in progress: the Noir Atlas concept sprint is approved, and the foundation/design system has passed its simulated review and hosted CI. The existing consultant, portfolios, PDF and advisor/admin workflows remain runnable while the later V2 experiences are built. See the [full delivery ledger](docs/studio/DELIVERY-LEDGER.md) for honest stage status.
+A private, bilingual property-office demo for the UAE and Egypt. V2 is in progress: the concept, foundation/design system, Arrival and Living Map stages are accepted. The Concierge's sixth simulated review passes; final hosted acceptance is pending. The existing portfolios, PDF and advisor/admin workflows remain runnable while the later V2 experiences are built. See the [full delivery ledger](docs/studio/DELIVERY-LEDGER.md) for current evidence and remaining limitations.
 
 ## Run in a few minutes
 
@@ -31,7 +31,17 @@ Use **Private access → Explore the demo**:
 
 No passwords are needed for these explicit **development-only** identities. The normal email-link form prints a single-use Auth.js link in the local server console. Only invited/seeded accounts may sign in. Production demo credentials and the console mailer are disabled.
 
-## Try the complete journey
+## Try the V2 Concierge
+
+Open **/en/concierge** or **/ar/concierge**. No API key is needed. The three opening examples drive the map and build separate editable market Briefs:
+
+- Karim: “North Coast summer home ready by 2028, compare with a Dubai investment”. Switch display prices to USD then GBP; the original EGP/AED prices and EGP payment preference remain distinct.
+- Elena: “Explain Dubai neighbourhoods for a family with two kids near a British school”. Named anchors explain the geography; school points are explicitly Demo illustrations, not verified school or admission evidence.
+- Sheikha: “فيلا على البحر في السعديات أو النخلة”. The strict request honestly reports missing verified matches. Reviewing requirements does not automatically relax them.
+
+Ask “Show SouthMED payment plan” to see an explicit missing-schedule answer. Unchanged deadline assumptions remain inspectable; changed assumptions are shown in full. Guest conversations are not saved to an account. Signed-in history is re-authorized on replay; write proposals require explicit confirmation. Browser voice input uses the selected supported locale and does not certify bilingual acoustic auto-detection.
+
+## Try the existing client workflow
 
 1. Sign in as Private client and open **Your consultant**.
 2. Ask **“3-bedroom villa in Dubai Hills under 12 million dirhams”** or **“فيلا ٣ غرف في دبي هيلز تحت ١٢ مليون درهم”**.
@@ -40,7 +50,7 @@ No passwords are needed for these explicit **development-only** identities. The 
 5. Submit the profile’s built-in verification placeholder. Sign in as admin, choose **Users & verification**, and approve it.
 6. From the advisor desk, grant `property-020` to the private client. It becomes visible to that client only. Revoke it and access disappears immediately. Audit records both actions.
 
-The 250 unit listings, their 16 projects and 4 developers, permits, POIs, investment assumptions and accounts are fictional. Separately, the supplied reference dataset contains 9 real developer organisations, one aggregate research note, 13 real projects and 3 market statistics. Reference projects have source/date/basis metadata and on-request availability; they never own demo units. See [data boundaries](docs/REFERENCE_DATA.md). No developer logos or renders are used. The legacy offline map is schematic; the concept studio uses actual geographic tiles.
+The 250 unit listings, their 16 projects and 4 developers, permits, POIs, investment assumptions and accounts are fictional. Separately, the supplied reference dataset contains 9 real developer organisations, one aggregate research note, 13 real projects and 3 market statistics. Reference projects have source/date/basis metadata and on-request availability; they never own demo units. See [data boundaries](docs/REFERENCE_DATA.md). No developer logos or renders are used. The legacy offline map is schematic; the V2 Arrival, Explore and Concierge use geographic maps with an explicit 2D fallback.
 
 ## PostgreSQL 16 + pgvector (canonical setup)
 
@@ -76,7 +86,7 @@ Restart with `pnpm dev`, or run `pnpm db:seed` to re-index embeddings. Vectors a
 With `pnpm dev` running in another terminal:
 
 ```sh
-pnpm check          # lint, strict types, units/integration, 36 AI evals, browser tests
+pnpm check          # lint, strict types, units/integration, legacy + Concierge evals, browser tests
 pnpm build          # optimized production compilation
 pnpm format:check
 ```
@@ -91,7 +101,7 @@ AUTH_URL=http://localhost:3001 pnpm exec next start --port 3001
 
 Production preview has public pages; enabling real sign-in requires implementing a production mail delivery adapter. This is a local demo, not a launch-ready regulated service.
 
-With that preview running, `pnpm test:performance` runs mobile Lighthouse on the landing page, search and Arabic property detail, enforcing scores of at least 90. Override its origin with `LIGHTHOUSE_BASE_URL`. See [recorded validation results](docs/VALIDATION.md).
+With that preview running, `pnpm test:performance` runs mobile Lighthouse on Home, Search, Explore, Concierge and the legacy Arabic property detail, enforcing scores of at least90. Override its origin with `LIGHTHOUSE_BASE_URL`. This compatibility floor is lower than the V2 final hardening targets (Home/Project≥95, Explore performance≥90, strict LCP<2s); those remain explicit gates in the [delivery ledger](docs/studio/DELIVERY-LEDGER.md). See [recorded validation results](docs/VALIDATION.md).
 
 ## Structure and decisions
 

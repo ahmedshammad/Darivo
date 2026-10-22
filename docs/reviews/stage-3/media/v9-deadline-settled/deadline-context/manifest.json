@@ -1,0 +1,3246 @@
+{
+  "source": "62b7ffa328fab5125034729c733c22114477c120",
+  "workingTreeStatus": "M docs/CHANGELOG.md\n M docs/studio/DELIVERY-LEDGER.md\n M scripts/capture-concierge-deadlines.ts\n?? docs/reviews/stage-3/media/v9-deadline-complete/\n?? docs/reviews/stage-3/media/v9-deadline-final/\n?? docs/reviews/stage-3/media/v9-deadline-retry/\n?? docs/reviews/stage-3/validation/execution-passing-v9.json\n?? docs/reviews/stage-3/validation/hosted-0b304f7.json\n?? docs/reviews/stage-3/validation/hosted-cd92e4e.json\n?? docs/reviews/stage-3/validation/lighthouse-presentation-v14.json\n?? docs/reviews/stage-3/validation/turbopack-experiment.json",
+  "startedAt": "2026-10-22T22:19:04.797Z",
+  "origin": "http://localhost:3001",
+  "browser": "155.0.8059.85",
+  "scope": "Real guest UI and unmodified streamed responses; no mocked responses or confirmed writes. Cancellation is tested separately, not in this capture.",
+  "limitations": [
+    "Phone emulation/reduced motion, not physical-device performance.",
+    "Each state records actual renderer and settled flags. Fallback states do not certify WebGL; unsettled states are retained as failures.",
+    "MockProvider and seeded data; no live-provider/native-human or external-market certification."
+  ],
+  "expectedConfigurations": 12,
+  "states": [
+    {
+      "name": "first-full",
+      "locale": "en",
+      "brief": {
+        "version": 1,
+        "revision": 1,
+        "rawRequest": "North Coast summer home ready by 2028, compare with a Dubai investment",
+        "responseLanguage": "auto",
+        "overallPurpose": null,
+        "marketMode": "independent",
+        "markets": [
+          {
+            "id": "market-egypt",
+            "country": "Egypt",
+            "placeIds": ["north-coast"],
+            "placeMatch": "any",
+            "purpose": "holiday",
+            "budget": null,
+            "deadline": {
+              "kind": "year",
+              "year": 2028,
+              "boundary": "by",
+              "rawText": "North Coast summer home ready by 2028, compare with a Dubai investment"
+            },
+            "readiness": "unspecified",
+            "propertyTypes": [],
+            "bedrooms": null,
+            "rawText": "North Coast summer home ready by 2028, compare with a Dubai investment"
+          },
+          {
+            "id": "market-uae",
+            "country": "UAE",
+            "placeIds": ["dubai"],
+            "placeMatch": "any",
+            "purpose": "investment",
+            "budget": null,
+            "deadline": null,
+            "readiness": "unspecified",
+            "propertyTypes": [],
+            "bedrooms": null,
+            "rawText": "North Coast summer home ready by 2028, compare with a Dubai investment"
+          }
+        ],
+        "unassignedBudget": null,
+        "unassignedDeadline": null,
+        "displayCurrencies": ["AED"],
+        "paymentCurrency": null,
+        "household": {
+          "adults": null,
+          "children": null,
+          "curriculum": null,
+          "schoolRequirement": "unspecified"
+        },
+        "mustHaves": [],
+        "exclusions": [],
+        "uncertainties": ["deadline_year_boundary"],
+        "provenance": [
+          {
+            "fieldId": "rawRequest",
+            "rawText": "North Coast summer home ready by 2028, compare with a Dubai investment",
+            "origin": "user"
+          }
+        ],
+        "privacy": {
+          "mode": "standard",
+          "doNotSave": false,
+          "doNotShare": false,
+          "doNotBook": false,
+          "writePolicy": "confirm_each_action"
+        },
+        "tasteMemory": {
+          "consent": "not_asked",
+          "consentedAt": null,
+          "items": []
+        }
+      },
+      "components": [
+        {
+          "id": "ec59470d-54fc-43fc-ad89-e9efe60ec6a6:component:market-egypt",
+          "turnId": "ba20b8ae-b81a-4da3-b4ec-d44b6a83304c",
+          "kind": "project-cards",
+          "cards": [
+            {
+              "id": "card:southmed",
+              "name": {
+                "en": "SouthMED",
+                "ar": "SouthMED"
+              },
+              "center": [28.43, 31.03],
+              "coordinatesApproximate": true,
+              "price": {
+                "native": {
+                  "amount": 91200000,
+                  "currency": "EGP"
+                },
+                "qualifier": {
+                  "en": "Premium beachfront villas (up to 501 sqm) from",
+                  "ar": "فلل فاخرة على الشاطئ (بمساحة تصل إلى 501 م²)، بأسعار تبدأ من"
+                },
+                "factId": "southmed:price",
+                "converted": [
+                  {
+                    "money": {
+                      "amount": 6755555.56,
+                      "currency": "AED"
+                    },
+                    "rate": 0.07407407407407407,
+                    "asOf": {
+                      "value": "2026-10-01",
+                      "precision": "DAY"
+                    },
+                    "method": "STATIC_DEMO_FX"
+                  }
+                ],
+                "paymentCurrency": null
+              },
+              "facts": [
+                {
+                  "id": "southmed:price",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "price",
+                  "label": {
+                    "en": "Published price basis",
+                    "ar": "أساس السعر المنشور"
+                  },
+                  "value": 91200000,
+                  "unit": null,
+                  "currency": "EGP",
+                  "sourceIds": [
+                    "source-aac5f8b4bb1b13f4bdb725131871ab32",
+                    "source-ae8227bd6b16e6f1b703697bd9a55393"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Premium beachfront villas (up to 501 sqm) from",
+                    "ar": "فلل فاخرة على الشاطئ (بمساحة تصل إلى 501 م²)، بأسعار تبدأ من"
+                  },
+                  "originalText": "Premium beachfront villas (up to 501 sqm) from · 91200000 · EGP"
+                },
+                {
+                  "id": "fact-0089c5a32fef0568cd8f94eacbab1953",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "community",
+                  "label": {
+                    "en": "Community",
+                    "ar": "المنطقة"
+                  },
+                  "value": "Al Dabaa",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Al Dabaa",
+                  "displayValue": {
+                    "en": "Al Dabaa",
+                    "ar": "الضبعة"
+                  }
+                },
+                {
+                  "id": "fact-571f8a371847a16f8e2ad72279e7e153",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "city",
+                  "label": {
+                    "en": "City",
+                    "ar": "المدينة"
+                  },
+                  "value": "North Coast",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "North Coast",
+                  "displayValue": {
+                    "en": "North Coast",
+                    "ar": "الساحل الشمالي"
+                  }
+                },
+                {
+                  "id": "fact-5fcf7882bd00ad8b5e402ad7ab022d09",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "country",
+                  "label": {
+                    "en": "Country",
+                    "ar": "الدولة"
+                  },
+                  "value": "Egypt",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Egypt",
+                  "displayValue": {
+                    "en": "Egypt",
+                    "ar": "مصر"
+                  }
+                },
+                {
+                  "id": "fact-6777aff8aca1938f18272e9da984b1fe",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "type.0",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Beachfront villas",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Beachfront villas",
+                  "displayValue": {
+                    "en": "Beachfront villas",
+                    "ar": "فلل على الشاطئ"
+                  }
+                },
+                {
+                  "id": "fact-126ef60474c8174a9e3d46ac3cc83aa5",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "type.1",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Chalets",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Chalets",
+                  "displayValue": {
+                    "en": "Chalets",
+                    "ar": "شاليهات"
+                  }
+                },
+                {
+                  "id": "fact-1982d906cb44514106f72eb5db75489c",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "type.2",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Mansions",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Mansions",
+                  "displayValue": {
+                    "en": "Mansions",
+                    "ar": "قصور"
+                  }
+                },
+                {
+                  "id": "fact-74066d3733e607db1e116e735db2dccc",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "completion",
+                  "label": {
+                    "en": "Reported completion",
+                    "ar": "التسليم المذكور"
+                  },
+                  "value": "First deliveries targeted 2028",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "First deliveries targeted 2028",
+                  "displayValue": {
+                    "en": "First deliveries targeted 2028",
+                    "ar": "أولى عمليات التسليم مستهدفة في 2028"
+                  }
+                },
+                {
+                  "id": "fact-27545baf53b2f4e5c0d31d6218c36cd8",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "status",
+                  "label": {
+                    "en": "Reported status",
+                    "ar": "الحالة المذكورة"
+                  },
+                  "value": "Under construction",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Under construction",
+                  "displayValue": {
+                    "en": "Under construction",
+                    "ar": "قيد الإنشاء"
+                  }
+                },
+                {
+                  "id": "fact-f0b8a442d22a3a857b070575527fb082",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "headline_facts.0",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "About 23 million sqm masterplan on the Mediterranean",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "About 23 million sqm masterplan on the Mediterranean"
+                },
+                {
+                  "id": "fact-4feb72efacfd76173983b6d171d82093",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "headline_facts.1",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Four Seasons to manage the first international hotel",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Four Seasons to manage the first international hotel"
+                },
+                {
+                  "id": "fact-aa3540b3d6619b9d2d34c504badb04d6",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "headline_facts.2",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Terraced up to 60 m above sea level; 8 km beach and a marina",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Terraced up to 60 m above sea level; 8 km beach and a marina"
+                },
+                {
+                  "id": "fact-f0ccf8a10eaf02a8d44979d4197a6190",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "headline_facts.3",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Summer 2026 offer: down payments from 1.5%, plans up to 15 years",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Summer 2026 offer: down payments from 1.5%, plans up to 15 years"
+                }
+              ],
+              "sources": [
+                {
+                  "id": "source-2068085b9c434af1b570b5846fb21d36",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://news.spill.org/en/article/talaat-moustafa-group-leads-north-coast-construction-race-with-record-execution-rates-at-s-449",
+                  "publisher": "news.spill.org",
+                  "basis": "UNKNOWN"
+                },
+                {
+                  "id": "source-8f64071ebe544307275e1bf2871c2202",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://news.spill.org/en/article/talaat-moustafa-group-launches-unprecedented-offer-at-southmed-449",
+                  "publisher": "news.spill.org",
+                  "basis": "UNKNOWN"
+                },
+                {
+                  "id": "source-aac5f8b4bb1b13f4bdb725131871ab32",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://news.spill.org/en/article/talaat-moustafa-group-leads-north-coast-construction-race-with-record-execution-rates-at-s-449",
+                  "publisher": "news.spill.org",
+                  "basis": "PRESS_REPORT"
+                },
+                {
+                  "id": "source-ae8227bd6b16e6f1b703697bd9a55393",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://news.spill.org/en/article/talaat-moustafa-group-launches-unprecedented-offer-at-southmed-449",
+                  "publisher": "news.spill.org",
+                  "basis": "PRESS_REPORT"
+                }
+              ],
+              "reasons": [
+                {
+                  "text": {
+                    "en": "Recorded location: Al Dabaa. Compare this with your requested areas.",
+                    "ar": "الموقع المسجل: الضبعة. قارنه بالمناطق المطلوبة."
+                  },
+                  "briefFieldIds": ["markets.market-egypt.placeIds"],
+                  "factIds": ["fact-0089c5a32fef0568cd8f94eacbab1953"],
+                  "status": "supported"
+                },
+                {
+                  "text": {
+                    "en": "Original EGP price basis retained; your budget still needs confirmation.",
+                    "ar": "احتُفظ بأساس السعر الأصلي بعملة EGP؛ لا تزال ميزانيتك بحاجة إلى تأكيد."
+                  },
+                  "briefFieldIds": ["markets.market-egypt.budget"],
+                  "factIds": ["southmed:price"],
+                  "status": "supported"
+                },
+                {
+                  "text": {
+                    "en": "Reported completion: First deliveries targeted 2028. This is a source indication, not a guaranteed deadline.",
+                    "ar": "التسليم المذكور: أولى عمليات التسليم مستهدفة في 2028. هذا بيان من المصدر وليس موعداً مضموناً."
+                  },
+                  "briefFieldIds": ["markets.market-egypt.deadline"],
+                  "factIds": ["fact-74066d3733e607db1e116e735db2dccc"],
+                  "status": "supported"
+                }
+              ],
+              "tradeoff": {
+                "text": {
+                  "en": "Delivery is reported as First deliveries targeted 2028; the requested deadline still needs current confirmation.",
+                  "ar": "التسليم مذكور كالتالي: أولى عمليات التسليم مستهدفة في 2028؛ لا يزال الموعد المطلوب بحاجة إلى تأكيد حديث."
+                },
+                "briefFieldIds": ["markets.market-egypt.deadline"],
+                "factIds": ["fact-74066d3733e607db1e116e735db2dccc"],
+                "status": "supported"
+              },
+              "kind": "reference-project",
+              "projectId": "southmed",
+              "developerId": "tmg",
+              "availability": "ON_REQUEST"
+            },
+            {
+              "id": "card:demo-project-north-coast",
+              "name": {
+                "en": "The Quiet Quarter 14",
+                "ar": "حي السكينة 14"
+              },
+              "center": [28.95, 30.84],
+              "coordinatesApproximate": true,
+              "price": {
+                "native": {
+                  "amount": 18260000,
+                  "currency": "EGP"
+                },
+                "qualifier": {
+                  "en": "Lowest currently visible fictional unit; demo estimate",
+                  "ar": "أقل وحدة خيالية ظاهرة حالياً؛ تقدير تجريبي"
+                },
+                "factId": "demo-project-north-coast:price",
+                "converted": [
+                  {
+                    "money": {
+                      "amount": 1352592.59,
+                      "currency": "AED"
+                    },
+                    "rate": 0.07407407407407407,
+                    "asOf": {
+                      "value": "2026-10-01",
+                      "precision": "DAY"
+                    },
+                    "method": "STATIC_DEMO_FX"
+                  }
+                ],
+                "paymentCurrency": null
+              },
+              "facts": [
+                {
+                  "id": "demo-project-north-coast:price",
+                  "entity": {
+                    "kind": "project",
+                    "id": "demo-project-north-coast"
+                  },
+                  "key": "price",
+                  "label": {
+                    "en": "Published price basis",
+                    "ar": "أساس السعر المنشور"
+                  },
+                  "value": 18260000,
+                  "unit": null,
+                  "currency": "EGP",
+                  "sourceIds": ["demo-project-north-coast:demo"],
+                  "asOf": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "provenance": "DEMO",
+                  "qualifier": {
+                    "en": "Lowest currently visible fictional unit; demo estimate",
+                    "ar": "أقل وحدة خيالية ظاهرة حالياً؛ تقدير تجريبي"
+                  },
+                  "originalText": null
+                },
+                {
+                  "id": "demo-project-north-coast:community",
+                  "entity": {
+                    "kind": "project",
+                    "id": "demo-project-north-coast"
+                  },
+                  "key": "community",
+                  "label": {
+                    "en": "Community",
+                    "ar": "المنطقة"
+                  },
+                  "value": "North Coast",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["demo-project-north-coast:demo"],
+                  "asOf": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "provenance": "DEMO",
+                  "qualifier": null,
+                  "originalText": "North Coast",
+                  "displayValue": {
+                    "en": "North Coast",
+                    "ar": "الساحل الشمالي"
+                  }
+                },
+                {
+                  "id": "demo-project-north-coast:country",
+                  "entity": {
+                    "kind": "project",
+                    "id": "demo-project-north-coast"
+                  },
+                  "key": "country",
+                  "label": {
+                    "en": "Country",
+                    "ar": "الدولة"
+                  },
+                  "value": "Egypt",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["demo-project-north-coast:demo"],
+                  "asOf": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "provenance": "DEMO",
+                  "qualifier": null,
+                  "originalText": "Egypt",
+                  "displayValue": {
+                    "en": "Egypt",
+                    "ar": "مصر"
+                  }
+                },
+                {
+                  "id": "demo-project-north-coast:completion",
+                  "entity": {
+                    "kind": "project",
+                    "id": "demo-project-north-coast"
+                  },
+                  "key": "completion",
+                  "label": {
+                    "en": "Reported completion",
+                    "ar": "التسليم المذكور"
+                  },
+                  "value": "2028-06-30",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["demo-project-north-coast:demo"],
+                  "asOf": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "provenance": "DEMO",
+                  "qualifier": null,
+                  "originalText": "2028-06-30"
+                }
+              ],
+              "sources": [
+                {
+                  "id": "demo-project-north-coast:demo",
+                  "title": "Fictional demo inventory",
+                  "asOf": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "demo",
+                  "url": null,
+                  "publisher": null,
+                  "basis": "DEMO_ESTIMATE"
+                }
+              ],
+              "reasons": [
+                {
+                  "text": {
+                    "en": "Recorded location: North Coast. Compare this with your requested areas.",
+                    "ar": "الموقع المسجل: الساحل الشمالي. قارنه بالمناطق المطلوبة."
+                  },
+                  "briefFieldIds": ["markets.market-egypt.placeIds"],
+                  "factIds": ["demo-project-north-coast:community"],
+                  "status": "supported"
+                },
+                {
+                  "text": {
+                    "en": "Original EGP price basis retained; your budget still needs confirmation.",
+                    "ar": "احتُفظ بأساس السعر الأصلي بعملة EGP؛ لا تزال ميزانيتك بحاجة إلى تأكيد."
+                  },
+                  "briefFieldIds": ["markets.market-egypt.budget"],
+                  "factIds": ["demo-project-north-coast:price"],
+                  "status": "supported"
+                },
+                {
+                  "text": {
+                    "en": "Reported completion: 2028-06-30. This is a source indication, not a guaranteed deadline.",
+                    "ar": "التسليم المذكور: النص الأصلي للمصدر: 2028-06-30. هذا بيان من المصدر وليس موعداً مضموناً."
+                  },
+                  "briefFieldIds": ["markets.market-egypt.deadline"],
+                  "factIds": ["demo-project-north-coast:completion"],
+                  "status": "supported"
+                }
+              ],
+              "tradeoff": {
+                "text": {
+                  "en": "Delivery is reported as 2028-06-30; the requested deadline still needs current confirmation.",
+                  "ar": "التسليم مذكور كالتالي: النص الأصلي للمصدر: 2028-06-30؛ لا يزال الموعد المطلوب بحاجة إلى تأكيد حديث."
+                },
+                "briefFieldIds": ["markets.market-egypt.deadline"],
+                "factIds": ["demo-project-north-coast:completion"],
+                "status": "supported"
+              },
+              "kind": "demo-project",
+              "projectId": "demo-project-north-coast",
+              "developerId": "developer-1",
+              "availability": "DEMO_ONLY"
+            }
+          ]
+        },
+        {
+          "id": "74094107-af4b-4b1f-8d74-b0f91d34dbe6:component:market-uae",
+          "turnId": "ba20b8ae-b81a-4da3-b4ec-d44b6a83304c",
+          "kind": "project-cards",
+          "cards": [
+            {
+              "id": "card:orla-palm-jumeirah",
+              "name": {
+                "en": "Orla, Dorchester Collection",
+                "ar": "Orla, Dorchester Collection"
+              },
+              "center": [55.118, 25.128],
+              "coordinatesApproximate": true,
+              "price": {
+                "native": {
+                  "amount": 57300000,
+                  "currency": "AED"
+                },
+                "qualifier": {
+                  "en": "4-bedroom residences from · Sky Palace (shell & core) listed from AED 145M",
+                  "ar": "مساكن من أربع غرف نوم، بأسعار تبدأ من · أُعلن عن سكاي بالاس (هيكل دون تشطيب) بأسعار تبدأ من 145 مليون درهم إماراتي"
+                },
+                "factId": "orla-palm-jumeirah:price",
+                "converted": [],
+                "paymentCurrency": null
+              },
+              "facts": [
+                {
+                  "id": "orla-palm-jumeirah:price",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "price",
+                  "label": {
+                    "en": "Published price basis",
+                    "ar": "أساس السعر المنشور"
+                  },
+                  "value": 57300000,
+                  "unit": null,
+                  "currency": "AED",
+                  "sourceIds": [
+                    "source-5d52799b67a0b77dd219d57084d8f279",
+                    "source-1fad0669ad86d4944bab18ab1764474d"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "4-bedroom residences from · Sky Palace (shell & core) listed from AED 145M",
+                    "ar": "مساكن من أربع غرف نوم، بأسعار تبدأ من · أُعلن عن سكاي بالاس (هيكل دون تشطيب) بأسعار تبدأ من 145 مليون درهم إماراتي"
+                  },
+                  "originalText": "4-bedroom residences from · 57300000 · AED · Sky Palace (shell & core) listed from AED 145M"
+                },
+                {
+                  "id": "fact-efa50cf6769c5b11c0e076284438f1b5",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "community",
+                  "label": {
+                    "en": "Community",
+                    "ar": "المنطقة"
+                  },
+                  "value": "Palm Jumeirah (Crescent)",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Palm Jumeirah (Crescent)",
+                  "displayValue": {
+                    "en": "Palm Jumeirah (Crescent)",
+                    "ar": "نخلة جميرا (الهلال)"
+                  }
+                },
+                {
+                  "id": "fact-c0ca81da2078c8b5d4d4045ba621e015",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "city",
+                  "label": {
+                    "en": "City",
+                    "ar": "المدينة"
+                  },
+                  "value": "Dubai",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Dubai",
+                  "displayValue": {
+                    "en": "Dubai",
+                    "ar": "دبي"
+                  }
+                },
+                {
+                  "id": "fact-49a7113b9c76f0e13c9a17ca96c7b1f5",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "country",
+                  "label": {
+                    "en": "Country",
+                    "ar": "الدولة"
+                  },
+                  "value": "UAE",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "UAE",
+                  "displayValue": {
+                    "en": "UAE",
+                    "ar": "الإمارات"
+                  }
+                },
+                {
+                  "id": "fact-e0ce1c83baf58fac9bcd5d02b215e70a",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "type.0",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Branded apartments",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Branded apartments",
+                  "displayValue": {
+                    "en": "Branded apartments",
+                    "ar": "شقق بعلامة تجارية"
+                  }
+                },
+                {
+                  "id": "fact-d5a88db1eccb1eb09c6cd71de9cc3ef5",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "type.1",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Penthouses",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Penthouses",
+                  "displayValue": {
+                    "en": "Penthouses",
+                    "ar": "بنتهاوس"
+                  }
+                },
+                {
+                  "id": "fact-3a64cc4e561314598f5399d655752968",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "type.2",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Sky Palace",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Sky Palace",
+                  "displayValue": {
+                    "en": "Sky Palace",
+                    "ar": "سكاي بالاس"
+                  }
+                },
+                {
+                  "id": "fact-60c8e9b2fe7462aa083ccd5dec54eada",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "completion",
+                  "label": {
+                    "en": "Reported completion",
+                    "ar": "التسليم المذكور"
+                  },
+                  "value": "Expected 2027",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Expected 2027",
+                  "displayValue": {
+                    "en": "Expected 2027",
+                    "ar": "متوقع في 2027"
+                  }
+                },
+                {
+                  "id": "fact-6522861cce2be9b67da2ed451a66c4df",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "status",
+                  "label": {
+                    "en": "Reported status",
+                    "ar": "الحالة المذكورة"
+                  },
+                  "value": "Under construction",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Under construction",
+                  "displayValue": {
+                    "en": "Under construction",
+                    "ar": "قيد الإنشاء"
+                  }
+                },
+                {
+                  "id": "fact-2ee66cd2453a732bfaa36920d08ffcf4",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "price_note",
+                  "label": {
+                    "en": "Original price qualification",
+                    "ar": "توضيح السعر الأصلي"
+                  },
+                  "value": "Sky Palace (shell & core) listed from AED 145M",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Sky Palace (shell & core) listed from AED 145M",
+                  "displayValue": {
+                    "en": "Sky Palace (shell & core) listed from AED 145M",
+                    "ar": "أُعلن عن سكاي بالاس (هيكل دون تشطيب) بأسعار تبدأ من 145 مليون درهم إماراتي"
+                  }
+                },
+                {
+                  "id": "fact-b6787ac12377e507c5d6672296b94d44",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "headline_facts.0",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Architecture by Foster + Partners; serviced by Dorchester Collection",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Architecture by Foster + Partners; serviced by Dorchester Collection"
+                },
+                {
+                  "id": "fact-f6344d178792e4536104d4c9ba18dc69",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "headline_facts.1",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Beachfront site of about 29,000 sqm at the apex of the Crescent",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Beachfront site of about 29,000 sqm at the apex of the Crescent"
+                },
+                {
+                  "id": "fact-847ae2e9cf34da32e31debf18e316d3f",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "headline_facts.2",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "2–4 bedroom simplex and duplex residences plus penthouses",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "2–4 bedroom simplex and duplex residences plus penthouses"
+                }
+              ],
+              "sources": [
+                {
+                  "id": "source-68923e7357fea25dd75a5442b23ceec6",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.nestseekers.com/5589481/orla-20260624032650",
+                  "publisher": "nestseekers.com",
+                  "basis": "UNKNOWN"
+                },
+                {
+                  "id": "source-5d396021171fcaaf0615da117ee13a40",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.nestseekers.com/5590966/orla-20260624032650",
+                  "publisher": "nestseekers.com",
+                  "basis": "UNKNOWN"
+                },
+                {
+                  "id": "source-5d52799b67a0b77dd219d57084d8f279",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.nestseekers.com/5589481/orla-20260624032650",
+                  "publisher": "nestseekers.com",
+                  "basis": "AGENT_LISTING"
+                },
+                {
+                  "id": "source-1fad0669ad86d4944bab18ab1764474d",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.nestseekers.com/5590966/orla-20260624032650",
+                  "publisher": "nestseekers.com",
+                  "basis": "AGENT_LISTING"
+                }
+              ],
+              "reasons": [
+                {
+                  "text": {
+                    "en": "Recorded location: Palm Jumeirah (Crescent). Compare this with your requested areas.",
+                    "ar": "الموقع المسجل: نخلة جميرا (الهلال). قارنه بالمناطق المطلوبة."
+                  },
+                  "briefFieldIds": ["markets.market-uae.placeIds"],
+                  "factIds": ["fact-efa50cf6769c5b11c0e076284438f1b5"],
+                  "status": "supported"
+                },
+                {
+                  "text": {
+                    "en": "Original AED price basis retained; your budget still needs confirmation.",
+                    "ar": "احتُفظ بأساس السعر الأصلي بعملة AED؛ لا تزال ميزانيتك بحاجة إلى تأكيد."
+                  },
+                  "briefFieldIds": ["markets.market-uae.budget"],
+                  "factIds": ["orla-palm-jumeirah:price"],
+                  "status": "supported"
+                }
+              ],
+              "tradeoff": {
+                "text": {
+                  "en": "Public project evidence is not live availability; request current details from an advisor.",
+                  "ar": "معلومات المشروع العامة ليست توافراً مباشراً؛ اطلب التفاصيل الحالية من مستشار."
+                },
+                "briefFieldIds": ["mustHaves"],
+                "factIds": [],
+                "status": "unknown"
+              },
+              "kind": "reference-project",
+              "projectId": "orla-palm-jumeirah",
+              "developerId": "omniyat",
+              "availability": "ON_REQUEST"
+            },
+            {
+              "id": "card:oasis-palace-ostra",
+              "name": {
+                "en": "Palace Villas Ostra, The Oasis",
+                "ar": "Palace Villas Ostra, The Oasis"
+              },
+              "center": [55.33, 25.04],
+              "coordinatesApproximate": true,
+              "price": {
+                "native": {
+                  "amount": 13130000,
+                  "currency": "AED"
+                },
+                "qualifier": {
+                  "en": "From",
+                  "ar": "ابتداءً من"
+                },
+                "factId": "oasis-palace-ostra:price",
+                "converted": [],
+                "paymentCurrency": null
+              },
+              "facts": [
+                {
+                  "id": "oasis-palace-ostra:price",
+                  "entity": {
+                    "kind": "project",
+                    "id": "oasis-palace-ostra"
+                  },
+                  "key": "price",
+                  "label": {
+                    "en": "Published price basis",
+                    "ar": "أساس السعر المنشور"
+                  },
+                  "value": 13130000,
+                  "unit": null,
+                  "currency": "AED",
+                  "sourceIds": ["source-1a45b244a4e65a6c2a632360289d4412"],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "From",
+                    "ar": "ابتداءً من"
+                  },
+                  "originalText": "From · 13130000 · AED"
+                },
+                {
+                  "id": "fact-30291fb1ffcee88e4be31240f7998d35",
+                  "entity": {
+                    "kind": "project",
+                    "id": "oasis-palace-ostra"
+                  },
+                  "key": "community",
+                  "label": {
+                    "en": "Community",
+                    "ar": "المنطقة"
+                  },
+                  "value": "The Oasis (Dubailand)",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-cae789f9eab6cfc8ca78539b670af9a6"],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "The Oasis (Dubailand)",
+                  "displayValue": {
+                    "en": "The Oasis (Dubailand)",
+                    "ar": "ذا أواسيس (دبي لاند)"
+                  }
+                },
+                {
+                  "id": "fact-7e490e9eb27677cb9df474215e1e1b59",
+                  "entity": {
+                    "kind": "project",
+                    "id": "oasis-palace-ostra"
+                  },
+                  "key": "city",
+                  "label": {
+                    "en": "City",
+                    "ar": "المدينة"
+                  },
+                  "value": "Dubai",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-cae789f9eab6cfc8ca78539b670af9a6"],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Dubai",
+                  "displayValue": {
+                    "en": "Dubai",
+                    "ar": "دبي"
+                  }
+                },
+                {
+                  "id": "fact-51ec9f1da1390f38af54e8d117c7f080",
+                  "entity": {
+                    "kind": "project",
+                    "id": "oasis-palace-ostra"
+                  },
+                  "key": "country",
+                  "label": {
+                    "en": "Country",
+                    "ar": "الدولة"
+                  },
+                  "value": "UAE",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-cae789f9eab6cfc8ca78539b670af9a6"],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "UAE",
+                  "displayValue": {
+                    "en": "UAE",
+                    "ar": "الإمارات"
+                  }
+                },
+                {
+                  "id": "fact-a63daec11d6f4182f99255389fbd0c08",
+                  "entity": {
+                    "kind": "project",
+                    "id": "oasis-palace-ostra"
+                  },
+                  "key": "type.0",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Branded waterfront villas (4–6 bed)",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-cae789f9eab6cfc8ca78539b670af9a6"],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Branded waterfront villas (4–6 bed)",
+                  "displayValue": {
+                    "en": "Branded waterfront villas (4–6 bed)",
+                    "ar": "فلل بعلامة تجارية على الواجهة المائية من 4 إلى 6 غرف نوم"
+                  }
+                },
+                {
+                  "id": "fact-ce55ca2976b0ec6980ee1c87530c2a6a",
+                  "entity": {
+                    "kind": "project",
+                    "id": "oasis-palace-ostra"
+                  },
+                  "key": "completion",
+                  "label": {
+                    "en": "Reported completion",
+                    "ar": "التسليم المذكور"
+                  },
+                  "value": "Q3 2029",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-cae789f9eab6cfc8ca78539b670af9a6"],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Q3 2029",
+                  "displayValue": {
+                    "en": "Q3 2029",
+                    "ar": "الربع الثالث من 2029"
+                  }
+                },
+                {
+                  "id": "fact-57c34be3cac3e16094c022a70ae2b65a",
+                  "entity": {
+                    "kind": "project",
+                    "id": "oasis-palace-ostra"
+                  },
+                  "key": "status",
+                  "label": {
+                    "en": "Reported status",
+                    "ar": "الحالة المذكورة"
+                  },
+                  "value": "Off-plan",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-cae789f9eab6cfc8ca78539b670af9a6"],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Off-plan",
+                  "displayValue": {
+                    "en": "Off-plan",
+                    "ar": "على المخطط"
+                  }
+                },
+                {
+                  "id": "fact-0535653bdba652be475c79f92b41db5e",
+                  "entity": {
+                    "kind": "project",
+                    "id": "oasis-palace-ostra"
+                  },
+                  "key": "payment_plan",
+                  "label": {
+                    "en": "Reported payment plan",
+                    "ar": "خطة السداد المذكورة"
+                  },
+                  "value": "10% down, 20% yearly during construction, 20% on handover",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-cae789f9eab6cfc8ca78539b670af9a6"],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "10% down, 20% yearly during construction, 20% on handover"
+                },
+                {
+                  "id": "fact-de7a64f6e2609cf9f4cb933a7bc0f7c4",
+                  "entity": {
+                    "kind": "project",
+                    "id": "oasis-palace-ostra"
+                  },
+                  "key": "headline_facts.0",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Palace-branded villas set around lagoons",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-cae789f9eab6cfc8ca78539b670af9a6"],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Palace-branded villas set around lagoons"
+                },
+                {
+                  "id": "fact-76f2619ce678fa6535b68f70984a4803",
+                  "entity": {
+                    "kind": "project",
+                    "id": "oasis-palace-ostra"
+                  },
+                  "key": "headline_facts.1",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Villas from about 7,287 sq ft",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-cae789f9eab6cfc8ca78539b670af9a6"],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Villas from about 7,287 sq ft"
+                }
+              ],
+              "sources": [
+                {
+                  "id": "source-cae789f9eab6cfc8ca78539b670af9a6",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.bhomes.com/en/off-plan/emaar/palace-ostra-at-oasis",
+                  "publisher": "bhomes.com",
+                  "basis": "UNKNOWN"
+                },
+                {
+                  "id": "source-1a45b244a4e65a6c2a632360289d4412",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.bhomes.com/en/off-plan/emaar/palace-ostra-at-oasis",
+                  "publisher": "bhomes.com",
+                  "basis": "BROKER_PROJECT_PAGE"
+                }
+              ],
+              "reasons": [
+                {
+                  "text": {
+                    "en": "Recorded location: The Oasis (Dubailand). Compare this with your requested areas.",
+                    "ar": "الموقع المسجل: ذا أواسيس (دبي لاند). قارنه بالمناطق المطلوبة."
+                  },
+                  "briefFieldIds": ["markets.market-uae.placeIds"],
+                  "factIds": ["fact-30291fb1ffcee88e4be31240f7998d35"],
+                  "status": "supported"
+                },
+                {
+                  "text": {
+                    "en": "Original AED price basis retained; your budget still needs confirmation.",
+                    "ar": "احتُفظ بأساس السعر الأصلي بعملة AED؛ لا تزال ميزانيتك بحاجة إلى تأكيد."
+                  },
+                  "briefFieldIds": ["markets.market-uae.budget"],
+                  "factIds": ["oasis-palace-ostra:price"],
+                  "status": "supported"
+                }
+              ],
+              "tradeoff": {
+                "text": {
+                  "en": "Public project evidence is not live availability; request current details from an advisor.",
+                  "ar": "معلومات المشروع العامة ليست توافراً مباشراً؛ اطلب التفاصيل الحالية من مستشار."
+                },
+                "briefFieldIds": ["mustHaves"],
+                "factIds": [],
+                "status": "unknown"
+              },
+              "kind": "reference-project",
+              "projectId": "oasis-palace-ostra",
+              "developerId": "emaar",
+              "availability": "ON_REQUEST"
+            },
+            {
+              "id": "card:palm-central-private-residences",
+              "name": {
+                "en": "Palm Central Private Residences",
+                "ar": "Palm Central Private Residences"
+              },
+              "center": [54.995, 24.985],
+              "coordinatesApproximate": true,
+              "price": {
+                "native": {
+                  "amount": 2700000,
+                  "currency": "AED"
+                },
+                "qualifier": {
+                  "en": "From",
+                  "ar": "ابتداءً من"
+                },
+                "factId": "palm-central-private-residences:price",
+                "converted": [],
+                "paymentCurrency": null
+              },
+              "facts": [
+                {
+                  "id": "palm-central-private-residences:price",
+                  "entity": {
+                    "kind": "project",
+                    "id": "palm-central-private-residences"
+                  },
+                  "key": "price",
+                  "label": {
+                    "en": "Published price basis",
+                    "ar": "أساس السعر المنشور"
+                  },
+                  "value": 2700000,
+                  "unit": null,
+                  "currency": "AED",
+                  "sourceIds": ["source-4531f62d1b6c23033b692bbf6691d5f2"],
+                  "asOf": {
+                    "value": "2026-06-24",
+                    "precision": "DAY"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "From",
+                    "ar": "ابتداءً من"
+                  },
+                  "originalText": "From · 2700000 · AED"
+                },
+                {
+                  "id": "fact-4d5afd9ea2dc285ff0e23814976da60a",
+                  "entity": {
+                    "kind": "project",
+                    "id": "palm-central-private-residences"
+                  },
+                  "key": "community",
+                  "label": {
+                    "en": "Community",
+                    "ar": "المنطقة"
+                  },
+                  "value": "Palm Jebel Ali",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-f0679815355a354fffe4ab571ff31f15"],
+                  "asOf": {
+                    "value": "2026-06-24",
+                    "precision": "DAY"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Palm Jebel Ali",
+                  "displayValue": {
+                    "en": "Palm Jebel Ali",
+                    "ar": "نخلة جبل علي"
+                  }
+                },
+                {
+                  "id": "fact-4529114aff1ec7c80cd36d5a0400f6a0",
+                  "entity": {
+                    "kind": "project",
+                    "id": "palm-central-private-residences"
+                  },
+                  "key": "city",
+                  "label": {
+                    "en": "City",
+                    "ar": "المدينة"
+                  },
+                  "value": "Dubai",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-f0679815355a354fffe4ab571ff31f15"],
+                  "asOf": {
+                    "value": "2026-06-24",
+                    "precision": "DAY"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Dubai",
+                  "displayValue": {
+                    "en": "Dubai",
+                    "ar": "دبي"
+                  }
+                },
+                {
+                  "id": "fact-60264b9a122c6e859f14577084d3c787",
+                  "entity": {
+                    "kind": "project",
+                    "id": "palm-central-private-residences"
+                  },
+                  "key": "country",
+                  "label": {
+                    "en": "Country",
+                    "ar": "الدولة"
+                  },
+                  "value": "UAE",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-f0679815355a354fffe4ab571ff31f15"],
+                  "asOf": {
+                    "value": "2026-06-24",
+                    "precision": "DAY"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "UAE",
+                  "displayValue": {
+                    "en": "UAE",
+                    "ar": "الإمارات"
+                  }
+                },
+                {
+                  "id": "fact-c2981c886c3674ae81f3850c2c46eba2",
+                  "entity": {
+                    "kind": "project",
+                    "id": "palm-central-private-residences"
+                  },
+                  "key": "type.0",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Beachfront apartments (1–5 bed)",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-f0679815355a354fffe4ab571ff31f15"],
+                  "asOf": {
+                    "value": "2026-06-24",
+                    "precision": "DAY"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Beachfront apartments (1–5 bed)",
+                  "displayValue": {
+                    "en": "Beachfront apartments (1–5 bed)",
+                    "ar": "شقق على الشاطئ من غرفة إلى خمس غرف نوم"
+                  }
+                },
+                {
+                  "id": "fact-c3106b96e7277dd84e73b12f89acb1ef",
+                  "entity": {
+                    "kind": "project",
+                    "id": "palm-central-private-residences"
+                  },
+                  "key": "status",
+                  "label": {
+                    "en": "Reported status",
+                    "ar": "الحالة المذكورة"
+                  },
+                  "value": "Off-plan",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-f0679815355a354fffe4ab571ff31f15"],
+                  "asOf": {
+                    "value": "2026-06-24",
+                    "precision": "DAY"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Off-plan",
+                  "displayValue": {
+                    "en": "Off-plan",
+                    "ar": "على المخطط"
+                  }
+                },
+                {
+                  "id": "fact-8114f7e1ac5b4387a54ffba0f7cf5cc8",
+                  "entity": {
+                    "kind": "project",
+                    "id": "palm-central-private-residences"
+                  },
+                  "key": "headline_facts.0",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "222 residences released in June 2026 after the October 2025 first phase",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": ["source-f0679815355a354fffe4ab571ff31f15"],
+                  "asOf": {
+                    "value": "2026-06-24",
+                    "precision": "DAY"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "222 residences released in June 2026 after the October 2025 first phase"
+                }
+              ],
+              "sources": [
+                {
+                  "id": "source-f0679815355a354fffe4ab571ff31f15",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026-06-24",
+                    "precision": "DAY"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.thenationalnews.com/business/property/2026/06/24/nakheel-launches-222-homes-for-sale-at-palm-jebel-ali-with-prices-from-dh27m/",
+                  "publisher": "thenationalnews.com",
+                  "basis": "UNKNOWN"
+                },
+                {
+                  "id": "source-4531f62d1b6c23033b692bbf6691d5f2",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026-06-24",
+                    "precision": "DAY"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.thenationalnews.com/business/property/2026/06/24/nakheel-launches-222-homes-for-sale-at-palm-jebel-ali-with-prices-from-dh27m/",
+                  "publisher": "thenationalnews.com",
+                  "basis": "PRESS_REPORT"
+                }
+              ],
+              "reasons": [
+                {
+                  "text": {
+                    "en": "Recorded location: Palm Jebel Ali. Compare this with your requested areas.",
+                    "ar": "الموقع المسجل: نخلة جبل علي. قارنه بالمناطق المطلوبة."
+                  },
+                  "briefFieldIds": ["markets.market-uae.placeIds"],
+                  "factIds": ["fact-4d5afd9ea2dc285ff0e23814976da60a"],
+                  "status": "supported"
+                },
+                {
+                  "text": {
+                    "en": "Original AED price basis retained; your budget still needs confirmation.",
+                    "ar": "احتُفظ بأساس السعر الأصلي بعملة AED؛ لا تزال ميزانيتك بحاجة إلى تأكيد."
+                  },
+                  "briefFieldIds": ["markets.market-uae.budget"],
+                  "factIds": ["palm-central-private-residences:price"],
+                  "status": "supported"
+                }
+              ],
+              "tradeoff": {
+                "text": {
+                  "en": "Public project evidence is not live availability; request current details from an advisor.",
+                  "ar": "معلومات المشروع العامة ليست توافراً مباشراً؛ اطلب التفاصيل الحالية من مستشار."
+                },
+                "briefFieldIds": ["mustHaves"],
+                "factIds": [],
+                "status": "unknown"
+              },
+              "kind": "reference-project",
+              "projectId": "palm-central-private-residences",
+              "developerId": "nakheel",
+              "availability": "ON_REQUEST"
+            }
+          ]
+        },
+        {
+          "id": "8cd8a97c-7ced-4a26-86b5-0c2498be00f3:component",
+          "turnId": "ba20b8ae-b81a-4da3-b4ec-d44b6a83304c",
+          "kind": "comparison",
+          "cards": [
+            {
+              "id": "card:southmed",
+              "name": {
+                "en": "SouthMED",
+                "ar": "SouthMED"
+              },
+              "center": [28.43, 31.03],
+              "coordinatesApproximate": true,
+              "price": {
+                "native": {
+                  "amount": 91200000,
+                  "currency": "EGP"
+                },
+                "qualifier": {
+                  "en": "Premium beachfront villas (up to 501 sqm) from",
+                  "ar": "فلل فاخرة على الشاطئ (بمساحة تصل إلى 501 م²)، بأسعار تبدأ من"
+                },
+                "factId": "southmed:price",
+                "converted": [
+                  {
+                    "money": {
+                      "amount": 6755555.56,
+                      "currency": "AED"
+                    },
+                    "rate": 0.07407407407407407,
+                    "asOf": {
+                      "value": "2026-10-01",
+                      "precision": "DAY"
+                    },
+                    "method": "STATIC_DEMO_FX"
+                  }
+                ],
+                "paymentCurrency": null
+              },
+              "facts": [
+                {
+                  "id": "southmed:price",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "price",
+                  "label": {
+                    "en": "Published price basis",
+                    "ar": "أساس السعر المنشور"
+                  },
+                  "value": 91200000,
+                  "unit": null,
+                  "currency": "EGP",
+                  "sourceIds": [
+                    "source-aac5f8b4bb1b13f4bdb725131871ab32",
+                    "source-ae8227bd6b16e6f1b703697bd9a55393"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Premium beachfront villas (up to 501 sqm) from",
+                    "ar": "فلل فاخرة على الشاطئ (بمساحة تصل إلى 501 م²)، بأسعار تبدأ من"
+                  },
+                  "originalText": "Premium beachfront villas (up to 501 sqm) from · 91200000 · EGP"
+                },
+                {
+                  "id": "fact-0089c5a32fef0568cd8f94eacbab1953",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "community",
+                  "label": {
+                    "en": "Community",
+                    "ar": "المنطقة"
+                  },
+                  "value": "Al Dabaa",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Al Dabaa",
+                  "displayValue": {
+                    "en": "Al Dabaa",
+                    "ar": "الضبعة"
+                  }
+                },
+                {
+                  "id": "fact-571f8a371847a16f8e2ad72279e7e153",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "city",
+                  "label": {
+                    "en": "City",
+                    "ar": "المدينة"
+                  },
+                  "value": "North Coast",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "North Coast",
+                  "displayValue": {
+                    "en": "North Coast",
+                    "ar": "الساحل الشمالي"
+                  }
+                },
+                {
+                  "id": "fact-5fcf7882bd00ad8b5e402ad7ab022d09",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "country",
+                  "label": {
+                    "en": "Country",
+                    "ar": "الدولة"
+                  },
+                  "value": "Egypt",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Egypt",
+                  "displayValue": {
+                    "en": "Egypt",
+                    "ar": "مصر"
+                  }
+                },
+                {
+                  "id": "fact-6777aff8aca1938f18272e9da984b1fe",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "type.0",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Beachfront villas",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Beachfront villas",
+                  "displayValue": {
+                    "en": "Beachfront villas",
+                    "ar": "فلل على الشاطئ"
+                  }
+                },
+                {
+                  "id": "fact-126ef60474c8174a9e3d46ac3cc83aa5",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "type.1",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Chalets",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Chalets",
+                  "displayValue": {
+                    "en": "Chalets",
+                    "ar": "شاليهات"
+                  }
+                },
+                {
+                  "id": "fact-1982d906cb44514106f72eb5db75489c",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "type.2",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Mansions",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Mansions",
+                  "displayValue": {
+                    "en": "Mansions",
+                    "ar": "قصور"
+                  }
+                },
+                {
+                  "id": "fact-74066d3733e607db1e116e735db2dccc",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "completion",
+                  "label": {
+                    "en": "Reported completion",
+                    "ar": "التسليم المذكور"
+                  },
+                  "value": "First deliveries targeted 2028",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "First deliveries targeted 2028",
+                  "displayValue": {
+                    "en": "First deliveries targeted 2028",
+                    "ar": "أولى عمليات التسليم مستهدفة في 2028"
+                  }
+                },
+                {
+                  "id": "fact-27545baf53b2f4e5c0d31d6218c36cd8",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "status",
+                  "label": {
+                    "en": "Reported status",
+                    "ar": "الحالة المذكورة"
+                  },
+                  "value": "Under construction",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Under construction",
+                  "displayValue": {
+                    "en": "Under construction",
+                    "ar": "قيد الإنشاء"
+                  }
+                },
+                {
+                  "id": "fact-f0b8a442d22a3a857b070575527fb082",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "headline_facts.0",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "About 23 million sqm masterplan on the Mediterranean",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "About 23 million sqm masterplan on the Mediterranean"
+                },
+                {
+                  "id": "fact-4feb72efacfd76173983b6d171d82093",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "headline_facts.1",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Four Seasons to manage the first international hotel",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Four Seasons to manage the first international hotel"
+                },
+                {
+                  "id": "fact-aa3540b3d6619b9d2d34c504badb04d6",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "headline_facts.2",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Terraced up to 60 m above sea level; 8 km beach and a marina",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Terraced up to 60 m above sea level; 8 km beach and a marina"
+                },
+                {
+                  "id": "fact-f0ccf8a10eaf02a8d44979d4197a6190",
+                  "entity": {
+                    "kind": "project",
+                    "id": "southmed"
+                  },
+                  "key": "headline_facts.3",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Summer 2026 offer: down payments from 1.5%, plans up to 15 years",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-2068085b9c434af1b570b5846fb21d36",
+                    "source-8f64071ebe544307275e1bf2871c2202"
+                  ],
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Summer 2026 offer: down payments from 1.5%, plans up to 15 years"
+                }
+              ],
+              "sources": [
+                {
+                  "id": "source-2068085b9c434af1b570b5846fb21d36",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://news.spill.org/en/article/talaat-moustafa-group-leads-north-coast-construction-race-with-record-execution-rates-at-s-449",
+                  "publisher": "news.spill.org",
+                  "basis": "UNKNOWN"
+                },
+                {
+                  "id": "source-8f64071ebe544307275e1bf2871c2202",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://news.spill.org/en/article/talaat-moustafa-group-launches-unprecedented-offer-at-southmed-449",
+                  "publisher": "news.spill.org",
+                  "basis": "UNKNOWN"
+                },
+                {
+                  "id": "source-aac5f8b4bb1b13f4bdb725131871ab32",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://news.spill.org/en/article/talaat-moustafa-group-leads-north-coast-construction-race-with-record-execution-rates-at-s-449",
+                  "publisher": "news.spill.org",
+                  "basis": "PRESS_REPORT"
+                },
+                {
+                  "id": "source-ae8227bd6b16e6f1b703697bd9a55393",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026",
+                    "precision": "YEAR"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://news.spill.org/en/article/talaat-moustafa-group-launches-unprecedented-offer-at-southmed-449",
+                  "publisher": "news.spill.org",
+                  "basis": "PRESS_REPORT"
+                }
+              ],
+              "reasons": [
+                {
+                  "text": {
+                    "en": "Recorded location: Al Dabaa. Compare this with your requested areas.",
+                    "ar": "الموقع المسجل: الضبعة. قارنه بالمناطق المطلوبة."
+                  },
+                  "briefFieldIds": ["markets.market-egypt.placeIds"],
+                  "factIds": ["fact-0089c5a32fef0568cd8f94eacbab1953"],
+                  "status": "supported"
+                },
+                {
+                  "text": {
+                    "en": "Original EGP price basis retained; your budget still needs confirmation.",
+                    "ar": "احتُفظ بأساس السعر الأصلي بعملة EGP؛ لا تزال ميزانيتك بحاجة إلى تأكيد."
+                  },
+                  "briefFieldIds": ["markets.market-egypt.budget"],
+                  "factIds": ["southmed:price"],
+                  "status": "supported"
+                },
+                {
+                  "text": {
+                    "en": "Reported completion: First deliveries targeted 2028. This is a source indication, not a guaranteed deadline.",
+                    "ar": "التسليم المذكور: أولى عمليات التسليم مستهدفة في 2028. هذا بيان من المصدر وليس موعداً مضموناً."
+                  },
+                  "briefFieldIds": ["markets.market-egypt.deadline"],
+                  "factIds": ["fact-74066d3733e607db1e116e735db2dccc"],
+                  "status": "supported"
+                }
+              ],
+              "tradeoff": {
+                "text": {
+                  "en": "Delivery is reported as First deliveries targeted 2028; the requested deadline still needs current confirmation.",
+                  "ar": "التسليم مذكور كالتالي: أولى عمليات التسليم مستهدفة في 2028؛ لا يزال الموعد المطلوب بحاجة إلى تأكيد حديث."
+                },
+                "briefFieldIds": ["markets.market-egypt.deadline"],
+                "factIds": ["fact-74066d3733e607db1e116e735db2dccc"],
+                "status": "supported"
+              },
+              "kind": "reference-project",
+              "projectId": "southmed",
+              "developerId": "tmg",
+              "availability": "ON_REQUEST"
+            },
+            {
+              "id": "card:orla-palm-jumeirah",
+              "name": {
+                "en": "Orla, Dorchester Collection",
+                "ar": "Orla, Dorchester Collection"
+              },
+              "center": [55.118, 25.128],
+              "coordinatesApproximate": true,
+              "price": {
+                "native": {
+                  "amount": 57300000,
+                  "currency": "AED"
+                },
+                "qualifier": {
+                  "en": "4-bedroom residences from · Sky Palace (shell & core) listed from AED 145M",
+                  "ar": "مساكن من أربع غرف نوم، بأسعار تبدأ من · أُعلن عن سكاي بالاس (هيكل دون تشطيب) بأسعار تبدأ من 145 مليون درهم إماراتي"
+                },
+                "factId": "orla-palm-jumeirah:price",
+                "converted": [],
+                "paymentCurrency": null
+              },
+              "facts": [
+                {
+                  "id": "orla-palm-jumeirah:price",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "price",
+                  "label": {
+                    "en": "Published price basis",
+                    "ar": "أساس السعر المنشور"
+                  },
+                  "value": 57300000,
+                  "unit": null,
+                  "currency": "AED",
+                  "sourceIds": [
+                    "source-5d52799b67a0b77dd219d57084d8f279",
+                    "source-1fad0669ad86d4944bab18ab1764474d"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "4-bedroom residences from · Sky Palace (shell & core) listed from AED 145M",
+                    "ar": "مساكن من أربع غرف نوم، بأسعار تبدأ من · أُعلن عن سكاي بالاس (هيكل دون تشطيب) بأسعار تبدأ من 145 مليون درهم إماراتي"
+                  },
+                  "originalText": "4-bedroom residences from · 57300000 · AED · Sky Palace (shell & core) listed from AED 145M"
+                },
+                {
+                  "id": "fact-efa50cf6769c5b11c0e076284438f1b5",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "community",
+                  "label": {
+                    "en": "Community",
+                    "ar": "المنطقة"
+                  },
+                  "value": "Palm Jumeirah (Crescent)",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Palm Jumeirah (Crescent)",
+                  "displayValue": {
+                    "en": "Palm Jumeirah (Crescent)",
+                    "ar": "نخلة جميرا (الهلال)"
+                  }
+                },
+                {
+                  "id": "fact-c0ca81da2078c8b5d4d4045ba621e015",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "city",
+                  "label": {
+                    "en": "City",
+                    "ar": "المدينة"
+                  },
+                  "value": "Dubai",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Dubai",
+                  "displayValue": {
+                    "en": "Dubai",
+                    "ar": "دبي"
+                  }
+                },
+                {
+                  "id": "fact-49a7113b9c76f0e13c9a17ca96c7b1f5",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "country",
+                  "label": {
+                    "en": "Country",
+                    "ar": "الدولة"
+                  },
+                  "value": "UAE",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "UAE",
+                  "displayValue": {
+                    "en": "UAE",
+                    "ar": "الإمارات"
+                  }
+                },
+                {
+                  "id": "fact-e0ce1c83baf58fac9bcd5d02b215e70a",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "type.0",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Branded apartments",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Branded apartments",
+                  "displayValue": {
+                    "en": "Branded apartments",
+                    "ar": "شقق بعلامة تجارية"
+                  }
+                },
+                {
+                  "id": "fact-d5a88db1eccb1eb09c6cd71de9cc3ef5",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "type.1",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Penthouses",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Penthouses",
+                  "displayValue": {
+                    "en": "Penthouses",
+                    "ar": "بنتهاوس"
+                  }
+                },
+                {
+                  "id": "fact-3a64cc4e561314598f5399d655752968",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "type.2",
+                  "label": {
+                    "en": "Property type",
+                    "ar": "نوع العقار"
+                  },
+                  "value": "Sky Palace",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Sky Palace",
+                  "displayValue": {
+                    "en": "Sky Palace",
+                    "ar": "سكاي بالاس"
+                  }
+                },
+                {
+                  "id": "fact-60c8e9b2fe7462aa083ccd5dec54eada",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "completion",
+                  "label": {
+                    "en": "Reported completion",
+                    "ar": "التسليم المذكور"
+                  },
+                  "value": "Expected 2027",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Expected 2027",
+                  "displayValue": {
+                    "en": "Expected 2027",
+                    "ar": "متوقع في 2027"
+                  }
+                },
+                {
+                  "id": "fact-6522861cce2be9b67da2ed451a66c4df",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "status",
+                  "label": {
+                    "en": "Reported status",
+                    "ar": "الحالة المذكورة"
+                  },
+                  "value": "Under construction",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Under construction",
+                  "displayValue": {
+                    "en": "Under construction",
+                    "ar": "قيد الإنشاء"
+                  }
+                },
+                {
+                  "id": "fact-2ee66cd2453a732bfaa36920d08ffcf4",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "price_note",
+                  "label": {
+                    "en": "Original price qualification",
+                    "ar": "توضيح السعر الأصلي"
+                  },
+                  "value": "Sky Palace (shell & core) listed from AED 145M",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": null,
+                  "originalText": "Sky Palace (shell & core) listed from AED 145M",
+                  "displayValue": {
+                    "en": "Sky Palace (shell & core) listed from AED 145M",
+                    "ar": "أُعلن عن سكاي بالاس (هيكل دون تشطيب) بأسعار تبدأ من 145 مليون درهم إماراتي"
+                  }
+                },
+                {
+                  "id": "fact-b6787ac12377e507c5d6672296b94d44",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "headline_facts.0",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Architecture by Foster + Partners; serviced by Dorchester Collection",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Architecture by Foster + Partners; serviced by Dorchester Collection"
+                },
+                {
+                  "id": "fact-f6344d178792e4536104d4c9ba18dc69",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "headline_facts.1",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "Beachfront site of about 29,000 sqm at the apex of the Crescent",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "Beachfront site of about 29,000 sqm at the apex of the Crescent"
+                },
+                {
+                  "id": "fact-847ae2e9cf34da32e31debf18e316d3f",
+                  "entity": {
+                    "kind": "project",
+                    "id": "orla-palm-jumeirah"
+                  },
+                  "key": "headline_facts.2",
+                  "label": {
+                    "en": "Reported project feature",
+                    "ar": "ميزة المشروع المذكورة في المصدر"
+                  },
+                  "value": "2–4 bedroom simplex and duplex residences plus penthouses",
+                  "unit": null,
+                  "currency": null,
+                  "sourceIds": [
+                    "source-68923e7357fea25dd75a5442b23ceec6",
+                    "source-5d396021171fcaaf0615da117ee13a40"
+                  ],
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "provenance": "REAL_REFERENCE",
+                  "qualifier": {
+                    "en": "Original source wording",
+                    "ar": "النص الأصلي للمصدر"
+                  },
+                  "originalText": "2–4 bedroom simplex and duplex residences plus penthouses"
+                }
+              ],
+              "sources": [
+                {
+                  "id": "source-68923e7357fea25dd75a5442b23ceec6",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.nestseekers.com/5589481/orla-20260624032650",
+                  "publisher": "nestseekers.com",
+                  "basis": "UNKNOWN"
+                },
+                {
+                  "id": "source-5d396021171fcaaf0615da117ee13a40",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.nestseekers.com/5590966/orla-20260624032650",
+                  "publisher": "nestseekers.com",
+                  "basis": "UNKNOWN"
+                },
+                {
+                  "id": "source-5d52799b67a0b77dd219d57084d8f279",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.nestseekers.com/5589481/orla-20260624032650",
+                  "publisher": "nestseekers.com",
+                  "basis": "AGENT_LISTING"
+                },
+                {
+                  "id": "source-1fad0669ad86d4944bab18ab1764474d",
+                  "title": null,
+                  "asOf": {
+                    "value": "2026-06",
+                    "precision": "MONTH"
+                  },
+                  "retrieved": {
+                    "value": null,
+                    "precision": "UNKNOWN"
+                  },
+                  "confidence": "UNASSESSED",
+                  "kind": "published",
+                  "url": "https://www.nestseekers.com/5590966/orla-20260624032650",
+                  "publisher": "nestseekers.com",
+                  "basis": "AGENT_LISTING"
+                }
+              ],
+              "reasons": [
+                {
+                  "text": {
+                    "en": "Recorded location: Palm Jumeirah (Crescent). Compare this with your requested areas.",
+                    "ar": "الموقع المسجل: نخلة جميرا (الهلال). قارنه بالمناطق المطلوبة."
+                  },
+                  "briefFieldIds": ["markets.market-uae.placeIds"],
+                  "factIds": ["fact-efa50cf6769c5b11c0e076284438f1b5"],
+                  "status": "supported"
+                },
+                {
+                  "text": {
+                    "en": "Original AED price basis retained; your budget still needs confirmation.",
+                    "ar": "احتُفظ بأساس السعر الأصلي بعملة AED؛ لا تزال ميزانيتك بحاجة إلى تأكيد."
+                  },
+                  "briefFieldIds": ["markets.market-uae.budget"],
+                  "factIds": ["orla-palm-jumeirah:price"],
+                  "status": "supported"
+                }
+              ],
+              "tradeoff": {
+                "text": {
+                  "en": "Public project evidence is not live availability; request current details from an advisor.",
+                  "ar": "معلومات المشروع العامة ليست توافراً مباشراً؛ اطلب التفاصيل الحالية من مستشار."
+                },
+                "briefFieldIds": ["mustHaves"],
+                "factIds": [],
+                "status": "unknown"
+              },
+              "kind": "reference-project",
+              "projectId": "orla-palm-jumeirah",
+              "developerId": "omniyat",
+              "availability": "ON_REQUEST"
+            }
+          ],
+          "rows": [
+            {
+              "label": {
+                "en": "Original price",
+                "ar": "السعر الأصلي"
+              },
+              "factKey": "price"
+            },
+            {
+              "label": {
+                "en": "Community",
+                "ar": "المنطقة"
+              },
+              "factKey": "community"
+            },
+            {
+              "label": {
+                "en": "Completion evidence",
+                "ar": "دليل التسليم"
+              },
+              "factKey": "completion"
+            }
+          ]
+        },
+        {
+          "id": "9ffefd38-1535-463d-919f-a2f9505c33eb",
+          "turnId": "ba20b8ae-b81a-4da3-b4ec-d44b6a83304c",
+          "kind": "notice",
+          "code": "NEEDS_CLARIFICATION",
+          "text": {
+            "en": "For your Egypt Brief, I am treating “by 2028” as the end of 2028. Edit this if you mean an earlier date.",
+            "ar": "في طلبك الخاص بـمصر، أفسّر «بحلول 2028» على أنه نهاية 2028. عدّل هذا إذا كنت تقصد موعداً أبكر."
+          },
+          "context": {
+            "kind": "deadline-year-boundary",
+            "marketId": "market-egypt",
+            "country": "Egypt",
+            "year": 2028,
+            "boundary": "by",
+            "interpretation": "END_OF_YEAR",
+            "scope": {
+              "purpose": "holiday",
+              "placeIds": ["north-coast"],
+              "placeMatch": "any",
+              "marketMode": "independent"
+            }
+          }
+        }
+      ],
+      "width": 1440,
+      "theme": "dark",
+      "screenshot": "en-dark-1440-first-full.png",
+      "errors": [],
+      "axe": [],
+      "overflow": false,
+      "map": {
+        "status": "webgl",
+        "ready": "true",
+        "tilesReady": "true",
+        "moving": "false",
+        "settled": true
+      },
+      "mapWaitError": null
+    },
+    {
+      "name": "repeat-compact",
+      "locale": "en",
+      "brief": {
+        "version": 1,
+        "revision": 2,
+        "rawRequest": "Show SouthMED payment plan",
+        "responseLanguage": "auto",
+        "overallPurpose": null,
+        "marketMode": "independent",
+        "markets": [
+          {
+            "id": "market-egypt",
+            "country": "Egypt",
+            "placeIds": ["north-coast"],
+            "placeMatch": "any",
+            "purpose": "holiday",
+            "budget": null,
+            "deadline": {
+              "kind": "year",
+              "year": 2028,
+              "boundary": "by",
+              "rawText": "North Coast summer home ready by 2028, compare with a Dubai investment"
+            },
+            "readiness": "unspecified",
+            "propertyTypes": [],
+            "bedrooms": null,
+            "rawText": "North Coast summer home ready by 2028, compare with a Dubai investment"
+          },
+          {
+            "id": "market-uae",
+            "country": "UAE",
+            "placeIds": ["dubai"],
+            "placeMatch": "any",
+            "purpose": "investment",
+            "budget": null,
+            "deadline": null,
+            "readiness": "unspecified",
+            "propertyTypes": [],
+            "bedrooms": null,
+            "rawText": "North Coast summer home ready by 2028, compare with a Dubai investment"
+          }
+        ],
+        "unassignedBudget": null,
+        "unassignedDeadline": null,
+        "displayCurrencies": ["AED"],
+        "paymentCurrency": null,
+        "household": {
+          "adults": null,
+          "children": null,
+          "curriculum": null,
+          "schoolRequirement": "unspecified"
+        },
+        "mustHaves": [],
+        "exclusions": [],
+        "uncertainties": ["deadline_year_boundary"],
+        "provenance": [
+          {
+            "fieldId": "rawRequest",
+            "rawText": "North Coast summer home ready by 2028, compare with a Dubai investment",
+            "origin": "user"
+          },
+          {
+            "fieldId": "rawRequest",
+            "rawText": "Show SouthMED payment plan",
+            "origin": "user"
+          }
+        ],
+        "privacy": {
+          "mode": "standard",
+          "doNotSave": false,
+          "doNotShare": false,
+          "doNotBook": false,
+          "writePolicy": "confirm_each_action"
+        },
+        "tasteMemory": {
+          "consent": "not_asked",
+          "consentedAt": null,
+          "items": []
+        }
+      },
+      "components": [
+        {
+          "id": "422f644e-e37f-4136-95a4-85e5774871ed:component:payment-unavailable",
+          "turnId": "1f6f8c1b-1f71-450a-aae3-94a0127068b0",
+          "kind": "notice",
+          "code": "UNKNOWN_FACT",
+          "text": {
+            "en": "A complete payment schedule for SouthMED is unavailable in this record. An advisor can confirm the terms; no instalments have been invented.",
+            "ar": "لا تتوفر في هذا السجل خطة سداد كاملة لـSouthMED. يستطيع المستشار تأكيد الشروط؛ لم تُنشأ أقساط افتراضية."
+          }
+        },
+        {
+          "id": "95b759f8-23c1-443f-b947-9ac308103187",
+          "turnId": "1f6f8c1b-1f71-450a-aae3-94a0127068b0",
+          "kind": "notice",
+          "code": "NEEDS_CLARIFICATION",
+          "text": {
+            "en": "For your Egypt Brief, I am treating “by 2028” as the end of 2028. Edit this if you mean an earlier date.",
+            "ar": "في طلبك الخاص بـمصر، أفسّر «بحلول 2028» على أنه نهاية 2028. عدّل هذا إذا كنت تقصد موعداً أبكر."
+          },
+          "context": {
+            "kind": "deadline-year-boundary",
+            "marketId": "market-egypt",
+            "country": "Egypt",
+            "year": 2028,
+            "boundary": "by",
+            "interpretation": "END_OF_YEAR",
+            "scope": {
+              "purpose": "holiday",
+              "placeIds": ["north-coast"],
+              "placeMatch": "any",
+              "marketMode": "independent"
+            }
+          }
+        }
+      ],
+      "width": 1440,
+      "theme": "dark",
+      "screenshot": "en-dark-1440-repeat-compact.png",
+      "errors": [],
+      "axe": ["landmark-unique"],
+      "overflow": false,
+      "map": {
+        "status": "webgl",
+        "ready": "true",
+        "tilesReady": "true",
+        "moving": "false",
+        "settled": true
+      },
+      "mapWaitError": null
+    }
+  ],
+  "failures": [
+    "en/dark/1440: Error: {\"errors\":[],\"axe\":[\"landmark-unique\"],\"overflow\":false,\"map\":{\"status\":\"webgl\",\"ready\":\"true\",\"tilesReady\":\"true\",\"moving\":\"false\",\"settled\":true},\"mapWaitError\":null}"
+  ]
+}
