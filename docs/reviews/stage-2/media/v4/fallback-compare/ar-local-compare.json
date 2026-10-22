@@ -1,0 +1,165 @@
+{
+  "map": {
+    "mapStatus": "webgl",
+    "mapMode": "webgl",
+    "mapScene": "explore",
+    "mapReady": "true",
+    "tilesReady": "true",
+    "cameraKey": "فيلا على البحر في السعديات أو النخلة",
+    "mapPhase": "evening",
+    "mapDetail": "local",
+    "styleLoaded": "true",
+    "center": "[55.153999999999996,25.090001977625462]",
+    "zoom": "11.861",
+    "pitch": "0.0",
+    "moving": "false",
+    "comparisonPoints": "[{\"id\":\"demo-project-palm-jumeirah\",\"x\":115.65334192384476,\"y\":175.00000000018832},{\"id\":\"demo-project-emirates-hills\",\"x\":274.3466580759669,\"y\":432.0000000000942}]",
+    "basePainted": "true",
+    "deckReady": "true"
+  },
+  "overlays": [
+    {
+      "selector": ".atlas-comparison-peek",
+      "text": "اعرض المقارنة · 2 ",
+      "rect": {
+        "x": 100,
+        "y": 413.046875,
+        "width": 270,
+        "height": 44,
+        "top": 413.046875,
+        "right": 370,
+        "bottom": 457.046875,
+        "left": 100
+      }
+    },
+    {
+      "selector": ".atlas-map-evidence",
+      "text": "مصادر الخريطة وطريقة قراءتهاالجغرافيا: OpenStreetMap · الارتفاعات: Mapterhornالم",
+      "rect": {
+        "x": 8,
+        "y": 465.046875,
+        "width": 293.140625,
+        "height": 84,
+        "top": 465.046875,
+        "right": 301.140625,
+        "bottom": 549.046875,
+        "left": 8
+      }
+    },
+    {
+      "selector": ".atlas-stories",
+      "text": "حكايات الخريطةحكايات الخريطةحياة الجزرمساكن بعلامات عالميةصيف الساحلالسعديات وال",
+      "rect": {
+        "x": 20,
+        "y": 147,
+        "width": 350,
+        "height": 40,
+        "top": 147,
+        "right": 370,
+        "bottom": 187,
+        "left": 20
+      }
+    },
+    {
+      "selector": ".atlas-tool-toggle",
+      "text": "أدوات الخريطة",
+      "rect": {
+        "x": 68,
+        "y": 92,
+        "width": 145.734375,
+        "height": 40,
+        "top": 92,
+        "right": 213.734375,
+        "bottom": 132,
+        "left": 68
+      }
+    },
+    {
+      "selector": ".maplibregl-ctrl-group",
+      "text": "",
+      "rect": {
+        "x": 10,
+        "y": 180,
+        "width": 46,
+        "height": 134,
+        "top": 180,
+        "right": 56,
+        "bottom": 314,
+        "left": 10
+      }
+    },
+    {
+      "selector": "[data-testid=\"explore-sheet\"]",
+      "text": "أطلس الأماكنمكان يشبه حياتك.قل لنا ما يهمّك، ودع المكان يوضح الصورة.ما الذي تبحث",
+      "rect": {
+        "x": 0,
+        "y": 557.046875,
+        "width": 390,
+        "height": 286.953125,
+        "top": 557.046875,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    }
+  ],
+  "points": [
+    {
+      "id": "demo-project-palm-jumeirah",
+      "x": 115.65334192384476,
+      "y": 175.00000000018832,
+      "centerCovers": [".atlas-stories"],
+      "elements": [
+        {
+          "tag": "DIV",
+          "class": "atlas-story-select"
+        },
+        {
+          "tag": "SECTION",
+          "class": "atlas-stories"
+        },
+        {
+          "tag": "CANVAS",
+          "class": "maplibregl-canvas"
+        },
+        {
+          "tag": "DIV",
+          "class": "atlas-map-canvas maplibregl-map"
+        },
+        {
+          "tag": "DIV",
+          "class": "living-map living-map--dark"
+        }
+      ]
+    },
+    {
+      "id": "demo-project-emirates-hills",
+      "x": 274.3466580759669,
+      "y": 432.0000000000942,
+      "centerCovers": [".atlas-comparison-peek"],
+      "elements": [
+        {
+          "tag": "BUTTON",
+          "class": "atlas-comparison-peek"
+        },
+        {
+          "tag": "CANVAS",
+          "class": "maplibregl-canvas"
+        },
+        {
+          "tag": "DIV",
+          "class": "atlas-map-canvas maplibregl-map"
+        },
+        {
+          "tag": "DIV",
+          "class": "living-map living-map--dark"
+        },
+        {
+          "tag": "DIV",
+          "class": "atlas-map-surface"
+        }
+      ]
+    }
+  ],
+  "selected": ["demo-project-palm-jumeirah", "demo-project-emirates-hills"]
+}

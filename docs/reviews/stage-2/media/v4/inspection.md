@@ -1,0 +1,9 @@
+# Capture v4 — current visual review found a remaining occlusion
+
+Production v9 completed all 24 Home/Explore layouts, eight forced Home fallback states and both EN/AR signature recordings. Manifests record no axe violations, page errors or horizontal overflow. The North Coast–Dubai comparison now frames both markets. Fresh fallback probes confirm both endpoint buttons accept actual pointer clicks and open focused evidence; compact limitations are keyboard-expandable.
+
+The Arabic local pair exposed a different definite failure. Comparing the two first demo projects (Palm Jumeirah and Emirates Hills) at390px places the upper endpoint at approximately(115.65,175), underneath the Map Stories hitbox, and the lower at(274.35,432), underneath View comparison. The latter is also visibly obscured. See `fallback-compare/ar-local-compare.json` for overlay bounds and `elementsFromPoint` results, and the corresponding screenshot. Geographic viewport containment alone did not detect this.
+
+This capture is retained as failed visual evidence. The next repair must reserve the real top and bottom control zones, account for the separate fallback notice, and check endpoint targets against control rectangles at both375 and390px. Passing the cross-market probe does not establish that the local pair is usable.
+
+Harness corrections are recorded separately: the first expanded regression attempted to zoom beyond the fallback maximum; after correcting that it read camera telemetry before the first fallback effect. Both test errors were fixed, and the two framing tests then passed. An accidentally included production demo-sign-in test failed because demo credentials are intentionally unavailable in production; the complete sign-in flow belongs to the normal development regression run. No corresponding application fix was claimed for those harness failures.

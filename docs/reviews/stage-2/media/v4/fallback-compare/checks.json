@@ -1,0 +1,212 @@
+[
+  {
+    "locale": "en",
+    "errors": [],
+    "clicks": [
+      {
+        "id": "june-sodic",
+        "box": {
+          "x": 37,
+          "y": 246.953125,
+          "width": 44,
+          "height": 44
+        },
+        "title": "June",
+        "focused": true
+      },
+      {
+        "id": "orla-palm-jumeirah",
+        "box": {
+          "x": 309,
+          "y": 316.03125,
+          "width": 44,
+          "height": 44
+        },
+        "title": "Orla, Dorchester Collection",
+        "focused": true
+      }
+    ],
+    "initial": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[28.019999999999982,31.099999999999994]",
+      "zoom": "7.000",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[]"
+    },
+    "panned": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[35.05124999999998,31.099999999999994]",
+      "zoom": "5.000",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[]"
+    },
+    "comparison": "Between these places\nClear\n\nChoose 2–4 projects. Lines show straight-line distances. Nearby places in one country use an illustrative 40 km/h estimate, without roads or traffic. Cross-border and long distances are not driving routes.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 km · Distance only · not a driving route\nShow connections on the map",
+    "framed": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment. Budget in GBP, pay in EGP.",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[41.498999999999995,28.217426690226784]",
+      "zoom": "3.812",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":58.999999999999545,\"y\":268.96855396019373},{\"id\":\"orla-palm-jumeirah\",\"x\":330.99999999999955,\"y\":338.03144603980627}]"
+    },
+    "noticeBefore": {
+      "open": null,
+      "box": {
+        "x": 20,
+        "y": 198,
+        "width": 151.84375,
+        "height": 46
+      },
+      "text": "Regional 2D map"
+    },
+    "noticeOpen": {
+      "open": "",
+      "text": "Regional 2D map\nOffline geography · street and 3D detail unavailable"
+    },
+    "finalMap": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "project-orla-palm-jumeirah-true",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[41.498999999999995,28.217426690226784]",
+      "zoom": "3.812",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":58.999999999999545,\"y\":268.96855396019373},{\"id\":\"orla-palm-jumeirah\",\"x\":330.99999999999955,\"y\":338.03144603980627}]"
+    },
+    "overflow": false,
+    "minuteEstimate": false
+  },
+  {
+    "locale": "ar",
+    "errors": [],
+    "clicks": [
+      {
+        "id": "june-sodic",
+        "box": {
+          "x": 37,
+          "y": 246.953125,
+          "width": 44,
+          "height": 44
+        },
+        "title": "June",
+        "focused": true
+      },
+      {
+        "id": "orla-palm-jumeirah",
+        "box": {
+          "x": 309,
+          "y": 316.03125,
+          "width": 44,
+          "height": 44
+        },
+        "title": "Orla, Dorchester Collection",
+        "focused": true
+      }
+    ],
+    "initial": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "بيت صيفي في الساحل الشمالي قبل 2028، ومقارنة باستثمار في دبي. الميزانية بالجنيه الإسترليني والدفع بالجنيه المصري.",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[28.019999999999982,31.099999999999994]",
+      "zoom": "7.000",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[]"
+    },
+    "panned": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "بيت صيفي في الساحل الشمالي قبل 2028، ومقارنة باستثمار في دبي. الميزانية بالجنيه الإسترليني والدفع بالجنيه المصري.",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[35.05124999999998,31.099999999999994]",
+      "zoom": "5.000",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[]"
+    },
+    "comparison": "بين هذه الأماكن\nمسح\n\nاختر من مشروعين إلى أربعة. المسافات بخط مستقيم. للأماكن القريبة في البلد نفسه تقدير توضيحي بسرعة 40 كم/س دون طرق أو حركة مرور. المسافات البعيدة والعابرة للحدود ليست مسارات قيادة.\n\nJune ↔ Orla, Dorchester Collection\n2,746.7 كم · مسافة فقط · ليست مسار قيادة\nاعرض المسافات على الخريطة",
+    "framed": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "بيت صيفي في الساحل الشمالي قبل 2028، ومقارنة باستثمار في دبي. الميزانية بالجنيه الإسترليني والدفع بالجنيه المصري.",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[41.498999999999995,28.217426690226784]",
+      "zoom": "3.812",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":58.999999999999545,\"y\":268.96855396019373},{\"id\":\"orla-palm-jumeirah\",\"x\":330.99999999999955,\"y\":338.03144603980627}]"
+    },
+    "noticeBefore": {
+      "open": null,
+      "box": {
+        "x": 194.03125,
+        "y": 198,
+        "width": 175.96875,
+        "height": 46
+      },
+      "text": "خريطة إقليمية ثنائية الأبعاد"
+    },
+    "noticeOpen": {
+      "open": "",
+      "text": "خريطة إقليمية ثنائية الأبعاد\nجغرافيا محفوظة · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة"
+    },
+    "finalMap": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "project-orla-palm-jumeirah-true",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[41.498999999999995,28.217426690226784]",
+      "zoom": "3.812",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"june-sodic\",\"x\":58.999999999999545,\"y\":268.96855396019373},{\"id\":\"orla-palm-jumeirah\",\"x\":330.99999999999955,\"y\":338.03144603980627}]"
+    },
+    "overflow": false,
+    "minuteEstimate": false
+  }
+]
