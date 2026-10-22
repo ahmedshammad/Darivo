@@ -1345,6 +1345,8 @@ function FallbackMap(props: LivingMapProps) {
           <button
             key={p.id}
             className="atlas-fallback-point"
+            data-project-id={p.id}
+            data-compared={props.compareIds?.includes(p.id) || undefined}
             style={{ left: x, top: y }}
             aria-label={`${nameOf(p, props.locale)} · ${p.kind === 'DEMO' ? text.demo : text.reference}`}
             aria-pressed={p.id === props.selectedId}
@@ -1371,11 +1373,19 @@ function FallbackMap(props: LivingMapProps) {
           <Minus size={18} />
         </button>
       </div>
-      <div className="atlas-fallback-label">
-        <strong>{text.fallback}</strong>
-        <span>{text.fallbackDetail}</span>
-        {props.sun && <span role="status">{text.sunFallback}</span>}
-      </div>
+      {props.mode === 'explore' ? (
+        <details className="atlas-fallback-label atlas-fallback-label--compact">
+          <summary>{text.fallback}</summary>
+          <span>{text.fallbackDetail}</span>
+          {props.sun && <span role="status">{text.sunFallback}</span>}
+        </details>
+      ) : (
+        <div className="atlas-fallback-label">
+          <strong>{text.fallback}</strong>
+          <span>{text.fallbackDetail}</span>
+          {props.sun && <span role="status">{text.sunFallback}</span>}
+        </div>
+      )}
     </div>
   );
 }

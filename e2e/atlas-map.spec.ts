@@ -44,5 +44,19 @@ test('cross-market comparison refits both endpoints after the mobile sheet colla
         { timeout: 15000 },
       )
       .toBe(true);
+    if (fallback) {
+      const notice = map.locator('details.atlas-fallback-label');
+      await expect(notice).not.toHaveAttribute('open');
+      expect((await notice.boundingBox())!.height).toBeLessThanOrEqual(48);
+      const june = map.locator('.atlas-fallback-point[data-project-id="june-sodic"]');
+      // Pointer actionability catches notices or neighbouring markers covering the endpoint.
+      await june.click({ trial: true });
+      await notice.locator('summary').focus();
+      await page.keyboard.press('Enter');
+      await expect(notice).toHaveAttribute('open');
+      await expect(notice).toContainText('street and 3D detail unavailable');
+      await page.keyboard.press('Enter');
+      await expect(notice).not.toHaveAttribute('open');
+    }
   }
 });

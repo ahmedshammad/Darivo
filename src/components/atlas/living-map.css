@@ -224,6 +224,9 @@
   border-radius: 50%;
   box-shadow: 0 0 0 6px #b08d5725;
 }
+.atlas-fallback-point[data-compared] {
+  z-index: 1;
+}
 .atlas-fallback-point[aria-pressed='true'] > span {
   background: #f7f4ee;
   box-shadow: 0 0 0 12px #b08d5733;
@@ -257,6 +260,26 @@
 .atlas-fallback-label span {
   font-size: 12px;
   line-height: 1.5;
+}
+.atlas-fallback-label--compact {
+  display: block;
+  padding: 0;
+  z-index: 2;
+}
+.atlas-fallback-label--compact summary {
+  min-height: 44px;
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.atlas-fallback-label--compact > span {
+  display: block;
+  padding: 0 16px 12px;
+}
+.atlas-fallback-label--compact summary:focus-visible {
+  outline: 2px solid #b08d57;
+  outline-offset: 3px;
 }
 .atlas-fallback-controls {
   position: absolute;
