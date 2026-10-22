@@ -1,0 +1,66 @@
+[
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "arrival-en-dark-1440",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 539,
+      "height": 695.203125,
+      "top": 157,
+      "right": 539,
+      "bottom": 852.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 414,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": [
+      {
+        "id": "aria-prohibited-attr",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".cq-turns"
+            ],
+            "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"div\" elements with no valid role attribute."
+          }
+        ]
+      }
+    ]
+  }
+]

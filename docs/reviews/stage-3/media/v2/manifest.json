@@ -1,0 +1,2838 @@
+[
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "arrival-en-dark-1440",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 539,
+      "height": 695.203125,
+      "top": 157,
+      "right": 539,
+      "bottom": 852.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 414,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "karim-en-dark-1440",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "061c1c76-19f2-4202-bf6a-fefa2281320b:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929345]",
+      "zoom": "4.242",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":82.99999999999932,\"y\":337.9542541112458},{\"id\":\"orla-palm-jumeirah\",\"x\":801.0000000000007,\"y\":518.0457458887536}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 539,
+      "height": 617.203125,
+      "top": 157,
+      "right": 539,
+      "bottom": 774.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 414,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "elena",
+    "stem": "elena-en-dark-1440",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "e49b7072-82bd-4c36-9cc9-6c759a0c1fca:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":468.55649279056433,\"y\":530.2882541237384,\"width\":159,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":369.3904512002949,\"y\":424.4484242041901,\"width\":185,\"height\":32},\"offset\":[120.5,0]},{\"id\":\"jumeirah-bay\",\"rect\":{\"x\":467.84221680785197,\"y\":298.6845019587219,\"width\":172,\"height\":32},\"offset\":[0,-44]},{\"id\":\"downtown\",\"rect\":{\"x\":641.7167368459175,\"y\":367.3961396117937,\"width\":198,\"height\":32},\"offset\":[127,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 539,
+      "height": 661.203125,
+      "top": 157,
+      "right": 539,
+      "bottom": 818.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 414,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "sheikha",
+    "stem": "sheikha-en-dark-1440",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "5eb9c0f2-cdbe-461f-8662-3c7b87cbad53:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"saadiyat\",\"rect\":{\"x\":470.0000000001743,\"y\":411.99999999991286,\"width\":211,\"height\":32},\"offset\":[133.5,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 539,
+      "height": 661.203125,
+      "top": 157,
+      "right": 539,
+      "bottom": 818.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 414,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "arrival-en-light-1440",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 539,
+      "height": 695.203125,
+      "top": 157,
+      "right": 539,
+      "bottom": 852.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 414,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "karim-en-light-1440",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "f9e0ef7e-1c24-47f1-9ce6-75fa8943859d:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929374]",
+      "zoom": "4.242",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":83,\"y\":337.9542541112465},{\"id\":\"orla-palm-jumeirah\",\"x\":801.0000000000007,\"y\":518.0457458887541}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 539,
+      "height": 617.203125,
+      "top": 157,
+      "right": 539,
+      "bottom": 774.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 414,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "light",
+    "journey": "elena",
+    "stem": "elena-en-light-1440",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "e3686426-134d-429e-8c7e-791f4bbf6f3a:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":468.55649279056433,\"y\":530.2882541237384,\"width\":159,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":369.3904512002949,\"y\":424.4484242041901,\"width\":185,\"height\":32},\"offset\":[120.5,0]},{\"id\":\"jumeirah-bay\",\"rect\":{\"x\":467.84221680785197,\"y\":298.6845019587219,\"width\":172,\"height\":32},\"offset\":[0,-44]},{\"id\":\"downtown\",\"rect\":{\"x\":641.7167368459175,\"y\":367.3961396117937,\"width\":198,\"height\":32},\"offset\":[127,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 539,
+      "height": 661.203125,
+      "top": 157,
+      "right": 539,
+      "bottom": 818.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 414,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "light",
+    "journey": "sheikha",
+    "stem": "sheikha-en-light-1440",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "0f80b4e1-8b2e-46b5-82b0-d9e8c8af80d2:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"saadiyat\",\"rect\":{\"x\":470.0000000001743,\"y\":411.99999999991286,\"width\":211,\"height\":32},\"offset\":[133.5,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 539,
+      "height": 661.203125,
+      "top": 157,
+      "right": 539,
+      "bottom": 818.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 414,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "arrival-ar-dark-1440",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 901,
+      "y": 157,
+      "width": 539,
+      "height": 695.203125,
+      "top": 157,
+      "right": 1440,
+      "bottom": 852.203125,
+      "left": 901
+    },
+    "composer": {
+      "x": 1026,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 1415,
+      "bottom": 924.203125,
+      "left": 1026
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "karim-ar-dark-1440",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "105dc9a6-1c9f-4592-9fb3-905f4604c81a:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929374]",
+      "zoom": "4.242",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":83,\"y\":337.9542541112465},{\"id\":\"orla-palm-jumeirah\",\"x\":801.0000000000007,\"y\":518.0457458887541}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 901,
+      "y": 157,
+      "width": 539,
+      "height": 617.203125,
+      "top": 157,
+      "right": 1440,
+      "bottom": 774.203125,
+      "left": 901
+    },
+    "composer": {
+      "x": 1026,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 1415,
+      "bottom": 924.203125,
+      "left": 1026
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "elena",
+    "stem": "elena-ar-dark-1440",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "08fb5fa7-8cbe-4e2d-835c-135c4167f503:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":488.05649279056433,\"y\":530.2882541237384,\"width\":120,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":369.3904512002949,\"y\":424.4484242041901,\"width\":146,\"height\":32},\"offset\":[101,0]},{\"id\":\"jumeirah-bay\",\"rect\":{\"x\":487.34221680785197,\"y\":298.6845019587219,\"width\":133,\"height\":32},\"offset\":[0,-44]},{\"id\":\"downtown\",\"rect\":{\"x\":641.7167368459175,\"y\":367.3961396117937,\"width\":107,\"height\":32},\"offset\":[81.5,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 901,
+      "y": 157,
+      "width": 539,
+      "height": 661.203125,
+      "top": 157,
+      "right": 1440,
+      "bottom": 818.203125,
+      "left": 901
+    },
+    "composer": {
+      "x": 1026,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 1415,
+      "bottom": 924.203125,
+      "left": 1026
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "sheikha",
+    "stem": "sheikha-ar-dark-1440",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "f0d71090-a250-4e89-926f-346ac0e11eff:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"saadiyat\",\"rect\":{\"x\":470.0000000001743,\"y\":411.99999999991286,\"width\":198,\"height\":32},\"offset\":[127,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 901,
+      "y": 157,
+      "width": 539,
+      "height": 661.203125,
+      "top": 157,
+      "right": 1440,
+      "bottom": 818.203125,
+      "left": 901
+    },
+    "composer": {
+      "x": 1026,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 1415,
+      "bottom": 924.203125,
+      "left": 1026
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "arrival-ar-light-1440",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 901,
+      "y": 157,
+      "width": 539,
+      "height": 695.203125,
+      "top": 157,
+      "right": 1440,
+      "bottom": 852.203125,
+      "left": 901
+    },
+    "composer": {
+      "x": 1026,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 1415,
+      "bottom": 924.203125,
+      "left": 1026
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "karim-ar-light-1440",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "30ae003c-a7e3-44af-8483-c5a72882875c:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929374]",
+      "zoom": "4.242",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":83,\"y\":337.9542541112465},{\"id\":\"orla-palm-jumeirah\",\"x\":801.0000000000007,\"y\":518.0457458887541}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 901,
+      "y": 157,
+      "width": 539,
+      "height": 617.203125,
+      "top": 157,
+      "right": 1440,
+      "bottom": 774.203125,
+      "left": 901
+    },
+    "composer": {
+      "x": 1026,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 1415,
+      "bottom": 924.203125,
+      "left": 1026
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "elena",
+    "stem": "elena-ar-light-1440",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "f9bca5ce-a80a-4d39-98f9-ac974fe7da9d:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":488.05649279056433,\"y\":530.2882541237384,\"width\":120,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":369.3904512002949,\"y\":424.4484242041901,\"width\":146,\"height\":32},\"offset\":[101,0]},{\"id\":\"jumeirah-bay\",\"rect\":{\"x\":487.34221680785197,\"y\":298.6845019587219,\"width\":133,\"height\":32},\"offset\":[0,-44]},{\"id\":\"downtown\",\"rect\":{\"x\":641.7167368459175,\"y\":367.3961396117937,\"width\":107,\"height\":32},\"offset\":[81.5,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 901,
+      "y": 157,
+      "width": 539,
+      "height": 661.203125,
+      "top": 157,
+      "right": 1440,
+      "bottom": 818.203125,
+      "left": 901
+    },
+    "composer": {
+      "x": 1026,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 1415,
+      "bottom": 924.203125,
+      "left": 1026
+    },
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "sheikha",
+    "stem": "sheikha-ar-light-1440",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "9ed510b5-ff0e-491a-bb03-fe6ae867b5a3:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"saadiyat\",\"rect\":{\"x\":470.0000000001743,\"y\":411.99999999991286,\"width\":198,\"height\":32},\"offset\":[127,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 901,
+      "y": 157,
+      "width": 539,
+      "height": 661.203125,
+      "top": 157,
+      "right": 1440,
+      "bottom": 818.203125,
+      "left": 901
+    },
+    "composer": {
+      "x": 1026,
+      "y": 872.203125,
+      "width": 389,
+      "height": 52,
+      "top": 872.203125,
+      "right": 1415,
+      "bottom": 924.203125,
+      "left": 1026
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "arrival-en-dark-1024",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 439,
+      "height": 695.203125,
+      "top": 157,
+      "right": 439,
+      "bottom": 852.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 314,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "karim-en-dark-1024",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "e18c3328-497d-433e-a065-f6823098e8f1:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929345]",
+      "zoom": "3.405",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":82.99999999999932,\"y\":377.5844152544854},{\"id\":\"orla-palm-jumeirah\",\"x\":485,\"y\":478.4155847455139}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 439,
+      "height": 617.203125,
+      "top": 157,
+      "right": 439,
+      "bottom": 774.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 314,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "elena",
+    "stem": "elena-en-dark-1024",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "ba4fb2ce-f248-429a-9aa7-2537ee567c43:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":310.5564927906348,\"y\":530.2882541237384,\"width\":159,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":211.39045120031597,\"y\":424.4484242041901,\"width\":185,\"height\":32},\"offset\":[120.5,0]},{\"id\":\"jumeirah-bay\",\"rect\":{\"x\":309.8422168078681,\"y\":298.6845019587219,\"width\":172,\"height\":32},\"offset\":[0,-44]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 439,
+      "height": 661.203125,
+      "top": 157,
+      "right": 439,
+      "bottom": 818.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 314,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "sheikha",
+    "stem": "sheikha-en-dark-1024",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "844344e5-8f7f-425e-8c2d-ec94a5febf14:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"saadiyat\",\"rect\":{\"x\":312,\"y\":411.99999999991286,\"width\":211,\"height\":32},\"offset\":[133.5,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 439,
+      "height": 661.203125,
+      "top": 157,
+      "right": 439,
+      "bottom": 818.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 314,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "arrival-en-light-1024",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 439,
+      "height": 695.203125,
+      "top": 157,
+      "right": 439,
+      "bottom": 852.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 314,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "karim-en-light-1024",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "20afcc92-80ab-46c8-b97f-db8fb286107c:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929374]",
+      "zoom": "3.405",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":82.99999999999932,\"y\":377.5844152544861},{\"id\":\"orla-palm-jumeirah\",\"x\":484.9999999999993,\"y\":478.4155847455146}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 439,
+      "height": 617.203125,
+      "top": 157,
+      "right": 439,
+      "bottom": 774.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 314,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "light",
+    "journey": "elena",
+    "stem": "elena-en-light-1024",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "f67e1bf8-f279-440d-9af0-3fdfa5c18380:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":310.5564927906348,\"y\":530.2882541237384,\"width\":159,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":211.39045120031597,\"y\":424.4484242041901,\"width\":185,\"height\":32},\"offset\":[120.5,0]},{\"id\":\"jumeirah-bay\",\"rect\":{\"x\":309.8422168078681,\"y\":298.6845019587219,\"width\":172,\"height\":32},\"offset\":[0,-44]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 439,
+      "height": 661.203125,
+      "top": 157,
+      "right": 439,
+      "bottom": 818.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 314,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "en",
+    "theme": "light",
+    "journey": "sheikha",
+    "stem": "sheikha-en-light-1024",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "f2aaa9b9-f605-433c-9fa1-de8b96c1cafc:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"saadiyat\",\"rect\":{\"x\":312,\"y\":411.99999999991286,\"width\":211,\"height\":32},\"offset\":[133.5,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 0,
+      "y": 157,
+      "width": 439,
+      "height": 661.203125,
+      "top": 157,
+      "right": 439,
+      "bottom": 818.203125,
+      "left": 0
+    },
+    "composer": {
+      "x": 25,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 314,
+      "bottom": 924.203125,
+      "left": 25
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "arrival-ar-dark-1024",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 585,
+      "y": 157,
+      "width": 439,
+      "height": 695.203125,
+      "top": 157,
+      "right": 1024,
+      "bottom": 852.203125,
+      "left": 585
+    },
+    "composer": {
+      "x": 710,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 999,
+      "bottom": 924.203125,
+      "left": 710
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "karim-ar-dark-1024",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "a6617d77-2789-4ed1-aa31-b82948492cda:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929374]",
+      "zoom": "3.405",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":82.99999999999932,\"y\":377.5844152544861},{\"id\":\"orla-palm-jumeirah\",\"x\":484.9999999999993,\"y\":478.4155847455146}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 585,
+      "y": 157,
+      "width": 439,
+      "height": 617.203125,
+      "top": 157,
+      "right": 1024,
+      "bottom": 774.203125,
+      "left": 585
+    },
+    "composer": {
+      "x": 710,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 999,
+      "bottom": 924.203125,
+      "left": 710
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "elena",
+    "stem": "elena-ar-dark-1024",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "02b0acd7-0bf6-4bde-8417-652a5e943c15:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":330.0564927906348,\"y\":530.2882541237384,\"width\":120,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":211.39045120031597,\"y\":424.4484242041901,\"width\":146,\"height\":32},\"offset\":[101,0]},{\"id\":\"jumeirah-bay\",\"rect\":{\"x\":329.3422168078681,\"y\":298.6845019587219,\"width\":133,\"height\":32},\"offset\":[0,-44]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 585,
+      "y": 157,
+      "width": 439,
+      "height": 661.203125,
+      "top": 157,
+      "right": 1024,
+      "bottom": 818.203125,
+      "left": 585
+    },
+    "composer": {
+      "x": 710,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 999,
+      "bottom": 924.203125,
+      "left": 710
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "sheikha",
+    "stem": "sheikha-ar-dark-1024",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "010c77e5-1076-452a-9e3b-679371075c3f:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"saadiyat\",\"rect\":{\"x\":312,\"y\":411.99999999991286,\"width\":198,\"height\":32},\"offset\":[127,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 585,
+      "y": 157,
+      "width": 439,
+      "height": 661.203125,
+      "top": 157,
+      "right": 1024,
+      "bottom": 818.203125,
+      "left": 585
+    },
+    "composer": {
+      "x": 710,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 999,
+      "bottom": 924.203125,
+      "left": 710
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "arrival-ar-light-1024",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 585,
+      "y": 157,
+      "width": 439,
+      "height": 695.203125,
+      "top": 157,
+      "right": 1024,
+      "bottom": 852.203125,
+      "left": 585
+    },
+    "composer": {
+      "x": 710,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 999,
+      "bottom": 924.203125,
+      "left": 710
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "karim-ar-light-1024",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "671992fb-cb33-4628-8525-56b45c733c3e:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929374]",
+      "zoom": "3.405",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":82.99999999999932,\"y\":377.5844152544861},{\"id\":\"orla-palm-jumeirah\",\"x\":484.9999999999993,\"y\":478.41558474551425}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 585,
+      "y": 157,
+      "width": 439,
+      "height": 617.203125,
+      "top": 157,
+      "right": 1024,
+      "bottom": 774.203125,
+      "left": 585
+    },
+    "composer": {
+      "x": 710,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 999,
+      "bottom": 924.203125,
+      "left": 710
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "elena",
+    "stem": "elena-ar-light-1024",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "16ad99db-7835-4c2e-87f0-fc14cf556f41:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":330.0564927906348,\"y\":530.2882541237384,\"width\":120,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":211.39045120031597,\"y\":424.4484242041901,\"width\":146,\"height\":32},\"offset\":[101,0]},{\"id\":\"jumeirah-bay\",\"rect\":{\"x\":329.3422168078681,\"y\":298.6845019587219,\"width\":133,\"height\":32},\"offset\":[0,-44]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 585,
+      "y": 157,
+      "width": 439,
+      "height": 661.203125,
+      "top": 157,
+      "right": 1024,
+      "bottom": 818.203125,
+      "left": 585
+    },
+    "composer": {
+      "x": 710,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 999,
+      "bottom": 924.203125,
+      "left": 710
+    },
+    "violations": []
+  },
+  {
+    "width": 1024,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "sheikha",
+    "stem": "sheikha-ar-light-1024",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "ee9ce062-45b2-4913-9c93-017f2e513414:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"saadiyat\",\"rect\":{\"x\":312,\"y\":411.99999999991286,\"width\":198,\"height\":32},\"offset\":[127,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 585,
+      "y": 157,
+      "width": 439,
+      "height": 661.203125,
+      "top": 157,
+      "right": 1024,
+      "bottom": 818.203125,
+      "left": 585
+    },
+    "composer": {
+      "x": 710,
+      "y": 872.203125,
+      "width": 289,
+      "height": 52,
+      "top": 872.203125,
+      "right": 999,
+      "bottom": 924.203125,
+      "left": 710
+    },
+    "violations": []
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "arrival-en-dark-390",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 422.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 723.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 18,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 284,
+      "bottom": 791.5,
+      "left": 18
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "karim-en-dark-390",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "c89b95d6-7e55-4df4-b822-f28ee52006ef:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929374]",
+      "zoom": "2.454",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":83.0000000000002,\"y\":145.84731030571226},{\"id\":\"orla-palm-jumeirah\",\"x\":291.0000000000002,\"y\":198.0186616841546}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 363.953125,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 665.40625,
+      "left": 1
+    },
+    "composer": {
+      "x": 18,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 284,
+      "bottom": 791.5,
+      "left": 18
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "elena",
+    "stem": "elena-en-dark-390",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "db0c9b1c-13b2-4140-8d54-d4607995f2f8:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":214.789822607029,\"y\":255.81815738013597,\"width\":159,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":114.19627700981692,\"y\":149.1384553324471,\"width\":185,\"height\":32},\"offset\":[120.5,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 394.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 695.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 18,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 284,
+      "bottom": 791.5,
+      "left": 18
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "dark",
+    "journey": "sheikha",
+    "stem": "sheikha-en-dark-390",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "0305c4ac-2b51-44d5-be26-ec37d3abc399:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 394.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 695.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 18,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 284,
+      "bottom": 791.5,
+      "left": 18
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "arrival-en-light-390",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 422.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 723.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 18,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 284,
+      "bottom": 791.5,
+      "left": 18
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "karim-en-light-390",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "c772c62f-6f90-47c8-a092-afcbe1e094e6:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929374]",
+      "zoom": "2.454",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":83.0000000000002,\"y\":145.84731030571226},{\"id\":\"orla-palm-jumeirah\",\"x\":291.0000000000002,\"y\":198.0186616841546}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 363.953125,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 665.40625,
+      "left": 1
+    },
+    "composer": {
+      "x": 18,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 284,
+      "bottom": 791.5,
+      "left": 18
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "light",
+    "journey": "elena",
+    "stem": "elena-en-light-390",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "504604ec-2de7-4d88-a595-3f6cc203b5a3:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":214.789822607029,\"y\":255.81815738013597,\"width\":159,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":114.19627700981692,\"y\":149.1384553324471,\"width\":185,\"height\":32},\"offset\":[120.5,0]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 394.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 695.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 18,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 284,
+      "bottom": 791.5,
+      "left": 18
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "light",
+    "journey": "sheikha",
+    "stem": "sheikha-en-light-390",
+    "errors": [],
+    "direction": "ltr",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "49a40dca-e03e-4d91-bfe8-162512cbfb63:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 394.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 695.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 18,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 284,
+      "bottom": 791.5,
+      "left": 18
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "arrival-ar-dark-390",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 422.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 723.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 106,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 372,
+      "bottom": 791.5,
+      "left": 106
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "karim",
+    "stem": "karim-ar-dark-390",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "4688480d-8aad-4e62-8840-e471f8c18309:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929374]",
+      "zoom": "2.454",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":83.0000000000002,\"y\":145.84731030571226},{\"id\":\"orla-palm-jumeirah\",\"x\":291.0000000000002,\"y\":198.0186616841546}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 362.953125,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 664.40625,
+      "left": 1
+    },
+    "composer": {
+      "x": 106,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 372,
+      "bottom": 791.5,
+      "left": 106
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "elena",
+    "stem": "elena-ar-dark-390",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "919793be-b1cb-4075-a3e2-1d0066e60b7a:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":234.289822607029,\"y\":255.81815738013597,\"width\":120,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":114.19627700981692,\"y\":149.1384553324471,\"width\":146,\"height\":32},\"offset\":[101,0]},{\"id\":\"jumeirah-bay\",\"rect\":{\"x\":231.15534639981433,\"y\":24.08608446832197,\"width\":133,\"height\":32},\"offset\":[0,-44]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 394.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 695.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 106,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 372,
+      "bottom": 791.5,
+      "left": 106
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "dark",
+    "journey": "sheikha",
+    "stem": "sheikha-ar-dark-390",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "33915218-fcad-4869-a720-40ac4d3b4682:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 394.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 695.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 106,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 372,
+      "bottom": 791.5,
+      "left": 106
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "arrival-ar-light-390",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "concierge-initial",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[42,26.99999999999997]",
+      "zoom": "3.300",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "not-required"
+    },
+    "components": [],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 422.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 723.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 106,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 372,
+      "bottom": 791.5,
+      "left": 106
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "karim",
+    "stem": "karim-ar-light-390",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "40c79b0a-bbc6-4760-a0ce-4a1f41568669:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[41.774,28.119594369929374]",
+      "zoom": "2.454",
+      "pitch": "0.0",
+      "moving": "false",
+      "comparisonPoints": "[{\"id\":\"southmed\",\"x\":83.0000000000002,\"y\":145.84731030571226},{\"id\":\"orla-palm-jumeirah\",\"x\":291.0000000000002,\"y\":198.0186616841546}]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards",
+      "project-cards",
+      "comparison",
+      "notice"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 362.953125,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 664.40625,
+      "left": 1
+    },
+    "composer": {
+      "x": 106,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 372,
+      "bottom": 791.5,
+      "left": 106
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "elena",
+    "stem": "elena-ar-light-390",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "be010152-67d4-47ae-afe3-f14b667e59d5:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[55.190000000000055,25.139999999999986]",
+      "zoom": "10.300",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[{\"id\":\"dubai-hills\",\"rect\":{\"x\":234.289822607029,\"y\":255.81815738013597,\"width\":120,\"height\":32},\"offset\":[0,44]},{\"id\":\"palm\",\"rect\":{\"x\":114.19627700981692,\"y\":149.1384553324471,\"width\":146,\"height\":32},\"offset\":[101,0]},{\"id\":\"jumeirah-bay\",\"rect\":{\"x\":231.15534639981433,\"y\":24.08608446832197,\"width\":133,\"height\":32},\"offset\":[0,-44]}]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "notice",
+      "notice",
+      "notice",
+      "notice",
+      "mini-map",
+      "project-cards",
+      "notice"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 394.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 695.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 106,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 372,
+      "bottom": 791.5,
+      "left": 106
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "light",
+    "journey": "sheikha",
+    "stem": "sheikha-ar-light-390",
+    "errors": [],
+    "direction": "rtl",
+    "overflow": false,
+    "map": {
+      "mapStatus": "webgl",
+      "mapMode": "webgl",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "ab14764c-cc92-4fa4-bc58-6900976efd9b:action",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "styleLoaded": "true",
+      "center": "[54.43799999999999,24.540999999999983]",
+      "zoom": "12.000",
+      "pitch": "48.0",
+      "moving": "false",
+      "comparisonPoints": "[]",
+      "orientationPlacements": "[]",
+      "basePainted": "true",
+      "deckReady": "true"
+    },
+    "components": [
+      "project-cards"
+    ],
+    "reading": {
+      "x": 1,
+      "y": 301.453125,
+      "width": 388,
+      "height": 394.046875,
+      "top": 301.453125,
+      "right": 389,
+      "bottom": 695.5,
+      "left": 1
+    },
+    "composer": {
+      "x": 106,
+      "y": 739.5,
+      "width": 266,
+      "height": 52,
+      "top": 739.5,
+      "right": 372,
+      "bottom": 791.5,
+      "left": 106
+    },
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".maplibregl-ctrl-zoom-out"
+            ],
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 44px by 5.5px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 4.4px instead of at least 24px."
+          }
+        ]
+      }
+    ]
+  }
+]

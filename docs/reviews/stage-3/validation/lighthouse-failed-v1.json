@@ -1,0 +1,236 @@
+{
+  "url": "http://localhost:3001/en/concierge",
+  "fetchTime": "2026-10-22T19:56:34.401Z",
+  "environment": {
+    "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36",
+    "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "benchmarkIndex": 3836.5,
+    "credits": {
+      "axe-core": "4.14.0"
+    }
+  },
+  "scores": {
+    "performance": 74,
+    "accessibility": 100,
+    "best-practices": 96,
+    "seo": 100
+  },
+  "metrics": {
+    "lcp": 3252.72125,
+    "tbt": 775.5,
+    "cls": 0
+  },
+  "audits": {
+    "bootup-time": {
+      "id": "bootup-time",
+      "title": "Reduce JavaScript execution time",
+      "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn how to reduce Javascript execution time](https://developer.chrome.com/docs/lighthouse/performance/bootup-time/).",
+      "score": 0,
+      "scoreDisplayMode": "metricSavings",
+      "numericValue": 1643.747999999979,
+      "numericUnit": "millisecond",
+      "displayValue": "1.6 s",
+      "metricSavings": {
+        "TBT": 800
+      },
+      "details": {
+        "type": "table",
+        "headings": [
+          {
+            "key": "url",
+            "valueType": "url",
+            "label": "URL"
+          },
+          {
+            "key": "total",
+            "granularity": 1,
+            "valueType": "ms",
+            "label": "Total CPU Time"
+          },
+          {
+            "key": "scripting",
+            "granularity": 1,
+            "valueType": "ms",
+            "label": "Script Evaluation"
+          },
+          {
+            "key": "scriptParseCompile",
+            "granularity": 1,
+            "valueType": "ms",
+            "label": "Script Parse"
+          }
+        ],
+        "items": [
+          {
+            "url": "http://localhost:3001/_next/static/chunks/e206dbef.af5cd245f865cd27.js",
+            "total": 1425.7719999999792,
+            "scripting": 1318.3199999999795,
+            "scriptParseCompile": 62.272000000000006
+          },
+          {
+            "url": "http://localhost:3001/_next/static/chunks/954-2bbbf70e456176d2.js",
+            "total": 177.6839999999996,
+            "scripting": 157.1279999999996,
+            "scriptParseCompile": 14.368
+          },
+          {
+            "url": "Unattributable",
+            "total": 163.59600000000145,
+            "scripting": 21.67600000000002,
+            "scriptParseCompile": 0
+          },
+          {
+            "url": "http://localhost:3001/en/concierge",
+            "total": 89.17199999999998,
+            "scripting": 4.992,
+            "scriptParseCompile": 6.727999999999999
+          },
+          {
+            "url": "http://localhost:3001/_next/static/chunks/6326-d0cbdbab57746ccf.js",
+            "total": 58.307999999999836,
+            "scripting": 49.423999999999836,
+            "scriptParseCompile": 8.84
+          }
+        ],
+        "summary": {
+          "wastedMs": 1643.747999999979
+        },
+        "sortedBy": ["total"]
+      },
+      "guidanceLevel": 1
+    },
+    "lcp-breakdown-insight": {
+      "id": "lcp-breakdown-insight",
+      "title": "LCP breakdown",
+      "description": "Each [subpart has specific improvement strategies](https://developer.chrome.com/docs/performance/insights/lcp-breakdown). Ideally, most of the LCP time should be spent on loading the resources, not within delays.",
+      "score": 1,
+      "scoreDisplayMode": "informative",
+      "metricSavings": {
+        "LCP": 0
+      },
+      "details": {
+        "type": "list",
+        "items": [
+          {
+            "type": "table",
+            "headings": [
+              {
+                "key": "label",
+                "valueType": "text",
+                "label": "Subpart"
+              },
+              {
+                "key": "duration",
+                "valueType": "ms",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "subpart": "timeToFirstByte",
+                "label": "Time to first byte",
+                "duration": 23.384000030517576
+              },
+              {
+                "subpart": "elementRenderDelay",
+                "label": "Element render delay",
+                "duration": 436.9189999694824
+              }
+            ]
+          },
+          {
+            "type": "node",
+            "lhId": "page-0-H2",
+            "path": "1,HTML,1,BODY,1,MAIN,3,SECTION,2,DIV,2,DIV,0,DIV,1,H2",
+            "selector": "div#concierge-reading > div > div.cq-introduction > h2.cq-page-title",
+            "boundingRect": {
+              "top": 417,
+              "bottom": 510,
+              "left": 21,
+              "right": 391,
+              "width": 370,
+              "height": 93
+            },
+            "snippet": "<h2 class=\"cq-page-title\">",
+            "nodeLabel": "A considered conversation."
+          }
+        ]
+      },
+      "guidanceLevel": 3
+    },
+    "label-content-name-mismatch": {
+      "id": "label-content-name-mismatch",
+      "title": "Elements with visible text labels do not have matching accessible names.",
+      "description": "Visible text labels that do not match the accessible name can result in a confusing experience for screen reader users. [Learn more about accessible names](https://dequeuniversity.com/rules/axe/4.13/label-content-name-mismatch).",
+      "score": 0,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [
+          {
+            "key": "node",
+            "valueType": "node",
+            "subItemsHeading": {
+              "key": "relatedNode",
+              "valueType": "node"
+            },
+            "label": "Failing Elements"
+          }
+        ],
+        "items": [
+          {
+            "node": {
+              "type": "node",
+              "lhId": "1-0-A",
+              "path": "1,HTML,1,BODY,1,MAIN,1,HEADER,0,A",
+              "selector": "body > main#main > header.cq-header > a.cq-wordmark",
+              "boundingRect": {
+                "top": 19,
+                "bottom": 58,
+                "left": 20,
+                "right": 142,
+                "width": 122,
+                "height": 39
+              },
+              "snippet": "<a class=\"cq-wordmark\" aria-label=\"Darivo home\" href=\"/en\">",
+              "nodeLabel": "DARIVO\nPRIVATE PROPERTY OFFICE",
+              "explanation": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          },
+          {
+            "node": {
+              "type": "node",
+              "lhId": "1-1-BUTTON",
+              "path": "1,HTML,1,BODY,1,MAIN,3,SECTION,1,DIV,1,BUTTON",
+              "selector": "main#main > section.cq-panel > div.cq-panel-toolbar > button.cq-icon",
+              "boundingRect": {
+                "top": 243,
+                "bottom": 287,
+                "left": 315,
+                "right": 351,
+                "width": 36,
+                "height": 44
+              },
+              "snippet": "<button class=\"cq-icon\" aria-label=\"Arabic-Indic numerals\" aria-pressed=\"false\">",
+              "nodeLabel": "١٢٣",
+              "explanation": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+            }
+          }
+        ],
+        "debugData": {
+          "type": "debugdata",
+          "impact": "serious",
+          "tags": [
+            "cat.semantics",
+            "wcag21a",
+            "wcag253",
+            "EN-301-549",
+            "EN-9.2.5.3",
+            "RGAAv4",
+            "RGAA-6.1.5"
+          ]
+        }
+      }
+    }
+  }
+}
