@@ -1,0 +1,20 @@
+[
+  {
+    "scenario": "English display font inline; remove external font request",
+    "addedDocumentTransferBytes": 23093,
+    "lcp": 2807.54,
+    "fcp": 926.135,
+    "optimistic": 2807.54,
+    "pessimistic": 2807.54,
+    "limitation": "Graph-only estimate; retains recorded CPU costs and cannot model added HTML parse cost, compression interactions or changed observed LCP candidate."
+  },
+  {
+    "scenario": "English display font inline; remove external font request",
+    "addedDocumentTransferBytes": 46500,
+    "lcp": 2957.54,
+    "fcp": 1076.135,
+    "optimistic": 2957.54,
+    "pessimistic": 2957.54,
+    "limitation": "Graph-only estimate; retains recorded CPU costs and cannot model added HTML parse cost, compression interactions or changed observed LCP candidate."
+  }
+]

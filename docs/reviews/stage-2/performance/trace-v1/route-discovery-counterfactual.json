@@ -1,0 +1,23 @@
+{
+  "scenario": "HTML discovery of script-initiated route chunks (dependency-only sensitivity, not predicted boundary-removal outcome)",
+  "changedUrls": [
+    "http://localhost:3001/_next/static/chunks/8760-af922f3a94289f02.js",
+    "http://localhost:3001/_next/static/chunks/464-ab04b90a3c002ff0.js",
+    "http://localhost:3001/_next/static/chunks/5660-0dd95061dd75f473.js",
+    "http://localhost:3001/_next/static/chunks/app/%5Blocale%5D/layout-a1f1a63990e50d6d.js",
+    "http://localhost:3001/_next/static/chunks/app/%5Blocale%5D/error-864daf26218e688a.js",
+    "http://localhost:3001/_next/static/chunks/app/%5Blocale%5D/not-found-104c58a650fb4f5b.js",
+    "http://localhost:3001/_next/static/chunks/7224-2ac2bfe5752201ea.js",
+    "http://localhost:3001/_next/static/chunks/3601-1be25545d94b4942.js",
+    "http://localhost:3001/_next/static/chunks/app/%5Blocale%5D/page-a0c879f27df8ac29.js",
+    "http://localhost:3001/_next/static/chunks/1249-79e960cadc82602c.js",
+    "http://localhost:3001/_next/static/chunks/5066.d26cd99064d58951.js",
+    "http://localhost:3001/_next/static/chunks/e206dbef.af5cd245f865cd27.js",
+    "http://localhost:3001/_next/static/chunks/3375.7108bc57d4d0eecf.js"
+  ],
+  "lcp": 2502.77,
+  "fcp": 776.135,
+  "optimistic": 2489.27,
+  "pessimistic": 2516.27,
+  "limitation": "Retains recorded transfer sizes, priorities, CPU costs and paint cutoff. A real boundary change must be rebuilt/remeasured; this does not model SSR wait or changed LCP candidate."
+}

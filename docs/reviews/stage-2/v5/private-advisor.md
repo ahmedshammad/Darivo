@@ -1,0 +1,57 @@
+# Stage 2 fifth scored review — Darivo Private Advisor
+
+22 October 2026. **Simulated persona self-audit by the implementing agent, not independent human research.** This fifth round reviews production commit `93103bc` through the completed **media/v7** captures. I inspected the cited stills; EN/AR videos are retained, but I did not independently review their complete temporal playback or use a browser for this scoring round.
+
+The [matrix manifest](../media/v7/manifest.json) contains 24 WebGL states and the [fallback manifest](../media/v7/fallback-manifest.json) eight forced Home fallback states, all with zero recorded page errors, axe violations or horizontal overflow. The parent reports four focused production regressions passing for the latest polish. Earlier eight phone-width development checks corroborate the opaque reading surface and popup removal, but are not substituted for these production screenshots.
+
+The [baseline hosted run](../performance/hosted-green/README.md) for `d9b2faa` is now **green**: 61 unit tests, 36 mock evaluations without off-market leakage, 38 hosted browser passes and three GPU-specific capability skips; all 41 cases passed locally on M3 hardware. The actual SwiftShader interaction test passed. Those skips do not waive general map interactions. The new polish run [39813759238](https://github.com/ahmedshammad/Darivo/actions/runs/39813759238) for `93103bc` is **pending at authoring**. Real-provider evaluations remain unperformed without a key.
+
+This review covers Stage 2 spatial discovery, qualified estimates and reference context. It does not imply a complete investment-underwriting service, advisor console, native Gulf-language validation, full assistive-technology certification, legal compliance, or physical M1/phone testing.
+
+> I can keep the client’s words in view while moving from place to evidence, and the reading surface now gives that evidence the attention it deserves. I would use this as a discovery aid. Source confirmation and the judgement behind an investment recommendation still belong in the advisor conversation.
+
+## Journey and repair assessment
+
+- **Request → map.** [Current English comparison](../media/v7/signature-en-comparison.png) retains both North Coast and Dubai. [Arabic evidence](../media/v7/signature-ar-evidence.png) retains the Saadiyat/Palm request. The interface does not present every stated requirement as a verified personal filter.
+- **Map → explanation.** [English cross-market map](../media/v7/signature-en-comparison-map.png) now separates the distance from Saudi Arabia. [Arabic local map](../media/v7/signature-ar-comparison-map.png) leaves both selected endpoints clear of the story/peek controls. The previous exact obstruction is not visible in this production capture.
+- **Explanation → evidence.** The opaque [Arabic evidence surface](../media/v7/signature-ar-evidence.png) removes background label bleed, and the duplicate popup yields to the panel's project name. [ORLA reference context](../media/v7/explore-en-light-1440.png) remains distinct from this fictional Demo project. Original source/date/basis and current-term confirmation remain central.
+- **Evidence → handoff.** The recorded contextual sign-in return/no-automatic-POST regression remains supported by the now-green baseline suite and the full local pass. I did not independently repeat this route during the fifth scoring round. Complete advisor-console workflows remain later scope.
+
+## Performance evidence and limits
+
+[Hosted green baseline](../performance/hosted-green/README.md): Home/Explore/Search/Arabic detail score **91/93/94/92**, with LCP **2242.786/2374.246/2849.886/3017 ms**. This clears the unchanged CI score floor, not the separate two-second LCP requirement. The later polish commit has no green hosted result yet.
+
+Retained [M3 hardware v8](../performance/v8/README.md): Home/Explore **98/96**, LCP **2179.483/2327.811 ms**, TBT **133.5/172 ms**. Retained [actual software fallback v2](../performance/software-v2/README.md): **90/94**, LCP **3331.270/2936.508 ms**, TBT **73/77 ms**. Every listed LCP remains above two seconds. Low lab TBT is not field INP. Earlier failures remain part of the record; none of these results certify physical phones or M1 performance.
+
+## Part H scorecard
+
+| Criterion            | Score / 10 | Evidence                                                                                                                                                                                                                                                                                                                                                           |
+| -------------------- | ---------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| First-5-seconds wow  |        9.0 | [Desktop Arrival](../media/v7/arrival-en-dark-1440-viewport.png) gives a calm, memorable private-client introduction.                                                                                                                                                                                                                                              |
+| Originality          |        9.0 | [Arabic tablet](../media/v7/arrival-ar-light-1024-viewport.png) and Sand Explore share a coherent spatial/editorial identity.                                                                                                                                                                                                                                      |
+| AI-first             |        9.0 | Current signatures retain the client request, change geographic context and keep an onward handoff boundary. Scope remains declared Demo guidance.                                                                                                                                                                                                                 |
+| Map experience       |        9.0 | Current EN/AR comparison frames show both places clear of controls; distance is separated from country text. Retained fallback probes establish useful geographic continuity.                                                                                                                                                                                      |
+| Visual craft         |        9.0 | Raised from 8.5 to 9.0: opaque current evidence restores a reading surface, and the redundant native popup no longer competes with the toolbar. Long evidence remains a sustained reading task.                                                                                                                                                                    |
+| Motion quality       |        9.0 | Current-build [three-second M3 probes](../media/performance-v7/performance.json) across Home/Explore × 1440/390 record active-motion medians 16.5–16.9 ms, p95 18.2–19.8 ms and no active-motion intervals over 33 ms. Each Explore full-RAF window has one interval over 33 ms. Bounded hardware evidence, not universal 60 fps or physical-device certification. |
+| Arabic & RTL         |        8.5 | Arabic evidence, local comparison and [375px fallback](../media/v7/fallback-arrival-ar-dark-375.png) are deliberately composed. Native Gulf-language and native AT validation remain outstanding.                                                                                                                                                                  |
+| Trust & evidence     |        9.0 | Source/date/basis, reference/Demo status, original currency and non-routing estimates remain explicit; the current panel makes those qualifications easier to read.                                                                                                                                                                                                |
+| Discretion & privacy |        9.5 | The documented handoff requires user agency and prevents automatic sending. Capability preflight conveys only a coarse reason; raw renderer values are not application telemetry.                                                                                                                                                                                  |
+| Developer appeal     |        9.0 | The real-reference treatment is dignified and fact-qualified without manufacturing an available unit or affiliation.                                                                                                                                                                                                                                               |
+| Speed                |        8.5 | Baseline hosted performance now passes its floor, but every retained LCP exceeds two seconds. No field INP or physical-phone experience is established.                                                                                                                                                                                                            |
+| Accessibility        |        9.0 | Current zero-error/axe/overflow manifests and recorded keyboard/pointer/source/handoff tests strengthen access evidence. They do not replace a complete native screen-reader review.                                                                                                                                                                               |
+
+**Mean: 8.958/10. Minimum: 8.5.** Only visual craft changes from the fourth round (+0.5), based on the three inspected production repairs. The stage gate is **board aggregate ≥9.0 with no criterion below 8**; there is no additional requirement that every persona mean reach 9.0. This individual scorecard neither computes the board aggregate nor waives the separate performance requirement. This corrects the individual-gate wording in the preserved fourth-round record.
+
+## Top three delights
+
+1. Client words and source qualifications remain available through the geographic conversation.
+2. Evidence now has an opaque reading surface, while the selected point remains on the map without a duplicate popup.
+3. The actual software-rendering path has a useful, explained 2D journey and a green baseline hosted test record.
+
+## Top three remaining problems
+
+1. **Evidence remains a long read.** The visual interference is repaired, but advisors still need to scan substantial qualification text on a phone; preserve its completeness while testing real reading effort.
+2. **First-view speed remains outside the strict budget.** Hosted baseline LCP is 2.243/2.374 seconds for Home/Explore; physical-device and field-interaction evidence remain missing.
+3. **Independent assurance is incomplete.** Actual advisors, native Gulf readers and native screen-reader users have not validated the complete flow. The latest polish CI is pending, distinct from the green baseline.
+
+**One-line verdict:** Stage 2 now supports a clear, recoverable private-client discovery conversation; the remaining speed, reading-effort and independent-validation gaps keep my mean just below nine.

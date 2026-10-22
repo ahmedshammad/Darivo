@@ -1,0 +1,56 @@
+# Stage 2 fifth scored review — Rajiv Mehta
+
+22 October 2026. **Simulated persona self-audit by the implementing agent, not independent human research.** This fifth round reviews production commit `93103bc` through the completed **media/v7** captures. I inspected the cited stills; EN/AR videos are retained, but I did not independently review their complete temporal playback or use a browser for this scoring round.
+
+The [matrix manifest](../media/v7/manifest.json) contains 24 WebGL states and the [fallback manifest](../media/v7/fallback-manifest.json) eight forced Home fallback states, all with zero recorded page errors, axe violations or horizontal overflow. The parent reports four focused production regressions passing for the latest polish. Earlier eight phone-width development checks corroborate the opaque reading surface and popup removal, but are not substituted for these production screenshots.
+
+The [baseline hosted run](../performance/hosted-green/README.md) for `d9b2faa` is now **green**: 61 unit tests, 36 mock evaluations without off-market leakage, 38 hosted browser passes and three GPU-specific capability skips; all 41 cases passed locally on M3 hardware. The actual SwiftShader interaction test passed. Those skips do not waive general map interactions. The new polish run [39813759238](https://github.com/ahmedshammad/Darivo/actions/runs/39813759238) for `93103bc` is **pending at authoring**. Real-provider evaluations remain unperformed without a key.
+
+This review covers Stage 2 spatial discovery, qualified estimates and reference context. It does not imply a complete investment-underwriting service, advisor console, native Gulf-language validation, full assistive-technology certification, legal compliance, or physical M1/phone testing.
+
+> I can now read the distance, then the geography, then the evidence without the interface asking me to disentangle them. I would use this to begin a cross-market conversation. I would still ask an advisor to confirm the quoted basis and current terms before treating any figure as decision-ready.
+
+## Journey and repair assessment
+
+1. **Read the amount in context.** [Sand Explore](../media/v7/explore-en-light-1440.png) shows ORLA at AED 57.3 million with “4-bedroom residences from,” agent-listing basis, June 2026 date and source domain. It explicitly requires availability/current-term confirmation; this is not a verified available unit or return forecast.
+2. **Separate geography from financial inference.** [June↔ORLA comparison](../media/v7/signature-en-comparison.png) labels 2,746.7 km as distance only, not a driving route. [Its map](../media/v7/signature-en-comparison-map.png) now places the annotation above the line while Saudi Arabia remains readable below. Country context has not been removed to make the annotation look cleaner.
+3. **Read evidence without visual interference.** [Arabic evidence](../media/v7/signature-ar-evidence.png) is opaque and shows a Demo qualification alongside the native AED amount. The redundant popup no longer sits behind the toolbar. The selected point remains visible. [Arabic local comparison](../media/v7/signature-ar-comparison-map.png) retains two reachable-looking endpoints and its qualified local estimate; current pointer-test evidence comes from the recorded regressions, not this still alone.
+
+## Performance evidence and limits
+
+[Hosted green baseline](../performance/hosted-green/README.md): Home/Explore/Search/Arabic detail score **91/93/94/92**, with LCP **2242.786/2374.246/2849.886/3017 ms**. This clears the unchanged CI score floor, not the separate two-second LCP requirement. The later polish commit has no green hosted result yet.
+
+Retained [M3 hardware v8](../performance/v8/README.md): Home/Explore **98/96**, LCP **2179.483/2327.811 ms**, TBT **133.5/172 ms**. Retained [actual software fallback v2](../performance/software-v2/README.md): **90/94**, LCP **3331.270/2936.508 ms**, TBT **73/77 ms**. Every listed LCP remains above two seconds. Low lab TBT is not field INP. Earlier failures remain part of the record; none of these results certify physical phones or M1 performance.
+
+## Part H scorecard
+
+| Criterion            | Score / 10 | Evidence                                                                                                                                                                                                                                                                                                                                                           |
+| -------------------- | ---------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| First-5-seconds wow  |        9.5 | [Desktop Arrival](../media/v7/arrival-en-dark-1440-viewport.png) remains a memorable, composed geographic opening with a clear conversational action.                                                                                                                                                                                                              |
+| Originality          |        9.5 | [Arabic tablet](../media/v7/arrival-ar-light-1024-viewport.png) and Sand Explore retain a distinctive editorial/spatial identity.                                                                                                                                                                                                                                  |
+| AI-first             |        8.5 | Current EN comparison keeps both markets and drives geography. Explicit Demo guidance limits expectations; verified suitability and complete natural-language underwriting are not established.                                                                                                                                                                    |
+| Map experience       |        9.0 | EN cross-market and AR local maps retain clear endpoints; the cross-market annotation now respects country context. Initial neighbourhood orientation remains sparse.                                                                                                                                                                                              |
+| Visual craft         |        9.0 | Raised from 8.5 to 9.0: current production distance/country separation, opaque evidence and popup suppression close the specific prior reading defects. This is not a claim of flawless every-breakpoint craft.                                                                                                                                                    |
+| Motion quality       |        9.0 | Current-build [three-second M3 probes](../media/performance-v7/performance.json) across Home/Explore × 1440/390 record active-motion medians 16.5–16.9 ms, p95 18.2–19.8 ms and no active-motion intervals over 33 ms. Each Explore full-RAF window has one interval over 33 ms. Bounded hardware evidence, not universal 60 fps or physical-device certification. |
+| Arabic & RTL         |        8.5 | Inspected Arabic tablet, evidence, local comparison and [375px fallback](../media/v7/fallback-arrival-ar-dark-375.png) show intentional direction/type. Native Gulf-reader validation remains absent.                                                                                                                                                              |
+| Trust & evidence     |        9.0 | Source, basis, date and native currency remain together; reference/Demo and straight-line/non-routing distinctions are explicit in current comparison and evidence.                                                                                                                                                                                                |
+| Discretion & privacy |        9.5 | No automatic enquiry or urgency. Recorded contextual sign-in handoff preserves user control; capability classification exposes no raw renderer string. Not a legal/storage audit.                                                                                                                                                                                  |
+| Developer appeal     |        9.0 | ORLA is presented with dignity and qualification, without fabricating inventory, affiliation or an available offer.                                                                                                                                                                                                                                                |
+| Speed                |        8.5 | Green baseline hosted scores strengthen confidence in the capability repair, but all retained LCP measurements exceed two seconds; field INP and physical devices remain unverified.                                                                                                                                                                               |
+| Accessibility        |        9.0 | Clean current matrix/fallback checks plus recorded pointer-offset, keyboard origin, disclosure and handoff regressions address concrete barriers. Full native AT validation is still open.                                                                                                                                                                         |
+
+**Mean: 9.000/10. Minimum: 8.5.** Only visual craft changes from the fourth round (+0.5), based on the three inspected production repairs. The stage gate is **board aggregate ≥9.0 with no criterion below 8**; there is no additional requirement that every persona mean reach 9.0. This individual scorecard neither computes the board aggregate nor waives the separate performance requirement. This corrects the individual-gate wording in the preserved fourth-round record.
+
+## Top three delights
+
+1. Price, basis, date and source form a usable decision context rather than an unsupported headline.
+2. The repaired distance annotation keeps both the connection and the country geography legible.
+3. Useful, explained 2D discovery remains available on real software-rendering devices.
+
+## Top three remaining problems
+
+1. **Strict first-view budget remains unmet.** Every retained LCP value is above two seconds; the new polish hosted run is pending.
+2. **Orientation can be stronger.** Initial Explore has sparse neighbourhood anchors, and cluster counts still need the source/reading-map explanation before their meaning is obvious.
+3. **Independent assurance is incomplete.** Physical M1/phone, native Gulf reader and complete native screen-reader journeys have not been validated. Long Arrival text also remains constrained in its single-line input.
+
+**One-line verdict:** The captured Stage 2 comparison and evidence journey now earns a 9.0 from me; keep the separate speed and independent-validation work visibly open.
