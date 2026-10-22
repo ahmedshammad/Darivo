@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { conciergeCopy } from '../messages/concierge';
+import type { ConciergeRequest } from '../src/lib/concierge-transport';
 
 for (const locale of ['en', 'ar'] as const) {
   for (const fallback of [false, true]) {
@@ -111,5 +112,60 @@ for (const locale of ['en', 'ar'] as const) {
     await expect(scenario.locator('.cq-sources')).toContainText(copy.asOf);
     await expect(scenario.locator('.cq-sources')).toContainText(copy.basis.USER_ASSUMPTION);
     expect(await scenario.locator('details').count()).toBe(0);
+  });
+}
+
+for (const locale of ['en', 'ar'] as const) {
+  test(`No-match recovery opens requirements without changing or submitting them in ${locale}`, async ({
+    page,
+  }) => {
+    const copy = conciergeCopy[locale];
+    const posts: ConciergeRequest[] = [];
+    page.on('request', (request) => {
+      if (request.method() === 'POST' && new URL(request.url()).pathname === '/api/v1/concierge')
+        posts.push(request.postDataJSON());
+    });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto(`/${locale}/concierge?fallback=1`);
+    await page.getByRole('button', { name: new RegExp(copy.examples[2].name) }).click();
+    const turn = page.getByTestId('concierge-turn').last();
+    await expect(turn).toHaveAttribute('data-status', 'complete', { timeout: 30000 });
+    await expect(turn.getByTestId('concierge-project')).toHaveCount(0);
+    expect(posts).toHaveLength(1);
+    await turn.getByRole('button', { name: copy.reviewRequirements, exact: true }).first().click();
+    await expect(page.locator('#concierge-mustHaves')).toBeFocused();
+    await expect(page.getByTestId('concierge')).toHaveAttribute('data-sheet', 'expanded');
+    const brief = page.getByTestId('concierge-brief');
+    const condition = brief
+      .getByRole('group', { name: copy.must, exact: true })
+      .locator('.cq-constraint-editor')
+      .first();
+    const textBefore = await condition.getByRole('textbox').inputValue();
+    await expect(condition.locator('details')).toHaveAttribute('open', '');
+    const strictEvidence = condition.getByRole('checkbox', {
+      name: copy.evidenceRequired,
+      exact: true,
+    });
+    await expect(strictEvidence).toBeChecked();
+    expect(posts).toHaveLength(1);
+    await strictEvidence.uncheck();
+    expect(posts).toHaveLength(1);
+    await brief.getByRole('button', { name: copy.apply, exact: true }).click();
+    await expect.poll(() => posts.length).toBe(2);
+    const changed = posts[1].patch?.operations.find(
+      (operation) => operation.op === 'constraint.upsert',
+    );
+    expect(changed?.op).toBe('constraint.upsert');
+    if (changed?.op !== 'constraint.upsert')
+      throw new Error('Expected explicit evidence preference edit');
+    expect(changed.value.text).toBe(textBefore);
+    expect(changed.value.verificationRequired).toBe(false);
+    await expect(page.getByTestId('concierge-turn').last()).toHaveAttribute(
+      'data-status',
+      'complete',
+      { timeout: 30000 },
+    );
+    await expect(strictEvidence).not.toBeChecked();
   });
 }

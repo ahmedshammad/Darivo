@@ -56,8 +56,8 @@ const copy = {
     ar: 'إليك السجلات المتاحة لمراجعتها مقابل طلبك. تُبقي البطاقات الأسعار الأصلية والمصادر والمعلومات غير المؤكدة ظاهرة.',
   },
   NO_MATCHES: {
-    en: 'I could not establish a match from the available records. We can adjust the Brief or ask an advisor.',
-    ar: 'لم أتمكن من إثبات تطابق من السجلات المتاحة. يمكننا تعديل الطلب أو الاستعانة بمستشار.',
+    en: 'I could not verify an exact match. Review your requirements to choose the next step.',
+    ar: 'لم أتمكن من توثيق تطابق تام. راجع متطلباتك لاختيار الخطوة التالية.',
   },
   ADVICE_HANDOFF: {
     en: 'That decision needs qualified advice. I can offer an advisor enquiry for you to review; nothing has been shared.',

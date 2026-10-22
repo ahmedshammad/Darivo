@@ -635,6 +635,23 @@ export function ConciergeClient({
                           onSelect={selectCard}
                           onToggleCompare={toggleCompare}
                           onCompare={compareCards}
+                          onReviewRequirements={() => {
+                            setTab('brief');
+                            setExpanded(true);
+                            requestAnimationFrame(() => {
+                              const target =
+                                reading.current?.querySelector<HTMLElement>('#concierge-mustHaves');
+                              target?.parentElement
+                                ?.querySelectorAll<HTMLDetailsElement>(
+                                  '.cq-constraint-editor details',
+                                )
+                                .forEach((details) => {
+                                  details.open = true;
+                                });
+                              target?.scrollIntoView({ block: 'start', behavior: 'instant' });
+                              target?.focus({ preventScroll: true });
+                            });
+                          }}
                           onMap={(next, ids) => {
                             ignoredRequest.current =
                               concierge.turns.at(-1)?.requestId ?? activeRequest.current;

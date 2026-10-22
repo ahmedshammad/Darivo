@@ -26,6 +26,7 @@ import {
   cardEntity,
   createFact,
   constraintEvidence,
+  constraintKindFromText,
   completionUpperBound,
   deadlineBoundary,
   groundProject,
@@ -158,6 +159,46 @@ export function matchesCardConstraints(
     return true;
   });
 }
+/** Input cards must already satisfy the exact geographic, budget and deadline scope.
+ * A gap is conditional on a nonempty cohort satisfying every OTHER requirement;
+ * an empty joint result alone cannot identify a failing individual constraint.
+ */
+export function conditionalEvidenceGap(
+  scopedCards: GroundedCard[],
+  market: MarketBrief | null,
+  brief: ConciergeBrief,
+): { en: string; ar: string } | null {
+  const labels: Record<string, { en: string; ar: string }> = {
+    beachfront: bilingual('a beachfront location', 'الموقع على البحر'),
+    'private-pool': bilingual('a private pool', 'المسبح الخاص'),
+  };
+  for (const requirement of brief.mustHaves) {
+    if (
+      !requirement.verificationRequired ||
+      (requirement.marketIds.length && (!market || !requirement.marketIds.includes(market.id)))
+    )
+      continue;
+    const label = labels[constraintKindFromText(requirement.text) ?? ''];
+    if (!label) continue;
+    const otherRequirements = {
+      ...brief,
+      mustHaves: brief.mustHaves.filter((row) => row.id !== requirement.id),
+    };
+    const cohort = scopedCards.filter((card) =>
+      matchesCardConstraints(card, market ? [market] : [], otherRequirements),
+    );
+    if (
+      !cohort.length ||
+      cohort.some((card) => constraintEvidence(card, requirement).value === true)
+    )
+      continue;
+    return bilingual(
+      `Among records satisfying your other requirements, ${label.en} is not verified. This is an evidence gap, not proof that the feature is absent. Your areas and requirements are unchanged.`,
+      `ضمن السجلات التي تستوفي متطلباتك الأخرى، لم يُوثّق ${label.ar}. هذا نقص في الأدلة، وليس إثباتاً لغياب الميزة. مناطقك ومتطلباتك لم تتغير.`,
+    );
+  }
+  return null;
+}
 export async function executeConciergeTool(
   call: ConciergeToolCall,
   context: ToolContext,
@@ -243,8 +284,10 @@ export async function executeConciergeTool(
               a.nameEn.localeCompare(b.nameEn),
           );
         const eligibleCards: GroundedCard[] = [];
+        const scopedCards: GroundedCard[] = [];
         for (const project of candidates) {
           const card = await groundProject(project, context.brief);
+          if (card) scopedCards.push(card);
           if (card && matchesCardConstraints(card, market ? [market] : [], context.brief))
             eligibleCards.push(card);
         }
@@ -257,16 +300,20 @@ export async function executeConciergeTool(
             kind: 'project-cards',
             cards,
           });
-        else
+        else {
+          const gap = conditionalEvidenceGap(scopedCards, market, context.brief);
           result.components.push({
             ...notice(
               context,
               'NO_MATCHES',
-              `No records establish all the requested constraints${market ? ` for ${market.country}` : ''}. Missing evidence is not a match; refine the Brief or request confirmation.`,
-              `لا توجد سجلات تثبت جميع الشروط المطلوبة${market ? ` في ${market.country === 'UAE' ? 'الإمارات' : 'مصر'}` : ''}. غياب الدليل ليس تطابقاً؛ نقّح الطلب أو اطلب التأكيد.`,
+              gap?.en ??
+                `No records establish all the requested constraints${market ? ` for ${market.country}` : ''}. Missing evidence is not a match; refine the Brief or request confirmation.`,
+              gap?.ar ??
+                `لا توجد سجلات تثبت جميع الشروط المطلوبة${market ? ` في ${market.country === 'UAE' ? 'الإمارات' : 'مصر'}` : ''}. غياب الدليل ليس تطابقاً؛ نقّح الطلب أو اطلب التأكيد.`,
             ),
-            id: `${componentId}:${market?.id ?? 'all'}:none`,
+            id: `${componentId}:${market?.id ?? 'all'}:${gap ? 'evidence-gap' : 'none'}`,
           });
+        }
       }
       if (markets.length >= 2 && /compare|قارن/.test(normalize(context.message))) {
         const selected = groups.map((group) => group[0]).filter(Boolean);

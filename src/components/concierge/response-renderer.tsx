@@ -277,6 +277,7 @@ type ResponseProps = {
   onToggleCompare: (card: GroundedCard) => void;
   onCompare: (cards: GroundedCard[]) => void;
   onMap: (camera: AtlasCamera, ids: string[]) => void;
+  onReviewRequirements: () => void;
 };
 export function ResponseComponent({
   component,
@@ -287,6 +288,7 @@ export function ResponseComponent({
   onToggleCompare,
   onCompare,
   onMap,
+  onReviewRequirements,
 }: ResponseProps) {
   const t = conciergeCopy[locale];
   const { format, digits } = useConciergeNumbers(locale);
@@ -583,6 +585,12 @@ export function ResponseComponent({
       return (
         <aside className="cq-notice" aria-label={t.notice} data-component-kind={component.kind}>
           <p>{component.text[locale]}</p>
+          {component.code === 'NO_MATCHES' && (
+            <button className="cq-action" type="button" onClick={onReviewRequirements}>
+              {t.reviewRequirements}
+              <ArrowUpRight aria-hidden="true" />
+            </button>
+          )}
         </aside>
       );
   }

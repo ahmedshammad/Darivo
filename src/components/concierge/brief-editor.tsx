@@ -447,7 +447,9 @@ export function BriefEditor({
       </label>
       {(['mustHaves', 'exclusions'] as const).map((list) => (
         <fieldset key={list}>
-          <legend>{list === 'mustHaves' ? t.must : t.exclusions}</legend>
+          <legend id={`concierge-${list}`} tabIndex={-1}>
+            {list === 'mustHaves' ? t.must : t.exclusions}
+          </legend>
           {current[list].map((item) => (
             <div className="cq-constraint-editor" key={item.id}>
               <div className="cq-constraint">

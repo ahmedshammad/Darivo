@@ -144,6 +144,33 @@ describe('Concierge authorized engine and grounded replay', () => {
       }
     }
   });
+  it('explains the beachfront evidence gap within the exact requested islands without returning nonmatches', async () => {
+    for (const message of [
+      'A beachfront villa on Saadiyat or the Palm',
+      'فيلا على البحر في السعديات أو النخلة',
+    ]) {
+      const result = await runConciergeTurn(
+        { ...input(new MockConciergeProvider()), message },
+        () => {},
+      );
+      expect(result.status).toBe('complete');
+      expect(result.components.some((component) => 'cards' in component)).toBe(false);
+      const notices = result.components.filter(
+        (component) => component.kind === 'notice' && component.code === 'NO_MATCHES',
+      );
+      expect(notices).toHaveLength(1);
+      if (notices[0].kind !== 'notice') throw new Error('notice_required');
+      expect(notices[0].text.en).toContain('Among records satisfying your other requirements');
+      expect(notices[0].text.en).toContain('beachfront');
+      expect(notices[0].text.en).not.toContain('Jebel');
+      expect(result.brief.markets.flatMap((market) => market.placeIds).sort()).toEqual([
+        'palm',
+        'saadiyat',
+      ]);
+      expect(result.brief.mustHaves.some((row) => row.verificationRequired)).toBe(true);
+      expect(result.proposals).toEqual([]);
+    }
+  });
   it('keeps taste as soft source-backed ordering and preserves explicit type filters', async () => {
     const ctx = context();
     ctx.brief.tasteMemory = {

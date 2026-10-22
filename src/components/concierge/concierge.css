@@ -1249,3 +1249,7 @@
 .cq-scenario-inputs {
   margin-top: 12px !important;
 }
+
+.cq-notice > .cq-action {
+  margin-top: 14px;
+}
