@@ -148,6 +148,7 @@ async function seedInventory(dataset: ReferenceDataset) {
     const kinds = [
       'school',
       'hospital',
+      'culture',
       ...(coastal ? ['marina', 'beach'] : []),
       ...(['dubai-hills', 'emirates-hills', 'yas', 'north-coast'].includes(area[0])
         ? ['golf']
@@ -158,7 +159,7 @@ async function seedInventory(dataset: ReferenceDataset) {
       const poi = {
         communityId: area[0],
         nameEn: `Demo POI · ${kind}`,
-        nameAr: `موقع تجريبي · ${{ school: 'مدرسة', hospital: 'مستشفى', marina: 'مرسى', beach: 'شاطئ', golf: 'غولف' }[kind as 'school']}`,
+        nameAr: `موقع تجريبي · ${{ school: 'مدرسة', hospital: 'مستشفى', culture: 'ثقافة ومطاعم', marina: 'مرسى', beach: 'شاطئ', golf: 'غولف' }[kind as 'school']}`,
         kind,
         lat: area[5] + 0.003 * (poiIndex + 1),
         lng: area[6] + 0.002 * (poiIndex + 1),
@@ -166,6 +167,26 @@ async function seedInventory(dataset: ReferenceDataset) {
       };
       await db.demoPOI.upsert({ where: { id: poiId }, create: { id: poiId, ...poi }, update: poi });
     }
+  }
+  // Fictional transport markers: approximate regional contexts, never named operating airports.
+  for (const [communityId, lat, lng] of [
+    ['downtown', 25.25, 55.37],
+    ['saadiyat', 24.43, 54.65],
+    ['new-cairo', 30.12, 31.41],
+    ['north-coast', 30.93, 28.5],
+    ['el-gouna', 27.17, 33.81],
+  ] as const) {
+    const id = `demo-poi-${communityId}-airport`;
+    const marker = {
+      communityId,
+      lat,
+      lng,
+      kind: 'airport',
+      nameEn: 'Demo POI · airport',
+      nameAr: 'موقع تجريبي · مطار',
+      isDemo: true,
+    };
+    await db.demoPOI.upsert({ where: { id }, create: { id, ...marker }, update: marker });
   }
   const names = [
     'The Courtyard',
