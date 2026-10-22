@@ -1,0 +1,318 @@
+{
+  "_meta": {
+    "name": "Darivo reference dataset — real elite developers and flagship projects (UAE + Egypt)",
+    "compiled_on": "2026-10-22",
+    "purpose": "Real, publicly reported project-level data for design review, demo realism and the map/home experience. NOT unit inventory and NOT an offer.",
+    "rules_for_use": [
+      "Show every figure with its 'as_of' date and a 'Source' link in the UI.",
+      "Label all prices 'Indicative, publicly reported — confirm with advisor'.",
+      "Prices marked basis='listing' come from individual portal listings, not developer price lists; display them as 'Recently listed from', never as the developer's price.",
+      "Do not hotlink or copy developer renders, photos or logos. Use Darivo's own placeholder art and a text wordmark; link out to the official source.",
+      "Coordinates are approximate community-level centroids for map placement only; flag 'approx' and refine before production.",
+      "Unit-level availability for real projects is 'On request via your Darivo advisor'. Unit-level demo inventory must belong to fictional demo projects, clearly badged 'Demo'.",
+      "Re-verify every record before any public launch; prices and launches change frequently."
+    ]
+  },
+  "market_pulse": [
+    {
+      "market": "Dubai",
+      "metric": "Home sales above USD 10M, H1 2026",
+      "value": "USD 5.1bn across 296 transactions (+14% value YoY, +16% volume YoY)",
+      "detail": "Top micro-markets: Dubai Hills Estate (51 deals), Palm Jumeirah (50 deals)",
+      "as_of": "2026-07-07",
+      "source": "https://www.abode2.com/dubai-shatters-h1-records-with-5-1-billion-in-ultra-prime-home-sales/"
+    },
+    {
+      "market": "Dubai",
+      "metric": "Villa capital values, 12 months to June 2026",
+      "value": "+2% villas overall; Jumeirah Islands +17.9%, Emirates Hills +10.7%",
+      "as_of": "2026-06-30",
+      "source": "https://valustrat.com/pages/dubai-property-capital-values-rise-june-2026-valustrat"
+    },
+    {
+      "market": "Egypt",
+      "metric": "Top-10 developer contracted sales, H1 2026",
+      "value": "≈EGP 670bn (+2.9% YoY) on ≈39k units; TMG ≈EGP 219bn, Palm Hills ≈EGP 94bn",
+      "detail": "Share by region: East Cairo 47%, North Coast 33%, West Cairo 11%, Ain Sokhna 7%",
+      "as_of": "2026-08",
+      "source": "https://enterpriseam.com/egypt/hardhat/revenues-for-egypts-top-developers-are-growing-but-the-market-producing-these-sales-is-shrinking/"
+    }
+  ],
+  "developers": [
+    {
+      "id": "omniyat",
+      "name": "OMNIYAT",
+      "country": "UAE",
+      "positioning": "Design-led ultra-prime developer; branded residences",
+      "known_for": ["The Opus", "The Sterling", "One at Palm Jumeirah", "Orla"],
+      "source": "https://www.luxhabitat.ae/the-journal/top-luxury-real-estate-developers-in-dubai/"
+    },
+    {
+      "id": "emaar",
+      "name": "Emaar Properties",
+      "country": "UAE",
+      "positioning": "Master developer of Dubai's landmark communities",
+      "known_for": ["Downtown Dubai", "Dubai Hills Estate", "Dubai Creek Harbour", "Emaar Beachfront", "The Oasis"],
+      "source": "https://www.luxhabitat.ae/the-journal/top-luxury-real-estate-developers-in-dubai/"
+    },
+    {
+      "id": "nakheel",
+      "name": "Nakheel (Dubai Holding Real Estate)",
+      "country": "UAE",
+      "positioning": "Master developer of Dubai's palm islands",
+      "known_for": ["Palm Jumeirah", "Palm Jebel Ali"],
+      "source": "https://www.khaleejtimes.com/business/dubais-nakheel-releases-44-new-beachfront-villas-on-palm-jebel-ali"
+    },
+    {
+      "id": "aldar",
+      "name": "Aldar Properties",
+      "country": "UAE",
+      "positioning": "Abu Dhabi's leading developer; Saadiyat Island masterplan",
+      "known_for": ["Saadiyat Lagoons", "Saadiyat Grove", "Marsa Al Saadiyat"],
+      "source": "https://www.bhomes.com/en/blog/market-news/aldar-launches-marsa-al-saadiyat"
+    },
+    {
+      "id": "other-uae-luxury",
+      "name": "Other UAE luxury names to add next",
+      "country": "UAE",
+      "positioning": "Named among Dubai's leading luxury developers in 2026 roundups; projects not yet captured here",
+      "known_for": ["H&H Development", "Meraas", "Muraba", "Sobha Realty", "Ellington Properties"],
+      "source": "https://www.luxhabitat.ae/the-journal/top-luxury-real-estate-developers-in-dubai/"
+    },
+    {
+      "id": "tmg",
+      "name": "Talaat Moustafa Group (TMG)",
+      "country": "Egypt",
+      "positioning": "Egypt's top developer by H1 2026 contracted sales",
+      "known_for": ["SouthMED", "Madinaty", "Noor City"],
+      "source": "https://www.zawya.com/en/business/construction/top-10-egyptian-developers-sales-rise-to-13.26bln-in-h1-2026-460280"
+    },
+    {
+      "id": "palm-hills",
+      "name": "Palm Hills Developments",
+      "country": "Egypt",
+      "positioning": "No. 2 by H1 2026 contracted sales (≈EGP 94bn)",
+      "known_for": [],
+      "source": "https://www.zawya.com/en/business/construction/top-10-egyptian-developers-sales-rise-to-13.26bln-in-h1-2026-460280"
+    },
+    {
+      "id": "emaar-misr",
+      "name": "Emaar Misr",
+      "country": "Egypt",
+      "positioning": "Premium gated communities and coastal resorts",
+      "known_for": ["Marassi North Coast", "Marassi Red Sea", "Mivida", "Uptown Cairo", "Cairo Gate"],
+      "source": "https://www.propertyfinder.eg/en/plp/buy/townhouse-for-sale-north-coast-sidi-abdel-rahman-marassi-105738137.html"
+    },
+    {
+      "id": "ora",
+      "name": "Ora Developers",
+      "country": "Egypt",
+      "positioning": "Luxury lifestyle communities led by Naguib Sawiris",
+      "known_for": ["ZED Sheikh Zayed", "ZED East", "Silversands North Coast", "Pyramid Hills"],
+      "source": "https://www.bayut.eg/en/property/details-503922386.html"
+    },
+    {
+      "id": "sodic",
+      "name": "SODIC",
+      "country": "Egypt",
+      "positioning": "Premium residential and North Coast resorts; Nobu-branded residences in pipeline; fast H1 2026 growth (≈EGP 23.6bn, +227% YoY)",
+      "known_for": ["June (Ras El Hekma)", "Caesar", "Malaaz", "Ogami"],
+      "source": "https://enterpriseam.com/egypt/hardhat/revenues-for-egypts-top-developers-are-growing-but-the-market-producing-these-sales-is-shrinking/"
+    }
+  ],
+  "projects": [
+    {
+      "id": "orla-palm-jumeirah",
+      "name": "Orla, Dorchester Collection",
+      "developer_id": "omniyat",
+      "country": "UAE", "city": "Dubai", "community": "Palm Jumeirah (Crescent)",
+      "approx_coords": [25.128, 55.118],
+      "type": ["Branded apartments", "Penthouses", "Sky Palace"],
+      "headline_facts": [
+        "Architecture by Foster + Partners; serviced by Dorchester Collection",
+        "Beachfront site of about 29,000 sqm at the apex of the Crescent",
+        "2–4 bedroom simplex and duplex residences plus penthouses"
+      ],
+      "price_from": {"amount": 57300000, "currency": "AED", "label": "4-bedroom residences from", "basis": "agent_listing"},
+      "price_note": "Sky Palace (shell & core) listed from AED 145M",
+      "completion": "Expected 2027",
+      "status": "Under construction",
+      "as_of": "2026-06",
+      "sources": ["https://www.nestseekers.com/5589481/orla-20260624032650", "https://www.nestseekers.com/5590966/orla-20260624032650"]
+    },
+    {
+      "id": "palm-jebel-ali-villas",
+      "name": "Palm Jebel Ali — Beach & Coral Collection Villas",
+      "developer_id": "nakheel",
+      "country": "UAE", "city": "Dubai", "community": "Palm Jebel Ali",
+      "approx_coords": [24.995, 54.990],
+      "type": ["Beachfront villas (5–7 bed)"],
+      "headline_facts": [
+        "Island 13.4 km across, about twice the size of Palm Jumeirah",
+        "44 villas released on Frond F in August 2026",
+        "First villa handovers phased from late 2026 through 2027"
+      ],
+      "price_from": {"amount": 20000000, "currency": "AED", "label": "Beach Collection villas from", "basis": "agent_listing"},
+      "payment_plan": "20% down / 60% during construction / 20% on handover",
+      "completion": "Phased late 2026–2027",
+      "status": "Under construction",
+      "as_of": "2026-08-20",
+      "sources": ["https://www.khaleejtimes.com/business/dubais-nakheel-releases-44-new-beachfront-villas-on-palm-jebel-ali", "https://insiderealty.ae/en/projects/nakheel-the-beach-collection-villas-palm-jebel-ali-dubai"]
+    },
+    {
+      "id": "palm-central-private-residences",
+      "name": "Palm Central Private Residences",
+      "developer_id": "nakheel",
+      "country": "UAE", "city": "Dubai", "community": "Palm Jebel Ali",
+      "approx_coords": [24.985, 54.995],
+      "type": ["Beachfront apartments (1–5 bed)"],
+      "headline_facts": ["222 residences released in June 2026 after the October 2025 first phase"],
+      "price_from": {"amount": 2700000, "currency": "AED", "label": "From", "basis": "press_report"},
+      "status": "Off-plan",
+      "as_of": "2026-06-24",
+      "sources": ["https://www.thenationalnews.com/business/property/2026/06/24/nakheel-launches-222-homes-for-sale-at-palm-jebel-ali-with-prices-from-dh27m/"]
+    },
+    {
+      "id": "oasis-palace-ostra",
+      "name": "Palace Villas Ostra, The Oasis",
+      "developer_id": "emaar",
+      "country": "UAE", "city": "Dubai", "community": "The Oasis (Dubailand)",
+      "approx_coords": [25.040, 55.330],
+      "type": ["Branded waterfront villas (4–6 bed)"],
+      "headline_facts": ["Palace-branded villas set around lagoons", "Villas from about 7,287 sq ft"],
+      "price_from": {"amount": 13130000, "currency": "AED", "label": "From", "basis": "broker_project_page"},
+      "payment_plan": "10% down, 20% yearly during construction, 20% on handover",
+      "completion": "Q3 2029",
+      "status": "Off-plan",
+      "as_of": "2026",
+      "sources": ["https://www.bhomes.com/en/off-plan/emaar/palace-ostra-at-oasis"]
+    },
+    {
+      "id": "oasis-palmiera-collective",
+      "name": "Palmiera Collective, The Oasis",
+      "developer_id": "emaar",
+      "country": "UAE", "city": "Dubai", "community": "The Oasis (Dubailand)",
+      "approx_coords": [25.036, 55.336],
+      "type": ["Waterfront villas (4 bed)"],
+      "headline_facts": ["Limited collection of 38 water-facing villas around swimmable lagoons and a private beach"],
+      "price_from": {"amount": 16500000, "currency": "AED", "label": "From", "basis": "broker_project_page"},
+      "payment_plan": "80/20",
+      "completion": "February 2029",
+      "status": "Off-plan",
+      "as_of": "2026",
+      "sources": ["https://metropolitan.realestate/the-oasis/palmiera/"]
+    },
+    {
+      "id": "saadiyat-lagoons",
+      "name": "Saadiyat Lagoons",
+      "developer_id": "aldar",
+      "country": "UAE", "city": "Abu Dhabi", "community": "Saadiyat Island",
+      "approx_coords": [24.520, 54.450],
+      "type": ["Villas"],
+      "headline_facts": ["Nature-led villa district within the Saadiyat masterplan"],
+      "price_from": {"amount": 6800000, "currency": "AED", "label": "From", "basis": "portal_project_page"},
+      "completion": "Q2 2026",
+      "status": "Portal shows developer stock sold out",
+      "as_of": "2026",
+      "sources": ["https://www.propertyfinder.ae/en/new-projects/aldar-properties-pjsc/saadiyat-lagoons"]
+    },
+    {
+      "id": "sei-saadiyat",
+      "name": "Sei Saadiyat",
+      "developer_id": "aldar",
+      "country": "UAE", "city": "Abu Dhabi", "community": "Saadiyat Cultural District",
+      "approx_coords": [24.535, 54.400],
+      "type": ["Apartments (studio–3 bed)"],
+      "headline_facts": ["Announced 27 August 2026"],
+      "price_from": {"amount": 2950000, "currency": "AED", "label": "From", "basis": "broker_project_page"},
+      "completion": "Q4 2030",
+      "status": "Off-plan",
+      "as_of": "2026-08",
+      "sources": ["https://www.luxhabitat.ae/developments/abu-dhabi/sei-saadiyat/"]
+    },
+    {
+      "id": "marsa-al-saadiyat",
+      "name": "Marsa Al Saadiyat",
+      "developer_id": "aldar",
+      "country": "UAE", "city": "Abu Dhabi", "community": "Saadiyat Island",
+      "approx_coords": [24.555, 54.420],
+      "type": ["Masterplanned district incl. luxury villas"],
+      "headline_facts": ["Final district of the Saadiyat masterplan, AED 100bn gross development value", "First residential phase sales planned for H2 2026"],
+      "price_from": null,
+      "status": "Launching",
+      "as_of": "2026-07-23",
+      "sources": ["https://www.bhomes.com/en/blog/market-news/aldar-launches-marsa-al-saadiyat", "https://spearswms.com/property/20-billion-masterplan-unveiled-for-abu-dhabis-saadiyat-island/"]
+    },
+    {
+      "id": "southmed",
+      "name": "SouthMED",
+      "developer_id": "tmg",
+      "country": "Egypt", "city": "North Coast", "community": "Al Dabaa",
+      "approx_coords": [31.030, 28.430],
+      "type": ["Beachfront villas", "Chalets", "Mansions"],
+      "headline_facts": [
+        "About 23 million sqm masterplan on the Mediterranean",
+        "Four Seasons to manage the first international hotel",
+        "Terraced up to 60 m above sea level; 8 km beach and a marina",
+        "Summer 2026 offer: down payments from 1.5%, plans up to 15 years"
+      ],
+      "price_from": {"amount": 91200000, "currency": "EGP", "label": "Premium beachfront villas (up to 501 sqm) from", "basis": "press_report"},
+      "completion": "First deliveries targeted 2028",
+      "status": "Under construction",
+      "as_of": "2026",
+      "sources": ["https://news.spill.org/en/article/talaat-moustafa-group-leads-north-coast-construction-race-with-record-execution-rates-at-s-449", "https://news.spill.org/en/article/talaat-moustafa-group-launches-unprecedented-offer-at-southmed-449"]
+    },
+    {
+      "id": "silversands",
+      "name": "Silversands North Coast",
+      "developer_id": "ora",
+      "country": "Egypt", "city": "North Coast", "community": "Sidi Heneish (KM 243)",
+      "approx_coords": [31.120, 27.620],
+      "type": ["Chalets", "Penthouses", "Villas", "Lodges"],
+      "headline_facts": ["About 724 acres with a 1.4 km beachfront and an 88,000 sqm crystal lagoon", "About 4 km from Almaza Bay"],
+      "price_from": {"amount": 24041556, "currency": "EGP", "label": "Sea-view 4-bed penthouse recently listed at", "basis": "listing"},
+      "status": "Off-plan phases selling",
+      "as_of": "2026-08",
+      "sources": ["https://www.bayut.eg/en/property/details-503922386.html", "https://www.bayut.eg/en/property/details-503893418.html"]
+    },
+    {
+      "id": "june-sodic",
+      "name": "June",
+      "developer_id": "sodic",
+      "country": "Egypt", "city": "North Coast", "community": "Ras El Hekma",
+      "approx_coords": [31.220, 27.880],
+      "type": ["Villas", "Townhouses", "Beach apartments"],
+      "headline_facts": ["About 281 feddans with 600 m of beachfront and about 2,800 units", "Terrain rises to about 55 m above sea level"],
+      "price_from": {"amount": 22400000, "currency": "EGP", "label": "Standalone villa (222 sqm) recently listed at", "basis": "listing"},
+      "as_of": "2026-07",
+      "sources": ["https://invest-gate.me/?p=54746", "https://www.bayut.eg/en/property/details-503800969.html"]
+    },
+    {
+      "id": "marassi-red-sea",
+      "name": "Marassi Red Sea",
+      "developer_id": "emaar-misr",
+      "country": "Egypt", "city": "Red Sea", "community": "Soma Bay",
+      "approx_coords": [26.850, 33.980],
+      "type": ["Townhouses", "Villas"],
+      "headline_facts": ["About 10 million sqm with a 1.8 km beachfront", "About 40 minutes from Hurghada Airport"],
+      "price_from": {"amount": 34823000, "currency": "EGP", "label": "3-bed townhouse (167 sqm) recently listed at", "basis": "listing"},
+      "completion": "2030",
+      "status": "Off-plan",
+      "as_of": "2026-06",
+      "sources": ["https://www.propertyfinder.eg/en/plp/buy/townhouse-for-sale-red-sea-safaga-soma-bay-hurghada-marassi-red-sea-83394721.html"]
+    },
+    {
+      "id": "marassi-north-coast",
+      "name": "Marassi North Coast",
+      "developer_id": "emaar-misr",
+      "country": "Egypt", "city": "North Coast", "community": "Sidi Abdel Rahman",
+      "approx_coords": [30.970, 28.760],
+      "type": ["Chalets", "Twin houses", "Standalone villas"],
+      "headline_facts": ["Resort of about 6.5 million sqm with an 18-hole golf course"],
+      "price_from": null,
+      "price_note": "Resale standalone villas were listed at roughly EGP 30.75M–51.25M in an undated portal guide; treat as low confidence",
+      "confidence": "low",
+      "sources": ["https://www.nawy.com/blog/45160-top-properties-for-sale-in-marasi-egypt/amp"]
+    }
+  ]
+}
