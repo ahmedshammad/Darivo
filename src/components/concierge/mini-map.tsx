@@ -113,6 +113,30 @@ export function ConciergeMiniMap({
         <h3>{t.mapPreview}</h3>
         <span className="cq-badge">{t.approximate}</span>
       </div>
+      <ol className="cq-mini-places">
+        {anchors.map((anchor, index) => (
+          <li key={anchor.id}>
+            <button
+              type="button"
+              onClick={() =>
+                onMap(
+                  {
+                    center: anchor.center,
+                    zoom: anchor.zoom,
+                    pitch: 0,
+                    key: `${component.id}-${anchor.id}`,
+                  },
+                  [anchor.id],
+                )
+              }
+            >
+              <span>{number(index + 1)}</span>
+              {anchor.name}
+              <ArrowUpRight aria-hidden="true" />
+            </button>
+          </li>
+        ))}
+      </ol>
       {land ? (
         <svg viewBox="0 0 480 240" role="img" aria-labelledby={titleId}>
           <title
@@ -150,30 +174,6 @@ export function ConciergeMiniMap({
           Natural Earth
         </a>
       </p>
-      <ol className="cq-mini-places">
-        {anchors.map((anchor, index) => (
-          <li key={anchor.id}>
-            <button
-              type="button"
-              onClick={() =>
-                onMap(
-                  {
-                    center: anchor.center,
-                    zoom: anchor.zoom,
-                    pitch: 0,
-                    key: `${component.id}-${anchor.id}`,
-                  },
-                  [anchor.id],
-                )
-              }
-            >
-              <span>{number(index + 1)}</span>
-              {anchor.name}
-              <ArrowUpRight aria-hidden="true" />
-            </button>
-          </li>
-        ))}
-      </ol>
       <button
         type="button"
         className="cq-action"

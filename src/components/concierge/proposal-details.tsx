@@ -3,6 +3,7 @@
 import type { GroundedCard, WriteProposal } from '@/src/lib/concierge';
 import { conciergeCopy, type ConciergeLocale } from '@/messages/concierge';
 import { useConciergeNumbers } from './response-renderer';
+import { formatConciergeExpiry } from '@/src/lib/concierge-presentation';
 
 /** The confirmation shows the validated write arguments, never an inferred appointment. */
 export function ProposalDetails({
@@ -81,7 +82,11 @@ export function ProposalDetails({
       <div>
         <dt>{t.expires}</dt>
         <dd>
-          <bdi>{digits(proposal.expiresAt)}</bdi>
+          <time dateTime={proposal.expiresAt}>
+            <bdi>
+              {formatConciergeExpiry(proposal.expiresAt, locale, /[٠-٩]/.test(digits('1')))}
+            </bdi>
+          </time>
         </dd>
       </div>
     </dl>

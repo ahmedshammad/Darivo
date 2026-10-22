@@ -1280,3 +1280,43 @@
 .cq-notice > .cq-action {
   margin-top: 14px;
 }
+
+.concierge .cq-source-detail {
+  margin-top: 6px;
+  border-top: 0;
+}
+.concierge .cq-source-detail summary {
+  min-height: 36px;
+  padding-block: 6px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.concierge .cq-source-detail p {
+  color: var(--cq-muted);
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  padding-block: 4px 8px;
+}
+.cq-conversion {
+  margin-top: 10px;
+}
+.cq-decision-caveat {
+  margin-block: 14px;
+  border-inline-start: 2px solid var(--cq-accent);
+  padding-inline-start: 12px;
+}
+.cq-decision-caveat p {
+  font-size: 13px;
+  line-height: 1.75;
+  margin-top: 4px;
+}
+@media (max-width: 760px) {
+  .cq-mini-map {
+    margin-block: 12px;
+    padding-block: 12px;
+  }
+  .cq-mini-places {
+    margin-block: 6px 12px;
+  }
+}

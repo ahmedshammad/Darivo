@@ -88,9 +88,10 @@ export function FactValue({ fact, locale }: { fact?: GroundedFact; locale: Conci
       {typeof fact.value === 'string' &&
         fact.displayValue?.[locale] &&
         fact.displayValue[locale] !== (fact.originalText ?? fact.value) && (
-          <small>
-            {t.originalWording}: <bdi>{fact.originalText ?? fact.value}</bdi>
-          </small>
+          <details className="cq-source-detail">
+            <summary>{t.originalWording}</summary>
+            <p dir="auto">{fact.originalText ?? fact.value}</p>
+          </details>
         )}
     </>
   );
@@ -111,14 +112,24 @@ export function CardPrice({ card, locale }: { card: GroundedCard; locale: Concie
             {card.price.qualifier && ` · ${card.price.qualifier[locale]}`}
           </small>
           {card.price.converted.map((conversion) => (
-            <small key={conversion.money.currency}>
-              <bdi>{format(conversion.money.amount, conversion.money.currency)}</bdi> · {t.fx} ·{' '}
-              {conversion.asOf.value ? digits(conversion.asOf.value) : t.unknown} ·{' '}
-              <bdi>
-                {format(1)} {card.price!.native.currency} = {format(conversion.rate, undefined, 8)}{' '}
-                {conversion.money.currency}
-              </bdi>
-            </small>
+            <div className="cq-conversion" key={conversion.money.currency}>
+              <small>
+                <bdi>{format(conversion.money.amount, conversion.money.currency)}</bdi> · {t.fx}
+              </small>
+              <small>
+                {t.asOf}{' '}
+                <bdi>{conversion.asOf.value ? digits(conversion.asOf.value) : t.unknown}</bdi>
+              </small>
+              <details className="cq-source-detail">
+                <summary>{t.conversionDetails}</summary>
+                <p>
+                  <bdi>
+                    {format(1)} {card.price!.native.currency} ={' '}
+                    {format(conversion.rate, undefined, 8)} {conversion.money.currency}
+                  </bdi>
+                </p>
+              </details>
+            </div>
           ))}
         </>
       ) : (
@@ -230,6 +241,12 @@ export function ConciergeCard({
       )}
       <CardPrice card={card} locale={locale} />
       <p className="cq-fine">{card.kind === 'reference-project' ? t.noAvailability : t.demoOnly}</p>
+      {card.tradeoff.status !== 'supported' && (
+        <aside className="cq-decision-caveat" data-testid="concierge-decision-caveat">
+          <h4>{t.tradeoff}</h4>
+          <p>{card.tradeoff.text[locale]}</p>
+        </aside>
+      )}
       <SourceEvidence sources={card.sources.slice(0, 1)} locale={locale} />
       <div className="cq-reasons">
         <h4>{t.why}</h4>
@@ -240,8 +257,12 @@ export function ConciergeCard({
             </li>
           ))}
         </ul>
-        <h4>{t.tradeoff}</h4>
-        <p>{card.tradeoff.text[locale]}</p>
+        {card.tradeoff.status === 'supported' && (
+          <>
+            <h4>{t.tradeoff}</h4>
+            <p>{card.tradeoff.text[locale]}</p>
+          </>
+        )}
       </div>
       <details className="cq-evidence">
         <summary>{t.sources}</summary>
@@ -331,6 +352,7 @@ export function ResponseComponent({
                   {component.cards.map((card) => (
                     <td key={card.id}>
                       <CardPrice card={card} locale={locale} />
+                      <SourceEvidence sources={card.sources.slice(0, 1)} locale={locale} />
                     </td>
                   ))}
                 </tr>
@@ -400,11 +422,15 @@ export function ResponseComponent({
                   <bdi>{format(step.percent)}%</bdi>
                 </strong>
                 <h4>{step.label[locale]}</h4>
-                {step.timing.trim() !== step.label[locale].trim() && (
-                  <p>
-                    <bdi>{digits(step.timing)}</bdi>
-                  </p>
-                )}
+                {step.timing.trim() !== step.label[locale].trim() &&
+                  (step.timing.trim() === step.label.en.trim() ? (
+                    <details className="cq-source-detail">
+                      <summary>{t.originalTiming}</summary>
+                      <p dir="auto">{digits(step.timing)}</p>
+                    </details>
+                  ) : (
+                    <p dir="auto">{digits(step.timing)}</p>
+                  ))}
                 <p>
                   <bdi>
                     {format(
