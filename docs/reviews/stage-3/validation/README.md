@@ -1,6 +1,6 @@
 # Stage 3 validation checkpoint
 
-Stage 3 is in progress. These checks validate the implemented Concierge, not the full Darivo v2 goal or a passing design review.
+Stage 3 is in progress. These checks validate the implemented Concierge, not the full Darivo v2 goal or a passing design review. The latest production repair is `28cf808`; formal v2 remains failed at 8.3333/min6.5 and v3 evidence is being collected. Earlier sections below are preserved checkpoints.
 
 ## Initial integration checks (historical)
 
@@ -47,3 +47,19 @@ Recovery now describes a missing required feature only when a nonempty authorize
 Production **build v5 passes**, followed by **eight focused production browser checks**: EN/AR reading and map-control reachability in WebGL/fallback, visible scenario results/inputs/qualifications, and recovery-editor behavior. Evidence logs are `/tmp/darivo-stage3-build-v5.log` and `/tmp/darivo-stage3-reading-v5.log`. This is a focused pass, not a new complete browser-suite or full capture-matrix pass.
 
 The first failed board review, sixteen mobile axe failures, failed execution reports, accessible-name regression and hosted Arabic-detail performance failure remain preserved above and in their original artifacts. The earlier regional-map Lighthouse result (99, LCP 2181.2ms, TBT 49ms) precedes this recovery checkpoint and is not a fresh v5 measurement; its strict two-second LCP miss remains open. The source recovery is committed and pushed as `210f413`. Nine additional public Concierge/Atlas browser tests pass (`/tmp/darivo-stage3-public-ui-v5.log`); this is another focused run, not a full-suite claim. Capture v4 stopped after four clean states when the automation raced an automatically opened disclosure and clicked it closed. The harness now waits for the visible checkbox, and the full matrix is recording into `../media/v5/`; v4 is not complete. Fresh v5 production media, the second formal review and green current-source hosted CI remain pending. **Stage 3 is not accepted by this checkpoint.** Human language, real-provider, full assistive-technology, physical-device and field-INP limits are unchanged.
+
+## Second-review repair verification — 28cf808
+
+All291 unit/integration tests pass in28files; full ESLint, TypeScript and formatting checks pass. Parser105 cases/124phrases and444 authorized execution cases/632turns pass, with all13 counterszero (`execution-passing-v6.json`). No real-provider key is configured. Both production buildv6 andv7 succeed.
+
+Production browserv6 passed20/21 cases and retained one actual Arabic chart-label overlap failure. Larger Arabic glyphs required more vertical separation; the assertion was not weakened. The corrected v7 run passes all22 public Concierge cases: reading/map controls, explicit recovery, outer-frame containment, visible scenario assumptions, chart geometry, stream/draft behavior, progressive map detail and failed-source geographic fallback. Original and corrected logs are `/tmp/darivo-stage3-browser-v6.log` and `/tmp/darivo-stage3-browser-v7.log`.
+
+The wider Atlas production run passes33 cases. Its one demo-login flow fails because the production build intentionally disables demo-account buttons. That case must run under development/hosted CI; production auth restrictions are unchanged. This invocation is not claimed as a full-suite pass. Log: `/tmp/darivo-stage3-atlas-v7.log`. The earlier hosted runs at496a3f7 and210f413 passed the full pipeline; current28cf808 hosted verification is pending.
+
+Media v6 is collecting the complete new matrix and six recordings with detailed-source readiness checks. Current source fixes failed detail requests by entering the geographic fallback, retains regional geography during detail loading, names regional comparison endpoints, confines reading movement to its panel, and keeps a named payment question on its explicit project. Formal review acceptance and fresh performance remain pending.
+
+### Complete production evidence at 28cf808
+
+Media v6 completes all 60 EN/AR, light/dark, desktop/tablet/mobile states with zero page errors, axe findings or horizontal overflow. All 60 report settled tiles. Six signature recordings, 18 supplementary numerical/evidence views, eight settled local-map checkpoints and four requirements-editor checkpoints are retained. Every settled-map checkpoint resolves detailed geography; the editor captures retain the header and viewport frame.
+
+Fresh isolated Lighthouse scores **98 performance, 100 accessibility, 96 best practices and 100 SEO**, with **LCP 2193.2201ms, TBT 78ms and CLS 0**. The strict two-second LCP target remains unmet. See `lighthouse-second-repair-v7.json`; these lab results do not establish field INP or physical-device cadence. The third simulated review is using this complete evidence set. Current-source hosted CI has passed static checks, unit tests and evals; the remaining pipeline is still pending at this checkpoint.
