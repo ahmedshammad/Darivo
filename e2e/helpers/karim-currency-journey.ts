@@ -16,6 +16,9 @@ export type KarimCheckpoint = {
   tools: string[];
 };
 
+type FetchEvidence = { complete: boolean; status?: number; text?: string; error?: string };
+type EvidenceWindow = typeof window & { __darivoKarimSse: FetchEvidence[] };
+
 /** Real UI + streamed API evidence; no mocked model/response or direct DB access. */
 export async function runKarimCurrencyJourney(
   page: Page,
@@ -28,6 +31,46 @@ export async function runKarimCurrencyJourney(
 ) {
   const { locale } = options;
   const t = conciergeCopy[locale];
+  // Observe a clone of the real response inside the browser. Chrome can discard
+  // streamed response bodies before CDP Network.getResponseBody reads them.
+  // Return the exact original promise immediately: no routing, replay or buffering
+  // of the response consumed by the app, and no request/body/signal changes.
+  await page.addInitScript(() => {
+    const evidenceWindow = window as EvidenceWindow;
+    evidenceWindow.__darivoKarimSse = [];
+    const originalFetch = window.fetch.bind(window);
+    window.fetch = (input, init) => {
+      const url = new URL(input instanceof Request ? input.url : String(input), location.href);
+      const method = init?.method ?? (input instanceof Request ? input.method : 'GET');
+      const record: FetchEvidence | undefined =
+        url.pathname === '/api/v1/concierge' && method.toUpperCase() === 'POST'
+          ? { complete: false }
+          : undefined;
+      if (record) evidenceWindow.__darivoKarimSse.push(record);
+      const pending = originalFetch(input, init);
+      if (record) {
+        const failed = (error: unknown) => {
+          record.error = String(error);
+          record.complete = true;
+        };
+        void pending.then((response) => {
+          record.status = response.status;
+          try {
+            void response
+              .clone()
+              .text()
+              .then((text) => {
+                record.text = text;
+                record.complete = true;
+              }, failed);
+          } catch (error) {
+            failed(error);
+          }
+        }, failed);
+      }
+      return pending;
+    };
+  });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto(
     `${options.origin ?? ''}/${locale}/concierge${options.fallback ? '?fallback=1' : ''}`,
@@ -35,17 +78,28 @@ export async function runKarimCurrencyJourney(
   const turns = page.getByTestId('concierge-turn');
   const send = async (message: string): Promise<KarimCheckpoint> => {
     const count = await turns.count();
-    const responsePromise = page.waitForResponse(
-      (response) =>
-        response.request().method() === 'POST' &&
-        new URL(response.url()).pathname === '/api/v1/concierge',
-    );
+    const sequence = await page.evaluate(() => (window as EvidenceWindow).__darivoKarimSse.length);
     await page.locator('#concierge-prompt').fill(message);
     await page.getByRole('button', { name: t.send, exact: true }).click();
-    const response = await responsePromise;
-    expect(response.status()).toBe(200);
-    const events: ConciergeStreamEvent[] = (await response.text())
-      .split('\n')
+    await expect(turns).toHaveCount(count + 1);
+    await expect(turns.last()).toHaveAttribute('data-status', 'complete', { timeout: 30000 });
+    await page.waitForFunction(
+      (index) => (window as EvidenceWindow).__darivoKarimSse[index]?.complete,
+      sequence,
+      { timeout: 30000 },
+    );
+    const captured = await page.evaluate((index) => {
+      const records = (window as EvidenceWindow).__darivoKarimSse;
+      return { ...records[index], count: records.length };
+    }, sequence);
+    expect(captured.count, 'Each submitted turn must issue exactly one Concierge request').toBe(
+      sequence + 1,
+    );
+    expect(captured.error).toBeUndefined();
+    expect(captured.status).toBe(200);
+    expect(captured.text).toBeTruthy();
+    const events: ConciergeStreamEvent[] = captured
+      .text!.split('\n')
       .filter((line) => line.startsWith('data: ') && !line.includes('[DONE]'))
       .flatMap((line) => {
         const packet = JSON.parse(line.slice(6));
@@ -53,8 +107,6 @@ export async function runKarimCurrencyJourney(
           ? [conciergeStreamEventSchema.parse(packet.data)]
           : [];
       });
-    await expect(turns).toHaveCount(count + 1);
-    await expect(turns.last()).toHaveAttribute('data-status', 'complete', { timeout: 30000 });
     const update = events.findLast((event) => event.type === 'brief.updated');
     if (!update || update.type !== 'brief.updated') throw new Error('Missing server Brief update');
     const components = new Map<string, ConciergeComponent>();
@@ -165,7 +217,10 @@ export async function runKarimCurrencyJourney(
     await expect(
       currencies.getByLabel(display === 'USD' ? 'GBP' : 'USD', { exact: true }),
     ).not.toBeChecked();
-    await expect(brief.getByLabel(t.paymentCurrency, { exact: true })).toHaveValue('EGP');
+    // The implicit label contains select options; match the computed accessible name.
+    await expect(brief.getByRole('combobox', { name: t.paymentCurrency, exact: true })).toHaveValue(
+      'EGP',
+    );
     await currencies.evaluate((element) => element.scrollIntoView({ block: 'start' }));
     await record(`${display.toLowerCase()}-brief`, latest);
     await page.getByRole('button', { name: t.conversation, exact: true }).click();
@@ -183,12 +238,42 @@ export async function runKarimCurrencyJourney(
     );
     expect(result.tools).toEqual(['ui.showTimeline']);
     expect(stableBrief(result.brief)).toEqual(stableBrief(before.brief));
-    expect(result.components).toHaveLength(1);
-    expect(result.components[0]).toMatchObject({ kind: 'notice', code: 'UNKNOWN_FACT' });
-    const notice = result.components[0];
+    const unknown = result.components.filter(
+      (component) => component.kind === 'notice' && component.code === 'UNKNOWN_FACT',
+    );
+    expect(unknown).toHaveLength(1);
+    const notice = unknown[0];
     if (notice.kind !== 'notice') throw new Error('Expected explicit unknown schedule');
     expect(notice.text.en).toContain('SouthMED');
     expect(notice.text.ar).toContain('SouthMED');
+    // Retained by-year assumptions remain useful context. Accept only the exact
+    // country/year/end-of-year disclosure implied by the Brief before this lookup.
+    const expectedDeadlineNotices = before.brief.uncertainties.includes('deadline_year_boundary')
+      ? before.brief.markets.flatMap((market) => {
+          if (market.deadline?.kind !== 'year' || market.deadline.boundary !== 'by') return [];
+          const year = market.deadline.year;
+          return [
+            {
+              kind: 'notice',
+              code: 'NEEDS_CLARIFICATION',
+              text: {
+                en: `For your ${market.country === 'UAE' ? 'UAE' : 'Egypt'} Brief, I am treating “by ${year}” as the end of ${year}. Edit this if you mean an earlier date.`,
+                ar: `في طلبك الخاص بـ${market.country === 'UAE' ? 'الإمارات' : 'مصر'}، أفسّر «بحلول ${year}» على أنه نهاية ${year}. عدّل هذا إذا كنت تقصد موعداً أبكر.`,
+              },
+            },
+          ];
+        })
+      : [];
+    expect(
+      result.components
+        .filter((component) => component.id !== notice.id)
+        .map((component) =>
+          component.kind === 'notice'
+            ? { kind: component.kind, code: component.code, text: component.text }
+            : { kind: component.kind },
+        ),
+    ).toEqual(expectedDeadlineNotices);
+    await expect(turns.last().locator('[data-component-kind="payment-timeline"]')).toHaveCount(0);
     await expect(turns.last().getByTestId('concierge-project')).toHaveCount(0);
     await expect(turns.last()).toContainText('SouthMED');
     await turns.last().evaluate((element) => element.scrollIntoView({ block: 'start' }));
