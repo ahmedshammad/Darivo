@@ -1,0 +1,10 @@
+allowBuilds:
+  '@prisma/client': true
+  '@prisma/engines': true
+  prisma: true
+  esbuild: true
+  sharp: true
+  '@swc/core': true
+  '@parcel/watcher': true
+  embedded-postgres: true
+  unrs-resolver: true

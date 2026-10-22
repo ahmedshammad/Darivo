@@ -1,0 +1,37 @@
+name: Darivo checks
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: darivo
+          POSTGRES_PASSWORD: darivo_ci
+          POSTGRES_DB: darivo
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U darivo" --health-interval 5s
+          --health-timeout 5s --health-retries 20
+    env:
+      DATABASE_URL: postgresql://darivo:darivo_ci@localhost:5432/darivo
+      AUTH_SECRET: ci-only-secret-for-synthetic-test-accounts
+      AUTH_URL: http://localhost:3000
+      DEMO_MODE: 'true'
+      AI_PROVIDER: mock
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm db:generate && pnpm db:migrate && pnpm db:seed
+      - run: pnpm lint && pnpm typecheck && pnpm test
+      - run: pnpm exec playwright install --with-deps chrome
+      - run: pnpm test:e2e
+      - run: pnpm build

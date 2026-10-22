@@ -1,0 +1,2 @@
+import {defineConfig,devices} from '@playwright/test';
+export default defineConfig({testDir:'./e2e',fullyParallel:false,workers:1,timeout:45000,use:{baseURL:process.env.TEST_BASE_URL??'http://localhost:3000',trace:'retain-on-failure'},projects:[{name:'chromium',use:{...devices['Desktop Chrome'],channel:'chrome'}}],webServer:process.env.CI?{command:'pnpm dev:next',url:'http://localhost:3000',reuseExistingServer:false,timeout:120000}:undefined});
