@@ -221,3 +221,9 @@ Fresh retained-build Lighthouse is99/LCP2183.545ms/TBT61.5ms/CLS0. Twelve isolat
 ### Stage 3 — fourth review remains below the gate
 
 The seven simulated contributor reviews produce an exact aggregate **8.994047619/10, minimum8**, across84 scores. This is below9.0 and is not rounded into acceptance. All reviews and final evidence are retained under `reviews/stage-3/v4`. The next bounded correction keeps the authorized bilingual unit identity with a successful payment timeline; repeated deadline caveats and strict loading/field-validation limits remain explicit. Stage4 has not begun.
+
+### Stage 3 — fifth review and authorized timeline identity
+
+Sourcecd92e4e keeps the exact bilingual authorized unit name with its payment timeline. History refreshes names and drops revoked records. All304 tests,444 execution cases/632turns with13 zero counters, two full currency browser journeys and12 targeted timeline states pass; OpenAPI has24paths/1018 resolving references. Real-provider evaluation remains skipped without a key.
+
+The fifth simulated board again scores **8.994047619/min8**. Reviewers verify the identity correction but retain their criterion scores; this does not pass the9.0 gate. All reports are preserved. The next investigation targets initial loading and the separate repeated deadline-context reading issue, preserving the existing performance method and exact guardrail information. Stages4–6 remain unopened.
