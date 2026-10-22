@@ -72,19 +72,29 @@ function normalize(value: string) {
     .replace(/[\u064B-\u065F]/g, '')
     .replace(/[أإآ]/g, 'ا');
 }
-function placeMatches(project: AtlasProject, placeId: string): boolean {
-  const place = ATLAS_PLACES.find((row) => row.id === placeId);
-  if (!place) return false;
-  const text = normalize(
-    `${project.country} ${project.city} ${project.community} ${project.nameEn} ${project.nameAr}`,
-  );
-  return (
-    [place.nameEn, place.nameAr, ...place.keywords].some((word) =>
-      text.includes(normalize(word)),
-    ) ||
-    (placeId === 'uae' && project.country === 'UAE') ||
-    (placeId === 'egypt' && project.country === 'Egypt')
-  );
+/** Canonical search membership uses stored geography, never intent aliases or project names. */
+export function placeMatches(project: AtlasProject, placeId: string): boolean {
+  const community = normalize(project.community).trim();
+  const city = normalize(project.city).trim();
+  if (placeId === 'uae') return project.country === 'UAE';
+  if (placeId === 'egypt') return project.country === 'Egypt';
+  const cities: Record<string, string[]> = {
+    dubai: ['dubai'],
+    'abu-dhabi': ['abu dhabi'],
+    'north-coast': ['north coast'],
+    cairo: ['cairo', 'giza'],
+    'red-sea': ['red sea'],
+  };
+  if (cities[placeId]) return cities[placeId].includes(city);
+  const communities: Record<string, string[]> = {
+    palm: ['palm jumeirah', 'palm jumeirah (crescent)'],
+    'jebel-ali': ['palm jebel ali'],
+    saadiyat: ['saadiyat island', 'saadiyat cultural district'],
+    'jumeirah-bay': ['jumeirah bay', 'jumeirah bay island'],
+    'dubai-hills': ['dubai hills estate'],
+    downtown: ['downtown', 'downtown dubai'],
+  };
+  return communities[placeId]?.includes(community) ?? false;
 }
 export function projectMatchesMarket(project: AtlasProject, market: MarketBrief): boolean {
   if (project.country !== market.country) return false;
@@ -458,14 +468,15 @@ export async function executeConciergeTool(
     case 'map.showLayer':
       result.actions.push({ ...actionBase, type: call.name, ...call.arguments });
       if (call.arguments.layer === 'school' && call.arguments.visible)
-        result.components.push(
-          notice(
+        result.components.push({
+          ...notice(
             context,
             'DEMO_LIMITATION',
             'School points are fictional demo markers. Curriculum, admissions and real journeys are unverified.',
             'نقاط المدارس علامات تجريبية خيالية. المناهج والقبول والرحلات الفعلية غير موثقة.',
           ),
-        );
+          id: `${componentId}:school`,
+        });
       break;
     case 'map.story':
       if (ATLAS_STORIES.some((story) => story.id === call.arguments.storyId))

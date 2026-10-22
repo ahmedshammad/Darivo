@@ -78,28 +78,28 @@ export async function buildAreaGuide(placeId: string, context: ToolContext): Pro
   });
   const result: ToolResult = { components: [], actions: [], proposals: [] };
   result.components.push({
-    id: `${context.callId}:orientation`,
-    turnId: context.turnId,
-    kind: 'notice',
-    code: 'DEMO_LIMITATION',
-    text:
-      placeId === 'dubai'
-        ? bilingual(
-            'Start with three locations on the approximate map: Palm Jumeirah to the west, Dubai Hills inland to the south, and Downtown farther northeast. The examples below show fictional homes and community estimates so you can compare the records. They do not establish school suitability.',
-            'ابدأ بثلاثة مواقع على الخريطة التقريبية: نخلة جميرا غرباً، ودبي هيلز إلى الداخل جنوباً، ووسط دبي أبعد إلى الشمال الشرقي. تعرض الأمثلة أدناه منازل خيالية وتقديرات للمناطق للمقارنة بين السجلات. وهي لا تثبت ملاءمة المدارس.',
-          )
-        : bilingual(
-            'Use the approximate map and a fictional local example to understand this area. Community figures are Demo estimates, not current market evidence.',
-            'استخدم الخريطة التقريبية ومثالاً محلياً خيالياً للتعرّف على المنطقة. أرقام المنطقة تقديرات تجريبية، وليست بيانات سوقية حالية.',
-          ),
-  });
-  result.components.push({
     id: `${context.callId}:map`,
     turnId: context.turnId,
     kind: 'mini-map',
     entities: places.map((place) => ({ kind: 'place' as const, id: place.id })),
     camera: { center: root.center, zoom: root.zoom, key: `${context.callId}:${root.id}` },
     renderMode: 'SHARED_MAP_PREVIEW',
+  });
+  result.components.push({
+    id: `${context.callId}:area-qualification`,
+    turnId: context.turnId,
+    kind: 'notice',
+    code: 'DEMO_LIMITATION',
+    text: bilingual(
+      (placeId === 'dubai'
+        ? 'Palm Jumeirah lies west, Dubai Hills inland to the south, and Downtown farther northeast on this approximate map. '
+        : 'The map shows approximate locations. ') +
+        'Homes, community figures and school points are fictional Demo examples, not verified matches. Curriculum, admissions, family suitability and actual journeys remain unverified.',
+      (placeId === 'dubai'
+        ? 'على هذه الخريطة التقريبية: نخلة جميرا غرباً، ودبي هيلز إلى الداخل جنوباً، ووسط دبي أبعد إلى الشمال الشرقي. '
+        : 'تعرض الخريطة مواقع تقريبية. ') +
+        'المنازل وأرقام المناطق ونقاط المدارس أمثلة تجريبية خيالية، وليست خيارات متحققاً من ملاءمتها. المنهج والقبول وملاءمة الأسرة والرحلات الفعلية غير موثقة.',
+    ),
   });
   const cards: GroundedCard[] = [];
   for (const place of places) {

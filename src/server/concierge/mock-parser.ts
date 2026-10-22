@@ -629,8 +629,23 @@ export function parseConciergeMessage(
     else clarification.add('itinerary.places');
   }
   const teaching = /explain|neighbou?rhood|orient|اشرح|عرفني|وضح/.test(text);
+  const developerIntent = /developer|المطور|مطور/.test(text);
+  const areaTeaching = teaching && !developerIntent && !projects.length;
   const comparisonIntent = /compare|قارن/.test(text);
   const highlightResults = /highlight (?:the )?results|حدد النتائج|ابرز النتائج/.test(text);
+  const explicitInventorySearch = [
+    ...text.matchAll(
+      /\b(?:find|search|recommend)\b|\bshow\s+(?:me\s+)?(?:some\s+)?(?:available\s+)?(?:homes|properties|projects|villas|apartments|units)\b|ابحث|دور|رشح|اقترح|اعرض.{0,20}(?:عقار|مشروع|فلل|فيلا|شقق|وحدات)/g,
+    ),
+  ].some((match) => !isNegative(text, match.index!));
+  // An explanation requests orientation, not an inventory match. Explicit mixed
+  // requests retain their search; prior unit selections alone do not add one.
+  const explanationOnly =
+    (areaTeaching || developerIntent) &&
+    !explicitInventorySearch &&
+    !explicitUnitSearch &&
+    !comparisonIntent &&
+    !highlightResults;
   const needsFeedback =
     (comparisonIntent && entities.length < 2) || (highlightResults && entities.length === 0);
   const selectionFollowup =
@@ -640,7 +655,7 @@ export function parseConciergeMessage(
     /calculate|scenario|احسب|حساب توضيحي|developer|مطور|compare|قارن|save|احفظ|book|احجز|timeline|payment|schedule|سداد|دفعات|جدول|source|مصدر|chart|مخطط|mini map|خريطه مصغره|خريطة مصغرة/.test(
       text,
     );
-  if (unitMode && !selectionFollowup) {
+  if (unitMode && !selectionFollowup && !explanationOnly) {
     calls.push({
       name: 'search_units',
       arguments: {
@@ -662,7 +677,7 @@ export function parseConciergeMessage(
         name: 'search_projects',
         arguments: { marketIds: [market.id], query: raw.slice(0, 500), limit: 3 },
       });
-  } else if (!selectionFollowup && brief.markets.length)
+  } else if (!selectionFollowup && !explanationOnly && brief.markets.length)
     calls.push({
       name: 'search_projects',
       arguments: { marketIds: brief.markets.map((m) => m.id), query: raw.slice(0, 500), limit: 6 },
@@ -670,7 +685,7 @@ export function parseConciergeMessage(
   else if (projects.length)
     for (const entity of projects.slice(0, 2))
       calls.push({ name: 'get_project', arguments: { projectId: entity.id } });
-  if (teaching) {
+  if (areaTeaching) {
     const place = placeSpans.find((p) => !p.negative)?.id ?? brief.markets[0]?.placeIds[0];
     if (place) calls.push({ name: 'area_insights', arguments: { placeId: place } });
   }
@@ -680,7 +695,6 @@ export function parseConciergeMessage(
   } else if (!unitMode && projects.length)
     calls.push({ name: 'get_project', arguments: { projectId: projects[0].id } });
   const selectedProject = entities.find((entity) => entity.kind === 'project');
-  const developerIntent = /developer|المطور|مطور/.test(text);
   if (developerIntent) {
     const named = spans(text, developerCatalogue).find((item) => !item.negative)?.id;
     const knownProject =

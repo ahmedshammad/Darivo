@@ -333,3 +333,40 @@ it('persists explicit external AI processing refusal across otherwise ordinary f
   expect(followup.brief.privacy.doNotShare).toBe(true);
   expect(extractConciergePrivacy('Show Dubai').blockExternalProcessing).toBe(false);
 });
+
+it.each([
+  'Explain Dubai neighbourhoods for a family with two kids near a British school',
+  'اشرح لي أحياء دبي لعائلة لديها طفلان بالقرب من مدرسة بريطانية',
+  'Explain Dubai neighbourhoods',
+])('teaches without an unrelated inventory search: %s', (message) => {
+  const result = parseConciergeMessage(message, emptyConciergeBrief(), {
+    priorEntities: [{ kind: 'unit', id: 'previous-unit' }],
+  });
+  expect(result.plan.calls).toContainEqual({
+    name: 'area_insights',
+    arguments: { placeId: 'dubai' },
+  });
+  expect(
+    result.plan.calls.some(
+      (call) => call.name === 'search_projects' || call.name === 'search_units',
+    ),
+  ).toBe(false);
+});
+it.each([
+  ['Explain Dubai neighbourhoods and find villas', 'search_projects'],
+  ['Explain Dubai neighbourhoods and show available units', 'search_units'],
+  ['اشرح أحياء دبي واعرض وحدات تجريبية', 'search_units'],
+  ['اشرح أحياء دبي وابحث عن فيلا', 'search_projects'],
+] as const)('preserves explicit inventory alongside explanation: %s', (message, tool) => {
+  const result = parseConciergeMessage(message, emptyConciergeBrief());
+  expect(result.plan.calls.some((call) => call.name === tool)).toBe(true);
+  expect(result.plan.calls.some((call) => call.name === 'area_insights')).toBe(true);
+});
+it('does not turn a developer explanation into a guide to the previously selected city', () => {
+  const prior = parseConciergeMessage('Dubai', emptyConciergeBrief()).brief;
+  const result = parseConciergeMessage('عرفني على المطور سوديك', prior);
+  expect(result.plan.calls).toEqual([
+    { name: 'get_developer', arguments: { developerId: 'sodic' } },
+  ]);
+  expect(result.brief.markets).toEqual(prior.markets);
+});

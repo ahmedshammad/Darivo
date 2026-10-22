@@ -13,6 +13,11 @@ it('teaches three Dubai locations with scoped fictional examples and exact Demo 
     callId: 'guide-call',
     message: 'Explain Dubai neighbourhoods near a British school',
   });
+  expect(result.components[0].kind).toBe('mini-map');
+  const qualification = result.components.find((component) => component.kind === 'notice');
+  expect(qualification?.text.en).toContain('Dubai Hills inland to the south');
+  expect(qualification?.text.ar).toContain('دبي هيلز إلى الداخل جنوباً');
+  expect(result.components.filter((component) => component.kind === 'notice')).toHaveLength(1);
   expect(
     result.components
       .filter((component) => component.kind === 'mini-map')

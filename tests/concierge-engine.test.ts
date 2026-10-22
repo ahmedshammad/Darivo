@@ -94,6 +94,56 @@ describe('Concierge authorized engine and grounded replay', () => {
       ),
     ).toBe(true);
   });
+  it('leads teaching with a map and consolidates retained and tool school qualifications', async () => {
+    const brief = emptyConciergeBrief();
+    brief.household.curriculum = 'British';
+    for (const responseLanguage of ['en', 'ar'] as const) {
+      const result = await runConciergeTurn(
+        {
+          ...input(
+            providerFor(
+              [
+                { name: 'map.showLayer', arguments: { layer: 'school', visible: true } },
+                { name: 'area_insights', arguments: { placeId: 'dubai' } },
+                { name: 'map.showLayer', arguments: { layer: 'school', visible: true } },
+              ],
+              { responseLanguage },
+            ),
+          ),
+          brief,
+        },
+        () => {},
+      );
+      expect(result.status).toBe('complete');
+      expect(result.components[0].kind).toBe('mini-map');
+      const notices = result.components.filter((component) => component.kind === 'notice');
+      expect(notices).toHaveLength(1);
+      expect(notices[0].text.en).toContain('Curriculum');
+      expect(notices[0].text.en).toContain('fictional');
+      expect(result.text).toContain(
+        responseLanguage === 'en' ? 'neighbourhood map' : 'خريطة المناطق',
+      );
+    }
+  });
+  it('matches the Palm only to stored Palm Jumeirah geography in actual bilingual results', async () => {
+    for (const message of ['Show projects on the Palm', 'اعرض مشاريع في النخلة']) {
+      const result = await runConciergeTurn(
+        { ...input(new MockConciergeProvider()), message },
+        () => {},
+      );
+      expect(result.status).toBe('complete');
+      const cards = result.components.flatMap((component) =>
+        'cards' in component ? component.cards : [],
+      );
+      expect(cards.length).toBeGreaterThan(0);
+      for (const card of cards) {
+        const projectId = card.projectId;
+        const project = await db.project.findUniqueOrThrow({ where: { id: projectId } });
+        expect(project.communityName).toMatch(/^Palm Jumeirah(?: \(Crescent\))?$/);
+        expect(project.id).not.toContain('jebel');
+      }
+    }
+  });
   it('keeps taste as soft source-backed ordering and preserves explicit type filters', async () => {
     const ctx = context();
     ctx.brief.tasteMemory = {

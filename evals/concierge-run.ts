@@ -13,6 +13,9 @@ export type ParserEvalCase = {
   checks: { path: string; equals?: unknown; includes?: unknown; excludes?: unknown }[];
   requiredCalls: string[];
   forbiddenCalls: string[];
+  /** Execution-only assertions against returned records, not parsed intent. */
+  resultPlaces?: ('palm' | 'saadiyat' | 'jebel-ali')[];
+  forbiddenNoticeCodes?: string[];
 };
 export function readParserCases(): ParserEvalCase[] {
   return readFileSync(new URL('./concierge.jsonl', import.meta.url), 'utf8')

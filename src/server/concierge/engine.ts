@@ -224,13 +224,19 @@ export async function runConciergeTurn(
     let replyKey: keyof typeof copy = 'ACKNOWLEDGE';
     let clarificationFields: string[] = [];
     const executed = new Set<string>();
+    let pendingSchoolDisclosure: ConciergeComponent | null = null;
+    const isSchoolDisclosure = (component: ConciergeComponent) =>
+      component.kind === 'notice' &&
+      /:(school|school-disclosure|area-qualification)$/.test(component.id);
+    const needsSchoolDisclosure = () =>
+      Boolean(
+        pendingSchoolDisclosure ||
+        brief.household.curriculum ||
+        brief.household.schoolRequirement !== 'unspecified',
+      ) && !components.some(isSchoolDisclosure);
     const ensureSchoolDisclosure = async () => {
-      if (
-        (!brief.household.curriculum && brief.household.schoolRequirement === 'unspecified') ||
-        components.some((component) => component.id === `${input.turnId}:school-disclosure`)
-      )
-        return;
-      const component: ConciergeComponent = {
+      if (!needsSchoolDisclosure()) return;
+      const component: ConciergeComponent = pendingSchoolDisclosure ?? {
         id: `${input.turnId}:school-disclosure`,
         turnId: input.turnId,
         kind: 'notice',
@@ -277,7 +283,6 @@ export async function runConciergeTurn(
         brief = applyConciergeBriefPatch(brief, plan.briefPatch);
         await send({ type: 'brief.updated', brief });
       }
-      await ensureSchoolDisclosure();
       await send({ type: 'status', phase: 'retrieving' });
       for (const call of plan.calls) {
         signal.throwIfAborted();
@@ -292,7 +297,6 @@ export async function runConciergeTurn(
         if (call.name === 'brief.update') {
           brief = applyConciergeBriefPatch(brief, call.arguments);
           await send({ type: 'brief.updated', brief });
-          await ensureSchoolDisclosure();
           continue;
         }
         const output = await executeConciergeTool(call, {
@@ -307,7 +311,16 @@ export async function runConciergeTurn(
         signal.throwIfAborted();
         const acceptedIds = new Set<string>();
         for (let component of output.components) {
-          if (components.length >= CONCIERGE_LIMITS.componentsPerTurn) break;
+          // Defer standalone school warnings so a teaching map can lead with one complete qualification.
+          if (component.kind === 'notice' && component.id.endsWith(':school')) {
+            pendingSchoolDisclosure = component;
+            continue;
+          }
+          if (isSchoolDisclosure(component) && components.some(isSchoolDisclosure)) continue;
+          const limit =
+            CONCIERGE_LIMITS.componentsPerTurn -
+            (needsSchoolDisclosure() && !isSchoolDisclosure(component) ? 1 : 0);
+          if (components.length >= limit) continue;
           if ('cards' in component) {
             const seen = new Set(
               entitiesFrom(components)
@@ -357,6 +370,7 @@ export async function runConciergeTurn(
       }
       if (!plan.continue || components.length >= CONCIERGE_LIMITS.componentsPerTurn) break;
     }
+    await ensureSchoolDisclosure();
     if (brief.uncertainties.includes('deadline_year_boundary')) {
       for (const market of brief.markets) {
         if (
@@ -382,18 +396,26 @@ export async function runConciergeTurn(
       }
     }
     await send({ type: 'status', phase: 'composing' });
-    if (
-      replyKey === 'RESULTS' &&
-      !components.some((component) => 'cards' in component && component.cards.length)
-    )
+    if (replyKey === 'RESULTS' && !components.some((component) => component.kind !== 'notice'))
       replyKey = 'NO_MATCHES';
     if (proposals.length) replyKey = 'WRITE_CONFIRMATION';
     // Application-owned prose is never composed from provider-authored factual strings.
+    const contextualCopy = components.some((component) => component.kind === 'comparison')
+      ? {
+          en: 'Compare the original prices and reported completion details below. Unknowns remain explicit; availability needs confirmation.',
+          ar: 'قارن الأسعار الأصلية وتفاصيل الإنجاز المعلنة أدناه. تبقى المعلومات غير المعروفة واضحة؛ والتوافر يحتاج إلى تأكيد.',
+        }
+      : components.some((component) => component.id.endsWith(':area-qualification'))
+        ? {
+            en: 'Start with the neighbourhood map, then compare the labelled fictional examples. School suitability remains an open check.',
+            ar: 'ابدأ بخريطة المناطق، ثم قارن الأمثلة الخيالية المعلّمة بوضوح. تبقى ملاءمة المدارس بحاجة إلى تحقق.',
+          }
+        : copy.RESULTS;
     const sentence =
       replyKey === 'CLARIFY'
         ? (clarificationCopy[clarificationFields.find((field) => clarificationCopy[field]) ?? ''] ??
             copy.CLARIFY)[responseLanguage]
-        : copy[replyKey][responseLanguage];
+        : (replyKey === 'RESULTS' ? contextualCopy : copy[replyKey])[responseLanguage];
     signal.throwIfAborted();
     text = sentence;
     await send({ type: 'text.delta', text: sentence, origin: 'APPLICATION_COPY' });

@@ -161,6 +161,66 @@ function cardRefs(components: ConciergeComponent[]): ConciergeEntityRef[] {
     ).values(),
   ].slice(0, 12);
 }
+async function verifyReturnedGeography(
+  test: ParserEvalCase,
+  result: ConciergeTurnResult,
+  viewer: User | null,
+  out: Report,
+  label: string,
+) {
+  for (const component of result.components)
+    if (component.kind === 'notice' && test.forbiddenNoticeCodes?.includes(component.code))
+      fail(
+        out,
+        label,
+        'semanticFailures',
+        `Unexpected ${component.code} in an explanation-only response`,
+      );
+  if (!test.resultPlaces?.length) return;
+  const refs = cardRefs(result.components);
+  if (
+    !refs.length &&
+    !result.components.some(
+      (component) => component.kind === 'notice' && component.code === 'NO_MATCHES',
+    )
+  )
+    fail(
+      out,
+      label,
+      'semanticFailures',
+      'Geographic search returned no records and no explicit no-match disclosure',
+    );
+  for (const ref of refs) {
+    const unit = ref.kind === 'unit' ? await getProperty(ref.id, viewer) : null;
+    const project =
+      ref.kind === 'project'
+        ? await db.project.findUnique({
+            where: { id: ref.id },
+            select: { country: true, city: true, communityName: true },
+          })
+        : null;
+    // Deliberately independent of tool matching and card prose: inspect the
+    // stored community, not broad project-name keywords such as "Palm".
+    const community = normalizeConciergeText(
+      unit?.community.nameEn ?? project?.communityName ?? '',
+    );
+    const country = unit ? unit.community.city.countryId : project?.country;
+    const matches = (place: NonNullable<ParserEvalCase['resultPlaces']>[number]) =>
+      place === 'palm'
+        ? /\bpalm jumeirah\b|نخله جميرا|نخلة جميرا/.test(community) &&
+          !/jebel ali|جبل علي/.test(community)
+        : place === 'saadiyat'
+          ? /\bsaadiyat\b|سعديات/.test(community)
+          : /\bpalm jebel ali\b|نخله جبل علي|نخلة جبل علي/.test(community);
+    if (!['AE', 'UAE'].includes(country ?? '') || !test.resultPlaces.some(matches))
+      fail(
+        out,
+        label,
+        'semanticFailures',
+        `Returned ${ref.kind}:${ref.id} is in stored community ${community}, outside ${test.resultPlaces.join(' or ')}`,
+      );
+  }
+}
 async function verifyCard(
   card: GroundedCard,
   viewer: User | null,
@@ -718,7 +778,10 @@ async function runCorpus(actors: Actor[], provider: ConciergeProvider, out: Repo
           fail(out, label, 'executionErrors', String(error));
         }
       }
-      if (last) checkSemantics(test, last, plan, lastCalls, out, `${actor.label}/${test.id}`);
+      if (last) {
+        checkSemantics(test, last, plan, lastCalls, out, `${actor.label}/${test.id}`);
+        await verifyReturnedGeography(test, last, actor.user, out, `${actor.label}/${test.id}`);
+      }
       if (
         brief.household.schoolRequirement !== 'unspecified' &&
         !seen.some(
