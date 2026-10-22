@@ -1,8 +1,106 @@
 'use client';
-import {useTranslations,useLocale} from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import {usePathname} from 'next/navigation';
-import {Moon,Sun,ArrowUpRight} from 'lucide-react';
-import {useState} from 'react';
-import {signOut} from 'next-auth/react';
-export function Shell({children,email,role}:{children:React.ReactNode;email?:string|null;role?:string}){const t=useTranslations();const locale=useLocale();const path=usePathname();const [dark,setDark]=useState(false);return <><a className="skip" href="#main">{t('skip')}</a><header><div className="shell nav"><Link href={`/${locale}`} className="brand"><span className="brand-mark" aria-hidden/>{t('brand')}</Link><nav className="nav-links" aria-label={t('collection')}>{[['search','collection'],['consultant','consultant'],['shortlists','shortlists']].map(([href,key])=><Link key={href} href={`/${locale}/${href}`} aria-current={path.includes(href)?'page':undefined}>{t(key)}</Link>)}{role==='ADVISOR'||role==='ADMIN'?<Link href={`/${locale}/advisor`}>{t('advisor')}</Link>:null}{role==='ADMIN'?<Link href={`/${locale}/admin`}>{t('admin')}</Link>:null}</nav><div className="nav-actions"><Link href={path.replace(/^\/(en|ar)/,locale==='en'?'/ar':'/en')} lang={locale==='en'?'ar':'en'}>{t('language')}</Link><button className="button button-ghost" aria-label={t('theme')} onClick={()=>{setDark(!dark);document.documentElement.dataset.theme=dark?'light':'dark';}}>{dark?<Sun size={17}/>:<Moon size={17}/>}</button>{email?<><Link className="small" href={`/${locale}/profile`}>{t('profile')}</Link><button className="button button-outline" onClick={()=>signOut({callbackUrl:`/${locale}`})}>{t('signOut')}</button></>:<Link className="button button-outline" href={`/${locale}/login`}>{t('signIn')}<ArrowUpRight size={15}/></Link>}</div></div></header><main id="main">{children}</main><footer><div className="shell footer-row"><div><div className="brand">{t('brand')}</div><p className="muted" style={{marginTop:8}}>{t('copyright')}</p></div><p className="muted" style={{maxWidth:360}}>{t('synthetic')}</p><Link href={`/${locale}/privacy`}>{t('privacy')}</Link></div></footer></>;}
+import { usePathname } from 'next/navigation';
+import { Moon, Sun, ArrowUpRight } from 'lucide-react';
+import { useState } from 'react';
+import { signOut } from 'next-auth/react';
+export function Shell({
+  children,
+  email,
+  role,
+}: {
+  children: React.ReactNode;
+  email?: string | null;
+  role?: string;
+}) {
+  const t = useTranslations();
+  const locale = useLocale();
+  const path = usePathname();
+  const [dark, setDark] = useState(false);
+  return (
+    <>
+      <a className="skip" href="#main">
+        {t('skip')}
+      </a>
+      <header>
+        <div className="shell nav">
+          <Link href={`/${locale}`} className="brand">
+            <span className="brand-mark" aria-hidden />
+            {t('brand')}
+          </Link>
+          <nav className="nav-links" aria-label={t('collection')}>
+            {[
+              ['search', 'collection'],
+              ['consultant', 'consultant'],
+              ['shortlists', 'shortlists'],
+            ].map(([href, key]) => (
+              <Link
+                key={href}
+                href={`/${locale}/${href}`}
+                aria-current={path.includes(href) ? 'page' : undefined}
+              >
+                {t(key)}
+              </Link>
+            ))}
+            {role === 'ADVISOR' || role === 'ADMIN' ? (
+              <Link href={`/${locale}/advisor`}>{t('advisor')}</Link>
+            ) : null}
+            {role === 'ADMIN' ? <Link href={`/${locale}/admin`}>{t('admin')}</Link> : null}
+          </nav>
+          <div className="nav-actions">
+            <Link
+              href={path.replace(/^\/(en|ar)/, locale === 'en' ? '/ar' : '/en')}
+              lang={locale === 'en' ? 'ar' : 'en'}
+            >
+              {t('language')}
+            </Link>
+            <button
+              className="button button-ghost"
+              aria-label={t('theme')}
+              onClick={() => {
+                setDark(!dark);
+                document.documentElement.dataset.theme = dark ? 'light' : 'dark';
+              }}
+            >
+              {dark ? <Sun size={17} /> : <Moon size={17} />}
+            </button>
+            {email ? (
+              <>
+                <Link className="small" href={`/${locale}/profile`}>
+                  {t('profile')}
+                </Link>
+                <button
+                  className="button button-outline"
+                  onClick={() => signOut({ callbackUrl: `/${locale}` })}
+                >
+                  {t('signOut')}
+                </button>
+              </>
+            ) : (
+              <Link className="button button-outline" href={`/${locale}/login`}>
+                {t('signIn')}
+                <ArrowUpRight size={15} />
+              </Link>
+            )}
+          </div>
+        </div>
+      </header>
+      <main id="main">{children}</main>
+      <footer>
+        <div className="shell footer-row">
+          <div>
+            <div className="brand">{t('brand')}</div>
+            <p className="muted" style={{ marginTop: 8 }}>
+              {t('copyright')}
+            </p>
+          </div>
+          <p className="muted" style={{ maxWidth: 360 }}>
+            {t('synthetic')}
+          </p>
+          <Link href={`/${locale}/privacy`}>{t('privacy')}</Link>
+        </div>
+      </footer>
+    </>
+  );
+}

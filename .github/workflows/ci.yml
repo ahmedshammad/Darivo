@@ -31,7 +31,13 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm db:generate && pnpm db:migrate && pnpm db:seed
-      - run: pnpm lint && pnpm typecheck && pnpm test
+      - run: pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm eval
       - run: pnpm exec playwright install --with-deps chrome
       - run: pnpm test:e2e
       - run: pnpm build
+      - name: Production Lighthouse checks
+        run: |
+          AUTH_URL=http://localhost:3001 pnpm start --port 3001 &
+          preview_pid=$!
+          trap 'kill "$preview_pid"' EXIT
+          pnpm test:performance

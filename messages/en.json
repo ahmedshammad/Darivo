@@ -344,5 +344,9 @@
   "noAudit": "No audit events yet.",
   "privateNoteNotice": "Visible only to advisors and administrators.",
   "action": "Action",
-  "bathrooms": "Bathrooms"
+  "bathrooms": "Bathrooms",
+  "openMap": "Explore this location",
+  "zoomIn": "Zoom in",
+  "zoomOut": "Zoom out",
+  "resetBearing": "Reset north"
 }

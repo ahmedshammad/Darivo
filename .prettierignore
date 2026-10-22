@@ -1,0 +1,13 @@
+node_modules
+.next
+.local
+.pnpm-store
+pnpm-lock.yaml
+public/vendor
+public/fonts
+public/art
+prisma/migrations
+playwright-report
+test-results
+*.tsbuildinfo
+next-env.d.ts

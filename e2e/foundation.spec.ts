@@ -1,2 +1,9 @@
-import {test,expect} from '@playwright/test';
-test('Arabic switches document direction and demo client signs in',async({page})=>{await page.goto('/en');await page.getByRole('link',{name:'العربية',exact:true}).click();await expect(page.locator('html')).toHaveAttribute('dir','rtl');await page.goto('/en/login');await page.getByRole('button',{name:'Private client',exact:true}).click();await expect(page.getByRole('button',{name:'Sign out'})).toBeVisible();});
+import { test, expect } from '@playwright/test';
+test('Arabic switches document direction and demo client signs in', async ({ page }) => {
+  await page.goto('/en');
+  await page.getByRole('link', { name: 'العربية', exact: true }).click();
+  await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
+  await page.goto('/en/login');
+  await page.getByRole('button', { name: 'Private client', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Sign out' })).toBeVisible();
+});

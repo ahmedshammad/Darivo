@@ -1,290 +1,329 @@
 generator client {
- provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
+
 datasource db {
- provider = "postgresql"
- url = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
+
 enum Role {
- CLIENT
- ADVISOR
- ADMIN
+  CLIENT
+  ADVISOR
+  ADMIN
 }
+
 enum Visibility {
- PUBLIC
- VERIFIED_ONLY
- PRIVATE_INVITE
+  PUBLIC
+  VERIFIED_ONLY
+  PRIVATE_INVITE
 }
+
 enum Verification {
- UNVERIFIED
- PENDING
- VERIFIED
+  UNVERIFIED
+  PENDING
+  VERIFIED
 }
+
 model User {
- id String @id @default(cuid())
- name String?
- email String @unique
- emailVerified DateTime?
- image String?
- role Role @default(CLIENT)
- verification Verification @default(UNVERIFIED)
- createdAt DateTime @default(now())
- accounts Account[]
- sessions Session[]
- profile ClientProfile?
- advisor Advisor?
- shortlists Shortlist[]
- viewings ViewingRequest[]
- brief ClientBrief?
- conversations ConsultantConversation[]
- grants OffMarketGrant[]
- handoffs Handoff[]
- notes AdvisorNote[] @relation("ClientNotes")
+  id            String                   @id @default(cuid())
+  name          String?
+  email         String                   @unique
+  emailVerified DateTime?
+  image         String?
+  role          Role                     @default(CLIENT)
+  verification  Verification             @default(UNVERIFIED)
+  createdAt     DateTime                 @default(now())
+  accounts      Account[]
+  sessions      Session[]
+  profile       ClientProfile?
+  advisor       Advisor?
+  shortlists    Shortlist[]
+  viewings      ViewingRequest[]
+  brief         ClientBrief?
+  conversations ConsultantConversation[]
+  grants        OffMarketGrant[]
+  handoffs      Handoff[]
+  notes         AdvisorNote[]            @relation("ClientNotes")
 }
+
 model Account {
- id String @id @default(cuid())
- userId String
- type String
- provider String
- providerAccountId String
- refresh_token String? @db.Text
- access_token String? @db.Text
- expires_at Int?
- token_type String?
- scope String?
- id_token String? @db.Text
- session_state String?
- user User @relation(fields:[userId],references:[id],onDelete:Cascade)
- @@unique([provider,providerAccountId])
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
 }
+
 model Session {
- id String @id @default(cuid())
- sessionToken String @unique
- userId String
- expires DateTime
- user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
 model VerificationToken {
- identifier String
- token String @unique
- expires DateTime
- @@unique([identifier,token])
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
+
 model ClientProfile {
- id String @id @default(cuid())
- userId String @unique
- language String @default("en")
- currency String @default("AED")
- areaUnit String @default("sqm")
- timezone String @default("Asia/Dubai")
- notifications Boolean @default(false)
- consentAt DateTime?
- user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  id            String    @id @default(cuid())
+  userId        String    @unique
+  language      String    @default("en")
+  currency      String    @default("AED")
+  areaUnit      String    @default("sqm")
+  timezone      String    @default("Asia/Dubai")
+  notifications Boolean   @default(false)
+  consentAt     DateTime?
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
 model Advisor {
- id String @id @default(cuid())
- userId String @unique
- user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
 model Country {
- id String @id
- nameEn String
- nameAr String
- cities City[]
+  id     String @id
+  nameEn String
+  nameAr String
+  cities City[]
 }
+
 model City {
- id String @id
- countryId String
- nameEn String
- nameAr String
- country Country @relation(fields:[countryId],references:[id])
- communities Community[]
+  id          String      @id
+  countryId   String
+  nameEn      String
+  nameAr      String
+  country     Country     @relation(fields: [countryId], references: [id])
+  communities Community[]
 }
+
 model Community {
- id String @id
- cityId String
- nameEn String
- nameAr String
- lat Float
- lng Float
- city City @relation(fields:[cityId],references:[id])
- properties Property[]
- insight AreaInsight?
+  id         String       @id
+  cityId     String
+  nameEn     String
+  nameAr     String
+  lat        Float
+  lng        Float
+  city       City         @relation(fields: [cityId], references: [id])
+  properties Property[]
+  insight    AreaInsight?
 }
+
 model Developer {
- id String @id @default(cuid())
- nameEn String
- nameAr String
- descriptionEn String
- descriptionAr String
- properties Property[]
+  id            String     @id @default(cuid())
+  nameEn        String
+  nameAr        String
+  descriptionEn String
+  descriptionAr String
+  properties    Property[]
 }
+
 model Property {
- id String @id @default(cuid())
- slug String @unique
- communityId String
- developerId String
- type String
- status String
- handoverDate DateTime?
- bedrooms Int
- bathrooms Int
- areaSqm Float
- plotSqm Float?
- priceMinor BigInt
- currency String
- priceAed Float
- serviceChargeMinor Int
- view String
- furnishing String
- amenities String[]
- branded Boolean @default(false)
- visibility Visibility @default(PUBLIC)
- verification Verification @default(VERIFIED)
- permitNumber String
- lastVerifiedAt DateTime
- lat Float
- lng Float
- embedding Unsupported("vector(64)")?
- community Community @relation(fields:[communityId],references:[id])
- developer Developer @relation(fields:[developerId],references:[id])
- translations PropertyTranslation[]
- media PropertyMedia[]
- paymentPlan PaymentPlan?
- shortlistItems ShortlistItem[]
- grants OffMarketGrant[]
- viewings ViewingRequest[]
- @@index([visibility,priceAed])
- @@index([communityId,type,bedrooms])
+  id                 String                     @id @default(cuid())
+  slug               String                     @unique
+  communityId        String
+  developerId        String
+  type               String
+  status             String
+  handoverDate       DateTime?
+  bedrooms           Int
+  bathrooms          Int
+  areaSqm            Float
+  plotSqm            Float?
+  priceMinor         BigInt
+  currency           String
+  priceAed           Float
+  serviceChargeMinor Int
+  view               String
+  furnishing         String
+  amenities          String[]
+  branded            Boolean                    @default(false)
+  visibility         Visibility                 @default(PUBLIC)
+  verification       Verification               @default(VERIFIED)
+  permitNumber       String
+  lastVerifiedAt     DateTime
+  lat                Float
+  lng                Float
+  embedding          Unsupported("vector(64)")?
+  embeddingSource    String                     @default("mock-hash-v1")
+  community          Community                  @relation(fields: [communityId], references: [id])
+  developer          Developer                  @relation(fields: [developerId], references: [id])
+  translations       PropertyTranslation[]
+  media              PropertyMedia[]
+  paymentPlan        PaymentPlan?
+  shortlistItems     ShortlistItem[]
+  grants             OffMarketGrant[]
+  viewings           ViewingRequest[]
+
+  @@index([visibility, priceAed])
+  @@index([communityId, type, bedrooms])
 }
+
 model PropertyTranslation {
- id String @id @default(cuid())
- propertyId String
- locale String
- title String
- description String
- property Property @relation(fields:[propertyId],references:[id],onDelete:Cascade)
- @@unique([propertyId,locale])
+  id          String   @id @default(cuid())
+  propertyId  String
+  locale      String
+  title       String
+  description String
+  property    Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, locale])
 }
+
 model PropertyMedia {
- id String @id @default(cuid())
- propertyId String
- url String
- altEn String
- altAr String
- position Int @default(0)
- property Property @relation(fields:[propertyId],references:[id],onDelete:Cascade)
+  id         String   @id @default(cuid())
+  propertyId String
+  url        String
+  altEn      String
+  altAr      String
+  position   Int      @default(0)
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
 }
+
 model PaymentPlan {
- id String @id @default(cuid())
- propertyId String @unique
- bookingPercent Int
- constructionPercent Int
- handoverPercent Int
- property Property @relation(fields:[propertyId],references:[id],onDelete:Cascade)
+  id                  String   @id @default(cuid())
+  propertyId          String   @unique
+  bookingPercent      Int
+  constructionPercent Int
+  handoverPercent     Int
+  property            Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
 }
+
 model AreaInsight {
- id String @id @default(cuid())
- communityId String @unique
- averageAedSqm Float
- yieldLow Float
- yieldHigh Float
- notesEn String
- notesAr String
- community Community @relation(fields:[communityId],references:[id],onDelete:Cascade)
+  id            String    @id @default(cuid())
+  communityId   String    @unique
+  averageAedSqm Float
+  yieldLow      Float
+  yieldHigh     Float
+  notesEn       String
+  notesAr       String
+  community     Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
 }
+
 model Shortlist {
- id String @id @default(cuid())
- userId String
- name String
- createdAt DateTime @default(now())
- user User @relation(fields:[userId],references:[id],onDelete:Cascade)
- items ShortlistItem[]
- @@unique([userId,name])
+  id        String          @id @default(cuid())
+  userId    String
+  name      String
+  createdAt DateTime        @default(now())
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     ShortlistItem[]
+
+  @@unique([userId, name])
 }
+
 model ShortlistItem {
- id String @id @default(cuid())
- shortlistId String
- propertyId String
- shortlist Shortlist @relation(fields:[shortlistId],references:[id],onDelete:Cascade)
- property Property @relation(fields:[propertyId],references:[id],onDelete:Cascade)
- @@unique([shortlistId,propertyId])
+  id          String    @id @default(cuid())
+  shortlistId String
+  propertyId  String
+  shortlist   Shortlist @relation(fields: [shortlistId], references: [id], onDelete: Cascade)
+  property    Property  @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([shortlistId, propertyId])
 }
+
 model ViewingRequest {
- id String @id @default(cuid())
- userId String
- propertyId String
- slots DateTime[]
- timezone String
- mode String
- status String @default("REQUESTED")
- createdAt DateTime @default(now())
- user User @relation(fields:[userId],references:[id],onDelete:Cascade)
- property Property @relation(fields:[propertyId],references:[id],onDelete:Cascade)
+  id         String     @id @default(cuid())
+  userId     String
+  propertyId String
+  slots      DateTime[]
+  timezone   String
+  mode       String
+  status     String     @default("REQUESTED")
+  createdAt  DateTime   @default(now())
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  property   Property   @relation(fields: [propertyId], references: [id], onDelete: Cascade)
 }
+
 model ClientBrief {
- id String @id @default(cuid())
- userId String @unique
- data Json
- updatedAt DateTime @updatedAt
- user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  data      Json
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
 model ConsultantConversation {
- id String @id @default(cuid())
- userId String
- createdAt DateTime @default(now())
- user User @relation(fields:[userId],references:[id],onDelete:Cascade)
- messages ConsultantMessage[]
+  id        String              @id @default(cuid())
+  userId    String
+  createdAt DateTime            @default(now())
+  user      User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages  ConsultantMessage[]
 }
+
 model ConsultantMessage {
- id String @id @default(cuid())
- conversationId String
- role String
- content Json
- createdAt DateTime @default(now())
- conversation ConsultantConversation @relation(fields:[conversationId],references:[id],onDelete:Cascade)
+  id             String                 @id @default(cuid())
+  conversationId String
+  role           String
+  content        Json
+  createdAt      DateTime               @default(now())
+  conversation   ConsultantConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
 }
+
 model OffMarketGrant {
- id String @id @default(cuid())
- userId String
- propertyId String
- grantedBy String
- createdAt DateTime @default(now())
- user User @relation(fields:[userId],references:[id],onDelete:Cascade)
- property Property @relation(fields:[propertyId],references:[id],onDelete:Cascade)
- @@unique([userId,propertyId])
+  id         String   @id @default(cuid())
+  userId     String
+  propertyId String
+  grantedBy  String
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, propertyId])
 }
+
 model AuditLog {
- id String @id @default(cuid())
- actorId String
- action String
- targetId String
- createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  actorId   String
+  action    String
+  targetId  String
+  createdAt DateTime @default(now())
 }
+
 model FxRate {
- currency String @id
- perAed Float
- asOf DateTime
+  currency String   @id
+  perAed   Float
+  asOf     DateTime
 }
+
 model Handoff {
- id String @id @default(cuid())
- userId String
- reason String
- status String @default("OPEN")
- createdAt DateTime @default(now())
- user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  id        String   @id @default(cuid())
+  userId    String
+  reason    String
+  status    String   @default("OPEN")
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
 model AdvisorNote {
- id String @id @default(cuid())
- clientId String
- authorId String
- content String
- createdAt DateTime @default(now())
- client User @relation("ClientNotes",fields:[clientId],references:[id],onDelete:Cascade)
+  id        String   @id @default(cuid())
+  clientId  String
+  authorId  String
+  content   String
+  createdAt DateTime @default(now())
+  client    User     @relation("ClientNotes", fields: [clientId], references: [id], onDelete: Cascade)
 }
+
 model AnalyticsEvent {
- id String @id @default(cuid())
- kind String
- areaId String?
- createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  kind      String
+  areaId    String?
+  createdAt DateTime @default(now())
 }

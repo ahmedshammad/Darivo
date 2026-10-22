@@ -1,2 +1,14 @@
 // Fixed 64-dimensional normalized signed hashing; no network or API key needed.
-export function embed(text:string):number[]{const vector=Array<number>(64).fill(0);for(const word of text.toLowerCase().normalize('NFKC').match(/[\p{L}\p{N}]+/gu)??[]){let hash=2166136261;for(const char of word)hash=Math.imul(hash^char.charCodeAt(0),16777619);vector[(hash>>>0)%64]+=(hash&128)?1:-1;}const norm=Math.sqrt(vector.reduce((sum,v)=>sum+v*v,0))||1;return vector.map(v=>v/norm);}
+export function embed(text: string): number[] {
+  const vector = Array<number>(64).fill(0);
+  for (const word of text
+    .toLowerCase()
+    .normalize('NFKC')
+    .match(/[\p{L}\p{N}]+/gu) ?? []) {
+    let hash = 2166136261;
+    for (const char of word) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
+    vector[(hash >>> 0) % 64] += hash & 128 ? 1 : -1;
+  }
+  const norm = Math.sqrt(vector.reduce((sum, v) => sum + v * v, 0)) || 1;
+  return vector.map((v) => v / norm);
+}

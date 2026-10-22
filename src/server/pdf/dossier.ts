@@ -1,11 +1,52 @@
-import {readFile} from 'node:fs/promises';
-import {join} from 'node:path';
-import {chromium} from 'playwright';
-import type {PropertyDTO} from '../db/properties';
-import {money,FX_DATE,FX} from '@/src/lib/catalog';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { chromium } from 'playwright';
+import type { PropertyDTO } from '../db/properties';
+import { money, FX_DATE, FX } from '@/src/lib/catalog';
 import en from '@/messages/en.json';
 import ar from '@/messages/ar.json';
-const escape=(s:unknown)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
-export async function dossierHtml(name:string,properties:PropertyDTO[],currency='AED'){const asset=async(path:string,mime:string)=>`data:${mime};base64,${(await readFile(join(process.cwd(),'public',path))).toString('base64')}`;const [arabic,display,ui]=await Promise.all([asset('fonts/arabic.woff2','font/woff2'),asset('fonts/display.woff2','font/woff2'),asset('fonts/ui.woff2','font/woff2')]);let pages='';for(const [index,p]of properties.entries()){const eng=p.translations.find(t=>t.locale==='en')!,ara=p.translations.find(t=>t.locale==='ar')!;const image=await asset(/^\/art\/property-[0-5]\.svg$/.test(p.media[0]?.url??'')?p.media[0].url.slice(1):'art/property-0.svg','image/svg+xml');pages+=`<section class="sheet"><header><span>DARIVO</span><span class="ar" dir="rtl">داريفو</span></header><div class="eyebrow">${escape(p.community.nameEn)} · ${escape(p.id)}</div><div class="dual"><h1>${escape(eng.title)}</h1><h1 class="ar" dir="rtl">${escape(ara.title)}</h1></div><img class="hero" src="${image}" alt=""/><div class="price">${escape(money(p.priceAed,currency))}</div><div class="facts"><span>${p.bedrooms} ${en.beds}</span><span>${p.bathrooms} ${en.baths}</span><span>${p.areaSqm} sqm</span><span>${escape(p.status==='ready'?en.ready:en.off_plan)}</span></div><div class="dual copy"><p>${escape(eng.description)}</p><p class="ar" dir="rtl">${escape(ara.description)}</p></div><div class="dual"><div><h2>${en.trust}</h2><p>${escape(p.developer.nameEn)}</p><p>${en.permit}: ${escape(p.permitNumber)}</p><p>${en.lastVerified}: ${p.lastVerifiedAt.slice(0,10)}</p></div><div class="ar" dir="rtl"><h2>${ar.trust}</h2><p>${escape(p.developer.nameAr)}</p><p>${ar.permit}: <bdi>${escape(p.permitNumber)}</bdi></p><p>${ar.lastVerified}: <bdi>${p.lastVerifiedAt.slice(0,10)}</bdi></p></div></div><div class="estimate"><p>${en.grossYield}: ${p.community.insight?.yieldLow}–${p.community.insight?.yieldHigh}% · ${en.serviceCharge}: ${escape(money(p.serviceChargeMinor/100/FX[p.currency],currency))}</p><p>${en.estimate}</p><p class="ar" dir="rtl">${ar.estimate}</p></div><footer><span>${en.synthetic}</span><span>${index+2}</span></footer></section>`;}
- return `<!doctype html><html><head><meta charset="utf-8"><style>@font-face{font-family:Arabic;src:url(${arabic})}@font-face{font-family:Display;src:url(${display})}@font-face{font-family:UI;src:url(${ui})}@page{size:A4;margin:0}*{box-sizing:border-box}body{margin:0;color:#1b302e;background:#f5f3ed;font-family:UI,Arial,sans-serif;font-size:10px;line-height:1.6}.sheet{width:210mm;height:297mm;padding:17mm 18mm;position:relative;page-break-after:always;overflow:hidden}.sheet:last-child{page-break-after:auto}header{display:flex;justify-content:space-between;border-bottom:1px solid #c8cbbb;padding-bottom:8mm;font-family:Display,serif;font-size:25px;letter-spacing:4px}.ar{font-family:Arabic,Arial,sans-serif;letter-spacing:0}h1{font:36px/1.2 Display,serif;margin:10px 0 15px}h1.ar{font-size:27px}h2{font:21px Display,serif;margin:0 0 9px}h2.ar,.ar h2{font-family:Arabic;font-size:16px}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:9px;color:#7d613a;margin-top:9mm}.dual{display:grid;grid-template-columns:1fr 1fr;gap:12mm}.hero{width:100%;height:77mm;object-fit:cover}.price{font:29px Display,serif;margin-top:5mm}.facts{display:flex;gap:22px;border-bottom:1px solid #c8cbbb;padding-bottom:4mm}.copy{margin:5mm 0 7mm}.copy p{margin:0}.estimate{margin-top:7mm;padding:4mm;background:#e9e7dc;font-size:9px}.estimate p{margin:2px 0}.cover{display:flex;flex-direction:column;justify-content:center}.cover header{position:absolute;top:17mm;inset-inline:18mm}.cover h1{font-size:62px;margin:7mm 0}.cover h1.ar{font-size:37px}.cover .note{margin-top:18mm;max-width:130mm}.cover .rule{height:1px;background:#9b7949;width:25mm;margin-top:15mm}footer{position:absolute;bottom:12mm;left:18mm;right:18mm;display:flex;justify-content:space-between;border-top:1px solid #c8cbbb;padding-top:4mm;font-size:8px;color:#596762}</style></head><body><section class="sheet cover"><header><span>DARIVO</span><span class="ar" dir="rtl">داريفو</span></header><div class="eyebrow">${en.dossier}</div><h1>${escape(name)}</h1><h1 class="ar" dir="rtl">${ar.dossier}</h1><div class="rule"></div><div class="note"><p>${en.dossierNote}</p><p class="ar" dir="rtl">${ar.dossierNote}</p><p>${en.ratesAsOf.replace('{date}',FX_DATE)} · ${currency}</p></div><footer><span>${en.dossierEnd}</span><span>1</span></footer></section>${pages}</body></html>`;}
-export async function renderDossier(name:string,properties:PropertyDTO[],currency='AED'){const html=await dossierHtml(name,properties,currency);const browser=await chromium.launch({channel:process.env.PDF_BROWSER_CHANNEL??'chrome',headless:true});try{const page=await browser.newPage();await page.route('**/*',route=>route.request().url().startsWith('data:')?route.continue():route.abort());await page.setContent(html,{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);return await page.pdf({format:'A4',printBackground:true,preferCSSPageSize:true});}finally{await browser.close();}}
+const escape = (s: unknown) =>
+  String(s).replace(
+    /[&<>"']/g,
+    (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!,
+  );
+export async function dossierHtml(name: string, properties: PropertyDTO[], currency = 'AED') {
+  const asset = async (path: string, mime: string) =>
+    `data:${mime};base64,${(await readFile(join(process.cwd(), 'public', path))).toString('base64')}`;
+  const [arabic, display, ui] = await Promise.all([
+    asset('fonts/arabic.woff2', 'font/woff2'),
+    asset('fonts/display.woff2', 'font/woff2'),
+    asset('fonts/ui.woff2', 'font/woff2'),
+  ]);
+  let pages = '';
+  for (const [index, p] of properties.entries()) {
+    const eng = p.translations.find((t) => t.locale === 'en')!,
+      ara = p.translations.find((t) => t.locale === 'ar')!;
+    const image = await asset(
+      /^\/art\/property-[0-5]\.svg$/.test(p.media[0]?.url ?? '')
+        ? p.media[0].url.slice(1)
+        : 'art/property-0.svg',
+      'image/svg+xml',
+    );
+    pages += `<section class="sheet"><header><span>DARIVO</span><span class="ar" dir="rtl">داريفو</span></header><div class="eyebrow">${escape(p.community.nameEn)} · ${escape(p.id)}</div><div class="dual"><h1>${escape(eng.title)}</h1><h1 class="ar" dir="rtl">${escape(ara.title)}</h1></div><img class="hero" src="${image}" alt=""/><div class="price">${escape(money(p.priceAed, currency))}</div><div class="facts"><span>${p.bedrooms} ${en.beds}</span><span>${p.bathrooms} ${en.baths}</span><span>${p.areaSqm} sqm</span><span>${escape(p.status === 'ready' ? en.ready : en.off_plan)}</span></div><div class="dual copy"><p>${escape(eng.description)}</p><p class="ar" dir="rtl">${escape(ara.description)}</p></div><div class="dual"><div><h2>${en.trust}</h2><p>${escape(p.developer.nameEn)}</p><p>${en.permit}: ${escape(p.permitNumber)}</p><p>${en.lastVerified}: ${p.lastVerifiedAt.slice(0, 10)}</p></div><div class="ar" dir="rtl"><h2>${ar.trust}</h2><p>${escape(p.developer.nameAr)}</p><p>${ar.permit}: <bdi>${escape(p.permitNumber)}</bdi></p><p>${ar.lastVerified}: <bdi>${p.lastVerifiedAt.slice(0, 10)}</bdi></p></div></div><div class="estimate"><p>${en.grossYield}: ${p.community.insight?.yieldLow}–${p.community.insight?.yieldHigh}% · ${en.serviceCharge}: ${escape(money(p.serviceChargeMinor / 100 / FX[p.currency], currency))}</p><p>${en.estimate}</p><p class="ar" dir="rtl">${ar.estimate}</p></div><footer><span>${en.synthetic}</span><span>${index + 2}</span></footer></section>`;
+  }
+  return `<!doctype html><html><head><meta charset="utf-8"><style>@font-face{font-family:Arabic;src:url(${arabic})}@font-face{font-family:Display;src:url(${display})}@font-face{font-family:UI;src:url(${ui})}@page{size:A4;margin:0}*{box-sizing:border-box}body{margin:0;color:#1b302e;background:#f5f3ed;font-family:UI,Arial,sans-serif;font-size:10px;line-height:1.6}.sheet{width:210mm;height:297mm;padding:17mm 18mm;position:relative;page-break-after:always;overflow:hidden}.sheet:last-child{page-break-after:auto}header{display:flex;justify-content:space-between;border-bottom:1px solid #c8cbbb;padding-bottom:8mm;font-family:Display,serif;font-size:25px;letter-spacing:4px}.ar{font-family:Arabic,Arial,sans-serif;letter-spacing:0}h1{font:36px/1.2 Display,serif;margin:10px 0 15px}h1.ar{font-size:27px}h2{font:21px Display,serif;margin:0 0 9px}h2.ar,.ar h2{font-family:Arabic;font-size:16px}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:9px;color:#7d613a;margin-top:9mm}.dual{display:grid;grid-template-columns:1fr 1fr;gap:12mm}.hero{width:100%;height:77mm;object-fit:cover}.price{font:29px Display,serif;margin-top:5mm}.facts{display:flex;gap:22px;border-bottom:1px solid #c8cbbb;padding-bottom:4mm}.copy{margin:5mm 0 7mm}.copy p{margin:0}.estimate{margin-top:7mm;padding:4mm;background:#e9e7dc;font-size:9px}.estimate p{margin:2px 0}.cover{display:flex;flex-direction:column;justify-content:center}.cover header{position:absolute;top:17mm;inset-inline:18mm}.cover h1{font-size:62px;margin:7mm 0}.cover h1.ar{font-size:37px}.cover .note{margin-top:18mm;max-width:130mm}.cover .rule{height:1px;background:#9b7949;width:25mm;margin-top:15mm}footer{position:absolute;bottom:12mm;left:18mm;right:18mm;display:flex;justify-content:space-between;border-top:1px solid #c8cbbb;padding-top:4mm;font-size:8px;color:#596762}</style></head><body><section class="sheet cover"><header><span>DARIVO</span><span class="ar" dir="rtl">داريفو</span></header><div class="eyebrow">${en.dossier}</div><h1>${escape(name)}</h1><h1 class="ar" dir="rtl">${ar.dossier}</h1><div class="rule"></div><div class="note"><p>${en.dossierNote}</p><p class="ar" dir="rtl">${ar.dossierNote}</p><p>${en.ratesAsOf.replace('{date}', FX_DATE)} · ${currency}</p></div><footer><span>${en.dossierEnd}</span><span>1</span></footer></section>${pages}</body></html>`;
+}
+export async function renderDossier(name: string, properties: PropertyDTO[], currency = 'AED') {
+  const html = await dossierHtml(name, properties, currency);
+  const browser = await chromium.launch({
+    channel: process.env.PDF_BROWSER_CHANNEL ?? 'chrome',
+    headless: true,
+  });
+  try {
+    const page = await browser.newPage();
+    await page.route('**/*', (route) =>
+      route.request().url().startsWith('data:') ? route.continue() : route.abort(),
+    );
+    await page.setContent(html, { waitUntil: 'load' });
+    await page.evaluate(() => document.fonts.ready);
+    return await page.pdf({ format: 'A4', printBackground: true, preferCSSPageSize: true });
+  } finally {
+    await browser.close();
+  }
+}
