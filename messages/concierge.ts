@@ -232,7 +232,7 @@ export const conciergeCopy = {
       golden_visa: 'Residency objective',
     },
     basis: {
-      UNKNOWN: 'Source unknown',
+      UNKNOWN: 'Source basis not specified',
       AGENT_LISTING: 'Agent listing',
       LISTING: 'Listing',
       BROKER_PROJECT_PAGE: 'Broker project page',
@@ -471,7 +471,7 @@ export const conciergeCopy = {
       golden_visa: 'هدف الإقامة',
     },
     basis: {
-      UNKNOWN: 'المصدر غير معروف',
+      UNKNOWN: 'أساس المصدر غير محدد',
       AGENT_LISTING: 'إعلان وكيل',
       LISTING: 'إعلان',
       BROKER_PROJECT_PAGE: 'صفحة مشروع لدى وسيط',

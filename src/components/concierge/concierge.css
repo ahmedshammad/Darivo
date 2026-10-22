@@ -12,7 +12,7 @@
   position: relative;
   height: 100svh;
   min-height: 550px;
-  overflow: hidden;
+  overflow: clip;
   background: var(--cq-bg);
   color: var(--cq-text);
   font: 14px/1.65 var(--sans);
@@ -706,19 +706,46 @@
   font-size: 12px;
 }
 .cq-scatter svg {
+  direction: ltr;
   width: 100%;
   height: auto;
   overflow: visible;
 }
 .cq-scatter svg text {
-  font: 10px var(--sans);
+  font: 13px var(--sans);
   fill: var(--cq-muted);
 }
 .cq-scatter circle {
   fill: var(--cq-accent);
 }
 .cq-scatter ol {
-  padding-inline-start: 20px;
+  padding: 0;
+  list-style: none;
+}
+.cq-scatter li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-block: 6px;
+  font-size: 12px;
+}
+.cq-scatter li bdi {
+  min-width: 20px;
+  color: var(--cq-accent);
+}
+.cq-scatter .cq-point-label {
+  fill: var(--cq-text);
+  paint-order: stroke;
+  stroke: var(--cq-panel);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.cq-scatter .cq-point-leader {
+  stroke: var(--cq-muted);
+  stroke-width: 1px;
+}
+.cq-scatter-scale {
+  margin-block: 8px;
 }
 .cq-inline-map-sources {
   display: none;

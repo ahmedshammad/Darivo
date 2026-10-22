@@ -400,9 +400,11 @@ export function ResponseComponent({
                   <bdi>{format(step.percent)}%</bdi>
                 </strong>
                 <h4>{step.label[locale]}</h4>
-                <p>
-                  <bdi>{digits(step.timing)}</bdi>
-                </p>
+                {step.timing.trim() !== step.label[locale].trim() && (
+                  <p>
+                    <bdi>{digits(step.timing)}</bdi>
+                  </p>
+                )}
                 <p>
                   <bdi>
                     {format(
@@ -461,11 +463,48 @@ export function ResponseComponent({
             );
             const max = Math.max(1, ...valid.map((p) => p.price!.value as number));
             const maxArea = Math.max(1, ...valid.map((p) => p.area!.value as number));
+            const labels: Array<{ x: number; y: number }> = [];
+            const plotted = valid.map((point) => {
+              const x = 44 + ((point.area!.value as number) / maxArea) * 268;
+              const y = 152 - ((point.price!.value as number) / max) * 126;
+              // Plex Arabic's numeric glyph box is taller than Inter's. Reserve
+              // 26 SVG units vertically, including the four-unit contrast halo.
+              const candidates = [
+                [-18, -12],
+                [18, -12],
+                [-18, 18],
+                [18, 18],
+                [-48, 0],
+                [0, 32],
+                [-48, 32],
+                [30, 48],
+                [-30, 64],
+              ];
+              const label = candidates
+                .map(([dx, dy]) => ({
+                  x: Math.max(56, Math.min(326, x + dx)),
+                  y: Math.max(18, Math.min(146, y + dy)),
+                }))
+                .find((candidate) =>
+                  labels.every(
+                    (placed) =>
+                      Math.abs(placed.x - candidate.x) > 22 ||
+                      Math.abs(placed.y - candidate.y) > 26,
+                  ),
+                ) ?? { x: x - 18, y: y - 12 };
+              labels.push(label);
+              return { point, x, y, label };
+            });
             return (
               <figure className="cq-scatter" key={group}>
                 <figcaption>
                   {t.price} · <bdi>{currency}</bdi> / {t.area} · <bdi>{unit}</bdi>
                 </figcaption>
+                <p className="cq-scatter-scale">
+                  <bdi>
+                    {format(0)}–{format(max, currency)}
+                  </bdi>
+                </p>
                 <svg
                   viewBox="0 0 340 195"
                   role="img"
@@ -485,29 +524,28 @@ export function ResponseComponent({
                   <text x="312" y="174" textAnchor="end">
                     {format(maxArea)} {unit}
                   </text>
-                  <text x="44" y="10">
-                    {format(max, currency)}
-                  </text>
-                  {valid.map((point, index) => (
+                  {plotted.map(({ point, x, y, label }, index) => (
                     <g key={point.point.entity.id}>
-                      <circle
-                        cx={44 + ((point.area!.value as number) / maxArea) * 268}
-                        cy={152 - ((point.price!.value as number) / max) * 126}
-                        r="5"
+                      <circle cx={x} cy={y} r="5" />
+                      <line
+                        className="cq-point-leader"
+                        x1={x}
+                        y1={y}
+                        x2={label.x}
+                        y2={label.y - 4}
                       />
-                      <text
-                        x={44 + ((point.area!.value as number) / maxArea) * 268}
-                        y={142 - ((point.price!.value as number) / max) * 126}
-                        textAnchor="middle"
-                      >
+                      <text className="cq-point-label" x={label.x} y={label.y} textAnchor="middle">
                         {format(index + 1)}
                       </text>
                     </g>
                   ))}
                 </svg>
                 <ol>
-                  {valid.map((point) => (
-                    <li key={point.point.entity.id}>{point.card?.name[locale]}</li>
+                  {valid.map((point, index) => (
+                    <li key={point.point.entity.id}>
+                      <bdi>{format(index + 1)}</bdi>
+                      <span>{point.card?.name[locale]}</span>
+                    </li>
                   ))}
                 </ol>
               </figure>

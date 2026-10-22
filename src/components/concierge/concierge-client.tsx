@@ -235,6 +235,19 @@ export function ConciergeClient({
           : previous,
     );
   }
+  function focusReadingTarget(
+    target: HTMLElement | null | undefined,
+    align: 'start' | 'end' = 'start',
+  ) {
+    const container = reading.current;
+    if (!container || !target) return;
+    const offset = target.getBoundingClientRect().top - container.getBoundingClientRect().top;
+    container.scrollTo({
+      top: align === 'end' ? container.scrollHeight : container.scrollTop + offset,
+      behavior: 'instant',
+    });
+    target.focus({ preventScroll: true });
+  }
   async function send(text = draft) {
     if (!text.trim() || busy) return;
     speech.current?.stop();
@@ -268,7 +281,7 @@ export function ConciergeClient({
     sendTicket.current += 1;
     ignoredRequest.current = concierge.turns.at(-1)?.requestId ?? activeRequest.current;
     void concierge.stop().catch(() => setLocalError(t.error));
-    input.current?.focus();
+    input.current?.focus({ preventScroll: true });
     const root = frame.current?.querySelector<HTMLElement>('.living-map');
     if (root?.dataset.center) {
       try {
@@ -292,7 +305,7 @@ export function ConciergeClient({
     const Recognition = browser.SpeechRecognition ?? browser.webkitSpeechRecognition;
     if (!Recognition) {
       setVoiceStatus(t.voiceUnavailable);
-      input.current?.focus();
+      input.current?.focus({ preventScroll: true });
       return;
     }
     speech.current?.abort();
@@ -318,7 +331,7 @@ export function ConciergeClient({
       recognition.start();
       setListening(true);
       setVoiceStatus(t.listening);
-      input.current?.focus();
+      input.current?.focus({ preventScroll: true });
     } catch {
       setVoiceStatus(t.voiceFailed);
     }
@@ -424,9 +437,11 @@ export function ConciergeClient({
               setTab('conversation');
               setExpanded(true);
               requestAnimationFrame(() =>
-                reading.current
-                  ?.querySelector<HTMLElement>(`[data-project-id="${CSS.escape(id)}"] h3 button`)
-                  ?.focus(),
+                focusReadingTarget(
+                  reading.current?.querySelector<HTMLElement>(
+                    `[data-project-id="${CSS.escape(id)}"] h3 button`,
+                  ),
+                ),
               );
             } else {
               const project = data.projects.find((item) => item.id === id);
@@ -434,7 +449,7 @@ export function ConciergeClient({
                 setDraft(`${t.askProject} ${locale === 'ar' ? project.nameAr : project.nameEn}`);
                 setTab('conversation');
                 setExpanded(true);
-                requestAnimationFrame(() => input.current?.focus());
+                requestAnimationFrame(() => input.current?.focus({ preventScroll: true }));
               }
             }
           }}
@@ -648,8 +663,7 @@ export function ConciergeClient({
                                 .forEach((details) => {
                                   details.open = true;
                                 });
-                              target?.scrollIntoView({ block: 'start', behavior: 'instant' });
-                              target?.focus({ preventScroll: true });
+                              focusReadingTarget(target);
                             });
                           }}
                           onMap={(next, ids) => {
@@ -726,7 +740,7 @@ export function ConciergeClient({
                                   ? t.actionReceipts[proposal.kind]
                                   : t.actionRejected,
                               );
-                              input.current?.focus();
+                              input.current?.focus({ preventScroll: true });
                             } catch {
                               setLocalError(t.actionFailed);
                             } finally {
@@ -745,7 +759,7 @@ export function ConciergeClient({
                           if (guest) {
                             setDismissedProposals((previous) => [...previous, proposal.id]);
                             setActionReceipt(t.actionRejected);
-                            input.current?.focus();
+                            input.current?.focus({ preventScroll: true });
                             return;
                           }
                           setConfirming(true);
@@ -760,7 +774,7 @@ export function ConciergeClient({
                                 ? t.actionReceipts[proposal.kind]
                                 : t.actionRejected,
                             );
-                            input.current?.focus();
+                            input.current?.focus({ preventScroll: true });
                           } catch {
                             setLocalError(t.actionFailed);
                           } finally {
@@ -825,8 +839,7 @@ export function ConciergeClient({
               onClick={() => {
                 setTab('conversation');
                 requestAnimationFrame(() => {
-                  end.current?.scrollIntoView({ block: 'nearest' });
-                  end.current?.focus({ preventScroll: true });
+                  focusReadingTarget(end.current, 'end');
                 });
               }}
             >

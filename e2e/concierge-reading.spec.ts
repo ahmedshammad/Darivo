@@ -1,7 +1,41 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { conciergeCopy } from '../messages/concierge';
 import type { ConciergeRequest } from '../src/lib/concierge-transport';
+
+async function expectReadingFrame(page: Page) {
+  // Wait for the focus callback and the following paint, not just window.scrollY.
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+      ),
+  );
+  const frame = await page.evaluate(() => {
+    const reading = document.querySelector('.cq-reading')!;
+    const ancestors = [];
+    for (let element = reading.parentElement; element; element = element.parentElement)
+      ancestors.push({ tag: element.tagName, scroll: element.scrollTop });
+    const header = document.querySelector('.cq-header')!.getBoundingClientRect();
+    const panel = document.querySelector('.cq-panel')!.getBoundingClientRect();
+    const input = document.querySelector('#concierge-prompt')!.getBoundingClientRect();
+    return {
+      ancestors,
+      windowScroll: scrollY,
+      headerTop: header.top,
+      headerBottom: header.bottom,
+      panelBottom: panel.bottom,
+      inputBottom: input.bottom,
+      height: innerHeight,
+    };
+  });
+  expect(frame.windowScroll).toBe(0);
+  expect(frame.ancestors.every((ancestor) => ancestor.scroll === 0)).toBe(true);
+  expect(frame.headerTop).toBeGreaterThanOrEqual(0);
+  expect(frame.headerBottom).toBeGreaterThan(40);
+  expect(frame.panelBottom).toBeCloseTo(frame.height, 0);
+  expect(frame.inputBottom).toBeLessThanOrEqual(frame.height);
+}
 
 for (const locale of ['en', 'ar'] as const) {
   for (const fallback of [false, true]) {
@@ -135,6 +169,7 @@ for (const locale of ['en', 'ar'] as const) {
     expect(posts).toHaveLength(1);
     await turn.getByRole('button', { name: copy.reviewRequirements, exact: true }).first().click();
     await expect(page.locator('#concierge-mustHaves')).toBeFocused();
+    await expectReadingFrame(page);
     await expect(page.getByTestId('concierge')).toHaveAttribute('data-sheet', 'expanded');
     const brief = page.getByTestId('concierge-brief');
     const condition = brief
@@ -150,6 +185,7 @@ for (const locale of ['en', 'ar'] as const) {
     await expect(strictEvidence).toBeChecked();
     expect(posts).toHaveLength(1);
     await strictEvidence.uncheck();
+    await expectReadingFrame(page);
     expect(posts).toHaveLength(1);
     await brief.getByRole('button', { name: copy.apply, exact: true }).click();
     await expect.poll(() => posts.length).toBe(2);
@@ -167,5 +203,53 @@ for (const locale of ['en', 'ar'] as const) {
       { timeout: 30000 },
     );
     await expect(strictEvidence).not.toBeChecked();
+    await expectReadingFrame(page);
+    await page.getByRole('button', { name: copy.newReply, exact: true }).click();
+    await expectReadingFrame(page);
+    await page.locator('#concierge-prompt').focus();
+    await expectReadingFrame(page);
+  });
+}
+
+for (const locale of ['en', 'ar'] as const) {
+  test(`Chart labels remain distinguishable with full source values in ${locale}`, async ({
+    page,
+  }) => {
+    const copy = conciergeCopy[locale];
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(`/${locale}/concierge?fallback=1`);
+    const ask = async (text: string) => {
+      await page.locator('#concierge-prompt').fill(text);
+      await page.getByRole('button', { name: copy.send, exact: true }).click();
+      await expect(page.getByTestId('concierge-turn').last()).toHaveAttribute(
+        'data-status',
+        'complete',
+        { timeout: 30000 },
+      );
+    };
+    await ask(locale === 'ar' ? 'اعرض وحدات تجريبية في دبي' : 'Show demo units in Dubai');
+    await ask(locale === 'ar' ? 'اعرض مخطط السعر والمساحة' : 'Show price-area chart');
+    const chart = page
+      .getByTestId('concierge-turn')
+      .last()
+      .locator('[data-component-kind="price-area-chart"]');
+    await expect(chart).toHaveCount(1);
+    const labels = chart.locator('.cq-point-label');
+    expect(await labels.count()).toBeGreaterThan(1);
+    const overlap = await labels.evaluateAll((elements) => {
+      const rects = elements.map((element) => element.getBoundingClientRect());
+      return rects.some((a, i) =>
+        rects
+          .slice(i + 1)
+          .some(
+            (b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top,
+          ),
+      );
+    });
+    expect(overlap).toBe(false);
+    await expect(chart.locator('tbody tr')).toHaveCount(await labels.count());
+    await expect(chart.locator('.cq-scatter li bdi')).toHaveCount(await labels.count());
+    await page.getByRole('button', { name: copy.newReply, exact: true }).click();
+    await expectReadingFrame(page);
   });
 }
