@@ -76,6 +76,8 @@ export type LivingMapProps = {
   mode?: 'arrival' | 'explore';
   camera?: AtlasCamera;
   selectedId?: string | null;
+  /** Yield the duplicate map label when the selected project's evidence is visible. */
+  hideSelectedPopup?: boolean;
   highlightedIds?: string[];
   layers?: AtlasLayer[];
   compareIds?: string[];

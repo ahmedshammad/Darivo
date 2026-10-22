@@ -126,3 +126,9 @@ Comparison endpoints now have actual44px picking targets, verified by EN/AR poin
 ### Stage 2 fourth review — below the gate
 
 Fresh v6 media and seven simulated reviews yield8.935/min8: failed aggregate9.0gate. Full local41browser suite passes, including authenticated workflows, along with61unit/36eval. Comparison targets and source panels are repaired; remaining label collision, popup overlap and translucent evidence surface become the next narrow craft fixes. Hardware/software LCP misses remain explicit. Hosted d9b2faa validation is pending; no subsequent repair or CI outcome is credited to this checkpoint.
+
+### Stage 2 narrow readability polish and hosted green baseline
+
+Hosted d9b2faa run39811918397 passed all code checks,61unit/36eval,38browser cases with3GPU-specific skips, build and unchanged Lighthouse. Those3cases pass on the localGPU; local fullsuite41/41. Hosted performance Home91/Explore93/Search94/Arabicdetail92 retains the later95-pointHome/Project and2secondLCP gaps. Reports and explicit test-mode limits are saved.
+
+Subsequent polish makes only conversation/evidence panels opaque, removes a redundant native map popup while its full mobile evidence is expanded, and gives map labels collision-aware alternative anchors. EN/ARdistance is now separate from SaudiArabia without hiding countrylabels. Eight375/390theme/locale devstates pass visualinspection; productionbuild passes and4targeted EN/ARdisclosure/actualpointer regressions pass. New fullproductionmedia/v7 capture and fifthreview are pending; v4scores remainunchanged. A minimal softwarepaint experiment was inconclusive about applicationcausality, so no speculative schedulingchange wasmade.

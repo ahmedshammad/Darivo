@@ -881,8 +881,13 @@ export function LivingMap(props: LivingMapProps) {
               'text-field': ['get', 'name'],
               'text-font': ['Noto Sans Regular'],
               'text-size': 12,
-              'text-offset': [0, 1.5],
-              'text-anchor': 'top',
+              // Try clear positions around the connection instead of fixing the
+              // distance over the country name beneath its midpoint.
+              'text-variable-anchor': ['bottom', 'top', 'left', 'right'],
+              'text-radial-offset': 1.5,
+              'text-allow-overlap': false,
+              'text-ignore-placement': false,
+              'text-padding': 8,
               'text-max-width': 18,
             },
             paint: {
@@ -1095,7 +1100,7 @@ export function LivingMap(props: LivingMapProps) {
     if (!current || status !== 'webgl') return;
     current.update();
     const selected = props.projects.find((p) => p.id === props.selectedId);
-    if (selected && current.popup) {
+    if (selected && current.popup && !props.hideSelectedPopup) {
       const label = document.createElement('div');
       const title = document.createElement('strong');
       title.textContent = nameOf(selected, locale);
@@ -1108,6 +1113,7 @@ export function LivingMap(props: LivingMapProps) {
     props.projects,
     props.pois,
     props.selectedId,
+    props.hideSelectedPopup,
     props.highlightedIds,
     props.layers,
     props.compareIds,

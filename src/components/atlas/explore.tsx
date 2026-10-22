@@ -499,6 +499,7 @@ export function Explore({
           mode="explore"
           camera={cameraWithPadding}
           selectedId={selectedId}
+          hideSelectedPopup={mobile && expanded && Boolean(selectedId)}
           highlightedIds={mapHighlights}
           layers={layers}
           compareIds={compareIds}
