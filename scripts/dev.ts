@@ -1,5 +1,7 @@
-import {existsSync,mkdirSync,writeFileSync} from 'node:fs';
-import {randomBytes} from 'node:crypto';
+import {existsSync,mkdirSync,writeFileSync,renameSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {createHash,randomBytes} from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {config} from 'dotenv';
 async function main(){
@@ -10,7 +12,7 @@ async function main(){
  if(process.env.LOCAL_DB==='pglite'){
   mkdirSync('.local',{recursive:true});
   const {PGlite}=await import('@electric-sql/pglite');const {vector}=await import('@electric-sql/pglite-pgvector');const {PGLiteSocketServer}=await import('@electric-sql/pglite-socket');
-  const database=await PGlite.create('.local/postgres',{extensions:{vector}});const server=new PGLiteSocketServer({db:database,host:'127.0.0.1',port:55432});await server.start();stop=async()=>{await server.stop();await database.close();};
+  const dataDir=join(tmpdir(),'darivo-postgres-'+createHash('sha256').update(process.cwd()).digest('hex').slice(0,12));if(existsSync('.local/postgres')&&!existsSync(dataDir))renameSync('.local/postgres',dataDir);const database=await PGlite.create(dataDir,{extensions:{vector}});const server=new PGLiteSocketServer({db:database,host:'127.0.0.1',port:55432,maxConnections:32});await server.start();stop=async()=>{await server.stop();await database.close();};
   console.info('Local PostgreSQL + pgvector ready (PGlite development fallback).');
  }
  await run(['db:generate']);await run(['db:migrate']);await run(['db:seed']);

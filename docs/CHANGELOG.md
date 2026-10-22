@@ -7,3 +7,11 @@
 - Auth.js demo credentials (development only), console magic links and server-side role helper are implemented. No credentials or secrets committed.
 - Checks: lint and typecheck pass; 2 unit tests pass; Playwright Arabic navigation and client sign-in smoke test passes.
 - Assumptions/gaps: production email is deliberately disabled until a delivery adapter is configured. Docker/PG16 execution cannot be tested on this host; CI targets PG16. Shared environments must use PostgreSQL, not the local PGlite socket. Stage 1 replaces the temporary collection landing with seeded inventory and search.
+
+## Stage 1 — Data and discovery (2026-10-22)
+- Seeded 200 fictional bilingual properties across 16 communities: 160 PUBLIC, 30 VERIFIED_ONLY and 10 PRIVATE_INVITE. Four fictional developers, bilingual area insights, payment plans and dated static FX rates are included.
+- Implemented shared visibility-scoped data access, structured filters, PostgreSQL full-text + pgvector ranking, curated cards, map/list view, currency/area controls and complete property detail/trust/estimate panels.
+- Created original vector architectural illustrations, avoiding copyrighted listing media. Landing composition uses these same synthetic assets.
+- Checks: lint/typecheck clean; 7 unit/integration tests pass; 3 Playwright tests pass, including direct API denial, mobile filters/maps, Arabic content and no horizontal overflow at 375px.
+- Resolved actual Arabic content localization with next-intl proxy (document direction alone was insufficient). Switched local dev to Webpack after reproducing a Turbopack reload loop; kept Next.js current. Explicit Tailwind source roots and test artifacts outside the source tree prevent watcher feedback. PGlite files persist in a project-keyed OS temporary directory; Docker volumes remain the durable default for shared work.
+- Map uses an original offline schematic GeoJSON basemap and clustered pins, with local MapLibre workers; this intentionally has no paid tiles or network dependency. Stage 2 adds the consultant; property workflow links activate in Stage 3.
