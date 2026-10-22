@@ -242,19 +242,20 @@ export function Explore({
       ...activeCamera,
       padding: mobile
         ? {
-            top: 140,
+            top: !expanded && comparison.length > 1 ? 190 : 140,
             bottom: Math.min(
               viewportHeight - 180,
               Math.round(
-                (expanded ? viewportHeight * 0.79 : Math.max(viewportHeight * 0.34, 268)) + 90,
+                (expanded ? viewportHeight * 0.79 : Math.max(viewportHeight * 0.34, 268)) +
+                  (!expanded && comparison.length > 1 ? 168 : 90),
               ),
             ),
-            left: 24,
-            right: 24,
+            left: !expanded && comparison.length > 1 ? 48 : 24,
+            right: !expanded && comparison.length > 1 ? 48 : 24,
           }
         : { top: 100, bottom: 100, left: arabic ? 70 : 430, right: arabic ? 430 : 70 },
     }),
-    [activeCamera, mobile, expanded, arabic, viewportHeight],
+    [activeCamera, mobile, expanded, arabic, viewportHeight, comparison.length],
   );
 
   useEffect(() => {
@@ -299,7 +300,7 @@ export function Explore({
         setExpanded(true);
       }
     },
-    [projects, camera.center, t],
+    [projects, camera.center, t, setPlaying],
   );
   useEffect(() => {
     if (!query.trim() || query === initialQuery) return;

@@ -1407,7 +1407,7 @@ function FallbackMap(props: LivingMapProps) {
           <Minus size={18} />
         </button>
       </div>
-      {props.mode === 'explore' ? (
+      {props.mode === 'explore' && compared.length > 1 ? null : props.mode === 'explore' ? (
         <details className="atlas-fallback-label atlas-fallback-label--compact">
           <summary>{text.fallback}</summary>
           <span>{text.fallbackDetail}</span>
