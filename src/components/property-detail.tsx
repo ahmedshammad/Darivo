@@ -8,7 +8,8 @@ import { useLocale, useTranslations } from 'next-intl';
 import { ShieldCheck, ArrowUpRight, Check, Share2 } from 'lucide-react';
 import type { PropertyDTO } from '@/src/server/db/properties';
 import { money, size, FX } from '@/src/lib/catalog';
-import { DisplayPreferences, usePreferences } from './preferences';
+import { usePreferences } from './preferences';
+import { DisplayPreferences } from './display-preferences';
 import { MapView } from './map-view';
 import { Price } from './price';
 export function PropertyDetail({ property: p }: { property: PropertyDTO }) {

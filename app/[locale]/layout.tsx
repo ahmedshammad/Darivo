@@ -1,11 +1,8 @@
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { auth } from '@/auth';
-import { db } from '@/src/server/db/client';
+import { getLayoutUser } from '@/src/server/layout-user';
 import { PreferencesProvider } from '@/src/components/preferences';
-import { Shell } from '@/src/components/shell';
-import '../globals.css';
+import '../base.css';
 import '@/src/styles/tokens.css';
 export const metadata = {
   title: { default: 'Darivo · A considered address', template: '%s · Darivo' },
@@ -21,11 +18,7 @@ export default async function Layout({
   const { locale } = await params;
   if (!['en', 'ar'].includes(locale)) notFound();
   setRequestLocale(locale);
-  const messages = await getMessages({ locale });
-  const session = await auth();
-  const user = session?.user?.id
-    ? await db.user.findUnique({ where: { id: session.user.id }, include: { profile: true } })
-    : null;
+  const user = await getLayoutUser();
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <head>
@@ -45,19 +38,15 @@ export default async function Layout({
         />
       </head>
       <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <PreferencesProvider
-            key={user?.id ?? 'anonymous'}
-            userId={user?.id}
-            currency={user?.profile?.currency}
-            unit={user?.profile?.areaUnit}
-            arabicIndicDigits={user?.profile?.arabicIndicDigits}
-          >
-            <Shell email={user?.email} role={user?.role}>
-              {children}
-            </Shell>
-          </PreferencesProvider>
-        </NextIntlClientProvider>
+        <PreferencesProvider
+          key={user?.id ?? 'anonymous'}
+          userId={user?.id}
+          currency={user?.profile?.currency}
+          unit={user?.profile?.areaUnit}
+          arabicIndicDigits={user?.profile?.arabicIndicDigits}
+        >
+          {children}
+        </PreferencesProvider>
       </body>
     </html>
   );

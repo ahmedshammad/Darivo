@@ -3,7 +3,6 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { signOut } from 'next-auth/react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowDown,
@@ -275,7 +274,10 @@ export function Arrival({
               <button
                 type="button"
                 className="arrival-signout"
-                onClick={() => signOut({ callbackUrl: `/${locale}?${query()}` })}
+                onClick={async () => {
+                  const { signOut } = await import('next-auth/react');
+                  await signOut({ callbackUrl: `/${locale}?${query()}` });
+                }}
               >
                 {t.signOut}
               </button>

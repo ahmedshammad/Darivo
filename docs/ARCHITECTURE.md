@@ -55,3 +55,11 @@ Reference ingestion preserves the supplied record and individual fact provenance
 The approved Noir Atlas direction becomes shared raw and semantic CSS tokens plus local Latin/Arabic font families. `/design` is the living component guide; production feature screens wait for the relevant later-stage gate. Interactive primitives own focus, reduced motion and logical-direction behavior. Prices preserve native currency and expose any indicative static-FX conversion separately.
 
 Roles expand to CLIENT, VERIFIED_CLIENT, ADVISOR, DEVELOPER_PARTNER and ADMIN. Verified eligibility is checked against current database verification; a role label or stale session alone never grants access. Developer partners have no implicit advisor, admin or private-client authority. Preference mutations accept only declared display fields, including Arabic-Indic digits, and never role or verification state.
+
+## Atlas and legacy route boundaries
+
+The locale root owns the document, shared font/reset/token styles and one persistent display-preferences provider. Home and Explore render their real heading and composer directly, retaining map-specific readiness UI rather than a locale-wide loading placeholder. Their authored bilingual copy does not require the full legacy translation payload.
+
+The `(legacy)` route group preserves existing public URLs while owning legacy page styles, `NextIntlClientProvider` and `Shell`. Each existing child route retains its localized loading boundary. New routes that use next-intl client hooks must provide the appropriate message context; Atlas components accept locale and copy explicitly. Preferences controls are separate from the shared state provider so they do not add translation UI dependencies to Atlas.
+
+`getLayoutUser` uses React request-scoped memoization to share one session/database lookup between layouts. It is not a persistent user cache. Session identity is checked with Auth.js; current role and display preferences are selected from the database. Authorization remains in the existing server data/API layers. Locale error and not-found boundaries provide their own main landmark because they can replace a child layout.

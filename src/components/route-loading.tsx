@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-export default async function Loading() {
+export default async function RouteLoading() {
   const t = await getTranslations();
   return (
     <div className="page empty" role="status" style={{ minBlockSize: '100svh' }}>

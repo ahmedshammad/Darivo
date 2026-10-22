@@ -9,7 +9,8 @@ import type { PropertyDTO } from '@/src/server/db/properties';
 import { FX, size } from '@/src/lib/catalog';
 import { slotToIso } from '@/src/lib/timezone';
 import { PropertyCard } from './property-card';
-import { DisplayPreferences, usePreferences } from './preferences';
+import { usePreferences } from './preferences';
+import { DisplayPreferences } from './display-preferences';
 import { Price } from './price';
 type Shortlist = { id: string; name: string; properties: PropertyDTO[] };
 export function Shortlists({

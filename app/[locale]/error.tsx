@@ -1,14 +1,16 @@
 'use client';
-import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
+import { errorCopy } from '@/messages/errors';
 export default function ErrorPage({ reset }: { reset: () => void }) {
-  const t = useTranslations();
+  const { locale } = useParams<{ locale: string }>();
+  const t = errorCopy[locale === 'ar' ? 'ar' : 'en'];
   return (
-    <div className="shell page empty stack">
-      <h2>{t('errorTitle')}</h2>
-      <p>{t('errorBody')}</p>
+    <main id="main" className="shell page empty stack">
+      <h1>{t.errorTitle}</h1>
+      <p>{t.errorBody}</p>
       <button className="button" onClick={reset}>
-        {t('retry')}
+        {t.retry}
       </button>
-    </div>
+    </main>
   );
 }

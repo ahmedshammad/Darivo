@@ -15,7 +15,8 @@ import Link from 'next/link';
 import { AREAS, TYPES } from '@/src/lib/catalog';
 import type { PropertyDTO } from '@/src/server/db/properties';
 import { PropertyCard } from './property-card';
-import { DisplayPreferences, usePreferences } from './preferences';
+import { usePreferences } from './preferences';
+import { DisplayPreferences } from './display-preferences';
 const MapView = dynamic(() => import('./map-view').then((module) => module.MapView), {
   ssr: false,
 });
