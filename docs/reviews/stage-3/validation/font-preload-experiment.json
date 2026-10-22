@@ -1,0 +1,22 @@
+{
+  "status": "Not retained",
+  "reports": [
+    {
+      "build": "v9",
+      "note": "Static Link hints were replaced by locale middleware; no effective preload change.",
+      "rawReport": "/tmp/darivo-stage3-lighthouse-v9/concierge.json",
+      "performance": 99,
+      "lcpMs": 2194.0429,
+      "blockingMs": 60.5
+    },
+    {
+      "build": "v10",
+      "note": "Hints survived alongside language alternates, but loading did not meaningfully improve; reverted.",
+      "rawReport": "/tmp/darivo-stage3-lighthouse-v10/concierge.json",
+      "performance": 98,
+      "lcpMs": 2190.5764,
+      "blockingMs": 67
+    }
+  ],
+  "conclusion": "No measured meaningful improvement to the remaining strict two-second LCP gap. Original same-origin HTML font preloads remain."
+}

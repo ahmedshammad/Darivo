@@ -1,0 +1,11 @@
+{
+  "scope": "Real guest UI and streamed MockProvider responses; no mocked requests or writes",
+  "limitations": [
+    "Seeded prices and FX, not live offers or exchange rates.",
+    "No physical-device, native-human-language or real-provider certification."
+  ],
+  "states": [],
+  "failures": [
+    "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  getByTestId('concierge-turn').last()\nExpected: \"complete\"\nReceived: \"failed\"\nTimeout:  30000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" getByTestId('concierge-turn').last() with timeout 30000ms\n  - waiting for getByTestId('concierge-turn').last()\n    63 × locator resolved to <article class=\"cq-turn\" data-status=\"failed\" data-testid=\"concierge-turn\">…</article>\n       - unexpected value \"failed\"\n"
+  ]
+}

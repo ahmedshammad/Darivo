@@ -1,0 +1,5 @@
+# Final mobile POI qualification evidence
+
+Production source `0b304f7`, build v12. All 64 states pass: English/Arabic, dark/light, 375/390px, actual WebGL/forced fallback, Elena school/Sheikha beach layers, expanded/collapsed sheet. Every state records visible exact Demo qualification, no duplicate visible qualification, geometry entirely in the exposed map, the expected active layer from the real SSE response, settled expected renderer, zero axe violations, zero page errors, zero overflow and zero outer-window scrolling.
+
+The expanded sheet has one qualified label in the exposed map strip; collapse restores the qualification beside the map sources. The map’s shortened generic labels do not represent real schools or licensed amenity data. Captures use reduced motion and phone/touch emulation on local hardware. They do not certify physical-phone cadence or native assistive technology. This small final-source overlay change supplements the complete unchanged-component v7 matrix and six recordings.

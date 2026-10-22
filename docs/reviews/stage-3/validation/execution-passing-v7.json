@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "mock": {
+    "provider": "mock",
+    "cases": 444,
+    "turns": 632,
+    "cards": 1796,
+    "facts": 16318,
+    "actions": 618,
+    "durationMs": 36986,
+    "counters": {
+      "executionErrors": 0,
+      "semanticFailures": 0,
+      "hallucinatedIds": 0,
+      "hallucinatedValues": 0,
+      "invalidSourceReferences": 0,
+      "privateLeaks": 0,
+      "currencyErrors": 0,
+      "mapErrors": 0,
+      "toneViolations": 0,
+      "refusalFailures": 0,
+      "schoolDisclosureFailures": 0,
+      "unconfirmedWrites": 0,
+      "streamErrors": 0
+    },
+    "failures": []
+  },
+  "real": {
+    "status": "skipped",
+    "reason": "No OPENAI_API_KEY; real provider not tested."
+  },
+  "totalDurationMs": 38219,
+  "limits": [
+    "Fresh DAL checks certify only this seeded local database state, not current external market truth.",
+    "Mock semantic/execution evidence does not certify native Arabic quality, browser UI, real-provider behavior or external writes.",
+    "No viewing, handoff or portfolio confirmation is executed."
+  ]
+}

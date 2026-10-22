@@ -1,0 +1,20 @@
+{
+  "scope": "Stage 3 presentation repair production source157bd02, buildv8",
+  "scores": {
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 96,
+    "seo": 100
+  },
+  "metrics": {
+    "lcpMs": 2179.931,
+    "blockingMs": 49,
+    "layoutShift": 0,
+    "transferBytes": 742809
+  },
+  "rawReport": "/tmp/darivo-stage3-lighthouse-v8/concierge.json",
+  "limits": [
+    "Strict LCP below2000ms remains unmet.",
+    "Isolated simulated mobile lab test, not physical device cadence or field INP."
+  ]
+}
