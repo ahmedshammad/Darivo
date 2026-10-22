@@ -17,3 +17,9 @@ The production recheck also covers keyboard placement of an office or school ori
 # Voice entry policy
 
 Arrival alone permits microphone use by its own origin, still subject to the browser's user permission and the explicit microphone action. Other routes retain the restrictive default. The previous global `microphone=()` policy conflicted with voice entry; the scoped override follows the [documented microphone policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy/microphone). Actual speech recognition remains browser/service dependent and is not certified by the automated checks.
+
+## Orientation and reading follow-up
+
+The mobile heading remains in the accessibility tree when visually clipped. Source notes now form a named keyboard-focusable scroll region.500px viewport checks cover editing, source scrolling, Tab escape and the final evidence action. Resized browser viewports do not certify physical virtual-keyboard behavior. Fallback SVG output rounds final screen pixels to0.001px to avoid observed sub-pixel hydration attribute warnings.
+
+Fresh production captures and the next scored board review remain pending.

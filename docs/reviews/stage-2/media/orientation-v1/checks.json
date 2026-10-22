@@ -1,0 +1,1046 @@
+[
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "dark",
+    "key": "initial",
+    "mode": "webgl",
+    "zoom": 10.6,
+    "center": [55.190000000000055, 25.14999999999999],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 88.52087454272925,
+          "y": 312.378337640713,
+          "width": 185,
+          "height": 32
+        },
+        "offset": [120.5, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "Palm Jumeirah"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "dark",
+    "key": "palm",
+    "mode": "webgl",
+    "zoom": 12.6,
+    "center": [55.13900000000001, 25.117999999999995],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 102.50000000037664,
+          "y": 243.50000000018832,
+          "width": 185,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "Palm Jumeirah"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "dark",
+    "key": "downtown",
+    "mode": "webgl",
+    "zoom": 13,
+    "center": [55.27600000000007, 25.197000000000003],
+    "planned": [
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 95.99999999962336,
+          "y": 243.5,
+          "width": 198,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "Downtown Dubai"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "dark",
+    "key": "saadiyat",
+    "mode": "webgl",
+    "zoom": 12,
+    "center": [54.43799999999999, 24.540999999999983],
+    "planned": [],
+    "rendered": [],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "light",
+    "key": "initial",
+    "mode": "webgl",
+    "zoom": 10.6,
+    "center": [55.190000000000055, 25.14999999999999],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 88.52087454272925,
+          "y": 312.378337640713,
+          "width": 185,
+          "height": 32
+        },
+        "offset": [120.5, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "Palm Jumeirah"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "light",
+    "key": "palm",
+    "mode": "webgl",
+    "zoom": 12.6,
+    "center": [55.13900000000001, 25.117999999999995],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 102.50000000037664,
+          "y": 243.50000000018832,
+          "width": 185,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "Palm Jumeirah"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "light",
+    "key": "downtown",
+    "mode": "webgl",
+    "zoom": 13,
+    "center": [55.27600000000007, 25.197000000000003],
+    "planned": [
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 95.99999999962336,
+          "y": 243.5,
+          "width": 198,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "Downtown Dubai"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "en",
+    "theme": "light",
+    "key": "saadiyat",
+    "mode": "webgl",
+    "zoom": 12,
+    "center": [54.43799999999999, 24.540999999999983],
+    "planned": [],
+    "rendered": [],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "dark",
+    "key": "initial",
+    "mode": "webgl",
+    "zoom": 10.6,
+    "center": [55.190000000000055, 25.14999999999999],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 88.52087454272925,
+          "y": 312.378337640713,
+          "width": 146,
+          "height": 32
+        },
+        "offset": [101, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "نخلة جميرا"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "dark",
+    "key": "palm",
+    "mode": "webgl",
+    "zoom": 12.6,
+    "center": [55.13900000000001, 25.117999999999995],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 122.00000000037664,
+          "y": 243.50000000018832,
+          "width": 146,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "نخلة جميرا"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "dark",
+    "key": "downtown",
+    "mode": "webgl",
+    "zoom": 13,
+    "center": [55.27600000000007, 25.197000000000003],
+    "planned": [
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 141.49999999962336,
+          "y": 243.5,
+          "width": 107,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "وسط دبي"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "dark",
+    "key": "saadiyat",
+    "mode": "webgl",
+    "zoom": 12,
+    "center": [54.43799999999999, 24.540999999999983],
+    "planned": [],
+    "rendered": [],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "light",
+    "key": "initial",
+    "mode": "webgl",
+    "zoom": 10.6,
+    "center": [55.190000000000055, 25.14999999999999],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 88.52087454272925,
+          "y": 312.378337640713,
+          "width": 146,
+          "height": 32
+        },
+        "offset": [101, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "نخلة جميرا"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "light",
+    "key": "palm",
+    "mode": "webgl",
+    "zoom": 12.6,
+    "center": [55.13900000000001, 25.117999999999995],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 122.00000000037664,
+          "y": 243.50000000018832,
+          "width": 146,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "نخلة جميرا"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "light",
+    "key": "downtown",
+    "mode": "webgl",
+    "zoom": 13,
+    "center": [55.27600000000007, 25.197000000000003],
+    "planned": [
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 141.49999999962336,
+          "y": 243.5,
+          "width": 107,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "وسط دبي"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "locale": "ar",
+    "theme": "light",
+    "key": "saadiyat",
+    "mode": "webgl",
+    "zoom": 12,
+    "center": [54.43799999999999, 24.540999999999983],
+    "planned": [],
+    "rendered": [],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "dark",
+    "key": "initial",
+    "mode": "webgl",
+    "zoom": 10.6,
+    "center": [55.190000000000055, 25.14999999999999],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 794.0464759981966,
+          "y": 508.7811025461863,
+          "width": 185,
+          "height": 32
+        },
+        "offset": [120.5, 0]
+      },
+      {
+        "id": "dubai-hills",
+        "rect": {
+          "x": 939.056823877842,
+          "y": 634.3499466234313,
+          "width": 159,
+          "height": 32
+        },
+        "offset": [0, 44]
+      },
+      {
+        "id": "jumeirah-bay",
+        "rect": {
+          "x": 951.7088858139839,
+          "y": 379.21808158917736,
+          "width": 172,
+          "height": 32
+        },
+        "offset": [0, -44]
+      },
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 1138.4048285929164,
+          "y": 453.7928873018515,
+          "width": 198,
+          "height": 32
+        },
+        "offset": [127, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "Downtown Dubai"
+      },
+      {
+        "id": "jumeirah-bay",
+        "name": "Jumeirah Bay"
+      },
+      {
+        "id": "palm",
+        "name": "Palm Jumeirah"
+      },
+      {
+        "id": "dubai-hills",
+        "name": "Dubai Hills"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "dark",
+    "key": "palm",
+    "mode": "webgl",
+    "zoom": 12.6,
+    "center": [55.13900000000001, 25.117999999999995],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 807.5000000003179,
+          "y": 440,
+          "width": 185,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "Palm Jumeirah"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "dark",
+    "key": "downtown",
+    "mode": "webgl",
+    "zoom": 13,
+    "center": [55.27600000000007, 25.197000000000003],
+    "planned": [
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 800.9999999993643,
+          "y": 439.99999999984107,
+          "width": 198,
+          "height": 32
+        },
+        "offset": [0, -44]
+      },
+      {
+        "id": "jumeirah-bay",
+        "rect": {
+          "x": 471.1606053194603,
+          "y": 283.8645045656626,
+          "width": 172,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "Downtown Dubai"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "dark",
+    "key": "saadiyat",
+    "mode": "webgl",
+    "zoom": 12,
+    "center": [54.43799999999999, 24.540999999999983],
+    "planned": [
+      {
+        "id": "saadiyat",
+        "rect": {
+          "x": 928,
+          "y": 483.99999999992053,
+          "width": 211,
+          "height": 32
+        },
+        "offset": [133.5, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "saadiyat",
+        "name": "Saadiyat Island"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "light",
+    "key": "initial",
+    "mode": "webgl",
+    "zoom": 10.6,
+    "center": [55.190000000000055, 25.14999999999999],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 794.0464759981966,
+          "y": 508.7811025461863,
+          "width": 185,
+          "height": 32
+        },
+        "offset": [120.5, 0]
+      },
+      {
+        "id": "dubai-hills",
+        "rect": {
+          "x": 939.056823877842,
+          "y": 634.3499466234313,
+          "width": 159,
+          "height": 32
+        },
+        "offset": [0, 44]
+      },
+      {
+        "id": "jumeirah-bay",
+        "rect": {
+          "x": 951.7088858139839,
+          "y": 379.21808158917736,
+          "width": 172,
+          "height": 32
+        },
+        "offset": [0, -44]
+      },
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 1138.4048285929164,
+          "y": 453.7928873018515,
+          "width": 198,
+          "height": 32
+        },
+        "offset": [127, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "Downtown Dubai"
+      },
+      {
+        "id": "jumeirah-bay",
+        "name": "Jumeirah Bay"
+      },
+      {
+        "id": "palm",
+        "name": "Palm Jumeirah"
+      },
+      {
+        "id": "dubai-hills",
+        "name": "Dubai Hills"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "light",
+    "key": "palm",
+    "mode": "webgl",
+    "zoom": 12.6,
+    "center": [55.13900000000001, 25.117999999999995],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 807.5000000003179,
+          "y": 440,
+          "width": 185,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "Palm Jumeirah"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "light",
+    "key": "downtown",
+    "mode": "webgl",
+    "zoom": 13,
+    "center": [55.27600000000007, 25.197000000000003],
+    "planned": [
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 800.9999999993643,
+          "y": 439.99999999984107,
+          "width": 198,
+          "height": 32
+        },
+        "offset": [0, -44]
+      },
+      {
+        "id": "jumeirah-bay",
+        "rect": {
+          "x": 471.1606053194603,
+          "y": 283.8645045656626,
+          "width": 172,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "Downtown Dubai"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "theme": "light",
+    "key": "saadiyat",
+    "mode": "webgl",
+    "zoom": 12,
+    "center": [54.43799999999999, 24.540999999999983],
+    "planned": [
+      {
+        "id": "saadiyat",
+        "rect": {
+          "x": 928,
+          "y": 483.99999999992053,
+          "width": 211,
+          "height": 32
+        },
+        "offset": [133.5, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "saadiyat",
+        "name": "Saadiyat Island"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "dark",
+    "key": "initial",
+    "mode": "webgl",
+    "zoom": 10.6,
+    "center": [55.190000000000055, 25.14999999999999],
+    "planned": [
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 696.9048285929613,
+          "y": 409.7928873018515,
+          "width": 107,
+          "height": 32
+        },
+        "offset": [0, -44]
+      },
+      {
+        "id": "dubai-hills",
+        "rect": {
+          "x": 598.5568238778321,
+          "y": 634.3499466234313,
+          "width": 120,
+          "height": 32
+        },
+        "offset": [0, 44]
+      },
+      {
+        "id": "palm",
+        "rect": {
+          "x": 434.04647599817656,
+          "y": 508.7811025461863,
+          "width": 146,
+          "height": 32
+        },
+        "offset": [101, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "وسط دبي"
+      },
+      {
+        "id": "palm",
+        "name": "نخلة جميرا"
+      },
+      {
+        "id": "dubai-hills",
+        "name": "دبي هيلز"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "dark",
+    "key": "palm",
+    "mode": "webgl",
+    "zoom": 12.6,
+    "center": [55.13900000000001, 25.117999999999995],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 467.00000000015893,
+          "y": 440,
+          "width": 146,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "نخلة جميرا"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "dark",
+    "key": "downtown",
+    "mode": "webgl",
+    "zoom": 13,
+    "center": [55.27600000000007, 25.197000000000003],
+    "planned": [
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 486.49999999968213,
+          "y": 439.99999999984107,
+          "width": 107,
+          "height": 32
+        },
+        "offset": [0, -44]
+      },
+      {
+        "id": "jumeirah-bay",
+        "rect": {
+          "x": 130.6606053195525,
+          "y": 283.8645045656626,
+          "width": 133,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "وسط دبي"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "dark",
+    "key": "saadiyat",
+    "mode": "webgl",
+    "zoom": 12,
+    "center": [54.43799999999999, 24.540999999999983],
+    "planned": [
+      {
+        "id": "saadiyat",
+        "rect": {
+          "x": 568.0000000003179,
+          "y": 483.99999999992053,
+          "width": 198,
+          "height": 32
+        },
+        "offset": [127, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "saadiyat",
+        "name": "جزيرة السعديات"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "light",
+    "key": "initial",
+    "mode": "webgl",
+    "zoom": 10.6,
+    "center": [55.190000000000055, 25.14999999999999],
+    "planned": [
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 696.9048285929613,
+          "y": 409.7928873018515,
+          "width": 107,
+          "height": 32
+        },
+        "offset": [0, -44]
+      },
+      {
+        "id": "dubai-hills",
+        "rect": {
+          "x": 598.5568238778321,
+          "y": 634.3499466234313,
+          "width": 120,
+          "height": 32
+        },
+        "offset": [0, 44]
+      },
+      {
+        "id": "palm",
+        "rect": {
+          "x": 434.04647599817656,
+          "y": 508.7811025461863,
+          "width": 146,
+          "height": 32
+        },
+        "offset": [101, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "وسط دبي"
+      },
+      {
+        "id": "palm",
+        "name": "نخلة جميرا"
+      },
+      {
+        "id": "dubai-hills",
+        "name": "دبي هيلز"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "light",
+    "key": "palm",
+    "mode": "webgl",
+    "zoom": 12.6,
+    "center": [55.13900000000001, 25.117999999999995],
+    "planned": [
+      {
+        "id": "palm",
+        "rect": {
+          "x": 467.00000000015893,
+          "y": 440,
+          "width": 146,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "palm",
+        "name": "نخلة جميرا"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "light",
+    "key": "downtown",
+    "mode": "webgl",
+    "zoom": 13,
+    "center": [55.27600000000007, 25.197000000000003],
+    "planned": [
+      {
+        "id": "downtown",
+        "rect": {
+          "x": 486.49999999968213,
+          "y": 439.99999999984107,
+          "width": 107,
+          "height": 32
+        },
+        "offset": [0, -44]
+      },
+      {
+        "id": "jumeirah-bay",
+        "rect": {
+          "x": 130.6606053195525,
+          "y": 283.8645045656626,
+          "width": 133,
+          "height": 32
+        },
+        "offset": [0, -44]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "downtown",
+        "name": "وسط دبي"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "locale": "ar",
+    "theme": "light",
+    "key": "saadiyat",
+    "mode": "webgl",
+    "zoom": 12,
+    "center": [54.43799999999999, 24.540999999999983],
+    "planned": [
+      {
+        "id": "saadiyat",
+        "rect": {
+          "x": 568.0000000003179,
+          "y": 483.99999999992053,
+          "width": 198,
+          "height": 32
+        },
+        "offset": [127, 0]
+      }
+    ],
+    "rendered": [
+      {
+        "id": "saadiyat",
+        "name": "جزيرة السعديات"
+      }
+    ],
+    "errors": [],
+    "overflow": false
+  }
+]

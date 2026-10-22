@@ -11,3 +11,9 @@ If WebGL is unavailable, a projected 2D regional map uses bundled public-domain 
 Official source decisions: [OpenFreeMap custom style/hosting guide](https://openfreemap.org/quick_start/), [Mapterhorn DEM access](https://mapterhorn.com/data-access/), [Mapterhorn source attribution](https://mapterhorn.com/attribution/). Natural Earth data and [public-domain terms](https://www.naturalearthdata.com/about/terms-of-use/) are recorded in public/map-styles/README.md. Runtime hosts: tiles.openfreemap.org and tiles.mapterhorn.com. No keys, tracking or location permission required.
 
 Review gate remains pending actual desktop/mobile captures, keyboard/fallback checks and animation timing; implementation intent is not a score.
+
+## Orientation and reading follow-up
+
+Supplemental labels use six existing approximate place anchors, native MapLibre symbols and a screen-space exclusion step for controls and44px project targets. Labels hide during movement/comparison and omit unsafe placements. A32-state probe returned38 rendered feature instances from42 planned placements; mobile Saadiyat omits the supplement. Native labels can repeat a place name. Placement envelopes are not measured glyph bounds.
+
+Fresh production captures and the next scored board review remain pending.

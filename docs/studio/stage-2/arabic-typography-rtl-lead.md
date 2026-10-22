@@ -7,3 +7,9 @@ The voice is calm, welcoming and understandable across the Gulf and Egypt: “ا
 Every real statistic keeps its supplied value and citation. Translate surrounding labels, basis and context only; never silently invent a localized claim. Use bidi isolation for Latin developer names, dates, currency values and coordinates. Arabic-Indic preference comes from the existing display preferences context for new numeric UI where relevant.
 
 Review mobile line wrapping, long developer names, price/source punctuation, input focus and voice status. This implementation can assess layout and comprehensibility, but does not certify a native Gulf tone review; retain that explicit validation limit for the stage board.
+
+## Orientation and reading follow-up
+
+Sampled native map symbols show connected Arabic place names in both themes and preserve existing canonical names. This is visual inspection, not native Gulf editorial certification. The selected evidence composer retains the same RTL textbox and mixed Arabic/Latin multiline content across editing and submission.
+
+Fresh production captures and the next scored board review remain pending.

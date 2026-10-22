@@ -764,7 +764,7 @@
 @media (max-width: 760px) {
   .atlas-explore {
     height: 100svh;
-    min-height: 550px;
+    min-height: 0;
     --atlas-bottom-inset: calc(34svh + 8px);
     --atlas-control-top: 170px;
   }
@@ -1126,6 +1126,39 @@
   .atlas-explore[data-sheet='expanded'] .atlas-local {
     padding-block: 7px;
   }
+  /* Keep the page heading accessible while giving selected facts more reading room. */
+  .atlas-explore[data-sheet='expanded'][data-evidence='true'] .atlas-conversation-intro {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .atlas-explore[data-sheet='expanded'][data-evidence='true'] .atlas-composer textarea {
+    height: 52px;
+    min-height: 52px;
+    line-height: 24px;
+    padding-block: 14px;
+    padding-inline: 12px 60px;
+    transition: none;
+  }
+  /* Blur must not move source/evidence targets between pointer down and click. */
+  .atlas-explore[data-sheet='expanded'][data-evidence='true'][data-composer-editing='true']
+    .atlas-composer
+    textarea {
+    height: 96px;
+    min-height: 96px;
+    padding-block: 12px;
+  }
+  .atlas-explore[data-sheet='expanded'][data-evidence='true'] .atlas-composer > button {
+    width: 44px;
+    height: 44px;
+    inset-inline-end: 4px;
+    inset-block-end: 4px;
+  }
   .atlas-explore .atlas-fallback-label {
     inset-inline-start: 20px;
     top: 198px;
@@ -1133,5 +1166,13 @@
   }
   .atlas-explore:has(.atlas-story-active) .atlas-fallback-label {
     top: 340px;
+  }
+}
+@media (max-width: 760px) and (max-height: 550px) {
+  .atlas-explore[data-sheet='expanded'] .atlas-map-toolbar {
+    display: none;
+  }
+  .atlas-explore[data-sheet='expanded'][data-evidence='true'] .atlas-inline-map-notes {
+    max-height: 16svh;
   }
 }

@@ -32,6 +32,8 @@ test('desktop landing visual and keyboard entry', async ({ page }) => {
   await page.screenshot({ path: '/tmp/darivo-en-desktop.png', fullPage: true });
 });
 test('client and staff screens remain accessible at mobile width', async ({ page }) => {
+  // This case signs into three roles and runs a full axe scan on six screens.
+  test.setTimeout(90000);
   await page.setViewportSize({ width: 375, height: 812 });
   for (const [account, paths] of [
     [
@@ -43,6 +45,8 @@ test('client and staff screens remain accessible at mobile width', async ({ page
   ] as const) {
     await page.goto('/en/login');
     await page.getByRole('button', { name: account, exact: true }).click();
+    // Cold development compilation can consume the default assertion timeout.
+    await page.waitForURL(/\/en\/search$/, { timeout: 30000 });
     await expect(page.getByRole('button', { name: 'Sign out' })).toBeVisible();
     for (const path of paths) {
       await page.goto(path);

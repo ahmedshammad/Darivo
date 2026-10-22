@@ -41,3 +41,9 @@ Four three-second Arrival/Explore intent probes at1440/390px recorded moving-fra
 An ephemeral worker probes a one-pixel OffscreenCanvas context before loading MapLibre. Only explicit CPU renderer names select geographic2D; unknown/blocked/missing capabilities preserve the ordinary path, with a bounded2.5second worker timeout and a post-constructor safeguard. The runtime never persists or transmits renderer names. Real SwiftShader browser tests exercise both locales without mocking canvas. Software-v2 Lighthouse reaches90/94 with73/77ms TBT, while ordinary M3 hardware v8 remains98/96. LCP remains above2seconds on both paths.
 
 The comparison glyph now has a transparent22px-radius picking layer, dispatched before native cluster handling. Production pointer tests select both June and Orla at20px cardinal offsets in EN/AR. Earlier44px checks measured clearance, not actual WebGL hit area; evidence wording is corrected. Open source disclosures temporarily hide competing map controls, restore them on close, and limit their height to the available mobile aperture. Eight fresh manual cases confirm readable qualifications and correct restoration.
+
+## Orientation and reading follow-up
+
+Hosted run39820219793 passes at e5a3052 (Home98/Explore98, LCP2233.1/2219.2ms). The strict2s budget stays open. Native PostgreSQL validation now passes67unit tests and36mock evals. Supplemental orientation is added only after the existing map loads; no extra blocking map dependency is introduced.
+
+Fresh production captures and the next scored board review remain pending.

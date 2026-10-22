@@ -13,3 +13,7 @@ The next fix list is concrete:
 3. Keep the measured LCP budget open. The remaining framework-transfer path is documented. Font partitioning and aggressive evidence stripping were rejected; any transport alternative needs correct negotiation/streaming/security behavior and real measurement, not a changed audit setting.
 
 Stage 2 stays open. Stage 3 has not started. No blanket production-readiness or external-validation claim is made.
+
+## Validation after scoring
+
+The first complete local run passed49/50 and exposed an early currency-selection hydration race. Disabled-until-ready display controls repair it; four focused preference cases pass and the complete rerun passes **50/50**. Formatting, lint, types,61unit tests and36mock evaluations pass. The implementation/evidence are pushed at `e5a3052`, with hosted run39820219793 subsequently passing. Hosted Home/Explore score98/98, with LCP2233.1/2219.2ms; the strict two-second limit remains open. Reports are retained in `../performance/hosted-scope/`. This append records later validation without changing the seven reviews or failed aggregate.

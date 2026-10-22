@@ -107,6 +107,7 @@ export function Explore({
   const [locationFiltered, setLocationFiltered] = useState(Boolean(initialIntent.places.length));
   const [layers, setLayers] = useState<AtlasLayer[]>(initialIntent.layers);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [composerEditing, setComposerEditing] = useState(false);
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [isochrone, setIsochrone] = useState<AtlasIsochrone | null>(
     initialIntent.isochroneMinutes
@@ -295,6 +296,7 @@ export function Explore({
         setOrigins((previous) => ({ ...previous, point: center }));
       }
       if (submitted) {
+        setComposerEditing(false);
         setBrief(text);
         setReply(intent.recognized ? t.recognized : t.unrecognized);
         setExpanded(true);
@@ -333,6 +335,7 @@ export function Explore({
     selectionTrigger.current =
       document.activeElement instanceof HTMLElement ? document.activeElement : null;
     setSelectedId(id);
+    setComposerEditing(false);
     setExpanded(true);
     setPlaying(false);
     setCamera({
@@ -345,6 +348,7 @@ export function Explore({
   }
   function closeEvidence() {
     setSelectedId(null);
+    setComposerEditing(false);
     requestAnimationFrame(() => {
       if (selectionTrigger.current?.isConnected) selectionTrigger.current.focus();
       else if (selectedId)
@@ -366,6 +370,7 @@ export function Explore({
     setStatus(`${t.compareTitle}: ${n(nextIds.length)}`);
     if (!removing && nextIds.length >= 2) {
       setSelectedId(null);
+      setComposerEditing(false);
       setExpanded(true);
       requestAnimationFrame(() => {
         if (sheetContent.current) sheetContent.current.scrollTop = 0;
@@ -396,6 +401,7 @@ export function Explore({
     setStoryStep(0);
     setPlaying(false);
     setSelectedId(null);
+    setComposerEditing(false);
   }
   const localeParams = new URLSearchParams({
     theme,
@@ -450,7 +456,12 @@ export function Explore({
     <div className="atlas-inline-map-evidence">
       <details>
         <summary>{t.mapSources}</summary>
-        <div className="atlas-inline-map-notes">
+        <div
+          className="atlas-inline-map-notes"
+          role="region"
+          aria-label={t.mapSources}
+          tabIndex={0}
+        >
           <p>
             {mapMode === 'fallback' ? t.mapFallbackNote : t.mapSourceNote}{' '}
             {mapMode !== 'fallback' && <bdi>{FX_DATE}</bdi>}
@@ -483,6 +494,8 @@ export function Explore({
       className="atlas-explore"
       data-theme={theme}
       data-sheet={expanded ? 'expanded' : 'collapsed'}
+      data-evidence={Boolean(selected)}
+      data-composer-editing={composerEditing}
       data-comparing={comparison.length > 0}
       dir={arabic ? 'rtl' : 'ltr'}
     >
@@ -607,7 +620,11 @@ export function Explore({
               data-testid="explore-prompt"
               maxLength={1500}
               value={query}
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={(event) => {
+                setQuery(event.target.value);
+                setComposerEditing(true);
+              }}
+              onFocus={() => setComposerEditing(true)}
               placeholder={t.placeholder}
               rows={2}
               onKeyDown={(event) => {

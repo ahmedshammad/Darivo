@@ -18,6 +18,11 @@ import { FX, FX_DATE } from '@/src/lib/catalog';
 import { hasSoftwareRasterizer } from '@/src/lib/map-capability';
 import { probeMapCapability } from '@/src/lib/map-capability-probe';
 import {
+  ORIENTATION_PLACE_IDS,
+  placeMapOrientationLabels,
+  type MapLabelRect,
+} from '@/src/lib/map-orientation';
+import {
   atlasCircle,
   atlasCameraPadding,
   atlasFitPoints,
@@ -504,6 +509,7 @@ export function LivingMap(props: LivingMapProps) {
     let arrivalTimer: ReturnType<typeof setTimeout> | undefined;
     let detachMeasurement: (() => void) | undefined;
     let clearWorldMarkers: (() => void) | undefined;
+    let detachOrientation: (() => void) | undefined;
     const fallback = (reason: FallbackReason = 'unavailable') => {
       if (disposed || failed) return;
       failed = true;
@@ -516,6 +522,7 @@ export function LivingMap(props: LivingMapProps) {
         if (disposed) return;
         detachMeasurement?.();
         clearWorldMarkers?.();
+        detachOrientation?.();
         observer?.disconnect();
         runtime.current?.overlay?.finalize();
         runtime.current?.popup?.remove();
@@ -896,6 +903,215 @@ export function LivingMap(props: LivingMapProps) {
               'text-halo-width': 2,
             },
           });
+          // Six known approximate area anchors supplement sparse tile labels.
+          // Native symbol collision cannot see DOM controls or deck hit targets,
+          // so the screen-space guard runs before MapLibre's own placement.
+          let updateOrientation = () => {};
+          if (mode === 'explore') {
+            const sourceId = 'atlas-orientation-places';
+            const layerId = 'atlas-orientation-text';
+            const fontSize = 13;
+            activeMap.addSource(sourceId, {
+              type: 'geojson',
+              data: { type: 'FeatureCollection', features: [] },
+            });
+            activeMap.addLayer(
+              {
+                id: layerId,
+                type: 'symbol',
+                source: sourceId,
+                minzoom: 9,
+                maxzoom: 13.5,
+                layout: {
+                  'text-field': ['get', 'name'],
+                  'text-font': ['Noto Sans Regular'],
+                  'text-size': fontSize,
+                  'text-offset': ['get', 'offset'],
+                  'text-anchor': 'center',
+                  'text-pitch-alignment': 'viewport',
+                  'text-rotation-alignment': 'viewport',
+                  'text-letter-spacing': 0,
+                  'text-max-width': 30,
+                  'text-padding': 8,
+                  'text-allow-overlap': false,
+                  'text-ignore-placement': false,
+                  'symbol-sort-key': ['get', 'priority'],
+                },
+                paint: {
+                  'text-color': theme === 'dark' ? '#E9E2D6' : '#393B36',
+                  'text-halo-color': theme === 'dark' ? '#111215' : '#F7F4EE',
+                  'text-halo-width': 2,
+                },
+              },
+              // Placement visits layers in reverse order. Existing basemap
+              // labels and the comparison annotations keep higher priority.
+              activeMap.getStyle().layers.find((layer) => layer.id.startsWith('label-'))?.id ??
+                'atlas-overlay-text',
+            );
+            const scope = root.current?.closest('.atlas-explore');
+            const controls = [
+              '.atlas-header',
+              '.atlas-conversation',
+              '.atlas-map-toolbar',
+              '.atlas-tools',
+              '.atlas-picking',
+              '.atlas-stories',
+              '.atlas-comparison-peek',
+              '.atlas-map-evidence',
+              '.atlas-map-legend',
+              '.maplibregl-ctrl',
+              '.maplibregl-popup',
+            ].join(',');
+            let frame = 0;
+            let signature = '';
+            let orientationDetached = false;
+            const observed = new Set<Element>();
+            const hide = () => {
+              if (disposed || failed || orientationDetached) return;
+              activeMap.setLayoutProperty(layerId, 'visibility', 'none');
+              if (root.current) root.current.dataset.orientationPlacements = '[]';
+            };
+            const schedule = () => {
+              if (disposed || failed || orientationDetached) return;
+              hide();
+              cancelAnimationFrame(frame);
+              frame = requestAnimationFrame(() => updateOrientation());
+            };
+            const controlResize = new ResizeObserver(schedule);
+            updateOrientation = () => {
+              if (disposed || failed || orientationDetached) return;
+              if (
+                activeMap.isMoving() ||
+                activeMap.getZoom() < 9 ||
+                activeMap.getZoom() >= 13.5 ||
+                (latest.current.compareIds?.length ?? 0) > 1
+              ) {
+                hide();
+                return;
+              }
+              const viewport = activeMap.getContainer().getBoundingClientRect();
+              const elements = [...(scope?.querySelectorAll(controls) ?? [])];
+              for (const element of observed)
+                if (!elements.includes(element)) {
+                  controlResize.unobserve(element);
+                  observed.delete(element);
+                }
+              const obstacles: MapLabelRect[] = [];
+              for (const element of elements) {
+                if (!observed.has(element)) {
+                  observed.add(element);
+                  controlResize.observe(element);
+                }
+                const rect = element.getBoundingClientRect();
+                if (
+                  rect.width > 0 &&
+                  rect.height > 0 &&
+                  getComputedStyle(element).visibility !== 'hidden'
+                )
+                  obstacles.push({
+                    x: rect.left - viewport.left,
+                    y: rect.top - viewport.top,
+                    width: rect.width,
+                    height: rect.height,
+                  });
+              }
+              for (const project of latest.current.projects) {
+                const point = activeMap.project(project.center);
+                obstacles.push({ x: point.x - 22, y: point.y - 22, width: 44, height: 44 });
+              }
+              // clusterMaxZoom is 8, but query the rendered scene at the zoom9
+              // boundary as well: a bubble's centroid need not match a project.
+              for (const cluster of activeMap.queryRenderedFeatures({
+                layers: ['atlas-clusters'],
+              })) {
+                if (cluster.geometry.type !== 'Point') continue;
+                const point = activeMap.project(cluster.geometry.coordinates as AtlasPoint);
+                const count = Number(cluster.properties.point_count);
+                const radius = Math.max(22, (count >= 30 ? 29 : count >= 8 ? 24 : 19) + 1);
+                obstacles.push({
+                  x: point.x - radius,
+                  y: point.y - radius,
+                  width: radius * 2,
+                  height: radius * 2,
+                });
+              }
+              const places = ATLAS_PLACES.filter((place) =>
+                ORIENTATION_PLACE_IDS.some((id) => id === place.id),
+              )
+                .map((place) => {
+                  const point = activeMap.project(place.center);
+                  const name = locale === 'ar' ? place.nameAr : place.nameEn;
+                  return {
+                    place,
+                    name,
+                    id: place.id,
+                    x: point.x,
+                    y: point.y,
+                    // Conservative single-line envelope for the map glyph font,
+                    // including halo; no dependency on a different DOM font.
+                    width: Array.from(name).length * fontSize + 16,
+                    height: 32,
+                  };
+                })
+                .sort(
+                  (a, b) =>
+                    Math.hypot(a.x - viewport.width / 2, a.y - viewport.height / 2) -
+                    Math.hypot(b.x - viewport.width / 2, b.y - viewport.height / 2),
+                );
+              const placements = placeMapOrientationLabels({
+                candidates: places,
+                obstacles,
+                width: viewport.width,
+                height: viewport.height,
+                limit: viewport.width < 760 ? 3 : 5,
+              });
+              const collection: FeatureCollection = {
+                type: 'FeatureCollection',
+                features: placements.map((placement, priority) => {
+                  const candidate = places.find((place) => place.id === placement.id)!;
+                  return {
+                    type: 'Feature',
+                    geometry: { type: 'Point', coordinates: candidate.place.center },
+                    properties: {
+                      id: candidate.id,
+                      name: candidate.name,
+                      priority,
+                      offset: placement.offset.map((pixel) => pixel / fontSize),
+                    },
+                  };
+                }),
+              };
+              const next = JSON.stringify(collection);
+              if (signature !== next) {
+                signature = next;
+                (activeMap.getSource(sourceId) as GeoJSONSource).setData(collection);
+              }
+              activeMap.setLayoutProperty(layerId, 'visibility', 'visible');
+              if (root.current)
+                root.current.dataset.orientationPlacements = JSON.stringify(placements);
+            };
+            const mutations = new MutationObserver(schedule);
+            if (scope)
+              mutations.observe(scope, {
+                childList: true,
+                subtree: true,
+                attributes: true,
+                attributeFilter: ['open', 'hidden', 'aria-expanded', 'data-sheet', 'data-evidence'],
+              });
+            scope?.addEventListener('scroll', schedule, true);
+            activeMap.on('movestart', hide);
+            activeMap.on('resize', schedule);
+            detachOrientation = () => {
+              if (orientationDetached) return;
+              orientationDetached = true;
+              cancelAnimationFrame(frame);
+              mutations.disconnect();
+              controlResize.disconnect();
+              scope?.removeEventListener('scroll', schedule, true);
+              activeMap.off('movestart', hide);
+              activeMap.off('resize', schedule);
+            };
+          }
           let basePainted = false;
           let detailReady = !startOverview;
           let detailLoading = false;
@@ -909,6 +1125,7 @@ export function LivingMap(props: LivingMapProps) {
               enhanceVisibleScene();
               updateWorldMarkers();
               renderLayers(entry, latest.current);
+              updateOrientation();
             },
           };
           // Enhancements follow visible scale and a completed basemap frame, not a delay or audit heuristic.
@@ -1065,6 +1282,7 @@ export function LivingMap(props: LivingMapProps) {
       clearTimeout(arrivalTimer);
       detachMeasurement?.();
       clearWorldMarkers?.();
+      detachOrientation?.();
       observer?.disconnect();
       runtime.current?.overlay?.finalize();
       runtime.current?.popup?.remove();
@@ -1256,7 +1474,12 @@ function FallbackMap(props: LivingMapProps & { fallbackDetail: string }) {
   const centerY = (size.height + (padding?.top ?? 0) - (padding?.bottom ?? 0)) / 2;
   const project = (point: AtlasPoint) => {
     const position = atlasProjectPoint(point, zoom);
-    return [position[0] - origin[0] + centerX, position[1] - origin[1] + centerY] as AtlasPoint;
+    // Serialize SVG coordinates below visible precision; Node and browser trig
+    // can differ at the final floating-point digits during hydration.
+    return [
+      Math.round((position[0] - origin[0] + centerX) * 1000) / 1000,
+      Math.round((position[1] - origin[1] + centerY) * 1000) / 1000,
+    ] as AtlasPoint;
   };
   useEffect(() => {
     const controller = new AbortController();

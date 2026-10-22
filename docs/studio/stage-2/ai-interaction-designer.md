@@ -11,3 +11,9 @@ Disagreement: adding every control beside the prompt would weaken conversation-f
 ## v2 review response
 
 Comparison is now part of the conversation rail on every viewport; the map remains clear to show the selected connections. Cross-border or long-distance comparisons show distance without implying a driving route. Each story stop has a specific geographic caption, and recommendation reasons name the actual community. The selected project and original brief pass to the existing consultant as an editable draft, with no automatic submission.
+
+## Orientation and reading follow-up
+
+The same composer and brief remain available while reading evidence. Editing retains multiline space across source/evidence focus; actual submission restores the compact state. Live map interpretation does not clear editing state. No new agent capability or verified-advice claim is introduced.
+
+Fresh production captures and the next scored board review remain pending.
