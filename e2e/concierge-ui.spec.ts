@@ -290,7 +290,9 @@ for (const locale of ['en', 'ar'] as const) {
     await page.goto(`/${locale}?theme=light`);
     await page.locator('#arrival-intent').fill(draft);
     await page.locator('.arrival-concierge-link').click();
-    await expect(page).toHaveURL(new RegExp(`/${locale}/concierge\\?`));
+    // Development navigation also compiles and evaluates the destination bundle.
+    // Production loading budgets are measured separately by Lighthouse.
+    await expect(page).toHaveURL(new RegExp(`/${locale}/concierge\\?`), { timeout: 20000 });
     await expect(page.locator('#concierge-prompt')).toHaveValue(draft);
     await expect(page.getByTestId('concierge')).toHaveAttribute('data-theme', 'light');
     expect(posts).toBe(0);

@@ -32,9 +32,15 @@ import { openTileProvider } from '@/src/lib/tiles';
 import { usePreferences } from '@/src/components/preferences';
 import { useConcierge } from './use-concierge';
 import { BriefEditor } from './brief-editor';
-import { ResponseComponent } from './response-renderer';
-import { ProposalDetails } from './proposal-details';
 import './concierge.css';
+
+// Evidence and confirmation details are needed only after a turn returns.
+const ResponseComponent = dynamic(() =>
+  import('./response-renderer').then((module) => module.ResponseComponent),
+);
+const ProposalDetails = dynamic(() =>
+  import('./proposal-details').then((module) => module.ProposalDetails),
+);
 
 const LivingMap = dynamic(
   () => import('@/src/components/atlas/living-map').then((module) => module.LivingMap),

@@ -1,6 +1,6 @@
 # Stage 3 validation checkpoint
 
-Stage 3 is in progress. These checks validate the implemented Concierge, not the full Darivo v2 goal or a passing design review. The latest production repair is `28cf808`; formal v2 remains failed at 8.3333/min6.5 and v3 evidence is being collected. Earlier sections below are preserved checkpoints.
+Stage 3 is in progress. These checks validate the implemented Concierge, not the full Darivo v2 goal or a passing design review. The latest production repair is `28cf808`; formal v3 failed at 8.880952/min8 and focused third repairs are underway. Earlier sections below are preserved checkpoints.
 
 ## Initial integration checks (historical)
 
@@ -63,3 +63,7 @@ Media v6 is collecting the complete new matrix and six recordings with detailed-
 Media v6 completes all 60 EN/AR, light/dark, desktop/tablet/mobile states with zero page errors, axe findings or horizontal overflow. All 60 report settled tiles. Six signature recordings, 18 supplementary numerical/evidence views, eight settled local-map checkpoints and four requirements-editor checkpoints are retained. Every settled-map checkpoint resolves detailed geography; the editor captures retain the header and viewport frame.
 
 Fresh isolated Lighthouse scores **98 performance, 100 accessibility, 96 best practices and 100 SEO**, with **LCP 2193.2201ms, TBT 78ms and CLS 0**. The strict two-second LCP target remains unmet. See `lighthouse-second-repair-v7.json`; these lab results do not establish field INP or physical-device cadence. The third simulated review is using this complete evidence set. Current-source hosted CI has passed static checks, unit tests and evals; the remaining pipeline is still pending at this checkpoint.
+
+### Hosted source 28cf808
+
+Run39854379709 fails one of80 browser cases:69 pass and10 hardware-WebGL cases skip. The Arrival-to-Concierge EN draft handoff exceeds its5s URL assertion. The retained trace shows the correct destination request succeeds in2845ms, its development bundle then loads in1056ms, and destination mounting begins about5.2s after the click. The regression now waits explicitly up to20s for development navigation; draft/theme/no-POST assertions and production performance budgets are unchanged. Build and hosted Lighthouse were skipped after the failed browser step. Raw log and trace remain under `/tmp/darivo-stage3-ci-39854379709.log` and `/tmp/darivo-stage3-ci-evidence-39854379709/`. No full hosted pass is claimed.
