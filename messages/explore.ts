@@ -105,7 +105,8 @@ export const exploreCopy = {
     myOffice: 'My office',
     mySchool: 'My children’s school',
     pickPoint: 'Choose on the map',
-    picking: 'Click an empty point on the map. Or choose a project as the origin.',
+    picking:
+      'Click an empty map point, or focus the map, move with arrow keys and press Enter. You can also choose a project as the origin.',
     cancel: 'Cancel',
     selectedOrigin: 'Origin selected',
     reachNote: 'Approximate radius at 40 km/h. Not road routing; no traffic or accessibility data.',
@@ -244,7 +245,8 @@ export const exploreCopy = {
     myOffice: 'مكتبي',
     mySchool: 'مدرسة أطفالي',
     pickPoint: 'اختر على الخريطة',
-    picking: 'اضغط نقطة فارغة على الخريطة، أو اختر مشروعاً ليكون نقطة البداية.',
+    picking:
+      'اختر نقطة خالية على الخريطة، أو انتقل إليها بلوحة المفاتيح وحرّكها بالأسهم ثم اضغط Enter. يمكنك أيضاً اختيار مشروع كنقطة بداية.',
     cancel: 'إلغاء',
     selectedOrigin: 'حُدّدت نقطة البداية',
     reachNote: 'نطاق تقريبي بسرعة ٤٠ كم/س. ليس مسار طرق؛ لا يشمل حركة المرور أو بيانات الوصول.',

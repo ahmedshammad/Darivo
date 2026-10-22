@@ -127,6 +127,7 @@ export function Explore({
     forceFallback ? 'fallback' : 'webgl',
   );
   const comparisonHeading = useRef<HTMLHeadingElement>(null);
+  const sheetContent = useRef<HTMLDivElement>(null);
   const [status, setStatus] = useState(t.mapLoading as string);
   const [storyId, setStoryId] = useState(initialStory);
   const [storyStep, setStoryStep] = useState(0);
@@ -136,6 +137,7 @@ export function Explore({
   const [viewportHeight, setViewportHeight] = useState(844);
   const evidenceHeading = useRef<HTMLHeadingElement>(null);
   const toolsButton = useRef<HTMLButtonElement>(null);
+  const mapSurface = useRef<HTMLDivElement>(null);
   const sheetButton = useRef<HTMLButtonElement>(null);
   const selectionTrigger = useRef<HTMLElement | null>(null);
   const dragStart = useRef<number | null>(null);
@@ -313,7 +315,10 @@ export function Explore({
     return () => clearTimeout(timer);
   }, [playing, story, storyStep, reduced]);
   useEffect(() => {
-    if (selectedId) evidenceHeading.current?.focus({ preventScroll: true });
+    if (selectedId) {
+      if (sheetContent.current) sheetContent.current.scrollTop = 0;
+      evidenceHeading.current?.focus({ preventScroll: true });
+    }
   }, [selectedId]);
   function selectProject(id: string) {
     const project = projects.find((p) => p.id === id);
@@ -332,7 +337,7 @@ export function Explore({
       zoom: 13.2,
       pitch: depth ? 55 : 0,
       bearing: -20,
-      key: `project-${id}-${Date.now()}`,
+      key: `project-${id}-${depth}`,
     });
   }
   function closeEvidence() {
@@ -348,9 +353,22 @@ export function Explore({
     });
   }
   function toggleCompare(id: string) {
-    if (compareIds.includes(id)) setCompareIds(compareIds.filter((item) => item !== id));
-    else if (compareIds.length < 4) setCompareIds([...compareIds, id]);
-    else setStatus(t.compareLimit);
+    const removing = compareIds.includes(id);
+    if (!removing && compareIds.length >= 4) {
+      setStatus(t.compareLimit);
+      return;
+    }
+    const nextIds = removing ? compareIds.filter((item) => item !== id) : [...compareIds, id];
+    setCompareIds(nextIds);
+    setStatus(`${t.compareTitle}: ${n(nextIds.length)}`);
+    if (!removing && nextIds.length >= 2) {
+      setSelectedId(null);
+      setExpanded(true);
+      requestAnimationFrame(() => {
+        if (sheetContent.current) sheetContent.current.scrollTop = 0;
+        comparisonHeading.current?.focus({ preventScroll: true });
+      });
+    }
   }
   function setOriginPoint(point: AtlasPoint) {
     setOrigins((previous) => ({ ...previous, [origin]: point }));
@@ -468,7 +486,7 @@ export function Explore({
       <a className="atlas-skip" href="#atlas-conversation">
         {t.skip}
       </a>
-      <div className="atlas-map-surface" role="region" aria-label={t.eyebrow}>
+      <div ref={mapSurface} className="atlas-map-surface" role="region" aria-label={t.eyebrow}>
         <LivingMap
           projects={projects}
           pois={data.pois}
@@ -602,7 +620,7 @@ export function Explore({
           </form>
           <p className="atlas-local">{t.local}</p>
           {mobile && expanded && inlineMapEvidence}
-          <div id="atlas-sheet-content" className="atlas-sheet-content">
+          <div id="atlas-sheet-content" className="atlas-sheet-content" ref={sheetContent}>
             {comparison.length > 0 && !selected && comparisonPanel}
             {selected ? (
               <section
@@ -941,6 +959,11 @@ export function Explore({
                 setPicking(true);
                 setToolsOpen(false);
                 setExpanded(false);
+                requestAnimationFrame(() =>
+                  mapSurface.current
+                    ?.querySelector<HTMLElement>('.maplibregl-canvas, .atlas-fallback')
+                    ?.focus({ preventScroll: true }),
+                );
               }}
             >
               <MapPin />

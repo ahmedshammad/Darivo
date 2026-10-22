@@ -20,6 +20,10 @@ test('Arrival intent moves the geographic camera and carries the request into Ex
     'Schools within 20 minutes of Downtown Dubai',
   );
   await expect(page.locator('.atlas-projects li').first()).toBeVisible();
+  await page.locator('.atlas-compare-add').nth(0).click();
+  await page.locator('.atlas-compare-add').nth(1).click();
+  await expect(page.locator('.atlas-comparison h2')).toBeFocused();
+  await expect(page.locator('.atlas-comparison h2')).toBeInViewport({ ratio: 1 });
 });
 
 test('Arabic mobile map remains usable without WebGL or external tiles', async ({ page }) => {
@@ -37,8 +41,14 @@ test('Arabic mobile map remains usable without WebGL or external tiles', async (
   await page.locator('.atlas-compare-add').nth(0).click();
   await page.locator('.atlas-compare-add').nth(1).click();
   await expect(page.locator('.atlas-comparison')).toBeVisible();
+  await expect(page.locator('.atlas-comparison h2')).toBeFocused();
+  await expect(page.locator('.atlas-comparison h2')).toBeInViewport({ ratio: 1 });
   await page.locator('.atlas-project-select').first().click();
   await expect(page.locator('.atlas-evidence')).toBeVisible();
+  await expect(page.locator('#atlas-evidence-title')).toBeFocused();
+  await expect(page.locator('.atlas-evidence .atlas-text-button').first()).toBeInViewport({
+    ratio: 1,
+  });
   await page.keyboard.press('Escape');
   await expect(page.locator('.atlas-evidence')).toHaveCount(0);
   await page.locator('.atlas-sheet-handle').click();
@@ -86,4 +96,29 @@ test('map handoff preserves project and request through sign-in without sending'
       .first(),
   ).toHaveAttribute('href', /^https:\/\//);
   expect(posts).toEqual([]);
+});
+
+test('keyboard can place an office origin in WebGL and geographic fallback', async ({ page }) => {
+  for (const fallback of [false, true]) {
+    await page.goto(`/en/explore${fallback ? '?fallback=1' : ''}`);
+    await expect(page.locator('.living-map')).toHaveAttribute('data-map-ready', 'true', {
+      timeout: 30000,
+    });
+    await expect(page.locator('.living-map')).toHaveAttribute(
+      'data-map-mode',
+      fallback ? 'fallback' : 'webgl',
+    );
+    await page.locator('.atlas-tool-toggle').click();
+    await page.locator('#atlas-origin').selectOption('office');
+    await page.getByRole('button', { name: 'Choose on the map', exact: true }).click();
+    const surface = page.locator(fallback ? '.atlas-fallback' : '.maplibregl-canvas');
+    await expect(surface).toBeFocused();
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('Enter');
+    await page.locator('.atlas-tool-toggle').click();
+    await expect(page.locator('.atlas-minute-options button[aria-pressed="true"]')).toContainText(
+      '20',
+    );
+    if (fallback) await expect(page.locator('.atlas-fallback-ring').first()).toBeVisible();
+  }
 });

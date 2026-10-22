@@ -394,7 +394,7 @@ export function Arrival({
           </div>
         </main>
         <p className="arrival-map-status" role="status">
-          {mapStatus === 'loading' ? t.mapLoading : mapStatus === 'fallback' ? t.mapFallback : ''}
+          {mapStatus === 'loading' ? t.mapLoading : ''}
         </p>
         <a className="arrival-down" href="#arrival-pulse">
           {t.scroll}

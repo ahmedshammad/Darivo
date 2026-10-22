@@ -643,6 +643,9 @@
   .arrival-stage {
     min-height: 880px;
   }
+  .arrival-conversation {
+    inset-block-end: 86px;
+  }
   .arrival-header {
     gap: 16px;
     padding-inline: 24px;
