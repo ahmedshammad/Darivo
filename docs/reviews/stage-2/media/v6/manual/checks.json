@@ -1,0 +1,576 @@
+[
+  {
+    "name": "en-375-forced",
+    "locale": "en",
+    "width": 375,
+    "software": false,
+    "errors": [],
+    "mode": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "fallbackReason": "forced",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[28.019999999999982,31.099999999999994]",
+      "zoom": "7.000",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[]"
+    },
+    "panelText": "Offline geography · street and 3D detail unavailable\n\nLocations approximate. Columns are price symbols, not building heights.\n\nColumn height compares indicative prices in AED using static demo FX · 2026-10-01. No price: flat marker.\n\nStraight-line distance · local illustration at 40 km/h. Cross-border or over 150 km: distance only. Not a route.",
+    "peekHidden": true,
+    "samples": [
+      {
+        "rect": {
+          "x": 24,
+          "y": 248.921875,
+          "width": 343,
+          "height": 196,
+          "top": 248.921875,
+          "right": 367,
+          "bottom": 444.921875,
+          "left": 24
+        },
+        "scrollTop": 0,
+        "scrollHeight": 194,
+        "clientHeight": 194,
+        "covered": []
+      },
+      {
+        "rect": {
+          "x": 24,
+          "y": 248.921875,
+          "width": 343,
+          "height": 196,
+          "top": 248.921875,
+          "right": 367,
+          "bottom": 444.921875,
+          "left": 24
+        },
+        "scrollTop": 0,
+        "scrollHeight": 194,
+        "clientHeight": 194,
+        "covered": []
+      }
+    ],
+    "peekRestored": true,
+    "panelClosed": true,
+    "overflow": false,
+    "pass": true
+  },
+  {
+    "name": "en-390-forced",
+    "locale": "en",
+    "width": 390,
+    "software": false,
+    "errors": [],
+    "mode": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "fallbackReason": "forced",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "false",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment",
+      "mapPhase": "night",
+      "mapDetail": "local"
+    },
+    "panelText": "Offline geography · street and 3D detail unavailable\n\nLocations approximate. Columns are price symbols, not building heights.\n\nColumn height compares indicative prices in AED using static demo FX · 2026-10-01. No price: flat marker.\n\nStraight-line distance · local illustration at 40 km/h. Cross-border or over 150 km: distance only. Not a route.",
+    "peekHidden": true,
+    "samples": [
+      {
+        "rect": {
+          "x": 24,
+          "y": 306.046875,
+          "width": 358,
+          "height": 160,
+          "top": 306.046875,
+          "right": 382,
+          "bottom": 466.046875,
+          "left": 24
+        },
+        "scrollTop": 0,
+        "scrollHeight": 158,
+        "clientHeight": 158,
+        "covered": []
+      },
+      {
+        "rect": {
+          "x": 24,
+          "y": 306.046875,
+          "width": 358,
+          "height": 160,
+          "top": 306.046875,
+          "right": 382,
+          "bottom": 466.046875,
+          "left": 24
+        },
+        "scrollTop": 0,
+        "scrollHeight": 158,
+        "clientHeight": 158,
+        "covered": []
+      }
+    ],
+    "peekRestored": true,
+    "panelClosed": true,
+    "overflow": false,
+    "pass": true
+  },
+  {
+    "name": "ar-375-forced",
+    "locale": "ar",
+    "width": 375,
+    "software": false,
+    "errors": [],
+    "mode": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "fallbackReason": "forced",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "فيلا على البحر في السعديات أو النخلة",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "center": "[55.13900000000001,25.117999999999988]",
+      "zoom": "7.000",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[]"
+    },
+    "panelText": "جغرافيا محفوظة · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة\n\nالمواقع تقريبية. الأعمدة ترمز للأسعار وليست ارتفاعات المباني.\n\nارتفاع العمود يقارن أسعاراً استرشادية بالدرهم، بصرف تجريبي ثابت · 2026-10-01. دون سعر: علامة مسطّحة.\n\nمرافق تجريبية · أماكن افتراضية وليست مرافق موثّقة\n\nمسافة بخط مستقيم · تقدير محلي بسرعة ٤٠ كم/ساعة. عبر الحدود أو أكثر من ١٥٠ كم: المسافة فقط، وليست مساراً.",
+    "peekHidden": true,
+    "samples": [
+      {
+        "rect": {
+          "x": 8,
+          "y": 284.921875,
+          "width": 343,
+          "height": 160,
+          "top": 284.921875,
+          "right": 351,
+          "bottom": 444.921875,
+          "left": 8
+        },
+        "scrollTop": 0,
+        "scrollHeight": 158,
+        "clientHeight": 158,
+        "covered": []
+      },
+      {
+        "rect": {
+          "x": 8,
+          "y": 284.921875,
+          "width": 343,
+          "height": 160,
+          "top": 284.921875,
+          "right": 351,
+          "bottom": 444.921875,
+          "left": 8
+        },
+        "scrollTop": 0,
+        "scrollHeight": 158,
+        "clientHeight": 158,
+        "covered": []
+      }
+    ],
+    "peekRestored": true,
+    "panelClosed": true,
+    "overflow": false,
+    "pass": true
+  },
+  {
+    "name": "ar-390-forced",
+    "locale": "ar",
+    "width": 390,
+    "software": false,
+    "errors": [],
+    "mode": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "fallbackReason": "forced",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "false",
+      "cameraKey": "فيلا على البحر في السعديات أو النخلة",
+      "mapPhase": "night",
+      "mapDetail": "local"
+    },
+    "panelText": "جغرافيا محفوظة · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة\n\nالمواقع تقريبية. الأعمدة ترمز للأسعار وليست ارتفاعات المباني.\n\nارتفاع العمود يقارن أسعاراً استرشادية بالدرهم، بصرف تجريبي ثابت · 2026-10-01. دون سعر: علامة مسطّحة.\n\nمرافق تجريبية · أماكن افتراضية وليست مرافق موثّقة\n\nمسافة بخط مستقيم · تقدير محلي بسرعة ٤٠ كم/ساعة. عبر الحدود أو أكثر من ١٥٠ كم: المسافة فقط، وليست مساراً.",
+    "peekHidden": true,
+    "samples": [
+      {
+        "rect": {
+          "x": 8,
+          "y": 306.046875,
+          "width": 358,
+          "height": 160,
+          "top": 306.046875,
+          "right": 366,
+          "bottom": 466.046875,
+          "left": 8
+        },
+        "scrollTop": 0,
+        "scrollHeight": 158,
+        "clientHeight": 158,
+        "covered": []
+      },
+      {
+        "rect": {
+          "x": 8,
+          "y": 306.046875,
+          "width": 358,
+          "height": 160,
+          "top": 306.046875,
+          "right": 366,
+          "bottom": 466.046875,
+          "left": 8
+        },
+        "scrollTop": 0,
+        "scrollHeight": 158,
+        "clientHeight": 158,
+        "covered": []
+      }
+    ],
+    "peekRestored": true,
+    "panelClosed": true,
+    "overflow": false,
+    "pass": true
+  },
+  {
+    "name": "en-375-software",
+    "locale": "en",
+    "width": 375,
+    "software": true,
+    "errors": [],
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+    "arrival": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "arrival",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "arrival-world-mobile",
+        "mapPhase": "night",
+        "mapDetail": "regional",
+        "fallbackReason": "software-renderer",
+        "center": "[42,27.000000000000018]",
+        "zoom": "1.350",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[]"
+      },
+      "copy": "Regional 2D map\nSmoother 2D map for this device · street and 3D detail unavailable"
+    },
+    "mode": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "fallbackReason": "software-renderer",
+      "center": "[28.019999999999982,31.099999999999994]",
+      "zoom": "7.000",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[]"
+    },
+    "panelText": "Smoother 2D map for this device · street and 3D detail unavailable\n\nLocations approximate. Columns are price symbols, not building heights.\n\nColumn height compares indicative prices in AED using static demo FX · 2026-10-01. No price: flat marker.\n\nStraight-line distance · local illustration at 40 km/h. Cross-border or over 150 km: distance only. Not a route.",
+    "peekHidden": true,
+    "samples": [
+      {
+        "rect": {
+          "x": 24,
+          "y": 230.921875,
+          "width": 343,
+          "height": 214,
+          "top": 230.921875,
+          "right": 367,
+          "bottom": 444.921875,
+          "left": 24
+        },
+        "scrollTop": 0,
+        "scrollHeight": 212,
+        "clientHeight": 212,
+        "covered": []
+      },
+      {
+        "rect": {
+          "x": 24,
+          "y": 230.921875,
+          "width": 343,
+          "height": 214,
+          "top": 230.921875,
+          "right": 367,
+          "bottom": 444.921875,
+          "left": 24
+        },
+        "scrollTop": 0,
+        "scrollHeight": 212,
+        "clientHeight": 212,
+        "covered": []
+      }
+    ],
+    "peekRestored": true,
+    "panelClosed": true,
+    "overflow": false,
+    "pass": true
+  },
+  {
+    "name": "en-390-software",
+    "locale": "en",
+    "width": 390,
+    "software": true,
+    "errors": [],
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+    "arrival": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "arrival",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "arrival-world",
+        "mapPhase": "night",
+        "mapDetail": "regional",
+        "fallbackReason": "software-renderer",
+        "center": "[42,26.999999999999982]",
+        "zoom": "2.300",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[]"
+      },
+      "copy": "Regional 2D map\nSmoother 2D map for this device · street and 3D detail unavailable"
+    },
+    "mode": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "North Coast summer home ready by 2028, compare with a Dubai investment",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "fallbackReason": "software-renderer",
+      "center": "[28.019999999999982,31.099999999999994]",
+      "zoom": "7.000",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[]"
+    },
+    "panelText": "Smoother 2D map for this device · street and 3D detail unavailable\n\nLocations approximate. Columns are price symbols, not building heights.\n\nColumn height compares indicative prices in AED using static demo FX · 2026-10-01. No price: flat marker.\n\nStraight-line distance · local illustration at 40 km/h. Cross-border or over 150 km: distance only. Not a route.",
+    "peekHidden": true,
+    "samples": [
+      {
+        "rect": {
+          "x": 24,
+          "y": 288.046875,
+          "width": 358,
+          "height": 178,
+          "top": 288.046875,
+          "right": 382,
+          "bottom": 466.046875,
+          "left": 24
+        },
+        "scrollTop": 0,
+        "scrollHeight": 176,
+        "clientHeight": 176,
+        "covered": []
+      },
+      {
+        "rect": {
+          "x": 24,
+          "y": 288.046875,
+          "width": 358,
+          "height": 178,
+          "top": 288.046875,
+          "right": 382,
+          "bottom": 466.046875,
+          "left": 24
+        },
+        "scrollTop": 0,
+        "scrollHeight": 176,
+        "clientHeight": 176,
+        "covered": []
+      }
+    ],
+    "peekRestored": true,
+    "panelClosed": true,
+    "overflow": false,
+    "pass": true
+  },
+  {
+    "name": "ar-375-software",
+    "locale": "ar",
+    "width": 375,
+    "software": true,
+    "errors": [],
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+    "arrival": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "arrival",
+        "mapReady": "true",
+        "tilesReady": "true",
+        "cameraKey": "arrival-world",
+        "mapPhase": "night",
+        "mapDetail": "regional",
+        "fallbackReason": "software-renderer",
+        "center": "[42,26.999999999999982]",
+        "zoom": "2.300",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[]"
+      },
+      "copy": "خريطة إقليمية ثنائية الأبعاد\nخريطة ثنائية الأبعاد أكثر سلاسة لهذا الجهاز · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة"
+    },
+    "mode": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "فيلا على البحر في السعديات أو النخلة",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "fallbackReason": "software-renderer",
+      "center": "[55.13900000000001,25.117999999999988]",
+      "zoom": "7.000",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[]"
+    },
+    "panelText": "خريطة ثنائية الأبعاد أكثر سلاسة لهذا الجهاز · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة\n\nالمواقع تقريبية. الأعمدة ترمز للأسعار وليست ارتفاعات المباني.\n\nارتفاع العمود يقارن أسعاراً استرشادية بالدرهم، بصرف تجريبي ثابت · 2026-10-01. دون سعر: علامة مسطّحة.\n\nمرافق تجريبية · أماكن افتراضية وليست مرافق موثّقة\n\nمسافة بخط مستقيم · تقدير محلي بسرعة ٤٠ كم/ساعة. عبر الحدود أو أكثر من ١٥٠ كم: المسافة فقط، وليست مساراً.",
+    "peekHidden": true,
+    "samples": [
+      {
+        "rect": {
+          "x": 8,
+          "y": 266.921875,
+          "width": 343,
+          "height": 178,
+          "top": 266.921875,
+          "right": 351,
+          "bottom": 444.921875,
+          "left": 8
+        },
+        "scrollTop": 0,
+        "scrollHeight": 176,
+        "clientHeight": 176,
+        "covered": []
+      },
+      {
+        "rect": {
+          "x": 8,
+          "y": 266.921875,
+          "width": 343,
+          "height": 178,
+          "top": 266.921875,
+          "right": 351,
+          "bottom": 444.921875,
+          "left": 8
+        },
+        "scrollTop": 0,
+        "scrollHeight": 176,
+        "clientHeight": 176,
+        "covered": []
+      }
+    ],
+    "peekRestored": true,
+    "panelClosed": true,
+    "overflow": false,
+    "pass": true
+  },
+  {
+    "name": "ar-390-software",
+    "locale": "ar",
+    "width": 390,
+    "software": true,
+    "errors": [],
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+    "arrival": {
+      "map": {
+        "mapStatus": "fallback",
+        "mapMode": "fallback",
+        "mapScene": "arrival",
+        "mapReady": "true",
+        "tilesReady": "false",
+        "cameraKey": "arrival-world-mobile",
+        "mapPhase": "night",
+        "mapDetail": "regional",
+        "fallbackReason": "software-renderer",
+        "center": "[42,27.000000000000018]",
+        "zoom": "1.350",
+        "pitch": "0",
+        "moving": "false",
+        "comparisonPoints": "[]"
+      },
+      "copy": "خريطة إقليمية ثنائية الأبعاد\nخريطة ثنائية الأبعاد أكثر سلاسة لهذا الجهاز · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة"
+    },
+    "mode": {
+      "mapStatus": "fallback",
+      "mapMode": "fallback",
+      "mapScene": "explore",
+      "mapReady": "true",
+      "tilesReady": "true",
+      "cameraKey": "فيلا على البحر في السعديات أو النخلة",
+      "mapPhase": "night",
+      "mapDetail": "local",
+      "fallbackReason": "software-renderer",
+      "center": "[55.13900000000001,25.117999999999988]",
+      "zoom": "7.000",
+      "pitch": "0",
+      "moving": "false",
+      "comparisonPoints": "[]"
+    },
+    "panelText": "خريطة ثنائية الأبعاد أكثر سلاسة لهذا الجهاز · تفاصيل الشوارع والأبعاد الثلاثية غير متاحة\n\nالمواقع تقريبية. الأعمدة ترمز للأسعار وليست ارتفاعات المباني.\n\nارتفاع العمود يقارن أسعاراً استرشادية بالدرهم، بصرف تجريبي ثابت · 2026-10-01. دون سعر: علامة مسطّحة.\n\nمرافق تجريبية · أماكن افتراضية وليست مرافق موثّقة\n\nمسافة بخط مستقيم · تقدير محلي بسرعة ٤٠ كم/ساعة. عبر الحدود أو أكثر من ١٥٠ كم: المسافة فقط، وليست مساراً.",
+    "peekHidden": true,
+    "samples": [
+      {
+        "rect": {
+          "x": 8,
+          "y": 288.046875,
+          "width": 358,
+          "height": 178,
+          "top": 288.046875,
+          "right": 366,
+          "bottom": 466.046875,
+          "left": 8
+        },
+        "scrollTop": 0,
+        "scrollHeight": 176,
+        "clientHeight": 176,
+        "covered": []
+      },
+      {
+        "rect": {
+          "x": 8,
+          "y": 288.046875,
+          "width": 358,
+          "height": 178,
+          "top": 288.046875,
+          "right": 366,
+          "bottom": 466.046875,
+          "left": 8
+        },
+        "scrollTop": 0,
+        "scrollHeight": 176,
+        "clientHeight": 176,
+        "covered": []
+      }
+    ],
+    "peekRestored": true,
+    "panelClosed": true,
+    "overflow": false,
+    "pass": true
+  }
+]
