@@ -1,0 +1,98 @@
+{
+  "source": "62b7ffa328fab5125034729c733c22114477c120",
+  "runId": 39863989953,
+  "url": "https://github.com/ahmedshammad/Darivo/actions/runs/39863989953",
+  "conclusion": "success",
+  "tests": {
+    "unitIntegration": 320,
+    "legacyEvals": 36,
+    "parserCases": 105,
+    "executionCases": 444,
+    "executionTurns": 632,
+    "safetyCountersAboveZero": 0,
+    "browserPassed": 74,
+    "browserGpuSkipped": 10
+  },
+  "lighthouse": [
+    {
+      "page": "/en",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 2238.3643,
+        "blockingMs": 108,
+        "layoutShift": 0.015836232917570695
+      },
+      "report": "/tmp/darivo-lighthouse-report/home.json"
+    },
+    {
+      "page": "/en/search",
+      "scores": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 2816.5040000000004,
+        "blockingMs": 72,
+        "layoutShift": 0
+      },
+      "report": "/tmp/darivo-lighthouse-report/search.json"
+    },
+    {
+      "page": "/en/explore",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 2137.3442,
+        "blockingMs": 118,
+        "layoutShift": 0.03284125132317637
+      },
+      "report": "/tmp/darivo-lighthouse-report/explore.json"
+    },
+    {
+      "page": "/en/concierge",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 96,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 2234.2601999999997,
+        "blockingMs": 90.5,
+        "layoutShift": 0.01496886965501714
+      },
+      "report": "/tmp/darivo-lighthouse-report/concierge.json"
+    },
+    {
+      "page": "/ar/properties/property-002",
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 3016.986,
+        "blockingMs": 70,
+        "layoutShift": 0
+      },
+      "report": "/tmp/darivo-lighthouse-report/detail-ar.json"
+    }
+  ],
+  "limits": [
+    "No real provider key.",
+    "GPU skips are covered separately by local hardware evidence.",
+    "Strict LCP and Stage6 Home >=95 remain open."
+  ]
+}

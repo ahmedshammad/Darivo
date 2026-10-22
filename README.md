@@ -1,6 +1,6 @@
 # Darivo
 
-A private, bilingual property-office demo for the UAE and Egypt. V2 is in progress: the concept, foundation/design system, Arrival and Living Map stages are accepted. The Concierge's sixth simulated review passes; final hosted acceptance is pending. The existing portfolios, PDF and advisor/admin workflows remain runnable while the later V2 experiences are built. See the [full delivery ledger](docs/studio/DELIVERY-LEDGER.md) for current evidence and remaining limitations.
+A private, bilingual property-office demo for the UAE and Egypt. V2 is in progress: the concept, foundation/design system, Arrival and Living Map stages are accepted. The Concierge's sixth simulated review and hosted CI gates also pass, with documented hardening limits still open. The existing portfolios, PDF and advisor/admin workflows remain runnable while the later V2 experiences are built. See the [full delivery ledger](docs/studio/DELIVERY-LEDGER.md) for current evidence and remaining limitations.
 
 ## Run in a few minutes
 

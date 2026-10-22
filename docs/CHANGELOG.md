@@ -245,3 +245,9 @@ All14 focused production browser checks pass on sourcea288074/buildv16: deadline
 ### Stage 3 — sixth review passes, hosted acceptance pending
 
 The sixth simulated contributor review passes the numeric gate at exactly9.005952380952381/10, minimum8, across84 criteria. Two visual-craft scores rise for the demonstrated phone reading hierarchy; the remaining82 stay unchanged. Earlier failed rounds are preserved. Current app sourcea288074 has84 clean targeted states and14 focused production browser passes. Hosted39864420684 is still running, so Stage3 acceptance remains conditional and Stage4 has not begun. Strict loading and external-validation gaps remain explicitly open.
+
+### Stage 3 — accepted review and CI gates
+
+Final sourcea288074 passes hosted39864420684:320 tests,36 legacy evals,105 parser cases,444 execution cases/632 turns and13 zero safety counters,74 browser passes with10 GPU-dependent skips, build and Lighthouse. The exact v6 board mean is9.005952380952381/min8. The documented local hardware checks complement the hosted GPU skips. Stage4 may now begin.
+
+Hosted Concierge95/LCP2210.2776ms/TBT207ms/CLS0.0149689 still misses strict LCP<2s; Home94 and legacy Arabic detail93 do not establish finalStage6≥95. Physical-phone/M1, field INP, real provider, native speech/language and fullAT validation remain open. Browser voice locale selection is not bilingual acoustic auto-detection. These are explicit remaining delivery requirements/proposals, not hidden or waived by stage acceptance.

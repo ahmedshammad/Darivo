@@ -6,7 +6,7 @@
   "mean": 9.005952380952381,
   "minimum": 8.0,
   "reviewGatePassed": true,
-  "stageAcceptance": "Pending current-source hosted CI; remaining hardening/external limitations preserved",
+  "stageAcceptance": "Review and current-source hosted CI gates passed; documented hardening/external limitations remain open",
   "personas": [
     {
       "persona": "sheikha",
@@ -393,5 +393,6 @@
         }
       ]
     }
-  ]
+  ],
+  "hostedRun": 39864420684
 }
