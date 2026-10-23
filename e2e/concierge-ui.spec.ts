@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { conciergeCopy } from '../messages/concierge';
 import type { ConciergeRequest } from '../src/lib/concierge-transport';
+import { withClientPrivacy } from './helpers/client-privacy';
 
 for (const locale of ['en', 'ar'] as const) {
   const copy = conciergeCopy[locale];
@@ -322,35 +323,51 @@ test('signed-in Concierge reports confirmation result and disabled history accur
   await expect(page.getByRole('button', { name: 'Sign out', exact: true })).toBeVisible({
     timeout: 20000,
   });
-  await page.goto('/en/concierge?fallback=1');
-  await expect(page.locator('#concierge-prompt')).toBeEnabled();
-  await expect(page.getByRole('button', { name: copy.clear, exact: true })).toBeEnabled();
-  await page.locator('#concierge-prompt').fill('Contact an advisor about my property search');
-  await page.getByRole('button', { name: copy.send, exact: true }).click();
-  await expect(page.getByTestId('concierge-turn').last()).toHaveAttribute(
-    'data-status',
-    'complete',
-    { timeout: 30000 },
+  await withClientPrivacy(
+    page.request,
+    new URL(page.url()).origin,
+    {
+      doNotSave: false,
+      doNotShare: false,
+      doNotBook: false,
+    },
+    async () => {
+      await page.goto('/en/concierge?fallback=1');
+      await expect(page.locator('#concierge-prompt')).toBeEnabled();
+      await expect(page.getByRole('button', { name: copy.clear, exact: true })).toBeEnabled();
+      await page.locator('#concierge-prompt').fill('Contact an advisor about my property search');
+      await page.getByRole('button', { name: copy.send, exact: true }).click();
+      await expect(page.getByTestId('concierge-turn').last()).toHaveAttribute(
+        'data-status',
+        'complete',
+        { timeout: 30000 },
+      );
+      // UI receipt contract only: real proposal generation, simulated successful confirmation,
+      // so this test neither contacts an advisor nor claims backend mutation coverage.
+      await page.route('**/api/v1/concierge/confirm', (route) =>
+        route.fulfill({ json: { status: 'CONFIRMED' } }),
+      );
+      await page
+        .locator('.cq-proposals')
+        .getByRole('button', { name: copy.confirm, exact: true })
+        .first()
+        .click();
+      await expect(page.getByTestId('concierge-action-receipt')).toHaveText(
+        copy.actionReceipts.handoff_to_advisor,
+      );
+      await expect(page.locator('#concierge-prompt')).toBeFocused();
+      await page.getByRole('button', { name: copy.brief, exact: true }).click();
+      const brief = page.getByTestId('concierge-brief');
+      await brief.locator('summary').filter({ hasText: copy.privacy }).click();
+      await brief.getByRole('checkbox', { name: copy.doNotSave, exact: true }).check();
+      await brief.getByRole('button', { name: copy.apply, exact: true }).click();
+      await expect(page.locator('.cq-privacy-line')).toContainText(copy.notSaving, {
+        timeout: 30000,
+      });
+      await expect(page.locator('.cq-privacy-line')).not.toContainText(copy.signedIn);
+      const policy = await page.request.get('/api/v1/office/privacy');
+      expect(policy.status()).toBe(200);
+      expect(await policy.json()).toMatchObject({ doNotSave: true });
+    },
   );
-  // UI receipt contract only: real proposal generation, simulated successful confirmation,
-  // so this test neither contacts an advisor nor claims backend mutation coverage.
-  await page.route('**/api/v1/concierge/confirm', (route) =>
-    route.fulfill({ json: { status: 'CONFIRMED' } }),
-  );
-  await page
-    .locator('.cq-proposals')
-    .getByRole('button', { name: copy.confirm, exact: true })
-    .first()
-    .click();
-  await expect(page.getByTestId('concierge-action-receipt')).toHaveText(
-    copy.actionReceipts.handoff_to_advisor,
-  );
-  await expect(page.locator('#concierge-prompt')).toBeFocused();
-  await page.getByRole('button', { name: copy.brief, exact: true }).click();
-  const brief = page.getByTestId('concierge-brief');
-  await brief.locator('summary').filter({ hasText: copy.privacy }).click();
-  await brief.getByRole('checkbox', { name: copy.doNotSave, exact: true }).check();
-  await brief.getByRole('button', { name: copy.apply, exact: true }).click();
-  await expect(page.locator('.cq-privacy-line')).toContainText(copy.notSaving, { timeout: 30000 });
-  await expect(page.locator('.cq-privacy-line')).not.toContainText(copy.signedIn);
 });

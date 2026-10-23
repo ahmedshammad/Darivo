@@ -35,6 +35,8 @@ jobs:
       - run: pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm eval
       - name: Verify runner Chrome
         run: google-chrome --version
+      - name: Install recording encoder
+        run: pnpm exec playwright install ffmpeg
       - run: pnpm test:e2e
       - name: Retain browser failure evidence
         if: failure()

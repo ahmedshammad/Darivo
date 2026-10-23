@@ -1,4 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
+import { withClientPrivacy } from './helpers/client-privacy';
 async function login(page: Page, label: string) {
   await page.goto('/en/login');
   await page.getByRole('button', { name: label, exact: true }).click();
@@ -47,29 +48,43 @@ test('admin grant is client-specific, audited and revocable; clients cannot use 
     await otherContext.close();
   }
 });
-test('advisor notes remain private and admin CRUD persists', async ({ page }) => {
+test('advisor notes remain private and admin CRUD persists', async ({ page, browser }) => {
   await login(page, 'Advisor');
   await page.goto('/en/advisor');
   await expect(page.getByRole('heading', { name: 'Every introduction matters.' })).toBeVisible();
-  const note = await page.request.post('/api/v1/advisor', {
-    headers,
-    data: {
-      action: 'note',
-      clientId: 'demo-client',
-      content: 'Fictional client prefers a quiet courtyard.',
-    },
-  });
-  expect(note.ok()).toBeTruthy();
-  const suggestion = await page.request.post('/api/v1/advisor', {
-    headers,
-    data: {
-      action: 'suggest',
-      clientId: 'demo-client',
-      propertyId: 'property-002',
-      shortlistName: 'Advisor selections',
-    },
-  });
-  expect(suggestion.ok()).toBeTruthy();
+  const clientContext = await browser.newContext();
+  try {
+    const client = await clientContext.newPage();
+    await login(client, 'Private client');
+    await withClientPrivacy(
+      client.request,
+      new URL(client.url()).origin,
+      { doNotSave: false },
+      async () => {
+        const note = await page.request.post('/api/v1/advisor', {
+          headers,
+          data: {
+            action: 'note',
+            clientId: 'demo-client',
+            content: 'Fictional client prefers a quiet courtyard.',
+          },
+        });
+        expect(note.ok()).toBeTruthy();
+        const suggestion = await page.request.post('/api/v1/advisor', {
+          headers,
+          data: {
+            action: 'suggest',
+            clientId: 'demo-client',
+            propertyId: 'property-002',
+            shortlistName: 'Advisor selections',
+          },
+        });
+        expect(suggestion.ok()).toBeTruthy();
+      },
+    );
+  } finally {
+    await clientContext.close();
+  }
   await page.getByRole('button', { name: 'Sign out' }).click();
   await expect(page).toHaveURL(/\/en$/);
   await login(page, 'Administrator');

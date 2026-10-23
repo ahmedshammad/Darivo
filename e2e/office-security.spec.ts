@@ -136,14 +136,27 @@ test('private Story, mixed portfolio, dossier, thread attachment and AI all lose
     expect(dossier.status()).toBe(409);
     expect(dossier.headers()['content-type']).toContain('application/json');
     assertNoFacts(await dossier.text());
-    for (const locale of ['en', 'ar']) {
+    for (const locale of ['en', 'ar'] as const) {
       const html = await client.request.get(`/${locale}/p/${storySlug}`);
       // The requested slug may be echoed in Next's router payload; no resolved subject facts may appear.
       assertNoFacts(await html.text());
-      await client.goto(`/${locale}/p/${storySlug}`);
-      assertNoFacts(await client.locator('body').innerText());
-      await client.goto(`/${locale}/office`);
-      assertNoFacts(await client.locator('body').innerText());
+      // A development 404 can trigger a late Fast Refresh reload. Inspect each
+      // surface in its own page, retaining the same authenticated cookie jar,
+      // so that reload cannot abort navigation to the next security assertion.
+      for (const path of [`/${locale}/p/${storySlug}`, `/${locale}/office`]) {
+        const inspection = await client.context().newPage();
+        try {
+          await inspection.goto(path);
+          await expect(inspection.getByRole('heading').first()).toBeVisible();
+          if (path.endsWith('/office'))
+            await expect(
+              inspection.getByRole('heading', { name: officeCopy[locale].portfolios, exact: true }),
+            ).toBeVisible();
+          assertNoFacts(await inspection.locator('body').innerText());
+        } finally {
+          await inspection.close();
+        }
+      }
     }
     const replay = await (await client.request.get('/api/v1/concierge')).json();
     const ai = await client.request.post('/api/v1/concierge', {
