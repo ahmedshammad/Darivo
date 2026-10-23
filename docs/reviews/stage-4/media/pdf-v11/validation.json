@@ -1,0 +1,22 @@
+{
+  "en": {
+    "bodyTextEqualExceptGeneratedAt": true,
+    "sourceLinksEqual": true,
+    "linkCount": 20,
+    "fontDeclarationsEqual": true,
+    "lineHeightDeclarationsEqual": true,
+    "pagesBefore": 20,
+    "pagesAfter": 17
+  },
+  "ar": {
+    "bodyTextEqualExceptGeneratedAt": true,
+    "sourceLinksEqual": true,
+    "linkCount": 20,
+    "fontDeclarationsEqual": true,
+    "lineHeightDeclarationsEqual": true,
+    "pagesBefore": 20,
+    "pagesAfter": 17
+  },
+  "rendererSha256": "1dffb43c610ed17de89aa1f38d3c47896e1e5aa40d41c8ab668c2ea86adb96d5",
+  "scope": "Read-only authorized public fixture; three subjects; no persisted board; source changes after165b49e; no certification"
+}

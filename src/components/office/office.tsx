@@ -640,7 +640,6 @@ export function Office({
                     )}
                     {selected.length < 2 && (
                       <div className="of-empty">
-                        <p>{t.limit}</p>
                         <button onClick={() => setView('portfolios')}>{t.back}</button>
                         <Link href={`/${locale}/explore?theme=${theme}`}>{t.more} ↗</Link>
                       </div>
@@ -653,7 +652,7 @@ export function Office({
                         aria-label={t.compare}
                       >
                         <table className="of-comparison">
-                          <caption>{t.limit}</caption>
+                          <caption>{t.comparisonCaption}</caption>
                           <thead>
                             <tr>
                               <th scope="col">{t.evidence}</th>
