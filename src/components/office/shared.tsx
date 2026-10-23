@@ -5,6 +5,7 @@ import { usePreferences } from '@/src/components/preferences';
 import { formatAmount, formatNumber } from '@/src/lib/format';
 import type { StorySummary } from '@/src/lib/story';
 import { officeCopy, type OfficeLocale } from '@/messages/office';
+import { officeMoneyTokens } from './money';
 
 export async function officeRequest<T>(
   url: string,
@@ -36,7 +37,39 @@ export function errorCopy(error: unknown, locale: OfficeLocale) {
     return t.timeError;
   return t.error;
 }
-export function OfficePrice({ story, locale }: { story: StorySummary; locale: OfficeLocale }) {
+function OfficeMoney({
+  amount,
+  currency,
+  locale,
+  digits,
+  compact,
+}: {
+  amount: number;
+  currency: string;
+  locale: OfficeLocale;
+  digits: boolean;
+  compact: boolean;
+}) {
+  if (!compact) return <bdi>{formatAmount(amount, currency, locale, digits)}</bdi>;
+  return (
+    <bdi className="of-compact-money">
+      {officeMoneyTokens(amount, currency, locale, digits).map((token, index) => (
+        <span className={`of-money-${token.kind}`} key={index}>
+          {token.value}
+        </span>
+      ))}
+    </bdi>
+  );
+}
+export function OfficePrice({
+  story,
+  locale,
+  compact = false,
+}: {
+  story: StorySummary;
+  locale: OfficeLocale;
+  compact?: boolean;
+}) {
   const t = officeCopy[locale],
     pref = usePreferences();
   const price = story.price;
@@ -44,9 +77,13 @@ export function OfficePrice({ story, locale }: { story: StorySummary; locale: Of
   return (
     <div className="of-money">
       <strong className="of-price">
-        <bdi>
-          {formatAmount(price.native.amount, price.native.currency, locale, pref.arabicIndicDigits)}
-        </bdi>
+        <OfficeMoney
+          amount={price.native.amount}
+          currency={price.native.currency}
+          locale={locale}
+          digits={pref.arabicIndicDigits}
+          compact={compact}
+        />
       </strong>
       <p className="of-fine">
         {t.native}
@@ -63,9 +100,13 @@ export function OfficePrice({ story, locale }: { story: StorySummary; locale: Of
         )
         .map((c) => (
           <div className="of-conversion" key={c.money.currency}>
-            <bdi>
-              {formatAmount(c.money.amount, c.money.currency, locale, pref.arabicIndicDigits)}
-            </bdi>
+            <OfficeMoney
+              amount={c.money.amount}
+              currency={c.money.currency}
+              locale={locale}
+              digits={pref.arabicIndicDigits}
+              compact={compact}
+            />
             <p className="of-fine">
               {t.fx} · {t.asOf} <bdi>{c.asOf.value ?? t.unknown}</bdi>
             </p>

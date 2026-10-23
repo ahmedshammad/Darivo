@@ -5,17 +5,10 @@ import type { OfficeDTO, OfficeComparison, OfficePrivacy, PortfolioDTO } from '@
 import type { StorySummary } from '@/src/lib/story';
 import { officeCopy, type OfficeLocale } from '@/messages/office';
 import { usePreferences } from '@/src/components/preferences';
-import { storyCompletionDate } from '@/src/components/story/presentation';
 import { OfficeCalendar } from './calendar';
 import { OfficeAdvisor } from './advisor';
-import {
-  OfficeCard,
-  OfficePrice,
-  OfficeRestriction,
-  OfficeSources,
-  errorCopy,
-  officeRequest,
-} from './shared';
+import { OfficeComparison as ComparisonTable } from './comparison';
+import { OfficeCard, OfficeRestriction, errorCopy, officeRequest } from './shared';
 import { officeRef, officeRefKey, officeIntentHref } from './links';
 import './office.css';
 export type OfficeView =
@@ -635,9 +628,6 @@ export function Office({
                   <section className="of-section">
                     <h2>{t.compare}</h2>
                     <p>{t.limit}</p>
-                    {selected.length >= 2 && (
-                      <p className="of-fine of-comparison-hint">{t.compareScroll}</p>
-                    )}
                     {selected.length < 2 && (
                       <div className="of-empty">
                         <button onClick={() => setView('portfolios')}>{t.back}</button>
@@ -645,96 +635,11 @@ export function Office({
                       </div>
                     )}
                     {currentComparison && (
-                      <div
-                        className="of-comparison-scroll"
-                        tabIndex={0}
-                        role="region"
-                        aria-label={t.compare}
-                      >
-                        <table className="of-comparison">
-                          <caption>{t.comparisonCaption}</caption>
-                          <thead>
-                            <tr>
-                              <th scope="col">{t.evidence}</th>
-                              {currentComparison.entries.map((s) => (
-                                <th scope="col" key={s.entity.id}>
-                                  <Link href={`/${locale}${s.storyPath}?theme=${theme}`}>
-                                    {s.name[locale]}
-                                  </Link>
-                                  <p className="of-fine">
-                                    {s.kind === 'REAL_REFERENCE_PROJECT' ? t.reference : t.demo}
-                                  </p>
-                                </th>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">{t.price}</th>
-                              {currentComparison.entries.map((s) => (
-                                <td key={s.entity.id}>
-                                  <OfficePrice story={s} locale={locale} />
-                                </td>
-                              ))}
-                            </tr>
-                            <tr>
-                              <th scope="row">{t.location}</th>
-                              {currentComparison.entries.map((s) => (
-                                <td key={s.entity.id}>
-                                  {s.community[locale]} · {s.city[locale]}
-                                </td>
-                              ))}
-                            </tr>
-                            <tr>
-                              <th scope="row">{t.completion}</th>
-                              {currentComparison.entries.map((s) => (
-                                <td key={s.entity.id}>
-                                  {(() => {
-                                    const f = s.facts.find((f) => f.key === 'completion');
-                                    if (!f) return t.unknown;
-                                    const exact = storyCompletionDate(
-                                      f.value,
-                                      locale,
-                                      pref.arabicIndicDigits,
-                                    );
-                                    if (!exact)
-                                      return (
-                                        f.displayValue?.[locale] ?? String(f.value ?? t.unknown)
-                                      );
-                                    return (
-                                      <>
-                                        <time dateTime={String(f.value)}>{exact}</time>
-                                        <details className="of-sources">
-                                          <summary>{t.originalDate}</summary>
-                                          <p>
-                                            <bdi>{f.originalText ?? String(f.value)}</bdi>
-                                          </p>
-                                        </details>
-                                      </>
-                                    );
-                                  })()}
-                                </td>
-                              ))}
-                            </tr>
-                            <tr>
-                              <th scope="row">{t.availability}</th>
-                              {currentComparison.entries.map((s) => (
-                                <td key={s.entity.id}>
-                                  {s.availability === 'ON_REQUEST' ? t.onRequest : t.demo}
-                                </td>
-                              ))}
-                            </tr>
-                            <tr>
-                              <th scope="row">{t.source}</th>
-                              {currentComparison.entries.map((s) => (
-                                <td key={s.entity.id}>
-                                  <OfficeSources story={s} locale={locale} />
-                                </td>
-                              ))}
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
+                      <ComparisonTable
+                        comparison={currentComparison}
+                        locale={locale}
+                        theme={theme}
+                      />
                     )}
                   </section>
                 )}

@@ -122,9 +122,7 @@ for (const locale of ['en', 'ar'] as const) {
         profile.arabicIndicDigits,
       );
       expect(exactDate).not.toBeNull();
-      const completionRow = comparison
-        .getByRole('row')
-        .filter({ has: page.getByRole('rowheader', { name: t.completion, exact: true }) });
+      const completionRow = comparison.locator('[data-comparison-field="completion"]');
       await expect(completionRow).toContainText(exactDate!);
       await completionRow.locator('summary').click();
       await expect(completionRow).toContainText(
@@ -230,6 +228,136 @@ for (const locale of ['en', 'ar'] as const) {
       await expect(page.getByRole('checkbox', { name: t.noShare, exact: true })).toBeChecked();
       await expect(page.getByRole('button', { name: t.privacySave, exact: true })).toBeVisible();
     } finally {
+      await policy(page, {
+        doNotSave: original.doNotSave,
+        doNotShare: original.doNotShare,
+        doNotBook: original.doNotBook,
+      });
+    }
+  });
+
+  test(`Office compares any two of four selections together on a phone: ${locale}`, async ({
+    page,
+  }) => {
+    test.setTimeout(90000);
+    const t = officeCopy[locale];
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/en/login');
+    await page.getByRole('button', { name: 'Private client', exact: true }).click();
+    await expect(page.getByRole('button', { name: 'Sign out', exact: true })).toBeVisible({
+      timeout: 20000,
+    });
+    const original = (await (
+      await page.request.get('/api/v1/office/privacy')
+    ).json()) as OfficePrivacy;
+    const headers = { Origin: new URL(page.url()).origin };
+    let board: PortfolioDTO | undefined;
+    const subjects: StoryDTO[] = [];
+    try {
+      await policy(page, { doNotSave: false, doNotShare: false, doNotBook: false });
+      for (const slug of [
+        'project-orla-palm-jumeirah',
+        'project-southmed',
+        'project-silversands',
+        'unit-the-courtyard-001',
+      ]) {
+        const response = await page.request.get(`/api/v1/stories/${slug}`);
+        expect(response.ok()).toBe(true);
+        subjects.push((await response.json()) as StoryDTO);
+      }
+      const create = await page.request.post('/api/v1/portfolios', {
+        headers,
+        data: {
+          name: `Phone comparison ${locale} ${Date.now()}`,
+          clientRequestId: crypto.randomUUID(),
+        },
+      });
+      expect(create.ok()).toBe(true);
+      board = (await create.json()) as PortfolioDTO;
+      const add = await page.request.post(`/api/v1/portfolios/${board.id}/items`, {
+        headers,
+        data: {
+          refs: subjects.map((subject) => ({
+            kind: subject.kind === 'DEMO_UNIT' ? 'demo-unit' : 'reference-project',
+            id: subject.entity.id,
+          })),
+          version: board.version,
+          clientRequestId: crypto.randomUUID(),
+        },
+      });
+      expect(add.ok()).toBe(true);
+      await page.goto(`/${locale}/office?theme=dark`);
+      const portfolio = page.getByTestId('office-portfolio').filter({
+        has: page.getByRole('heading', { name: board.name, exact: true }),
+      });
+      await expect(portfolio.getByTestId('office-entry')).toHaveCount(4);
+      for (const check of await portfolio
+        .getByRole('checkbox', { name: t.selectCompare, exact: true })
+        .all())
+        await check.check();
+      let requests = 0;
+      page.on('request', (request) => {
+        if (
+          request.method() === 'POST' &&
+          new URL(request.url()).pathname === '/api/v1/office/comparison'
+        )
+          requests++;
+      });
+      await page.getByRole('button', { name: t.compareNow, exact: true }).click();
+      const table = page.getByRole('table');
+      await expect(table).toHaveAttribute('data-layout', 'pair');
+      await expect(table.locator('thead a')).toHaveCount(2);
+      const initiallyShown = (await table.locator('thead a').allTextContents()).map((name) =>
+        name.trim(),
+      );
+      const otherPair = subjects.filter(
+        (subject) => !initiallyShown.includes(subject.name[locale]),
+      );
+      expect(otherPair).toHaveLength(2);
+      const first = page.getByRole('combobox', { name: t.comparisonFirst, exact: true });
+      const second = page.getByRole('combobox', { name: t.comparisonSecond, exact: true });
+      await first.selectOption({ label: otherPair[0].name[locale] });
+      await second.selectOption({ label: otherPair[1].name[locale] });
+      for (const subject of otherPair) {
+        const heading = table.getByRole('link', { name: subject.name[locale], exact: true });
+        await expect(heading).toBeVisible();
+        const bounds = await heading.boundingBox();
+        expect(bounds).not.toBeNull();
+        expect(bounds!.x).toBeGreaterThanOrEqual(0);
+        expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(390);
+      }
+      const firstValue = await first.inputValue();
+      const secondValue = await second.inputValue();
+      expect(firstValue).not.toBe(secondValue);
+      await expect(first.locator(`option[value="${secondValue}"]`)).toHaveJSProperty(
+        'disabled',
+        true,
+      );
+      await expect(second.locator(`option[value="${firstValue}"]`)).toHaveJSProperty(
+        'disabled',
+        true,
+      );
+      await expect(page.locator('.of-selection li')).toHaveCount(4);
+      expect(await table.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(
+        true,
+      );
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+      expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+      await page.setViewportSize({ width: 1440, height: 1000 });
+      await expect(table).toHaveAttribute('data-layout', 'full');
+      await expect(table.locator('thead a')).toHaveCount(4);
+      await page.setViewportSize({ width: 390, height: 844 });
+      await expect(table).toHaveAttribute('data-layout', 'pair');
+      await expect(first).toHaveValue(firstValue);
+      await expect(second).toHaveValue(secondValue);
+      expect(requests).toBe(1);
+    } finally {
+      if (board)
+        expect(
+          (await page.request.delete(`/api/v1/portfolios/${board.id}`, { headers })).ok(),
+        ).toBe(true);
       await policy(page, {
         doNotSave: original.doNotSave,
         doNotShare: original.doNotShare,
