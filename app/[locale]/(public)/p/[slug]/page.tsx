@@ -8,6 +8,8 @@ import { StoryClient } from '@/src/components/story/story-client';
 import { storyCopy } from '@/messages/story';
 
 // React cache is request-local: page and metadata share the same authorized projection.
+// Keep this route outside a loading boundary so the authorized cover arrives in
+// the initial document. The below-fold map retains its own progressive loading.
 const readStory = cache(async (slug: string) => {
   const viewer = await optionalUser();
   return { viewer, story: await resolveStory(slug, viewer) };
@@ -23,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { story } = await readStory(slug);
   if (!story) return { title: 'Darivo', robots: { index: false, follow: false } };
   return {
+    metadataBase: new URL(process.env.AUTH_URL ?? 'http://localhost:3000'),
     title: `${story.name[locale]} · Darivo`,
     description: storyCopy[locale].story,
     robots: { index: story.kind === 'REAL_REFERENCE_PROJECT', follow: true },

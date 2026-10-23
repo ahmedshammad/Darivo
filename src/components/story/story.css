@@ -561,6 +561,13 @@
   font: 400 14px var(--sans);
   margin-top: 8px;
 }
+.story-ledger article[data-metric-status='UNAVAILABLE'] > .story-metric-status {
+  font: 500 16px/1.6 var(--sans);
+  margin: 12px 0;
+}
+.story-ledger article[data-metric-status='UNAVAILABLE'] details {
+  font-size: 14px;
+}
 .story-ledger article > p:not(.story-metric-value) {
   font-size: 14px;
   margin-bottom: 12px;

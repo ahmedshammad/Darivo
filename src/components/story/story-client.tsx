@@ -142,6 +142,7 @@ export function StoryClient({
           <Link href={`/${locale}/office?theme=${theme}`}>{t.office}</Link>
           <Link
             href={`/${locale === 'ar' ? 'en' : 'ar'}${story.storyPath}?theme=${theme}`}
+            prefetch={false}
             lang={locale === 'ar' ? 'en' : 'ar'}
           >
             {locale === 'ar' ? 'EN' : 'العربية'}
@@ -358,9 +359,13 @@ export function StoryClient({
               locale={locale}
             />
             {story.metrics.map((metric) => (
-              <article key={metric.id}>
+              <article key={metric.id} data-metric-status={metric.status}>
                 <h3>{metric.label[locale]}</h3>
-                <p className="story-metric-value">
+                <p
+                  className={
+                    metric.status === 'AVAILABLE' ? 'story-metric-value' : 'story-metric-status'
+                  }
+                >
                   {metric.status === 'AVAILABLE' ? (
                     <>
                       <bdi>
@@ -384,31 +389,47 @@ export function StoryClient({
                     t.metricReasons[metric.reason]
                   )}
                 </p>
-                <p>{metric.explanation[locale]}</p>
-                <small>
-                  {t.asOf} <bdi>{digits(metric.asOf.value ?? t.unknown)}</bdi>
-                </small>
-                {metric.sourceIds.length > 0 && (
+                {metric.status === 'AVAILABLE' && (
+                  <>
+                    <p>{metric.explanation[locale]}</p>
+                    <small>
+                      {t.asOf} <bdi>{digits(metric.asOf.value ?? t.unknown)}</bdi>
+                    </small>
+                  </>
+                )}
+                {(metric.status !== 'AVAILABLE' || metric.sourceIds.length > 0) && (
                   <details>
-                    <summary>{t.sources}</summary>
-                    <dl>
-                      {story.facts
-                        .filter((fact) => metric.factIds.includes(fact.id))
-                        .map((fact) => (
-                          <StoryFact
-                            key={fact.id}
-                            fact={fact}
-                            sources={story.sources}
-                            locale={locale}
-                          />
-                        ))}
-                    </dl>
-                    <StorySources
-                      sources={story.sources.filter((source) =>
-                        metric.sourceIds.includes(source.id),
-                      )}
-                      locale={locale}
-                    />
+                    <summary>{metric.status === 'AVAILABLE' ? t.sources : t.metricContext}</summary>
+                    {metric.status !== 'AVAILABLE' && (
+                      <>
+                        <p>{metric.explanation[locale]}</p>
+                        <small>
+                          {t.asOf} <bdi>{digits(metric.asOf.value ?? t.unknown)}</bdi>
+                        </small>
+                      </>
+                    )}
+                    {metric.factIds.length > 0 && (
+                      <dl>
+                        {story.facts
+                          .filter((fact) => metric.factIds.includes(fact.id))
+                          .map((fact) => (
+                            <StoryFact
+                              key={fact.id}
+                              fact={fact}
+                              sources={story.sources}
+                              locale={locale}
+                            />
+                          ))}
+                      </dl>
+                    )}
+                    {metric.sourceIds.length > 0 && (
+                      <StorySources
+                        sources={story.sources.filter((source) =>
+                          metric.sourceIds.includes(source.id),
+                        )}
+                        locale={locale}
+                      />
+                    )}
                   </details>
                 )}
               </article>

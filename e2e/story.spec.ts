@@ -3,6 +3,34 @@ import AxeBuilder from '@axe-core/playwright';
 import { storyCopy } from '../messages/story';
 import type { StoryDTO } from '../src/lib/story';
 
+for (const locale of ['en', 'ar'] as const)
+  test(`Story cover and source metadata are readable before JavaScript: ${locale}`, async ({
+    browser,
+    baseURL,
+  }) => {
+    const context = await browser.newContext({ baseURL, javaScriptEnabled: false });
+    try {
+      const page = await context.newPage();
+      const slug = locale === 'ar' ? 'unit-the-courtyard-001' : 'project-orla-palm-jumeirah';
+      const response = await page.goto(`/${locale}/p/${slug}`);
+      expect(response?.status()).toBe(200);
+      await expect(page.locator('#story-title')).toBeVisible();
+      await expect(page.locator('head meta[name="description"]')).toHaveAttribute('content', /\S/);
+      const canonical = await page.locator('head link[rel="canonical"]').getAttribute('href');
+      expect(new URL(canonical!).pathname).toBe(`/${locale}/p/${slug}`);
+      if (locale === 'ar')
+        await expect(page.locator('head meta[name="robots"]')).toHaveAttribute(
+          'content',
+          /noindex/,
+        );
+      const missing = await page.goto(`/${locale}/p/unit-not-a-stored-residence`);
+      expect(missing?.status()).toBe(404);
+      await expect(page.locator('#story-title')).toHaveCount(0);
+    } finally {
+      await context.close();
+    }
+  });
+
 for (const locale of ['en', 'ar'] as const) {
   test(`Story reference keeps source identity and enquiry semantics on phone: ${locale}`, async ({
     page,
@@ -41,6 +69,17 @@ for (const locale of ['en', 'ar'] as const) {
     expect(href).toContain('kind=reference-project');
     expect(href).toContain(`id=${story.entity.id}`);
     expect(writes).toEqual([]);
+    const unknown = story.metrics.find((metric) => metric.status === 'UNAVAILABLE');
+    expect(unknown).toBeDefined();
+    await page.locator('.story-chapters a[href="#story-numbers"]').click();
+    const metric = page.locator('article[data-metric-status="UNAVAILABLE"]').filter({
+      has: page.getByRole('heading', { name: unknown!.label[locale], exact: true }),
+    });
+    await expect(metric.locator('.story-metric-status')).toBeVisible();
+    await expect(metric.getByText(unknown!.explanation[locale], { exact: true })).toBeHidden();
+    await metric.locator('summary').focus();
+    await page.keyboard.press('Enter');
+    await expect(metric.getByText(unknown!.explanation[locale], { exact: true })).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
     expect(overflow).toBe(false);
     const axe = await new AxeBuilder({ page }).analyze();

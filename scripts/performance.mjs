@@ -29,6 +29,7 @@ const pages = [
   ['detail-ar', '/ar/properties/property-002'],
   ['story', '/en/p/project-orla-palm-jumeirah'],
   ['story-ar', '/ar/p/unit-the-courtyard-001'],
+  ['story-reference-ar', '/ar/p/project-orla-palm-jumeirah'],
 ];
 const requested = process.env.LIGHTHOUSE_PAGES?.split(',');
 if (requested?.some((name) => !pages.some(([candidate]) => candidate === name)))
@@ -64,6 +65,15 @@ for (const [name, path] of pages.filter(([name]) => !requested || requested.incl
     blockingMs: result.audits['total-blocking-time'].numericValue,
     layoutShift: result.audits['cumulative-layout-shift'].numericValue,
   };
-  console.info(JSON.stringify({ page: path, scores, metrics, report }));
-  if (Object.values(scores).some((score) => score < 90)) process.exitCode = 1;
+  // Fictional residence Stories deliberately forbid indexing. Keep that privacy
+  // policy and report SEO honestly; assess public-project SEO separately.
+  const expectsNoIndex = name === 'story-ar';
+  console.info(JSON.stringify({ page: path, scores, metrics, report, expectsNoIndex }));
+  if (expectsNoIndex && result.audits['is-crawlable'].score !== 0) process.exitCode = 1;
+  if (
+    Object.entries(scores).some(
+      ([category, score]) => !(expectsNoIndex && category === 'seo') && score < 90,
+    )
+  )
+    process.exitCode = 1;
 }
